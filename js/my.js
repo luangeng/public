@@ -24,6 +24,12 @@ var _hmt = _hmt || [];
     s.parentNode.insertBefore(bp, s);
 })();
 
+//谷歌
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9678348744203652",
+      enable_page_level_ads: true
+    });
+
     	AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
                isLogin();
                     var Counter = AV.Object.extend("Counter");

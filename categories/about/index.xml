@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About on 新起点</title>
-    <link>https://luangeng.gitee.io/categories/about/</link>
+    <link>https://www.luangeng.top/categories/about/</link>
     <description>Recent content in About on 新起点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Thu, 01 Jan 2015 08:55:31 +0800</lastBuildDate>
     
-	<atom:link href="https://luangeng.gitee.io/categories/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.luangeng.top/categories/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>关于</title>
-      <link>https://luangeng.gitee.io/about/</link>
+      <link>https://www.luangeng.top/about/</link>
       <pubDate>Thu, 01 Jan 2015 08:55:31 +0800</pubDate>
       
-      <guid>https://luangeng.gitee.io/about/</guid>
+      <guid>https://www.luangeng.top/about/</guid>
       <description>个人简介 我叫 luangeng 联系方式 Github: https://github.com/luangeng Email：1057935399@qq.com 声明 本博客所有文章皆为原创。转载请注明原文链接，并提前与本人联系。谢</description>
     </item>
     

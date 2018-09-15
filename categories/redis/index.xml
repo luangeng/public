@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on 新起点</title>
-    <link>https://luangeng.gitee.io/categories/redis/</link>
+    <link>https://www.luangeng.top/categories/redis/</link>
     <description>Recent content in Redis on 新起点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Sat, 03 Sep 2011 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://luangeng.gitee.io/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.luangeng.top/categories/redis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Redis命令</title>
-      <link>https://luangeng.gitee.io/post/redis/redis-command---string/</link>
+      <link>https://www.luangeng.top/post/redis/redis-command---string/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/redis/redis-command---string/</guid>
+      <guid>https://www.luangeng.top/post/redis/redis-command---string/</guid>
       <description>常用命令 APPEND key value 如果 key 已经存在，并且值为字符串，那么这个命令会把 value 追加到原来值（value）的结尾。 如果 key 不存在，那么它将首先创建一个空字符串</description>
     </item>
     
     <item>
       <title>Redis命令</title>
-      <link>https://luangeng.gitee.io/post/redis/redis-command/</link>
+      <link>https://www.luangeng.top/post/redis/redis-command/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/redis/redis-command/</guid>
+      <guid>https://www.luangeng.top/post/redis/redis-command/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis安装</title>
-      <link>https://luangeng.gitee.io/post/redis/redis-install/</link>
+      <link>https://www.luangeng.top/post/redis/redis-install/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/redis/redis-install/</guid>
+      <guid>https://www.luangeng.top/post/redis/redis-install/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis简介</title>
-      <link>https://luangeng.gitee.io/post/redis/redis-intr/</link>
+      <link>https://www.luangeng.top/post/redis/redis-intr/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/redis/redis-intr/</guid>
+      <guid>https://www.luangeng.top/post/redis/redis-intr/</guid>
       <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列</description>
     </item>
     
     <item>
       <title>Redis简介</title>
-      <link>https://luangeng.gitee.io/post/redis/redis-key/</link>
+      <link>https://www.luangeng.top/post/redis/redis-key/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/redis/redis-key/</guid>
+      <guid>https://www.luangeng.top/post/redis/redis-key/</guid>
       <description></description>
     </item>
     
