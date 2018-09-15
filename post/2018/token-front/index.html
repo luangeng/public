@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://luangeng.gitee.io">
+  <title>Oauth2协议 通过js和ajax获取token及刷新token - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="auth,">
+  
+
+  <meta name="description" content="基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="Oauth2协议 通过js和ajax获取token及刷新token - 新起点">
+  <meta itemprop="description" content="基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth">
+  <meta itemprop="image" content="https://luangeng.gitee.io/img/me.jpg">
+
+  <meta property="og:title" content="Oauth2协议 通过js和ajax获取token及刷新token - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.gitee.io/post/2018/token-front/" />
+  <meta property="og:image" content="https://luangeng.gitee.io/img/me.jpg" />
+  <meta property="og:description" content="基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth">
+
+  <meta name="baidu-site-verification" content="IjnIQHsQAt" />
+
+  <link rel="canonical" href="https://luangeng.gitee.io/post/2018/token-front/">
+  <link rel='shortlink' href="https://luangeng.gitee.io/post/2018/token-front/"/>
+  <link rel="shortcut icon" href="https://luangeng.gitee.io/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/Netty/">Netty</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/ask/">问答</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/about/">关于</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://luangeng.gitee.io/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://luangeng.gitee.io/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://luangeng.gitee.io/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.gitee.io/" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Oauth2协议 通过js和ajax获取token及刷新token</h1>
+
+                                    <p class="post-byline">
+                                        2018-09-03 · 1295 Words
+                                        
+                                        · Tags: auth
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.gitee.io/post/2018/token-front/" class="leancloud_visitors"
+                                              data-flag-title="Oauth2协议 通过js和ajax获取token及刷新token">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            
+
+<p>基于Oauth2.0协议授权码模式的认证流程</p>
+
+<blockquote>
+<p>授权码模式工作流程：</p>
+
+<ol>
+<li><p>浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth/authorize)，携带clientid等信息</p></li>
+
+<li><p>用户选择是否给予客户端授权（可自动授权）</p></li>
+
+<li><p>认证服务器将浏览器重定向到&rdquo;重定向URI&rdquo;（redirection URI），同时附上一个授权码</p></li>
+
+<li><p>浏览器拿到授权码，附上早先的&rdquo;重定向URI&rdquo;，向认证服务器申请令牌(/oauth/token)</p></li>
+
+<li><p>认证服务器核对了授权码和重定向URI，向客户端发送访问令牌（access token）和更新令牌（refresh token）</p></li>
+</ol>
+</blockquote>
+
+<p>1步骤中，客户端申请认证的URI，包含以下参数：</p>
+
+<ul>
+<li>response_type：表示授权类型，必选项，此处的值固定为&rdquo;code&rdquo;</li>
+<li>client_id：表示客户端的ID，必选项</li>
+<li>redirect_uri：表示重定向URI，可选项</li>
+<li>scope：表示申请的权限范围，可选项</li>
+<li>state：一般随机生成，标识客户端的当前状态，认证服务器会原样返回这个值，</li>
+</ul>
+
+<h2 id="纯前端项目中获取token">纯前端项目中获取token</h2>
+
+<p>通过JS ajax拦截器获取token及刷新token示例，适用于前后端分离项目中前端的授权。</p>
+
+<p>auth.js</p>
+
+<pre><code>const FULL_CHARTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopgrstuvwxyz';
+const oauth_server='http://localhost:9000/server';
+const redirect_uri='http://localhost:8002/client-front/';
+const client_id='demo';
+const client_secret='demo';
+const token_storage = localStorage;//sessionStorage
+
+
+function ajaxSetup() {
+    $.ajaxSetup({
+        timeout : 30000,
+        beforeSend : function(xhr) {
+            if(this.url.endsWith('/oauth/token')){
+                return true;
+            }
+            if (getAuth() == null){
+                fetchToken();
+            }
+            var auth = getAuth();
+            if(auth != null){
+                xhr.setRequestHeader(&quot;Authorization&quot;, auth.token_type + ' ' + auth.access_token);
+            } else {
+                return false;
+            }
+            return true;
+        },
+        complete : function(xhr, ts) {
+            if (xhr.status == 401 &amp;&amp; xhr.responseJSON.error =='invalid_token') {
+               refreshToken();
+            }
+        }
+    });
+}
+
+function getAuth(){
+    let auth = token_storage.getItem('auth');
+    return JSON.parse(auth);
+}
+
+function saveAuth(sResponse){
+    token_storage.setItem(&quot;auth&quot;, JSON.stringify(sResponse));
+}
+
+function clearAuth(){
+    token_storage.removeItem('auth');
+}
+
+function logout(){
+    token_storage.removeItem('auth');
+    window.location.href = oauth_server+&quot;/logout?redirect_uri=&quot;+redirect_uri;
+}
+
+function getCode(){
+var state='';
+for (var a=0;a&lt;6;a++){
+    state+=FULL_CHARTER[Math.floor(Math.random() * 52)];
+}
+var url = oauth_server+&quot;/oauth/authorize?client_id=&quot;+client_id+&quot;&amp;client_secret=&quot;+client_secret+
+          &quot;&amp;response_type=code&amp;state=&quot;+state+&quot;&amp;redirect_uri=&quot;+redirect_uri;
+ window.location = url;
+ //window.open(url);
+}
+
+function fetchToken(){
+    let url = window.location.toString();
+    if(!url.includes('code')){
+        getCode();
+    }
+    if(url.includes('code')) {
+      let code=url.substr(url.indexOf('code=')+5,6);
+      let state=url.substr(url.indexOf('state=')+6,6);
+
+        var data={
+        'code':code,
+        'state':state,
+        'grant_type':'authorization_code',
+        'redirect_uri':redirect_uri
+        };
+    $.ajax({
+       url: oauth_server+&quot;/oauth/token&quot;,
+       type:&quot;post&quot;,
+       data:data,
+       async: false,
+       contentType: 'application/x-www-form-urlencoded',
+       beforeSend:function(xhr){
+             xhr.setRequestHeader(&quot;Authorization&quot;, 'Basic ' + Base64.encode(client_id+':'+client_secret));
+        },
+       success: function (sResponse) {
+        saveAuth(sResponse);
+        console.log('fetch_token ok: ' + sResponse.access_token+'  expires_in:'+sResponse.expires_in);
+        //window.location.href = redirect_uri;
+       },
+       error:function(a,b,c){
+        console.log(a, b, c);
+       }
+    });
+    }
+}
+
+function refreshToken(){
+    var auth = getAuth();
+    var data={
+            'client_id': client_id,
+            'client_secret': client_secret,
+            'grant_type':'refresh_token',
+            'refresh_token':auth.refresh_token
+            };
+        $.ajax({
+           url: oauth_server+&quot;/oauth/token&quot;,
+           type:&quot;post&quot;,
+           data:data,
+           async: false,
+           contentType: 'application/x-www-form-urlencoded',
+           success: function (sResponse) {
+            saveAuth(sResponse);
+            console.log('refresh_token ok: ' + sResponse.access_token+'  expires_in:'+sResponse.expires_in);
+           },
+           error:function(a,b,c){
+            if (a.status==400 &amp;&amp; a.responseJSON.error=='invalid_grant'){
+                console.log('refresh token invalid');
+                clearAuth();
+            }
+           }
+        });
+}
+
+function checkToken(){
+            $.ajax({
+               url: oauth_server+&quot;/oauth/check_token&quot;,
+               type:&quot;get&quot;,
+               async: false,
+               data: {'token': getAuth().access_token},
+               contentType: 'application/x-www-form-urlencoded',
+               success: function (sResponse) {
+                console.log('check_token : ' + sResponse);
+               },
+               error:function(a,b,c){
+                console.log(a.responseJSON);
+               }
+            });
+}
+
+function getServerdata(){
+    $.get(oauth_server+&quot;/msg&quot;, function(data) {
+            $(&quot;#user&quot;).html(data);
+          });
+}
+
+
+$(function() {
+    ajaxSetup();
+});
+</code></pre>
+
+<p>其中使用了base64.js.</p>
+
+<p>界面如下，点击GET Data按钮将发送/msg请求到授权服务器去获取一段文本：</p>
+
+<p><img src="images/2018-7/auth1.png" alt="" /></p>
+
+<p>文本获取成功后浏览器所有请求如下：</p>
+
+<p><img src="images/2018-7/auth2.png" alt="" /></p>
+
+<p>首先访问/msg，返回401无权限，然后浏览器转到/oauth/authorize去获取code，然后授权服务器返回302重定向到授权登录页，用户填写用户名密码后post到/login，
+然后授权服务器重定向到rediret_url，末尾拼接了code，取出code，post发送/oauth/token请求，授权服务器返回token信息如下，并保存在LocalStorage中,如图所示：</p>
+
+<p><img src="images/2018-7/auth3.png" alt="" /></p>
+
+<p>获取token后/msg请求中携带了token信息，bearer为token类型：</p>
+
+<p><img src="images/2018-7/auth4.png" alt="" /></p>
+
+<p>由于是跨域请求数据，所以先发送的是OPTIONS请求，需要服务器支持跨域：</p>
+
+<p><img src="images/2018-7/auth5.png" alt="" /></p>
+
+<p>刷新token：</p>
+
+<p>当服务器返回401，并且responseMsg为invalid_token时表示token已失效，post以下信息到/oauth/token，刷新token的失效时间</p>
+
+<p><img src="images/2018-7/auth6.png" alt="" /></p>
+
+<p>checktoken：需要服务器permitAll()该请求</p>
+
+<p>登出：</p>
+
+<p>略</p>
+
+<p>在授权服务器中可查看所有生成的token：
+<img src="images/2018-7/auth7.png" alt="" /></p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.gitee.io/post/2018/token-front/">https://luangeng.gitee.io/post/2018/token-front/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.gitee.io/post/2018/elasticsearch/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>elasticsearch</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://luangeng.gitee.io/post/2018/dingding/" rel="bookmark" title="spring-security-oauth2 授权服务集成钉钉扫码登录">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://luangeng.gitee.io/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://luangeng.gitee.io/post/2018/token-front/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.gitee.io/tags/auth' style="font-size:17px;margin:4px"><code>auth</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/work' style="font-size:17px;margin:4px"><code>work</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/zookeeper' style="font-size:17px;margin:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/Netty/">Netty</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://luangeng.gitee.io/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+              <p>Copyright (c) 2017. All rights reserved.</p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://luangeng.gitee.io/post/2018/token-front/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+

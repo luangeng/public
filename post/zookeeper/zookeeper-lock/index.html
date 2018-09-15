@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://luangeng.gitee.io">
+  <title>zookeeper-分布式锁和消息队列 - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="zookeeper,">
+  
+
+  <meta name="description" content="在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="zookeeper-分布式锁和消息队列 - 新起点">
+  <meta itemprop="description" content="在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个">
+  <meta itemprop="image" content="https://luangeng.gitee.io/img/me.jpg">
+
+  <meta property="og:title" content="zookeeper-分布式锁和消息队列 - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/" />
+  <meta property="og:image" content="https://luangeng.gitee.io/img/me.jpg" />
+  <meta property="og:description" content="在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个">
+
+  <meta name="baidu-site-verification" content="IjnIQHsQAt" />
+
+  <link rel="canonical" href="https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/">
+  <link rel='shortlink' href="https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/"/>
+  <link rel="shortcut icon" href="https://luangeng.gitee.io/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/Netty/">Netty</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/ask/">问答</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/about/">关于</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://luangeng.gitee.io/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://luangeng.gitee.io/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://luangeng.gitee.io/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.gitee.io/" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">zookeeper-分布式锁和消息队列</h1>
+
+                                    <p class="post-byline">
+                                        2011-09-03 · 1666 Words
+                                        
+                                        · Tags: zookeeper
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/" class="leancloud_visitors"
+                                              data-flag-title="zookeeper-分布式锁和消息队列">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            
+
+<p>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个进程可以持有锁。</p>
+
+<p>分布式环境中多个进程的锁则可以使用Zookeeper来实现。</p>
+
+<p>下面这种方法是使用顺序节点实现共享锁，流程如下：</p>
+
+<p>对于lock()操作，首先让所有参与争锁的客户端都在/_locks目录下创建临时顺序节点，然后获取该路径下的所有节点，如果客户端创建的节点序列号最小则获得锁。否则开始监视它前一个节点并进入等待状态。</p>
+
+<p>对于unlock()操作，将自身创建的节点删除。此时后一个节点的监控将被触发，对应的客户端退出等待状态，取得锁。</p>
+
+<p>下面是一个简单的示例：</p>
+
+<pre><code>/**
+ * 分布式锁
+ */
+public class DisLock implements Watcher {
+
+    public static final String LOCK_ROOT = &quot;/__locks__&quot;;
+
+    private ZooKeeper zk;
+
+    //锁名称,标识竞争的是哪个锁
+    private String lockName;
+
+    //当前创建的节点路径
+    private String path;
+
+    //前一个节点的路径
+    private String prePath;
+
+    //是否获取锁
+    private boolean acquired;
+
+    //构造函数，连接zk，检查父节点存在
+    public DisLock(String lockName) throws KeeperException, InterruptedException, IOException {
+        this.lockName = &quot;/&quot; + lockName;
+        this.zk = new ZooKeeper(&quot;localhost:2181&quot;, 30000, this);
+        Assert.notNull(zk, &quot;zookeeper is null&quot;);
+        if (zk.exists(LOCK_ROOT, false) == null) {
+            zk.create(LOCK_ROOT, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                    CreateMode.PERSISTENT);
+        }
+        if (zk.exists(LOCK_ROOT + this.lockName, false) == null) {
+            zk.create(LOCK_ROOT + this.lockName, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                    CreateMode.PERSISTENT);
+        }
+    }
+
+    public void lock() {
+        if (tryLock()) {
+            return;
+        } else {
+            waitLock();
+
+        }
+    }
+
+    //尝试获取锁
+    public boolean tryLock() {
+        if (acquired) {
+            return true;
+        }
+        try {
+            //创建临时节点，自动编号
+            path = zk.create(LOCK_ROOT + lockName + &quot;/&quot;, new byte[0], ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                    CreateMode.EPHEMERAL_SEQUENTIAL);
+
+            List&lt;String&gt; ls = zk.getChildren(LOCK_ROOT + lockName, false);
+            Collections.sort(ls);
+            if (path.equals(LOCK_ROOT + lockName + &quot;/&quot; + ls.get(0))) {
+                acquired = true;
+                return true;
+            }
+
+            for (int i = 0; i &lt; ls.size(); i++) {
+                if (path.equals(LOCK_ROOT + lockName + &quot;/&quot; + ls.get(i))) {
+                    prePath = LOCK_ROOT + lockName + &quot;/&quot; + ls.get(i - 1);
+                    break;
+                }
+            }
+            return false;
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //释放锁
+    public void unlock() {
+        if (!acquired) {
+            return;
+        }
+        try {
+            zk.delete(path, -1);
+            acquired = false;
+            //System.out.println(Thread.currentThread().getName() + &quot; free lock&quot;);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //设置监控并等待锁，前一个节点被删除后退出等待，得到锁
+    private synchronized void waitLock() {
+        try {
+            Stat s = zk.exists(prePath, true);
+            if (s == null) {
+                //等到锁，返回
+                acquired = true;
+                return;
+            }
+            this.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        }
+        waitLock();
+        return;
+    }
+
+    //监视节点变化，被监控节点被删除时激活等待锁的线程
+    @Override
+    public synchronized void process(WatchedEvent watchedEvent) {
+        if (watchedEvent.getType() == Event.EventType.NodeDeleted) {
+            //System.out.println(&quot;触发：&quot;+watchedEvent.getPath());
+            this.notify();
+        }
+    }
+}
+</code></pre>
+
+<p>其中waitLock和process方法需要加synchronized关键字，以便使用wait和notify方法。</p>
+
+<p>测试方法：</p>
+
+<p>Zookeeper的另一种应用场景是处理FIFO消息队列，利用zk的自动编号，存储数据和数据一致性能力，模拟生产者-消费者模型。</p>
+
+<p>创建3个消费者从zk中获取数据，此时需要使用分布式锁，加锁获取数据的部分。出于模拟生产者和消费者都在不同的进程，所有不共享zk等对象。</p>
+
+<p>示例代码如下：</p>
+
+<hr />
+
+<h3 id="生产者">生产者：</h3>
+
+<pre><code>public class Producer extends Thread {
+
+    private ZooKeeper zk;
+
+    private Random ran = new Random();
+
+    private static AtomicInteger count = new AtomicInteger(0);
+
+    Producer() throws IOException {
+        this.zk = new ZooKeeper(&quot;localhost:2181&quot;, 30000, null);
+    }
+
+    void produce(String str) throws KeeperException, InterruptedException {
+        String name = zk.create(ZkQueue.root + &quot;/element&quot;, str.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.PERSISTENT_SEQUENTIAL);
+        //System.out.println(getName() + &quot; create: &quot; + str);
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                String msg = &quot;msg&quot; + count.getAndIncrement();
+                produce(msg);
+                Thread.sleep(ran.nextInt(1000));
+            }
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+        }
+    }
+}
+</code></pre>
+
+<p>&ndash;循环向zk中写入递增的信息，中间延迟随机毫秒</p>
+
+<hr />
+
+<h3 id="消费者">消费者：</h3>
+
+<pre><code>public class Consumer extends Thread {
+
+    private ZooKeeper zk;
+
+    private DisLock lock;
+
+    Consumer() throws IOException, KeeperException, InterruptedException {
+        lock = new DisLock(&quot;queue&quot;);
+        this.zk = new ZooKeeper(&quot;localhost:2181&quot;, 30000, null);
+    }
+
+    private boolean consume() throws KeeperException, InterruptedException {
+        lock.lock();
+        try {
+            List&lt;String&gt; list = zk.getChildren(root, true);
+            if (list.isEmpty()) {
+                return true;
+            }
+            Collections.sort(list);
+            String first = list.get(0);
+            byte[] b = zk.getData(root + &quot;/&quot; + first, false, null);
+            zk.delete(root + &quot;/&quot; + first, -1);
+            String str = new String(b);
+            System.out.println(getName() + &quot; get:&quot; + str);
+        } finally {
+            lock.unlock();
+        }
+        return false;
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (true) {
+                if (consume()) {
+                    Thread.sleep(1000);
+                }
+            }
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+        }
+    }
+}
+</code></pre>
+
+<p>&ndash;循环从zk中取节点然后删除节点，对整个过程加锁</p>
+
+<hr />
+
+<h3 id="启动类">启动类：</h3>
+
+<pre><code>public class ZkQueue implements Watcher{
+
+    @Override
+    public void process(WatchedEvent watchedEvent) {
+        System.out.printf(&quot;----&gt;%s %s\n&quot;,watchedEvent.getPath(),watchedEvent.getType());
+    }
+
+    private static ZooKeeper zk;
+
+    public static final String root = &quot;/zkqueue&quot;;
+
+    public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
+
+        zk = new ZooKeeper(&quot;localhost:2181&quot;, 30000, null);
+
+        ZkUtils.delete(zk, &quot;/__locks__/queue&quot;);//此处需保证该路径下没有子节点，否则可能获取到为最小
+
+        ZkUtils.delete(zk, root);
+        zk.create(root, &quot;queue&quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+
+        //模拟2个生产者
+        new Producer().start();
+        new Producer().start();
+
+        //模拟3个消费者
+        new Consumer().start();
+        new Consumer().start();
+        new Consumer().start();
+
+        Scanner s = new Scanner(System.in);
+        s.nextLine();
+
+        ZkUtils.delete(zk, root);
+
+        // 关闭连接
+        zk.close();
+    }
+
+}
+</code></pre>
+
+<hr />
+
+<h3 id="输出结果">输出结果：</h3>
+
+<pre><code>Thread-2 get lock
+Thread-2         get:msg0
+Thread-2 free lock
+Thread-3 get lock
+Thread-3         get:msg2
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg3
+Thread-3 get lock
+Thread-2 free lock
+Thread-3         get:msg4
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg5
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg6
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg7
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg8
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg1
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg9
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg10
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg11
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg12
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg13
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg14
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg15
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg16
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg17
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg18
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg19
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg20
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg21
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg22
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg23
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg24
+Thread-3 free lock
+Thread-2 get lock
+Thread-2         get:msg25
+Thread-2 free lock
+Thread-4 get lock
+Thread-4         get:msg26
+Thread-4 free lock
+Thread-3 get lock
+Thread-3         get:msg27
+Thread-3 free lock
+Thread-2 get lock
+</code></pre>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/">https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper1/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>zookeeper-基本概念</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper-watch/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>zookeeper-Watcher</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper-java/" rel="bookmark" title="zookeeper-Java API">zookeeper-Java API</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper-watch/" rel="bookmark" title="zookeeper-Watcher">zookeeper-Watcher</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper1/" rel="bookmark" title="zookeeper-基本概念">zookeeper-基本概念</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper2/" rel="bookmark" title="zookeeper-安装及命令">zookeeper-安装及命令</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper-config/" rel="bookmark" title="zookeeper-配置服务">zookeeper-配置服务</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://luangeng.gitee.io/post/zookeeper/zookeeper-cluster/" rel="bookmark" title="zookeeper-集群管理">zookeeper-集群管理</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://luangeng.gitee.io/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.gitee.io/tags/auth' style="font-size:17px;margin:4px"><code>auth</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/work' style="font-size:17px;margin:4px"><code>work</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/zookeeper' style="font-size:17px;margin:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/Netty/">Netty</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://luangeng.gitee.io/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+              <p>Copyright (c) 2017. All rights reserved.</p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+

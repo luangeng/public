@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://luangeng.gitee.io">
+  <title>git基础命令 - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="git,">
+  
+
+  <meta name="description" content="初始设置： git config --global user.name &quot;username&quot; 查看/设置用户名 git config --global user.email &quot;email&quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="git基础命令 - 新起点">
+  <meta itemprop="description" content="初始设置： git config --global user.name &quot;username&quot; 查看/设置用户名 git config --global user.email &quot;email&quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g">
+  <meta itemprop="image" content="https://luangeng.gitee.io/img/me.jpg">
+
+  <meta property="og:title" content="git基础命令 - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.gitee.io/post/2016/git-base/" />
+  <meta property="og:image" content="https://luangeng.gitee.io/img/me.jpg" />
+  <meta property="og:description" content="初始设置： git config --global user.name &quot;username&quot; 查看/设置用户名 git config --global user.email &quot;email&quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g">
+
+  <meta name="baidu-site-verification" content="IjnIQHsQAt" />
+
+  <link rel="canonical" href="https://luangeng.gitee.io/post/2016/git-base/">
+  <link rel='shortlink' href="https://luangeng.gitee.io/post/2016/git-base/"/>
+  <link rel="shortcut icon" href="https://luangeng.gitee.io/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/categories/Netty/">Netty</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/ask/">问答</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.gitee.io/about/">关于</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://luangeng.gitee.io/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://luangeng.gitee.io/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://luangeng.gitee.io/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.gitee.io/" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">git基础命令</h1>
+
+                                    <p class="post-byline">
+                                        2016-08-03 · 956 Words
+                                        
+                                        · Tags: git
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.gitee.io/post/2016/git-base/" class="leancloud_visitors"
+                                              data-flag-title="git基础命令">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            
+
+<h3 id="初始设置">初始设置：</h3>
+
+<ul>
+<li><p><code>git config --global user.name &quot;username&quot;</code> 查看/设置用户名</p></li>
+
+<li><p><code>git config --global user.email &quot;email&quot;</code>  查看/设置邮箱</p></li>
+</ul>
+
+<h3 id="初始化本地库-关联远程库">初始化本地库，关联远程库：</h3>
+
+<ul>
+<li><p><code>git init</code>  把当前的目录变成由git管理的仓库，生成隐藏的.git目录</p></li>
+
+<li><p><code>git remote add origin https://github.com/luangeng/test.git</code> 将本地库关联到远程库origin</p></li>
+
+<li><p><code>git push -u origin master</code> 将本地master分支推送到远程库，并关联其分支</p></li>
+
+<li><p><code>git remote</code> 查看远程库的信息</p></li>
+
+<li><p><code>git remote show [name]</code>` 查看远程库详细</p></li>
+
+<li><p><code>git remote –v</code> 查看远程库的详细信息</p></li>
+</ul>
+
+<h3 id="从远程获取">从远程获取：</h3>
+
+<ul>
+<li><p><code>git clone https://github.com/luangeng/test.git</code> 从远程库克隆到本地</p></li>
+
+<li><p><code>git pull origin master</code> 从远程master分支获取 并merge到本地</p></li>
+
+<li><p><code>git fetch origin master</code>  从远程master分支获取 但不merge</p></li>
+
+<li><p><code>git merge origin/master</code> 合并远程分支到当前分支</p></li>
+
+<li><p><code>git checkout -b branch-name origin/master</code>  基于远程分支在本地创建新分支</p></li>
+</ul>
+
+<h3 id="分支管理">分支管理：</h3>
+
+<ul>
+<li><p><code>git branch</code> 查看本地分支</p></li>
+
+<li><p><code>git branch -a</code> 查看所有分支</p></li>
+
+<li><p><code>git branch dev</code> 创建dev分支</p></li>
+
+<li><p><code>git checkout master</code> 切换到dev分支</p></li>
+
+<li><p><code>git checkout -b dev</code> 创建并切换到dev分支</p></li>
+
+<li><p><code>git branch –d dev</code> 删除dev分支</p></li>
+
+<li><p><code>git merge dev</code> 合并dev分支到当前分支</p></li>
+
+<li><p><code>git branch --set-upstream dev origin-dev</code> 添加本地dev分支与远程origin-dev分支的链接</p></li>
+</ul>
+
+<h3 id="本地修改推送到远程">本地修改推送到远程：</h3>
+
+<ul>
+<li><p><code>git add 1.txt</code> 把1.txt文件添加到暂存区</p></li>
+
+<li><p><code>git rm XX</code> 删除XX文件</p></li>
+
+<li><p><code>git status</code> 查看本地文件状态</p></li>
+
+<li><p><code>git commit –m “add 1.txt”</code> 提交文件, –m后面的是注释</p></li>
+
+<li><p><code>git push origin master</code> 把当前本地分支master推送到远程库origin的对应分支</p></li>
+
+<li><p><code>git commit -am 'xxxx'</code>  add并commit</p></li>
+</ul>
+
+<h3 id="stash命令">stash命令</h3>
+
+<ul>
+<li><p><code>git stash [save ‘message’]</code>` 　　将当前分支所有修改存档，并将工作空间还原到最近一次commit的状态（clear状态）</p></li>
+
+<li><p><code>git stash list</code> 　　　　　　　　　查看存档栈，按入栈的顺序展示，最后stash的在最上面</p></li>
+
+<li><p><code>git stash show [stash@{1}]</code>   查看存档的修改内容 ，不加参数则显示最近一次的stash</p></li>
+
+<li><p><code>git stash pop [stash@{1}]</code>   用存档恢复工作区，并删除该存档，修改有冲突时失败，不加参数则恢复最近一次的stash</p></li>
+
+<li><p><code>git stash apply</code> 　　　　　　同stash pop ，但是不删除存档</p></li>
+
+<li><p><code>git stash drop</code>　　　　　　  删除指定存档</p></li>
+
+<li><p><code>git stash clear</code> 　　　　　　清空所有存档，删除其中所有的修改</p></li>
+</ul>
+
+<p>注意：不要stash太多次，避免混淆； stash操作包括暂存区。</p>
+
+<h3 id="标签">标签</h3>
+
+<ul>
+<li><p><code>git tag v01</code> 添加新标签</p></li>
+
+<li><p><code>git tag</code> 查看所有标签</p></li>
+
+<li><p><code>git tag －d v01</code> 删除标签</p></li>
+</ul>
+
+<h3 id="本地撤销">本地撤销：</h3>
+
+<ul>
+<li><p>&lsquo;git diff 1.txt 查看1.txt文件修改了哪些内容</p></li>
+
+<li><p>&lsquo;git log 查看历史记录</p></li>
+
+<li><p>&lsquo;git reflog 查看历史记录的版本号id</p></li>
+
+<li><p>&lsquo;git reset &ndash;hard HEAD^ 回退到commit前的版本，</p></li>
+
+<li><p>&lsquo;git reset &ndash;hard HEAD~3 回退到commit前三个版本</p></li>
+
+<li><p>&lsquo;git checkout &ndash; a.txt 把a.txt在工作区的修改全部丢弃</p></li>
+
+<li><p>&lsquo;git reset HEAD <file>  撤销暂存区的修改（unstage）</p></li>
+</ul>
+
+<p><img src="images/2016/git3.png" alt="git" /></p>
+
+<h3 id="gitignore文件">.gitignore文件</h3>
+
+<ul>
+<li><p>/表示目录   如  log/  表示log目录</p></li>
+
+<li><p>* 通配符</p></li>
+
+<li><p>？通陪单个字符</p></li>
+
+<li><p>！排除</p></li>
+
+<li><p>log/*     log目录下所有文件</p></li>
+</ul>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.gitee.io/post/2016/git-base/">https://luangeng.gitee.io/post/2016/git-base/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.gitee.io/post/2016/git-undo/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>git撤销</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.gitee.io/post/2016/mysql/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>ubuntu16.04 安装 mysql5.7</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-08-03</span>
+                <a href="https://luangeng.gitee.io/post/2016/git-undo/" rel="bookmark" title="git撤销">git撤销</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://luangeng.gitee.io/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://luangeng.gitee.io/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://luangeng.gitee.io/post/2016/git-base/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.gitee.io/tags/auth' style="font-size:17px;margin:4px"><code>auth</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/work' style="font-size:17px;margin:4px"><code>work</code></a>
+            
+            <a href='https://luangeng.gitee.io/tags/zookeeper' style="font-size:17px;margin:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.gitee.io/categories/Netty/">Netty</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://luangeng.gitee.io/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://luangeng.gitee.io/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+              <p>Copyright (c) 2017. All rights reserved.</p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://luangeng.gitee.io/post/2016/git-base/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+
