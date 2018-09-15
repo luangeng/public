@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://www.code996.cn/">
+  <title>CXF拦截器介绍及自定义拦截器实现 - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="cxf,拦截器,">
+  
+
+  <meta name="description" content="CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链（I">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="CXF拦截器介绍及自定义拦截器实现 - 新起点">
+  <meta itemprop="description" content="CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链（I">
+  <meta itemprop="image" content="https://www.code996.cn//img/me.jpg">
+
+  <meta property="og:title" content="CXF拦截器介绍及自定义拦截器实现 - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.code996.cn/post/2017/demo/" />
+  <meta property="og:image" content="https://www.code996.cn//img/me.jpg" />
+  <meta property="og:description" content="CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链（I">
+
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="https://www.code996.cn/post/2017/demo/">
+  <link rel='shortlink' href="https://www.code996.cn/post/2017/demo/"/>
+  <link rel="shortcut icon" href="https://www.code996.cn//img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://www.code996.cn/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://www.code996.cn/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://www.code996.cn/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://www.code996.cn//" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">CXF拦截器介绍及自定义拦截器实现</h1>
+
+                                    <p class="post-byline">
+                                        Post 2017-03-22 · 1099 Words
+                                        
+                                        · Tags: tool
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://www.code996.cn/post/2017/demo/" class="leancloud_visitors"
+                                              data-flag-title="CXF拦截器介绍及自定义拦截器实现">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。
+当服务被调用时，会经过多个拦截器链（Interceptor Chain）处理，拦截器链在服务输入（IN）或输出（OUT）阶段实现附加功能，拦截器可以在客户端加入，也可以在服务端加入。</p>
+
+<p><img src="pic/2017/cxf1.png" alt="" /></p>
+
+<p>拦截器链的阶段：</p>
+
+<p>拦截器链有多个阶段，每个阶段都有多个拦截器。拦截器在拦截器链的哪个阶段起作用，可以在拦截器的构造函数中声明。
+输入拦截器链有如下几个阶段，这些阶段按照在拦截器链中的先后顺序排列。</p>
+
+<p><img src="pic/2017/cxf2.png" alt="" /></p>
+
+<p>输出拦截器链有如下几个阶段，这些阶段按照在拦截器链中的先后顺序排列。</p>
+
+<p><img src="pic/2017/cxf3.png" alt="" /></p>
+
+<p>在CXF中，所有对消息的处理都是通过各种拦截器实现。CXF已经实现了多种拦截器，如操纵消息头、执行认证检查、验证消息数据、日志记录、消息压缩等，有些拦截器在发布服务、访问服务时已经默认添加到拦截器链。</p>
+
+<p>日志拦截器</p>
+
+<p>CXF已经内置了一些拦截器，这些拦截器大部分默认添加到拦截器链中，有些需要手动添加，如CXF提供的日志拦截器：输入日志拦截器LoggingInInterceptor和输出日志拦截器LoggingOutInterceptor，可以用在服务端也可以用在客户端，用来在测试或调试的时候输出服务端、客户端请求和接收到的信息。</p>
+
+<p>服务端配置方式如下：</p>
+
+<pre><code>&lt;!-- 发布REST WebService --&gt;
+    &lt;jaxrs:server id=&quot;restServiceContainer&quot; address=&quot;/cxf&quot;&gt;
+        &lt;!--输入拦截器设置--&gt;
+        &lt;jaxrs:inInterceptors&gt;
+            &lt;bean class=&quot;org.apache.cxf.interceptor.LoggingInInterceptor&quot;&gt;&lt;/bean&gt;
+        &lt;/jaxrs:inInterceptors&gt;
+
+        &lt;!--输出拦截器设置--&gt;
+        &lt;jaxrs:outInterceptors&gt;
+            &lt;bean class=&quot;org.apache.cxf.interceptor.LoggingOutInterceptor&quot;&gt;&lt;/bean&gt;
+        &lt;/jaxrs:outInterceptors&gt;
+
+        &lt;!--WebService服务类--&gt;
+        &lt;jaxrs:serviceBeans&gt;
+            &lt;ref bean=&quot;restService&quot;/&gt;
+        &lt;/jaxrs:serviceBeans&gt;
+    &lt;/jaxrs:server&gt;
+</code></pre>
+
+<p>API方式：</p>
+
+<pre><code>        JAXRSServerFactoryBean jrf = new JAXRSServerFactoryBean();
+        jrf.setResourceClasses(RestServiceImpl.class);
+        jrf.setResourceProvider(RestServiceImpl.class, new SingletonResourceProvider(new RestServiceImpl()));
+        jrf.setAddress(url);
+        jrf.getInInterceptors().add(new LoggingInInterceptor());
+        jrf.getOutInterceptors().add(new LoggingOutInterceptor());
+        jrf.create();
+</code></pre>
+
+<p>客户端配置方式：</p>
+
+<pre><code>        JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
+        factory.setServiceClass(RestService.class);
+        factory.setAddress(url);
+        factory.getInInterceptors().add(new LoggingInInterceptor());
+        factory.getOutInterceptors().add(new LoggingOutInterceptor());
+        RestService ser = factory.create(RestService.class);
+        ser.get();
+</code></pre>
+
+<p>输出日志形式如下：客户端：</p>
+
+<pre><code>[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Outbound Message
+---------------------------
+ID: 1
+Address: http://localhost:8080/webapp/ws/cxf/rest
+Http-Method: GET
+Content-Type: application/xml
+Headers: {Content-Type=[application/xml], Accept=[text/plain]}
+-------------------------------------- 
+
+[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Inbound Message
+----------------------------
+ID: 1
+Response-Code: 200
+Encoding: ISO-8859-1
+Content-Type: text/plain
+Headers: {content-type=[text/plain], Date=[Wed, 22 Mar 2017 14:33:39 GMT], transfer-encoding=[chunked]}
+Payload: this is default get plain
+-------------------------------------- 
+</code></pre>
+
+<p>服务端：</p>
+
+<pre><code>[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Inbound Message
+----------------------------
+ID: 4
+Address: http://localhost:8080/webapp/ws/cxf/rest
+Encoding: UTF-8
+Http-Method: GET
+Content-Type: application/xml
+Headers: {Accept=[text/plain], cache-control=[no-cache], connection=[keep-alive], content-type=[application/xml], host=[localhost:8080], pragma=[no-cache], user-agent=[Apache CXF 3.0.3]}
+-------------------------------------- 
+
+[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Outbound Message
+---------------------------
+ID: 4
+Response-Code: 200
+Content-Type: text/plain
+Headers: {Content-Type=[text/plain], Date=[Wed, 22 Mar 2017 14:33:39 GMT]}
+Payload: this is default get plain
+-------------------------------------- 
+</code></pre>
+
+<p>自定义拦截器</p>
+
+<p>CXF中也可以自定义拦截器，CXF中实现自定义拦截器需要继承AbstractPhaseInterceptor或者其子类如AbstractSoapInterceptor。</p>
+
+<pre><code>/**
+ * CXF 自定义拦截器
+ */
+public class MyInterceptor extends AbstractPhaseInterceptor&lt;Message&gt;{
+
+    //必需提供一个带参数的构造函数
+    public MyInterceptor(String phase){
+        super(phase);
+    }
+
+
+    //覆写拦截后的动作
+    @Override
+    public void handleMessage(Message message) throws Fault{
+        Q.p(&quot;~~~~~~~~~~~~~~~~~~&quot;);
+        if (message.getDestination() != null) {
+            Q.p(message.getDestination().getAddress());
+        }
+        if (message.getExchange() != null) {
+            Q.p(message.getExchange().getInMessage());
+            Q.p(message.getExchange().getOutMessage());
+        }
+        Q.p(message.getContent(String.class));
+        Q.p(&quot;~~~~~~~~~~~~~~~~~~~&quot;);
+    }
+}
+</code></pre>
+
+<p>添加到客户端拦截器链：</p>
+
+<pre><code>JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
+        factory.setServiceClass(RestService.class);
+        factory.setAddress(url);
+        factory.getInInterceptors().add(new MyInterceptor(Phase.RECEIVE));
+        factory.getOutInterceptors().add(new MyInterceptor(Phase.SEND));
+        ser = factory.create(RestService.class);
+        ser.get();
+</code></pre>
+
+<p>输出：</p>
+
+<pre><code>[DEBUG] 03-22 23:07:38 org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:304) Invoking handleMessage on interceptor cn.lg.ws.MyInterceptor@58cbafc2 
+~~~~~~~~~~~~~~~~~~
+null
+{org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.transport.Conduit=conduit: class org.apache.cxf.transport.http.URLConnectionHTTPConduit1715248762target: http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.request.uri=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.template.parameters=null, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.proxy=true, org.apache.cxf.request.method=GET, org.apache.cxf.transport.processOneWayResponse=true, http.connection=sun.net.www.protocol.http.HttpURLConnection:http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.message.Message.BASE_PATH=http://localhost:8080/webapp/ws/cxf/, org.apache.cxf.client=true, org.apache.cxf.invocation.context={ResponseContext={}, RequestContext={org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.request.uri=http://localhost:8080/webapp/ws/cxf/rest, BODY_INDEX=-1, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.proxy=true, org.apache.cxf.jaxrs.model.OperationResourceInfo=org.apache.cxf.jaxrs.model.OperationResourceInfo@117159c0}}, java.lang.annotation.Annotation=[Ljava.lang.annotation.Annotation;@19e4653c, org.apache.cxf.message.inbound=false, http.scheme=http, Content-Type=application/xml, org.apache.cxf.empty.request=true}
+null
+~~~~~~~~~~~~~~~~~~~
+</code></pre>
+
+<hr />
+
+<p>```
+[DEBUG] 03-22 23:07:38 org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:304) Invoking handleMessage on interceptor cn.lg.ws.MyInterceptor@795509d9
+~~~~~~~~~~~~~~~~~~
+{org.apache.cxf.message.Message.PROTOCOL_HEADERS={content-type=[text/plain], Date=[Wed, 22 Mar 2017 15:07:38 GMT], transfer-encoding=[chunked]}, org.apache.cxf.transport.Conduit=conduit: class org.apache.cxf.transport.http.URLConnectionHTTPConduit1715248762target: <a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, org.apache.cxf.client=true, org.apache.cxf.message.Message.ENCODING=ISO-8859-1, org.apache.cxf.message.inbound=true, org.apache.cxf.message.Message.RESPONSE_CODE=200, Content-Type=text/plain}
+{org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.transport.Conduit=conduit: class org.apache.cxf.transport.http.URLConnectionHTTPConduit1715248762target: <a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, org.apache.cxf.request.uri=<a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, jaxrs.template.parameters=null, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=<a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, jaxrs.proxy=true, org.apache.cxf.request.method=GET, org.apache.cxf.transport.processOneWayResponse=true, http.connection=sun.net.www.protocol.http.HttpURLConnection:<a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, org.apache.cxf.message.Message.BASE_PATH=<a href="http://localhost:8080/webapp/ws/cxf/">http://localhost:8080/webapp/ws/cxf/</a>, org.apache.cxf.client=true, org.apache.cxf.invocation.context={ResponseContext={}, RequestContext={org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.request.uri=<a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, BODY_INDEX=-1, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=<a href="http://localhost:8080/webapp/ws/cxf/rest">http://localhost:8080/webapp/ws/cxf/rest</a>, jaxrs.proxy=true, org.apache.cxf.jaxrs.model.OperationResourceInfo=org.apache.cxf.jaxrs.model.OperationResourceInfo@117159c0}}, java.lang.annotation.Annotation=[Ljava.lang.annotation.Annotation;@19e4653c, org.apache.cxf.message.inbound=false, http.scheme=http, Content-Type=application/xml, org.apache.cxf.empty.request=true}
+null
+~~~~~~~~~~~~~~~~~~~</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2017/demo/">https://www.code996.cn/post/2017/demo/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://www.code996.cn/post/2016/opencv1/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>OpenCV 绘制图像直方图</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://www.code996.cn/post/2017/markdown/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>markdown简明语法</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-03</span>
+                <a href="https://www.code996.cn/post/2017/markdown/" rel="bookmark" title="markdown简明语法">markdown简明语法</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-09-03</span>
+                <a href="https://www.code996.cn/post/2016/idea-key/" rel="bookmark" title="IntelliJ IDEA常用快捷键">IntelliJ IDEA常用快捷键</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-09-03</span>
+                <a href="https://www.code996.cn/post/2016/mysql/" rel="bookmark" title="ubuntu16.04 安装 mysql5.7">ubuntu16.04 安装 mysql5.7</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://www.code996.cn/post/2018/rabbitmq/" rel="bookmark" title="ubuntu16.04安装rabbitMQ">ubuntu16.04安装rabbitMQ</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2006-09-03</span>
+                <a href="https://www.code996.cn/post/demo/" rel="bookmark" title="demo">demo</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://www.code996.cn/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2017/demo/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://www.code996.cn/tags/auth' style="font-size:17px;margin:4px"><code>auth</code></a>
+            
+            <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
+            
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px"><code>opencv</code></a>
+            
+            <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
+            
+            <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:4px"><code>springboot</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:4px"><code>springcloud</code></a>
+            
+            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
+            
+            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:4px"><code>work</code></a>
+            
+            <a href='https://www.code996.cn/tags/zookeeper' style="font-size:17px;margin:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://www.code996.cn/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+            <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2017/demo/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+

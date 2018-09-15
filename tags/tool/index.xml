@@ -18,7 +18,16 @@
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2017/markdown/</guid>
-      <description>markdown语法 list list list list code code 多行代码 { main{} } 1111（引用） 222222 33333 44444 bold link 链接 图片</description>
+      <description># markdown语法 * list * list 0. list 0. list `code` code 多行代码 { main{} } &amp;gt;1111（引用） &amp;gt;&amp;gt;222222 &amp;gt;&amp;gt;&amp;gt;33333 &amp;gt;&amp;gt;&amp;gt;&amp;gt;44444 **bold** [link](https://cn.bing.com/w) 链接 ![pic](/img/loading.gif) 图片 markdown语法 list list list list code code 多行代码</description>
+    </item>
+    
+    <item>
+      <title>CXF拦截器介绍及自定义拦截器实现</title>
+      <link>https://www.code996.cn/post/2017/demo/</link>
+      <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/demo/</guid>
+      <description>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链（I</description>
     </item>
     
     <item>
@@ -40,21 +49,21 @@
     </item>
     
     <item>
-      <title>demo</title>
-      <link>https://www.code996.cn/post/demo/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/demo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ubuntu16.04安装rabbitMQ</title>
       <link>https://www.code996.cn/post/2018/rabbitmq/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2018/rabbitmq/</guid>
       <description>本文详细说明如何在ubuntu16.04下安装rabbitMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
+    </item>
+    
+    <item>
+      <title>demo</title>
+      <link>https://www.code996.cn/post/demo/</link>
+      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/demo/</guid>
+      <description></description>
     </item>
     
   </channel>

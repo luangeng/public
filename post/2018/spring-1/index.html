@@ -76,13 +76,13 @@
           <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://www.code996.cn/categories/Netty/">Netty</a>
-        </li>
-        
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -91,10 +91,6 @@
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
-        </li>
-        
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
         </li>
         
         
@@ -168,7 +164,7 @@
                                     <h1 class="post-title">一文看懂@RequestBody,@RequestParam和@PathVariable</h1>
 
                                     <p class="post-byline">
-                                        2018-09-03 · 1235 Words
+                                        Post 2018-09-03 · 1235 Words
                                         
                                         · Tags: spring
                                         
@@ -190,17 +186,17 @@
                                             
                                             
 
-<p><img src="images/2018-8/ding.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding.jpg" alt="java" /></p>
 
 <p>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spring的各种注解，@RequestBody，@RequestParam，@ResponseBody，@PathVariable等，本文通过Postman示例，并结合Http协议演示下几种注解的用法用途。</p>
 
 <p>定义一个简单的User对象：</p>
 
-<p><img src="images/2018-8/ding-1.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-1.jpg" alt="java" /></p>
 
 <p>UserController：</p>
 
-<p><img src="images/2018-8/ding-2.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-2.jpg" alt="java" /></p>
 
 <hr />
 
@@ -208,15 +204,15 @@
 
 <p>表单可以以GET请求提交，但是GET请求只能在url中携带参数，所以在Postman中无法编辑body，参数是通过在url中拼接传递的：</p>
 
-<p><img src="images/2018-8/ding-3.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-3.jpg" alt="java" /></p>
 
 <p>此时Controller中可以直接使用User对象接收参数，不用加任何注解：(springMvc自动构造User对象)</p>
 
-<p><img src="images/2018-8/ding-4.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-4.jpg" alt="java" /></p>
 
 <p>也可以通过@RequestParam单独获取其中一个参数：</p>
 
-<p><img src="images/2018-8/ding-5.jpg" alt="从url中获取参数" /></p>
+<p><img src="pic/2018-8/ding-5.jpg" alt="从url中获取参数" /></p>
 
 <hr />
 
@@ -226,51 +222,51 @@
 
 <p>所以在Postman中如图设置：</p>
 
-<p><img src="images/2018-8/ding-6.jpg" alt="勾选x-www-form-urlencoded" /></p>
+<p><img src="pic/2018-8/ding-6.jpg" alt="勾选x-www-form-urlencoded" /></p>
 
 <p>Controller中应该这样接收参数，不用加任何注解：(spring自动构造User对象)</p>
 
-<p><img src="images/2018-8/ding-7.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-7.jpg" alt="java" /></p>
 
 <p>此时@RequestParam也可以使用：</p>
 
-<p><img src="images/2018-8/ding-8.jpg" alt="从请求体中获取参数" /></p>
+<p><img src="pic/2018-8/ding-8.jpg" alt="从请求体中获取参数" /></p>
 
 <p>Http请求也可以不用表单形式提交，比如传递一个纯字符串或json字符串到后台，此时就需要使用@RequestBody了。</p>
 
 <p>传递纯字符串，在Body中选择raw类型，下拉框选择Text或test/plain,然后输入参数：</p>
 
-<p><img src="images/2018-8/ding-9.jpg" alt="text/plain" /></p>
+<p><img src="pic/2018-8/ding-9.jpg" alt="text/plain" /></p>
 
 <p>Controller中参数前加@RequestBody，就可以接收到参数了：</p>
 
-<p><img src="images/2018-8/ding-10.jpg" alt="加@RequestBody" /></p>
+<p><img src="pic/2018-8/ding-10.jpg" alt="加@RequestBody" /></p>
 
 <p>同理通过json或xml传参：</p>
 
-<p><img src="images/2018-8/ding-11.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-11.jpg" alt="java" /></p>
 
 <p>加@RequestBody:</p>
 
-<p><img src="images/2018-8/ding-12.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-12.jpg" alt="java" /></p>
 
 <p>也可以混合传参：</p>
 
-<p><img src="images/2018-8/ding-13.jpg" alt="url中增加一个参数" /></p>
+<p><img src="pic/2018-8/ding-13.jpg" alt="url中增加一个参数" /></p>
 
 <p>使用@RequestParam接收:</p>
 
-<p><img src="images/2018-8/ding-14.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-14.jpg" alt="java" /></p>
 
 <hr />
 
 <h2 id="再看一下-pathvariable注解的使用方法">再看一下@PathVariable注解的使用方法：</h2>
 
-<p><img src="images/2018-8/ding-15.jpg" alt="在{}中映射参数" /></p>
+<p><img src="pic/2018-8/ding-15.jpg" alt="在{}中映射参数" /></p>
 
 <p>直接拼参数:</p>
 
-<p><img src="images/2018-8/ding-16.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-16.jpg" alt="java" /></p>
 
 <hr />
 
@@ -280,7 +276,7 @@
 
 <p>SpringMVC中的MessageConverter有下列几种：</p>
 
-<p><img src="images/2018-8/ding-17.jpg" alt="java" /></p>
+<p><img src="pic/2018-8/ding-17.jpg" alt="java" /></p>
 
 <p>若请求以表单形式提交，Context-Type是application/x-www-form-urlencoded，参数即为Key/Value形式，则不需转换器，SpringMvc自动根据Controller的参数构造对象。</p>
 
@@ -384,6 +380,91 @@
 
     
     
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
@@ -392,6 +473,50 @@
             </div>
         </article>
     </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-08-23</span>
+                <a href="https://www.code996.cn/post/2016/struts/" rel="bookmark" title="struts2 &#43; spring &#43; mybatis 框架整合">struts2 &#43; spring &#43; mybatis 框架整合</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
     
     
     
@@ -689,9 +814,17 @@
             
             <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
             
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px"><code>opencv</code></a>
+            
             <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
             
             <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:4px"><code>springboot</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:4px"><code>springcloud</code></a>
             
             <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
             
@@ -713,10 +846,6 @@
                     <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
                 </li>
                 
-                <li class="cat-item cat-item-1">
-                    <a rel="nofollow" href="https://www.code996.cn/categories/Netty/">Netty</a>
-                </li>
-                
             </ul>
         </div>
 
@@ -735,6 +864,10 @@
         
             
             
+                
+                
+                
+                
                 
                 
                 

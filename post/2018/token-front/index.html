@@ -76,13 +76,13 @@
           <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://www.code996.cn/categories/Netty/">Netty</a>
-        </li>
-        
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -91,10 +91,6 @@
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
-        </li>
-        
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
         </li>
         
         
@@ -168,7 +164,7 @@
                                     <h1 class="post-title">Oauth2协议 通过js和ajax获取token及刷新token</h1>
 
                                     <p class="post-byline">
-                                        2018-09-03 · 1295 Words
+                                        Post 2018-09-03 · 1295 Words
                                         
                                         · Tags: auth
                                         
@@ -382,30 +378,30 @@ $(function() {
 
 <p>界面如下，点击GET Data按钮将发送/msg请求到授权服务器去获取一段文本：</p>
 
-<p><img src="images/2018-7/auth1.png" alt="" /></p>
+<p><img src="pic/2018-7/auth1.png" alt="" /></p>
 
 <p>文本获取成功后浏览器所有请求如下：</p>
 
-<p><img src="images/2018-7/auth2.png" alt="" /></p>
+<p><img src="pic/2018-7/auth2.png" alt="" /></p>
 
 <p>首先访问/msg，返回401无权限，然后浏览器转到/oauth/authorize去获取code，然后授权服务器返回302重定向到授权登录页，用户填写用户名密码后post到/login，
 然后授权服务器重定向到rediret_url，末尾拼接了code，取出code，post发送/oauth/token请求，授权服务器返回token信息如下，并保存在LocalStorage中,如图所示：</p>
 
-<p><img src="images/2018-7/auth3.png" alt="" /></p>
+<p><img src="pic/2018-7/auth3.png" alt="" /></p>
 
 <p>获取token后/msg请求中携带了token信息，bearer为token类型：</p>
 
-<p><img src="images/2018-7/auth4.png" alt="" /></p>
+<p><img src="pic/2018-7/auth4.png" alt="" /></p>
 
 <p>由于是跨域请求数据，所以先发送的是OPTIONS请求，需要服务器支持跨域：</p>
 
-<p><img src="images/2018-7/auth5.png" alt="" /></p>
+<p><img src="pic/2018-7/auth5.png" alt="" /></p>
 
 <p>刷新token：</p>
 
 <p>当服务器返回401，并且responseMsg为invalid_token时表示token已失效，post以下信息到/oauth/token，刷新token的失效时间</p>
 
-<p><img src="images/2018-7/auth6.png" alt="" /></p>
+<p><img src="pic/2018-7/auth6.png" alt="" /></p>
 
 <p>checktoken：需要服务器permitAll()该请求</p>
 
@@ -414,7 +410,7 @@ $(function() {
 <p>略</p>
 
 <p>在授权服务器中可查看所有生成的token：
-<img src="images/2018-7/auth7.png" alt="" /></p>
+<img src="pic/2018-7/auth7.png" alt="" /></p>
 
                                             
                                         </div>
@@ -509,6 +505,126 @@ $(function() {
             </div>
         </article>
     </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
     
     
     
@@ -811,9 +927,17 @@ $(function() {
             
             <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
             
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px"><code>opencv</code></a>
+            
             <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
             
             <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:4px"><code>springboot</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:4px"><code>springcloud</code></a>
             
             <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
             
@@ -835,10 +959,6 @@ $(function() {
                     <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
                 </li>
                 
-                <li class="cat-item cat-item-1">
-                    <a rel="nofollow" href="https://www.code996.cn/categories/Netty/">Netty</a>
-                </li>
-                
             </ul>
         </div>
 
@@ -857,6 +977,10 @@ $(function() {
         
             
             
+                
+                
+                
+                
                 
                 
                 

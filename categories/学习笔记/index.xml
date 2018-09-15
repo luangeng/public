@@ -40,6 +40,159 @@
     </item>
     
     <item>
+      <title>Netty--简单实现一个Servlet容器</title>
+      <link>https://www.code996.cn/post/netty/netty-8/</link>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-8/</guid>
+      <description>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的S</description>
+    </item>
+    
+    <item>
+      <title>Netty--使用TCP协议传输文件</title>
+      <link>https://www.code996.cn/post/netty/netty-7/</link>
+      <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-7/</guid>
+      <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
+    </item>
+    
+    <item>
+      <title>Netty--RPC的原理和实现</title>
+      <link>https://www.code996.cn/post/netty/netty-6/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-6/</guid>
+      <description>RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调</description>
+    </item>
+    
+    <item>
+      <title>Netty--Google Protobuf编解码</title>
+      <link>https://www.code996.cn/post/netty/netty-5/</link>
+      <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-5/</guid>
+      <description>Google Protobuf是一种轻便高效的结构化数据存储格式，可以用于结构化数据序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储</description>
+    </item>
+    
+    <item>
+      <title>Netty--JDK序列化编解码传输对象</title>
+      <link>https://www.code996.cn/post/netty/netty-4/</link>
+      <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-4/</guid>
+      <description>使用JDK序列化不需要额外的类库，只需要实现Serializable即可，但是序列化之后的码流只有Java才能反序列化，所以它不是跨语言的，</description>
+    </item>
+    
+    <item>
+      <title>Netty--HTTP服务器原理和实现</title>
+      <link>https://www.code996.cn/post/netty/netty-3/</link>
+      <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-3/</guid>
+      <description>基于Netty的HTTP协议栈可以方便的进行异步非阻塞的HTTP服务器的开发。 当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个</description>
+    </item>
+    
+    <item>
+      <title>Netty--TCP粘包和拆包</title>
+      <link>https://www.code996.cn/post/netty/netty-2/</link>
+      <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-2/</guid>
+      <description>TCP协议以流的方式进行数据传输，它无法理解其上层协议的数据意义，而是根据TCP缓冲区的大小对数据进行拆分或组装，即上层一个完整的包可能被拆</description>
+    </item>
+    
+    <item>
+      <title>Netty--TCP协议发送和接收数据</title>
+      <link>https://www.code996.cn/post/netty/netty-1/</link>
+      <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-1/</guid>
+      <description>Netty是业界最流行的NIO开发框架，使用Netty可以构建高性能异步通信能力，经常用于RPC底层通信框架。Netty的API使用简单，功</description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud Eureka 注册，发布，调用服务</title>
+      <link>https://www.code996.cn/post/spring/spring-cloud-rabbitmq/</link>
+      <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-cloud-rabbitmq/</guid>
+      <description>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co</description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud Bus 消息总线 RabbitMQ</title>
+      <link>https://www.code996.cn/post/spring/spring-cloud-zuul/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-cloud-zuul/</guid>
+      <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud 断路器 Hystrix</title>
+      <link>https://www.code996.cn/post/spring/spring-cloud-hystrix/</link>
+      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-cloud-hystrix/</guid>
+      <description>断路器 断路器就像电路中的断路器一样，当短路发生时，它第一时刻熔断，切断了故障电路，保护其他用电单元。 在分布式架构中，断路器的作用类似，当某个</description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud Config 配置服务</title>
+      <link>https://www.code996.cn/post/spring/spring-cloud-eureka/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-cloud-eureka/</guid>
+      <description>spring cloud 配置服务提供了一种非常方便的应用配置管理功能，用来解决分布式系统中配置文件太多导致的各种问题，而它自身的配置也非常简单。 服务端用来从gi</description>
+    </item>
+    
+    <item>
+      <title>Spring Cloud Eureka 注册，发布，调用服务</title>
+      <link>https://www.code996.cn/post/spring/spring-cloud-config/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-cloud-config/</guid>
+      <description>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot发布和调用RESTful web service</title>
+      <link>https://www.code996.cn/post/spring/spring-config/</link>
+      <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-config/</guid>
+      <description>Spring Boot可以非常简单的发布和调用RESTful web service，下面参考官方指导体验一下 1.首先访问 http://start.spring.io/ 生成Spring Boot基础项目 或者</description>
+    </item>
+    
+    <item>
+      <title>使用Spring Boot 和Spring Data JPA访问mysql数据库</title>
+      <link>https://www.code996.cn/post/spring/spring-jpa/</link>
+      <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-jpa/</guid>
+      <description>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot 集成Swagger2生成RESTful API文档</title>
+      <link>https://www.code996.cn/post/spring/spring-swagger/</link>
+      <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-swagger/</guid>
+      <description>Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试</description>
+    </item>
+    
+    <item>
+      <title>Spring Boot自定义配置与加载</title>
+      <link>https://www.code996.cn/post/spring/spring-rest/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/spring/spring-rest/</guid>
+      <description>Spring Boot自定义配置与加载 application.properties主要用来配置数据库连接、日志相关配置等。除了这些配置内容之外，还可以自</description>
+    </item>
+    
+    <item>
       <title>Spring MVC中Action使用总结</title>
       <link>https://www.code996.cn/post/2017/springmvc/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
@@ -54,7 +207,25 @@
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2017/markdown/</guid>
-      <description>markdown语法 list list list list code code 多行代码 { main{} } 1111（引用） 222222 33333 44444 bold link 链接 图片</description>
+      <description># markdown语法 * list * list 0. list 0. list `code` code 多行代码 { main{} } &amp;gt;1111（引用） &amp;gt;&amp;gt;222222 &amp;gt;&amp;gt;&amp;gt;33333 &amp;gt;&amp;gt;&amp;gt;&amp;gt;44444 **bold** [link](https://cn.bing.com/w) 链接 ![pic](/img/loading.gif) 图片 markdown语法 list list list list code code 多行代码</description>
+    </item>
+    
+    <item>
+      <title>CXF拦截器介绍及自定义拦截器实现</title>
+      <link>https://www.code996.cn/post/2017/demo/</link>
+      <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/demo/</guid>
+      <description>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链（I</description>
+    </item>
+    
+    <item>
+      <title>OpenCV 绘制图像直方图</title>
+      <link>https://www.code996.cn/post/2016/opencv1/</link>
+      <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/opencv1/</guid>
+      <description>OpenCV绘制图像直方图，版本2.4.11 直方图可展示图像中的像素分布,是用以表示数字图像中亮度分布的直方图，标绘了图像中每个亮度值的像素</description>
     </item>
     
     <item>
@@ -76,6 +247,15 @@
     </item>
     
     <item>
+      <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
+      <link>https://www.code996.cn/post/2016/struts/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/struts/</guid>
+      <description>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。 新建Maven project，type选择webap</description>
+    </item>
+    
+    <item>
       <title>git基础命令</title>
       <link>https://www.code996.cn/post/2016/git-base/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
@@ -91,15 +271,6 @@
       
       <guid>https://www.code996.cn/post/2016/git-undo/</guid>
       <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误（提交说明或者文件），该操作会撤回并删</description>
-    </item>
-    
-    <item>
-      <title>demo</title>
-      <link>https://www.code996.cn/post/demo/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/demo/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -140,19 +311,19 @@
     
     <item>
       <title>zookeeper-基本概念</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper1/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-base/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper1/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
       <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
     </item>
     
     <item>
       <title>zookeeper-安装及命令</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper2/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper2/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
       <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
     </item>
     
@@ -172,6 +343,15 @@
       
       <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
       <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
+    </item>
+    
+    <item>
+      <title>demo</title>
+      <link>https://www.code996.cn/post/demo/</link>
+      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/demo/</guid>
+      <description></description>
     </item>
     
   </channel>

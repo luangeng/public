@@ -30,5 +30,14 @@
       <description>Spring MVC中每个控制器中可以定义多个请求处理方法即Action，Action可以有多个不同的参数，有多种类型的返回结果。 可以作为Action的</description>
     </item>
     
+    <item>
+      <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
+      <link>https://www.code996.cn/post/2016/struts/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/struts/</guid>
+      <description>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。 新建Maven project，type选择webap</description>
+    </item>
+    
   </channel>
 </rss>

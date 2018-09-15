@@ -41,19 +41,19 @@
     
     <item>
       <title>zookeeper-基本概念</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper1/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-base/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper1/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
       <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
     </item>
     
     <item>
       <title>zookeeper-安装及命令</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper2/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper2/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
       <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
     </item>
     
