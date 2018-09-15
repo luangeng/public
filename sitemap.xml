@@ -303,6 +303,20 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/post/2016/java-blockingqueue/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-proxy/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/post/2016/java-countdownlatch/</loc>
         <lastmod>2016-05-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -416,20 +430,6 @@
     
     <url>
         <loc>https://www.code996.cn/post/2016/java-locks/</loc>
-        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/2016/java-blockingqueue/</loc>
-        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/2016/java-proxy/</loc>
         <lastmod>2016-05-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -639,15 +639,15 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/redis/</loc>
-        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <loc>https://www.code996.cn/categories/redis/</loc>
+        <lastmod>2011-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/redis/</loc>
-        <lastmod>2011-09-03T00:00:00+00:00</lastmod>
+        <loc>https://www.code996.cn/tags/redis/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

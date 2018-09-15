@@ -22,6 +22,24 @@
     </item>
     
     <item>
+      <title>Java-压缩解压gz</title>
+      <link>https://www.code996.cn/post/2016/java-blockingqueue/</link>
+      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-blockingqueue/</guid>
+      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
+    </item>
+    
+    <item>
+      <title>Java动态代理</title>
+      <link>https://www.code996.cn/post/2016/java-proxy/</link>
+      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-proxy/</guid>
+      <description>代理模式：为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
+    </item>
+    
+    <item>
       <title>Java基础--CountDownLatch</title>
       <link>https://www.code996.cn/post/2016/java-countdownlatch/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
@@ -172,24 +190,6 @@
       
       <guid>https://www.code996.cn/post/2016/java-locks/</guid>
       <description>CountDownLatch CountDownLatch是一个同步工具类，它允许一个或多个线程一直等待，直到其他线程的操作执行完后再执行。CountDownLatch</description>
-    </item>
-    
-    <item>
-      <title>java-gz.md</title>
-      <link>https://www.code996.cn/post/2016/java-blockingqueue/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-blockingqueue/</guid>
-      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
-    </item>
-    
-    <item>
-      <title>java动态代理</title>
-      <link>https://www.code996.cn/post/2016/java-proxy/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-proxy/</guid>
-      <description>代理模式：为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
     </item>
     
   </channel>
