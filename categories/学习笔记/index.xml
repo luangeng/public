@@ -2,175 +2,175 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>学习笔记 on 新起点</title>
-    <link>https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <link>https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
     <description>Recent content in 学习笔记 on 新起点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://luangeng.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Oauth2协议 通过js和ajax获取token及刷新token</title>
-      <link>https://luangeng.gitee.io/post/2018/token-front/</link>
+      <link>https://www.code996.cn/post/2018/token-front/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2018/token-front/</guid>
+      <guid>https://www.code996.cn/post/2018/token-front/</guid>
       <description>基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth</description>
     </item>
     
     <item>
       <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
-      <link>https://luangeng.gitee.io/post/2018/spring-1/</link>
+      <link>https://www.code996.cn/post/2018/spring-1/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2018/spring-1/</guid>
+      <guid>https://www.code996.cn/post/2018/spring-1/</guid>
       <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
     </item>
     
     <item>
       <title>spring-security-oauth2 授权服务集成钉钉扫码登录</title>
-      <link>https://luangeng.gitee.io/post/2018/dingding/</link>
+      <link>https://www.code996.cn/post/2018/dingding/</link>
       <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2018/dingding/</guid>
+      <guid>https://www.code996.cn/post/2018/dingding/</guid>
       <description>spring boot版本 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; spring-security-oauth2版本 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security.oauth&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-oauth2&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 实现原理： 参照spring-security</description>
     </item>
     
     <item>
       <title>Spring MVC中Action使用总结</title>
-      <link>https://luangeng.gitee.io/post/2017/springmvc/</link>
+      <link>https://www.code996.cn/post/2017/springmvc/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2017/springmvc/</guid>
+      <guid>https://www.code996.cn/post/2017/springmvc/</guid>
       <description>Spring MVC中每个控制器中可以定义多个请求处理方法即Action，Action可以有多个不同的参数，有多种类型的返回结果。 可以作为Action的</description>
     </item>
     
     <item>
       <title>markdown简明语法</title>
-      <link>https://luangeng.gitee.io/post/2017/markdown/</link>
+      <link>https://www.code996.cn/post/2017/markdown/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2017/markdown/</guid>
+      <guid>https://www.code996.cn/post/2017/markdown/</guid>
       <description>markdown语法 list list list list code code 多行代码 { main{} } 1111（引用） 222222 33333 44444 bold link 链接 图片</description>
     </item>
     
     <item>
       <title>IntelliJ IDEA常用快捷键</title>
-      <link>https://luangeng.gitee.io/post/2016/idea-key/</link>
+      <link>https://www.code996.cn/post/2016/idea-key/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2016/idea-key/</guid>
+      <guid>https://www.code996.cn/post/2016/idea-key/</guid>
       <description>Mac: 符号说明 ⌃ Control键 ⌥ Option键 ⌘ Command键 ⇧ 大写锁定键 ↩ 回车键 ⌫ BackSpace键 ⎋ Escape (Esc) ⌦ 向前删除键（Fn+Delet</description>
     </item>
     
     <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
-      <link>https://luangeng.gitee.io/post/2016/mysql/</link>
+      <link>https://www.code996.cn/post/2016/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2016/mysql/</guid>
+      <guid>https://www.code996.cn/post/2016/mysql/</guid>
       <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
     </item>
     
     <item>
       <title>git基础命令</title>
-      <link>https://luangeng.gitee.io/post/2016/git-base/</link>
+      <link>https://www.code996.cn/post/2016/git-base/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2016/git-base/</guid>
+      <guid>https://www.code996.cn/post/2016/git-base/</guid>
       <description>初始设置： git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
       <title>git撤销</title>
-      <link>https://luangeng.gitee.io/post/2016/git-undo/</link>
+      <link>https://www.code996.cn/post/2016/git-undo/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2016/git-undo/</guid>
+      <guid>https://www.code996.cn/post/2016/git-undo/</guid>
       <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误（提交说明或者文件），该操作会撤回并删</description>
     </item>
     
     <item>
       <title>demo</title>
-      <link>https://luangeng.gitee.io/post/demo/</link>
+      <link>https://www.code996.cn/post/demo/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/demo/</guid>
+      <guid>https://www.code996.cn/post/demo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ubuntu16.04安装rabbitMQ</title>
-      <link>https://luangeng.gitee.io/post/2018/rabbitmq/</link>
+      <link>https://www.code996.cn/post/2018/rabbitmq/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/2018/rabbitmq/</guid>
+      <guid>https://www.code996.cn/post/2018/rabbitmq/</guid>
       <description>本文详细说明如何在ubuntu16.04下安装rabbitMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
     </item>
     
     <item>
       <title>zookeeper-Java API</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper-java/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-java/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper-java/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
       <description>Zookeeper&amp;ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该</description>
     </item>
     
     <item>
       <title>zookeeper-Watcher</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper-watch/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper-watch/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
       <description>Zookeeper&amp;ndash;Watcher 和 ACL Watcher (观察) Zookeeper中的znode可以被监控，这是zk的核心特性。 通过exists，getChildren和getData这些</description>
     </item>
     
     <item>
       <title>zookeeper-分布式锁和消息队列</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper-lock/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
       <description>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个</description>
     </item>
     
     <item>
       <title>zookeeper-基本概念</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper1/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper1/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper1/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper1/</guid>
       <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
     </item>
     
     <item>
       <title>zookeeper-安装及命令</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper2/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper2/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper2/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper2/</guid>
       <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
     </item>
     
     <item>
       <title>zookeeper-配置服务</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper-config/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-config/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper-config/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
       <description>Zookeeper&amp;ndash;配置服务 配置服务是分布式应用中重要的服务，作用是使集群中的机器可以共享配置信息中公共的部分。ZooKeepe</description>
     </item>
     
     <item>
       <title>zookeeper-集群管理</title>
-      <link>https://luangeng.gitee.io/post/zookeeper/zookeeper-cluster/</link>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.gitee.io/post/zookeeper/zookeeper-cluster/</guid>
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
       <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
     </item>
     
