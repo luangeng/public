@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://www.code996.cn/">
+  <title>Java基础--注解Annotation - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="java,">
+  
+
+  <meta name="description" content="Annotation是给类，方法或域上加的一种特殊的标记，可以通过反射取到注解的类型和值，从而完成某种特定的操作。 定义注解需要使用元注解，元">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="Java基础--注解Annotation - 新起点">
+  <meta itemprop="description" content="Annotation是给类，方法或域上加的一种特殊的标记，可以通过反射取到注解的类型和值，从而完成某种特定的操作。 定义注解需要使用元注解，元">
+  <meta itemprop="image" content="https://www.code996.cn//img/me.jpg">
+
+  <meta property="og:title" content="Java基础--注解Annotation - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.code996.cn/post/2016/java-annotation/" />
+  <meta property="og:image" content="https://www.code996.cn//img/me.jpg" />
+  <meta property="og:description" content="Annotation是给类，方法或域上加的一种特殊的标记，可以通过反射取到注解的类型和值，从而完成某种特定的操作。 定义注解需要使用元注解，元">
+
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="https://www.code996.cn/post/2016/java-annotation/">
+  <link rel='shortlink' href="https://www.code996.cn/post/2016/java-annotation/"/>
+  <link rel="shortcut icon" href="https://www.code996.cn//img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://www.code996.cn/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://www.code996.cn/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://www.code996.cn/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://www.code996.cn//" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Java基础--注解Annotation</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2016-05-03 · 706 Words
+                                        
+                                        · Tags: java
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://www.code996.cn/post/2016/java-annotation/" class="leancloud_visitors"
+                                              data-flag-title="Java基础--注解Annotation">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            
+
+<p>Annotation是给类，方法或域上加的一种特殊的标记，可以通过反射取到注解的类型和值，从而完成某种特定的操作。</p>
+
+<p>定义注解需要使用元注解，元注解有@Retention和@Target</p>
+
+<p>@Retention用来定义该注解在哪一个级别可用，在源代码中（SOURCE），类文件中（CLASS），或者运行时（RUNTIME）</p>
+
+<p>@Target用来定义注解将用在什么地方   类,方法,域&hellip;</p>
+
+<p>比如：</p>
+
+<p><code>@Retention(RetentionPolicy.RUNTIME)</code>  表明在运行时保留该注解</p>
+
+<p><code>@Target(ElementType.METHOD)</code>    表明为方法注解，只能在方法声明中使用</p>
+
+<p>注解不支持继承，注解元素的类型可以是基本类型，String，Class， enum， 和另一个注解。</p>
+
+<p>没有元素的注解称为标记注解。</p>
+
+<p>例子：</p>
+
+<h2 id="根据java-bean建立数据库表">根据Java Bean建立数据库表</h2>
+
+<pre><code>//数据库字段属性枚举
+public enum EOption {
+    //可空
+    NONE,
+
+    //非空
+    NOT_NULL,
+
+    PRIMARY,
+
+    UNIQUE;
+
+    public boolean withIn(EOption[] options){
+        for(EOption o : options){
+            if(o==this){
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
+</code></pre>
+
+<pre><code>//数据库字段类型枚举
+public enum EType {
+
+    //自动判断
+    AUTO,
+
+    CHAR,
+
+    VARCHAR,
+
+    SMALLINT,
+
+    INT,
+
+    BIGINT,
+
+    TEXT,
+
+    BLOB,
+
+    DATE;
+}
+</code></pre>
+
+<h2 id="数据表注解">数据表注解</h2>
+
+<pre><code>@Retention(RUNTIME)
+@Target(TYPE)
+public @interface DTable {
+    //表名
+    public String name() default &quot;&quot;;
+
+}
+</code></pre>
+
+<h2 id="表字段注解">表字段注解</h2>
+
+<pre><code>@Retention(RUNTIME)
+@Target(FIELD)
+public @interface DColumn {
+
+    //字段类型
+    EType type() default EType.VARCHAR;
+
+    //类型相关值
+    int value() default 10;
+
+    //字段名称
+    String name() default &quot;&quot;;
+
+    //字段属性
+    EOption[] option() default EOption.NOT_NULL;
+
+}
+</code></pre>
+
+<h2 id="测试bean">测试Bean</h2>
+
+<pre><code>@DTable(name=&quot;user_t&quot;)
+public class UserBean {
+
+    @DColumn(type=EType.INT, option={EOption.NOT_NULL, EOption.PRIMARY})
+    private int id;
+
+    @DColumn(30)
+    private String name;
+
+    @DColumn(type=EType.INT)
+    private Integer age;
+
+    @DColumn(30)
+    private String email;
+
+    @DColumn(type=EType.DATE)
+    private String create_date;
+
+}
+</code></pre>
+
+<h2 id="执行建表">执行建表</h2>
+
+<pre><code>public class TableCreator {
+
+    private static String getCon(EOption[] options) {
+        String ret = &quot;&quot;;
+        if (EOption.NOT_NULL.withIn(options)) {
+            ret += &quot; NOT NULL &quot;;
+        }
+        if (EOption.PRIMARY.withIn(options)) {
+            ret += &quot; PRIMARY KEY &quot;;
+        }
+        if (EOption.UNIQUE.withIn(options)) {
+            ret += &quot; UNIQUE &quot;;
+        }
+        return ret;
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException {
+
+        String classname = &quot;dbAnnotation.UserBean&quot;;
+
+        Class&lt;?&gt; c = Class.forName(classname);
+        DTable table = (DTable) c.getAnnotation(DTable.class);
+        if (table == null) {
+            System.out.println(c.getName() + &quot; no DTable Annotation&quot;);
+            return;
+        }
+        String tableName = table.name();
+        if (tableName.length() &lt; 1) {
+            tableName = c.getName().toLowerCase();
+        }
+
+        List&lt;String&gt; columnNames = new ArrayList&lt;&gt;();
+        for (Field f : c.getDeclaredFields()) {
+
+            Annotation[] a = f.getDeclaredAnnotations();
+            if (a.length &lt; 1) {
+                continue;
+            }
+            DColumn dcol = (DColumn) a[0];
+            String cName = dcol.name().length() &lt; 1 ? f.getName().toLowerCase() : dcol.name();
+
+            if (dcol.type() == EType.INT)
+            {
+                columnNames.add(cName + &quot; INT&quot; + getCon(dcol.option()));
+            }
+            else if (dcol.type() == EType.VARCHAR)
+            {
+                columnNames.add(cName + &quot; VARCHAR(&quot; + dcol.value() + &quot;)&quot; + getCon(dcol.option()));
+            }
+
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(&quot;create table &quot;);
+        sb.append(tableName);
+        sb.append(&quot; (\n&quot;);
+        for (String s : columnNames) {
+            sb.append(s);
+            sb.append(&quot;,\n&quot;);
+        }
+        sb.append(&quot;)&quot;);
+
+        System.out.println(sb.toString());
+    }
+
+}
+</code></pre>
+
+<h2 id="输出">输出</h2>
+
+<pre><code>create table user_t (
+id INT NOT NULL  PRIMARY KEY ,
+name VARCHAR(30) NOT NULL ,
+age INT NOT NULL ,
+email VARCHAR(30) NOT NULL ,
+)
+</code></pre>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2016/java-annotation/">https://www.code996.cn/post/2016/java-annotation/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://www.code996.cn/post/2016/java-jvm/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Java基础--虚拟机JVM</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://www.code996.cn/post/2016/java-comparator/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Java基础--比较器Comparator</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-oddeven/" rel="bookmark" title="Java--两个线程交替执行和死锁">Java--两个线程交替执行和死锁</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-countdownlatch/" rel="bookmark" title="Java基础--CountDownLatch">Java基础--CountDownLatch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-hashcode/" rel="bookmark" title="Java基础--HashCode">Java基础--HashCode</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-jdbc/" rel="bookmark" title="Java基础--JDBC">Java基础--JDBC</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-nio/" rel="bookmark" title="Java基础--NIO">Java基础--NIO</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-threadlocal/" rel="bookmark" title="Java基础--ThreadLocal">Java基础--ThreadLocal</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-innerclass/" rel="bookmark" title="Java基础--内部类">Java基础--内部类</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-singleton/" rel="bookmark" title="Java基础--单例类">Java基础--单例类</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-io/" rel="bookmark" title="Java基础--压缩和解压缩gz包">Java基础--压缩和解压缩gz包</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-reflection/" rel="bookmark" title="Java基础--反射Reflection">Java基础--反射Reflection</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-serializable/" rel="bookmark" title="Java基础--序列化Serializable">Java基础--序列化Serializable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-enum/" rel="bookmark" title="Java基础--枚举Enum">Java基础--枚举Enum</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-comparator/" rel="bookmark" title="Java基础--比较器Comparator">Java基础--比较器Comparator</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-jvm/" rel="bookmark" title="Java基础--虚拟机JVM">Java基础--虚拟机JVM</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-clone/" rel="bookmark" title="Java基础--读写文件">Java基础--读写文件</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-gz/" rel="bookmark" title="Java基础--读写文件">Java基础--读写文件</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-locks/" rel="bookmark" title="Java并发--CountDownLatch CyclicBarrier ReentrantLock">Java并发--CountDownLatch CyclicBarrier ReentrantLock</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-blockingqueue/" rel="bookmark" title="java-gz.md">java-gz.md</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2016-05-03</span>
+                <a href="https://www.code996.cn/post/2016/java-proxy/" rel="bookmark" title="java动态代理">java动态代理</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://www.code996.cn/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2016/java-annotation/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:4px"><code>ajax</code></a>
+            
+            <a href='https://www.code996.cn/tags/auth' style="font-size:17px;margin:4px"><code>auth</code></a>
+            
+            <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
+            
+            <a href='https://www.code996.cn/tags/html' style="font-size:17px;margin:4px"><code>html</code></a>
+            
+            <a href='https://www.code996.cn/tags/java' style="font-size:17px;margin:4px"><code>java</code></a>
+            
+            <a href='https://www.code996.cn/tags/jquery' style="font-size:17px;margin:4px"><code>jquery</code></a>
+            
+            <a href='https://www.code996.cn/tags/linux' style="font-size:17px;margin:4px"><code>linux</code></a>
+            
+            <a href='https://www.code996.cn/tags/maven' style="font-size:17px;margin:4px"><code>maven</code></a>
+            
+            <a href='https://www.code996.cn/tags/mysql' style="font-size:17px;margin:4px"><code>mysql</code></a>
+            
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px"><code>opencv</code></a>
+            
+            <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
+            
+            <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:4px"><code>springboot</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:4px"><code>springcloud</code></a>
+            
+            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
+            
+            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:4px"><code>work</code></a>
+            
+            <a href='https://www.code996.cn/tags/zookeeper' style="font-size:17px;margin:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://www.code996.cn/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="back-to-top" href="#"><i class="fa fa-angle-up"></i></div>
+<footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2016/java-annotation/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+

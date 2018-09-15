@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.code996.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ajax</title>
+      <link>https://www.code996.cn/tags/ajax/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/ajax/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Auth</title>
@@ -27,6 +36,60 @@
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Html</title>
+      <link>https://www.code996.cn/tags/html/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://www.code996.cn/tags/java/</link>
+      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jquery</title>
+      <link>https://www.code996.cn/tags/jquery/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/jquery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://www.code996.cn/tags/linux/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Maven</title>
+      <link>https://www.code996.cn/tags/maven/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/maven/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>https://www.code996.cn/tags/mysql/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/mysql/</guid>
       <description></description>
     </item>
     
@@ -51,7 +114,7 @@
     <item>
       <title>Redis</title>
       <link>https://www.code996.cn/tags/redis/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/tags/redis/</guid>
       <description></description>

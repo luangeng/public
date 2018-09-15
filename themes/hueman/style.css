@@ -516,7 +516,7 @@ box-shadow: 0 0 2px rgba(255,255,255,0.4);
 /* ------------------------------------ */
 .right-head {color: #ccc; display: block; position: absolute; right: 20px; top: -50px;}
 .right-head .toggle-search { color: #ccc; font-size: 15px; cursor: pointer; float:left; padding: 13px 10px; line-height: 24px; }
-.right-head .toggle-search > a { color: #ccc; font-size: 15px;}
+.right-head .toggle-search > a { color: #ccc; font-size: 14px; padding: 15px 0px;}
 .right-head .toggle-search:hover { background: rgba(0,0,0,0.15); color: #fff; }
 
 .search-expand { display: none; background: #26272b; position: absolute; top: 0; right: 0; width: 300px; }

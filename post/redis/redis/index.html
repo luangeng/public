@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://www.code996.cn/">
+  <title>Linux redis - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="redis,">
+  
+
+  <meta name="description" content="ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="Linux redis - 新起点">
+  <meta itemprop="description" content="ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程">
+  <meta itemprop="image" content="https://www.code996.cn//img/me.jpg">
+
+  <meta property="og:title" content="Linux redis - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.code996.cn/post/redis/redis/" />
+  <meta property="og:image" content="https://www.code996.cn//img/me.jpg" />
+  <meta property="og:description" content="ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程">
+
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="https://www.code996.cn/post/redis/redis/">
+  <link rel='shortlink' href="https://www.code996.cn/post/redis/redis/"/>
+  <link rel="shortcut icon" href="https://www.code996.cn//img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://www.code996.cn/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://www.code996.cn/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://www.code996.cn/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://www.code996.cn//" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Linux redis</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-03 · 334 Words
+                                        
+                                        · Tags: redis
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://www.code996.cn/post/redis/redis/" class="leancloud_visitors"
+                                              data-flag-title="Linux redis">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>ubuntu 16.04安装redis-server</p>
+
+<p><code>apt-get install redis-server</code></p>
+
+<p>启动、停止、重启、重新加载、查看状态</p>
+
+<pre><code>/etc/init.d/redis-server start
+
+/etc/init.d/redis-server stop
+
+/etc/init.d/redis-server restart
+
+/etc/init.d/redis-server force-reload
+
+/etc/init.d/redis-server status
+</code></pre>
+
+<p>进入redis命令行</p>
+
+<p>daemon启动程式，后面加&amp;表示后台启动，后面加配置文件path表示使用该配置文件启动</p>
+
+<p>查看redis是否在运行:</p>
+
+<pre><code>1.检测后台进程是否存在
+ps -ef |grep redis
+
+2.检测6379端口是否在监听
+netstat -lntp | grep 6379
+
+3.使用redis-cli查看
+</code></pre>
+
+<p>为redis设置密码</p>
+
+<p><code>vi /etc/redis/redis.conf</code></p>
+
+<p>#后面为设置的密码
+<code>requirepass password</code></p>
+
+<p>打开redis远程访问</p>
+
+<p>用vi打开Redis服务器的配置文件redis.conf</p>
+
+<p><code>vi /etc/redis/redis.conf</code></p>
+
+<p>#注释掉下面的一行
+#bind 127.0.0.1</p>
+
+<p>修改后，重启Redis服务器，使用密码访问命令行</p>
+
+<p><code>sudo /etc/init.d/redis-server restart</code>
+<code>redis-cli -a password</code></p>
+
+<p>在远程的一台Mac访问Redis服务器</p>
+
+<p>redis配置文件</p>
+
+<p>可参考 <a href="http://www.cnblogs.com/kreo/p/4423362.html">http://www.cnblogs.com/kreo/p/4423362.html</a></p>
+
+<p>redis执行初始化脚本</p>
+
+<p>#windows
+<code>type data.txt | redis-cli</code></p>
+
+<p>#Linux
+<code>cat data.txt | redis-cli</code></p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/redis/redis/">https://www.code996.cn/post/redis/redis/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://www.code996.cn/post/2017/linux-cmd/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Linux常用命令</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://www.code996.cn/post/2017/html5-cavas/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>HTML5 canvas绘图</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-command---string/" rel="bookmark" title="Redis命令">Redis命令</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-command/" rel="bookmark" title="Redis命令">Redis命令</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-install/" rel="bookmark" title="Redis安装">Redis安装</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-intr/" rel="bookmark" title="Redis简介">Redis简介</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2011-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-key/" rel="bookmark" title="Redis简介">Redis简介</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-08-07</span>
+                <a href="https://www.code996.cn/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/redis/redis/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:4px"><code>ajax</code></a>
+            
+            <a href='https://www.code996.cn/tags/auth' style="font-size:17px;margin:4px"><code>auth</code></a>
+            
+            <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px"><code>git</code></a>
+            
+            <a href='https://www.code996.cn/tags/html' style="font-size:17px;margin:4px"><code>html</code></a>
+            
+            <a href='https://www.code996.cn/tags/java' style="font-size:17px;margin:4px"><code>java</code></a>
+            
+            <a href='https://www.code996.cn/tags/jquery' style="font-size:17px;margin:4px"><code>jquery</code></a>
+            
+            <a href='https://www.code996.cn/tags/linux' style="font-size:17px;margin:4px"><code>linux</code></a>
+            
+            <a href='https://www.code996.cn/tags/maven' style="font-size:17px;margin:4px"><code>maven</code></a>
+            
+            <a href='https://www.code996.cn/tags/mysql' style="font-size:17px;margin:4px"><code>mysql</code></a>
+            
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px"><code>opencv</code></a>
+            
+            <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:4px"><code>redis</code></a>
+            
+            <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:4px"><code>spring</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:4px"><code>springboot</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:4px"><code>springcloud</code></a>
+            
+            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:4px"><code>tool</code></a>
+            
+            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:4px"><code>work</code></a>
+            
+            <a href='https://www.code996.cn/tags/zookeeper' style="font-size:17px;margin:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://www.code996.cn/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="back-to-top" href="#"><i class="fa fa-angle-up"></i></div>
+<footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/redis/redis/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+

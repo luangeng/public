@@ -156,6 +156,62 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/post/2017/html5-ajax/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/html5-cavas/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/redis/redis/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/linux-cmd/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/maven/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/mysql-procedure/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/mysql-sql/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/mysql-type/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/post/spring/spring-rest/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -170,6 +226,13 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/post/2017/jquery-event/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/post/2017/markdown/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -177,7 +240,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/2017/demo/</loc>
+        <loc>https://www.code996.cn/post/2017/linux-vim/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2017/cxf-interceptor/</loc>
         <lastmod>2017-03-22T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -221,6 +291,146 @@
     <url>
         <loc>https://www.code996.cn/post/2016/git-undo/</loc>
         <lastmod>2016-08-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-oddeven/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-countdownlatch/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-hashcode/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-jdbc/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-nio/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-threadlocal/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-innerclass/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-singleton/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-io/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-reflection/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-serializable/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-enum/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-comparator/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-annotation/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-jvm/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-clone/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-gz/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-locks/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-blockingqueue/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2016/java-proxy/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -338,6 +548,13 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/tags/ajax/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/tags/auth/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -354,6 +571,48 @@
     <url>
         <loc>https://www.code996.cn/tags/git/</loc>
         <lastmod>2016-08-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/html/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/java/</loc>
+        <lastmod>2016-05-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/jquery/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/linux/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/maven/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/mysql/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -381,7 +640,7 @@
     
     <url>
         <loc>https://www.code996.cn/tags/redis/</loc>
-        <lastmod>2011-09-03T00:00:00+00:00</lastmod>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -416,7 +675,7 @@
     
     <url>
         <loc>https://www.code996.cn/tags/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
