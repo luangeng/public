@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>记事本 on 新起点</title>
-    <link>https://www.luangeng.top/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/</link>
+    <link>https://luangeng.gitee.io/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/</link>
     <description>Recent content in 记事本 on 新起点</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.luangeng.top/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luangeng.gitee.io/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>elasticsearch</title>
-      <link>https://www.luangeng.top/post/2018/elasticsearch/</link>
+      <link>https://luangeng.gitee.io/post/2018/elasticsearch/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.luangeng.top/post/2018/elasticsearch/</guid>
+      <guid>https://luangeng.gitee.io/post/2018/elasticsearch/</guid>
       <description>elasticsearch 下载elasticsearch， https://www.elastic.co/downloads/elasticsearch 解压 修改配置文件config/elasticsearch.yml 增加 http.cors.enabled: true http.cors.allow-origin: &amp;ldquo;*&amp;rdquo; http.cors.allow-headers: Authorization,Content-Type 进入bin 双击elast</description>
     </item>
     
     <item>
       <title>统一身份认证平台-方案概要</title>
-      <link>https://www.luangeng.top/post/2018/sso/</link>
+      <link>https://luangeng.gitee.io/post/2018/sso/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.luangeng.top/post/2018/sso/</guid>
+      <guid>https://luangeng.gitee.io/post/2018/sso/</guid>
       <description>为公司各内外部IT系统提供统一的单点登录，授权和权限控制功能。 系统遵循oauth2协议，将需要权限控制的服务视为资源，将请求资源的服务视为客</description>
     </item>
     
     <item>
       <title>网元级网络巡检-方案概要</title>
-      <link>https://www.luangeng.top/post/2018/single-net/</link>
+      <link>https://luangeng.gitee.io/post/2018/single-net/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.luangeng.top/post/2018/single-net/</guid>
+      <guid>https://luangeng.gitee.io/post/2018/single-net/</guid>
       <description>技术栈： HDFS mysql redis HDFS zookeeper 工程结构 调度机 执行机 前台UI 后台服务 运营管理(监控执行机状态，趋势，等待任务数量等) https://www.javacodegeeks.com/</description>
     </item>
     
     <item>
       <title>demo</title>
-      <link>https://www.luangeng.top/post/demo/</link>
+      <link>https://luangeng.gitee.io/post/demo/</link>
       <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>https://www.luangeng.top/post/demo/</guid>
+      <guid>https://luangeng.gitee.io/post/demo/</guid>
       <description></description>
     </item>
     
