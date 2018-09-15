@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 	
 /*  Scroll to top
 /* ------------------------------------ */
-	$('a#back-to-top').click(function() {
+	$('#back-to-top').click(function() {
 		$('html, body').animate({scrollTop:0},'slow');
 		return false;
 	});
