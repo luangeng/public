@@ -1014,7 +1014,7 @@ box-shadow: inset 0 1px 0 rgba(255,255,255,0.25); }
 .widget select { border: 1px solid #ddd; color: #777; font-size: 15px; padding: 7px; width: 100%; max-width: 100%; }
 #footer .widget select { border-color: #eee; }
 
-.sidebar .widget { padding: 30px 30px 20px; }
+.sidebar .widget { padding: 20px; }
 .sidebar .qrcode { text-align: center; }
 #footer .widget { padding-bottom: 30px; }
 #footer .widget a:hover { color: #666; }
