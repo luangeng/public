@@ -40,75 +40,75 @@
     </item>
     
     <item>
-      <title>Netty--简单实现一个Servlet容器</title>
-      <link>https://www.code996.cn/post/netty/netty-8/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/netty/netty-8/</guid>
-      <description>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的S</description>
-    </item>
-    
-    <item>
       <title>Netty--使用TCP协议传输文件</title>
-      <link>https://www.code996.cn/post/netty/netty-7/</link>
+      <link>https://www.code996.cn/post/netty/netty-file/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-7/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-file/</guid>
       <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
     </item>
     
     <item>
       <title>Netty--RPC的原理和实现</title>
-      <link>https://www.code996.cn/post/netty/netty-6/</link>
+      <link>https://www.code996.cn/post/netty/netty-rpc/</link>
       <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-6/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-rpc/</guid>
       <description>RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调</description>
     </item>
     
     <item>
       <title>Netty--Google Protobuf编解码</title>
-      <link>https://www.code996.cn/post/netty/netty-5/</link>
+      <link>https://www.code996.cn/post/netty/netty-protobuf/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-5/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-protobuf/</guid>
       <description>Google Protobuf是一种轻便高效的结构化数据存储格式，可以用于结构化数据序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储</description>
     </item>
     
     <item>
       <title>Netty--JDK序列化编解码传输对象</title>
-      <link>https://www.code996.cn/post/netty/netty-4/</link>
+      <link>https://www.code996.cn/post/netty/netty-jdk/</link>
       <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-4/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-jdk/</guid>
       <description>使用JDK序列化不需要额外的类库，只需要实现Serializable即可，但是序列化之后的码流只有Java才能反序列化，所以它不是跨语言的，</description>
     </item>
     
     <item>
       <title>Netty--HTTP服务器原理和实现</title>
-      <link>https://www.code996.cn/post/netty/netty-3/</link>
+      <link>https://www.code996.cn/post/netty/netty-http/</link>
       <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-3/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-http/</guid>
       <description>基于Netty的HTTP协议栈可以方便的进行异步非阻塞的HTTP服务器的开发。 当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个</description>
     </item>
     
     <item>
       <title>Netty--TCP粘包和拆包</title>
-      <link>https://www.code996.cn/post/netty/netty-2/</link>
+      <link>https://www.code996.cn/post/netty/netty-tcpdecoder/</link>
       <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-2/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-tcpdecoder/</guid>
       <description>TCP协议以流的方式进行数据传输，它无法理解其上层协议的数据意义，而是根据TCP缓冲区的大小对数据进行拆分或组装，即上层一个完整的包可能被拆</description>
     </item>
     
     <item>
       <title>Netty--TCP协议发送和接收数据</title>
-      <link>https://www.code996.cn/post/netty/netty-1/</link>
+      <link>https://www.code996.cn/post/netty/netty-tcp/</link>
       <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-1/</guid>
+      <guid>https://www.code996.cn/post/netty/netty-tcp/</guid>
       <description>Netty是业界最流行的NIO开发框架，使用Netty可以构建高性能异步通信能力，经常用于RPC底层通信框架。Netty的API使用简单，功</description>
+    </item>
+    
+    <item>
+      <title>Netty--简单实现一个Servlet容器</title>
+      <link>https://www.code996.cn/post/netty/netty-servlet/</link>
+      <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/netty/netty-servlet/</guid>
+      <description>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的S</description>
     </item>
     
     <item>
@@ -121,12 +121,48 @@
     </item>
     
     <item>
+      <title>jQuery事件</title>
+      <link>https://www.code996.cn/post/2017/jquery-event/</link>
+      <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/jquery-event/</guid>
+      <description>blur() 触发或绑定blur事件。 $(&amp;quot;input&amp;quot;).blur(function(){ $(&amp;quot;input&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;#D6D6FF&amp;quot;); }); change() 触发或绑定change事件, 该事件仅适用于文本域（text field），以及 textarea 和 select 元素。 $(&amp;quot;.field&amp;quot;).change(function(){ $(this).css(&amp;quot;background-color&amp;quot;,&amp;quot;#FFFFCC&amp;quot;); }); click() 触发或绑定</description>
+    </item>
+    
+    <item>
+      <title>HTML5 canvas绘图</title>
+      <link>https://www.code996.cn/post/2017/html5-cavas/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/html5-cavas/</guid>
+      <description>HTML5 canvas画图 示例 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;jquery-3.1.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;style.css&amp;quot; /&amp;gt; &amp;lt;title&amp;gt;Backpropagation&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div style=&amp;quot;float:right;margin-right:400px;margin-top:100px;width:300px;height:500px&amp;quot;&amp;gt; &amp;lt;span id=&amp;quot;NN&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span id=&amp;quot;xyText&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input id=&amp;quot;Text&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;&amp;lt;br&amp;gt; &amp;lt;button id=&amp;quot;clear&amp;quot; type=&amp;quot;button&amp;quot; onclick=&amp;quot;Clear()&amp;quot;&amp;gt;清</description>
+    </item>
+    
+    <item>
       <title>Spring Cloud Bus 消息总线 RabbitMQ</title>
       <link>https://www.code996.cn/post/spring/spring-cloud-zuul/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-cloud-zuul/</guid>
       <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
+    </item>
+    
+    <item>
+      <title>Spring MVC中Action使用总结</title>
+      <link>https://www.code996.cn/post/2017/springmvc/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/springmvc/</guid>
+      <description>Spring MVC中每个控制器中可以定义多个请求处理方法即Action，Action可以有多个不同的参数，有多种类型的返回结果。 可以作为Action的</description>
+    </item>
+    
+    <item>
+      <title>AJAX，jQuery Ajax和Deferred</title>
+      <link>https://www.code996.cn/post/2017/html5-ajax/</link>
+      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/html5-ajax/</guid>
+      <description>AJAX全称为“Asynchronous JavaScript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用，改善用户体验，实现无刷</description>
     </item>
     
     <item>
@@ -139,12 +175,30 @@
     </item>
     
     <item>
+      <title>Linux常用命令</title>
+      <link>https://www.code996.cn/post/2017/linux-cmd/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/linux-cmd/</guid>
+      <description>man 查询命令帮助 info 查询命令文档 whatis 查询命令简介 whereis 查询命令文件位置 which 查询命令运行位置 finger 显示用户的信息 who 显示当前登录用户 whoami 显示用户ID sudo 以管理员身份</description>
+    </item>
+    
+    <item>
       <title>Spring Cloud Config 配置服务</title>
       <link>https://www.code996.cn/post/spring/spring-cloud-eureka/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-cloud-eureka/</guid>
       <description>spring cloud 配置服务提供了一种非常方便的应用配置管理功能，用来解决分布式系统中配置文件太多导致的各种问题，而它自身的配置也非常简单。 服务端用来从gi</description>
+    </item>
+    
+    <item>
+      <title>Linux redis</title>
+      <link>https://www.code996.cn/post/redis/redis/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/redis/redis/</guid>
+      <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
     </item>
     
     <item>
@@ -166,12 +220,39 @@
     </item>
     
     <item>
+      <title>vim基本使用</title>
+      <link>https://www.code996.cn/post/2017/linux-vim/</link>
+      <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/linux-vim/</guid>
+      <description>i 进入插入状态 esc 退出插入状态 x 删除一个字符 dd 删除一行，并拷贝 yy 拷贝 p 粘贴 u 撤销 ctrl+r 重做 :w 保存 :q 退出 :q! → 退出不保存</description>
+    </item>
+    
+    <item>
+      <title>Mysql常用数据类型</title>
+      <link>https://www.code996.cn/post/2017/mysql-type/</link>
+      <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/mysql-type/</guid>
+      <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
+    </item>
+    
+    <item>
       <title>使用Spring Boot 和Spring Data JPA访问mysql数据库</title>
       <link>https://www.code996.cn/post/spring/spring-jpa/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-jpa/</guid>
       <description>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使</description>
+    </item>
+    
+    <item>
+      <title>Mysql基础语法</title>
+      <link>https://www.code996.cn/post/2017/mysql-sql/</link>
+      <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/mysql-sql/</guid>
+      <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
     </item>
     
     <item>
@@ -184,102 +265,12 @@
     </item>
     
     <item>
-      <title>AJAX，jQuery Ajax和Deferred</title>
-      <link>https://www.code996.cn/post/2017/html5-ajax/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/html5-ajax/</guid>
-      <description>AJAX全称为“Asynchronous JavaScript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用，改善用户体验，实现无刷</description>
-    </item>
-    
-    <item>
-      <title>HTML5 canvas绘图</title>
-      <link>https://www.code996.cn/post/2017/html5-cavas/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/html5-cavas/</guid>
-      <description>HTML5 canvas画图 示例 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;jquery-3.1.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;style.css&amp;quot; /&amp;gt; &amp;lt;title&amp;gt;Backpropagation&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div&amp;gt; &amp;lt;div style=&amp;quot;float:right;margin-right:400px;margin-top:100px;width:300px;height:500px&amp;quot;&amp;gt; &amp;lt;span id=&amp;quot;NN&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span id=&amp;quot;xyText&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input id=&amp;quot;Text&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;&amp;lt;br&amp;gt; &amp;lt;button id=&amp;quot;clear&amp;quot; type=&amp;quot;button&amp;quot; onclick=&amp;quot;Clear()&amp;quot;&amp;gt;清</description>
-    </item>
-    
-    <item>
-      <title>Linux redis</title>
-      <link>https://www.code996.cn/post/redis/redis/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/redis/redis/</guid>
-      <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
-    </item>
-    
-    <item>
-      <title>Linux常用命令</title>
-      <link>https://www.code996.cn/post/2017/linux-cmd/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/linux-cmd/</guid>
-      <description>man 查询命令帮助 info 查询命令文档 whatis 查询命令简介 whereis 查询命令文件位置 which 查询命令运行位置 finger 显示用户的信息 who 显示当前登录用户 whoami 显示用户ID sudo 以管理员身份</description>
-    </item>
-    
-    <item>
-      <title>Maven安装配置使用</title>
-      <link>https://www.code996.cn/post/2017/maven/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/maven/</guid>
-      <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
-    </item>
-    
-    <item>
-      <title>MySql 存储过程</title>
-      <link>https://www.code996.cn/post/2017/mysql-procedure/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/mysql-procedure/</guid>
-      <description>存储过程（Stored Procedure）是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数（如果带参数）来</description>
-    </item>
-    
-    <item>
-      <title>Mysql基础语法</title>
-      <link>https://www.code996.cn/post/2017/mysql-sql/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/mysql-sql/</guid>
-      <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
-    </item>
-    
-    <item>
-      <title>Mysql常用数据类型</title>
-      <link>https://www.code996.cn/post/2017/mysql-type/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/mysql-type/</guid>
-      <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
-    </item>
-    
-    <item>
       <title>Spring Boot自定义配置与加载</title>
       <link>https://www.code996.cn/post/spring/spring-rest/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-rest/</guid>
       <description>Spring Boot自定义配置与加载 application.properties主要用来配置数据库连接、日志相关配置等。除了这些配置内容之外，还可以自</description>
-    </item>
-    
-    <item>
-      <title>Spring MVC中Action使用总结</title>
-      <link>https://www.code996.cn/post/2017/springmvc/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/springmvc/</guid>
-      <description>Spring MVC中每个控制器中可以定义多个请求处理方法即Action，Action可以有多个不同的参数，有多种类型的返回结果。 可以作为Action的</description>
-    </item>
-    
-    <item>
-      <title>jQuery事件</title>
-      <link>https://www.code996.cn/post/2017/jquery-event/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/jquery-event/</guid>
-      <description>blur() 触发或绑定blur事件。 $(&amp;quot;input&amp;quot;).blur(function(){ $(&amp;quot;input&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;#D6D6FF&amp;quot;); }); change() 触发或绑定change事件, 该事件仅适用于文本域（text field），以及 textarea 和 select 元素。 $(&amp;quot;.field&amp;quot;).change(function(){ $(this).css(&amp;quot;background-color&amp;quot;,&amp;quot;#FFFFCC&amp;quot;); }); click() 触发或绑定</description>
     </item>
     
     <item>
@@ -292,12 +283,93 @@
     </item>
     
     <item>
-      <title>vim基本使用</title>
-      <link>https://www.code996.cn/post/2017/linux-vim/</link>
+      <title>ubuntu16.04安装rabbitMQ</title>
+      <link>https://www.code996.cn/post/2018/rabbitmq/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/linux-vim/</guid>
-      <description>i 进入插入状态 esc 退出插入状态 x 删除一个字符 dd 删除一行，并拷贝 yy 拷贝 p 粘贴 u 撤销 ctrl+r 重做 :w 保存 :q 退出 :q! → 退出不保存</description>
+      <guid>https://www.code996.cn/post/2018/rabbitmq/</guid>
+      <description>本文详细说明如何在ubuntu16.04下安装rabbitMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-Java API</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-java/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
+      <description>Zookeeper&amp;ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-Watcher</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
+      <description>Zookeeper&amp;ndash;Watcher 和 ACL Watcher (观察) Zookeeper中的znode可以被监控，这是zk的核心特性。 通过exists，getChildren和getData这些</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-分布式锁和消息队列</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
+      <description>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-基本概念</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-base/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
+      <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-安装及命令</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
+      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-配置服务</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-config/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
+      <description>Zookeeper&amp;ndash;配置服务 配置服务是分布式应用中重要的服务，作用是使集群中的机器可以共享配置信息中公共的部分。ZooKeepe</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-集群管理</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
+      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
+      <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
+    </item>
+    
+    <item>
+      <title>Maven安装配置使用</title>
+      <link>https://www.code996.cn/post/2017/maven/</link>
+      <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/maven/</guid>
+      <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
+    </item>
+    
+    <item>
+      <title>MySql 存储过程</title>
+      <link>https://www.code996.cn/post/2017/mysql-procedure/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/mysql-procedure/</guid>
+      <description>存储过程（Stored Procedure）是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数（如果带参数）来</description>
     </item>
     
     <item>
@@ -364,165 +436,156 @@
     </item>
     
     <item>
-      <title>Java--两个线程交替执行和死锁</title>
-      <link>https://www.code996.cn/post/2016/java-oddeven/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-oddeven/</guid>
-      <description>今天看到一个题：两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
-    </item>
-    
-    <item>
-      <title>Java-压缩解压gz</title>
-      <link>https://www.code996.cn/post/2016/java-blockingqueue/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-blockingqueue/</guid>
-      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
-    </item>
-    
-    <item>
       <title>Java动态代理</title>
       <link>https://www.code996.cn/post/2016/java-proxy/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2016/java-proxy/</guid>
       <description>代理模式：为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
     </item>
     
     <item>
-      <title>Java基础--CountDownLatch</title>
-      <link>https://www.code996.cn/post/2016/java-countdownlatch/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-countdownlatch/</guid>
-      <description>CountDownLatch是线程同步辅助类，它允许一个或多个线程wait直到countdown被调用使count为0。 CountDownL</description>
-    </item>
-    
-    <item>
-      <title>Java基础--HashCode</title>
-      <link>https://www.code996.cn/post/2016/java-hashcode/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-hashcode/</guid>
-      <description>如果一个类的对象要用做hashMap的key，那么一定要注意覆盖该类的equals和hashCode方法。 equals()是基类Object</description>
-    </item>
-    
-    <item>
-      <title>Java基础--JDBC</title>
-      <link>https://www.code996.cn/post/2016/java-jdbc/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-jdbc/</guid>
-      <description>JDBC(Java Database Connectivity) Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作 常用的类与接口</description>
-    </item>
-    
-    <item>
       <title>Java基础--NIO</title>
       <link>https://www.code996.cn/post/2016/java-nio/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 21 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2016/java-nio/</guid>
       <description>NIO库在JDK1.4中引入，它以标准Java代码提供了高速的，面向块的IO，弥补了之前同步IO的不足。 缓冲区Buffer Buffers是一</description>
     </item>
     
     <item>
-      <title>Java基础--ThreadLocal</title>
-      <link>https://www.code996.cn/post/2016/java-threadlocal/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <title>Java并发--CountDownLatch CyclicBarrier ReentrantLock</title>
+      <link>https://www.code996.cn/post/2016/java-locks/</link>
+      <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-threadlocal/</guid>
-      <description>Java中的ThreadLocal 可以看做以线程标识为key的Map，在多线程开发中应用广泛。 示例 class ThreadEnv { // 用匿名内部类覆盖ThreadLoc</description>
+      <guid>https://www.code996.cn/post/2016/java-locks/</guid>
+      <description>CountDownLatch CountDownLatch是一个同步工具类，它允许一个或多个线程一直等待，直到其他线程的操作执行完后再执行。CountDownLatch</description>
     </item>
     
     <item>
-      <title>Java基础--内部类</title>
-      <link>https://www.code996.cn/post/2016/java-innerclass/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <title>Java--两个线程交替执行和死锁</title>
+      <link>https://www.code996.cn/post/2016/java-oddeven/</link>
+      <pubDate>Thu, 19 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-innerclass/</guid>
-      <description>普通内部类 如果一个类只需要在另一个类内部使用，可以考虑将它写成内部类。 内部类拥有其外部类所有成员的访问权，因为内部类中隐含了一个外部类的引用</description>
+      <guid>https://www.code996.cn/post/2016/java-oddeven/</guid>
+      <description>今天看到一个题：两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
     </item>
     
     <item>
-      <title>Java基础--单例类</title>
-      <link>https://www.code996.cn/post/2016/java-singleton/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <title>Java基础--JDBC</title>
+      <link>https://www.code996.cn/post/2016/java-jdbc/</link>
+      <pubDate>Wed, 18 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-singleton/</guid>
-      <description>单例模式的主要作用是保证在Java程序中，某个类只有一个实例存在。单例模式有很多好处，它能够避免实例对象的重复创建，不仅可以减少每次创建对象</description>
-    </item>
-    
-    <item>
-      <title>Java基础--压缩和解压缩gz包</title>
-      <link>https://www.code996.cn/post/2016/java-io/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-io/</guid>
-      <description>gz是Linux和OSX中常见的压缩文件格式，下面是用java压缩和解压缩gz包的例子 public class GZIPcompress { public static void FileCompress(String file, String outgz) throws IOException { BufferedReader br = new BufferedReader(new FileReader(file)); BufferedOutputStream bs = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(outgz)));</description>
-    </item>
-    
-    <item>
-      <title>Java基础--反射Reflection</title>
-      <link>https://www.code996.cn/post/2016/java-reflection/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-reflection/</guid>
-      <description>反射能在运行时获取一个类的全部信息，并且可以调用类方法，修改类属性，创建类实例。 而在编译期间不用关心对象是谁 反射可用在动态代理，注解解释，和</description>
-    </item>
-    
-    <item>
-      <title>Java基础--序列化Serializable</title>
-      <link>https://www.code996.cn/post/2016/java-serializable/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-serializable/</guid>
-      <description>对Java对象序列化的目的是持久化对象或者为RMI（远程方法调用）传递参数和返回值。 下面是一个序列化对象写入文件的例子： package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
-    </item>
-    
-    <item>
-      <title>Java基础--枚举Enum</title>
-      <link>https://www.code996.cn/post/2016/java-enum/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-enum/</guid>
-      <description>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum</description>
-    </item>
-    
-    <item>
-      <title>Java基础--比较器Comparator</title>
-      <link>https://www.code996.cn/post/2016/java-comparator/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2016/java-comparator/</guid>
-      <description>Comparable接口和Comparator接口都是用来定义集合中的排序的，只是Comparable是在集合内部定义排序的实现，Compa</description>
+      <guid>https://www.code996.cn/post/2016/java-jdbc/</guid>
+      <description>JDBC(Java Database Connectivity) Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作 常用的类与接口</description>
     </item>
     
     <item>
       <title>Java基础--注解Annotation</title>
       <link>https://www.code996.cn/post/2016/java-annotation/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 17 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2016/java-annotation/</guid>
       <description>Annotation是给类，方法或域上加的一种特殊的标记，可以通过反射取到注解的类型和值，从而完成某种特定的操作。 定义注解需要使用元注解，元</description>
     </item>
     
     <item>
+      <title>Java基础--内部类</title>
+      <link>https://www.code996.cn/post/2016/java-innerclass/</link>
+      <pubDate>Mon, 16 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-innerclass/</guid>
+      <description>普通内部类 如果一个类只需要在另一个类内部使用，可以考虑将它写成内部类。 内部类拥有其外部类所有成员的访问权，因为内部类中隐含了一个外部类的引用</description>
+    </item>
+    
+    <item>
+      <title>Java基础--比较器Comparator</title>
+      <link>https://www.code996.cn/post/2016/java-comparator/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-comparator/</guid>
+      <description>Comparable接口和Comparator接口都是用来定义集合中的排序的，只是Comparable是在集合内部定义排序的实现，Compa</description>
+    </item>
+    
+    <item>
+      <title>Java基础--CountDownLatch</title>
+      <link>https://www.code996.cn/post/2016/java-countdownlatch/</link>
+      <pubDate>Sat, 14 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-countdownlatch/</guid>
+      <description>CountDownLatch是线程同步辅助类，它允许一个或多个线程wait直到countdown被调用使count为0。 CountDownL</description>
+    </item>
+    
+    <item>
       <title>Java基础--虚拟机JVM</title>
       <link>https://www.code996.cn/post/2016/java-jvm/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2016/java-jvm/</guid>
       <description>JVM内存结构 Heap Space： 堆内存（Heap Space）是由Young Generation和Old Generation组成，而Young Ge</description>
     </item>
     
     <item>
+      <title>Java-压缩解压gz</title>
+      <link>https://www.code996.cn/post/2016/java-blockingqueue/</link>
+      <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-blockingqueue/</guid>
+      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
+    </item>
+    
+    <item>
+      <title>Java基础--反射Reflection</title>
+      <link>https://www.code996.cn/post/2016/java-reflection/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-reflection/</guid>
+      <description>反射能在运行时获取一个类的全部信息，并且可以调用类方法，修改类属性，创建类实例。 而在编译期间不用关心对象是谁 反射可用在动态代理，注解解释，和</description>
+    </item>
+    
+    <item>
       <title>Java基础--读写文件</title>
       <link>https://www.code996.cn/post/2016/java-clone/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2016/java-clone/</guid>
       <description>对象拷贝用于在内存中复制对象，无需构造器便可创建对象。 需要注意的是 clone方法提供的只是简单的值拷贝和地址拷贝，若类中包含HashMap等</description>
+    </item>
+    
+    <item>
+      <title>Java基础--HashCode</title>
+      <link>https://www.code996.cn/post/2016/java-hashcode/</link>
+      <pubDate>Sat, 07 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-hashcode/</guid>
+      <description>如果一个类的对象要用做hashMap的key，那么一定要注意覆盖该类的equals和hashCode方法。 equals()是基类Object</description>
+    </item>
+    
+    <item>
+      <title>Java基础--序列化Serializable</title>
+      <link>https://www.code996.cn/post/2016/java-serializable/</link>
+      <pubDate>Fri, 06 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-serializable/</guid>
+      <description>对Java对象序列化的目的是持久化对象或者为RMI（远程方法调用）传递参数和返回值。 下面是一个序列化对象写入文件的例子： package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
+    </item>
+    
+    <item>
+      <title>Java基础--单例类</title>
+      <link>https://www.code996.cn/post/2016/java-singleton/</link>
+      <pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-singleton/</guid>
+      <description>单例模式的主要作用是保证在Java程序中，某个类只有一个实例存在。单例模式有很多好处，它能够避免实例对象的重复创建，不仅可以减少每次创建对象</description>
+    </item>
+    
+    <item>
+      <title>Java基础--ThreadLocal</title>
+      <link>https://www.code996.cn/post/2016/java-threadlocal/</link>
+      <pubDate>Wed, 04 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2016/java-threadlocal/</guid>
+      <description>Java中的ThreadLocal 可以看做以线程标识为key的Map，在多线程开发中应用广泛。 示例 class ThreadEnv { // 用匿名内部类覆盖ThreadLoc</description>
     </item>
     
     <item>
@@ -535,84 +598,21 @@
     </item>
     
     <item>
-      <title>Java并发--CountDownLatch CyclicBarrier ReentrantLock</title>
-      <link>https://www.code996.cn/post/2016/java-locks/</link>
-      <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
+      <title>Java基础--压缩和解压缩gz包</title>
+      <link>https://www.code996.cn/post/2016/java-io/</link>
+      <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-locks/</guid>
-      <description>CountDownLatch CountDownLatch是一个同步工具类，它允许一个或多个线程一直等待，直到其他线程的操作执行完后再执行。CountDownLatch</description>
+      <guid>https://www.code996.cn/post/2016/java-io/</guid>
+      <description>gz是Linux和OSX中常见的压缩文件格式，下面是用java压缩和解压缩gz包的例子 public class GZIPcompress { public static void FileCompress(String file, String outgz) throws IOException { BufferedReader br = new BufferedReader(new FileReader(file)); BufferedOutputStream bs = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(outgz)));</description>
     </item>
     
     <item>
-      <title>ubuntu16.04安装rabbitMQ</title>
-      <link>https://www.code996.cn/post/2018/rabbitmq/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
+      <title>Java基础--枚举Enum</title>
+      <link>https://www.code996.cn/post/2016/java-enum/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/rabbitmq/</guid>
-      <description>本文详细说明如何在ubuntu16.04下安装rabbitMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-Java API</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-java/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
-      <description>Zookeeper&amp;ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-Watcher</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
-      <description>Zookeeper&amp;ndash;Watcher 和 ACL Watcher (观察) Zookeeper中的znode可以被监控，这是zk的核心特性。 通过exists，getChildren和getData这些</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-分布式锁和消息队列</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
-      <description>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-基本概念</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-base/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
-      <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-安装及命令</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
-      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-配置服务</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-config/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
-      <description>Zookeeper&amp;ndash;配置服务 配置服务是分布式应用中重要的服务，作用是使集群中的机器可以共享配置信息中公共的部分。ZooKeepe</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-集群管理</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
-      <pubDate>Sat, 03 Sep 2011 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
-      <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
+      <guid>https://www.code996.cn/post/2016/java-enum/</guid>
+      <description>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum</description>
     </item>
     
     <item>

@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://www.code996.cn/">
+  <title>Netty--TCP粘包和拆包 - 新起点</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+  <meta name="keywords" content="netty tcp,">
+  
+
+  <meta name="description" content="Netty--TCP粘包和拆包">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="Netty--TCP粘包和拆包 - 新起点">
+  <meta itemprop="description" content="Netty--TCP粘包和拆包">
+  <meta itemprop="image" content="https://www.code996.cn//img/me.jpg">
+
+  <meta property="og:title" content="Netty--TCP粘包和拆包 - 新起点" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.code996.cn/post/netty/netty-tcpdecoder/" />
+  <meta property="og:image" content="https://www.code996.cn//img/me.jpg" />
+  <meta property="og:description" content="Netty--TCP粘包和拆包">
+
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="https://www.code996.cn/post/netty/netty-tcpdecoder/">
+  <link rel='shortlink' href="https://www.code996.cn/post/netty/netty-tcpdecoder/"/>
+  <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+  </script>
+
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
+        </li>
+        
+        
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://www.code996.cn/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://www.code996.cn/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://www.code996.cn/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://www.code996.cn//" rel="home">
+              
+              新起点
+            </a>
+          </h1>
+          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Netty--TCP粘包和拆包</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-14 · 1398 Words
+                                        
+                                        · Tags: netty
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://www.code996.cn/post/netty/netty-tcpdecoder/" class="leancloud_visitors"
+                                              data-flag-title="Netty--TCP粘包和拆包">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>TCP协议以流的方式进行数据传输，它无法理解其上层协议的数据意义，而是根据TCP缓冲区的大小对数据进行拆分或组装，即上层一个完整的包可能被拆为几个TCP包来发送，或上层几个包会被组合为一个TCP包发送，这就是TCP的粘包和拆包问题。TCP协议按照自己的工作方式工作，包的拆分和组装问题就需要上层应用来解决，比如每次发送定长的数据包，数据包中包含数据的大小或在包结尾处增加标记等方法。</p>
+
+<p>Netty提供了多种解码器如LineBasedFrameDecoder和StringDecoder等来解决这个问题，只需要在pipeline中加入这些解码器即可，如：</p>
+
+<p>&ndash;</p>
+
+<pre><code>new ChannelInitializer&lt;SocketChannel&gt;() {
+    protected void initChannel(SocketChannel socketChannel) throws Exception {
+        socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+        socketChannel.pipeline().addLast(new StringDecoder());
+        socketChannel.pipeline().addLast(new TimeClientHandler());
+    }
+}
+</code></pre>
+
+<p>StringDecoder 作用是将接受到的对象转换为字符串，然后继续调用后面的handler。</p>
+
+<p>LineBasedFrameDecoder 以换号符为结束标记的解码器，它依次遍历ByteBuf中的可读字节，如果碰到\n 或\r\n则设置为结束。参数为最大长度，如果读到最大长度还是没有换号则会抛出异常： Unexpected exception from downstream : frame length (16) exceeds the allowed maximum (10)</p>
+
+<p>DelimiterBasedFrameDecoder 是以分隔符作为结束标志的解码器，并且解码时会自动去掉分隔符</p>
+
+<p>FixedLengthFrameDecoder 是用于定长消息的解码器。</p>
+
+<p>下面是一个简单的例子，演示几种decoder的用法：</p>
+
+<p>EchoServer:</p>
+
+<pre><code>package com.luangeng.netty.echo;
+
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.FixedLengthFrameDecoder;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
+
+/**
+ * Created by LG on 2017/11/20.
+ */
+public class EchoServer {
+    public static void main(String[] args) {
+        new EchoServer().bind(8080);
+    }
+
+    public void bind(int port) {
+        //配置服务端的线程组，一个用于服务端接收客户端连接，另一个进行SocketChannel的网络读写
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        try {
+            //ServerBootstrap启动NIO服务端的辅助启动类
+            ServerBootstrap bootstrap = new ServerBootstrap();
+            bootstrap.group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .option(ChannelOption.SO_BACKLOG, 100)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
+                        @Override
+                        protected void initChannel(SocketChannel ch) throws Exception {
+                            ByteBuf delimiter = Unpooled.copiedBuffer(&quot;$&quot;.getBytes());
+                            //ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            ch.pipeline().addLast(new FixedLengthFrameDecoder(25));
+                            //ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimiter));
+                            ch.pipeline().addLast(new StringDecoder());
+                            ch.pipeline().addLast(new EchoServerHandler());
+                        }
+                    });
+            //绑定端口，sync为同步阻塞方法，等待绑定成功,ChannelFuture用于异步操作的通知回调
+            ChannelFuture future = bootstrap.bind(port).sync();
+            System.out.println(&quot;server started&quot;);
+            //等待服务端监听端口关闭
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(&quot;server shuting down&quot;);
+            //释放线程资源
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+        }
+    }
+
+}
+</code></pre>
+
+<p>EchoServerHandler:</p>
+
+<pre><code>package com.luangeng.netty.echo;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+
+/**
+ * Created by LG on 2017/11/20.
+ */
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+    int count = 0;
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        String body = (String)msg;
+        System.out.println(&quot;The server received(&quot;+count+++&quot;): &quot; + body);
+
+        body = body + &quot;$&quot;;
+        ByteBuf response = Unpooled.copiedBuffer(body.getBytes());
+        ctx.writeAndFlush(response);//异步发送
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println(&quot;Unexpected exception from downstream : &quot; + cause.getMessage());
+        ctx.close();
+    }
+
+}
+</code></pre>
+
+<p>EchoClient:</p>
+
+<pre><code>package com.luangeng.netty.echo;
+
+import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.FixedLengthFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
+
+/**
+ * Created by LG on 2017/11/20.
+ */
+public class EchoClient {
+
+    public static void main(String[] args) {
+        new EchoClient().connect(&quot;127.0.0.1&quot;, 8080);
+    }
+
+    public void connect(String host, int port) {
+        //配置客户端NIO线程组
+        EventLoopGroup group = new NioEventLoopGroup();
+        try {
+            Bootstrap bootstrap = new Bootstrap();
+            bootstrap.group(group).channel(NioSocketChannel.class)
+                    .option(ChannelOption.TCP_NODELAY, true)
+                    .handler(new ChannelInitializer&lt;SocketChannel&gt;() {
+                        protected void initChannel(SocketChannel ch) throws Exception {
+                            ByteBuf delimiter = Unpooled.copiedBuffer(&quot;$&quot;.getBytes());
+                            //ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            ch.pipeline().addLast(new FixedLengthFrameDecoder(25));
+                            //ch.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimiter));
+                            ch.pipeline().addLast(new StringDecoder());
+                            ch.pipeline().addLast(new EchoClientHandler());
+                        }
+                    });
+            //发起异步连接操作，同步等待连接成功
+            ChannelFuture future = bootstrap.connect(host, port).sync();
+            System.out.println(&quot;client started&quot;);
+            //等待客户端链路关闭
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(&quot;client shuting down&quot;);
+            //释放NIO线程组
+            group.shutdownGracefully();
+        }
+    }
+}
+</code></pre>
+
+<p>EchoClientHandler</p>
+
+<pre><code>package com.luangeng.netty.echo;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+
+/**
+ * Created by LG on 2017/11/20.
+ */
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+    int count = 0;
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        String body = (String)msg;
+        System.out.println(&quot;The server received(&quot;+count+++&quot;): &quot; + body);
+
+        body = body + &quot;&quot;;
+        ByteBuf response = Unpooled.copiedBuffer(body.getBytes());
+        ctx.writeAndFlush(response);//异步发送
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println(&quot;Unexpected exception from downstream : &quot; + cause.getMessage());
+        ctx.close();
+    }
+
+}
+</code></pre>
+
+<p>执行结果：</p>
+
+<p>Server：</p>
+
+<pre><code>2017-11-20 22:21:35,508 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21] REGISTERED
+2017-11-20 22:21:35,510 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21] BIND: 0.0.0.0/0.0.0.0:8080
+server started
+2017-11-20 22:21:35,512 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21, L:/0:0:0:0:0:0:0:0:8080] ACTIVE
+2017-11-20 22:21:39,919 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21, L:/0:0:0:0:0:0:0:0:8080] READ: [id: 0x09644a50, L:/127.0.0.1:8080 - R:/127.0.0.1:52039]
+2017-11-20 22:21:39,920 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21, L:/0:0:0:0:0:0:0:0:8080] READ COMPLETE
+The server received(0): Hi,my name is luangeng
+The server received(1): Hi,my name is luangeng
+The server received(2): Hi,my name is luangeng
+The server received(3): Hi,my name is luangeng
+The server received(4): Hi,my name is luangeng
+The server received(5): Hi,my name is luangeng
+The server received(6): Hi,my name is luangeng
+The server received(7): Hi,my name is luangeng
+The server received(8): Hi,my name is luangeng
+The server received(9): Hi,my name is luangeng
+</code></pre>
+
+<p>Client：</p>
+
+<pre><code>client started
+0 client get: Hi,my name is luangeng
+1 client get: Hi,my name is luangeng
+2 client get: Hi,my name is luangeng
+3 client get: Hi,my name is luangeng
+4 client get: Hi,my name is luangeng
+5 client get: Hi,my name is luangeng
+6 client get: Hi,my name is luangeng
+7 client get: Hi,my name is luangeng
+8 client get: Hi,my name is luangeng
+9 client get: Hi,my name is luangeng
+</code></pre>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>更多：
+                
+                <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
+                
+            </li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/netty/netty-tcpdecoder/">https://www.code996.cn/post/netty/netty-tcpdecoder/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://www.code996.cn/post/netty/netty-tcp/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Netty--TCP协议发送和接收数据</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://www.code996.cn/post/netty/netty-http/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Netty--HTTP服务器原理和实现</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-19</span>
+                <a href="https://www.code996.cn/post/netty/netty-file/" rel="bookmark" title="Netty--使用TCP协议传输文件">Netty--使用TCP协议传输文件</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-18</span>
+                <a href="https://www.code996.cn/post/netty/netty-rpc/" rel="bookmark" title="Netty--RPC的原理和实现">Netty--RPC的原理和实现</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-17</span>
+                <a href="https://www.code996.cn/post/netty/netty-protobuf/" rel="bookmark" title="Netty--Google Protobuf编解码">Netty--Google Protobuf编解码</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-16</span>
+                <a href="https://www.code996.cn/post/netty/netty-jdk/" rel="bookmark" title="Netty--JDK序列化编解码传输对象">Netty--JDK序列化编解码传输对象</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-15</span>
+                <a href="https://www.code996.cn/post/netty/netty-http/" rel="bookmark" title="Netty--HTTP服务器原理和实现">Netty--HTTP服务器原理和实现</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-13</span>
+                <a href="https://www.code996.cn/post/netty/netty-tcp/" rel="bookmark" title="Netty--TCP协议发送和接收数据">Netty--TCP协议发送和接收数据</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-12</span>
+                <a href="https://www.code996.cn/post/netty/netty-servlet/" rel="bookmark" title="Netty--简单实现一个Servlet容器">Netty--简单实现一个Servlet容器</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+</ul>
+
+                            <h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-command/">Redis命令</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/redis/redis-command---string/">Redis命令</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-renren"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="dribbble" target="_blank">
+                        <i class="fa  fa-dribbble"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/netty/netty-tcpdecoder/&#34;);"
+                       target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+    <img src="img/qrcode.jpg" alt="weixin" width="172px" height="172px"/>
+    <p> 微信公众号 </p>
+</div>
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:4px; padding:4px"><code>ajax</code></a>
+            
+            <a href='https://www.code996.cn/tags/auth' style="font-size:17px;margin:4px; padding:4px"><code>auth</code></a>
+            
+            <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px; padding:4px"><code>git</code></a>
+            
+            <a href='https://www.code996.cn/tags/html' style="font-size:17px;margin:4px; padding:4px"><code>html</code></a>
+            
+            <a href='https://www.code996.cn/tags/java' style="font-size:17px;margin:4px; padding:4px"><code>java</code></a>
+            
+            <a href='https://www.code996.cn/tags/jquery' style="font-size:17px;margin:4px; padding:4px"><code>jquery</code></a>
+            
+            <a href='https://www.code996.cn/tags/linux' style="font-size:17px;margin:4px; padding:4px"><code>linux</code></a>
+            
+            <a href='https://www.code996.cn/tags/maven' style="font-size:17px;margin:4px; padding:4px"><code>maven</code></a>
+            
+            <a href='https://www.code996.cn/tags/mysql' style="font-size:17px;margin:4px; padding:4px"><code>mysql</code></a>
+            
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px; padding:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px; padding:4px"><code>opencv</code></a>
+            
+            <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:4px; padding:4px"><code>redis</code></a>
+            
+            <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:4px; padding:4px"><code>spring</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:4px; padding:4px"><code>springboot</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:4px; padding:4px"><code>springcloud</code></a>
+            
+            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:4px; padding:4px"><code>tool</code></a>
+            
+            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:4px; padding:4px"><code>work</code></a>
+            
+            <a href='https://www.code996.cn/tags/zookeeper' style="font-size:17px;margin:4px; padding:4px"><code>zookeeper</code></a>
+            
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>Categories</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>Links</h3>
+            <ul>
+            <li class="cat-item cat-item-1">
+                <a href="https://www.code996.cn/tool.html">Tool</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">Bing</a>
+            </li>
+            </ul>
+        </div>
+
+        
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>Recent</h3>
+            <ul>
+                
+                <li><a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/redis/redis-command/">Redis命令</a></li>
+                
+                
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="back-to-top" href="#"><i class="fa fa-angle-up"></i></div>
+<footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div id="copyright" style="padding:10px 0px;">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+            <div style="text-align:center"><img src="img/name.gif"></div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/netty/netty-tcpdecoder/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+
+    
+        
+    
+
+</html>
+
