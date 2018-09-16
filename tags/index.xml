@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Auth</title>
-      <link>https://www.code996.cn/tags/auth/</link>
-      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/tags/auth/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Git</title>
       <link>https://www.code996.cn/tags/git/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
@@ -99,6 +90,15 @@
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/tags/netty/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oauth2</title>
+      <link>https://www.code996.cn/tags/oauth2/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/tags/oauth2/</guid>
       <description></description>
     </item>
     

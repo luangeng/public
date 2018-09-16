@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   
-  <meta name="keywords" content="auth,">
+  <meta name="keywords" content="Oauth2,">
   
 
   <meta name="description" content="基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth">
@@ -76,6 +76,15 @@
           <a rel="nofollow" href="https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
@@ -85,15 +94,9 @@
           <a rel="nofollow" href="https://www.code996.cn/about/">关于</a>
         </li>
         
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
         </li>
-        
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://www.code996.cn/ask/">问答</a>
-        </li>
-        
-        
       </ul>
     </div>
 
@@ -166,7 +169,7 @@
                                     <p class="post-byline">
                                         Posted @ 2018-09-03 · 1295 Words
                                         
-                                        · Tags: auth
+                                        · Tags: Oauth2
                                         
                                         
                                         
@@ -188,24 +191,21 @@
 
 <p>基于Oauth2.0协议授权码模式的认证流程</p>
 
-<blockquote>
 <p>授权码模式工作流程：</p>
 
+<blockquote>
 <ol>
-<li><p>浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth/authorize)，携带clientid等信息</p></li>
-
-<li><p>用户选择是否给予客户端授权（可自动授权）</p></li>
-
-<li><p>认证服务器将浏览器重定向到&rdquo;重定向URI&rdquo;（redirection URI），同时附上一个授权码</p></li>
-
-<li><p>浏览器拿到授权码，附上早先的&rdquo;重定向URI&rdquo;，向认证服务器申请令牌(/oauth/token)</p></li>
-
-<li><p>认证服务器核对了授权码和重定向URI，向客户端发送访问令牌（access token）和更新令牌（refresh token）</p></li>
+<li>浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth/authorize)，携带clientid等信息</li>
+<li>用户选择是否给予客户端授权（可自动授权）</li>
+<li>认证服务器将浏览器重定向到&rdquo;重定向URI&rdquo;（redirection URI），同时附上一个授权码</li>
+<li>浏览器拿到授权码，附上早先的&rdquo;重定向URI&rdquo;，向认证服务器申请令牌(/oauth/token)</li>
+<li>认证服务器核对了授权码和重定向URI，向客户端发送访问令牌（access token）和更新令牌（refresh token）</li>
 </ol>
 </blockquote>
 
-<p>1步骤中，客户端申请认证的URI，包含以下参数：</p>
+<p>步骤1中，客户端申请认证的URI，包含以下参数：</p>
 
+<blockquote>
 <ul>
 <li>response_type：表示授权类型，必选项，此处的值固定为&rdquo;code&rdquo;</li>
 <li>client_id：表示客户端的ID，必选项</li>
@@ -213,6 +213,7 @@
 <li>scope：表示申请的权限范围，可选项</li>
 <li>state：一般随机生成，标识客户端的当前状态，认证服务器会原样返回这个值，</li>
 </ul>
+</blockquote>
 
 <h2 id="纯前端项目中获取token">纯前端项目中获取token</h2>
 
@@ -491,15 +492,6 @@ $(function() {
     
 
     
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2018-08-07</span>
-                <a href="https://www.code996.cn/post/2018/dingding/" rel="bookmark" title="spring-security-oauth2 授权服务集成钉钉扫码登录">spring-security-oauth2 授权服务集成钉钉扫码登录</a>
-            </div>
-        </article>
-    </li>
     
     
     
@@ -1120,8 +1112,6 @@ $(function() {
             
             <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:4px; padding:4px"><code>ajax</code></a>
             
-            <a href='https://www.code996.cn/tags/auth' style="font-size:17px;margin:4px; padding:4px"><code>auth</code></a>
-            
             <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px; padding:4px"><code>git</code></a>
             
             <a href='https://www.code996.cn/tags/html' style="font-size:17px;margin:4px; padding:4px"><code>html</code></a>
@@ -1137,6 +1127,8 @@ $(function() {
             <a href='https://www.code996.cn/tags/mysql' style="font-size:17px;margin:4px; padding:4px"><code>mysql</code></a>
             
             <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:4px; padding:4px"><code>netty</code></a>
+            
+            <a href='https://www.code996.cn/tags/oauth2' style="font-size:17px;margin:4px; padding:4px"><code>oauth2</code></a>
             
             <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:4px; padding:4px"><code>opencv</code></a>
             
@@ -1175,36 +1167,42 @@ $(function() {
             <h3>Links</h3>
             <ul>
             <li class="cat-item cat-item-1">
-                <a href="https://www.code996.cn/tool.html">Tool</a>
+                <a href="https://www.code996.cn/tools.html">在线编码格式化工具</a>
             </li>
             <li class="cat-item cat-item-1">
-                <a href="https://cn.bing.com/">Bing</a>
+                <a href="https://www.code996.cn/paste">网络记事本</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://www.code996.cn/#">折扣网</a>
+            </li>
+            <li class="cat-item cat-item-1">
+                <a href="https://cn.bing.com/">必应搜索</a>
             </li>
             </ul>
         </div>
 
-        
-            
-            
+        <div id="archives" class="widget widget_archive">
+            <h3>Archives</h3>
+            <ul>
                 
+                <li class="cat-item cat-item-1">
+                <a href='https://www.code996.cn/archives/2018'>2018(8)</a>
+                </li>
                 
+                <li class="cat-item cat-item-1">
+                <a href='https://www.code996.cn/archives/2017'>2017(41)</a>
+                </li>
                 
+                <li class="cat-item cat-item-1">
+                <a href='https://www.code996.cn/archives/2016'>2016(26)</a>
+                </li>
                 
+                <li class="cat-item cat-item-1">
+                <a href='https://www.code996.cn/archives/2006'>2006(1)</a>
+                </li>
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-            
-        
+            </ul>
+        </div>
 
         <div id="recent" class="widget widget_recent_entries">
             <h3>Recent</h3>
