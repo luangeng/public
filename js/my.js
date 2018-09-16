@@ -50,6 +50,11 @@ var _hmt = _hmt || [];
 
     }
 
+    $(window).scroll(function() {
+            this.scrollY > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
+        })
+
+
 function showHitCount(Counter) {
       /* 这是给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。
       */
@@ -169,6 +174,5 @@ function showHitCount(Counter) {
 
 
     function makeCode(){
-
         swal({title: '扫一扫', imageUrl: $('#weixin-qrcode').children('img')[0].src });
     }

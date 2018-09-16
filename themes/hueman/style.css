@@ -647,13 +647,26 @@ box-shadow: 0 -1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1); }
 #footer-bottom #footer-logo { display: block; margin-bottom: 20px; max-height: 50px; -webkit-border-radius: 0; border-radius: 0; }
 #footer-bottom #copyright,
 #footer-bottom #credit { color: #fff; color: rgba(255,255,255,0.5); font-size: 15px; line-height: 1.5em; }
-#back-to-top { background: #ffffff00; color: #777; text-align: center; width: 100%; height: 30px;
+#back-to-top { position: fixed;
+                   right: 15px;
+                   bottom: 60px;
+                   background: rgba(51,54,59,.6);
+                   color: #fff;
+                   text-align: center;
+                   border-radius: 2px;
+                   z-index: 1;
+                   display: none
+}
+#back-to-top:hover {
+    background: #444
+}
 
--webkit-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px;
--webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.05);
-box-shadow: inset 0 1px 0 rgba(0,0,0,0.05); }
-#back-to-top i { font-size: 38px; position: relative; top: -7px; }
-#back-to-top:hover { color: #444; }
+#back-to-top i {
+font-size: 25px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px
+}
 #footer-bottom .social-links { padding-top: 10px; }
 #footer-bottom .social-links a { color: rgba(255,255,255,0.6); }
 #footer-bottom .social-links a:hover { color: #fff; }
