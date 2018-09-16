@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn/">
-  <title>Spring Boot 集成Swagger2生成RESTful API文档 - 新起点</title>
+  <title>Spring Boot 集成Swagger2生成RESTful API文档 - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,14 +15,14 @@
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="Spring Boot 集成Swagger2生成RESTful API文档 - 新起点">
+  <meta itemprop="name" content="Spring Boot 集成Swagger2生成RESTful API文档 - Code996">
   <meta itemprop="description" content="Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试">
-  <meta itemprop="image" content="https://www.code996.cn//img/me.jpg">
+  <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="Spring Boot 集成Swagger2生成RESTful API文档 - 新起点" />
+  <meta property="og:title" content="Spring Boot 集成Swagger2生成RESTful API文档 - Code996" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.code996.cn/post/spring/spring-swagger/" />
-  <meta property="og:image" content="https://www.code996.cn//img/me.jpg" />
+  <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
   <meta property="og:description" content="Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.css" />
 
 
   <script>
@@ -127,10 +128,10 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://www.code996.cn//" rel="home">
               
-              新起点
+              Code996
             </a>
           </h1>
-          <span class="site-description"> Suffering is the most powerful teacher of life. </span>
+          <span class="site-description"> 一个纯粹的技术分享社区 </span>
         </div>
 
       </div>
@@ -323,7 +324,7 @@ public class InfoController {
     <div>
         <ul>
             <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.gitee.io/">https://luangeng.gitee.io/</a></li>
+            <li>主页：<a href="https://www.code996.cn/">https://luangeng.gitee.io/</a></li>
             <li>更多：
                 
                 <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
@@ -1008,24 +1009,30 @@ public class InfoController {
                     <div class="sidebar s2">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
     <div class="sidebar-content">
+
         <div class="sidebar-top group">
             <p>分享</p>
             <ul class="social-links">
                 <li class="social-links">
                     <a class="social-tooltip" title="renren" target="_blank">
-                        <i class="fa fa-renren"></i>
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="renren" target="_blank">
+                        <i class="fa fa-weibo"></i>
                     </a>
                 </li>
                 <li class="social-links">
                     <a class="social-tooltip" title="dribbble" target="_blank">
-                        <i class="fa  fa-dribbble"></i>
+                        <i class="fa fa-star"></i>
                     </a>
                 </li>
                 <li class="social-links">
-                    <a class="social-tooltip" title="qrcode" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/spring/spring-swagger/&#34;);"
-                       target="_blank">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
                         <i class="fa fa-qrcode"></i>
                     </a>
+                    <div class="weixin-qrcode" id="weixin-qrcode" style="display: none;"></div>
                 </li>
             </ul>
         </div>
@@ -1224,6 +1231,7 @@ public class InfoController {
 <script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
 <script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script src="//cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
 
 <script>

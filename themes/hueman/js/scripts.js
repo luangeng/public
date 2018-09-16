@@ -121,10 +121,5 @@ jQuery(document).ready(function($) {
 		}
 	});
 	}
-
-	var qrcode = new QRCode(document.getElementById("qrcode"), {
-                                 	width : 140,
-                                 	height : 140
-                                 });
 	
 });

@@ -562,6 +562,13 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/</loc>
+        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/tags/git/</loc>
         <lastmod>2016-08-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -639,14 +646,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/redis/</loc>
+        <loc>https://www.code996.cn/categories/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/redis/</loc>
+        <loc>https://www.code996.cn/tags/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -711,13 +718,6 @@
     <url>
         <loc>https://www.code996.cn/categories/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/</loc>
         <lastmod>2006-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

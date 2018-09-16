@@ -40,6 +40,14 @@ var _hmt = _hmt || [];
                       // in index.html, there are many 'leancloud_visitors' and 'post-link', so just show hit counts.
                       showHitCount(Counter);
                     }
+
+     ////
+      var qrcode = new QRCode(document.getElementById("weixin-qrcode"), {
+                                                       	width : 150,
+                                                       	height : 150
+                                                       });
+     qrcode.makeCode(window.location.toString());
+
     }
 
 function showHitCount(Counter) {
@@ -157,4 +165,10 @@ function showHitCount(Counter) {
 
     function logout(){
         AV.User.logOut();
+    }
+
+
+    function makeCode(){
+
+        swal({title: '扫一扫', imageUrl: $('#weixin-qrcode').children('img')[0].src });
     }
