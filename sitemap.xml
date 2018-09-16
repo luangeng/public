@@ -9,27 +9,6 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/redis/redis-command---string/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/redis/redis-command/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/2018/elasticsearch/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
         <loc>https://www.code996.cn/post/2018/spring-1/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -53,6 +32,27 @@
     <url>
         <loc>https://www.code996.cn/post/2018/dingding/</loc>
         <lastmod>2018-08-07T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2018/elasticsearch/</loc>
+        <lastmod>2018-02-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/redis/redis-command---string/</loc>
+        <lastmod>2018-01-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/redis/redis-command/</loc>
+        <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -640,14 +640,14 @@
     
     <url>
         <loc>https://www.code996.cn/tags/redis/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+        <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
         <loc>https://www.code996.cn/categories/redis/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+        <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
