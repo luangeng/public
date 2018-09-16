@@ -7,7 +7,7 @@ var _hmt = _hmt || [];
 
   //百度统计
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?519f6f7d9aa99e15da780c28aaa9cc13";
+  hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 

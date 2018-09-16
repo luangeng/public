@@ -639,15 +639,15 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/redis/</loc>
-        <lastmod>2011-09-03T00:00:00+00:00</lastmod>
+        <loc>https://www.code996.cn/tags/redis/</loc>
+        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/redis/</loc>
-        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
+        <loc>https://www.code996.cn/categories/redis/</loc>
+        <lastmod>2011-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
