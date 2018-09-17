@@ -1,35 +1,7 @@
 
     function init() {
-
-var _hmt = _hmt || [];
-(function() {
-  hljs.initHighlightingOnLoad();
-
-  //百度统计
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-
-  //百度推送
-  var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-
-//谷歌
-     (adsbygoogle = window.adsbygoogle || []).push({
-       google_ad_client: "ca-pub-9678348744203652",
-       enable_page_level_ads: true
-     });
-
+    hljs.initHighlightingOnLoad();
+    baidu();
     	AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
                isLogin();
                     var Counter = AV.Object.extend("Counter");
@@ -48,12 +20,44 @@ var _hmt = _hmt || [];
                                                        });
      qrcode.makeCode(window.location.toString());
 
+         $(window).scroll(function() {
+                 this.scrollY > 700 ? $("#back-to-top").show() : $("#back-to-top").hide()
+       });
+
     }
 
-    $(window).scroll(function() {
-            this.scrollY > 100 ? $("#back-to-top").fadeIn() : $("#back-to-top").fadeOut()
-        })
 
+
+function baidu(){
+var _hmt = _hmt || [];
+(function() {
+  //百度统计
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+
+  //百度推送
+  var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+}
+
+function google(){
+//谷歌
+     (adsbygoogle = window.adsbygoogle || []).push({
+       google_ad_client: "ca-pub-9678348744203652",
+       enable_page_level_ads: true
+     });
+}
 
 function showHitCount(Counter) {
       /* 这是给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。
