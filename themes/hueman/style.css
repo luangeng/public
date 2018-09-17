@@ -649,7 +649,7 @@ box-shadow: 0 -1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1); }
 #footer-bottom #credit { color: #fff; color: rgba(255,255,255,0.5); font-size: 15px; line-height: 1.5em; }
 #back-to-top { position: fixed;
                    right: 15px;
-                   bottom: 60px;
+                   bottom: 13px;
                    background: rgba(51,54,59,.6);
                    color: #fff;
                    text-align: center;

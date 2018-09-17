@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn/">
-  <title>Redis安装 - Code996</title>
+  <title>ubuntu 16.04安装redis-server - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,19 +11,19 @@
   <meta name="keywords" content="redis,">
   
 
-  <meta name="description" content="">
+  <meta name="description" content="ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="Redis安装 - Code996">
-  <meta itemprop="description" content="">
+  <meta itemprop="name" content="ubuntu 16.04安装redis-server - Code996">
+  <meta itemprop="description" content="ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程">
   <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="Redis安装 - Code996" />
+  <meta property="og:title" content="ubuntu 16.04安装redis-server - Code996" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.code996.cn/post/redis/redis-install/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="">
+  <meta property="og:description" content="ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
@@ -153,7 +153,7 @@
                             <ul class="meta-single group">
                                 
                                 <li class="category">
-                                    <span>redis</span>
+                                    <span>学习笔记</span>
                                 </li>
                                 
                             </ul>
@@ -165,10 +165,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Redis安装</h1>
+                                    <h1 class="post-title">ubuntu 16.04安装redis-server</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-03 · 0 Words
+                                        Posted @ 2017-09-07 · 330 Words
                                         
                                         · Tags: redis
                                         
@@ -177,7 +177,7 @@
                                         
                                         · Hits:
                                         <span id="https://www.code996.cn/post/redis/redis-install/" class="leancloud_visitors"
-                                              data-flag-title="Redis安装">
+                                              data-flag-title="ubuntu 16.04安装redis-server">
                                             <span class="leancloud-visitors-count"></span>
                                         </span>
                                     </p>
@@ -189,6 +189,77 @@
                                         <div class="entry-inner">
                                             
                                             
+
+<p>ubuntu 16.04安装redis-server</p>
+
+<p><code>apt-get install redis-server</code></p>
+
+<p>启动、停止、重启、重新加载、查看状态</p>
+
+<pre><code>/etc/init.d/redis-server start
+
+/etc/init.d/redis-server stop
+
+/etc/init.d/redis-server restart
+
+/etc/init.d/redis-server force-reload
+
+/etc/init.d/redis-server status
+</code></pre>
+
+<p>进入redis命令行</p>
+
+<p>daemon启动程式，后面加&amp;表示后台启动，后面加配置文件path表示使用该配置文件启动</p>
+
+<p>查看redis是否在运行:</p>
+
+<pre><code>1.检测后台进程是否存在
+ps -ef |grep redis
+
+2.检测6379端口是否在监听
+netstat -lntp | grep 6379
+
+3.使用redis-cli查看
+</code></pre>
+
+<h2 id="设置redis密码">设置redis密码</h2>
+
+<p><code>vi /etc/redis/redis.conf</code></p>
+
+<h2 id="后面为设置的密码">后面为设置的密码</h2>
+
+<p><code>requirepass password</code></p>
+
+<h2 id="打开redis远程访问">打开redis远程访问</h2>
+
+<p>用vi打开Redis服务器的配置文件redis.conf</p>
+
+<p><code>vi /etc/redis/redis.conf</code></p>
+
+<p>#注释掉下面的一行
+<code>#bind 127.0.0.1</code></p>
+
+<p>修改后，重启Redis服务器，使用密码访问命令行</p>
+
+<p><code>sudo /etc/init.d/redis-server restart</code>
+<code>redis-cli -a password</code></p>
+
+<p>在远程的一台Mac访问Redis服务器</p>
+
+<p>redis配置文件</p>
+
+<p>可参考 <a href="http://www.cnblogs.com/kreo/p/4423362.html">http://www.cnblogs.com/kreo/p/4423362.html</a></p>
+
+<p>redis执行初始化脚本</p>
+
+<h3 id="windows">windows</h3>
+
+<p><code>type data.txt | redis-cli</code></p>
+
+<h3 id="linux">Linux</h3>
+
+<p><code>cat data.txt | redis-cli</code></p>
+
                                             
                                         </div>
 
@@ -204,7 +275,7 @@
             <li>主页：<a href="https://www.code996.cn/">https://luangeng.gitee.io/</a></li>
             <li>更多：
                 
-                <span><a href="https://www.code996.cn/categories/redis/" rel="category tag">redis</a> </span>
+                <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
                 
             </li>
             <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/redis/redis-install/">https://www.code996.cn/post/redis/redis-install/</a></li>
@@ -227,19 +298,19 @@
                             <ul class="post-nav group">
                                 <li class="next">
                                     
-                                    <a href="https://www.code996.cn/post/redis/redis-intr/" rel="next">
+                                    <a href="https://www.code996.cn/post/spring/spring-config/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Redis简介</span>
+                                        <span>Spring Boot发布和调用RESTful web service</span>
                                     </a>
                                     
                                 </li>
                                 <li class="previous">
                                     
-                                    <a href="https://www.code996.cn/post/spring/spring-swagger/" rel="prev">
+                                    <a href="https://www.code996.cn/post/spring/spring-cloud-config/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>Spring Boot 集成Swagger2生成RESTful API文档</span>
+                                        <span>Spring Cloud Eureka 注册，发布，调用服务</span>
                                     </a>
                                     
                                 </li>
@@ -249,6 +320,9 @@
 <ul class="related-posts group">
     
 
+    
+    
+    
     
     
     
@@ -343,18 +417,6 @@
     
     
     
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-07</span>
-                <a href="https://www.code996.cn/post/redis/redis/" rel="bookmark" title="Linux redis">Linux redis</a>
-            </div>
-        </article>
-    </li>
     
     
     
@@ -621,7 +683,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2018-09-03</span>
-                <a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a>
+                <a href="https://www.code996.cn/post/2018/work-single-net/">网元级网络巡检-方案概要</a>
             </div>
         </article>
     </li>
@@ -631,7 +693,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2018-09-03</span>
-                <a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a>
+                <a href="https://www.code996.cn/post/2018/work-sso/">统一身份认证平台-方案概要</a>
             </div>
         </article>
     </li>
@@ -641,7 +703,17 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2018-09-03</span>
-                <a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+                <a href="https://www.code996.cn/post/2018/spring-annotation/">一文看懂@RequestBody,@RequestParam和@PathVariable</a>
+            </div>
+        </article>
+    </li>
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-03</span>
+                <a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a>
             </div>
         </article>
     </li>
@@ -672,16 +744,6 @@
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2018-02-03</span>
                 <a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2018-01-03</span>
-                <a href="https://www.code996.cn/post/redis/redis-command/">Redis命令</a>
             </div>
         </article>
     </li>
@@ -809,11 +871,11 @@
             <ul>
                 
                 <li class="cat-item cat-item-1">
-                <a href='https://www.code996.cn/archives/2018'>2018(8)</a>
+                <a href='https://www.code996.cn/archives/2018'>2018(9)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">
-                <a href='https://www.code996.cn/archives/2017'>2017(41)</a>
+                <a href='https://www.code996.cn/archives/2017'>2017(40)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">
@@ -831,19 +893,19 @@
             <h3>Recent</h3>
             <ul>
                 
-                <li><a href="https://www.code996.cn/post/2018/single-net/">网元级网络巡检-方案概要</a></li>
+                <li><a href="https://www.code996.cn/post/2018/work-single-net/">网元级网络巡检-方案概要</a></li>
                 
                 
-                <li><a href="https://www.code996.cn/post/2018/sso/">统一身份认证平台-方案概要</a></li>
+                <li><a href="https://www.code996.cn/post/2018/work-sso/">统一身份认证平台-方案概要</a></li>
                 
                 
-                <li><a href="https://www.code996.cn/post/2018/spring-1/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                <li><a href="https://www.code996.cn/post/2018/spring-annotation/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
                 
                 
                 <li><a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
-                
-                
-                <li><a href="https://www.code996.cn/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a></li>
                 
                 
             </ul>

@@ -9,21 +9,28 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/2018/spring-1/</loc>
+        <loc>https://www.code996.cn/post/2018/elasticJob/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/2018/sso/</loc>
+        <loc>https://www.code996.cn/post/2018/spring-annotation/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/2018/single-net/</loc>
+        <loc>https://www.code996.cn/post/2018/work-sso/</loc>
+        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/2018/work-single-net/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -177,14 +184,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/redis/redis/</loc>
+        <loc>https://www.code996.cn/post/spring/spring-cloud-config/</loc>
         <lastmod>2017-09-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/spring/spring-cloud-config/</loc>
+        <loc>https://www.code996.cn/post/redis/redis-install/</loc>
         <lastmod>2017-09-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -228,13 +235,6 @@
     <url>
         <loc>https://www.code996.cn/post/spring/spring-swagger/</loc>
         <lastmod>2017-09-04T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/redis/redis-install/</loc>
-        <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -646,14 +646,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/redis/</loc>
+        <loc>https://www.code996.cn/tags/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/redis/</loc>
+        <loc>https://www.code996.cn/categories/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>

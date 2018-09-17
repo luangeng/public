@@ -31,21 +31,12 @@
     </item>
     
     <item>
-      <title>Linux redis</title>
-      <link>https://www.code996.cn/post/redis/redis/</link>
+      <title>ubuntu 16.04安装redis-server</title>
+      <link>https://www.code996.cn/post/redis/redis-install/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/redis/redis/</guid>
-      <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
-    </item>
-    
-    <item>
-      <title>Redis安装</title>
-      <link>https://www.code996.cn/post/redis/redis-install/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://www.code996.cn/post/redis/redis-install/</guid>
-      <description></description>
+      <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
     </item>
     
     <item>

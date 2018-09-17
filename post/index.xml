@@ -22,29 +22,38 @@
     </item>
     
     <item>
-      <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
-      <link>https://www.code996.cn/post/2018/spring-1/</link>
+      <title>SpringBoot集成elastic-job-lite</title>
+      <link>https://www.code996.cn/post/2018/elasticJob/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/spring-1/</guid>
+      <guid>https://www.code996.cn/post/2018/elasticJob/</guid>
+      <description>SpringBoot集成elastic-job-lite pom文件中引用jar包 &amp;lt;!-- elastic-job-lite --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-common-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-spring&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;18.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 2.本地启动一</description>
+    </item>
+    
+    <item>
+      <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
+      <link>https://www.code996.cn/post/2018/spring-annotation/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2018/spring-annotation/</guid>
       <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
     </item>
     
     <item>
       <title>统一身份认证平台-方案概要</title>
-      <link>https://www.code996.cn/post/2018/sso/</link>
+      <link>https://www.code996.cn/post/2018/work-sso/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/sso/</guid>
+      <guid>https://www.code996.cn/post/2018/work-sso/</guid>
       <description>为公司各内外部IT系统提供统一的单点登录，授权和权限控制功能。 系统遵循oauth2协议，将需要权限控制的服务视为资源，将请求资源的服务视为客</description>
     </item>
     
     <item>
       <title>网元级网络巡检-方案概要</title>
-      <link>https://www.code996.cn/post/2018/single-net/</link>
+      <link>https://www.code996.cn/post/2018/work-single-net/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/single-net/</guid>
+      <guid>https://www.code996.cn/post/2018/work-single-net/</guid>
       <description>技术栈： HDFS mysql redis HDFS zookeeper 工程结构 调度机 执行机 前台UI 后台服务 运营管理(监控执行机状态，趋势，等待任务数量等) https://www.javacodegeeks.com/</description>
     </item>
     
@@ -238,21 +247,21 @@
     </item>
     
     <item>
-      <title>Linux redis</title>
-      <link>https://www.code996.cn/post/redis/redis/</link>
-      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/redis/redis/</guid>
-      <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
-    </item>
-    
-    <item>
       <title>Spring Cloud Eureka 注册，发布，调用服务</title>
       <link>https://www.code996.cn/post/spring/spring-cloud-config/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-cloud-config/</guid>
       <description>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co</description>
+    </item>
+    
+    <item>
+      <title>ubuntu 16.04安装redis-server</title>
+      <link>https://www.code996.cn/post/redis/redis-install/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/redis/redis-install/</guid>
+      <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
     </item>
     
     <item>
@@ -307,15 +316,6 @@
       
       <guid>https://www.code996.cn/post/spring/spring-swagger/</guid>
       <description>Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试</description>
-    </item>
-    
-    <item>
-      <title>Redis安装</title>
-      <link>https://www.code996.cn/post/redis/redis-install/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/redis/redis-install/</guid>
-      <description></description>
     </item>
     
     <item>

@@ -2,33 +2,33 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn/">
-  <title>Java基础--JDBC - Code996</title>
+  <title>一文看懂@RequestBody,@RequestParam和@PathVariable - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   
-  <meta name="keywords" content="java,">
+  <meta name="keywords" content="spring,">
   
 
-  <meta name="description" content="JDBC(Java Database Connectivity) Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作 常用的类与接口">
+  <meta name="description" content="在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="Java基础--JDBC - Code996">
-  <meta itemprop="description" content="JDBC(Java Database Connectivity) Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作 常用的类与接口">
+  <meta itemprop="name" content="一文看懂@RequestBody,@RequestParam和@PathVariable - Code996">
+  <meta itemprop="description" content="在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr">
   <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="Java基础--JDBC - Code996" />
+  <meta property="og:title" content="一文看懂@RequestBody,@RequestParam和@PathVariable - Code996" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.code996.cn/post/2016/java-jdbc/" />
+  <meta property="og:url" content="https://www.code996.cn/post/2018/spring-annotation/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="JDBC(Java Database Connectivity) Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作 常用的类与接口">
+  <meta property="og:description" content="在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
-  <link rel="canonical" href="https://www.code996.cn/post/2016/java-jdbc/">
-  <link rel='shortlink' href="https://www.code996.cn/post/2016/java-jdbc/"/>
+  <link rel="canonical" href="https://www.code996.cn/post/2018/spring-annotation/">
+  <link rel='shortlink' href="https://www.code996.cn/post/2018/spring-annotation/"/>
   <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
 
   <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
@@ -165,19 +165,19 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Java基础--JDBC</h1>
+                                    <h1 class="post-title">一文看懂@RequestBody,@RequestParam和@PathVariable</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2016-05-18 · 668 Words
+                                        Posted @ 2018-09-03 · 1235 Words
                                         
-                                        · Tags: java
+                                        · Tags: spring
                                         
                                         
                                         
                                         
                                         · Hits:
-                                        <span id="https://www.code996.cn/post/2016/java-jdbc/" class="leancloud_visitors"
-                                              data-flag-title="Java基础--JDBC">
+                                        <span id="https://www.code996.cn/post/2018/spring-annotation/" class="leancloud_visitors"
+                                              data-flag-title="一文看懂@RequestBody,@RequestParam和@PathVariable">
                                             <span class="leancloud-visitors-count"></span>
                                         </span>
                                     </p>
@@ -188,121 +188,105 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>JDBC(Java Database Connectivity)</p>
+                                            
 
-<p>Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作</p>
+<p><img src="pic/2018-8/ding.jpg" alt="java" /></p>
 
-<p>常用的类与接口为DriverManager、Connection、Statement、ResultSet、PreparedStatement , SavePoint</p>
+<p>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spring的各种注解，@RequestBody，@RequestParam，@ResponseBody，@PathVariable等，本文通过Postman示例，并结合Http协议演示下几种注解的用法用途。</p>
 
-<p>DriverManager</p>
+<p>定义一个简单的User对象：</p>
 
-<p>管理JDBC驱动的服务类，通过它获取Connection数据库链接，常用方法如下：
-public static synchronized Connection getConnection(String url, String user, String password) throws Exception;</p>
+<p><img src="pic/2018-8/ding-1.jpg" alt="java" /></p>
 
-<p>JDBC2.0中引DataSource,推荐使用DataSource获取连接.</p>
+<p>UserController：</p>
 
-<p>PreparedStatement</p>
+<p><img src="pic/2018-8/ding-2.jpg" alt="java" /></p>
 
-<p>预编译的statement对象，PreparedStatement是Statement的子接口，它允许数据库预编译SQL,通常指带参数的SQL语句.
-无需重新传入SQL语句，避免数据库每次都编译SQL语句。
-PreparedStatement可以为编译的SQL语句传入参数值，void setXxx(int index, value)</p>
+<hr />
 
-<p>ResultSet</p>
+<h2 id="首先看一下get请求">首先看一下GET请求：</h2>
 
-<p>保存执行Sql后的返回结果集.</p>
+<p>表单可以以GET请求提交，但是GET请求只能在url中携带参数，所以在Postman中无法编辑body，参数是通过在url中拼接传递的：</p>
 
-<p>java连接Mysql示例</p>
+<p><img src="pic/2018-8/ding-3.jpg" alt="java" /></p>
 
-<p>引入Mysql驱动</p>
+<p>此时Controller中可以直接使用User对象接收参数，不用加任何注解：(springMvc自动构造User对象)</p>
 
-<pre><code>&lt;dependency&gt;
-     &lt;groupId&gt;mysql&lt;/groupId&gt;
-     &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-     &lt;version&gt;5.1.30&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p><img src="pic/2018-8/ding-4.jpg" alt="java" /></p>
 
-<pre><code>package jdbc;
+<p>也可以通过@RequestParam单独获取其中一个参数：</p>
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+<p><img src="pic/2018-8/ding-5.jpg" alt="从url中获取参数" /></p>
 
-public class JdbcTest {
+<hr />
 
-    public static void queryForList() {
-        Connection connection = null;
-        ResultSet resultSet = null;
-        PreparedStatement statement = null;
+<h2 id="再来看post请求">再来看POST请求：</h2>
 
-        List&lt;Map&lt;String, Object&gt;&gt; resultList = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
-        String url = &quot;jdbc:mysql://192.168.3.5:3306/javaweb&quot;;
-        String user = &quot;root&quot;;
-        String pwd = &quot;z&quot;;
-        String sql = &quot;select * from user_t where id != ? &quot;;
+<p>表单可以通过POST提交请求,此时Http请求的Context-Type为application/x-www-form-urlencoded，</p>
 
-        try {
-            // 加载JDBC驱动
-            Class clazz = Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
-            System.out.println(clazz);
+<p>所以在Postman中如图设置：</p>
 
-            // 获取数据库连接
-            connection = DriverManager.getConnection(url, user, pwd);
+<p><img src="pic/2018-8/ding-6.jpg" alt="勾选x-www-form-urlencoded" /></p>
 
-            // 获取Statement,每一个Statement表示一次数据库请求
-            statement = connection.prepareStatement(sql);
+<p>Controller中应该这样接收参数，不用加任何注解：(spring自动构造User对象)</p>
 
-            // 设置参数
-            statement.setString(1, &quot;-1&quot;);
+<p><img src="pic/2018-8/ding-7.jpg" alt="java" /></p>
 
-            // 执行查询
-            resultSet = statement.executeQuery();
+<p>此时@RequestParam也可以使用：</p>
 
-            // 获取查询结果
-            ResultSetMetaData metadata = resultSet.getMetaData();
+<p><img src="pic/2018-8/ding-8.jpg" alt="从请求体中获取参数" /></p>
 
-            while (resultSet.next()) {
-                Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();
-                for (int i = 0,count = metadata.getColumnCount(); i &lt; count; i++) {
-                    String columnName = metadata.getColumnName(i + 1);
-                    map.put(columnName, resultSet.getString(columnName));
-                }
-                resultList.add(map);
-            }
+<p>Http请求也可以不用表单形式提交，比如传递一个纯字符串或json字符串到后台，此时就需要使用@RequestBody了。</p>
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+<p>传递纯字符串，在Body中选择raw类型，下拉框选择Text或test/plain,然后输入参数：</p>
 
-        //打印结果
-        for (Map m : resultList) {
-            System.out.println(m);
-        }
-    }
+<p><img src="pic/2018-8/ding-9.jpg" alt="text/plain" /></p>
 
+<p>Controller中参数前加@RequestBody，就可以接收到参数了：</p>
 
-    public static void main(String[] args) {
-        queryForList();
-    }
+<p><img src="pic/2018-8/ding-10.jpg" alt="加@RequestBody" /></p>
 
-}
-</code></pre>
+<p>同理通过json或xml传参：</p>
+
+<p><img src="pic/2018-8/ding-11.jpg" alt="java" /></p>
+
+<p>加@RequestBody:</p>
+
+<p><img src="pic/2018-8/ding-12.jpg" alt="java" /></p>
+
+<p>也可以混合传参：</p>
+
+<p><img src="pic/2018-8/ding-13.jpg" alt="url中增加一个参数" /></p>
+
+<p>使用@RequestParam接收:</p>
+
+<p><img src="pic/2018-8/ding-14.jpg" alt="java" /></p>
+
+<hr />
+
+<h2 id="再看一下-pathvariable注解的使用方法">再看一下@PathVariable注解的使用方法：</h2>
+
+<p><img src="pic/2018-8/ding-15.jpg" alt="在{}中映射参数" /></p>
+
+<p>直接拼参数:</p>
+
+<p><img src="pic/2018-8/ding-16.jpg" alt="java" /></p>
+
+<hr />
+
+<h2 id="总结下-requestbody的作用">总结下@RequestBody的作用：</h2>
+
+<p>@RequestBody注解将首先获取context-type，然后查找可以解析该类型的MessageConverter，找到后使用该转换器解析requestBody中的内容，比如contexttype 为application/json，则调用Jackson2HttpMessageConverter解析body中的为json字符串。</p>
+
+<p>SpringMVC中的MessageConverter有下列几种：</p>
+
+<p><img src="pic/2018-8/ding-17.jpg" alt="java" /></p>
+
+<p>若请求以表单形式提交，Context-Type是application/x-www-form-urlencoded，参数即为Key/Value形式，则不需转换器，SpringMvc自动根据Controller的参数构造对象。</p>
+
+<p>总有人究竟该不该加注解或参数为什么传不过去，其实是取决于前端开发和你协商如何传参决定的，每种方式都能达到目的，而不是一定要加或不加。</p>
+
+<p>还有其他针对不同ContextType的注解，如针对multipart/form-data的@RequestPart注解等，由于篇幅关系下次再说。</p>
 
                                             
                                         </div>
@@ -322,7 +306,7 @@ public class JdbcTest {
                 <span><a href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="category tag">学习笔记</a> </span>
                 
             </li>
-            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2016/java-jdbc/">https://www.code996.cn/post/2016/java-jdbc/</a></li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2018/spring-annotation/">https://www.code996.cn/post/2018/spring-annotation/</a></li>
             <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
@@ -342,19 +326,19 @@ public class JdbcTest {
                             <ul class="post-nav group">
                                 <li class="next">
                                     
-                                    <a href="https://www.code996.cn/post/2016/java-annotation/" rel="next">
+                                    <a href="https://www.code996.cn/post/2018/work-sso/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Java基础--注解Annotation</span>
+                                        <span>统一身份认证平台-方案概要</span>
                                     </a>
                                     
                                 </li>
                                 <li class="previous">
                                     
-                                    <a href="https://www.code996.cn/post/2016/java-oddeven/" rel="prev">
+                                    <a href="https://www.code996.cn/post/2018/elasticJob/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>Java--两个线程交替执行和死锁</span>
+                                        <span>SpringBoot集成elastic-job-lite</span>
                                     </a>
                                     
                                 </li>
@@ -432,14 +416,14 @@ public class JdbcTest {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2017-09-10</span>
+                <a href="https://www.code996.cn/post/2017/springmvc/" rel="bookmark" title="Spring MVC中Action使用总结">Spring MVC中Action使用总结</a>
+            </div>
+        </article>
+    </li>
     
     
     
@@ -537,44 +521,8 @@ public class JdbcTest {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-26</span>
-                <a href="https://www.code996.cn/post/2016/java-proxy/" rel="bookmark" title="Java动态代理">Java动态代理</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-21</span>
-                <a href="https://www.code996.cn/post/2016/java-nio/" rel="bookmark" title="Java基础--NIO">Java基础--NIO</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-20</span>
-                <a href="https://www.code996.cn/post/2016/java-locks/" rel="bookmark" title="Java并发--CountDownLatch CyclicBarrier ReentrantLock">Java并发--CountDownLatch CyclicBarrier ReentrantLock</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-19</span>
-                <a href="https://www.code996.cn/post/2016/java-oddeven/" rel="bookmark" title="Java--两个线程交替执行和死锁">Java--两个线程交替执行和死锁</a>
+                <span class="post-date" style="font-size:14px">2016-08-23</span>
+                <a href="https://www.code996.cn/post/2016/struts/" rel="bookmark" title="struts2 &#43; spring &#43; mybatis 框架整合">struts2 &#43; spring &#43; mybatis 框架整合</a>
             </div>
         </article>
     </li>
@@ -585,182 +533,65 @@ public class JdbcTest {
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-17</span>
-                <a href="https://www.code996.cn/post/2016/java-annotation/" rel="bookmark" title="Java基础--注解Annotation">Java基础--注解Annotation</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-16</span>
-                <a href="https://www.code996.cn/post/2016/java-innerclass/" rel="bookmark" title="Java基础--内部类">Java基础--内部类</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-15</span>
-                <a href="https://www.code996.cn/post/2016/java-comparator/" rel="bookmark" title="Java基础--比较器Comparator">Java基础--比较器Comparator</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-14</span>
-                <a href="https://www.code996.cn/post/2016/java-countdownlatch/" rel="bookmark" title="Java基础--CountDownLatch">Java基础--CountDownLatch</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-13</span>
-                <a href="https://www.code996.cn/post/2016/java-jvm/" rel="bookmark" title="Java基础--虚拟机JVM">Java基础--虚拟机JVM</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-11</span>
-                <a href="https://www.code996.cn/post/2016/java-blockingqueue/" rel="bookmark" title="Java-压缩解压gz">Java-压缩解压gz</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-09</span>
-                <a href="https://www.code996.cn/post/2016/java-reflection/" rel="bookmark" title="Java基础--反射Reflection">Java基础--反射Reflection</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-08</span>
-                <a href="https://www.code996.cn/post/2016/java-clone/" rel="bookmark" title="Java基础--读写文件">Java基础--读写文件</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-07</span>
-                <a href="https://www.code996.cn/post/2016/java-hashcode/" rel="bookmark" title="Java基础--HashCode">Java基础--HashCode</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-06</span>
-                <a href="https://www.code996.cn/post/2016/java-serializable/" rel="bookmark" title="Java基础--序列化Serializable">Java基础--序列化Serializable</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-05</span>
-                <a href="https://www.code996.cn/post/2016/java-singleton/" rel="bookmark" title="Java基础--单例类">Java基础--单例类</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-04</span>
-                <a href="https://www.code996.cn/post/2016/java-threadlocal/" rel="bookmark" title="Java基础--ThreadLocal">Java基础--ThreadLocal</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-03</span>
-                <a href="https://www.code996.cn/post/2016/java-gz/" rel="bookmark" title="Java基础--读写文件">Java基础--读写文件</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-02</span>
-                <a href="https://www.code996.cn/post/2016/java-io/" rel="bookmark" title="Java基础--压缩和解压缩gz包">Java基础--压缩和解压缩gz包</a>
-            </div>
-        </article>
-    </li>
     
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2016-05-01</span>
-                <a href="https://www.code996.cn/post/2016/java-enum/" rel="bookmark" title="Java基础--枚举Enum">Java基础--枚举Enum</a>
-            </div>
-        </article>
-    </li>
+    
+    
+    
     
     
     
@@ -1131,7 +962,7 @@ public class JdbcTest {
     </a>
   </li>
     <li>
-        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2016/java-jdbc/&#34;);" target="_blank">
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2018/spring-annotation/&#34;);" target="_blank">
             <i class="fa fa-weixin"></i>
         </a>
     </li>

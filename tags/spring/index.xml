@@ -14,10 +14,10 @@
     
     <item>
       <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
-      <link>https://www.code996.cn/post/2018/spring-1/</link>
+      <link>https://www.code996.cn/post/2018/spring-annotation/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/spring-1/</guid>
+      <guid>https://www.code996.cn/post/2018/spring-annotation/</guid>
       <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
     </item>
     
