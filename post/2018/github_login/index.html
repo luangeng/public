@@ -2,33 +2,33 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn/">
-  <title>Netty--TCP协议发送和接收数据 - Code996</title>
+  <title>使用github登录网址 - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   
-  <meta name="keywords" content="netty,tcp,">
+  <meta name="keywords" content="github,">
   
 
-  <meta name="description" content="Netty--TCP协议发送和接收数据">
+  <meta name="description" content="使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="Netty--TCP协议发送和接收数据 - Code996">
-  <meta itemprop="description" content="Netty--TCP协议发送和接收数据">
+  <meta itemprop="name" content="使用github登录网址 - Code996">
+  <meta itemprop="description" content="使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完">
   <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="Netty--TCP协议发送和接收数据 - Code996" />
+  <meta property="og:title" content="使用github登录网址 - Code996" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.code996.cn/post/netty/netty-tcp/" />
+  <meta property="og:url" content="https://www.code996.cn/post/2018/github_login/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="Netty--TCP协议发送和接收数据">
+  <meta property="og:description" content="使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
-  <link rel="canonical" href="https://www.code996.cn/post/netty/netty-tcp/">
-  <link rel='shortlink' href="https://www.code996.cn/post/netty/netty-tcp/"/>
+  <link rel="canonical" href="https://www.code996.cn/post/2018/github_login/">
+  <link rel='shortlink' href="https://www.code996.cn/post/2018/github_login/"/>
   <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
 
   <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
@@ -165,19 +165,19 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Netty--TCP协议发送和接收数据</h1>
+                                    <h1 class="post-title">使用github登录网址</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-13 · 1272 Words
+                                        Posted @ 2018-09-18 · 434 Words
                                         
-                                        · Tags: netty
+                                        · Tags: github
                                         
                                         
                                         
                                         
                                         · Hits:
-                                        <span id="https://www.code996.cn/post/netty/netty-tcp/" class="leancloud_visitors"
-                                              data-flag-title="Netty--TCP协议发送和接收数据">
+                                        <span id="https://www.code996.cn/post/2018/github_login/" class="leancloud_visitors"
+                                              data-flag-title="使用github登录网址">
                                             <span class="leancloud-visitors-count"></span>
                                         </span>
                                     </p>
@@ -188,160 +188,138 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Netty是业界最流行的NIO开发框架，使用Netty可以构建高性能异步通信能力，经常用于RPC底层通信框架。Netty的API使用简单，功能强大，预置了多种编解码功能，支持多种主流协议，并且可以通过ChannelHandler对通信框架进行灵活的扩展；Netty并发量高，性能好，成熟稳定，是Java NIO开发的首选框架。</p>
+                                            
 
-<p>以下是一个使用Netty通信在TCP协议的应用</p>
+<p>使用第三方网址登录系统，使用github</p>
 
-<p>服务端TcpServer.java</p>
+<p>工作流程：</p>
 
-<pre><code>public class TcpServer {
-    private static final int PORT = 9000;
-    private static Logger logger = LoggerFactory.getLogger(TcpServer.class);
+<ul>
+<li>页面点击使用github登录，</li>
+<li>重定向到回调地址</li>
+<li>回调地址后台获取token，获取用户信息，完成登录，将页面重定向到某页面</li>
+<li>页面正常显示</li>
+</ul>
 
-    protected static void start() {
-        final EventLoopGroup bossGroup = new NioEventLoopGroup(2);
-        final EventLoopGroup workerGroup = new NioEventLoopGroup(4);
+<h2 id="1">1</h2>
+
+<p>git混设置页，deleveper setting页 新建app，注册回调地址。</p>
+
+<h2 id="html">html</h2>
+
+<pre><code> &lt;a class=&quot;btn btn-link-2&quot; href=&quot;#&quot; onclick=&quot;git_login()&quot;&gt;
+     &lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt; Github
+ &lt;/a&gt;
+</code></pre>
+
+<h2 id="获取code">获取code</h2>
+
+<pre><code>const FULL_CHARTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopgrstuvwxyz';
+const git_clientId='269c706502923e741920';
+const redirect_uri = 'http://luangeng.leanapp.cn/test';
+const git_auth = 'https://github.com/login/oauth/authorize?';
+const scope	= 'read';
+
+function getState(){
+var state='';
+for (var a=0;a&lt;6;a++){
+    state+=FULL_CHARTER[Math.floor(Math.random() * 52)];
+}
+token_storage.setItem(&quot;git_state&quot;, state);
+return state;
+}
+
+function git_login(){
+    var url=git_auth+'client_id='+git_clientId+'&amp;redirect_uri='+redirect_uri+'&amp;scope='+scope+'&amp;state='+getState();
+    window.location = url;
+}
+
+</code></pre>
+
+<h2 id="获取token">获取token</h2>
+
+<pre><code>@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        String toke = &quot; https://github.com/login/oauth/access_token&quot;;
+        String user = &quot;https://api.github.com/user?access_token=&quot;;
+        String state = req.getParameter(&quot;state&quot;);
+        String code = req.getParameter(&quot;code&quot;);
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody formBody = new FormEncodingBuilder()
+                .add(&quot;client_id&quot;, &quot;269c706502923e741920&quot;)
+                .add(&quot;client_secret&quot;, &quot;a8594616a65fb12bc87d5088819b84fcb65ccdc7&quot;)
+                .add(&quot;code&quot;, code)
+                .add(&quot;redirect_uri&quot;, &quot;http://luangeng.leanapp.cn/test&quot;)
+                .add(&quot;state&quot;, state)
+                .build();
+        Request request = new Request.Builder()
+                .url(toke)
+                .post(formBody)
+                .build();
+        Response response = client.newCall(request).execute();
+        String ret = response.body().string();
+        String token = ret.substring(ret.indexOf(&quot;=&quot;) + 1, ret.indexOf(&quot;&amp;&quot;));
+        //GET
+        Request.Builder builder = new Request.Builder();
+        builder.url(user + token).get();
+        client = new OkHttpClient();
+        Call call = client.newCall(builder.build());
         try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup);
-            b.channel(NioServerSocketChannel.class);
-            b.childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
-                @Override
-                public void initChannel(SocketChannel ch) throws Exception {
-                    ChannelPipeline pipeline = ch.pipeline();
-                    pipeline.addLast(&quot;frameDecoder&quot;, new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
-                    pipeline.addLast(&quot;frameEncoder&quot;, new LengthFieldPrepender(4));
-                    pipeline.addLast(&quot;decoder&quot;, new StringDecoder(CharsetUtil.UTF_8));
-                    pipeline.addLast(&quot;encoder&quot;, new StringEncoder(CharsetUtil.UTF_8));
-                    pipeline.addLast(new TcpServerHandler());
-                }
-            });
-
-            // Start the server.
-            ChannelFuture f = b.bind(PORT).sync();
-            logger.info(&quot;TCP服务器已启动&quot;);
-
-            // Wait until the server socket is closed.
-            f.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            workerGroup.shutdownGracefully();
-            bossGroup.shutdownGracefully();
+            response = call.execute();
+            resp.getWriter().append(&quot;ok: &quot;).append(&quot;token: &quot; + token + &quot;  &quot;);
+        } catch (Exception e) {
+            resp.getWriter().append(e.getMessage());
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        TcpServer.start();
-    }
-}
-</code></pre>
-
-<p>NioEventLoopGroup是线程组，包含一组NIO线程，NIO线程用于网络事件的处理，等同于JDK Reactor线程组。bossGroup用于服务端接收客户端的连接，workerGroup用于进行SocketChannel的网络读写。</p>
-
-<p>ServerBootstrap是Netty用于启动NIO服务端的辅助启动类，用它简化服务端的开发。</p>
-
-<p>b.group方法用于初始化线程组。</p>
-
-<p>NioServerSocketChannel对应于JDK中的ServerSocketChannel。</p>
-
-<p>b.ChildHandler用于绑定事件处理，如IO事件，编解码等。</p>
-
-<p>服务端自定义Handler ，用于处理接收到的网络事件</p>
-
-<pre><code>public class TcpServerHandler extends SimpleChannelInboundHandler&lt;Object&gt; {
-
-    private static Logger logger = LoggerFactory.getLogger(TcpClient.class);
-
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ctx.channel().writeAndFlush(&quot;server收到消息:&quot; + msg);
-    }
-
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        logger.warn(&quot;exceptionCaught!&quot;, cause);
-        ctx.close();
-    }
-
-}
-</code></pre>
-
-<p>channelRead方法在收到消息后触发，Netty的write方法只把待发送消息放在缓冲中，flush方法将缓冲中的方法写到SocketChannel中。</p>
-
-<p>exceptionCaught方法在发生异常的时候调用。</p>
-
-<p>客户端TcpClient.java</p>
-
-<pre><code>public class TcpClient {
-    public static String HOST = &quot;127.0.0.1&quot;;
-    public static int PORT = 9000;
-    private static Logger logger = LoggerFactory.getLogger(TcpClient.class);
-
-    public static final void send() {
-        Bootstrap bootstrap = new Bootstrap();
-        EventLoopGroup group = new NioEventLoopGroup();
-        try {
-            bootstrap.group(group).channel(NioSocketChannel.class);
-            bootstrap.handler(new ChannelInitializer&lt;Channel&gt;() {
-                @Override
-                protected void initChannel(Channel ch) throws Exception {
-                    ChannelPipeline pipeline = ch.pipeline();
-                    pipeline.addLast(&quot;frameDecoder&quot;, new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
-                    pipeline.addLast(&quot;frameEncoder&quot;, new LengthFieldPrepender(4));
-                    pipeline.addLast(&quot;decoder&quot;, new StringDecoder(CharsetUtil.UTF_8));
-                    pipeline.addLast(&quot;encoder&quot;, new StringEncoder(CharsetUtil.UTF_8));
-                    pipeline.addLast(&quot;handler&quot;, new TcpClientHandler());
-                    //pipeline.addLast(&quot;log&quot;, new LoggingHandler(LogLevel.INFO));
-                }
-            });
-            bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
-
-            // Start the client.
-            ChannelFuture f = bootstrap.connect(HOST, PORT).sync();
-            logger.info(&quot;连接建立!&quot;);
-
-            for (int i = 0; i &lt; 60; i++) {
-                f.channel().writeAndFlush(&quot;hello&quot; + i).sync();
-                TimeUnit.SECONDS.sleep(1);
-            }
-
-            // Wait until the connection is closed.
-            f.channel().closeFuture().sync();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            group.shutdownGracefully();
+        Gson gson = new Gson();
+        User u = gson.fromJson(response.body().string(), User.class);
         }
-    }
+   }
+</code></pre>
 
-    public static void main(String[] args) throws Exception {
-        TcpClient.send();
-    }
+<h2 id="获取用户信息">获取用户信息</h2>
 
+<p><code>https://api.github.com/user?access_token=0013d0335c9d38104a55bb2973045160c9648474</code></p>
+
+<pre><code>{
+  &quot;login&quot;: &quot;luangeng&quot;,
+  &quot;id&quot;: 10940569,
+  &quot;node_id&quot;: &quot;MDQ6VXNlcjEwOTQwNTY5&quot;,
+  &quot;avatar_url&quot;: &quot;https://avatars2.githubusercontent.com/u/10940569?v=4&quot;,
+  &quot;gravatar_id&quot;: &quot;&quot;,
+  &quot;url&quot;: &quot;https://api.github.com/users/luangeng&quot;,
+  &quot;html_url&quot;: &quot;https://github.com/luangeng&quot;,
+  &quot;followers_url&quot;: &quot;https://api.github.com/users/luangeng/followers&quot;,
+  &quot;following_url&quot;: &quot;https://api.github.com/users/luangeng/following{/other_user}&quot;,
+  &quot;gists_url&quot;: &quot;https://api.github.com/users/luangeng/gists{/gist_id}&quot;,
+  &quot;starred_url&quot;: &quot;https://api.github.com/users/luangeng/starred{/owner}{/repo}&quot;,
+  &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/luangeng/subscriptions&quot;,
+  &quot;organizations_url&quot;: &quot;https://api.github.com/users/luangeng/orgs&quot;,
+  &quot;repos_url&quot;: &quot;https://api.github.com/users/luangeng/repos&quot;,
+  &quot;events_url&quot;: &quot;https://api.github.com/users/luangeng/events{/privacy}&quot;,
+  &quot;received_events_url&quot;: &quot;https://api.github.com/users/luangeng/received_events&quot;,
+  &quot;type&quot;: &quot;User&quot;,
+  &quot;site_admin&quot;: false,
+  &quot;name&quot;: &quot;luangeng&quot;,
+  &quot;company&quot;: &quot;https://www.code996.cn/&quot;,
+  &quot;blog&quot;: &quot;https://www.code996.cn/&quot;,
+  &quot;location&quot;: &quot;中国 西安&quot;,
+  &quot;email&quot;: &quot;1057935399@qq.com&quot;,
+  &quot;hireable&quot;: true,
+  &quot;bio&quot;: &quot;🍉🍉🍉🍉🍉🍉🍉&quot;,
+  &quot;public_repos&quot;: 45,
+  &quot;public_gists&quot;: 0,
+  &quot;followers&quot;: 6,
+  &quot;following&quot;: 30,
+  &quot;created_at&quot;: &quot;2015-02-10T12:04:47Z&quot;,
+  &quot;updated_at&quot;: &quot;2018-09-18T01:42:47Z&quot;
 }
 </code></pre>
 
-<p>NioEventLoopGroup为事件处理线程组。</p>
+<h2 id="参考">参考</h2>
 
-<p>客户端的Channel设置为NioSocketChannel，ChannelPipeline为事件处理链。</p>
-
-<p>调用connect方法发起异步连接，调用sync同步等待连接成功。</p>
-
-<p>循环调用channel.writeAndFlush发送消息。</p>
-
-<p>客户端自定义Handler，处理服务端返回的消息</p>
-
-<pre><code>public class TcpClientHandler extends SimpleChannelInboundHandler&lt;Object&gt; {
-    private static Logger logger = LoggerFactory.getLogger(TcpClient.class);
-
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
-        logger.info(&quot;client接收到服务器返回的消息:&quot; + msg);
-    }
-
-}
-</code></pre>
+<p><a href="github：https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow">github帮助文档</a></p>
 
                                             
                                         </div>
@@ -362,7 +340,7 @@
                 
                 
             
-            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/netty/netty-tcp/">https://www.code996.cn/post/netty/netty-tcp/</a></li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2018/github_login/">https://www.code996.cn/post/2018/github_login/</a></li>
             <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
@@ -382,20 +360,14 @@
                             <ul class="post-nav group">
                                 <li class="next">
                                     
-                                    <a href="https://www.code996.cn/post/netty/netty-servlet/" rel="next">
+                                    <a href="https://www.code996.cn/post/2018/token-front/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Netty--简单实现一个Servlet容器</span>
+                                        <span>Oauth2协议 通过js和ajax获取token及刷新token</span>
                                     </a>
                                     
                                 </li>
                                 <li class="previous">
-                                    
-                                    <a href="https://www.code996.cn/post/netty/netty-tcpdecoder/" rel="prev">
-                                        <i class="fa fa-chevron-left"></i>
-                                        <strong>Previous</strong>
-                                        <span>Netty--TCP粘包和拆包</span>
-                                    </a>
                                     
                                 </li>
                             </ul>
@@ -440,74 +412,6 @@
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-19</span>
-                <a href="https://www.code996.cn/post/netty/netty-file/" rel="bookmark" title="Netty--使用TCP协议传输文件">Netty--使用TCP协议传输文件</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-18</span>
-                <a href="https://www.code996.cn/post/netty/netty-rpc/" rel="bookmark" title="Netty--RPC的原理和实现">Netty--RPC的原理和实现</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-17</span>
-                <a href="https://www.code996.cn/post/netty/netty-protobuf/" rel="bookmark" title="Netty--Google Protobuf编解码">Netty--Google Protobuf编解码</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-16</span>
-                <a href="https://www.code996.cn/post/netty/netty-jdk/" rel="bookmark" title="Netty--JDK序列化编解码传输对象">Netty--JDK序列化编解码传输对象</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-15</span>
-                <a href="https://www.code996.cn/post/netty/netty-http/" rel="bookmark" title="Netty--HTTP服务器原理和实现">Netty--HTTP服务器原理和实现</a>
-            </div>
-        </article>
-    </li>
-    
-    
-    
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-14</span>
-                <a href="https://www.code996.cn/post/netty/netty-tcpdecoder/" rel="bookmark" title="Netty--TCP粘包和拆包">Netty--TCP粘包和拆包</a>
-            </div>
-        </article>
-    </li>
     
     
     
@@ -515,14 +419,19 @@
     
     
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2017-09-12</span>
-                <a href="https://www.code996.cn/post/netty/netty-servlet/" rel="bookmark" title="Netty--简单实现一个Servlet容器">Netty--简单实现一个Servlet容器</a>
-            </div>
-        </article>
-    </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1087,7 +996,7 @@
     </a>
   </li>
     <li>
-        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/netty/netty-tcp/&#34;);" target="_blank">
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2018/github_login/&#34;);" target="_blank">
             <i class="fa fa-weixin"></i>
         </a>
     </li>

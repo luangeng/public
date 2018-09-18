@@ -445,6 +445,9 @@ application-prod.properties：生产环境
     
     
     
+    
+    
+    
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
@@ -700,10 +703,23 @@ application-prod.properties：生产环境
     
     
     
+    
+    
+    
 </ul>
 
                             <h4 class="heading">最新文章</h4>
 <ul class="related-posts group">
+    
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2018-09-18</span>
+                <a href="https://www.code996.cn/post/2018/github_login/">使用github登录网址</a>
+            </div>
+        </article>
+    </li>
     
     
     <li class="related post-hover">
@@ -765,16 +781,6 @@ application-prod.properties：生产环境
         </article>
     </li>
     
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2018-02-03</span>
-                <a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch</a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                         </div>
@@ -788,18 +794,18 @@ application-prod.properties：生产环境
             <p>分享</p>
             <ul class="social-links">
                 <li class="social-links">
-                    <a class="social-tooltip" title="renren" target="_blank">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
                         <i class="fa fa-weixin"></i>
                     </a>
                 </li>
                 <li class="social-links">
-                    <a class="social-tooltip" title="renren" href="http://v.t.sina.com.cn/share/share.php?title=123"
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title=123"
                        target="_blank">
                         <i class="fa fa-weibo"></i>
                     </a>
                 </li>
                 <li class="social-links">
-                    <a class="social-tooltip" title="dribbble" target="_blank">
+                    <a class="social-tooltip" title="收藏" target="_blank">
                         <i class="fa fa-star"></i>
                     </a>
                 </li>
@@ -825,6 +831,8 @@ application-prod.properties：生产环境
             <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:4px; padding:4px"><code>ajax</code></a>
             
             <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:4px; padding:4px"><code>git</code></a>
+            
+            <a href='https://www.code996.cn/tags/github' style="font-size:17px;margin:4px; padding:4px"><code>github</code></a>
             
             <a href='https://www.code996.cn/tags/html' style="font-size:17px;margin:4px; padding:4px"><code>html</code></a>
             
@@ -885,10 +893,13 @@ application-prod.properties：生产环境
                     <a href="https://www.code996.cn/paste">网络记事本</a>
                 </li>
                 <li class="cat-item cat-item-1">
-                    <a href="https://www.code996.cn/#">折扣网</a>
+                    <a href="https://leancloud.cn/">LeanCloud</a>
                 </li>
                 <li class="cat-item cat-item-1">
-                    <a href="https://cn.bing.com/">必应搜索</a>
+                    <a href="https://sweetalert2.github.io/">SweetAlert2</a>
+                </li>
+                <li class="cat-item cat-item-1">
+                    <a href="https://loading.io/">loading.io</a>
                 </li>
             </ul>
         </div>
@@ -898,7 +909,7 @@ application-prod.properties：生产环境
             <ul>
                 
                 <li class="cat-item cat-item-1">
-                    <a href='https://www.code996.cn/archives/2018'>2018(9)</a>
+                    <a href='https://www.code996.cn/archives/2018'>2018(10)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">
@@ -920,6 +931,8 @@ application-prod.properties：生产环境
             <h3>Recent</h3>
             <ul>
                 
+                <li><a href="https://www.code996.cn/post/2018/github_login/">使用github登录网址</a></li>
+                
                 <li><a href="https://www.code996.cn/post/2018/work-single-net/">网元级网络巡检-方案概要</a></li>
                 
                 <li><a href="https://www.code996.cn/post/2018/work-sso/">统一身份认证平台-方案概要</a></li>
@@ -928,17 +941,24 @@ application-prod.properties：生产环境
                 
                 <li><a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
                 
-                <li><a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
-                
             </ul>
         </div>
 
         <div id="mony" class="widget widget_recent_entries">
-            <h3></h3>
+            <h3>Donate</h3>
             <div class="widget qrcode">
                 <img src="https://luangeng.gitee.io/cdn/img/zan.png" alt="weixin" width="172px" height="172px"/>
                 <p> 小礼物走一波~ </p>
             </div>
+        </div>
+
+        <div id="search" class="widget widget_search">
+            <h3>Search</h3>
+            <form method="get" class="searchform themeform" action="https://cn.bing.com/search">
+                <div>
+                    <input type="text" class="search" name="q" placeholder="Bing search">
+                </div>
+            </form>
         </div>
 
     </div>
@@ -1003,7 +1023,7 @@ application-prod.properties：生产环境
 
 <script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
 <script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="themes/hueman/js/jquery.jplayer.min.js"></script>
+
 <script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
 <script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
 <script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>

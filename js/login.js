@@ -1,28 +1,11 @@
 ﻿const FULL_CHARTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopgrstuvwxyz';
-const git_clientId='56e8a839e198dd00a4cc';
-const git_secret='123';
-const redirect_uri = window.location.origin;
+const git_clientId='269c706502923e741920';
+const redirect_uri = 'http://luangeng.leanapp.cn/test';
 const git_auth = 'https://github.com/login/oauth/authorize?';
-const git_token = 'https://github.com/login/oauth/access_token';
-const git_user = 'https://api.github.com/user?access_token=';
 const scope	= 'read';
 const token_storage = localStorage;
 
 jQuery(document).ready(function() {
-    var url = window.location.toString();
-    if(url.includes('code') && url.includes('state')){
-        var state_local = token_storage.getItem('git_state');
-        let code=url.substr(url.indexOf('code=')+5,20);
-        let state=url.substr(url.indexOf('state=')+6,6);
-        if (state_local != state){
-            return;
-        }
-        //
-        fetchToken(code, state);
-        //
-        }
-
-
     $.backstretch("img/1.jpg");
 
     var APP_ID = 'q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz';
@@ -110,24 +93,4 @@ return state;
 function git_login(){
     var url=git_auth+'client_id='+git_clientId+'&redirect_uri='+redirect_uri+'&scope='+scope+'&state='+getState();
     window.location = url;
-}
-
-function fetchToken(code, state){
-        var data={
-        'code':code,
-        'state':state,
-        'client_id':git_clientId,
-        'client_secret':git_secret,
-        'redirect_uri':redirect_uri
-        };
-    $.ajax({
-       url: git_token,
-       type:"post",
-       data:data,
-       contentType: 'application/x-www-form-urlencoded',
-       complete(XHR, TS){
-        console.log(TS);
-       }
-
-    });
 }

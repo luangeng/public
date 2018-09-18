@@ -160,6 +160,20 @@ function showHitCount(Counter) {
     }
 
     function isLogin() {
+    //
+        var url = window.location.toString();
+        if(url.includes('code') && url.includes('state')){
+            var state_local = token_storage.getItem('git_state');
+            let code=url.substr(url.indexOf('code=')+5,20);
+            let state=url.substr(url.indexOf('state=')+6,6);
+            if (state_local != state){
+                return;
+            }
+            //
+
+            //
+            }
+    //
       var currentUser = AV.User.current();
       if (currentUser) {
           $('.no_login').hide();
