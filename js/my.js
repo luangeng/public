@@ -29,14 +29,6 @@
 
 
 function baidu(){
-var _hmt = _hmt || [];
-(function() {
-  //百度统计
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-
   //百度推送
   var bp = document.createElement('script');
     var curProtocol = window.location.protocol.split(':')[0];
@@ -48,7 +40,6 @@ var _hmt = _hmt || [];
     }
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
-})();
 }
 
 function google(){

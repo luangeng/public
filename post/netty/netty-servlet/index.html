@@ -49,6 +49,15 @@
         }
     }
     document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
   </script>
 
 
@@ -166,7 +175,7 @@
                                     <h1 class="post-title">Netty--简单实现一个Servlet容器</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-12 · 1234 Words
+                                        Posted @ 2017-09-12 · 1220 Words
                                         
                                         · Tags: netty
                                         
@@ -186,16 +195,21 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类。</p>
+                                            
+
+<p>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的Servlet是指Java语言实现的一个接口，广义的Servlet是指任何实现了这个Servlet接口的类。</p>
 
 <p>Servlet运行于支持Java的应用服务器中。从实现上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。</p>
 
-<p>Servlet的运行过程:
-⒈ 客户端发送请求至服务器端；
-⒉服务器端根据web.xml文件中的Servlet相关配置信息，将客户端请求转发到相应的Servlet
-⒊ Servlet引擎调用Service()方法，根据request对象中封装的用户请求与数据库进行交互，返回数据之后，Servlet会将返回的数据封装到response对象中；
-⒋ Servlet生成响应内容并将其传给服务器。响应内容动态生成，通常取决于客户端的请求　
-⒌ 服务器将响应返回给客户端</p>
+<p>Servlet的运行过程:</p>
+
+<ol>
+<li>客户端发送请求至服务器端</li>
+<li>服务器端根据web.xml文件中的Servlet相关配置信息，将客户端请求转发到相应的Servlet</li>
+<li>Servlet引擎调用service()方法，Servlet会将返回的数据封装到response对象中</li>
+<li>Servlet生成响应内容并将其返回服务器。响应内容动态生成，通常取决于客户端的请求　</li>
+<li>服务器将响应返回给客户端</li>
+</ol>
 
 <p>Servlet容器需要实现和调用javax.servlet-api中的接口和方法：</p>
 
@@ -203,11 +217,11 @@
 
 <p>下面是一个简单的Servlet容器实现：</p>
 
-<p>工程结构：</p>
+<h3 id="工程结构">工程结构：</h3>
 
 <p><img src="pic/netty/5.png" alt="" /></p>
 
-<p>Netty添加HTTP编解码</p>
+<h3 id="netty添加http编解码">Netty添加HTTP编解码</h3>
 
 <pre><code>public class ServletServer {
 
@@ -252,7 +266,9 @@
 }
 </code></pre>
 
-<p>ServletHandler 处理Servlet请求，作用：转换request对象，调用service方法，构造response对象并发送响应</p>
+<h3 id="servlethandler">ServletHandler</h3>
+
+<p>处理Servlet请求，作用：转换request对象，调用service方法，构造response对象并发送响应</p>
 
 <pre><code>public class ServletHandler extends SimpleChannelInboundHandler&lt;FullHttpRequest&gt; {
 
@@ -348,7 +364,9 @@
 }
 </code></pre>
 
-<p>模拟Servlet映射，根据url将请求交由对应的Servlet对象处理</p>
+<h3 id="模拟servlet映射">模拟Servlet映射</h3>
+
+<p>根据url将请求交由对应的Servlet对象处理</p>
 
 <pre><code>public class ServletMng {
 
@@ -386,13 +404,15 @@
 }
 </code></pre>
 
-<p>实现HttpServletRequest接口的request对象
-略</p>
+<p>实现HttpServletRequest接口的request对象</p>
 
-<p>实现HttpServletResponse接口的response对象
-略</p>
+<p>略</p>
 
-<p>自定义Servlet</p>
+<p>实现HttpServletResponse接口的response对象</p>
+
+<p>略</p>
+
+<h3 id="自定义servlet">自定义Servlet</h3>
 
 <pre><code>public class TestHttpServlet extends HttpServlet {
 
@@ -430,9 +450,13 @@
 }
 </code></pre>
 
-<p>使用浏览器访问：</p>
+<p>使用浏览器访问如下网址：</p>
 
 <p><img src="pic/netty/6.png" alt="" /></p>
+
+<p>可见servlet成功执行</p>
+
+<p>参考：Netty权威指南</p>
 
                                             
                                         </div>

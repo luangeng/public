@@ -49,6 +49,15 @@
         }
     }
     document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+
   </script>
 
 
@@ -166,7 +175,7 @@
                                     <h1 class="post-title">Netty--HTTP服务器原理和实现</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-15 · 1070 Words
+                                        Posted @ 2017-09-15 · 1120 Words
                                         
                                         · Tags: netty
                                         
@@ -186,9 +195,13 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>基于Netty的HTTP协议栈可以方便的进行异步非阻塞的HTTP服务器的开发。</p>
+                                            
 
-<p>当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个HTTP请求，浏览器会与服务器建立TCP连接，当TCP可靠连接建立之后，浏览器会将生成的HTTP请求发送到服务器端。这时服务器程序接收到了信息将要去识别这个信息的内容，然后调用相应的服务程序，经过服务程序的分析和处理之后服务器端返回内容给浏览器。当服务器返回了内容给浏览器后，这时浏览器与服务器之间的数据交换完毕，这时TCP可靠连接就会断开。</p>
+<p>基于Netty的HTTP协议栈可以方便的进行异步非阻塞的HTTP服务器的开发。</p>
+
+<p>当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个HTTP请求，并与服务器建立TCP连接，当TCP可靠连接建立之后，浏览器会将生成的HTTP请求发送到服务器端。
+服务器程序接收到了信息将要去识别这个信息的内容，然后调用相应的服务程序，经过服务程序的分析和处理之后服务器端返回内容给浏览器。
+当服务器返回了内容给浏览器后，这时浏览器与服务器之间的数据交换完毕，这时TCP可靠连接就会断开。</p>
 
 <p>下面是一个HTTP服务器的简单实现，只处理来自浏览器的GET请求：</p>
 
@@ -196,7 +209,9 @@
 
 <p><img src="pic/netty/1.png" alt="" /></p>
 
-<p>HttpServer:</p>
+<h3 id="httpserver-java">HttpServer.java:</h3>
+
+<p>作用：启动Netty server，监听80端口，初始化http相关的编码器和解码器。</p>
 
 <pre><code>package com.luangeng.netty.http;
 
@@ -267,9 +282,9 @@ public class HttpServer {
 }
 </code></pre>
 
-<p>启动Netty server，监听80端口。</p>
+<h3 id="httpserverhandler-java">HttpServerHandler.java</h3>
 
-<p>HttpServerHandler</p>
+<p>负责处理request请求，解析url，在本地查找对应的资源，读取资源并构造response请求，返回响应然后关闭链接。</p>
 
 <pre><code>package com.luangeng.netty.http;
 
@@ -365,9 +380,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
 }
 </code></pre>
 
-<p>负责处理request请求，解析url，在本地查找对应的资源，读取资源并构造response请求，返回响应然后关闭链接。</p>
-
-<p>一个包含资源的html页面：</p>
+<h3 id="一个包含资源的html页面">一个包含资源的html页面：</h3>
 
 <p>hello.html</p>
 
@@ -418,8 +431,9 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
 &lt;/html&gt;
 </code></pre>
 
-<p>运行结果如下：
-<img src="pic/netty/2.png" alt="" /></p>
+<p>启动程序，在浏览器中访问localhost:80/hello.html,结果如下：</p>
+
+<p><img src="pic/netty/2.png" alt="" /></p>
 
 <p>可见html，js，css，jpg等资源都可正常加载，</p>
 
