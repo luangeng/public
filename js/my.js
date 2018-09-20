@@ -168,6 +168,13 @@ function queryRanking(){
     query.descending('hits');
     query.notEqualTo('title','关于').find()
     .then(function (results) {
+        for (let i in results){
+             var rank = results[i].attributes;
+             var j = parseInt(i)+1;
+             var li = '<li><a href="'+rank.url+'">'+j+'. '+rank.title+'('+rank.hits+')</a></li>';
+             $("#ranking_side_ul").append(li);
+          }
+
          var li_str = $("#ranking_ul").html();
          $("#ranking_ul").empty();
          for (let k in results){
