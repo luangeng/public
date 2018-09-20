@@ -166,7 +166,7 @@ function queryRanking(){
     var query = new AV.Query(Counter);
     query.limit(9);
     query.descending('hits');
-    query.find()
+    query.notEqualTo('title','关于').find()
     .then(function (results) {
          var li_str = $("#ranking_ul").html();
          $("#ranking_ul").empty();
