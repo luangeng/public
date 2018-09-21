@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Redis命令</title>
-      <link>https://www.code996.cn/post/redis/redis-command/</link>
-      <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/redis/redis-command/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ubuntu 16.04安装redis-server</title>
       <link>https://www.code996.cn/post/redis/redis-install/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
@@ -46,15 +37,6 @@
       
       <guid>https://www.code996.cn/post/redis/redis-intr/</guid>
       <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列</description>
-    </item>
-    
-    <item>
-      <title>Redis简介</title>
-      <link>https://www.code996.cn/post/redis/redis-key/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/redis/redis-key/</guid>
-      <description></description>
     </item>
     
   </channel>

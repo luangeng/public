@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>demo</title>
-      <link>https://www.code996.cn/post/interview/demo/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/interview/demo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>两个线程交替打印奇数和偶数</title>
       <link>https://www.code996.cn/post/interview/oddeven/</link>
       <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
