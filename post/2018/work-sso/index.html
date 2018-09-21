@@ -51,6 +51,7 @@
 
     var _hmt = _hmt || [];
     (function() {
+      if(window.location.toString().includes('localhost')){return;}
       var hm = document.createElement("script");
       hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
       var s = document.getElementsByTagName("script")[0];

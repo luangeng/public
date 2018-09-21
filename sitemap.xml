@@ -674,14 +674,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/redis/</loc>
+        <loc>https://www.code996.cn/categories/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/redis/</loc>
+        <loc>https://www.code996.cn/tags/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -765,14 +765,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+        <loc>https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
         <lastmod>2006-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+        <loc>https://www.code996.cn/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
         <lastmod>2006-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
