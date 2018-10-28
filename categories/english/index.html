@@ -2,31 +2,29 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn">
-  <title>Mysql基础语法 - Code996</title>
+  <title>English - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <meta name="keywords" content="mysql ">
-  
-  <meta name="description" content="Mysql基础语法">
+  <meta name="description" content="English">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="Mysql基础语法 - Code996">
-  <meta itemprop="description" content="Mysql基础语法">
+  <meta itemprop="name" content="English - Code996">
+  <meta itemprop="description" content="English">
   <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="Mysql基础语法 - Code996" />
+  <meta property="og:title" content="English - Code996" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.code996.cn/post/2017/mysql-sql/" />
+  <meta property="og:url" content="https://www.code996.cn/categories/english/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make">
+  <meta property="og:description" content="English">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
-  <link rel="canonical" href="https://www.code996.cn/post/2017/mysql-sql/">
-  <link rel='shortlink' href="https://www.code996.cn/post/2017/mysql-sql/">
+  <link rel="canonical" href="https://www.code996.cn/categories/english/">
+  <link rel='shortlink' href="https://www.code996.cn/categories/english/">
   <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
 
   <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
@@ -61,9 +59,10 @@
 
 </head>
 
-<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<body class="archive category col-3cm full-width topbar-enabled chrome">
+
 <div id="wrapper">
-    <header id="header">
+  <header id="header">
 
   <nav class="nav-container group" id="nav-topbar">
     <div class="nav-toggle"><i class="fa fa-bars"></i></div>
@@ -145,306 +144,48 @@
 
 
 
-    <div class="container" id="page">
-        <div class="container-inner">
-            <div class="main">
-                <div class="main-inner group">
-                    <section class="content">
-                        <div class="page-title pad group">
-                            <ul class="meta-single group">
-                                
-                                <li class="category">
-                                    <span>学习笔记</span>
-                                </li>
-                                
-                            </ul>
-                        </div>
-
-                        <div class="pad group">
-
-                            <article
-                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
-                                <div class="post-inner group">
-
-                                    <h1 class="post-title">Mysql基础语法</h1>
-
-                                    <p class="post-byline">
-                                        Posted @ 2017-09-04 · 238 Words
-                                        
-                                        · Tags: mysql
-                                        
-                                        
-                                        
-                                        
-                                        · Hits:
-                                        <span id="https://www.code996.cn/post/2017/mysql-sql/" class="leancloud_visitors" data-flag-title="Mysql基础语法">
-                                            <span class="leancloud-visitors-count"></span>
-                                        </span>
-                                    </p>
-
-
-                                    <div class="clear"></div>
-
-                                    <div class="entry">
-                                        <div class="entry-inner">
-                                            
-                                            <p>Mysql基础语法</p>
-
-<p>SELECT VERSION(), CURRENT_DATE, now();
-select user();</p>
-
-<p>create database pets;
-show databases;</p>
-
-<p>use pets;</p>
-
-<p>CREATE TABLE cats
-(
-id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record
-name VARCHAR(150) NOT NULL, # Name of the cat
-owner VARCHAR(150) NOT NULL, # Owner of the cat
-birth DATE NOT NULL, # Birthday of the cat
-PRIMARY KEY (id) # Make the id the primary key
-);
-show tables;</p>
-
-<p>describe cats; desc</p>
-
-<p>INSERT INTO cats ( name, owner, birth) VALUES
-( &lsquo;Sandy&rsquo;, &lsquo;Lennon&rsquo;, &lsquo;2015-01-03&rsquo; ),
-( &lsquo;Cookie&rsquo;, &lsquo;Casey&rsquo;, &lsquo;2013-11-13&rsquo; ),
-( &lsquo;Charlie&rsquo;, &lsquo;River&rsquo;, &lsquo;2016-05-21&rsquo; );</p>
-
-<p>SELECT * FROM cats;</p>
-
-<p>增加/删除/修改列：</p>
-
-<p>alter table cats add gender char(1) [after name];
-alter table cats drop gender;</p>
-
-<p>alter table cats change name name_new char(30);</p>
-
-<p>alter table cats modify name char(10);</p>
-
-<p>alter table cats alter age set default 10;</p>
-
-<p>alter table cats alter age drop default;</p>
-
-<p>alter table cats rename to cats_t;</p>
-
-<p>查看用户权限：</p>
-
-<p>SHOW GRANTS FOR &lsquo;admin&rsquo;@&lsquo;localhost&rsquo;;</p>
-
-<p>日期计算
-<a href="http://dev.mysql.com/doc/refman/5.7/en/date-calculations.html">http://dev.mysql.com/doc/refman/5.7/en/date-calculations.html</a></p>
-
-<p>自定义变量
-mysql&gt; SELECT @min_price:=MIN(price),@max_price:=MAX(price) FROM shop;
-mysql&gt; SELECT * FROM shop WHERE price=@min_price OR price=@max_price;</p>
-
-<p>自增列：
-CREATE TABLE animals (
-id MEDIUMINT NOT NULL AUTO_INCREMENT,
-name CHAR(30) NOT NULL,
-PRIMARY KEY (id)
-);
-INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsquo;penguin&rsquo;),(&lsquo;lax&rsquo;),(&lsquo;whale&rsquo;),(&lsquo;ostrich&rsquo;);</p>
-
-<p>更新列：</p>
-
-<p>update user set age =age+1 where id=1;</p>
-
-                                            
-                                        </div>
-
-                                        <div style="margin-top:40px">
-                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
-                                                --------------------------END--------------------------
-                                            </marquee>
-                                        </div>
-
-                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
-    <div>
-        <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://www.code996.cn">https://www.code996.cn</a></li>
-            
-                
-                
-                
-            
-            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2017/mysql-sql/">https://www.code996.cn/post/2017/mysql-sql/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
-            </li>
-        </ul>
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <h1><span>English</span></h1>
+            </div>
+            <div class="pad group">
+              <div class="post-list group">
+    
+    <div class="post-row">
+        <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+            <div class="post-inner post-hover">
+                <div class="post-meta group">
+                    <p class="post-date">1.</p>
+                    <p class="post-title-small">
+                        <a href="https://www.code996.cn/post/english/yi1/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-1
+                            (<span style="font-size:14px">0</span>)
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </article>
     </div>
+    
 </div>
 
-                                        <div class="clear"></div>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </article>
-                            
-                            <div class="clear"></div>
-                            <ul class="post-nav group">
-                                <li class="next">
-                                    
-                                    <a href="https://www.code996.cn/post/spring/spring-swagger/" rel="next">
-                                        <i class="fa fa-chevron-right"></i>
-                                        <strong>Next</strong>
-                                        <span>Spring Boot 集成Swagger2生成RESTful API文档</span>
-                                    </a>
-                                    
-                                </li>
-                                <li class="previous">
-                                    
-                                    <a href="https://www.code996.cn/post/spring/spring-jpa/" rel="prev">
-                                        <i class="fa fa-chevron-left"></i>
-                                        <strong>Previous</strong>
-                                        <span>使用Spring Boot 和Spring Data JPA访问mysql数据库</span>
-                                    </a>
-                                    
-                                </li>
-                            </ul>
-                            
-                            <br>
+            </div>
+          </section>
+          
 
 
-<h4 class="heading">相关文章</h4>
-<ul class="related-posts group">
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/2017/mysql-procedure/" rel="bookmark" class="leancloud-count">MySql 存储过程
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/2016/mysql/" rel="bookmark" class="leancloud-count">ubuntu16.04 安装 mysql5.7
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-</ul>
-
-                            <h4 class="heading">阅读排行榜</h4>
-<ul class="related-posts group" id="ranking_ul">
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">$index$. </span>
-                <a href="$url$" rel="bookmark">$title$
-                    <span class="post-date" style="font-size:14px">($hits$)</span>
-                </a>
-            </div>
-        </article>
-    </li>
-</ul>
-
-                            
-
-<h4 class="heading">最新文章</h4>
-<ul class="related-posts group">
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/english/yi1/" class="leancloud-count">全新版大学英语综合教程1-1
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">使用github登录网址
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://www.code996.cn/post/2018/work-single-net/" class="leancloud-count">网元级网络巡检-方案概要
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://www.code996.cn/post/2018/work-sso/" class="leancloud-count">统一身份认证平台-方案概要
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://www.code996.cn/post/2018/spring-annotation/" class="leancloud-count">一文看懂@RequestBody,@RequestParam和@PathVariable
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-</ul>
 
 
-                        </div>
-                    </section>
-                    
-                    <div class="sidebar s2">
+
+
+
+
+
+
+          <div class="sidebar s2">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
     <div class="sidebar-content">
 
@@ -544,132 +285,6 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
         </div>
 
         
-        <div id="relate" class="widget widget_recent_entries">
-            <h3>相关内容</h3>
-            <ul>
-                
-                
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                
-                <li><a href="https://www.code996.cn/post/2017/mysql-procedure/">MySql 存储过程</a></li>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                
-                <li><a href="https://www.code996.cn/post/2017/mysql-type/">Mysql常用数据类型</a></li>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                
-            </ul>
-        </div>
-        
 
         <div id="Series" class="widget widget_archive">
             <h3>系列文章</h3>
@@ -767,11 +382,11 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
     </div>
 </div>
 
-                </div>
-            </div>
         </div>
+      </div>
     </div>
-    <footer id="footer">
+  </div>
+  <footer id="footer">
   <section class="container" id="footer-bottom">
     <div class="container-inner">
       <div class="group" style="padding:5px 0px">
@@ -810,7 +425,7 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
     </a>
   </li>
     <li>
-        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/2017/mysql-sql/&#34;);" target="_blank">
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/categories/english/&#34;);" target="_blank">
             <i class="fa fa-weixin"></i>
         </a>
     </li>
