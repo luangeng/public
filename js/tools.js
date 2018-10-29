@@ -112,11 +112,16 @@ $("#json").click(function(){
     $("#text8").val(formatJson(str));
 });
 
+var qrcode = new QRCode(document.getElementById("qrcode-img"), {width : 150,height : 150 });
+$("#qr").click(function(){
+    var str = $("#text15").val();
+    if (str.length==0){return;}
+    qrcode.makeCode(str);
+});
 
 
 
-
-
+//格式化Json字符串
 var formatJson = function(json, options) {
 	var reg = null,
 		formatted = '',

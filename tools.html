@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="loading" class="loading">
-    <img src="/img/loading.gif">
+    <img src="https://luangeng.gitee.io/cdn/img/loading.gif">
 </div>
 <div class="blog-masthead">
     <div class="container">
@@ -24,7 +24,7 @@
             <a id="nav5" class="blog-nav-item" href="#5">Unicode编码</a>
             <a id="nav6" class="blog-nav-item" href="#6">UTF-8编码</a>
             <a id="nav7" class="blog-nav-item" href="#7">URL编/解码</a>
-            <a id="nav8" class="blog-nav-item" href="#8">压缩包</a>
+            <a id="nav8" class="blog-nav-item" href="#8">二维码</a>
             <a id="nav9" class="blog-nav-item" href="#9">关于</a>
         </nav>
     </div>
@@ -115,6 +115,16 @@
         <textarea id="text14" class="form-control" rows="6" readonly="readonly"></textarea>
     </div>
 
+    <div id="d_nav8" class="allhide">
+        <div class="well">
+            <h4>算法说明</h4>
+            <p>生成二维码</p>
+        </div>
+        <textarea id="text15" class="form-control" rows="6"></textarea>
+        <button id="qr" type="button" class=" margin5 btn btn-lg btn-info">生成</button>
+        <div id="qrcode-img" ></div>
+    </div>
+
     <div id="d_nav9" class="allhide">
         <img src="/img/ya.jpg" class="img-rounded"/>
         <div class="well">
@@ -136,6 +146,7 @@
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
 <script src="/js/tools.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="loading" class="loading">
-    <img src="/img/loading.gif">
+    <img src="https://luangeng.gitee.io/cdn/img/loading.gif">
 </div>
 <div class="blog-masthead">
     <div class="container">
