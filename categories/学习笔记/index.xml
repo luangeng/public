@@ -418,6 +418,15 @@
     </item>
     
     <item>
+      <title>curl命令简明教程</title>
+      <link>https://www.code996.cn/post/2017/curl/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/curl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
       <link>https://www.code996.cn/post/2016/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
@@ -631,15 +640,6 @@
       
       <guid>https://www.code996.cn/post/2016/java-enum/</guid>
       <description>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum</description>
-    </item>
-    
-    <item>
-      <title>curl命令简明教程</title>
-      <link>https://www.code996.cn/post/2017/curl/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/curl/</guid>
-      <description></description>
     </item>
     
   </channel>

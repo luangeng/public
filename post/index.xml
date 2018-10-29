@@ -631,12 +631,57 @@ Unit 8 Text A Saving Nature, But Only For Man Part I Pre-reading Task Listen to 
     </item>
     
     <item>
+      <title>curl命令简明教程</title>
+      <link>https://www.code996.cn/post/2017/curl/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/curl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
       <link>https://www.code996.cn/post/2016/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2016/mysql/</guid>
       <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
+    </item>
+    
+    <item>
+      <title>两个线程交替打印奇数和偶数</title>
+      <link>https://www.code996.cn/post/interview/oddeven/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/interview/oddeven/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>反转单向链表</title>
+      <link>https://www.code996.cn/post/interview/reverseList/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/interview/reverseList/</guid>
+      <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
+    </item>
+    
+    <item>
+      <title>反转字符串中每一个单词</title>
+      <link>https://www.code996.cn/post/interview/string-reverse-word/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/interview/string-reverse-word/</guid>
+      <description>反转字符串中每一个单词 public class StringTest { //反转每个单词 private static String reverseEveryWord(String str) { StringBuilder sb = new StringBuilder(); StringBuilder word = new StringBuilder(); for (char c : str.toCharArray()) { if (isLetter(c)) { word.append(c); } else { if (word.length() &amp;gt; 0) { sb.append(word.reverse().toString()); word.delete(0, word.length()); } sb.append(c); } } return sb.toString(); } private static boolean</description>
+    </item>
+    
+    <item>
+      <title>将字符串中所有单词的首字母大写</title>
+      <link>https://www.code996.cn/post/interview/string-caption/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/interview/string-caption/</guid>
+      <description>public class StringTest { // 首字母大写 private static String upper(String str) { boolean first = true; StringBuilder sb = new StringBuilder(); for (char c : str.toCharArray()) { if (first) { sb.append(Character.toUpperCase(c)); first = false; } else { sb.append(c); } if (Character.isWhitespace(c)) { first = true; } } return sb.toString(); } public static void main(String[] args) { char c = 20; System.out.println(&amp;quot;[&amp;quot; + c + &amp;quot;]&amp;quot;); String</description>
     </item>
     
     <item>
@@ -844,51 +889,6 @@ Unit 8 Text A Saving Nature, But Only For Man Part I Pre-reading Task Listen to 
       
       <guid>https://www.code996.cn/post/2016/java-enum/</guid>
       <description>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum</description>
-    </item>
-    
-    <item>
-      <title>curl命令简明教程</title>
-      <link>https://www.code996.cn/post/2017/curl/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2017/curl/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>两个线程交替打印奇数和偶数</title>
-      <link>https://www.code996.cn/post/interview/oddeven/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/interview/oddeven/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>反转单向链表</title>
-      <link>https://www.code996.cn/post/interview/reverseList/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/interview/reverseList/</guid>
-      <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
-    </item>
-    
-    <item>
-      <title>反转字符串中每一个单词</title>
-      <link>https://www.code996.cn/post/interview/string-reverse-word/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/interview/string-reverse-word/</guid>
-      <description>反转字符串中每一个单词 public class StringTest { //反转每个单词 private static String reverseEveryWord(String str) { StringBuilder sb = new StringBuilder(); StringBuilder word = new StringBuilder(); for (char c : str.toCharArray()) { if (isLetter(c)) { word.append(c); } else { if (word.length() &amp;gt; 0) { sb.append(word.reverse().toString()); word.delete(0, word.length()); } sb.append(c); } } return sb.toString(); } private static boolean</description>
-    </item>
-    
-    <item>
-      <title>将字符串中所有单词的首字母大写</title>
-      <link>https://www.code996.cn/post/interview/string-caption/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/interview/string-caption/</guid>
-      <description>public class StringTest { // 首字母大写 private static String upper(String str) { boolean first = true; StringBuilder sb = new StringBuilder(); for (char c : str.toCharArray()) { if (first) { sb.append(Character.toUpperCase(c)); first = false; } else { sb.append(c); } if (Character.isWhitespace(c)) { first = true; } } return sb.toString(); } public static void main(String[] args) { char c = 20; System.out.println(&amp;quot;[&amp;quot; + c + &amp;quot;]&amp;quot;); String</description>
     </item>
     
   </channel>
