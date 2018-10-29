@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>English</title>
-      <link>https://www.code996.cn/categories/english/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/categories/english/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Redis</title>
       <link>https://www.code996.cn/categories/redis/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
@@ -63,6 +54,15 @@
       <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/categories/%E6%9C%89%E7%82%B9%E6%84%8F%E6%80%9D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>英语</title>
+      <link>https://www.code996.cn/categories/%E8%8B%B1%E8%AF%AD/</link>
+      <pubDate>Sat, 03 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/categories/%E8%8B%B1%E8%AF%AD/</guid>
       <description></description>
     </item>
     
