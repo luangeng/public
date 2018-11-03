@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <base href="https://www.code996.cn">
+  <title>两个线程交替打印奇数和偶数 - Code996</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <meta name="keywords" content="练习题 ">
+  
+  <meta name="description" content="两个线程交替打印奇数和偶数">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+
+  <meta itemprop="name" content="两个线程交替打印奇数和偶数 - Code996">
+  <meta itemprop="description" content="两个线程交替打印奇数和偶数">
+  <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
+
+  <meta property="og:title" content="两个线程交替打印奇数和偶数 - Code996" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.code996.cn/post/exercise/oddeven/" />
+  <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
+  <meta property="og:description" content="两个线程交替打印奇数和偶数">
+
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="https://www.code996.cn/post/exercise/oddeven/">
+  <link rel='shortlink' href="https://www.code996.cn/post/exercise/oddeven/">
+  <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng.gitee.io/cdn/highlight/github.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.min.css">
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+
+    var _hmt = _hmt || [];
+    (function() {
+      if(window.location.toString().includes('localhost')){return;}
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://ask.code996.cn">问答</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/tools.html">工具</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://www.code996.cn/note.html">记事本</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="https://www.code996.cn/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="https://www.code996.cn/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="https://www.code996.cn/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://www.code996.cn" rel="home">
+              
+              Code996
+            </a>
+          </h1>
+          <span class="site-description"> 一个纯粹的技术分享社区 </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>练习题</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">两个线程交替打印奇数和偶数</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2016-09-03 · 1174 Words
+                                        
+                                        · Tags: 练习题
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://www.code996.cn/post/exercise/oddeven/" class="leancloud_visitors" data-flag-title="两个线程交替打印奇数和偶数">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            
+
+<p>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即：</p>
+
+<pre><code>奇 1
+偶 2
+奇 3
+偶 4
+奇 5
+偶 6
+奇 7
+偶 8
+奇 9
+偶 10
+</code></pre>
+
+<h1 id="解法一">解法一：</h1>
+
+<p>wait和notify方法</p>
+
+<pre><code>public class OddEven {
+
+    private static int i = 1;
+
+    private static Object o = new Object();
+
+    private static class MyThread extends Thread {
+        MyThread(String name) {
+            super(name);
+        }
+
+        public void run() {
+            try {
+                synchronized (o) {
+                    while (i &lt; 100) {
+                        System.out.println(this.getName() + i++);
+                        o.notify();
+                        o.wait();
+                    }
+                    o.notify();
+                }
+                System.out.println(this.getName() + &quot; over&quot;);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
+        }
+    }
+
+    public static void main(String[] args) {
+        new MyThread(&quot;奇 &quot;).start();
+        new MyThread(&quot;偶 &quot;).start();
+
+    }
+}
+</code></pre>
+
+<h1 id="解法二">解法二：</h1>
+
+<p>LockSupport实现</p>
+
+<pre><code>public class OddEvenLockSupport {
+
+    private static int i = 1;
+
+    private static Thread t1 = new MyThread1();
+    private static Thread t2 = new MyThread2();
+
+    public static void main(String[] args) {
+        t1.start();
+        t2.start();
+    }
+
+    private static class MyThread1 extends Thread {
+        @Override
+        public void run() {
+            while (i &lt; 51) {
+                System.out.println(&quot;奇 &quot; + i++);
+                LockSupport.unpark(t2);
+                LockSupport.park();
+            }
+            System.out.println(getName() + &quot; over&quot;);
+            LockSupport.unpark(t2);
+        }
+
+    }
+
+    private static class MyThread2 extends Thread {
+        @Override
+        public void run() {
+            while (i &lt; 51) {
+                LockSupport.park();//顺序很重要
+                System.out.println(&quot;偶 &quot; + i++);
+                LockSupport.unpark(t1);
+            }
+            System.out.println(getName() + &quot; over&quot;);
+            LockSupport.unpark(t1);
+        }
+
+    }
+}
+</code></pre>
+
+<h1 id="解法三">解法三：</h1>
+
+<p>使用Condition</p>
+
+<pre><code>public class OddEven2 {
+
+    private static Lock lock = new ReentrantLock();
+    static Condition even_c = lock.newCondition();
+    static Condition odd_c = lock.newCondition();
+
+    private static class Odd extends Thread {
+        public void run() {
+            int odd = 1;
+            try {
+                lock.lock();
+                while (odd &lt; 100) {
+                    System.out.println(&quot;奇 &quot; + odd);
+                    odd += 2;
+                    even_c.signal();
+                    odd_c.await();
+                }
+                System.out.println(&quot;奇 over&quot;);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                even_c.signal();
+                lock.unlock();
+            }
+        }
+    }
+
+    private static class Even extends Thread {
+        public void run() {
+            int even = 0;
+            try {
+                lock.lock();
+                while (even &lt; 100) {
+                    System.out.println(&quot;偶 &quot; + even);
+                    even += 2;
+                    odd_c.signal();
+                    even_c.await();
+                }
+                System.out.println(&quot;偶 over&quot;);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                odd_c.signal();
+                lock.unlock();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        new Even().start();
+        new Odd().start();
+    }
+}
+</code></pre>
+
+<p>基础回顾：</p>
+
+<p>每个Java对象都拥有一个锁标记，即monitor(监视器)，称为对象锁。</p>
+
+<p>wait：</p>
+
+<p>调用obj.wait()方法会阻塞当前线程，直到另一线程调用obj.notify()或obj.notifyAll()方法，其中obj为同一对象，当前线程必须持有obj对象锁，即必须在synchronized方法或代码块中，否则抛出IllegalMonitorStateException。调用wait方法的线程会释放对象锁。</p>
+
+<p>notify：</p>
+
+<p>唤醒一个正在等待该对象锁的线程，若有多个线程都在等待也只会唤醒一个。被唤醒的线程无法立即执行，直到当前线程放弃该对象锁，然后被唤醒的线程会像往常一样与任何其他线程竞争该对象锁，</p>
+
+<p>该方法也必须在持有该对象锁的线程里调用，即必须在synchronized方法或代码块中，否则抛出IllegalMonitorStateException。</p>
+
+<p>synchronized：</p>
+
+<p>synchronized关键字标记一个方法或者代码块，当某个线程调用该对象的synchronized方法或者访问synchronized代码块时，这个线程便获得了该对象的锁，其他线程暂时无法访问这个方法，只有等待这个方法执行完毕或者代码块执行完毕，这个线程才会释放该对象的锁，其他线程才能执行这个方法或者代码块。</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://www.code996.cn">https://www.code996.cn</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/exercise/oddeven/">https://www.code996.cn/post/exercise/oddeven/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://www.code996.cn/post/exercise/reverseList/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>反转单向链表</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://www.code996.cn/post/2016/mysql/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>ubuntu16.04 安装 mysql5.7</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://www.code996.cn/post/exercise/string-reverse-word/" rel="bookmark" class="leancloud-count">反转字符串中每一个单词
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://www.code996.cn/post/exercise/string-caption/" rel="bookmark" class="leancloud-count">将字符串中所有单词的首字母大写
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://www.code996.cn/post/exercise/reverseList/" rel="bookmark" class="leancloud-count">反转单向链表
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://www.code996.cn/post/exercise/deadlock/" rel="bookmark" class="leancloud-count">线程死锁
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">使用github登录网址
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://www.code996.cn/post/2018/work-single-net/" class="leancloud-count">网元级网络巡检-方案概要
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://www.code996.cn/post/2018/work-sso/" class="leancloud-count">统一身份认证平台-方案概要
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://www.code996.cn/post/2018/spring-annotation/" class="leancloud-count">一文看懂@RequestBody,@RequestParam和@PathVariable
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://www.code996.cn/post/2018/dingding/" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="https://luangeng.gitee.io/cdn/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 微信公众号 </p>
+            </div>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://www.code996.cn/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://www.code996.cn/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://www.code996.cn/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://www.code996.cn/tags/java' style="font-size:17px;margin:5px; padding:4px"><code>java(20)</code></a>
+            
+            <a href='https://www.code996.cn/tags/jquery' style="font-size:17px;margin:5px; padding:4px"><code>jquery(1)</code></a>
+            
+            <a href='https://www.code996.cn/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://www.code996.cn/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://www.code996.cn/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://www.code996.cn/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://www.code996.cn/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://www.code996.cn/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://www.code996.cn/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://www.code996.cn/tags/rocketmq' style="font-size:17px;margin:5px; padding:4px"><code>rocketmq(2)</code></a>
+            
+            <a href='https://www.code996.cn/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://www.code996.cn/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(4)</code></a>
+            
+            <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(4)</code></a>
+            
+            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:5px; padding:4px"><code>work(3)</code></a>
+            
+            <a href='https://www.code996.cn/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(5)</code></a>
+            
+            <a href='https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(17)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关内容</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://www.code996.cn/post/exercise/deadlock/">线程死锁</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://www.code996.cn/post/exercise/reverseList/">反转单向链表</a></li>
+                  
+                
+                <li><a href="https://www.code996.cn/post/exercise/string-reverse-word/">反转字符串中每一个单词</a></li>
+                  
+                
+                <li><a href="https://www.code996.cn/post/exercise/string-caption/">将字符串中所有单词的首字母大写</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://www.code996.cn/tags/java">Java</a></li>
+                <li><a href="https://www.code996.cn/tags/Zookeeper">Zookeeper</a></li>
+                <li><a href="https://www.code996.cn/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://www.code996.cn/tags/netty">Netty</a></li>
+            </ul>
+        </div>
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://www.code996.cn/post/2018/github_login/">使用github登录网址</a></li>
+                
+                <li><a href="https://www.code996.cn/post/2018/work-single-net/">网元级网络巡检-方案概要</a></li>
+                
+                <li><a href="https://www.code996.cn/post/2018/work-sso/">统一身份认证平台-方案概要</a></li>
+                
+                <li><a href="https://www.code996.cn/post/2018/spring-annotation/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://www.code996.cn/tools.html" target="_blank">在线编码格式化工具</a>
+                </li>
+                <li class="cat-item cat-item-1">
+                    <a href="https://www.code996.cn/note.html" target="_blank">网络记事本</a>
+                </li>
+                <li class="cat-item cat-item-1">
+                    <a href="https://leancloud.cn/" target="_blank">LeanCloud</a>
+                </li>
+                <li class="cat-item cat-item-1">
+                    <a href="https://sweetalert2.github.io/" target="_blank">SweetAlert2</a>
+                </li>
+                <li class="cat-item cat-item-1">
+                    <a href="https://loading.io/" target="_blank">loading.io</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="archives" class="widget widget_archive">
+            <h3>Archives</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='https://www.code996.cn/archive/2018'>2018(27)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='https://www.code996.cn/archive/2017'>2017(40)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='https://www.code996.cn/archive/2016'>2016(31)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='https://www.code996.cn/archive/2006'>2006(1)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='https://www.code996.cn/archive/0001'>0001(1)</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="search" class="widget widget_search">
+            <h3>Search</h3>
+            <form method="get" class="searchform themeform" action="https://cn.bing.com/search">
+                <div>
+                    <input type="text" class="search" name="q" placeholder="Bing search">
+                </div>
+            </form>
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="https://luangeng.gitee.io/cdn/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p> 小礼物走一波~ </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · Code996 保留所有权利 · </span>
+            <a href="https://www.code996.cn/about">广告</a>
+            <a href="https://www.code996.cn/about">联系</a>
+            <a href="https://www.code996.cn/about">关于</a>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+    <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+        <i class="fa fa-twitter"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+        <i class="fa fa-github"></i>
+    </a>
+    </li>
+    <li>
+    <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+    <li>
+        <a class="social-tooltip" title="On Weixin" onclick="qrcode.makeCode(&#34;https://www.code996.cn/post/exercise/oddeven/&#34;);" target="_blank">
+            <i class="fa fa-weixin"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

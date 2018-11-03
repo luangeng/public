@@ -261,6 +261,13 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/post/2017/rocketMq-Concept/</loc>
+        <lastmod>2017-09-10T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/post/spring/spring-cloud-zuul/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -380,7 +387,7 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/2018/rabbitmq/</loc>
+        <loc>https://www.code996.cn/post/2018/rocketmq/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -485,28 +492,28 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/interview/oddeven/</loc>
+        <loc>https://www.code996.cn/post/exercise/oddeven/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/interview/reverseList/</loc>
+        <loc>https://www.code996.cn/post/exercise/reverseList/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/interview/string-reverse-word/</loc>
+        <loc>https://www.code996.cn/post/exercise/string-reverse-word/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/post/interview/string-caption/</loc>
+        <loc>https://www.code996.cn/post/exercise/string-caption/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -681,6 +688,20 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/post/exercise/deadlock/</loc>
+        <lastmod>2006-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/post/english/OHenry20/</loc>
+        <lastmod>0001-01-01T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/categories/about/</loc>
         <lastmod>2010-10-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -807,6 +828,13 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/tags/rocketmq/</loc>
+        <lastmod>2017-09-10T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/tags/spring/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -877,6 +905,20 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD/</loc>
         <lastmod>2018-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -893,20 +935,6 @@
     <url>
         <loc>https://www.code996.cn/categories/%E8%AE%B0%E4%BA%8B%E6%9C%AC/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
