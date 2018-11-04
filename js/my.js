@@ -161,6 +161,10 @@ function makeCode(){
     swal({title: '扫一扫', imageUrl: $('#weixin-qrcode').children('img')[0].src });
 }
 
+function save(){
+    swal( '按Ctrl+D收藏');
+}
+
 function queryRanking(){
     var Counter = AV.Object.extend("Counter");
     var query = new AV.Query(Counter);
