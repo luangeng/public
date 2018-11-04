@@ -520,6 +520,13 @@
     </url>
     
     <url>
+        <loc>https://www.code996.cn/post/exercise/deadlock/</loc>
+        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://www.code996.cn/post/2016/struts/</loc>
         <lastmod>2016-08-23T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -683,20 +690,6 @@
     <url>
         <loc>https://www.code996.cn/about/</loc>
         <lastmod>2010-10-10T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/exercise/deadlock/</loc>
-        <lastmod>2006-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.code996.cn/post/english/OHenry20/</loc>
-        <lastmod>0001-01-01T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

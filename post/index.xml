@@ -696,6 +696,15 @@ Unit 8 Text A Saving Nature, But Only For Man Part I Pre-reading Task Listen to 
     </item>
     
     <item>
+      <title>线程死锁</title>
+      <link>https://www.code996.cn/post/exercise/deadlock/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/exercise/deadlock/</guid>
+      <description>写出会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new</description>
+    </item>
+    
+    <item>
       <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
       <link>https://www.code996.cn/post/2016/struts/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
@@ -900,25 +909,6 @@ Unit 8 Text A Saving Nature, But Only For Man Part I Pre-reading Task Listen to 
       
       <guid>https://www.code996.cn/post/2016/java-enum/</guid>
       <description>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum</description>
-    </item>
-    
-    <item>
-      <title>线程死锁</title>
-      <link>https://www.code996.cn/post/exercise/deadlock/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/exercise/deadlock/</guid>
-      <description>写出会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.code996.cn/post/english/OHenry20/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/english/OHenry20/</guid>
-      <description>&amp;ldquo;Girl&amp;rdquo; （O·Henry）
-IN GILT letters on the ground glass of the door of room No. 962 were the words: &amp;ldquo;Robbins &amp;amp; Hartley, Brokers.&amp;rdquo; The clerks had gone. It was past five, and with the solid tramp of a drove of prize Percherons, scrub- women were invading the cloud-capped twenty-story office building. A puff of red-hot air flavoured with lemon peelings, soft-coal smoke and train oil came in through the half-open windows.</description>
     </item>
     
   </channel>

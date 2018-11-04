@@ -51,7 +51,7 @@
     <item>
       <title>线程死锁</title>
       <link>https://www.code996.cn/post/exercise/deadlock/</link>
-      <pubDate>Sun, 03 Sep 2006 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/exercise/deadlock/</guid>
       <description>写出会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new</description>
