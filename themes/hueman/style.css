@@ -868,8 +868,6 @@ box-shadow: inset -1px 0 1px rgba(0,0,0,0.2); }
 .related-posts { border-bottom: 2px solid #eee; margin-bottom: 40px; }
 .related-posts li { display: inline; }
 .related-posts .post { border-right: 1px solid transparent; margin-bottom: 0; padding-bottom: 10px; }
-.related-posts li:nth-child(4) article { display: none; }
-.related-posts li:nth-child(3) article { border-right-color: transparent; }
 .related-posts .related-inner { padding: 0 20px 0 0; }
 .single .related-posts .post-title { margin-bottom: 10px; font-size: 17px; font-weight: 300; line-height: 1.5em; letter-spacing: 0; display: block; }
 
