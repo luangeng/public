@@ -21,7 +21,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.code996.cn/post/2018/elasticsearch/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="elasticsearch 下载elasticsearch， https://www.elastic.co/downloads/elasticsearch 解压 修改配置文件config/elasticsearch.yml 增加 http.cors.enabled: true http.cors.allow-origin: &ldquo;*&rdquo; http.cors.allow-headers: Authorization,Content-Type 进入bin 双击elast">
+  <meta property="og:description" content="elasticsearch安装记录： Linux： sudo wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.1.zip unzip elasticsearch-6.5.1.zip cd elasticsearch-6.5.1 sudo chown -R z * ./bin/elasticsearch curl localhost:9200 Windows： 下载elasticsearch， https://www.elastic.co/downloads/elasticsearch 解压 修改配置">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
@@ -177,7 +177,7 @@
                                     <h1 class="post-title">elasticsearch</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2018-02-03 · 154 Words
+                                        Posted @ 2018-02-03 · 205 Words
                                         
                                         
                                         
@@ -194,9 +194,20 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>elasticsearch</p>
+                                            <p>elasticsearch安装记录：</p>
 
-<p>下载elasticsearch， <a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a>
+<p>Linux：</p>
+
+<pre><code>sudo wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.1.zip
+unzip elasticsearch-6.5.1.zip
+cd elasticsearch-6.5.1
+sudo chown -R z *
+./bin/elasticsearch
+curl localhost:9200
+</code></pre>
+
+<p>Windows：
+下载elasticsearch， <a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a>
 解压</p>
 
 <p>修改配置文件config/elasticsearch.yml 增加
@@ -209,6 +220,10 @@ http.cors.allow-headers: Authorization,Content-Type</p>
 <p>下载elasticsearch-head-master git://github.com/mobz/elasticsearch-head.git
 先装node.js
 解压，进入目录，npm install；   npm run start，然后访问 <a href="http://localhost:9100/">http://localhost:9100/</a></p>
+
+<p>参考：
+<a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a>
+<a href="https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html">https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html</a></p>
 
                                             
                                         </div>
@@ -293,7 +308,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">使用github登录网址
+                <a href="https://www.code996.cn/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -304,7 +319,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/2018/work-single-net/" class="leancloud-count">网元级网络巡检-方案概要
+                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">使用github登录网址
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -315,7 +330,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://www.code996.cn/post/2018/work-sso/" class="leancloud-count">统一身份认证平台-方案概要
+                <a href="https://www.code996.cn/post/2018/work-single-net/" class="leancloud-count">网元级网络巡检-方案概要
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -326,7 +341,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://www.code996.cn/post/2018/spring-annotation/" class="leancloud-count">一文看懂@RequestBody,@RequestParam和@PathVariable
+                <a href="https://www.code996.cn/post/2018/work-sso/" class="leancloud-count">统一身份认证平台-方案概要
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -337,7 +352,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                <a href="https://www.code996.cn/post/2018/spring-annotation/" class="leancloud-count">一文看懂@RequestBody,@RequestParam和@PathVariable
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -348,7 +363,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -359,7 +374,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://www.code996.cn/post/2018/dingding/" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
+                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -469,7 +484,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
             
             <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(4)</code></a>
             
-            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:5px; padding:4px"><code>work(3)</code></a>
+            <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:5px; padding:4px"><code>work(4)</code></a>
             
             <a href='https://www.code996.cn/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
             
@@ -495,6 +510,8 @@ http.cors.allow-headers: Authorization,Content-Type</p>
             <h3>最新文章</h3>
             <ul>
                 
+                <li><a href="https://www.code996.cn/post/2018/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
                 <li><a href="https://www.code996.cn/post/2018/github_login/">使用github登录网址</a></li>
                 
                 <li><a href="https://www.code996.cn/post/2018/work-single-net/">网元级网络巡检-方案概要</a></li>
@@ -502,8 +519,6 @@ http.cors.allow-headers: Authorization,Content-Type</p>
                 <li><a href="https://www.code996.cn/post/2018/work-sso/">统一身份认证平台-方案概要</a></li>
                 
                 <li><a href="https://www.code996.cn/post/2018/spring-annotation/">一文看懂@RequestBody,@RequestParam和@PathVariable</a></li>
-                
-                <li><a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
                 
             </ul>
         </div>
@@ -539,7 +554,7 @@ http.cors.allow-headers: Authorization,Content-Type</p>
             <ul>
                 
                 <li class="cat-item cat-item-1">
-                    <a href='https://www.code996.cn/archive/2018'>2018(27)</a>
+                    <a href='https://www.code996.cn/archive/2018'>2018(28)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">

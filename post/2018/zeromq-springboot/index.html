@@ -2,31 +2,31 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn">
-  <title>vim基本使用 - Code996</title>
+  <title>SpringBoot集成ZeroMQ - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <meta name="keywords" content="linux ">
+  <meta name="keywords" content="zeromq ">
   
-  <meta name="description" content="vim基本使用">
+  <meta name="description" content="SpringBoot集成ZeroMQ">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="vim基本使用 - Code996">
-  <meta itemprop="description" content="vim基本使用">
+  <meta itemprop="name" content="SpringBoot集成ZeroMQ - Code996">
+  <meta itemprop="description" content="SpringBoot集成ZeroMQ">
   <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="vim基本使用 - Code996" />
+  <meta property="og:title" content="SpringBoot集成ZeroMQ - Code996" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.code996.cn/post/2017/linux-vim/" />
+  <meta property="og:url" content="https://www.code996.cn/post/2018/zeromq-springboot/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="i 进入插入状态 esc 退出插入状态 x 删除一个字符 dd 删除一行，并拷贝 yy 拷贝 p 粘贴 u 撤销 ctrl&#43;r 重做 :w 保存 :q 退出 :q! → 退出不保存">
+  <meta property="og:description" content="开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
-  <link rel="canonical" href="https://www.code996.cn/post/2017/linux-vim/">
-  <link rel='shortlink' href="https://www.code996.cn/post/2017/linux-vim/">
+  <link rel="canonical" href="https://www.code996.cn/post/2018/zeromq-springboot/">
+  <link rel='shortlink' href="https://www.code996.cn/post/2018/zeromq-springboot/">
   <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
 
   <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
@@ -162,7 +162,7 @@
                             <ul class="meta-single group">
                                 
                                 <li class="category">
-                                    <span>学习笔记</span>
+                                    <span>记事本</span>
                                 </li>
                                 
                             </ul>
@@ -174,18 +174,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">vim基本使用</h1>
+                                    <h1 class="post-title">SpringBoot集成ZeroMQ</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-06 · 55 Words
+                                        Posted @ 2018-11-19 · 1108 Words
                                         
-                                        · Tags: linux
+                                        · Tags: work
                                         
                                         
                                         
                                         
                                         · Hits:
-                                        <span id="https://www.code996.cn/post/2017/linux-vim/" class="leancloud_visitors" data-flag-title="vim基本使用">
+                                        <span id="https://www.code996.cn/post/2018/zeromq-springboot/" class="leancloud_visitors" data-flag-title="SpringBoot集成ZeroMQ">
                                             <span class="leancloud-visitors-count"></span>
                                         </span>
                                     </p>
@@ -196,27 +196,392 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>i 进入插入状态</p>
+                                            <p>开发ZeroMQ的SpringBoot Starter。</p>
 
-<p>esc 退出插入状态</p>
+<p>resources中META-INF中增加文件spring.factories：</p>
 
-<p>x 删除一个字符</p>
+<p><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration</code></p>
 
-<p>dd 删除一行，并拷贝</p>
+<p>配置文件类：ZeroMQProperties</p>
 
-<p>yy 拷贝</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;spring.zeromq&quot;)
+@Setter
+@Getter
+public class ZeroMQProperties {
 
-<p>p 粘贴</p>
+    private Publisher publisher;
 
-<p>u 撤销</p>
+    private Subscriber subscriber;
 
-<dl>
-<dt>ctrl+r 重做</dt>
-<dt>:w 保存</dt>
-<dt>:q 退出</dt>
-</dl>
+    @Data
+    public static class Publisher {
+        private Integer ioNum = 1;
+        private String address;
+    }
 
-<p>:q! → 退出不保存</p>
+    @Data
+    public static class Subscriber {
+        private Integer ioNum = 1;
+        private String address;
+    }
+}
+</code></pre>
+
+<p>自动配置类：ZeroMQAutoConfiguration</p>
+
+<pre><code>@Configuration
+@EnableConfigurationProperties(ZeroMQProperties.class)
+public class ZeroMQAutoConfiguration {
+
+    @Bean(destroyMethod = &quot;destroy&quot;)
+    @ConditionalOnMissingBean(Publisher.class)
+    @ConditionalOnProperty(prefix = &quot;spring.zeromq&quot;, value = &quot;publisher.address&quot;)
+    public Publisher mqPublisher(final ZeroMQProperties zeroMQProperties) {
+        ZeroMQProperties.Publisher publisher = zeroMQProperties.getPublisher();
+        if (publisher.getAddress() == null) {
+            throw new IllegalArgumentException(&quot;mq address can not be null!&quot;);
+        }
+        if (publisher.getIoNum() == null) {
+            publisher.setIoNum(1);
+        }
+        return new Publisher(publisher.getIoNum(), publisher.getAddress());
+    }
+
+    @Configuration
+    @ConditionalOnProperty(prefix = &quot;spring.zeromq&quot;, value = &quot;subscriber.address&quot;)
+    public static class ListenerContainerConfiguration
+            implements ApplicationContextAware, InitializingBean, EnvironmentAware {
+
+        private Set&lt;String&gt; topicSet = new HashSet&lt;&gt;();
+
+        private ConfigurableApplicationContext applicationContext;
+
+        private StandardEnvironment environment;
+
+        private AtomicLong counter = new AtomicLong(0);
+
+        @Autowired
+        private ZeroMQProperties subscrbConfig;
+
+        private void registerContainer(final String beanName, final Object bean) {
+            Class&lt;?&gt; clazz = AopUtils.getTargetClass(bean);
+            if (!MessageCallback.class.isAssignableFrom(bean.getClass())) {
+                throw new IllegalStateException(clazz + &quot; must be instance of &quot; + MessageCallback.class.getName());
+            }
+            if (subscrbConfig.getSubscriber() == null) {
+                throw new IllegalArgumentException(&quot;Argument Illegal, no subscrbConfig!&quot;);
+            }
+            MessageCallback callback = (MessageCallback) bean;
+            Subscriber annotation = clazz.getAnnotation(Subscriber.class);
+            if (topicSet.contains(annotation.topic())) {
+                throw new IllegalArgumentException(&quot;Topic重复！&quot;);
+            }
+            BeanDefinitionBuilder beanBuilder = BeanDefinitionBuilder.rootBeanDefinition(SubscribContainer.class);
+            beanBuilder.addPropertyValue(&quot;topic&quot;, annotation.topic());
+            beanBuilder.addPropertyValue(&quot;address&quot;, subscrbConfig.getSubscriber().getAddress());
+            beanBuilder.addPropertyValue(&quot;ioNum&quot;, subscrbConfig.getSubscriber().getIoNum());
+            beanBuilder.addPropertyValue(&quot;threadSize&quot;, annotation.threadSize());
+            beanBuilder.addPropertyValue(&quot;queueSize&quot;, annotation.queueSize());
+            beanBuilder.addPropertyValue(&quot;callback&quot;, callback);
+            beanBuilder.addPropertyValue(&quot;clazz&quot;, findType(callback));
+            beanBuilder.setDestroyMethodName(&quot;close&quot;);
+            String containerBeanName = String.format(&quot;%s_%s&quot;, SubscribContainer.class.getName(), counter.incrementAndGet());
+            DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
+            beanFactory.registerBeanDefinition(containerBeanName, beanBuilder.getBeanDefinition());
+            SubscribContainer container = beanFactory.getBean(containerBeanName, SubscribContainer.class);
+            container.startRun();
+            topicSet.add(annotation.topic());
+            log.info(&quot;register messageCallback to container, listenerBeanName:{}, containerBeanName:{}&quot;, beanName, containerBeanName);
+        }
+
+        @Override
+        public void afterPropertiesSet() throws Exception {
+            Map&lt;String, Object&gt; beans = this.applicationContext.getBeansWithAnnotation(Subscriber.class);
+            Optional.ofNullable(beans).ifPresent(b -&gt; b.forEach(this::registerContainer));
+        }
+
+        @Override
+        public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+            this.applicationContext = (ConfigurableApplicationContext) applicationContext;
+        }
+
+        @Override
+        public void setEnvironment(Environment environment) {
+            if (environment instanceof StandardEnvironment) {
+                this.environment = (StandardEnvironment) environment;
+            }
+        }
+
+        private Type findType(MessageCallback callback) {
+            Type[] interfaces = callback.getClass().getGenericInterfaces();
+            for(Type t: interfaces){
+                if(t.getTypeName().startsWith(MessageCallback.class.getName()) &amp;&amp; ParameterizedType.class.isAssignableFrom(t.getClass())){
+                    return ((ParameterizedType)t).getActualTypeArguments()[0];
+                }
+            }
+            throw new IllegalStateException(&quot;&quot;);
+        }
+    }
+
+}
+</code></pre>
+
+<p>发布者：Publisher</p>
+
+<pre><code>public class Publisher&lt;T extends Serializable&gt; {
+
+    private ZMQ.Context context;
+
+    private ZMQ.Socket socket;
+
+    private int mode = ZMQ.PUB;
+
+    public Publisher(int ioNum, String address) {
+        context = ZMQ.context(ioNum);
+        socket = context.socket(mode);
+        socket.bind(address);
+    }
+
+    public boolean send(String topic, T msg) {
+        return socket.send(topic + &quot; &quot; + JSON.toJSON(msg), 0);
+    }
+
+    public void destroy() {
+        socket.close();
+        context.term();
+    }
+
+}
+</code></pre>
+
+<p>接收者注解：Subscriber</p>
+
+<pre><code>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Subscriber {
+
+    String topic();
+
+    //并发处理消息的线程数
+    int threadSize() default 20;
+
+    int queueSize() default 20000;
+
+}
+</code></pre>
+
+<p>接收者回调接口：MessageCallback</p>
+
+<pre><code>public interface MessageCallback&lt;T extends Serializable&gt; {
+    void onMessage(T msg);
+}
+</code></pre>
+
+<p>接收者容器：SubscribContainer</p>
+
+<pre><code>@Data
+public class SubscribContainer extends Thread {
+
+    private String topic;
+
+    private String address;
+
+    private int threadSize;
+
+    private int queueSize;
+
+    private int keepAliveTime = 0;
+
+    private ZMQ.Socket socket;
+
+    private ZMQ.Context context;
+
+    private MessageCallback callback;
+
+    private Executor execute;
+
+    private int ioNum = 1;
+
+    private boolean exit = false;
+
+    private Type clazz;
+
+    private int mode = ZMQ.SUB;
+
+    public SubscribContainer() {
+    }
+
+    public void startRun() {
+        if (this.getState() != State.NEW) {
+            return;
+        }
+        try {
+            context = ZMQ.context(ioNum);
+            socket = context.socket(mode);
+            socket.connect(address);
+            socket.subscribe(this.topic.getBytes());
+            execute = new ThreadPoolExecutor(threadSize, threadSize, keepAliveTime, TimeUnit.SECONDS,
+                    new ArrayBlockingQueue&lt;&gt;(queueSize), new NamedThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+            this.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            byte[] stringValue = socket.recv(0);
+            String msg = new String(stringValue);
+            String finalMsg = msg.substring(this.topic.length() + 1);
+            if (String.class.equals(clazz)) {
+                execute.execute(() -&gt; callback.onMessage(finalMsg));
+            } else {
+                Serializable o = JSON.parseObject(finalMsg, clazz);
+                execute.execute(() -&gt; callback.onMessage(o));
+            }
+            if (exit) {
+                break;
+            }
+        }
+    }
+
+    public void close() {
+        try {
+            exit = true;
+            socket.close();
+            context.term();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class NamedThreadFactory implements ThreadFactory {
+        AtomicInteger i = new AtomicInteger(1);
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(r);
+            t.setName(&quot;ZeroMQ-Thread-&quot; + i.getAndIncrement());
+            return t;
+        }
+    }
+
+}
+</code></pre>
+
+<p>使用：
+引入jar包
+application.properties</p>
+
+<pre><code>server.port=8080
+spring.zeromq.publisher.ioNum=4
+spring.zeromq.publisher.address=tcp://*:5557
+spring.zeromq.publisher.topic=test
+spring.zeromq.subscriber.address=tcp://localhost:5557
+</code></pre>
+
+<p>启动类：</p>
+
+<pre><code>@SpringBootApplication
+public class ZmqApplication implements CommandLineRunner {
+
+    @Autowired
+    Publisher publisher;
+
+    @Autowired
+    Publisher&lt;Person&gt; publisher2;
+
+    /**
+     * 程序入口
+     *
+     * @param args 参数
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(ZmqApplication.class, args);
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
+        for (int i = 1; i &lt;= 100; i++) {
+            publisher.send(&quot;topic1&quot;, &quot;msg&quot; + i);
+            publisher2.send(&quot;topic2&quot;, new Person(i, &quot;name&quot; + i, new Date()));
+        }
+    }
+}
+</code></pre>
+
+<p>Person对象：</p>
+
+<pre><code>@Data
+public class Person implements Serializable {
+
+    public Person(int id, String name, Date birthday) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    private int id;
+
+    private String name;
+
+    private Date birthday;
+}
+</code></pre>
+
+<p>一个Controller：</p>
+
+<pre><code>@RestController
+@RequestMapping(&quot;/zero&quot;)
+public class TestController {
+
+    @Autowired
+    Publisher&lt;String&gt; publisher;
+
+    @RequestMapping(&quot;/send/{n}&quot;)
+    public String send(@PathVariable(&quot;n&quot;) int n) {
+        boolean b = publisher.send(&quot;topic1&quot;, &quot;msg&quot; + n);
+        return b ? &quot;success&quot; : &quot;error&quot;;
+    }
+}
+</code></pre>
+
+<p>订阅者1：</p>
+
+<pre><code>@Subscriber(topic = &quot;topic1&quot;, threadSize = 5)
+public class SubscriberTest implements MessageCallback&lt;String&gt;, Serializable {
+
+    @Override
+    public void onMessage(String str) {
+        System.out.println(Thread.currentThread().getName() + &quot; msg: &quot; + str);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>订阅者2：</p>
+
+<pre><code>@Subscriber(topic = &quot;topic2&quot;, threadSize = 10)
+public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
+
+    @Override
+    public void onMessage(Person p) {
+        System.out.println(Thread.currentThread().getName() + &quot; msg: &quot; + p.toString());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
 
                                             
                                         </div>
@@ -237,7 +602,7 @@
                 
                 
             
-            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2017/linux-vim/">https://www.code996.cn/post/2017/linux-vim/</a></li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2018/zeromq-springboot/">https://www.code996.cn/post/2018/zeromq-springboot/</a></li>
             <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
@@ -257,20 +622,14 @@
                             <ul class="post-nav group">
                                 <li class="next">
                                     
-                                    <a href="https://www.code996.cn/post/2017/mysql-type/" rel="next">
+                                    <a href="https://www.code996.cn/post/2018/github_login/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Mysql常用数据类型</span>
+                                        <span>使用github登录网址</span>
                                     </a>
                                     
                                 </li>
                                 <li class="previous">
-                                    
-                                    <a href="https://www.code996.cn/post/spring/spring-config/" rel="prev">
-                                        <i class="fa fa-chevron-left"></i>
-                                        <strong>Previous</strong>
-                                        <span>Spring Boot发布和调用RESTful web service</span>
-                                    </a>
                                     
                                 </li>
                             </ul>
@@ -285,7 +644,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/2018/rocketmq/" rel="bookmark" class="leancloud-count">ubuntu16.04安装rocketMQ
+                <a href="https://www.code996.cn/post/2018/elasticJob/" rel="bookmark" class="leancloud-count">SpringBoot集成elastic-job-lite
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -296,7 +655,18 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/2016/mysql/" rel="bookmark" class="leancloud-count">ubuntu16.04 安装 mysql5.7
+                <a href="https://www.code996.cn/post/2018/work-single-net/" rel="bookmark" class="leancloud-count">网元级网络巡检-方案概要
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://www.code996.cn/post/2018/work-sso/" rel="bookmark" class="leancloud-count">统一身份认证平台-方案概要
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -610,50 +980,54 @@
                   
                   
                   
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                 
-                <li><a href="https://www.code996.cn/post/2017/linux-cmd/">Linux常用命令</a></li>
+                <li><a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
                   
                   
+                
+                <li><a href="https://www.code996.cn/post/2018/work-sso/">统一身份认证平台-方案概要</a></li>
                   
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
+                
+                <li><a href="https://www.code996.cn/post/2018/work-single-net/">网元级网络巡检-方案概要</a></li>
                   
                   
                 
