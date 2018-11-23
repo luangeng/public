@@ -49,15 +49,6 @@
     </item>
     
     <item>
-      <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
-      <link>https://www.code996.cn/post/2018/spring-annotation/</link>
-      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2018/spring-annotation/</guid>
-      <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
-    </item>
-    
-    <item>
       <title>统一身份认证平台-方案概要</title>
       <link>https://www.code996.cn/post/2018/work-sso/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
@@ -621,6 +612,15 @@ Unit 8 Text A Saving Nature, But Only For Man Part I Pre-reading Task Listen to 
       
       <guid>https://www.code996.cn/post/2017/mysql-procedure/</guid>
       <description>存储过程（Stored Procedure）是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数（如果带参数）来</description>
+    </item>
+    
+    <item>
+      <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
+      <link>https://www.code996.cn/post/2017/spring-annotation/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2017/spring-annotation/</guid>
+      <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
     </item>
     
     <item>

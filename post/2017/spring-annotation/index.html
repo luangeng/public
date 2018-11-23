@@ -2,31 +2,31 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn">
-  <title>全新版大学英语综合教程2-2 - Code996</title>
+  <title>一文看懂@RequestBody,@RequestParam和@PathVariable - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <meta name="keywords" content="大学英语 ">
+  <meta name="keywords" content="spring ">
   
-  <meta name="description" content="全新版大学英语综合教程2-2">
+  <meta name="description" content="一文看懂@RequestBody,@RequestParam和@PathVariable">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="全新版大学英语综合教程2-2 - Code996">
-  <meta itemprop="description" content="全新版大学英语综合教程2-2">
+  <meta itemprop="name" content="一文看懂@RequestBody,@RequestParam和@PathVariable - Code996">
+  <meta itemprop="description" content="一文看懂@RequestBody,@RequestParam和@PathVariable">
   <meta itemprop="image" content="https://luangeng.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="全新版大学英语综合教程2-2 - Code996" />
+  <meta property="og:title" content="一文看懂@RequestBody,@RequestParam和@PathVariable - Code996" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.code996.cn/post/english/2-2/" />
+  <meta property="og:url" content="https://www.code996.cn/post/2017/spring-annotation/" />
   <meta property="og:image" content="https://luangeng.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="全新版大学英语综合教程2-2">
+  <meta property="og:description" content="在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
-  <link rel="canonical" href="https://www.code996.cn/post/english/2-2/">
-  <link rel='shortlink' href="https://www.code996.cn/post/english/2-2/">
+  <link rel="canonical" href="https://www.code996.cn/post/2017/spring-annotation/">
+  <link rel='shortlink' href="https://www.code996.cn/post/2017/spring-annotation/">
   <link rel="shortcut icon" href="https://luangeng.gitee.io/cdn/img/favicon.ico"/>
 
   <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
@@ -162,7 +162,7 @@
                             <ul class="meta-single group">
                                 
                                 <li class="category">
-                                    <span>英语</span>
+                                    <span>学习笔记</span>
                                 </li>
                                 
                             </ul>
@@ -174,18 +174,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">全新版大学英语综合教程2-2</h1>
+                                    <h1 class="post-title">一文看懂@RequestBody,@RequestParam和@PathVariable</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2018-03-03 · 1131 Words
+                                        Posted @ 2017-07-01 · 1235 Words
                                         
-                                        · Tags: 英语
+                                        · Tags: spring
                                         
                                         
                                         
                                         
                                         · Hits:
-                                        <span id="https://www.code996.cn/post/english/2-2/" class="leancloud_visitors" data-flag-title="全新版大学英语综合教程2-2">
+                                        <span id="https://www.code996.cn/post/2017/spring-annotation/" class="leancloud_visitors" data-flag-title="一文看懂@RequestBody,@RequestParam和@PathVariable">
                                             <span class="leancloud-visitors-count"></span>
                                         </span>
                                     </p>
@@ -196,75 +196,105 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p><audio src="https://www.code996.cn/mp3/2-2.mp3" controls="controls">
-    Your browser does not support the audio element.
-</audio></p>
+                                            
 
-<pre><code>Unit 2 
-Text A 
-The Richest Man In America, Down Home
+<p><img src="pic/2018-8/ding.jpg" alt="java" /></p>
 
-Part I Pre-reading Task
-Listen to the recording two or three times and then think over the following questions:
+<p>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spring的各种注解，@RequestBody，@RequestParam，@ResponseBody，@PathVariable等，本文通过Postman示例，并结合Http协议演示下几种注解的用法用途。</p>
 
-1. Who is it about?
-2. What happened to him one day?
-3. Do you think it was worthwhile to walk two or three miles to pay back the six and a quarter cents?
-4. Is the story related to the theme of the unit — values?
+<p>定义一个简单的User对象：</p>
 
-Part II 
-Text A
+<p><img src="pic/2018-8/ding-1.jpg" alt="java" /></p>
 
-Does being rich mean you live a completely different life from ordinary people? Not, it seems, if your name is Sam Walton.
+<p>UserController：</p>
 
-                   THE RICHEST MAN IN AMERICA, DOWN HOME
+<p><img src="pic/2018-8/ding-2.jpg" alt="java" /></p>
 
-                              Art Harris
+<hr />
 
-    He put on a dinner jacket to serve as a waiter at the birthday party of The Richest Man in America. He imagined what surely awaited: a mansion, a &quot;Rolls-Royce for every day of the week,&quot; dogs with diamond collars, servants everywhere.
+<h2 id="首先看一下get请求">首先看一下GET请求：</h2>
 
-    Then he was off to the house, wheeling past the sleepy town square in Bentonville, a remote Arkansas town of 9,920, where Sam Walton started with a little dime store that grew into a $6 billion discount chain called Wal-Mart. He drove down a country road, turned at a mailbox marked &quot;Sam and Helen Walton,&quot; and jumped out at a house in the woods.
+<p>表单可以以GET请求提交，但是GET请求只能在url中携带参数，所以在Postman中无法编辑body，参数是通过在url中拼接传递的：</p>
 
-    It was nice, but no palace. The furniture appeared a little worn. An old pickup truck sat in the garage and a muddy bird dog ran about the yard. He never spotted any servants.
+<p><img src="pic/2018-8/ding-3.jpg" alt="java" /></p>
 
-    &quot;It was a real disappointment,&quot; sighs waiter Jamie Beaulieu.
+<p>此时Controller中可以直接使用User对象接收参数，不用加任何注解：(springMvc自动构造User对象)</p>
 
-    Only in America can a billionaire carry on like plain folks and get away with it. And the 67-year-old discount king Sam Moore Walton still travels these windy back roads in his 1979 Ford pickup, red and white, bird dogs by his side, and, come shooting season, waits in line like everyone else to buy shells at the local Wal-Mart.
+<p><img src="pic/2018-8/ding-4.jpg" alt="java" /></p>
 
-    &quot;He doesn't want any special treatment,&quot; says night manager Johnny Baker, who struggles to call the boss by his first name as a recent corporate memo commands. Few here think of his billions; they call him &quot;Mr. Sam&quot; and accept his folksy ways. &quot;He's the same man who opened his dime store on the square and worked 18 hours a day for his dream,&quot; says Mayor Richard Hoback.
+<p>也可以通过@RequestParam单独获取其中一个参数：</p>
 
-    By all accounts, he's friendly, cheerful, a fine neighbor who does his best to blend in, never flashy, never throwing his weight around.
+<p><img src="pic/2018-8/ding-5.jpg" alt="从url中获取参数" /></p>
 
-    No matter how big a time he had on Saturday night, you can find him in church on Sunday. Surely in a reserved seat, right? &quot;We don't have reserved seats,&quot; says Gordon Garlington III, pastor of the local church.
+<hr />
 
-    So where does The Richest Man in America sit? Wherever he finds a seat. &quot;Look, he's just not that way. He doesn't have a set place. At a church supper the other night, he and his wife were in back washing dishes.&quot;
+<h2 id="再来看post请求">再来看POST请求：</h2>
 
-    For 19 years, he's used the same barber. John Mayhall finds him waiting when he opens up at 7 a.m. He chats about the national news, or reads in his chair, perhaps the Benton County Daily Democrat, another Walton property that keeps him off the front page. It buried the Forbes list at the bottom of page 2.
+<p>表单可以通过POST提交请求,此时Http请求的Context-Type为application/x-www-form-urlencoded，</p>
 
-    &quot;He's just not a front-page person,&quot; a newspaper employee explains.
+<p>所以在Postman中如图设置：</p>
 
-    But one recent morning, The Richest Man in America did something that would have made headlines any where in the world: He forgot his money. &quot;I said, 'Forget it, take care of it next time,'&quot; says barber Mayhall. &quot;But he said, 'No, I'll get it,' and he went home for his wallet.&quot;
+<p><img src="pic/2018-8/ding-6.jpg" alt="勾选x-www-form-urlencoded" /></p>
 
-    Wasn't that, well, a little strange? &quot;No sir,&quot; says Mayhall, &quot;the only thing strange about Sam Walton is that he isn't strange.&quot;
+<p>Controller中应该这样接收参数，不用加任何注解：(spring自动构造User对象)</p>
 
-    But just how long Walton can hold firm to his folksy habits with celebrity hunters keeping following him wherever he goes is anyone's guess. Ever since Forbes magazine pronounced him America's richest man, with $2.8 billion in Wal-Mart stock, he's been a rich man on the run, steering clear of reporters, dreamers, and schemers.
+<p><img src="pic/2018-8/ding-7.jpg" alt="java" /></p>
 
-    &quot;He may be the richest by Forbes rankings,&quot; says corporate affairs director Jim Von Gremp, &quot;but he doesn't know whether he is or not — and he doesn't care. He doesn't spend much. He owns stock, but he's always left it in the company so it could grow. But the real story in his mind is the success achieved by the 100,000 people who make up the Wal-Mart team.&quot;
+<p>此时@RequestParam也可以使用：</p>
 
-    He's usually back home for Friday sales meetings, or the executive pep rally Saturday morning at 7 a.m., when Walton, as he does at new store openings, is liable to jump up on a chair and lead everyone in the Wal-Mart cheer: &quot;Give me a W! Give me an A! Give me an L! Louder!&quot;
+<p><img src="pic/2018-8/ding-8.jpg" alt="从请求体中获取参数" /></p>
 
-    And louder they yell. No one admits to feeling the least bit silly. It's all part of the Wal-Mart way of life as laid down by Sam: loyalty, hard work, long hours; get ideas into the system from the bottom up, Japanese-style; treat your people right; cut prices and margins to the bone and sleep well at night. Employees with one year on board qualify for stock options, and are urged to buy all they can.
+<p>Http请求也可以不用表单形式提交，比如传递一个纯字符串或json字符串到后台，此时就需要使用@RequestBody了。</p>
 
-    After the pep rally, there's bird hunting, or tennis on his backyard court. But his stores are always on his mind. One tennis guest managed to put him off his game by asking why a can of balls cost more in one Wal-Mart than another. It turned out to be untrue, but the move worked. Walton lost four straight games.
+<p>传递纯字符串，在Body中选择raw类型，下拉框选择Text或test/plain,然后输入参数：</p>
 
-    Walton set up a college scholarship fund for employees' children, a disaster relief fund to rebuild employee homes damaged by fires, floods, tornadoes, and the like. He believed in cultivating ideas and rewarding success.
+<p><img src="pic/2018-8/ding-9.jpg" alt="text/plain" /></p>
 
-    &quot;He'd say, 'That fellow worked hard, let's give him a little extra,'&quot; recalls retired president Ferold  F. Arend, who was stunned at such generosity after the stingy employer he left to join Wal-Mart. &quot;I had to change my way of thinking when I came aboard.&quot;
+<p>Controller中参数前加@RequestBody，就可以接收到参数了：</p>
 
-    &quot;The reason for our success,&quot; says Walton, in a company handout, &quot;is our people and the way they're treated and the way they feel about their company. They believe things are different here, but they deserve the credit.&quot;
+<p><img src="pic/2018-8/ding-10.jpg" alt="加@RequestBody" /></p>
 
-    Adds company lawyer Jim Hendren: &quot;I've never seen anyone yet who worked for him or was around him for any length of time who wasn't better off. And I don't mean just financially, although a lot of people are. It's just something about him — coming into contact with Sam Walton just makes you a better person.&quot;
-</code></pre>
+<p>同理通过json或xml传参：</p>
+
+<p><img src="pic/2018-8/ding-11.jpg" alt="java" /></p>
+
+<p>加@RequestBody:</p>
+
+<p><img src="pic/2018-8/ding-12.jpg" alt="java" /></p>
+
+<p>也可以混合传参：</p>
+
+<p><img src="pic/2018-8/ding-13.jpg" alt="url中增加一个参数" /></p>
+
+<p>使用@RequestParam接收:</p>
+
+<p><img src="pic/2018-8/ding-14.jpg" alt="java" /></p>
+
+<hr />
+
+<h2 id="再看一下-pathvariable注解的使用方法">再看一下@PathVariable注解的使用方法：</h2>
+
+<p><img src="pic/2018-8/ding-15.jpg" alt="在{}中映射参数" /></p>
+
+<p>直接拼参数:</p>
+
+<p><img src="pic/2018-8/ding-16.jpg" alt="java" /></p>
+
+<hr />
+
+<h2 id="总结下-requestbody的作用">总结下@RequestBody的作用：</h2>
+
+<p>@RequestBody注解将首先获取context-type，然后查找可以解析该类型的MessageConverter，找到后使用该转换器解析requestBody中的内容，比如contexttype 为application/json，则调用Jackson2HttpMessageConverter解析body中的为json字符串。</p>
+
+<p>SpringMVC中的MessageConverter有下列几种：</p>
+
+<p><img src="pic/2018-8/ding-17.jpg" alt="java" /></p>
+
+<p>若请求以表单形式提交，Context-Type是application/x-www-form-urlencoded，参数即为Key/Value形式，则不需转换器，SpringMvc自动根据Controller的参数构造对象。</p>
+
+<p>总有人究竟该不该加注解或参数为什么传不过去，其实是取决于前端开发和你协商如何传参决定的，每种方式都能达到目的，而不是一定要加或不加。</p>
+
+<p>还有其他针对不同ContextType的注解，如针对multipart/form-data的@RequestPart注解等，由于篇幅关系下次再说。</p>
 
                                             
                                         </div>
@@ -285,7 +315,7 @@ Does being rich mean you live a completely different life from ordinary people? 
                 
                 
             
-            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/english/2-2/">https://www.code996.cn/post/english/2-2/</a></li>
+            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/2017/spring-annotation/">https://www.code996.cn/post/2017/spring-annotation/</a></li>
             <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
@@ -305,19 +335,19 @@ Does being rich mean you live a completely different life from ordinary people? 
                             <ul class="post-nav group">
                                 <li class="next">
                                     
-                                    <a href="https://www.code996.cn/post/english/2-3/" rel="next">
+                                    <a href="https://www.code996.cn/post/2017/cxf-interceptor/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>全新版大学英语综合教程2-3</span>
+                                        <span>CXF拦截器介绍及自定义拦截器实现</span>
                                     </a>
                                     
                                 </li>
                                 <li class="previous">
                                     
-                                    <a href="https://www.code996.cn/post/english/2-1/" rel="prev">
+                                    <a href="https://www.code996.cn/post/2017/mysql-procedure/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>全新版大学英语综合教程2-1</span>
+                                        <span>MySql 存储过程</span>
                                     </a>
                                     
                                 </li>
@@ -333,161 +363,7 @@ Does being rich mean you live a completely different life from ordinary people? 
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/english/3-6/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程3-6
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/english/1-6/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-6
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://www.code996.cn/post/english/2-3/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程2-3
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://www.code996.cn/post/english/1-7/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-7
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://www.code996.cn/post/english/2-1/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程2-1
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://www.code996.cn/post/english/1-8/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-8
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://www.code996.cn/post/english/1-4/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-4
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://www.code996.cn/post/english/1-1/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-1
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
-                <a href="https://www.code996.cn/post/english/1-3/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-3
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://www.code996.cn/post/english/2-5/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程2-5
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">11.</span>
-                <a href="https://www.code996.cn/post/english/2-8/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程2-8
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">12.</span>
-                <a href="https://www.code996.cn/post/english/2-6/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程2-6
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">13.</span>
-                <a href="https://www.code996.cn/post/english/1-2/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-2
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">14.</span>
-                <a href="https://www.code996.cn/post/english/1-5/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程1-5
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">15.</span>
-                <a href="https://www.code996.cn/post/english/2-4/" rel="bookmark" class="leancloud-count">全新版大学英语综合教程2-4
+                <a href="https://www.code996.cn/post/2016/struts/" rel="bookmark" class="leancloud-count">struts2 &#43; spring &#43; mybatis 框架整合
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -779,19 +655,8 @@ Does being rich mean you live a completely different life from ordinary people? 
                   
                   
                   
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
+                
+                <li><a href="https://www.code996.cn/post/2016/struts/">struts2 &#43; spring &#43; mybatis 框架整合</a></li>
                   
                   
                   
@@ -833,53 +698,36 @@ Does being rich mean you live a completely different life from ordinary people? 
                   
                   
                 
-                <li><a href="https://www.code996.cn/post/english/1-1/">全新版大学英语综合教程1-1</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-2/">全新版大学英语综合教程1-2</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-3/">全新版大学英语综合教程1-3</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-4/">全新版大学英语综合教程1-4</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-5/">全新版大学英语综合教程1-5</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-6/">全新版大学英语综合教程1-6</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-7/">全新版大学英语综合教程1-7</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/1-8/">全新版大学英语综合教程1-8</a></li>
-                  
-                
-                <li><a href="https://www.code996.cn/post/english/2-1/">全新版大学英语综合教程2-1</a></li>
+                <li><a href="https://www.code996.cn/post/2017/springmvc/">Spring MVC中Action使用总结</a></li>
                   
                   
-                
-                <li><a href="https://www.code996.cn/post/english/2-3/">全新版大学英语综合教程2-3</a></li>
                   
-                
-                <li><a href="https://www.code996.cn/post/english/2-4/">全新版大学英语综合教程2-4</a></li>
                   
-                
-                <li><a href="https://www.code996.cn/post/english/2-5/">全新版大学英语综合教程2-5</a></li>
                   
-                
-                <li><a href="https://www.code996.cn/post/english/2-6/">全新版大学英语综合教程2-6</a></li>
                   
-                
-                <li><a href="https://www.code996.cn/post/english/2-7/">全新版大学英语综合教程2-7</a></li>
                   
-                
-                <li><a href="https://www.code996.cn/post/english/2-8/">全新版大学英语综合教程2-8</a></li>
                   
-                
-                <li><a href="https://www.code996.cn/post/english/3-6/">全新版大学英语综合教程3-6</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                   
                   
                   
