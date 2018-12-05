@@ -821,14 +821,14 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/redis/</loc>
+        <loc>https://www.code996.cn/categories/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://www.code996.cn/categories/redis/</loc>
+        <loc>https://www.code996.cn/tags/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -912,13 +912,6 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
-        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
         <loc>https://www.code996.cn/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -926,14 +919,21 @@
     </url>
     
     <url>
-        <loc>https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD/</loc>
-        <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+        <loc>https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
         <loc>https://www.code996.cn/categories/%E8%8B%B1%E8%AF%AD/</loc>
+        <lastmod>2018-03-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD/</loc>
         <lastmod>2018-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
