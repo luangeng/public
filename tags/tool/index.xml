@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 03 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.code996.cn/tags/tool/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何制作生日祝福网页</title>
+      <link>https://www.code996.cn/post/2018/birthday/</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2018/birthday/</guid>
+      <description>如何制作生日祝福网页 预览图片： Your browser does not support the audio element. 开始前 完成本教程需要以下技能要求： 1. 熟悉Git 2. 熟悉HTML及HTML5 3. 熟悉Css及Css3</description>
+    </item>
     
     <item>
       <title>markdown简明语法</title>

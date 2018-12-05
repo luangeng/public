@@ -2,26 +2,26 @@
 <html class="no-js">
 <head>
   <base href="https://www.code996.cn">
-  <title>Spring Cloud Bus 消息总线 RabbitMQ - Code996</title>
+  <title>Spring Cloud Zuul 网关 - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
   <meta name="keywords" content="springcloud ">
   
-  <meta name="description" content="Spring Cloud Bus 消息总线 RabbitMQ">
+  <meta name="description" content="Spring Cloud Zuul 网关">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
 
-  <meta itemprop="name" content="Spring Cloud Bus 消息总线 RabbitMQ - Code996">
-  <meta itemprop="description" content="Spring Cloud Bus 消息总线 RabbitMQ">
+  <meta itemprop="name" content="Spring Cloud Zuul 网关 - Code996">
+  <meta itemprop="description" content="Spring Cloud Zuul 网关">
   <meta itemprop="image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico">
 
-  <meta property="og:title" content="Spring Cloud Bus 消息总线 RabbitMQ - Code996" />
+  <meta property="og:title" content="Spring Cloud Zuul 网关 - Code996" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.code996.cn/post/spring/spring-cloud-zuul/" />
   <meta property="og:image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM">
+  <meta property="og:description" content="Spring Cloud 服务网关Zuul 服务网关是分布式架构中不可缺少的组成部分，是外部网络和内部服务之间的屏障，例如权限控制之类的逻辑应该在这里实现，而不是放">
 
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
@@ -89,10 +89,6 @@
 
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://luangeng.gitee.io/index.html">Blessing</a>
-        </li>
-        
-        <li class="menu-item menu-item-type-post_type menu-item-object-page">
           <a rel="nofollow" href="https://www.code996.cn/teach/">教程</a>
         </li>
         
@@ -140,7 +136,7 @@
               Code996
             </a>
           </h1>
-          <span class="site-description"> 一个纯粹的技术分享社区 </span>
+          <span class="site-description"> 技术的道路上没有捷径 </span>
         </div>
 
       </div>
@@ -174,10 +170,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Spring Cloud Bus 消息总线 RabbitMQ</h1>
+                                    <h1 class="post-title">Spring Cloud Zuul 网关</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-10 · 1185 Words
+                                        Posted @ 2017-09-10 · 780 Words
                                         
                                         · Tags: springcloud
                                         
@@ -185,7 +181,7 @@
                                         
                                         
                                         · Hits:
-                                        <span id="https://www.code996.cn/post/spring/spring-cloud-zuul/" class="leancloud_visitors" data-flag-title="Spring Cloud Bus 消息总线 RabbitMQ">
+                                        <span id="https://www.code996.cn/post/spring/spring-cloud-zuul/" class="leancloud_visitors" data-flag-title="Spring Cloud Zuul 网关">
                                             <span class="leancloud-visitors-count"></span>
                                         </span>
                                     </p>
@@ -196,128 +192,139 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AMQP代理作为传输对象。</p>
+                                            <p>Spring Cloud 服务网关Zuul</p>
 
-<p>Spring Cloud Bus又被称为消息总线，负责管理和传播所有分布式系统中的消息，通过集成MQ实现广播机制，目前常用的有Kafka和RabbitMQ。利用bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景。
-及利用消息总线，可以实现当配置中心的refresh命令触发后，通过广播发送到每一个配置使用端。</p>
+<p>服务网关是分布式架构中不可缺少的组成部分，是外部网络和内部服务之间的屏障，例如权限控制之类的逻辑应该在这里实现，而不是放在每个服务单元。</p>
 
-<p>Spring已经在Config包中完成了大部分的工作，我们只需要在之前的配置中心的基础上，做如下修改：</p>
+<p>Spring Cloud Netflix 中的Zuul正是提供该功能的组件：</p>
 
-<p>1.给config-server和config-client增加依赖：</p>
+<ol>
+<li><p>提供路由功能，可屏蔽内部服务细节，并可提供负载均衡</p></li>
+
+<li><p>通过服务网关中的过滤器，在各阶段过滤请求和相应，提供对外的权限控制。</p></li>
+
+<li><p>实现了断路器，不会因为具体微服务的故障而导致服务网关的阻塞，依然可以对外服务。</p></li>
+</ol>
+
+<p>下来通过简单的例子体验一下Zuul提供的功能：</p>
+
+<ol>
+<li>首先需要一个eureka单元注册服务，一个client单元提供服务，之前已创建</li>
+</ol>
+
+<p>2.新建Spring Cloud项目，命名zuul</p>
+
+<p>3.添加依赖</p>
 
 <pre><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-     &lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;
+	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-zuul&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-eureka&lt;/artifactId&gt;
 &lt;/dependency&gt;
 </code></pre>
 
-<p>2.给config-server和config-client配置文件中增加MQ</p>
+<p>4.增加主类 &mdash; 添加EnableZuulProxy注解为开启Zuul网关代理</p>
 
-<pre><code>spring.rabbitmq.host=localhost
-spring.rabbitmq.port=5672
-spring.rabbitmq.username=lg
-spring.rabbitmq.password=lg
-</code></pre>
+<pre><code>@EnableZuulProxy
+@SpringCloudApplication
+public class App 
+{
+    @Bean
+    public AccessFilter accessFilter() {
+        return new AccessFilter();
+    }
 
-<p>3.依次启动RabbitMQ 、 Eureka 、config-server 、config-client1、config-client2</p>
-
-<p>4.在github上修改配置文件，刷新config-client查看配置，此时未更新</p>
-
-<p>然后执行 curl -X POST <a href="http://localhost:8011/bus/refresh">http://localhost:8011/bus/refresh</a> 后，再次查看config-client配置，此时已经更新</p>
-
-<p>5.登录RabbitMQ 管理页面，可查看到connecting，queue等信息。</p>
-
-<p>有时候可能需要部分刷新，即只刷新指定的config-client，spring同样支持，只需要在调用/bus/refresh接口时传递destination参数即可，如：</p>
-
-<p><code>/bus/refresh?destination=config-client:8031</code> 或 <code>/bus/refresh?destination=config-client:**</code></p>
-
-<p>自定义消息并通过消息总线发送</p>
-
-<p>在之前几个项目的基础上，我们做如下修改：</p>
-
-<p>1.config-server类增加Sender类</p>
-
-<pre><code>@Component
-public class Sender {
-
-    private static AtomicInteger count = new AtomicInteger(1);
-
-    @Autowired
-    private AmqpTemplate rabbitTemplate;
-
-    public void send() {
-        String msg = &quot;msg&quot; + count.getAndIncrement() + &quot; &quot; + new Date();
-        System.out.println(&quot;Sender : &quot; + msg);
-        this.rabbitTemplate.convertAndSend(&quot;hello&quot;, msg);
+    public static void main( String[] args )
+    {
+        new SpringApplicationBuilder(App.class).web(true).run(args);
     }
 }
 </code></pre>
 
-<p>2.config-server类增加定时任务，给主类加注解@EnableScheduling，每3秒发一次消息：</p>
+<p>5.添加配置文件application.properties</p>
 
-<pre><code>@Component
-public class ScheduledTasks {
+<pre><code>server.port=8011
+spring.application.name=zuul
 
-    @Autowired
-    private Sender sender;
+#自定义映射
+#zuul.routes.api-a.path=/client/**
+#zuul.routes.api-a.serviceId=client
+zuul.routes.api-a.path=/bing/**
+zuul.routes.api-a.serviceId=http://cn.bing.com/
 
-    @Scheduled(initiaDelay=5000, fixedRate = 3000)
-    public void reportCurrentTime() {
-        sender.send();
+#默认映射 无需配置
+#http://zuulhost:zuulport/serviceId/**  请求会被转发到serviceId对应的服务，需要注册到eureka
+
+eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
+</code></pre>
+
+<p>6.增加过滤器类</p>
+
+<pre><code>public class AccessFilter extends ZuulFilter {
+
+    private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
+
+    /**
+     pre：可以在请求被路由之前调用
+     routing：在路由请求时候被调用
+     post：在routing和error过滤器之后被调用
+     error：处理请求时发生错误时被调用
+     * @return
+     */
+    @Override
+    public String filterType() {
+        return &quot;pre&quot;;
+    }
+
+    //过滤器执行顺序
+    @Override
+    public int filterOrder() {
+        return 0;
+    }
+
+    //过滤器开关
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
+
+    @Override
+    public Object run() {
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+
+        Object accessToken = request.getParameter(&quot;token&quot;);
+        if(accessToken == null) {
+            log.warn(&quot;access token is empty&quot;);
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(401);
+            ctx.setResponseBody(request.getMethod()+&quot; &quot;+request.getRequestURL().toString()+&quot; no token&quot;);
+            return null;
+        }
+        log.info(&quot;access token ok&quot;);
+        return null;
     }
 
 }
 </code></pre>
 
-<p>3.分别给config-client1和config-client2增加接受类Receiver</p>
+<ol>
+<li><p>依次启动eureka 、client、 zuul ，访问测试:</p></li>
 
-<pre><code>@Component
-@RabbitListener(queues = &quot;hello&quot;)
-public class Receiver {
+<li><p>访问 <a href="http://localhost:8001/">http://localhost:8001/</a> 查看服务是否已注册</p></li>
 
-    @RabbitHandler
-    public void process(String msg) {
-        System.out.println(&quot;Receiver : &quot; + msg);
-    }
+<li><p>访问 <a href="http://localhost:8011/bing/token=1">http://localhost:8011/bing/token=1</a> 查看是否跳转到bing主页</p></li>
 
-}
-</code></pre>
+<li><p>访问 <a href="http://localhost:8011/bing">http://localhost:8011/bing</a> 查看过滤器是否工作</p></li>
 
-<p>4.依次启动 eureka config-server config-client</p>
+<li><p>访问 <a href="http://localhost:8011/client/info?token=1">http://localhost:8011/client/info?token=1</a> 查看zuul默认映射规则是否生效</p></li>
+</ol>
 
-<p>5.观察控制台输出如下：</p>
-
-<p>config-server：</p>
-
-<pre><code>Sender : msg1 Sun Aug 06 21:56:03 CST 2017
-Sender : msg2 Sun Aug 06 21:56:06 CST 2017
-Sender : msg3 Sun Aug 06 21:56:09 CST 2017
-Sender : msg4 Sun Aug 06 21:56:12 CST 2017
-Sender : msg5 Sun Aug 06 21:56:15 CST 2017
-Sender : msg6 Sun Aug 06 21:56:18 CST 2017
-Sender : msg7 Sun Aug 06 21:56:21 CST 2017
-Sender : msg8 Sun Aug 06 21:56:24 CST 2017
-Sender : msg9 Sun Aug 06 21:56:27 CST 2017
-</code></pre>
-
-<p>config-client1：</p>
-
-<pre><code>Receiver : msg2 Sun Aug 06 21:56:06 CST 2017
-Receiver : msg4 Sun Aug 06 21:56:12 CST 2017
-Receiver : msg6 Sun Aug 06 21:56:18 CST 2017
-Receiver : msg8 Sun Aug 06 21:56:24 CST 2017
-</code></pre>
-
-<p>config-client2：</p>
-
-<pre><code>Receiver : msg1 Sun Aug 06 21:56:03 CST 2017
-Receiver : msg3 Sun Aug 06 21:56:09 CST 2017
-Receiver : msg5 Sun Aug 06 21:56:15 CST 2017
-Receiver : msg7 Sun Aug 06 21:56:21 CST 2017
-Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
-</code></pre>
-
-<p>可见client从单个queue中依次取消息</p>
+<p>代码路径： <a href="https://github.com/luangeng/Cloud">https://github.com/luangeng/Cloud</a></p>
 
 <p>参考：<a href="http://projects.spring.io/spring-cloud/spring-cloud.html">http://projects.spring.io/spring-cloud/spring-cloud.html</a></p>
 
@@ -626,7 +633,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
             
             <a href='https://www.code996.cn/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
             
-            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(4)</code></a>
+            <a href='https://www.code996.cn/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
             
             <a href='https://www.code996.cn/tags/work' style="font-size:17px;margin:5px; padding:4px"><code>work(4)</code></a>
             
@@ -786,6 +793,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
                   
                   
                   
+                  
                 
             </ul>
         </div>
@@ -817,19 +825,13 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
             <h3>链接</h3>
             <ul>
                 <li class="cat-item cat-item-1">
-                    <a href="https://www.code996.cn/tools.html" target="_blank">在线编码格式化工具</a>
+                    <a href="https://www.code996.cn/birthday.html" target="_blank">祝福网页</a>
                 </li>
-                <li class="cat-item cat-item-1">
-                    <a href="https://www.code996.cn/note.html" target="_blank">网络记事本</a>
+				<li class="cat-item cat-item-1">
+                    <a href="https://www.code996.cn/tools.html" target="_blank">在线工具</a>
                 </li>
                 <li class="cat-item cat-item-1">
                     <a href="https://leancloud.cn/" target="_blank">LeanCloud</a>
-                </li>
-                <li class="cat-item cat-item-1">
-                    <a href="https://sweetalert2.github.io/" target="_blank">SweetAlert2</a>
-                </li>
-                <li class="cat-item cat-item-1">
-                    <a href="https://loading.io/" target="_blank">loading.io</a>
                 </li>
             </ul>
         </div>
@@ -839,7 +841,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
             <ul>
                 
                 <li class="cat-item cat-item-1">
-                    <a href='https://www.code996.cn/archive/2018'>2018(27)</a>
+                    <a href='https://www.code996.cn/archive/2018'>2018(28)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">

@@ -49,6 +49,15 @@
     </item>
     
     <item>
+      <title>如何制作生日祝福网页</title>
+      <link>https://www.code996.cn/post/2018/birthday/</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2018/birthday/</guid>
+      <description>如何制作生日祝福网页 预览图片： Your browser does not support the audio element. 开始前 完成本教程需要以下技能要求： 1. 熟悉Git 2. 熟悉HTML及HTML5 3. 熟悉Css及Css3</description>
+    </item>
+    
+    <item>
       <title>Netty--使用TCP协议传输文件</title>
       <link>https://www.code996.cn/post/netty/netty-file/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
@@ -157,12 +166,12 @@
     </item>
     
     <item>
-      <title>Spring Cloud Bus 消息总线 RabbitMQ</title>
+      <title>Spring Cloud Zuul 网关</title>
       <link>https://www.code996.cn/post/spring/spring-cloud-zuul/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-cloud-zuul/</guid>
-      <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
+      <description>Spring Cloud 服务网关Zuul 服务网关是分布式架构中不可缺少的组成部分，是外部网络和内部服务之间的屏障，例如权限控制之类的逻辑应该在这里实现，而不是放</description>
     </item>
     
     <item>
@@ -230,10 +239,10 @@
     
     <item>
       <title>Spring Boot发布和调用RESTful web service</title>
-      <link>https://www.code996.cn/post/spring/spring-config/</link>
+      <link>https://www.code996.cn/post/spring/spring-ws/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-config/</guid>
+      <guid>https://www.code996.cn/post/spring/spring-ws/</guid>
       <description>Spring Boot可以非常简单的发布和调用RESTful web service，下面参考官方指导体验一下 1.首先访问 http://start.spring.io/ 生成Spring Boot基础项目 或者</description>
     </item>
     

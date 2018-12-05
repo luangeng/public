@@ -14,10 +14,10 @@
     
     <item>
       <title>Spring Boot发布和调用RESTful web service</title>
-      <link>https://www.code996.cn/post/spring/spring-config/</link>
+      <link>https://www.code996.cn/post/spring/spring-ws/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-config/</guid>
+      <guid>https://www.code996.cn/post/spring/spring-ws/</guid>
       <description>Spring Boot可以非常简单的发布和调用RESTful web service，下面参考官方指导体验一下 1.首先访问 http://start.spring.io/ 生成Spring Boot基础项目 或者</description>
     </item>
     
