@@ -14,7 +14,6 @@ function init() {
 
     $(window).scroll(function() { this.scrollY > 700 ? $("#back-to-top").show() : $("#back-to-top").hide(); });
     queryRanking();
-
 }
 
 //百度推送
@@ -29,14 +28,6 @@ function baidu(){
     }
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(bp, s);
-}
-
-//谷歌
-function google(){
-     (adsbygoogle = window.adsbygoogle || []).push({
-       google_ad_client: "ca-pub-9678348744203652",
-       enable_page_level_ads: true
-     });
 }
 
 //给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。
