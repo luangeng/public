@@ -24,7 +24,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://www.code996.cn/post/spring/spring-cloud-rabbitmq/" />
   <meta property="og:image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co">
+  <meta property="og:description" content="Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM">
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
   <link rel="canonical" href="https://www.code996.cn/post/spring/spring-cloud-rabbitmq/">
@@ -175,7 +175,7 @@
                                     <h1 class="post-title">Spring Cloud Eureka 注册，发布，调用服务</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2017-09-11 · 1320 Words
+                                        Posted @ 2017-09-11 · 1185 Words
                                         
                                         · Tags: springcloud
                                         
@@ -194,178 +194,129 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Consul和Zookeeper。在Spring Cloud服务治理抽象层的作用下，可以无缝地切换服务治理实现，并且不影响任何其他的服务注册、服务发现、服务调用等逻辑。</p>
+                                            <p>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AMQP代理作为传输对象。</p>
 
-<p>Spring Cloud Eureka是Spring Cloud Netflix项目下的服务治理模块。而Spring Cloud Netflix项目是Spring Cloud的子项目之一，主要内容是对Netflix公司一系列开源产品的包装，它为Spring Boot应用提供了自配置的Netflix OSS整合。通过一些简单的注解，开发者就可以快速的在应用中配置一下常用模块并构建庞大的分布式系统。它主要提供的模块包括：服务发现（Eureka），断路器（Hystrix），智能路由（Zuul），客户端负载均衡（Ribbon）等。</p>
+<p>Spring Cloud Bus又被称为消息总线，负责管理和传播所有分布式系统中的消息，通过集成MQ实现广播机制，目前常用的有Kafka和RabbitMQ。利用bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景。及利用消息总线，可以实现当配置中心的refresh命令触发后，通过广播发送到每一个配置使用端。</p>
 
-<p>下面通过一个简单的例子来尝试下Spring Cloud Eureka ，步骤如下：</p>
+<p>Spring已经在Config包中完成了大部分的工作，我们只需要在之前的配置中心的基础上，做如下修改：</p>
 
-<p>1.创建Spring Boot项目，命名eureka，pom文件中还需要添加：</p>
-
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-cloud-starter-eureka-server&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<p>2.新建Application主类：</p>
-
-<pre><code>@EnableEurekaServer
-@SpringBootApplication
-public class Application
-{
-    public static void main( String[] args )
-    {
-        SpringApplication.run(Application.class, args);
-    }
-}
-</code></pre>
-
-<p>通过@EnableEurekaServer激活服务注册中心</p>
-
-<p>3.添加配置文件application.properties文件：</p>
-
-<pre><code>spring.application.name=eureka
-server.port=8001
-eureka.instance.hostname=localhost
-</code></pre>
-
-<pre><code>eureka.client.register-with-eureka=false
-eureka.client.fetch-registry=false
-</code></pre>
-
-<p>默认设置下，注册中心会将自己作为客户端来注册自己，通过以上配置可关闭该行为。</p>
-
-<p>4.启动服务，然后使用浏览器访问<a href="http://localhost:8001/">http://localhost:8001/</a>  ，可查看服务监控页面，此时注册实例为空。</p>
-
-<p>二  接下来创建两个服务提供者，并注册在Eureka上。</p>
-
-<p>1.新建Spring Boot项目，命名client1， 增加pom依赖</p>
+<p>1.给config-server和config-client增加依赖：</p>
 
 <pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-cloud-starter-eureka&lt;/artifactId&gt;
+     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;
 &lt;/dependency&gt;
 </code></pre>
 
-<p>2.添加主类</p>
+<p>2.给config-server和config-client配置文件中增加MQ</p>
 
-<pre><code>@EnableDiscoveryClient
-@SpringBootApplication
-public class App
-{
-    public static void main( String[] args )
-    {
-        SpringApplication.run(App.class, args);
-    }
-}
+<pre><code>spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=lg
+spring.rabbitmq.password=lg
 </code></pre>
 
-<p>通过@EnableDiscoveryClient激活DiscoveryClient，使Eureka可以发现该服务。</p>
+<p>3.依次启动RabbitMQ 、 Eureka 、config-server 、config-client1、config-client2</p>
 
-<p>3.添加配置文件application.properties文件</p>
+<p>4.在github上修改配置文件，刷新config-client查看配置，此时未更新</p>
 
-<pre><code>spring.application.name=client
-server.port=8071
-eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
-eureka.client.serviceUrl.defaultZone属性为服务注册中心的配置，指定服务注册中心的地址
-</code></pre>
+<p>然后执行 <code>curl -X POST http://localhost:8011/bus/refresh</code> 后，再次查看config-client配置，此时已经更新</p>
 
-<p>4.添加类InfoController.java</p>
+<p>5.登录RabbitMQ 管理页面，可查看到connecting，queue等信息。</p>
 
-<pre><code>@RestControllerpublic class TestController {
-    @RequestMapping(&quot;/info&quot;)
-    public String msg() {
-        return &quot;client1 servcie&quot;;
-    }
-}
-</code></pre>
+<p>有时候可能需要部分刷新，即只刷新指定的config-client，spring同样支持，只需要在调用/bus/refresh接口时传递destination参数即可，如：</p>
 
-<p>5.再创建一个一模一样的服务，命名client2，修改端口为8072，启动这两个服务，再访问<a href="http://localhost:8001/">http://localhost:8001/</a> ，可见</p>
+<p><code>/bus/refresh?destination=config-client:8031</code> 或 <code>/bus/refresh?destination=config-client:**</code></p>
 
-<p><img src="pic/2017/cloud1.png" alt="" /></p>
+<p>自定义消息并通过消息总线发送</p>
 
-<p>说明两个服务都已注册成功</p>
+<p>在之前几个项目的基础上，我们做如下修改：</p>
 
-<p>三   创建一个服务调用者</p>
+<p>1.config-server类增加Sender类</p>
 
-<p>1.新建Spring Boot项目，命名consumer，添加pom依赖</p>
+<pre><code>@Component
+public class Sender {
 
-<pre><code>&lt;dependency&gt;
-       &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
-       &lt;artifactId&gt;spring-cloud-starter-eureka&lt;/artifactId&gt;
-&lt;/dependency&gt;
-
-&lt;dependency&gt;
-       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-       &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<p>2.新建主类</p>
-
-<pre><code>@EnableDiscoveryClient
-@SpringBootApplication
-public class App
-{
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
-    public static void main( String[] args )
-    {
-        SpringApplication.run(App.class, args);
-    }
-}
-</code></pre>
-
-<p>同样注册在Eureka上</p>
-
-<p>3.添加配置文件</p>
-
-<pre><code>spring.application.name=consumer
-server.port=8081
-eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
-</code></pre>
-
-<p>指定注册地址</p>
-
-<p>4.添加TestController</p>
-
-<pre><code>@RestController
-public class TestController {
+    private static AtomicInteger count = new AtomicInteger(1);
 
     @Autowired
-    LoadBalancerClient loadBalancerClient;
+    private AmqpTemplate rabbitTemplate;
+
+    public void send() {
+        String msg = &quot;msg&quot; + count.getAndIncrement() + &quot; &quot; + new Date();
+        System.out.println(&quot;Sender : &quot; + msg);
+        this.rabbitTemplate.convertAndSend(&quot;hello&quot;, msg);
+    }
+}
+</code></pre>
+
+<p>2.config-server类增加定时任务，给主类加注解@EnableScheduling，每3秒发一次消息：</p>
+
+<pre><code>@Component
+public class ScheduledTasks {
 
     @Autowired
-    RestTemplate restTemplate;
+    private Sender sender;
 
-    @GetMapping(&quot;/test&quot;)
-    public String test() {
-
-        ServiceInstance serviceInstance = loadBalancerClient.choose(&quot;client&quot;);
-        String url = &quot;http://&quot; + serviceInstance.getHost() + &quot;:&quot; + serviceInstance.getPort() + &quot;/info&quot;;
-        return restTemplate.getForObject(url, String.class);
+    @Scheduled(initiaDelay=5000, fixedRate = 3000)
+    public void reportCurrentTime() {
+        sender.send();
     }
 
 }
 </code></pre>
 
-<p>LoadBalancerClient 可支持负载均衡的client节点选择</p>
+<p>3.分别给config-client1和config-client2增加接受类Receiver</p>
 
-<p>5.启动服务，查看Eureka界面</p>
+<pre><code>@Component
+@RabbitListener(queues = &quot;hello&quot;)
+public class Receiver {
 
-<p><img src="pic/2017/cloud2.png" alt="" /></p>
+    @RabbitHandler
+    public void process(String msg) {
+        System.out.println(&quot;Receiver : &quot; + msg);
+    }
 
-<p>使用浏览器访问 <a href="http://localhost:8081/test，">http://localhost:8081/test，</a> 可看到显示client2 service，说明服务调用成功。</p>
+}
+</code></pre>
 
-<p>有时候重启服务报错说端口占用，则需强杀进程</p>
+<p>4.依次启动 eureka config-server config-client</p>
 
-<p>lsof -i tcp:8081  然后 kill pid</p>
+<p>5.观察控制台输出如下：</p>
 
-<p>参考 <a href="http://projects.spring.io/spring-cloud/spring-cloud.html">http://projects.spring.io/spring-cloud/spring-cloud.html</a></p>
+<p>config-server：</p>
+
+<pre><code>Sender : msg1 Sun Aug 06 21:56:03 CST 2017
+Sender : msg2 Sun Aug 06 21:56:06 CST 2017
+Sender : msg3 Sun Aug 06 21:56:09 CST 2017
+Sender : msg4 Sun Aug 06 21:56:12 CST 2017
+Sender : msg5 Sun Aug 06 21:56:15 CST 2017
+Sender : msg6 Sun Aug 06 21:56:18 CST 2017
+Sender : msg7 Sun Aug 06 21:56:21 CST 2017
+Sender : msg8 Sun Aug 06 21:56:24 CST 2017
+Sender : msg9 Sun Aug 06 21:56:27 CST 2017
+</code></pre>
+
+<p>config-client1：</p>
+
+<pre><code>Receiver : msg2 Sun Aug 06 21:56:06 CST 2017
+Receiver : msg4 Sun Aug 06 21:56:12 CST 2017
+Receiver : msg6 Sun Aug 06 21:56:18 CST 2017
+Receiver : msg8 Sun Aug 06 21:56:24 CST 2017
+</code></pre>
+
+<p>config-client2：</p>
+
+<pre><code>Receiver : msg1 Sun Aug 06 21:56:03 CST 2017
+Receiver : msg3 Sun Aug 06 21:56:09 CST 2017
+Receiver : msg5 Sun Aug 06 21:56:15 CST 2017
+Receiver : msg7 Sun Aug 06 21:56:21 CST 2017
+Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
+</code></pre>
+
+<p>可见client从单个queue中依次取消息</p>
+
+<p>参考：<a href="http://projects.spring.io/spring-cloud/spring-cloud.html">http://projects.spring.io/spring-cloud/spring-cloud.html</a></p>
 
                                             
                                         </div>
@@ -620,10 +571,10 @@ public class TestController {
 		<div id="Series" class="widget widget_archive">
             <h3>系列文章</h3>
             <ul>
-                <li><a href="https://www.code996.cn/tags/java">Java</a></li>
+                <li><a href="https://www.code996.cn/tags/netty">Netty</a></li>
                 <li><a href="https://www.code996.cn/tags/zookeeper">Zookeeper</a></li>
                 <li><a href="https://www.code996.cn/tags/springcloud">Spring Cloud</a></li>
-                <li><a href="https://www.code996.cn/tags/netty">Netty</a></li>
+                <li><a href="https://www.code996.cn/tags/java">Java</a></li>
             </ul>
         </div>
 
@@ -819,11 +770,9 @@ public class TestController {
                   
                   
                   
-                  
-                  
-                  
                 
                 <li><a href="https://www.code996.cn/post/spring/spring-cloud-config/">Spring Cloud Eureka 注册，发布，调用服务</a></li>
+                  
                   
                   
                   
@@ -831,8 +780,10 @@ public class TestController {
                 <li><a href="https://www.code996.cn/post/spring/spring-cloud-eureka/">Spring Cloud Config 配置服务</a></li>
                   
                   
+                  
                 
                 <li><a href="https://www.code996.cn/post/spring/spring-cloud-hystrix/">Spring Cloud 断路器 Hystrix</a></li>
+                  
                   
                   
                   

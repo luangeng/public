@@ -162,7 +162,7 @@
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/spring/spring-cloud-rabbitmq/</guid>
-      <description>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co</description>
+      <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
     </item>
     
     <item>
@@ -229,6 +229,15 @@
     </item>
     
     <item>
+      <title>zookeeper-分布式锁和消息队列</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
+      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
+      <description>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个</description>
+    </item>
+    
+    <item>
       <title>Linux常用命令</title>
       <link>https://www.code996.cn/post/2017/linux-cmd/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
@@ -244,6 +253,15 @@
       
       <guid>https://www.code996.cn/post/spring/spring-cloud-eureka/</guid>
       <description>spring cloud 配置服务提供了一种非常方便的应用配置管理功能，用来解决分布式系统中配置文件太多导致的各种问题，而它自身的配置也非常简单。 服务端用来从gi</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-集群管理</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
+      <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
     </item>
     
     <item>
@@ -265,6 +283,15 @@
     </item>
     
     <item>
+      <title>zookeeper-配置服务</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-config/</link>
+      <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
+      <description>Zookeeper&amp;ndash;配置服务 配置服务是分布式应用中重要的服务，作用是使集群中的机器可以共享配置信息中公共的部分。ZooKeepe</description>
+    </item>
+    
+    <item>
       <title>Spring Boot发布和调用RESTful web service</title>
       <link>https://www.code996.cn/post/spring/spring-ws/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
@@ -283,12 +310,30 @@
     </item>
     
     <item>
+      <title>zookeeper-Watcher</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
+      <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
+      <description>Zookeeper&amp;ndash;Watcher 和 ACL Watcher (观察) Zookeeper中的znode可以被监控，这是zk的核心特性。 通过exists，getChildren和getData这些</description>
+    </item>
+    
+    <item>
       <title>Mysql常用数据类型</title>
       <link>https://www.code996.cn/post/2017/mysql-type/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2017/mysql-type/</guid>
       <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-Java API</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-java/</link>
+      <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
+      <description>Zookeeper&amp;ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该</description>
     </item>
     
     <item>
@@ -316,6 +361,15 @@
       
       <guid>https://www.code996.cn/post/spring/spring-swagger/</guid>
       <description>Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试</description>
+    </item>
+    
+    <item>
+      <title>zookeeper-安装及命令</title>
+      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
+      <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
+      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
     </item>
     
     <item>
@@ -355,66 +409,12 @@
     </item>
     
     <item>
-      <title>zookeeper-Java API</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-java/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
-      <description>Zookeeper&amp;ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-Watcher</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
-      <description>Zookeeper&amp;ndash;Watcher 和 ACL Watcher (观察) Zookeeper中的znode可以被监控，这是zk的核心特性。 通过exists，getChildren和getData这些</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-分布式锁和消息队列</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
-      <description>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个</description>
-    </item>
-    
-    <item>
       <title>zookeeper-基本概念</title>
       <link>https://www.code996.cn/post/zookeeper/zookeeper-base/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
       <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-安装及命令</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
-      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-配置服务</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-config/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
-      <description>Zookeeper&amp;ndash;配置服务 配置服务是分布式应用中重要的服务，作用是使集群中的机器可以共享配置信息中公共的部分。ZooKeepe</description>
-    </item>
-    
-    <item>
-      <title>zookeeper-集群管理</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
-      <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
-      <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
     </item>
     
     <item>
