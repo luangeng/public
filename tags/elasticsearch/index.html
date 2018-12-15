@@ -9,26 +9,26 @@
      
   </script>
   <base href="https://www.code996.cn">
-  <title>Redis简介 - Code996</title>
+  <title>Elasticsearch - Code996</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Redis简介 - Code996">
-  <meta name="description" content="Redis简介">
+  <meta name="keywords" content="Elasticsearch - Code996">
+  <meta name="description" content="Elasticsearch">
   <meta name="author" content="luangeng">
   <meta name="generator" content="http://gohugo.io/"/>
-  <meta itemprop="name" content="Redis简介 - Code996">
-  <meta itemprop="description" content="Redis简介">
+  <meta itemprop="name" content="Elasticsearch - Code996">
+  <meta itemprop="description" content="Elasticsearch">
   <meta itemprop="image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico">
-  <meta property="og:title" content="Redis简介 - Code996" />
+  <meta property="og:title" content="Elasticsearch - Code996" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://www.code996.cn/post/redis/redis-intr/" />
+  <meta property="og:url" content="https://www.code996.cn/tags/elasticsearch/" />
   <meta property="og:image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico" />
-  <meta property="og:description" content="Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列">
+  <meta property="og:description" content="Elasticsearch">
   <meta name="baidu-site-verification" content="vOVvyCq334" />
 
-  <link rel="canonical" href="https://www.code996.cn/post/redis/redis-intr/">
-  <link rel='shortlink' href="https://www.code996.cn/post/redis/redis-intr/">
+  <link rel="canonical" href="https://www.code996.cn/tags/elasticsearch/">
+  <link rel='shortlink' href="https://www.code996.cn/tags/elasticsearch/">
   <link rel="shortcut icon" href="https://luangeng2008.gitee.io/cdn/img/favicon.ico"/>
 
   <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
@@ -63,7 +63,8 @@
 
 </head>
 
-<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<body class="archive category col-3cm full-width topbar-enabled chrome">
+
 <div id="wrapper">
     <header id="header">
 
@@ -157,237 +158,41 @@
                 <div class="main-inner group">
                     <section class="content">
                         <div class="page-title pad group">
-                            <ul class="meta-single group">
-                                
-                                <li class="category">
-                                    <span>redis</span>
-                                </li>
-                                
-                            </ul>
+                            <h1><span>Elasticsearch</span></h1>
                         </div>
-
                         <div class="pad group">
-
-                            <article
-                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
-                                <div class="post-inner group">
-
-                                    <h1 class="post-title">Redis简介</h1>
-
-                                    <p class="post-byline">
-                                        Posted @ 2017-09-03 · 664 Words
-                                        
-                                        · Tags: redis
-                                        
-                                        
-                                        
-                                        
-                                        · Hits:
-                                        <span id="https://www.code996.cn/post/redis/redis-intr/" class="leancloud_visitors" data-flag-title="Redis简介">
-                                            <span class="leancloud-visitors-count"></span>
-                                        </span>
-                                    </p>
-
-
-                                    <div class="clear"></div>
-
-                                    <div class="entry">
-                                        <div class="entry-inner">
-                                            
-                                            <p>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列，列表，集合，带有范围查询的排序集，位图，超级日志和带有半径查询的地理空间索引。
-Redis具有内置复制，Lua脚本，LRU驱逐，事务和不同级别的磁盘持久性，支持通过Redis Sentinel提供高可用性，使用Redis Cluster自动分区。</p>
-
-<p>可以对这些类型运行原子操作，例如附加到字符串; 递增哈希值; 将元素推送到列表中; 计算集合交集，并集和差异; 或者在排序集中获得排名最高的成员。</p>
-
-<p>为了实现其出色的性能，Redis使用内存数据集。 根据使用情况，可以通过每隔一段时间将数据集转储到磁盘或通过将每个命令附加到日志来保留它。 如果只需要功能丰富的网络内存缓存，则可以选择禁用持久性。</p>
-
-<p>Redis还支持简单到设置的主从异步复制，具有非常快速的非阻塞同步，自动重新连接以及在网络分割后的部分重新同步。</p>
-
-<p>其他功能包括：</p>
-
-<ul>
-<li><p>事务</p></li>
-
-<li><p>发布/订阅</p></li>
-
-<li><p>Lua脚本</p></li>
-
-<li><p>支持key的有限生存时间</p></li>
-
-<li><p>LRU驱逐钥匙</p></li>
-
-<li><p>自动故障转移</p></li>
-</ul>
-
-<p>您可以使用大多数编程语言中的Redis。</p>
-
-<p>Redis是用ANSI C编写的，适用于大多数POSIX系统，如Linux，* BSD，OS X，没有外部依赖性。
- Linux和OS X是Redis开发和测试的两个操作系统，我们建议使用Linux进行部署。
- Redis可能在Solaris衍生系统（如SmartOS）中工作，但支持是最好的努力。
- Windows版本没有官方支持，但Microsoft开发并维护了Redis的Win-64端口。</p>
-
-                                            
-                                        </div>
-
-                                        <div style="margin-top:40px">
-                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
-                                                --------------------------END--------------------------
-                                            </marquee>
-                                        </div>
-
-                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
-    <div>
-        <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://www.code996.cn">https://www.code996.cn</a></li>
-            
-                
-                
-                
-            
-            <li>本文出处：<a target="_blank" href="https://www.code996.cn/post/redis/redis-intr/">https://www.code996.cn/post/redis/redis-intr/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
-            </li>
-        </ul>
+                            <div class="post-list group">
+    
+    <div class="post-row">
+        <article class="post-row type-post status-publish format-standard has-post-thumbnail hentry group">
+            <div class="post-inner post-hover">
+                <div class="post-meta group">
+                    <p class="post-date">1.</p>
+                    <p class="post-title-small">
+                        <a href="https://www.code996.cn/post/2018/elasticsearch/" rel="bookmark" class="leancloud-count">elasticsearch
+                            (<span style="font-size:14px">0</span>)
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </article>
     </div>
+    
 </div>
-
-                                        <div class="clear"></div>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </article>
-                            
-                            <div class="clear"></div>
-                            <ul class="post-nav group">
-                                <li class="next">
-                                    
-                                    <a href="https://www.code996.cn/post/spring/spring-rest/" rel="next">
-                                        <i class="fa fa-chevron-right"></i>
-                                        <strong>Next</strong>
-                                        <span>Spring Boot自定义配置与加载</span>
-                                    </a>
-                                    
-                                </li>
-                                <li class="previous">
-                                    
-                                    <a href="https://www.code996.cn/post/zookeeper/zookeeper-cmd/" rel="prev">
-                                        <i class="fa fa-chevron-left"></i>
-                                        <strong>Previous</strong>
-                                        <span>zookeeper-安装及命令</span>
-                                    </a>
-                                    
-                                </li>
-                            </ul>
-                            
-                            <br>
-
-
-                            <h4 class="heading">阅读排行榜</h4>
-<ul class="related-posts group" id="ranking_ul">
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">$index$. </span>
-                <a href="$url$" rel="bookmark">$title$
-                    <span class="post-date" style="font-size:14px">($hits$)</span>
-                </a>
-            </div>
-        </article>
-    </li>
-</ul>
-
-                            
-
-<h4 class="heading">最新文章</h4>
-<ul class="related-posts group">
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">集成通过github登录网站功能
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://www.code996.cn/post/2018/dingding/" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://www.code996.cn/post/2018/birthday/" class="leancloud-count">如何制作一个漂亮的生日祝福网页
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://www.code996.cn/post/2018/elasticsearch/" class="leancloud-count">elasticsearch
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-</ul>
-
 
                         </div>
                     </section>
                     
+
+
+
+
+
+
+
+
+
+
                     <div class="sidebar s2">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
     <div class="sidebar-content">
@@ -523,152 +328,6 @@ Redis具有内置复制，Lua脚本，LRU驱逐，事务和不同级别的磁盘
             
         </div>
 
-        
-        <div id="relate" class="widget widget_recent_entries">
-            <h3>相关内容</h3>
-            <ul>
-                
-                
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                
-                <li><a href="https://www.code996.cn/post/redis/redis-install/">ubuntu 16.04安装redis-server</a></li>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                
-                <li><a href="https://www.code996.cn/post/redis/redis-command---string/">Redis命令</a></li>
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                
-            </ul>
-        </div>
         
 
         <div id="recent" class="widget widget_recent_entries">
