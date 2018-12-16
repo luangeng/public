@@ -72,7 +72,16 @@
       <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2018/elasticsearch-api/</guid>
-      <description></description>
+      <description>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &amp;quot;1&amp;quot;) .source(&amp;quot;user&amp;quot;, &amp;quot;kimchy&amp;quot;, &amp;quot;postDate&amp;quot;, new Date(), &amp;quot;message&amp;quot;, &amp;quot;trying out Elasticsearch&amp;quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); // client.</description>
+    </item>
+    
+    <item>
+      <title>爬取豆瓣存储到Elasticsearch</title>
+      <link>https://www.code996.cn/post/2018/elasticsearch-douban/</link>
+      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2018/elasticsearch-douban/</guid>
+      <description>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &amp;quot;Movie&amp;quot;; public static final String TYPE_COMMENT = &amp;quot;Comment&amp;quot;; public static final String TYPE_OTHER = &amp;quot;Other&amp;quot;; public static final int STATUS_UNCRAWLED = 0; public</description>
     </item>
     
     <item>
@@ -81,7 +90,7 @@
       <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2018/elasticsearch/</guid>
-      <description>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: 1. Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服</description>
+      <description>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</description>
     </item>
     
     <item>

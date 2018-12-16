@@ -175,7 +175,7 @@
                                     <h1 class="post-title">elasticsearch入门教程</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2018-02-03 · 1150 Words
+                                        Posted @ 2018-02-03 · 1149 Words
                                         
                                         · Tags: elasticsearch
                                         
@@ -198,24 +198,30 @@
 
 <p>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。</p>
 
-<p>基本概念:
-1. Node 与 Cluster
-Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。单个 Elastic 实例称为一个节点（node）,一组节点构成一个集群（cluster）。</p>
+<p>基本概念:</p>
 
 <ol>
-<li>Index
-Elastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。
-所以，Elastic 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</li>
+<li>Node 与 Cluster</li>
 </ol>
+
+<p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。单个 Elastic 实例称为一个节点（node）,一组节点构成一个集群（cluster）。</p>
+
+<ol>
+<li>Index</li>
+</ol>
+
+<p>Elastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。
+所以，Elastic 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</p>
 
 <p>下面的命令可以查看当前节点的所有 Index。
 <code>curl -X GET 'http://localhost:9200/_cat/indices?v'</code></p>
 
 <ol>
-<li>Document
-Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。
-Document 使用 JSON 格式表示，下面是一个例子:</li>
+<li>Document</li>
 </ol>
+
+<p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。
+Document 使用 JSON 格式表示，下面是一个例子:</p>
 
 <pre><code>{
   &quot;user&quot;: &quot;张三&quot;,
@@ -227,17 +233,18 @@ Document 使用 JSON 格式表示，下面是一个例子:</li>
 <p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率。</p>
 
 <ol>
-<li>Type
-Document 可以分组，比如weather这个 Index 里面，可以按城市分组（北京和上海），也可以按气候分组（晴天和雨天）。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。
-不同的 Type 应该有相似的结构（schema），举例来说，id字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的一个区别。性质完全不同的数据（比如products和logs）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</li>
+<li>Type</li>
 </ol>
+
+<p>Document 可以分组，比如weather这个 Index 里面，可以按城市分组（北京和上海），也可以按气候分组（晴天和雨天）。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。
+不同的 Type 应该有相似的结构（schema），举例来说，id字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的一个区别。性质完全不同的数据（比如products和logs）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</p>
 
 <p>下面的命令可以列出每个 Index 所包含的 Type。</p>
 
 <p><code>$ curl 'localhost:9200/_mapping?pretty=true'</code>
 根据规划，Elastic 6.x 版只允许每个 Index 包含一个 Type，7.x 版将会彻底移除 Type。</p>
 
-<h1 id="常用操作">常用操作:</h1>
+<h2 id="常用操作">常用操作:</h2>
 
 <p>新建索引    <code>curl -X PUT 'localhost:9200/index_name'</code></p>
 
@@ -344,10 +351,10 @@ http.cors.allow-headers: Authorization,Content-Type
                                 </li>
                                 <li class="previous">
                                     
-                                    <a href="https://www.code996.cn/post/2018/elasticsearch-api/" rel="prev">
+                                    <a href="https://www.code996.cn/post/2018/elasticsearch-douban/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>elasticsearch JAVA API</span>
+                                        <span>爬取豆瓣存储到Elasticsearch</span>
                                     </a>
                                     
                                 </li>
@@ -445,7 +452,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://www.code996.cn/post/2018/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://www.code996.cn/post/2018/elasticsearch-douban/" class="leancloud-count">爬取豆瓣存储到Elasticsearch
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -550,7 +557,7 @@ http.cors.allow-headers: Authorization,Content-Type
             
             <a href='https://www.code996.cn/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
             
-            <a href='https://www.code996.cn/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(2)</code></a>
+            <a href='https://www.code996.cn/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
             
             <a href='https://www.code996.cn/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
             
@@ -730,6 +737,9 @@ http.cors.allow-headers: Authorization,Content-Type
                 
                 <li><a href="https://www.code996.cn/post/2018/elasticsearch-api/">elasticsearch JAVA API</a></li>
                   
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch-douban/">爬取豆瓣存储到Elasticsearch</a></li>
+                  
                   
                   
                   
@@ -767,7 +777,7 @@ http.cors.allow-headers: Authorization,Content-Type
             <ul>
                 
                 <li class="cat-item cat-item-1">
-                    <a href='https://www.code996.cn/archive/2018'>2018(10)</a>
+                    <a href='https://www.code996.cn/archive/2018'>2018(11)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">
