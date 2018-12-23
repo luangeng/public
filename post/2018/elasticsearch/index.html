@@ -175,7 +175,7 @@
                                     <h1 class="post-title">elasticsearch入门教程</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2018-02-03 · 1149 Words
+                                        Posted @ 2018-12-03 · 1149 Words
                                         
                                         · Tags: elasticsearch
                                         
@@ -198,17 +198,13 @@
 
 <p>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。</p>
 
-<p>基本概念:</p>
+<h2 id="基本概念">基本概念:</h2>
 
-<ol>
-<li>Node 与 Cluster</li>
-</ol>
+<h4 id="node-与-cluster">Node 与 Cluster</h4>
 
 <p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。单个 Elastic 实例称为一个节点（node）,一组节点构成一个集群（cluster）。</p>
 
-<ol>
-<li>Index</li>
-</ol>
+<h4 id="index">Index</h4>
 
 <p>Elastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。
 所以，Elastic 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</p>
@@ -216,9 +212,7 @@
 <p>下面的命令可以查看当前节点的所有 Index。
 <code>curl -X GET 'http://localhost:9200/_cat/indices?v'</code></p>
 
-<ol>
-<li>Document</li>
-</ol>
+<h4 id="document">Document</h4>
 
 <p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。
 Document 使用 JSON 格式表示，下面是一个例子:</p>
@@ -232,9 +226,7 @@ Document 使用 JSON 格式表示，下面是一个例子:</p>
 
 <p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率。</p>
 
-<ol>
-<li>Type</li>
-</ol>
+<h4 id="type">Type</h4>
 
 <p>Document 可以分组，比如weather这个 Index 里面，可以按城市分组（北京和上海），也可以按气候分组（晴天和雨天）。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。
 不同的 Type 应该有相似的结构（schema），举例来说，id字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的一个区别。性质完全不同的数据（比如products和logs）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</p>
@@ -292,12 +284,13 @@ http.cors.allow-headers: Authorization,Content-Type
 <p>进入bin 双击elasticsearch.bat，启动
 测试: <code>curl localhost:9200</code></p>
 
-<p>安装head：
-下载elasticsearch-head-master git://github.com/mobz/elasticsearch-head.git
+<h2 id="安装head">安装head：</h2>
+
+<p>下载elasticsearch-head-master git://github.com/mobz/elasticsearch-head.git
 先装node.js
 解压，进入目录，npm install；   npm run start，然后访问 <a href="http://localhost:9100/">http://localhost:9100/</a></p>
 
-<p>参考：</p>
+<h2 id="参考">参考：</h2>
 
 <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a></p>
 
@@ -342,19 +335,19 @@ http.cors.allow-headers: Authorization,Content-Type
                             <ul class="post-nav group">
                                 <li class="next">
                                     
-                                    <a href="https://www.code996.cn/post/redis/redis-command---string/" rel="next">
+                                    <a href="https://www.code996.cn/post/2018/zeromq-springboot/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Redis命令</span>
+                                        <span>SpringBoot集成ZeroMQ</span>
                                     </a>
                                     
                                 </li>
                                 <li class="previous">
                                     
-                                    <a href="https://www.code996.cn/post/2018/elasticsearch-douban/" rel="prev">
+                                    <a href="https://www.code996.cn/post/2018/elasticsearch-api/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>爬取豆瓣存储到Elasticsearch</span>
+                                        <span>elasticsearch JAVA API</span>
                                     </a>
                                     
                                 </li>
@@ -386,7 +379,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://www.code996.cn/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                <a href="https://www.code996.cn/post/2018/elasticsearch-douban/" class="leancloud-count">爬取豆瓣电影使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -397,7 +390,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://www.code996.cn/post/2018/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -408,7 +401,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                <a href="https://www.code996.cn/post/2018/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -419,7 +412,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                <a href="https://www.code996.cn/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -430,7 +423,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://www.code996.cn/post/2018/dingding/" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
+                <a href="https://www.code996.cn/post/2018/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -441,7 +434,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://www.code996.cn/post/2018/birthday/" class="leancloud-count">如何制作一个漂亮的生日祝福网页
+                <a href="https://www.code996.cn/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -452,7 +445,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://www.code996.cn/post/2018/elasticsearch-douban/" class="leancloud-count">爬取豆瓣存储到Elasticsearch
+                <a href="https://www.code996.cn/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -597,16 +590,37 @@ http.cors.allow-headers: Authorization,Content-Type
             
             <a href='https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(5)</code></a>
             
-            <a href='https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(17)</code></a>
+            <a href='https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
             
         </div>
 
         
         <div id="relate" class="widget widget_recent_entries">
-            <h3>相关内容</h3>
+            <h3>相关文章</h3>
             <ul>
                 
                 
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                   
                   
                   
@@ -738,13 +752,7 @@ http.cors.allow-headers: Authorization,Content-Type
                 <li><a href="https://www.code996.cn/post/2018/elasticsearch-api/">elasticsearch JAVA API</a></li>
                   
                 
-                <li><a href="https://www.code996.cn/post/2018/elasticsearch-douban/">爬取豆瓣存储到Elasticsearch</a></li>
-                  
-                  
-                  
-                  
-                  
-                  
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch-douban/">爬取豆瓣电影使用Elasticsearch检索</a></li>
                 
             </ul>
         </div>
@@ -754,15 +762,15 @@ http.cors.allow-headers: Authorization,Content-Type
             <h3>最新文章</h3>
             <ul>
                 
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch-douban/">爬取豆瓣电影使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://www.code996.cn/post/2018/elasticsearch/">elasticsearch入门教程</a></li>
+                
                 <li><a href="https://www.code996.cn/post/2018/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
                 <li><a href="https://www.code996.cn/post/2018/github_login/">集成通过github登录网站功能</a></li>
-                
-                <li><a href="https://www.code996.cn/post/2018/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
-                
-                <li><a href="https://www.code996.cn/post/2018/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
-                
-                <li><a href="https://www.code996.cn/post/2018/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a></li>
                 
             </ul>
         </div>
@@ -781,7 +789,7 @@ http.cors.allow-headers: Authorization,Content-Type
                 </li>
                 
                 <li class="cat-item cat-item-1">
-                    <a href='https://www.code996.cn/archive/2017'>2017(58)</a>
+                    <a href='https://www.code996.cn/archive/2017'>2017(73)</a>
                 </li>
                 
                 <li class="cat-item cat-item-1">

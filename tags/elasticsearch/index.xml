@@ -7,33 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 04 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.code996.cn/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>elasticsearch JAVA API</title>
-      <link>https://www.code996.cn/post/2018/elasticsearch-api/</link>
-      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.code996.cn/post/2018/elasticsearch-api/</guid>
-      <description>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &amp;quot;1&amp;quot;) .source(&amp;quot;user&amp;quot;, &amp;quot;kimchy&amp;quot;, &amp;quot;postDate&amp;quot;, new Date(), &amp;quot;message&amp;quot;, &amp;quot;trying out Elasticsearch&amp;quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); // client.</description>
-    </item>
-    
-    <item>
-      <title>爬取豆瓣存储到Elasticsearch</title>
+      <title>爬取豆瓣电影使用Elasticsearch检索</title>
       <link>https://www.code996.cn/post/2018/elasticsearch-douban/</link>
-      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2018/elasticsearch-douban/</guid>
       <description>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &amp;quot;Movie&amp;quot;; public static final String TYPE_COMMENT = &amp;quot;Comment&amp;quot;; public static final String TYPE_OTHER = &amp;quot;Other&amp;quot;; public static final int STATUS_UNCRAWLED = 0; public</description>
     </item>
     
     <item>
+      <title>elasticsearch JAVA API</title>
+      <link>https://www.code996.cn/post/2018/elasticsearch-api/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.code996.cn/post/2018/elasticsearch-api/</guid>
+      <description>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &amp;quot;1&amp;quot;) .source(&amp;quot;user&amp;quot;, &amp;quot;kimchy&amp;quot;, &amp;quot;postDate&amp;quot;, new Date(), &amp;quot;message&amp;quot;, &amp;quot;trying out Elasticsearch&amp;quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); // client.</description>
+    </item>
+    
+    <item>
       <title>elasticsearch入门教程</title>
       <link>https://www.code996.cn/post/2018/elasticsearch/</link>
-      <pubDate>Sat, 03 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://www.code996.cn/post/2018/elasticsearch/</guid>
       <description>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</description>
