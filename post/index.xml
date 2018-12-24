@@ -2,1066 +2,1066 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Code996</title>
-    <link>https://www.code996.cn/post/</link>
+    <link>http://www.code996.cn/post/</link>
     <description>Recent content in Posts on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.code996.cn/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.code996.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>爬取豆瓣电影使用Elasticsearch检索</title>
-      <link>https://www.code996.cn/post/2018/elasticsearch-douban/</link>
+      <link>http://www.code996.cn/post/2018/elasticsearch-douban/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/elasticsearch-douban/</guid>
+      <guid>http://www.code996.cn/post/2018/elasticsearch-douban/</guid>
       <description>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &amp;quot;Movie&amp;quot;; public static final String TYPE_COMMENT = &amp;quot;Comment&amp;quot;; public static final String TYPE_OTHER = &amp;quot;Other&amp;quot;; public static final int STATUS_UNCRAWLED = 0; public</description>
     </item>
     
     <item>
       <title>elasticsearch JAVA API</title>
-      <link>https://www.code996.cn/post/2018/elasticsearch-api/</link>
+      <link>http://www.code996.cn/post/2018/elasticsearch-api/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/elasticsearch-api/</guid>
+      <guid>http://www.code996.cn/post/2018/elasticsearch-api/</guid>
       <description>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &amp;quot;1&amp;quot;) .source(&amp;quot;user&amp;quot;, &amp;quot;kimchy&amp;quot;, &amp;quot;postDate&amp;quot;, new Date(), &amp;quot;message&amp;quot;, &amp;quot;trying out Elasticsearch&amp;quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); // client.</description>
     </item>
     
     <item>
       <title>elasticsearch入门教程</title>
-      <link>https://www.code996.cn/post/2018/elasticsearch/</link>
+      <link>http://www.code996.cn/post/2018/elasticsearch/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/elasticsearch/</guid>
+      <guid>http://www.code996.cn/post/2018/elasticsearch/</guid>
       <description>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</description>
     </item>
     
     <item>
       <title>SpringBoot集成ZeroMQ</title>
-      <link>https://www.code996.cn/post/2018/zeromq-springboot/</link>
+      <link>http://www.code996.cn/post/2018/zeromq-springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/zeromq-springboot/</guid>
+      <guid>http://www.code996.cn/post/2018/zeromq-springboot/</guid>
       <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
     </item>
     
     <item>
       <title>集成通过github登录网站功能</title>
-      <link>https://www.code996.cn/post/2018/github_login/</link>
+      <link>http://www.code996.cn/post/2018/github_login/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/github_login/</guid>
+      <guid>http://www.code996.cn/post/2018/github_login/</guid>
       <description>使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</description>
     </item>
     
     <item>
       <title>Oauth2协议 通过js和ajax获取token及刷新token</title>
-      <link>https://www.code996.cn/post/2018/token-front/</link>
+      <link>http://www.code996.cn/post/2018/token-front/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/token-front/</guid>
+      <guid>http://www.code996.cn/post/2018/token-front/</guid>
       <description>基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth</description>
     </item>
     
     <item>
       <title>SpringBoot集成elastic-job-lite</title>
-      <link>https://www.code996.cn/post/2018/elasticJob/</link>
+      <link>http://www.code996.cn/post/2018/elasticJob/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/elasticJob/</guid>
+      <guid>http://www.code996.cn/post/2018/elasticJob/</guid>
       <description>SpringBoot集成elastic-job-lite 1.pom文件中引用jar包 &amp;lt;!-- elastic-job-lite --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-common-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-spring&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;18.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 2.本地启</description>
     </item>
     
     <item>
       <title>spring-security-oauth2 授权服务集成钉钉扫码登录</title>
-      <link>https://www.code996.cn/post/2018/dingding/</link>
+      <link>http://www.code996.cn/post/2018/dingding/</link>
       <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/dingding/</guid>
+      <guid>http://www.code996.cn/post/2018/dingding/</guid>
       <description>spring boot版本 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; spring-security-oauth2版本 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security.oauth&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-oauth2&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 实现原理： 参照spring-security</description>
     </item>
     
     <item>
       <title>如何制作一个漂亮的生日祝福网页</title>
-      <link>https://www.code996.cn/post/2018/birthday/</link>
+      <link>http://www.code996.cn/post/2018/birthday/</link>
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/birthday/</guid>
+      <guid>http://www.code996.cn/post/2018/birthday/</guid>
       <description>本文演示如何制作一个精美的生日祝福网页，可在手机端查看，首先看一下最终效果： Your browser does not support the audio element. 预览图片： 开始前 完成本教程需要以下技能要求： 熟悉</description>
     </item>
     
     <item>
       <title>Redis命令</title>
-      <link>https://www.code996.cn/post/redis/redis-command---string/</link>
+      <link>http://www.code996.cn/post/redis/redis-command---string/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/redis/redis-command---string/</guid>
+      <guid>http://www.code996.cn/post/redis/redis-command---string/</guid>
       <description>常用命令 APPEND key value 如果 key 已经存在，并且值为字符串，那么这个命令会把 value 追加到原来值（value）的结尾。 如果 key 不存在，那么它将首先创建一个空字符串</description>
     </item>
     
     <item>
       <title>Netty--使用TCP协议传输文件</title>
-      <link>https://www.code996.cn/post/netty/netty-file/</link>
+      <link>http://www.code996.cn/post/netty/netty-file/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-file/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-file/</guid>
       <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
     </item>
     
     <item>
       <title>Netty--RPC的原理和实现</title>
-      <link>https://www.code996.cn/post/netty/netty-rpc/</link>
+      <link>http://www.code996.cn/post/netty/netty-rpc/</link>
       <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-rpc/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-rpc/</guid>
       <description>RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调</description>
     </item>
     
     <item>
       <title>Netty--Google Protobuf编解码</title>
-      <link>https://www.code996.cn/post/netty/netty-protobuf/</link>
+      <link>http://www.code996.cn/post/netty/netty-protobuf/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-protobuf/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-protobuf/</guid>
       <description>Google Protobuf是一种轻便高效的结构化数据存储格式，可以用于结构化数据序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储</description>
     </item>
     
     <item>
       <title>Netty--JDK序列化编解码传输对象</title>
-      <link>https://www.code996.cn/post/netty/netty-jdk/</link>
+      <link>http://www.code996.cn/post/netty/netty-jdk/</link>
       <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-jdk/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-jdk/</guid>
       <description>使用JDK序列化不需要额外的类库，只需要实现Serializable即可，但是序列化之后的码流只有Java才能反序列化，所以它不是跨语言的，</description>
     </item>
     
     <item>
       <title>Netty--HTTP服务器原理和实现</title>
-      <link>https://www.code996.cn/post/netty/netty-http/</link>
+      <link>http://www.code996.cn/post/netty/netty-http/</link>
       <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-http/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-http/</guid>
       <description>基于Netty的HTTP协议栈可以方便的进行异步非阻塞的HTTP服务器的开发。 当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个</description>
     </item>
     
     <item>
       <title>Netty--TCP粘包和拆包</title>
-      <link>https://www.code996.cn/post/netty/netty-tcpdecoder/</link>
+      <link>http://www.code996.cn/post/netty/netty-tcpdecoder/</link>
       <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-tcpdecoder/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-tcpdecoder/</guid>
       <description>TCP协议以流的方式进行数据传输，它无法理解其上层协议的数据意义，而是根据TCP缓冲区的大小对数据进行拆分或组装，即上层一个完整的包可能被拆</description>
     </item>
     
     <item>
       <title>Netty--TCP协议发送和接收数据</title>
-      <link>https://www.code996.cn/post/netty/netty-tcp/</link>
+      <link>http://www.code996.cn/post/netty/netty-tcp/</link>
       <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-tcp/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-tcp/</guid>
       <description>Netty是业界最流行的NIO开发框架，使用Netty可以构建高性能异步通信能力，经常用于RPC底层通信框架。Netty的API使用简单，功</description>
     </item>
     
     <item>
       <title>Netty--简单实现一个Servlet容器</title>
-      <link>https://www.code996.cn/post/netty/netty-servlet/</link>
+      <link>http://www.code996.cn/post/netty/netty-servlet/</link>
       <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/netty/netty-servlet/</guid>
+      <guid>http://www.code996.cn/post/netty/netty-servlet/</guid>
       <description>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的S</description>
     </item>
     
     <item>
       <title>Spring Cloud Bus-RabbitMQ</title>
-      <link>https://www.code996.cn/post/spring/spring-cloud-rabbitmq/</link>
+      <link>http://www.code996.cn/post/spring/spring-cloud-rabbitmq/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-cloud-rabbitmq/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-cloud-rabbitmq/</guid>
       <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
     </item>
     
     <item>
       <title>jQuery事件</title>
-      <link>https://www.code996.cn/post/2017/jquery-event/</link>
+      <link>http://www.code996.cn/post/2017/jquery-event/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/jquery-event/</guid>
+      <guid>http://www.code996.cn/post/2017/jquery-event/</guid>
       <description>blur() 触发或绑定blur事件。 $(&amp;quot;input&amp;quot;).blur(function(){ $(&amp;quot;input&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;#D6D6FF&amp;quot;); }); change() 触发或绑定change事件, 该事件仅适用于文本域（text field），以及 textarea 和 select 元素。 $(&amp;quot;.field&amp;quot;).change(function(){ $(this).css(&amp;quot;background-color&amp;quot;,&amp;quot;#FFFFCC&amp;quot;); }); click() 触发或绑定</description>
     </item>
     
     <item>
       <title>HTML5 canvas绘图</title>
-      <link>https://www.code996.cn/post/2017/html5-cavas/</link>
+      <link>http://www.code996.cn/post/2017/html5-cavas/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/html5-cavas/</guid>
+      <guid>http://www.code996.cn/post/2017/html5-cavas/</guid>
       <description>HTML5 canvas画图 示例1 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://libs.baidu.com/jquery/2.0.3/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;style.css&amp;quot; /&amp;gt; &amp;lt;title&amp;gt;Backpropagation&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;spr &amp;lt;div&amp;gt; &amp;lt;div style=&amp;quot;float:right;margin-right:400px;margin-top:100px;width:300px;height:500px&amp;quot;&amp;gt; &amp;lt;span id=&amp;quot;NN&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span id=&amp;quot;xyText&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input id=&amp;quot;Text&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;&amp;lt;br&amp;gt; &amp;lt;button id=&amp;quot;clear&amp;quot; type=&amp;quot;button&amp;quot; onclick=&amp;quot;Clear()&amp;quot;&amp;gt;</description>
     </item>
     
     <item>
       <title>RocketMQ核心概念</title>
-      <link>https://www.code996.cn/post/2017/rocketMq-Concept/</link>
+      <link>http://www.code996.cn/post/2017/rocketMq-Concept/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/rocketMq-Concept/</guid>
+      <guid>http://www.code996.cn/post/2017/rocketMq-Concept/</guid>
       <description>Producer A producer sends messages generated by the business application systems to brokers. RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way. 生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例：同步，</description>
     </item>
     
     <item>
       <title>Spring Cloud Zuul 网关</title>
-      <link>https://www.code996.cn/post/spring/spring-cloud-zuul/</link>
+      <link>http://www.code996.cn/post/spring/spring-cloud-zuul/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-cloud-zuul/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-cloud-zuul/</guid>
       <description>Spring Cloud 服务网关Zuul 服务网关是分布式架构中不可缺少的组成部分，是外部网络和内部服务之间的屏障，例如权限控制之类的逻辑应该在这里实现，而不是放</description>
     </item>
     
     <item>
       <title>Spring MVC中Action使用总结</title>
-      <link>https://www.code996.cn/post/2017/springmvc/</link>
+      <link>http://www.code996.cn/post/2017/springmvc/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/springmvc/</guid>
+      <guid>http://www.code996.cn/post/2017/springmvc/</guid>
       <description>Spring MVC中每个控制器中可以定义多个请求处理方法即Action，Action可以有多个不同的参数，有多种类型的返回结果。 可以作为Action的</description>
     </item>
     
     <item>
       <title>AJAX，jQuery Ajax和Deferred</title>
-      <link>https://www.code996.cn/post/2017/html5-ajax/</link>
+      <link>http://www.code996.cn/post/2017/html5-ajax/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/html5-ajax/</guid>
+      <guid>http://www.code996.cn/post/2017/html5-ajax/</guid>
       <description>AJAX全称为“Asynchronous JavaScript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用，改善用户体验，实现无刷</description>
     </item>
     
     <item>
       <title>Spring Cloud 断路器 Hystrix</title>
-      <link>https://www.code996.cn/post/spring/spring-cloud-hystrix/</link>
+      <link>http://www.code996.cn/post/spring/spring-cloud-hystrix/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-cloud-hystrix/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-cloud-hystrix/</guid>
       <description>断路器 断路器就像电路中的断路器一样，当短路发生时，它第一时刻熔断，切断了故障电路，保护其他用电单元。 在分布式架构中，断路器的作用类似，当某个</description>
     </item>
     
     <item>
       <title>zookeeper-分布式锁和消息队列</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-lock/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-lock/</guid>
       <description>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个</description>
     </item>
     
     <item>
       <title>Linux常用命令</title>
-      <link>https://www.code996.cn/post/2017/linux-cmd/</link>
+      <link>http://www.code996.cn/post/2017/linux-cmd/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/linux-cmd/</guid>
+      <guid>http://www.code996.cn/post/2017/linux-cmd/</guid>
       <description>man 查询命令帮助 info 查询命令文档 whatis 查询命令简介 whereis 查询命令文件位置 which 查询命令运行位置 finger 显示用户的信息 who 显示当前登录用户 whoami 显示用户ID sudo 以管理员身份</description>
     </item>
     
     <item>
       <title>Spring Cloud Config 配置服务</title>
-      <link>https://www.code996.cn/post/spring/spring-cloud-eureka/</link>
+      <link>http://www.code996.cn/post/spring/spring-cloud-eureka/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-cloud-eureka/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-cloud-eureka/</guid>
       <description>spring cloud 配置服务提供了一种非常方便的应用配置管理功能，用来解决分布式系统中配置文件太多导致的各种问题，而它自身的配置也非常简单。 服务端用来从gi</description>
     </item>
     
     <item>
       <title>zookeeper-集群管理</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-cluster/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-cluster/</guid>
       <description>Zookeeper&amp;ndash;集群管理 在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都</description>
     </item>
     
     <item>
       <title>Spring Cloud Eureka 注册，发布，调用服务</title>
-      <link>https://www.code996.cn/post/spring/spring-cloud-config/</link>
+      <link>http://www.code996.cn/post/spring/spring-cloud-config/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-cloud-config/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-cloud-config/</guid>
       <description>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co</description>
     </item>
     
     <item>
       <title>ubuntu 16.04安装redis-server</title>
-      <link>https://www.code996.cn/post/redis/redis-install/</link>
+      <link>http://www.code996.cn/post/redis/redis-install/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/redis/redis-install/</guid>
+      <guid>http://www.code996.cn/post/redis/redis-install/</guid>
       <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
     </item>
     
     <item>
       <title>zookeeper-配置服务</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-config/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-config/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-config/</guid>
       <description>Zookeeper&amp;ndash;配置服务 配置服务是分布式应用中重要的服务，作用是使集群中的机器可以共享配置信息中公共的部分。ZooKeepe</description>
     </item>
     
     <item>
       <title>Spring Boot发布和调用RESTful web service</title>
-      <link>https://www.code996.cn/post/spring/spring-ws/</link>
+      <link>http://www.code996.cn/post/spring/spring-ws/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-ws/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-ws/</guid>
       <description>Spring Boot可以非常简单的发布和调用RESTful web service，下面参考官方指导体验一下 1.首先访问 http://start.spring.io/ 生成Spring Boot基础项目 或者</description>
     </item>
     
     <item>
       <title>vim基本使用</title>
-      <link>https://www.code996.cn/post/2017/linux-vim/</link>
+      <link>http://www.code996.cn/post/2017/linux-vim/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/linux-vim/</guid>
+      <guid>http://www.code996.cn/post/2017/linux-vim/</guid>
       <description>i 进入插入状态 esc 退出插入状态 x 删除一个字符 dd 删除一行，并拷贝 yy 拷贝 p 粘贴 u 撤销 ctrl+r 重做 :w 保存 :q 退出 :q! → 退出不保存</description>
     </item>
     
     <item>
       <title>zookeeper-Watcher</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-watch/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-watch/</guid>
       <description>Zookeeper&amp;ndash;Watcher 和 ACL Watcher (观察) Zookeeper中的znode可以被监控，这是zk的核心特性。 通过exists，getChildren和getData这些</description>
     </item>
     
     <item>
       <title>Mysql常用数据类型</title>
-      <link>https://www.code996.cn/post/2017/mysql-type/</link>
+      <link>http://www.code996.cn/post/2017/mysql-type/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/mysql-type/</guid>
+      <guid>http://www.code996.cn/post/2017/mysql-type/</guid>
       <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
     </item>
     
     <item>
       <title>zookeeper-Java API</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-java/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-java/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-java/</guid>
       <description>Zookeeper&amp;ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该</description>
     </item>
     
     <item>
       <title>使用Spring Boot 和Spring Data JPA访问mysql数据库</title>
-      <link>https://www.code996.cn/post/spring/spring-jpa/</link>
+      <link>http://www.code996.cn/post/spring/spring-jpa/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-jpa/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-jpa/</guid>
       <description>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使</description>
     </item>
     
     <item>
       <title>Mysql基础语法</title>
-      <link>https://www.code996.cn/post/2017/mysql-sql/</link>
+      <link>http://www.code996.cn/post/2017/mysql-sql/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/mysql-sql/</guid>
+      <guid>http://www.code996.cn/post/2017/mysql-sql/</guid>
       <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
     </item>
     
     <item>
       <title>Spring Boot 集成Swagger2生成RESTful API文档</title>
-      <link>https://www.code996.cn/post/spring/spring-swagger/</link>
+      <link>http://www.code996.cn/post/spring/spring-swagger/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-swagger/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-swagger/</guid>
       <description>Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试</description>
     </item>
     
     <item>
       <title>zookeeper-安装及命令</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-cmd/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-cmd/</guid>
       <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
     </item>
     
     <item>
       <title>Redis简介</title>
-      <link>https://www.code996.cn/post/redis/redis-intr/</link>
+      <link>http://www.code996.cn/post/redis/redis-intr/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/redis/redis-intr/</guid>
+      <guid>http://www.code996.cn/post/redis/redis-intr/</guid>
       <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列</description>
     </item>
     
     <item>
       <title>Spring Boot自定义配置与加载</title>
-      <link>https://www.code996.cn/post/spring/spring-rest/</link>
+      <link>http://www.code996.cn/post/spring/spring-rest/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-rest/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-rest/</guid>
       <description>Spring Boot自定义配置与加载 application.properties主要用来配置数据库连接、日志相关配置等。除了这些配置内容之外，还可以自</description>
     </item>
     
     <item>
       <title>markdown简明语法</title>
-      <link>https://www.code996.cn/post/2017/markdown/</link>
+      <link>http://www.code996.cn/post/2017/markdown/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/markdown/</guid>
+      <guid>http://www.code996.cn/post/2017/markdown/</guid>
       <description># markdown语法 * list * list 0. list 0. list `code` code 多行代码 { main{} } &amp;gt;1111（引用） &amp;gt;&amp;gt;222222 &amp;gt;&amp;gt;&amp;gt;33333 &amp;gt;&amp;gt;&amp;gt;&amp;gt;44444 **bold** [link](https://cn.bing.com/w) 链接 ![pic](/img/loading.gif) 图片 markdown语法 list list list list code code 多行代码</description>
     </item>
     
     <item>
       <title>ubuntu16.04安装rocketMQ</title>
-      <link>https://www.code996.cn/post/2018/rocketmq/</link>
+      <link>http://www.code996.cn/post/2018/rocketmq/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/rocketmq/</guid>
+      <guid>http://www.code996.cn/post/2018/rocketmq/</guid>
       <description>本文详细说明如何在ubuntu16.04下安装rocketMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
     </item>
     
     <item>
       <title>zookeeper-基本概念</title>
-      <link>https://www.code996.cn/post/zookeeper/zookeeper-base/</link>
+      <link>http://www.code996.cn/post/zookeeper/zookeeper-base/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
+      <guid>http://www.code996.cn/post/zookeeper/zookeeper-base/</guid>
       <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
     </item>
     
     <item>
       <title>Maven安装配置使用</title>
-      <link>https://www.code996.cn/post/2017/maven/</link>
+      <link>http://www.code996.cn/post/2017/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/maven/</guid>
+      <guid>http://www.code996.cn/post/2017/maven/</guid>
       <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
     </item>
     
     <item>
       <title>MySql 存储过程</title>
-      <link>https://www.code996.cn/post/2017/mysql-procedure/</link>
+      <link>http://www.code996.cn/post/2017/mysql-procedure/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/mysql-procedure/</guid>
+      <guid>http://www.code996.cn/post/2017/mysql-procedure/</guid>
       <description>存储过程（Stored Procedure）是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数（如果带参数）来</description>
     </item>
     
     <item>
       <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
-      <link>https://www.code996.cn/post/2017/spring-annotation/</link>
+      <link>http://www.code996.cn/post/2017/spring-annotation/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/spring-annotation/</guid>
+      <guid>http://www.code996.cn/post/2017/spring-annotation/</guid>
       <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
     </item>
     
     <item>
       <title>CXF拦截器介绍及自定义拦截器实现</title>
-      <link>https://www.code996.cn/post/2017/cxf-interceptor/</link>
+      <link>http://www.code996.cn/post/2017/cxf-interceptor/</link>
       <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/cxf-interceptor/</guid>
+      <guid>http://www.code996.cn/post/2017/cxf-interceptor/</guid>
       <description>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链（I</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-1</title>
-      <link>https://www.code996.cn/post/english/1-1/</link>
+      <link>http://www.code996.cn/post/english/1-1/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-1/</guid>
+      <guid>http://www.code996.cn/post/english/1-1/</guid>
       <description>Your browser does not support the audio element. 
 Unit 1 Growing Up Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Do you know who John Lennon was? 2. Have you ever heard the song before? 3. What does Lennon think of growing up? Is it easy or full of adventures? 4. Can you guess what the texts in this unit are going to be about?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-2</title>
-      <link>https://www.code996.cn/post/english/1-2/</link>
+      <link>http://www.code996.cn/post/english/1-2/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-2/</guid>
+      <guid>http://www.code996.cn/post/english/1-2/</guid>
       <description>Your browser does not support the audio element. 
 Unit 2 Friendship Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Have you ever heard of Dionne Warwick? Have you happened to hear her sing? 2. What does a fair weather friend mean? 3. What does Dionne Warwick think friends are for? 4. Does the song give you any idea of what the stories in this unit will be about?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-3</title>
-      <link>https://www.code996.cn/post/english/1-3/</link>
+      <link>http://www.code996.cn/post/english/1-3/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-3/</guid>
+      <guid>http://www.code996.cn/post/english/1-3/</guid>
       <description>Your browser does not support the audio element. 
 Unit 3 Understanding Science Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Who is it about? 2. What questions interest him? 3. What makes his achievements so remarkable? Part II Text A Professor Hawking thinks it important to keep everybody in touch with what science is about. In this article he explains why.</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-4</title>
-      <link>https://www.code996.cn/post/english/1-4/</link>
+      <link>http://www.code996.cn/post/english/1-4/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-4/</guid>
+      <guid>http://www.code996.cn/post/english/1-4/</guid>
       <description>Your browser does not support the audio element. 
 Unit 4 American Dream Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. According to Dr. Hertz, what did the American Dream mean to his grandparents? 2. In Dr. Hertz&#39;s opinion, who wants people to believe in the American Dream? Why? 3. Why does Dr. Hertz say the American Dream is in one&#39;s head and in one&#39;s pocket?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-5</title>
-      <link>https://www.code996.cn/post/english/1-5/</link>
+      <link>http://www.code996.cn/post/english/1-5/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-5/</guid>
+      <guid>http://www.code996.cn/post/english/1-5/</guid>
       <description>Your browser does not support the audio element. 
 Unit 5 Romance Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Do you have a favorite love song? What is its name? Who is the singer? Can you sing or hum the tune? 2. What is the song you have just heard mainly about? 3. Do you think it appropriate to begin this unit with a love song?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-6</title>
-      <link>https://www.code996.cn/post/english/1-6/</link>
+      <link>http://www.code996.cn/post/english/1-6/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-6/</guid>
+      <guid>http://www.code996.cn/post/english/1-6/</guid>
       <description>Your browser does not support the audio element. 
 Unit 6 Animal Intelligence Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. What do you know about Michael Jackson? 2. How does he feel about Ben? Why? 3. Do you think the song Ben reveals something about the relationship between man and animals? If so, what is it? 4. Is the song related to the theme of the unit animal intelligence?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-7</title>
-      <link>https://www.code996.cn/post/english/1-7/</link>
+      <link>http://www.code996.cn/post/english/1-7/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-7/</guid>
+      <guid>http://www.code996.cn/post/english/1-7/</guid>
       <description>Your browser does not support the audio element. 
 Unit 7 Emergency Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. How did the father understand courage at first? 2. What did courage mean to the father after the fire was put out? 3. The poet says that firemen fight a war they can never win. What does he mean?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程1-8</title>
-      <link>https://www.code996.cn/post/english/1-8/</link>
+      <link>http://www.code996.cn/post/english/1-8/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/1-8/</guid>
+      <guid>http://www.code996.cn/post/english/1-8/</guid>
       <description>Your browser does not support the audio element. 
 Unit 8 Coping with an Educational Problem Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. What was the teacher&#39;s purpose in asking his class the riddle? 2. What can you learn about Little Geoffrey from his answer to the riddle? Was he used to trying to think clearly? Had he formed the habit of making good use of his brain?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-1</title>
-      <link>https://www.code996.cn/post/english/2-1/</link>
+      <link>http://www.code996.cn/post/english/2-1/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-1/</guid>
+      <guid>http://www.code996.cn/post/english/2-1/</guid>
       <description>Your browser does not support the audio element. 
 UNIT 1 Ways of Learning Part I Pre-Reading Task Listen to the recording two or three times and then think over the following questions: 1. Who should teach whom? Is learning a one-way street? 2. Should we share our dreams for a better life with our parents or keep them to ourselves? 3. Can children ever understand their parents completely? 4. From the song can you guess what the theme of the unit, way of learning, chiefly refers to?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-2</title>
-      <link>https://www.code996.cn/post/english/2-2/</link>
+      <link>http://www.code996.cn/post/english/2-2/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-2/</guid>
+      <guid>http://www.code996.cn/post/english/2-2/</guid>
       <description>Your browser does not support the audio element. 
 Unit 2 Text A The Richest Man In America, Down Home Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Who is it about? 2. What happened to him one day? 3. Do you think it was worthwhile to walk two or three miles to pay back the six and a quarter cents?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-3</title>
-      <link>https://www.code996.cn/post/english/2-3/</link>
+      <link>http://www.code996.cn/post/english/2-3/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-3/</guid>
+      <guid>http://www.code996.cn/post/english/2-3/</guid>
       <description>Your browser does not support the audio element. 
 Unit 2 Text A Father knows Better Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. What sort of a song is it? 2. Who should be sitting up and taking notice? Why? 3. What does the singer think of his parent&#39;s way of doing things? 4. Do you agree with what he says?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-4</title>
-      <link>https://www.code996.cn/post/english/2-4/</link>
+      <link>http://www.code996.cn/post/english/2-4/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-4/</guid>
+      <guid>http://www.code996.cn/post/english/2-4/</guid>
       <description>Your browser does not support the audio element. 
 Unit 4 Text A A Virtual Life Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Is the hero a student or an employee? 2. What was he doing when the boss came in? 3. How did he act in front of his boss? 4. Can you guess what the texts in this unit are going to be about?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-5</title>
-      <link>https://www.code996.cn/post/english/2-5/</link>
+      <link>http://www.code996.cn/post/english/2-5/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-5/</guid>
+      <guid>http://www.code996.cn/post/english/2-5/</guid>
       <description>Your browser does not support the audio element. 
 Unit 5 Text A True Height Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. What happened to the singer? 2. What helped her pull through all the hardships she suffered? 3. What is the tone of the song? 4. Is the song related to the theme of the unit overcoming obstacles?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-6</title>
-      <link>https://www.code996.cn/post/english/2-6/</link>
+      <link>http://www.code996.cn/post/english/2-6/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-6/</guid>
+      <guid>http://www.code996.cn/post/english/2-6/</guid>
       <description>Your browser does not support the audio element. 
 Unit 6 Text A I&#39;m Going To Buy The Brooklyn Bridge Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. Why can&#39;t women be ignored? 2. What price have women had to pay for their wisdom? 3. What happens to them if you try to break their will? 4. Have women realized their dreams?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-7</title>
-      <link>https://www.code996.cn/post/english/2-7/</link>
+      <link>http://www.code996.cn/post/english/2-7/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-7/</guid>
+      <guid>http://www.code996.cn/post/english/2-7/</guid>
       <description>Your browser does not support the audio element. 
 Unit 7 Text A The Glorious Messiness Of English Text Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. What is the passage about? 2. What&#39;s your impression of the English language? 3. Can you give one or two examples to illustrate the messiness of the English language? 4. Can you guess what the texts in this unit are going to be about?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程2-8</title>
-      <link>https://www.code996.cn/post/english/2-8/</link>
+      <link>http://www.code996.cn/post/english/2-8/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/2-8/</guid>
+      <guid>http://www.code996.cn/post/english/2-8/</guid>
       <description>Your browser does not support the audio element. 
 Unit 8 Text A Saving Nature, But Only For Man Part I Pre-reading Task Listen to the recording two or three times and then think over the following questions: 1. What kind of paradise is described in the song? 2. Why do people have to pay to see the trees? 3. What would happen if farmers continued to use DDT? 4. What is the theme of the song?</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-1</title>
-      <link>https://www.code996.cn/post/english/3-1/</link>
+      <link>http://www.code996.cn/post/english/3-1/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-1/</guid>
+      <guid>http://www.code996.cn/post/english/3-1/</guid>
       <description>Your browser does not support the audio element. 
 The song you are about to hear is all about taking a break from city life, escaping from the crowds, finding a quiet place, far from the human race. For those of us who live in cities, getting out in the country can provide a welcome break, letting us recharge our batteries2. Out in the country, as the song says, we can find a place to stand alone and take back somethin&#39; worth remembering.</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-2</title>
-      <link>https://www.code996.cn/post/english/3-2/</link>
+      <link>http://www.code996.cn/post/english/3-2/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-2/</guid>
+      <guid>http://www.code996.cn/post/english/3-2/</guid>
       <description>Your browser does not support the audio element. The song you are going to listen to is called Abraham, Martin &amp;amp; John, sung by Dion. Abraham, Martin &amp;amp; John Dion Has anybody here, Seen my old friend Abraham, Can you tell me, where he&#39;s gone, He freed a lotta people, But it seems the good they die young, You know I just looked around, And he&#39;s gone, Has anybody here,</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-3</title>
-      <link>https://www.code996.cn/post/english/3-3/</link>
+      <link>http://www.code996.cn/post/english/3-3/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-3/</guid>
+      <guid>http://www.code996.cn/post/english/3-3/</guid>
       <description>Your browser does not support the audio element. The song you are about to hear is all about a &amp;quot;Saturday Night Special&amp;quot;. Listen and see if you can guess what a Saturday Night Special is. Saturday Night Special Lynyrd Skynyrd Two feets they come a-creepin&#39; Like a black cat do. Two bodies a-laying restless, Creeper thinks he&#39;s got nothing to lose. So he creeps into the house, yea, Unlocks the</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-4</title>
-      <link>https://www.code996.cn/post/english/3-4/</link>
+      <link>http://www.code996.cn/post/english/3-4/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-4/</guid>
+      <guid>http://www.code996.cn/post/english/3-4/</guid>
       <description>Your browser does not support the audio element. Every child likes listening to stories. Zoe, a girl with wings, is no exception. Listen carefully and see what story her father is going to tell her. &amp;quot;Now, Zoe, stop fluttering around, and I will tell you a story.&amp;quot; &amp;quot;A true story, papa?&amp;quot; &amp;quot;It all happened exactly as I&#39;m going to tell you. Two thousand and eleven years ago in 1985, a</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-5</title>
-      <link>https://www.code996.cn/post/english/3-5/</link>
+      <link>http://www.code996.cn/post/english/3-5/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-5/</guid>
+      <guid>http://www.code996.cn/post/english/3-5/</guid>
       <description>Your browser does not support the audio element. To begin with, let&#39;s listen to a song called There&#39;s No Place Like Home for the Holidays. There&#39;s No Place Like Home For The Holidays Perry Como Oh, there&#39;s no place like home for the holidays &#39;Cause no matter how far away you roam When you pine for the sunshine of a friendly gaze For the holidays you can&#39;t beat home sweet</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-6</title>
-      <link>https://www.code996.cn/post/english/3-6/</link>
+      <link>http://www.code996.cn/post/english/3-6/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-6/</guid>
+      <guid>http://www.code996.cn/post/english/3-6/</guid>
       <description>Your browser does not support the audio element. 
 The song you are about to hear was first performed at a concert given to raise money to fight against poverty in Africa. Its message is simple, &amp;quot;There are people dying and it is time to help, to lend a hand. It&#39;s no use pretending that someone somewhere will do it for us. So let&#39;s start giving to those with less than ourselves.</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-7</title>
-      <link>https://www.code996.cn/post/english/3-7/</link>
+      <link>http://www.code996.cn/post/english/3-7/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-7/</guid>
+      <guid>http://www.code996.cn/post/english/3-7/</guid>
       <description>Your browser does not support the audio element. The song you are about to hear came about through a chance meeting. The singer, Donna Summer, was having a meal with her manager in an expensive restaurant in the plush Beverly Hills area of Los Angeles. As Donna tells the story: &amp;quot;I went into the ladies, and saw one of the waitresses sleeping on a stool1, absolutely exhausted from lack of</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程3-8</title>
-      <link>https://www.code996.cn/post/english/3-8/</link>
+      <link>http://www.code996.cn/post/english/3-8/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/3-8/</guid>
+      <guid>http://www.code996.cn/post/english/3-8/</guid>
       <description>Your browser does not support the audio element. A Clone of Our Own Will humans be the next clones? The technology still has a long way to go before it&#39;s considered safe to try on humans. But even if it were safe, would it be right? Let&#39;s hear what Professor Hank Greely of Standford University has to say on this topic. Interviewer: When will we clone a human? Greely: That&#39;s</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-1</title>
-      <link>https://www.code996.cn/post/english/4-1/</link>
+      <link>http://www.code996.cn/post/english/4-1/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-1/</guid>
+      <guid>http://www.code996.cn/post/english/4-1/</guid>
       <description>Your browser does not support the audio element. They say that pride comes before a fall. In the case of both Napoleon and Hitler, the many victories they enjoyed led them to believe that anything was possible, that nothing could stand in their way. Russia&#39;s icy defender was to prove them wrong. 人道是骄兵必败。就拿拿破仑和希特勒两</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-2</title>
-      <link>https://www.code996.cn/post/english/4-2/</link>
+      <link>http://www.code996.cn/post/english/4-2/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-2/</guid>
+      <guid>http://www.code996.cn/post/english/4-2/</guid>
       <description>Your browser does not support the audio element. Smart cars that can see, hear, feel, smell, and talk? And drive on their own? This may sound like a dream, but the computer revolution is set to turn it into a reality. 能看、能听、有知觉、具嗅觉、会说话的智能汽车？还能自动驾驶</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-3</title>
-      <link>https://www.code996.cn/post/english/4-3/</link>
+      <link>http://www.code996.cn/post/english/4-3/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-3/</guid>
+      <guid>http://www.code996.cn/post/english/4-3/</guid>
       <description>Your browser does not support the audio element. Harvey Mackay, who runs his own company, often interviews applicants for jobs. Here he lets us into the secret of what qualities an employer is looking for, and gives four tips on what can help you to stand out from the crowd. 自己经营公司的哈维·麦凯经常对求职者进行</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-4</title>
-      <link>https://www.code996.cn/post/english/4-4/</link>
+      <link>http://www.code996.cn/post/english/4-4/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-4/</guid>
+      <guid>http://www.code996.cn/post/english/4-4/</guid>
       <description>Your browser does not support the audio element. Is America going to decline like other great nations have before? The author thinks not, arguing that the type of society being created in America is quite unlike any that has gone before it. Read what he has to say and see whether you agree. 美国是否会如同历史上其他强国一样走</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-5</title>
-      <link>https://www.code996.cn/post/english/4-5/</link>
+      <link>http://www.code996.cn/post/english/4-5/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-5/</guid>
+      <guid>http://www.code996.cn/post/english/4-5/</guid>
       <description>Your browser does not support the audio element. Some people seem easy to understand: their character appears obvious on first meeting. Appearances, however, can be deceptive1. 有些人似乎容易了解：他们的个性在初次交往时就表露无遗。然而，外表可能具有欺骗性。 A Friend in Need</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-6</title>
-      <link>https://www.code996.cn/post/english/4-6/</link>
+      <link>http://www.code996.cn/post/english/4-6/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-6/</guid>
+      <guid>http://www.code996.cn/post/english/4-6/</guid>
       <description>Your browser does not support the audio element. As the pace of life in today&#39;s world grows ever faster, we seem forever on the go. With so much to do and so little time to do it in, how are we to cope? Richard Tomkins sets about untangling the problem and comes up with an answer. 随着当今世界生活节奏日益加快</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-7</title>
-      <link>https://www.code996.cn/post/english/4-7/</link>
+      <link>http://www.code996.cn/post/english/4-7/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-7/</guid>
+      <guid>http://www.code996.cn/post/english/4-7/</guid>
       <description>Your browser does not support the audio element. Peggy Noonan lives in New York and writes a weekly column for The Wall Street Journal. This piece is taken from one of them. In it she reflects on her week and on life in the city. Writing less than a year away from the destruction of the World Trade Center, her thoughts are inevitably affected by that terrible event. 佩吉</description>
     </item>
     
     <item>
       <title>全新版大学英语综合教程4-8</title>
-      <link>https://www.code996.cn/post/english/4-8/</link>
+      <link>http://www.code996.cn/post/english/4-8/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/english/4-8/</guid>
+      <guid>http://www.code996.cn/post/english/4-8/</guid>
       <description>Your browser does not support the audio element. Annie Dillard tells of her visit to the Napo River in the heart of the Ecuadorian jungle, one of nature&#39;s most unspoiled places. She describes the beauty of the forest and her admiration for the people who live there. 安妮·迪拉德讲述了自己游览厄瓜多尔丛林深处的纳</description>
     </item>
     
     <item>
       <title>OpenCV 绘制图像直方图</title>
-      <link>https://www.code996.cn/post/2016/opencv1/</link>
+      <link>http://www.code996.cn/post/2016/opencv1/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/opencv1/</guid>
+      <guid>http://www.code996.cn/post/2016/opencv1/</guid>
       <description>OpenCV绘制图像直方图，版本2.4.11 直方图可展示图像中的像素分布,是用以表示数字图像中亮度分布的直方图，标绘了图像中每个亮度值的像素</description>
     </item>
     
     <item>
       <title>IntelliJ IDEA常用快捷键</title>
-      <link>https://www.code996.cn/post/2016/idea-key/</link>
+      <link>http://www.code996.cn/post/2016/idea-key/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/idea-key/</guid>
+      <guid>http://www.code996.cn/post/2016/idea-key/</guid>
       <description>Mac: 符号说明 ⌃ Control键 ⌥ Option键 ⌘ Command键 ⇧ 大写锁定键 ↩ 回车键 ⌫ BackSpace键 ⎋ Escape (Esc) ⌦ 向前删除键（Fn+Delet</description>
     </item>
     
     <item>
       <title>curl命令简明教程</title>
-      <link>https://www.code996.cn/post/2017/curl/</link>
+      <link>http://www.code996.cn/post/2017/curl/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/curl/</guid>
+      <guid>http://www.code996.cn/post/2017/curl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
-      <link>https://www.code996.cn/post/2016/mysql/</link>
+      <link>http://www.code996.cn/post/2016/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/mysql/</guid>
+      <guid>http://www.code996.cn/post/2016/mysql/</guid>
       <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
     </item>
     
     <item>
       <title>两个线程交替打印奇数和偶数</title>
-      <link>https://www.code996.cn/post/exercise/oddeven/</link>
+      <link>http://www.code996.cn/post/exercise/oddeven/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/oddeven/</guid>
+      <guid>http://www.code996.cn/post/exercise/oddeven/</guid>
       <description>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即： 奇 1 偶 2 奇 3 偶 4 奇 5 偶 6 奇 7 偶 8 奇 9 偶 10 解法一： w</description>
     </item>
     
     <item>
       <title>反转单向链表</title>
-      <link>https://www.code996.cn/post/exercise/reverseList/</link>
+      <link>http://www.code996.cn/post/exercise/reverseList/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/reverseList/</guid>
+      <guid>http://www.code996.cn/post/exercise/reverseList/</guid>
       <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
     </item>
     
     <item>
       <title>反转字符串中每一个单词</title>
-      <link>https://www.code996.cn/post/exercise/string-reverse-word/</link>
+      <link>http://www.code996.cn/post/exercise/string-reverse-word/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/string-reverse-word/</guid>
+      <guid>http://www.code996.cn/post/exercise/string-reverse-word/</guid>
       <description>反转字符串中每一个单词 public class StringTest { //反转每个单词 private static String reverseEveryWord(String str) { StringBuilder sb = new StringBuilder(); StringBuilder word = new StringBuilder(); for (char c : str.toCharArray()) { if (isLetter(c)) { word.append(c); } else { if (word.length() &amp;gt; 0) { sb.append(word.reverse().toString()); word.delete(0, word.length()); } sb.append(c); } } return sb.toString(); } private static boolean</description>
     </item>
     
     <item>
       <title>将字符串中所有单词的首字母大写</title>
-      <link>https://www.code996.cn/post/exercise/string-caption/</link>
+      <link>http://www.code996.cn/post/exercise/string-caption/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/string-caption/</guid>
+      <guid>http://www.code996.cn/post/exercise/string-caption/</guid>
       <description>public class StringTest { // 首字母大写 private static String upper(String str) { boolean first = true; StringBuilder sb = new StringBuilder(); for (char c : str.toCharArray()) { if (first) { sb.append(Character.toUpperCase(c)); first = false; } else { sb.append(c); } if (Character.isWhitespace(c)) { first = true; } } return sb.toString(); } public static void main(String[] args) { char c = 20; System.out.println(&amp;quot;[&amp;quot; + c + &amp;quot;]&amp;quot;); String</description>
     </item>
     
     <item>
       <title>线程死锁</title>
-      <link>https://www.code996.cn/post/exercise/deadlock/</link>
+      <link>http://www.code996.cn/post/exercise/deadlock/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/deadlock/</guid>
+      <guid>http://www.code996.cn/post/exercise/deadlock/</guid>
       <description>写出会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new</description>
     </item>
     
     <item>
       <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
-      <link>https://www.code996.cn/post/2016/struts/</link>
+      <link>http://www.code996.cn/post/2016/struts/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/struts/</guid>
+      <guid>http://www.code996.cn/post/2016/struts/</guid>
       <description>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。 新建Maven project，type选择webap</description>
     </item>
     
     <item>
       <title>git基础命令</title>
-      <link>https://www.code996.cn/post/2016/git-base/</link>
+      <link>http://www.code996.cn/post/2016/git-base/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/git-base/</guid>
+      <guid>http://www.code996.cn/post/2016/git-base/</guid>
       <description>初始设置： git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
       <title>git撤销</title>
-      <link>https://www.code996.cn/post/2016/git-undo/</link>
+      <link>http://www.code996.cn/post/2016/git-undo/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/git-undo/</guid>
+      <guid>http://www.code996.cn/post/2016/git-undo/</guid>
       <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误（提交说明或者文件），该操作会撤回并删</description>
     </item>
     
     <item>
       <title>Java动态代理</title>
-      <link>https://www.code996.cn/post/2016/java-proxy/</link>
+      <link>http://www.code996.cn/post/2016/java-proxy/</link>
       <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-proxy/</guid>
+      <guid>http://www.code996.cn/post/2016/java-proxy/</guid>
       <description>代理模式：为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
     </item>
     
     <item>
       <title>Java基础--NIO</title>
-      <link>https://www.code996.cn/post/2016/java-nio/</link>
+      <link>http://www.code996.cn/post/2016/java-nio/</link>
       <pubDate>Sat, 21 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-nio/</guid>
+      <guid>http://www.code996.cn/post/2016/java-nio/</guid>
       <description>NIO库在JDK1.4中引入，它以标准Java代码提供了高速的，面向块的IO，弥补了之前同步IO的不足。 缓冲区Buffer Buffers是一</description>
     </item>
     
     <item>
       <title>Java并发--CountDownLatch CyclicBarrier ReentrantLock</title>
-      <link>https://www.code996.cn/post/2016/java-locks/</link>
+      <link>http://www.code996.cn/post/2016/java-locks/</link>
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-locks/</guid>
+      <guid>http://www.code996.cn/post/2016/java-locks/</guid>
       <description>CountDownLatch CountDownLatch是一个同步工具类，它允许一个或多个线程一直等待，直到其他线程的操作执行完后再执行。CountDownLatch</description>
     </item>
     
     <item>
       <title>Java--两个线程交替执行和死锁</title>
-      <link>https://www.code996.cn/post/2016/java-oddeven/</link>
+      <link>http://www.code996.cn/post/2016/java-oddeven/</link>
       <pubDate>Thu, 19 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-oddeven/</guid>
+      <guid>http://www.code996.cn/post/2016/java-oddeven/</guid>
       <description>今天看到一个题：两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
     </item>
     
     <item>
       <title>Java基础--JDBC</title>
-      <link>https://www.code996.cn/post/2016/java-jdbc/</link>
+      <link>http://www.code996.cn/post/2016/java-jdbc/</link>
       <pubDate>Wed, 18 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-jdbc/</guid>
+      <guid>http://www.code996.cn/post/2016/java-jdbc/</guid>
       <description>JDBC(Java Database Connectivity) Java数据库连接，提供了一种与平台无关的用于执行SQL语句的标准javaAPI，可以方便实现多种关系型数据库的统一操作 常用的类与接口</description>
     </item>
     
     <item>
       <title>Java基础--注解Annotation</title>
-      <link>https://www.code996.cn/post/2016/java-annotation/</link>
+      <link>http://www.code996.cn/post/2016/java-annotation/</link>
       <pubDate>Tue, 17 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-annotation/</guid>
+      <guid>http://www.code996.cn/post/2016/java-annotation/</guid>
       <description>Annotation是给类，方法或域上加的一种特殊的标记，可以通过反射取到注解的类型和值，从而完成某种特定的操作。 定义注解需要使用元注解，元</description>
     </item>
     
     <item>
       <title>Java基础--内部类</title>
-      <link>https://www.code996.cn/post/2016/java-innerclass/</link>
+      <link>http://www.code996.cn/post/2016/java-innerclass/</link>
       <pubDate>Mon, 16 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-innerclass/</guid>
+      <guid>http://www.code996.cn/post/2016/java-innerclass/</guid>
       <description>普通内部类 如果一个类只需要在另一个类内部使用，可以考虑将它写成内部类。 内部类拥有其外部类所有成员的访问权，因为内部类中隐含了一个外部类的引用</description>
     </item>
     
     <item>
       <title>Java基础--比较器Comparator</title>
-      <link>https://www.code996.cn/post/2016/java-comparator/</link>
+      <link>http://www.code996.cn/post/2016/java-comparator/</link>
       <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-comparator/</guid>
+      <guid>http://www.code996.cn/post/2016/java-comparator/</guid>
       <description>Comparable接口和Comparator接口都是用来定义集合中的排序的，只是Comparable是在集合内部定义排序的实现，Compa</description>
     </item>
     
     <item>
       <title>Java基础--CountDownLatch</title>
-      <link>https://www.code996.cn/post/2016/java-countdownlatch/</link>
+      <link>http://www.code996.cn/post/2016/java-countdownlatch/</link>
       <pubDate>Sat, 14 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-countdownlatch/</guid>
+      <guid>http://www.code996.cn/post/2016/java-countdownlatch/</guid>
       <description>CountDownLatch是线程同步辅助类，它允许一个或多个线程wait直到countdown被调用使count为0。 CountDownL</description>
     </item>
     
     <item>
       <title>Java基础--虚拟机JVM</title>
-      <link>https://www.code996.cn/post/2016/java-jvm/</link>
+      <link>http://www.code996.cn/post/2016/java-jvm/</link>
       <pubDate>Fri, 13 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-jvm/</guid>
+      <guid>http://www.code996.cn/post/2016/java-jvm/</guid>
       <description>JVM内存结构 Heap Space： 堆内存（Heap Space）是由Young Generation和Old Generation组成，而Young Ge</description>
     </item>
     
     <item>
       <title>Java-压缩解压gz</title>
-      <link>https://www.code996.cn/post/2016/java-blockingqueue/</link>
+      <link>http://www.code996.cn/post/2016/java-blockingqueue/</link>
       <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-blockingqueue/</guid>
+      <guid>http://www.code996.cn/post/2016/java-blockingqueue/</guid>
       <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
     </item>
     
     <item>
       <title>Java基础--反射Reflection</title>
-      <link>https://www.code996.cn/post/2016/java-reflection/</link>
+      <link>http://www.code996.cn/post/2016/java-reflection/</link>
       <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-reflection/</guid>
+      <guid>http://www.code996.cn/post/2016/java-reflection/</guid>
       <description>反射能在运行时获取一个类的全部信息，并且可以调用类方法，修改类属性，创建类实例。 而在编译期间不用关心对象是谁 反射可用在动态代理，注解解释，和</description>
     </item>
     
     <item>
       <title>Java基础--读写文件</title>
-      <link>https://www.code996.cn/post/2016/java-clone/</link>
+      <link>http://www.code996.cn/post/2016/java-clone/</link>
       <pubDate>Sun, 08 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-clone/</guid>
+      <guid>http://www.code996.cn/post/2016/java-clone/</guid>
       <description>对象拷贝用于在内存中复制对象，无需构造器便可创建对象。 需要注意的是 clone方法提供的只是简单的值拷贝和地址拷贝，若类中包含HashMap等</description>
     </item>
     
     <item>
       <title>Java基础--HashCode</title>
-      <link>https://www.code996.cn/post/2016/java-hashcode/</link>
+      <link>http://www.code996.cn/post/2016/java-hashcode/</link>
       <pubDate>Sat, 07 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-hashcode/</guid>
+      <guid>http://www.code996.cn/post/2016/java-hashcode/</guid>
       <description>如果一个类的对象要用做hashMap的key，那么一定要注意覆盖该类的equals和hashCode方法。 equals()是基类Object</description>
     </item>
     
     <item>
       <title>Java基础--序列化Serializable</title>
-      <link>https://www.code996.cn/post/2016/java-serializable/</link>
+      <link>http://www.code996.cn/post/2016/java-serializable/</link>
       <pubDate>Fri, 06 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-serializable/</guid>
+      <guid>http://www.code996.cn/post/2016/java-serializable/</guid>
       <description>对Java对象序列化的目的是持久化对象或者为RMI（远程方法调用）传递参数和返回值。 下面是一个序列化对象写入文件的例子： package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
     </item>
     
     <item>
       <title>Java基础--单例类</title>
-      <link>https://www.code996.cn/post/2016/java-singleton/</link>
+      <link>http://www.code996.cn/post/2016/java-singleton/</link>
       <pubDate>Thu, 05 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-singleton/</guid>
+      <guid>http://www.code996.cn/post/2016/java-singleton/</guid>
       <description>单例模式的主要作用是保证在Java程序中，某个类只有一个实例存在。单例模式有很多好处，它能够避免实例对象的重复创建，不仅可以减少每次创建对象</description>
     </item>
     
     <item>
       <title>Java基础--ThreadLocal</title>
-      <link>https://www.code996.cn/post/2016/java-threadlocal/</link>
+      <link>http://www.code996.cn/post/2016/java-threadlocal/</link>
       <pubDate>Wed, 04 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-threadlocal/</guid>
+      <guid>http://www.code996.cn/post/2016/java-threadlocal/</guid>
       <description>Java中的ThreadLocal 可以看做以线程标识为key的Map，在多线程开发中应用广泛。 示例 class ThreadEnv { // 用匿名内部类覆盖ThreadLoc</description>
     </item>
     
     <item>
       <title>Java基础--读写文件</title>
-      <link>https://www.code996.cn/post/2016/java-gz/</link>
+      <link>http://www.code996.cn/post/2016/java-gz/</link>
       <pubDate>Tue, 03 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-gz/</guid>
+      <guid>http://www.code996.cn/post/2016/java-gz/</guid>
       <description>Java读写文件需要注意异常的处理 写文件 public class WriteFile { public static void write(String file, String text){ try{ PrintWriter out = new PrintWriter(new File(file).getAbsoluteFile()); try{ out.print(text); }finally{ out.close(); } }catch(IOException e){ throw new RuntimeException(e); } } public static void main(String[] args) throws IOException{ String file = &amp;quot;test.txt&amp;quot;; //print current path System.out.println(new File(&amp;quot;&amp;quot;).getAbsolutePath()); String context = &amp;quot;i</description>
     </item>
     
     <item>
       <title>Java基础--压缩和解压缩gz包</title>
-      <link>https://www.code996.cn/post/2016/java-io/</link>
+      <link>http://www.code996.cn/post/2016/java-io/</link>
       <pubDate>Mon, 02 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-io/</guid>
+      <guid>http://www.code996.cn/post/2016/java-io/</guid>
       <description>gz是Linux和OSX中常见的压缩文件格式，下面是用java压缩和解压缩gz包的例子 public class GZIPcompress { public static void FileCompress(String file, String outgz) throws IOException { BufferedReader br = new BufferedReader(new FileReader(file)); BufferedOutputStream bs = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(outgz)));</description>
     </item>
     
     <item>
       <title>Java基础--枚举Enum</title>
-      <link>https://www.code996.cn/post/2016/java-enum/</link>
+      <link>http://www.code996.cn/post/2016/java-enum/</link>
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/java-enum/</guid>
+      <guid>http://www.code996.cn/post/2016/java-enum/</guid>
       <description>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum</description>
     </item>
     

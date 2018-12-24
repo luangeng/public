@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Springboot on Code996</title>
-    <link>https://www.code996.cn/tags/springboot/</link>
+    <link>http://www.code996.cn/tags/springboot/</link>
     <description>Recent content in Springboot on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Mon, 19 Nov 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.code996.cn/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.code996.cn/tags/springboot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SpringBoot集成ZeroMQ</title>
-      <link>https://www.code996.cn/post/2018/zeromq-springboot/</link>
+      <link>http://www.code996.cn/post/2018/zeromq-springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/zeromq-springboot/</guid>
+      <guid>http://www.code996.cn/post/2018/zeromq-springboot/</guid>
       <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
     </item>
     
     <item>
       <title>SpringBoot集成elastic-job-lite</title>
-      <link>https://www.code996.cn/post/2018/elasticJob/</link>
+      <link>http://www.code996.cn/post/2018/elasticJob/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2018/elasticJob/</guid>
+      <guid>http://www.code996.cn/post/2018/elasticJob/</guid>
       <description>SpringBoot集成elastic-job-lite 1.pom文件中引用jar包 &amp;lt;!-- elastic-job-lite --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-common-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-spring&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;18.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 2.本地启</description>
     </item>
     
     <item>
       <title>Spring Boot发布和调用RESTful web service</title>
-      <link>https://www.code996.cn/post/spring/spring-ws/</link>
+      <link>http://www.code996.cn/post/spring/spring-ws/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-ws/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-ws/</guid>
       <description>Spring Boot可以非常简单的发布和调用RESTful web service，下面参考官方指导体验一下 1.首先访问 http://start.spring.io/ 生成Spring Boot基础项目 或者</description>
     </item>
     
     <item>
       <title>使用Spring Boot 和Spring Data JPA访问mysql数据库</title>
-      <link>https://www.code996.cn/post/spring/spring-jpa/</link>
+      <link>http://www.code996.cn/post/spring/spring-jpa/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-jpa/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-jpa/</guid>
       <description>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使</description>
     </item>
     
     <item>
       <title>Spring Boot 集成Swagger2生成RESTful API文档</title>
-      <link>https://www.code996.cn/post/spring/spring-swagger/</link>
+      <link>http://www.code996.cn/post/spring/spring-swagger/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-swagger/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-swagger/</guid>
       <description>Swagger2可以在写代码的同时生成对应的RESTful API文档，方便开发人员参考，另外Swagger2也提供了强大的页面测试功能来调试</description>
     </item>
     
     <item>
       <title>Spring Boot自定义配置与加载</title>
-      <link>https://www.code996.cn/post/spring/spring-rest/</link>
+      <link>http://www.code996.cn/post/spring/spring-rest/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/spring/spring-rest/</guid>
+      <guid>http://www.code996.cn/post/spring/spring-rest/</guid>
       <description>Spring Boot自定义配置与加载 application.properties主要用来配置数据库连接、日志相关配置等。除了这些配置内容之外，还可以自</description>
     </item>
     

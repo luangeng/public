@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Html on Code996</title>
-    <link>https://www.code996.cn/tags/html/</link>
+    <link>http://www.code996.cn/tags/html/</link>
     <description>Recent content in Html on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Sun, 10 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.code996.cn/tags/html/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.code996.cn/tags/html/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HTML5 canvas绘图</title>
-      <link>https://www.code996.cn/post/2017/html5-cavas/</link>
+      <link>http://www.code996.cn/post/2017/html5-cavas/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/html5-cavas/</guid>
+      <guid>http://www.code996.cn/post/2017/html5-cavas/</guid>
       <description>HTML5 canvas画图 示例1 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://libs.baidu.com/jquery/2.0.3/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;style.css&amp;quot; /&amp;gt; &amp;lt;title&amp;gt;Backpropagation&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;spr &amp;lt;div&amp;gt; &amp;lt;div style=&amp;quot;float:right;margin-right:400px;margin-top:100px;width:300px;height:500px&amp;quot;&amp;gt; &amp;lt;span id=&amp;quot;NN&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span id=&amp;quot;xyText&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input id=&amp;quot;Text&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;&amp;lt;br&amp;gt; &amp;lt;button id=&amp;quot;clear&amp;quot; type=&amp;quot;button&amp;quot; onclick=&amp;quot;Clear()&amp;quot;&amp;gt;</description>
     </item>
     
