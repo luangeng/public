@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mysql on Code996</title>
-    <link>http://www.code996.cn/tags/mysql/</link>
+    <link>https://www.code996.cn/tags/mysql/</link>
     <description>Recent content in Mysql on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Tue, 05 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.code996.cn/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.code996.cn/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mysql常用数据类型</title>
-      <link>http://www.code996.cn/post/2017/mysql-type/</link>
+      <link>https://www.code996.cn/post/2017/mysql-type/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.code996.cn/post/2017/mysql-type/</guid>
+      <guid>https://www.code996.cn/post/2017/mysql-type/</guid>
       <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
     </item>
     
     <item>
       <title>Mysql基础语法</title>
-      <link>http://www.code996.cn/post/2017/mysql-sql/</link>
+      <link>https://www.code996.cn/post/2017/mysql-sql/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.code996.cn/post/2017/mysql-sql/</guid>
+      <guid>https://www.code996.cn/post/2017/mysql-sql/</guid>
       <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
     </item>
     
     <item>
       <title>MySql 存储过程</title>
-      <link>http://www.code996.cn/post/2017/mysql-procedure/</link>
+      <link>https://www.code996.cn/post/2017/mysql-procedure/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.code996.cn/post/2017/mysql-procedure/</guid>
+      <guid>https://www.code996.cn/post/2017/mysql-procedure/</guid>
       <description>存储过程（Stored Procedure）是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数（如果带参数）来</description>
     </item>
     
