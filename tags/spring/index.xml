@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on Code996</title>
-    <link>https://www.code996.cn/tags/spring/</link>
+    <link>http://luangeng.coding.me/public/tags/spring/</link>
     <description>Recent content in Spring on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Sun, 10 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.code996.cn/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://luangeng.coding.me/public/tags/spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spring MVC中Action使用总结</title>
-      <link>https://www.code996.cn/post/2017/springmvc/</link>
+      <link>http://luangeng.coding.me/public/post/2017/springmvc/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/springmvc/</guid>
+      <guid>http://luangeng.coding.me/public/post/2017/springmvc/</guid>
       <description>Spring MVC中每个控制器中可以定义多个请求处理方法即Action，Action可以有多个不同的参数，有多种类型的返回结果。 可以作为Action的</description>
     </item>
     
     <item>
       <title>一文看懂@RequestBody,@RequestParam和@PathVariable</title>
-      <link>https://www.code996.cn/post/2017/spring-annotation/</link>
+      <link>http://luangeng.coding.me/public/post/2017/spring-annotation/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2017/spring-annotation/</guid>
+      <guid>http://luangeng.coding.me/public/post/2017/spring-annotation/</guid>
       <description>在使用SpringMVC或Spring Boot开发后台应用的使用，经常需要从前台传值到后台，后台返回数据和页面到前台，而碰到最多的就是Spr</description>
     </item>
     
     <item>
       <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
-      <link>https://www.code996.cn/post/2016/struts/</link>
+      <link>http://luangeng.coding.me/public/post/2016/struts/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/2016/struts/</guid>
+      <guid>http://luangeng.coding.me/public/post/2016/struts/</guid>
       <description>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。 新建Maven project，type选择webap</description>
     </item>
     

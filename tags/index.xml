@@ -2,211 +2,211 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Code996</title>
-    <link>https://www.code996.cn/tags/</link>
+    <link>http://luangeng.coding.me/public/tags/</link>
     <description>Recent content in Tags on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Sat, 09 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.code996.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://luangeng.coding.me/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ajax</title>
-      <link>https://www.code996.cn/tags/ajax/</link>
+      <link>http://luangeng.coding.me/public/tags/ajax/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/ajax/</guid>
+      <guid>http://luangeng.coding.me/public/tags/ajax/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Elasticsearch</title>
-      <link>https://www.code996.cn/tags/elasticsearch/</link>
+      <link>http://luangeng.coding.me/public/tags/elasticsearch/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/elasticsearch/</guid>
+      <guid>http://luangeng.coding.me/public/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>https://www.code996.cn/tags/git/</link>
+      <link>http://luangeng.coding.me/public/tags/git/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/git/</guid>
+      <guid>http://luangeng.coding.me/public/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Github</title>
-      <link>https://www.code996.cn/tags/github/</link>
+      <link>http://luangeng.coding.me/public/tags/github/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/github/</guid>
+      <guid>http://luangeng.coding.me/public/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Html</title>
-      <link>https://www.code996.cn/tags/html/</link>
+      <link>http://luangeng.coding.me/public/tags/html/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/html/</guid>
+      <guid>http://luangeng.coding.me/public/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>https://www.code996.cn/tags/java/</link>
+      <link>http://luangeng.coding.me/public/tags/java/</link>
       <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/java/</guid>
+      <guid>http://luangeng.coding.me/public/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Jquery</title>
-      <link>https://www.code996.cn/tags/jquery/</link>
+      <link>http://luangeng.coding.me/public/tags/jquery/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/jquery/</guid>
+      <guid>http://luangeng.coding.me/public/tags/jquery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://www.code996.cn/tags/linux/</link>
+      <link>http://luangeng.coding.me/public/tags/linux/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/linux/</guid>
+      <guid>http://luangeng.coding.me/public/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Maven</title>
-      <link>https://www.code996.cn/tags/maven/</link>
+      <link>http://luangeng.coding.me/public/tags/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/maven/</guid>
+      <guid>http://luangeng.coding.me/public/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>https://www.code996.cn/tags/mysql/</link>
+      <link>http://luangeng.coding.me/public/tags/mysql/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/mysql/</guid>
+      <guid>http://luangeng.coding.me/public/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Netty</title>
-      <link>https://www.code996.cn/tags/netty/</link>
+      <link>http://luangeng.coding.me/public/tags/netty/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/netty/</guid>
+      <guid>http://luangeng.coding.me/public/tags/netty/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Oauth2</title>
-      <link>https://www.code996.cn/tags/oauth2/</link>
+      <link>http://luangeng.coding.me/public/tags/oauth2/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/oauth2/</guid>
+      <guid>http://luangeng.coding.me/public/tags/oauth2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Opencv</title>
-      <link>https://www.code996.cn/tags/opencv/</link>
+      <link>http://luangeng.coding.me/public/tags/opencv/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/opencv/</guid>
+      <guid>http://luangeng.coding.me/public/tags/opencv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>https://www.code996.cn/tags/redis/</link>
+      <link>http://luangeng.coding.me/public/tags/redis/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/redis/</guid>
+      <guid>http://luangeng.coding.me/public/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rocketmq</title>
-      <link>https://www.code996.cn/tags/rocketmq/</link>
+      <link>http://luangeng.coding.me/public/tags/rocketmq/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/rocketmq/</guid>
+      <guid>http://luangeng.coding.me/public/tags/rocketmq/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spring</title>
-      <link>https://www.code996.cn/tags/spring/</link>
+      <link>http://luangeng.coding.me/public/tags/spring/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/spring/</guid>
+      <guid>http://luangeng.coding.me/public/tags/spring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Springboot</title>
-      <link>https://www.code996.cn/tags/springboot/</link>
+      <link>http://luangeng.coding.me/public/tags/springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/springboot/</guid>
+      <guid>http://luangeng.coding.me/public/tags/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Springcloud</title>
-      <link>https://www.code996.cn/tags/springcloud/</link>
+      <link>http://luangeng.coding.me/public/tags/springcloud/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/springcloud/</guid>
+      <guid>http://luangeng.coding.me/public/tags/springcloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tool</title>
-      <link>https://www.code996.cn/tags/tool/</link>
+      <link>http://luangeng.coding.me/public/tags/tool/</link>
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/tool/</guid>
+      <guid>http://luangeng.coding.me/public/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zookeeper</title>
-      <link>https://www.code996.cn/tags/zookeeper/</link>
+      <link>http://luangeng.coding.me/public/tags/zookeeper/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/zookeeper/</guid>
+      <guid>http://luangeng.coding.me/public/tags/zookeeper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>练习题</title>
-      <link>https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
+      <link>http://luangeng.coding.me/public/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</guid>
+      <guid>http://luangeng.coding.me/public/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</guid>
       <description></description>
     </item>
     
     <item>
       <title>英语</title>
-      <link>https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD/</link>
+      <link>http://luangeng.coding.me/public/tags/%E8%8B%B1%E8%AF%AD/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/tags/%E8%8B%B1%E8%AF%AD/</guid>
+      <guid>http://luangeng.coding.me/public/tags/%E8%8B%B1%E8%AF%AD/</guid>
       <description></description>
     </item>
     

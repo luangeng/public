@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>练习题 on Code996</title>
-    <link>https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
+    <link>http://luangeng.coding.me/public/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
     <description>Recent content in 练习题 on Code996</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Sat, 03 Sep 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.code996.cn/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://luangeng.coding.me/public/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>两个线程交替打印奇数和偶数</title>
-      <link>https://www.code996.cn/post/exercise/oddeven/</link>
+      <link>http://luangeng.coding.me/public/post/exercise/oddeven/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/oddeven/</guid>
+      <guid>http://luangeng.coding.me/public/post/exercise/oddeven/</guid>
       <description>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即： 奇 1 偶 2 奇 3 偶 4 奇 5 偶 6 奇 7 偶 8 奇 9 偶 10 解法一： w</description>
     </item>
     
     <item>
       <title>反转单向链表</title>
-      <link>https://www.code996.cn/post/exercise/reverseList/</link>
+      <link>http://luangeng.coding.me/public/post/exercise/reverseList/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/reverseList/</guid>
+      <guid>http://luangeng.coding.me/public/post/exercise/reverseList/</guid>
       <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
     </item>
     
     <item>
       <title>反转字符串中每一个单词</title>
-      <link>https://www.code996.cn/post/exercise/string-reverse-word/</link>
+      <link>http://luangeng.coding.me/public/post/exercise/string-reverse-word/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/string-reverse-word/</guid>
+      <guid>http://luangeng.coding.me/public/post/exercise/string-reverse-word/</guid>
       <description>反转字符串中每一个单词 public class StringTest { //反转每个单词 private static String reverseEveryWord(String str) { StringBuilder sb = new StringBuilder(); StringBuilder word = new StringBuilder(); for (char c : str.toCharArray()) { if (isLetter(c)) { word.append(c); } else { if (word.length() &amp;gt; 0) { sb.append(word.reverse().toString()); word.delete(0, word.length()); } sb.append(c); } } return sb.toString(); } private static boolean</description>
     </item>
     
     <item>
       <title>将字符串中所有单词的首字母大写</title>
-      <link>https://www.code996.cn/post/exercise/string-caption/</link>
+      <link>http://luangeng.coding.me/public/post/exercise/string-caption/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/string-caption/</guid>
+      <guid>http://luangeng.coding.me/public/post/exercise/string-caption/</guid>
       <description>public class StringTest { // 首字母大写 private static String upper(String str) { boolean first = true; StringBuilder sb = new StringBuilder(); for (char c : str.toCharArray()) { if (first) { sb.append(Character.toUpperCase(c)); first = false; } else { sb.append(c); } if (Character.isWhitespace(c)) { first = true; } } return sb.toString(); } public static void main(String[] args) { char c = 20; System.out.println(&amp;quot;[&amp;quot; + c + &amp;quot;]&amp;quot;); String</description>
     </item>
     
     <item>
       <title>线程死锁</title>
-      <link>https://www.code996.cn/post/exercise/deadlock/</link>
+      <link>http://luangeng.coding.me/public/post/exercise/deadlock/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.code996.cn/post/exercise/deadlock/</guid>
+      <guid>http://luangeng.coding.me/public/post/exercise/deadlock/</guid>
       <description>写出会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new</description>
     </item>
     
