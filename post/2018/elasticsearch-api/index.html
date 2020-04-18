@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  
+     
+       
+       
+     
+  </script>
+  <base href="http://luangeng.space">
+  <title>elasticsearch JAVA API - LuanGeng</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="elasticsearch JAVA API - LuanGeng">
+  <meta name="description" content="elasticsearch JAVA API">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="elasticsearch JAVA API - LuanGeng">
+  <meta itemprop="description" content="elasticsearch JAVA API">
+  <meta itemprop="image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico">
+  <meta property="og:title" content="elasticsearch JAVA API - LuanGeng" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://luangeng.space/post/2018/elasticsearch-api/" />
+  <meta property="og:image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico" />
+  <meta property="og:description" content="elasticsearch JAVA API">
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="http://luangeng.space/post/2018/elasticsearch-api/">
+  <link rel='shortlink' href="http://luangeng.space/post/2018/elasticsearch-api/">
+  <link rel="shortcut icon" href="https://luangeng2008.gitee.io/cdn/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng2008.gitee.io/cdn/highlight/github.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.min.css">
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+
+    var _hmt = _hmt || [];
+    (function() {
+      if(window.location.toString().includes('localhost')){return;}
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/tools.html">工具</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="http://luangeng.space/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="http://luangeng.space/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="http://luangeng.space/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://luangeng.space" rel="home">
+              
+              LuanGeng
+            </a>
+          </h1>
+          <span class="site-description"> 不积跬步无以至千里 </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">elasticsearch JAVA API</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2018-12-04 · 423 Words
+                                        
+                                        · Tags: elasticsearch
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="http://luangeng.space/post/2018/elasticsearch-api/" class="leancloud_visitors" data-flag-title="elasticsearch JAVA API">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <pre><code>@Service
+public class DocApi implements Const {
+
+    @Autowired
+    RestHighLevelClient client;
+
+    public void info() throws IOException {
+        MainResponse response = client.info(RequestOptions.DEFAULT);
+        ClusterName clusterName = response.getClusterName();
+        String clusterUuid = response.getClusterUuid();
+        String nodeName = response.getNodeName();
+        Version version = response.getVersion();
+        Build build = response.getBuild();
+    }
+
+    public IndexResponse index(int n) throws IOException {
+        IndexRequest request = new IndexRequest(INDEX, TYPE, &quot;1&quot;)
+                .source(&quot;user&quot;, &quot;kimchy&quot;, &quot;postDate&quot;, new Date(), &quot;message&quot;, &quot;trying out Elasticsearch&quot;);
+        IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+//        client.indexAsync(request, RequestOptions.DEFAULT, new MyActionListener());
+
+        String index = indexResponse.getIndex();
+        String type = indexResponse.getType();
+        String id = indexResponse.getId();
+        long version = indexResponse.getVersion();
+        if (indexResponse.getResult() == DocWriteResponse.Result.CREATED) {
+
+        } else if (indexResponse.getResult() == DocWriteResponse.Result.UPDATED) {
+
+        }
+        ReplicationResponse.ShardInfo shardInfo = indexResponse.getShardInfo();
+        if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
+
+        }
+        if (shardInfo.getFailed() &gt; 0) {
+            for (ReplicationResponse.ShardInfo.Failure failure :
+                    shardInfo.getFailures()) {
+                String reason = failure.reason();
+            }
+        }
+        return indexResponse;
+    }
+
+    public void get() throws IOException {
+        GetRequest request = new GetRequest(INDEX, TYPE, &quot;1&quot;);
+//        request.storedFields(&quot;message&quot;);
+        GetResponse getResponse = client.get(request, RequestOptions.DEFAULT);
+//        String msg = getResponse.getField(&quot;message&quot;).getValue();
+        String message = getResponse.getSourceAsMap().get(&quot;message&quot;).toString();
+    }
+
+    public void exist() throws IOException {
+        GetRequest getRequest = new GetRequest(INDEX, TYPE, &quot;1&quot;);
+        getRequest.fetchSourceContext(new FetchSourceContext(false));
+        getRequest.storedFields(&quot;_none_&quot;);
+        boolean exists = client.exists(getRequest, RequestOptions.DEFAULT);
+    }
+
+    public DeleteResponse delete() throws IOException {
+        DeleteRequest request = new DeleteRequest(INDEX, TYPE, &quot;1&quot;);
+        DeleteResponse deleteResponse = client.delete(request, RequestOptions.DEFAULT);
+        String index = deleteResponse.getIndex();
+        String type = deleteResponse.getType();
+        String id = deleteResponse.getId();
+        long version = deleteResponse.getVersion();
+        ReplicationResponse.ShardInfo shardInfo = deleteResponse.getShardInfo();
+        if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
+
+        }
+        if (shardInfo.getFailed() &gt; 0) {
+            for (ReplicationResponse.ShardInfo.Failure failure :
+                    shardInfo.getFailures()) {
+                String reason = failure.reason();
+            }
+        }
+
+        return deleteResponse;
+    }
+
+    public void bulk() throws IOException {
+        BulkRequest request = new BulkRequest();
+        request.add(new IndexRequest(INDEX, TYPE, &quot;1&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;foo&quot;));
+        request.add(new IndexRequest(INDEX, TYPE, &quot;2&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;bar&quot;));
+        request.add(new IndexRequest(INDEX, TYPE, &quot;3&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;baz&quot;));
+        BulkResponse bulkResponse = client.bulk(request, RequestOptions.DEFAULT);
+        for (BulkItemResponse bulkItemResponse : bulkResponse) {
+            DocWriteResponse itemResponse = bulkItemResponse.getResponse();
+            if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.INDEX
+                    || bulkItemResponse.getOpType() == DocWriteRequest.OpType.CREATE) {
+                IndexResponse indexResponse = (IndexResponse) itemResponse;
+
+            } else if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.UPDATE) {
+                UpdateResponse updateResponse = (UpdateResponse) itemResponse;
+
+            } else if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.DELETE) {
+                DeleteResponse deleteResponse = (DeleteResponse) itemResponse;
+            }
+        }
+    }
+
+    public MultiGetResponse multget() throws IOException {
+        MultiGetRequest request = new MultiGetRequest();
+        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;1&quot;));
+        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;2&quot;));
+        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;3&quot;));
+
+        MultiGetResponse response = client.mget(request, RequestOptions.DEFAULT);
+
+        MultiGetItemResponse firstItem = response.getResponses()[0];
+        Assert.isNull(firstItem.getFailure(), &quot;should be no failure&quot;);
+        GetResponse firstGet = firstItem.getResponse();
+        String index = firstItem.getIndex();
+        String type = firstItem.getType();
+        String id = firstItem.getId();
+        if (firstGet.isExists()) {
+            long version = firstGet.getVersion();
+            String sourceAsString = firstGet.getSourceAsString();
+            Map&lt;String, Object&gt; sourceAsMap = firstGet.getSourceAsMap();
+            byte[] sourceAsBytes = firstGet.getSourceAsBytes();
+        } else {
+
+        }
+
+        return response;
+    }
+
+
+    public void close() throws IOException {
+        client.close();
+    }
+
+}
+</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="http://luangeng.space">http://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="http://luangeng.space/post/2018/elasticsearch-api/">http://luangeng.space/post/2018/elasticsearch-api/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="http://luangeng.space/post/2018/elasticsearch-douban/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>爬取豆瓣电影使用Elasticsearch检索</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="http://luangeng.space/post/2018/elasticsearch/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>elasticsearch入门教程</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch/" rel="bookmark" class="leancloud-count">elasticsearch入门教程
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch-douban/" class="leancloud-count">爬取豆瓣电影使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="http://luangeng.space/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="http://luangeng.space/post/2018/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="http://luangeng.space/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="http://luangeng.space/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="https://luangeng2008.gitee.io/cdn/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 微信公众号 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="http://luangeng.space/tags/java">Java</a></li>
+                <li><a href="http://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="http://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="http://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="http://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="http://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='http://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/java' style="font-size:17px;margin:5px; padding:4px"><code>java(20)</code></a>
+            
+            <a href='http://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='http://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='http://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='http://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch/">elasticsearch入门教程</a></li>
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-douban/">爬取豆瓣电影使用Elasticsearch检索</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-douban/">爬取豆瓣电影使用Elasticsearch检索</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="archives" class="widget widget_archive">
+            <h3>Archives</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2018'>2018(11)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2017'>2017(73)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2016'>2016(32)</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="search" class="widget widget_search">
+            <h3>Search</h3>
+            <form method="get" class="searchform themeform" action="https://cn.bing.com/search">
+                <div>
+                    <input type="text" class="search" name="q" placeholder="Bing search">
+                </div>
+            </form>
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="https://luangeng2008.gitee.io/cdn/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p> 小礼物走一波~ </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="http://luangeng.space/about"><span>关于</span></a>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+        <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+            <i class="fa fa-github"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+            <i class="fa fa-facebook-square"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script src="https://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

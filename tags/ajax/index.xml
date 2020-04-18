@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ajax on LuanGeng</title>
+    <link>http://luangeng.space/tags/ajax/</link>
+    <description>Recent content in ajax on LuanGeng</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Sat, 09 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luangeng.space/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AJAX，jQuery Ajax和Deferred</title>
+      <link>http://luangeng.space/post/2017/html5-ajax/</link>
+      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://luangeng.space/post/2017/html5-ajax/</guid>
+      <description>AJAX全称为“Asynchronous JavaScript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用，改善用户体验，实现无刷</description>
+    </item>
+    
+  </channel>
+</rss>

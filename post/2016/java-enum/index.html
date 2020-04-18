@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  
+     
+       
+       
+     
+  </script>
+  <base href="http://luangeng.space">
+  <title>Java基础--枚举Enum - LuanGeng</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Java基础--枚举Enum - LuanGeng">
+  <meta name="description" content="Java基础--枚举Enum">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="Java基础--枚举Enum - LuanGeng">
+  <meta itemprop="description" content="Java基础--枚举Enum">
+  <meta itemprop="image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico">
+  <meta property="og:title" content="Java基础--枚举Enum - LuanGeng" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://luangeng.space/post/2016/java-enum/" />
+  <meta property="og:image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico" />
+  <meta property="og:description" content="Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。 enum类型父类为Enum">
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="http://luangeng.space/post/2016/java-enum/">
+  <link rel='shortlink' href="http://luangeng.space/post/2016/java-enum/">
+  <link rel="shortcut icon" href="https://luangeng2008.gitee.io/cdn/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng2008.gitee.io/cdn/highlight/github.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.min.css">
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+
+    var _hmt = _hmt || [];
+    (function() {
+      if(window.location.toString().includes('localhost')){return;}
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/tools.html">工具</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="http://luangeng.space/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="http://luangeng.space/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="http://luangeng.space/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://luangeng.space" rel="home">
+              
+              LuanGeng
+            </a>
+          </h1>
+          <span class="site-description"> 不积跬步无以至千里 </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Java基础--枚举Enum</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2016-05-01 · 433 Words
+                                        
+                                        · Tags: java
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="http://luangeng.space/post/2016/java-enum/" class="leancloud_visitors" data-flag-title="Java基础--枚举Enum">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>Java中的枚举是一种特殊的类，可以将一组固定常量的集合组成一种类型，使用方便且类型安全。使用enum关键字定义。</p>
+<p>enum类型父类为Enum，通过Enum.class可见Enum为抽象类，实现了Comparable<!-- raw HTML omitted -->和Serializable接口。</p>
+<p>私有属性name表示enum值的名称，可通过name()函数和toString()方法访问，可使用valueOf(String)将enum值的名字转变成enum值。</p>
+<p>私有属性ordinal表示enum值定义时的顺序，可通过ordinal()函数访问，compareTo()方法按照ordinal来比较大小。</p>
+<p>外界不可访问Enum的构造器，故它是实例受控的。</p>
+<p>enum值不可被clone，保证单例，clone方法final，不可被子类重写。</p>
+<p>enum值不可被反序列化，保证单例。</p>
+<p>enum类型允许添加任意方法和域，可实现任意接口，可以包含内部类。</p>
+<pre><code>public enum MyEnum {
+
+    ONE(1){public void print(){System.out.println(this.toString());}},
+
+    TWO(2){public void print(){System.out.println(this.ordinal());}},
+
+    THREE(3),
+
+    FORE(4);
+
+    private int value;
+
+    public String desc;
+
+    MyEnum(int a){
+        System.out.println(super.name());
+        value = a;
+    }
+
+    public void print(){
+        System.out.println(this.value);
+    }
+
+    public static void main(String[] args) {
+
+        MyEnum.FORE.value=123;
+
+        MyEnum.FORE.print();
+
+        MyEnum a  =MyEnum.valueOf(&quot;FORE&quot;);
+
+    }
+
+}
+</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="http://luangeng.space">http://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="http://luangeng.space/post/2016/java-enum/">http://luangeng.space/post/2016/java-enum/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="http://luangeng.space/post/2016/java-io/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Java基础--压缩和解压缩gz包</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="http://luangeng.space/about/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>关于</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            
+                            <br>
+
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch-douban/" class="leancloud-count">爬取豆瓣电影使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="http://luangeng.space/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="http://luangeng.space/post/2018/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="http://luangeng.space/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="http://luangeng.space/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="https://luangeng2008.gitee.io/cdn/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 微信公众号 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="http://luangeng.space/tags/java">Java</a></li>
+                <li><a href="http://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="http://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="http://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="http://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="http://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='http://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/java' style="font-size:17px;margin:5px; padding:4px"><code>java(20)</code></a>
+            
+            <a href='http://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='http://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='http://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='http://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-io/">Java基础--压缩和解压缩gz包</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-gz/">Java基础--读写文件</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-threadlocal/">Java基础--ThreadLocal</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-singleton/">Java基础--单例类</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-serializable/">Java基础--序列化Serializable</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-hashcode/">Java基础--HashCode</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-clone/">Java基础--读写文件</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-reflection/">Java基础--反射Reflection</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-blockingqueue/">Java-压缩解压gz</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-jvm/">Java基础--虚拟机JVM</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-countdownlatch/">Java基础--CountDownLatch</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-comparator/">Java基础--比较器Comparator</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-innerclass/">Java基础--内部类</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-annotation/">Java基础--注解Annotation</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-jdbc/">Java基础--JDBC</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-oddeven/">Java--两个线程交替执行和死锁</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-locks/">Java并发--CountDownLatch CyclicBarrier ReentrantLock</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-nio/">Java基础--NIO</a></li>
+                  
+                
+                <li><a href="http://luangeng.space/post/2016/java-proxy/">Java动态代理</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-douban/">爬取豆瓣电影使用Elasticsearch检索</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="archives" class="widget widget_archive">
+            <h3>Archives</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2018'>2018(11)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2017'>2017(73)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2016'>2016(32)</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="search" class="widget widget_search">
+            <h3>Search</h3>
+            <form method="get" class="searchform themeform" action="https://cn.bing.com/search">
+                <div>
+                    <input type="text" class="search" name="q" placeholder="Bing search">
+                </div>
+            </form>
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="https://luangeng2008.gitee.io/cdn/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p> 小礼物走一波~ </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="http://luangeng.space/about"><span>关于</span></a>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+        <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+            <i class="fa fa-github"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+            <i class="fa fa-facebook-square"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script src="https://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

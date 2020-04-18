@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    <link rel="stylesheet" type="text/css" href="css/test.css" />
+    <title>test</title>
+</head>
+<body>
+  <div>
+    <div style="float:right;margin-right:400px;margin-top:100px;width:300px;height:500px">
+      <span id="NN"></span>
+      <span id="xyText"></span><br>
+      <input id="Text"></input><br>
+      <button id="clear" type="button" onclick="Clear()">清空</button><br>
+      <button id="submit" type="button" onclick="Tell()">识别</button><br>
+      <button id="train" type="button" onclick="Train()">训练</button><br>
+    </div>
+    <br>
+    <div style="margin-left:200px">
+      <canvas id="canvas" width="500" height="500">浏览器不支持canvas</canvas>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    context.fillStyle = "#28ff28";
+    context.lineCap="square";
+    context.lineWidth = 1;
+    context.strokeStyle = "#aaaaaa";
+    var isDown = false;
+    var RECT = new Array();
+
+    var N = 16;
+    var W = 480/N;
+
+    $(function(){
+      $("#NN").text(N+"X"+N);
+      canvas.addEventListener("mousedown",mouseDown,false);
+      canvas.addEventListener('mousemove', mouseMove,false);
+      canvas.addEventListener('mouseup', mouseUp, false);
+      canvas.addEventListener('mouseleave', mouseLeave, false);
+      canvas.addEventListener('mouseover', mouseOver, false);
+      init();
+      drawlines();
+    });
+
+    function init(){
+      for(var y=0; y< N;y++){
+        for(var x=0; x<N;x++){
+          var rect = new Rect(x,y);
+          RECT.push(rect);
+        }
+      }
+    }
+
+    function Rect(x,y){
+      this.sx=x*W;
+      this.sy=y*W;
+      this.done=false;
+      this.ix=x+1;
+      this.iy=y+1;
+      //this.index=x*N+this.iy;
+    }
+    Rect.prototype.drawRect=function(){
+      if(this.done==false){
+        context.fillRect(this.sx,this.sy,W-1,W-1);
+        this.done = true;
+      }
+    };
+    Rect.prototype.reset=function(){
+      this.done=false;
+    };
+
+    function DrawRectByXY(i,j){
+      var index = j*N+i;
+      if(i>=N || j>=N || index>=N*N){
+        return;
+      }
+      RECT[index].drawRect();
+    }
+
+    function drawlines(){
+      var width=N*W;
+      var height=N*W;
+      for(var i=0; i<= N;i++){
+        context.moveTo(0,i*W);
+        context.lineTo(width,i*W);
+        context.moveTo(i*W,0);
+        context.lineTo(i*W,height);
+      }
+      context.stroke();
+    }
+
+    function mouseDown(){
+        isDown=true;
+    }
+    function mouseUp(e){
+        isDown = false;
+        var x=e.clientX - this.offsetLeft;
+        var y=e.clientY - this.offsetTop;
+        var i=Math.floor((x+W)/W)-1;
+        var j=Math.floor((y+W)/W)-1;
+        DrawRectByXY(i,j);
+    }
+    function mouseOver(e){
+      if(e.which==1){
+        isDown=true;
+      }
+    }
+    function mouseLeave(e){
+      isDown=false;
+    }
+    function mouseMove(e){
+      var x=e.clientX - this.offsetLeft;
+      var y=e.clientY - this.offsetTop;
+      var i=Math.floor((x+W)/W)-1;
+      var j=Math.floor((y+W)/W)-1;
+      $("#xyText").text("x:"+(i+1) + "  " + "y:"+(j+1));
+      if(isDown){
+        DrawRectByXY(i,j);
+      }
+    }
+
+    function Clear(){
+      context.clearRect(0,0,N*W,N*W);
+      drawlines();
+      isDown=false;
+      for (i in RECT){
+          RECT[i].reset();
+      }
+    }
+
+    function Tell(){
+      var vv = new Array();
+      for (i in RECT){
+        if(RECT[i].done==true){
+          vv.push(i);
+        }
+      }
+      $.ajax({
+        url:"bp/tell.action",
+        dataType:"json",
+        data:{
+          value:vv
+          }
+        }).done(function(data){
+
+      });
+    }
+
+    function Train(){
+      var v = $("#Text").val();
+      $.ajax({
+        url:"bp/train.action",
+        dataType:"json",
+        data:{
+          value:v
+          }
+        }).done(function(data){
+      });
+    }
+
+</script>
+</html>

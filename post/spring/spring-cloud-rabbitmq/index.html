@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  
+  
+     
+       
+       
+     
+  </script>
+  <base href="http://luangeng.space">
+  <title>Spring Cloud Bus-RabbitMQ - LuanGeng</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Spring Cloud Bus-RabbitMQ - LuanGeng">
+  <meta name="description" content="Spring Cloud Bus-RabbitMQ">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="Spring Cloud Bus-RabbitMQ - LuanGeng">
+  <meta itemprop="description" content="Spring Cloud Bus-RabbitMQ">
+  <meta itemprop="image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico">
+  <meta property="og:title" content="Spring Cloud Bus-RabbitMQ - LuanGeng" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://luangeng.space/post/spring/spring-cloud-rabbitmq/" />
+  <meta property="og:image" content="https://luangeng2008.gitee.io/cdn/img/favicon.ico" />
+  <meta property="og:description" content="Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM">
+  <meta name="baidu-site-verification" content="vOVvyCq334" />
+
+  <link rel="canonical" href="http://luangeng.space/post/spring/spring-cloud-rabbitmq/">
+  <link rel='shortlink' href="http://luangeng.space/post/spring/spring-cloud-rabbitmq/">
+  <link rel="shortcut icon" href="https://luangeng2008.gitee.io/cdn/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="https://luangeng2008.gitee.io/cdn/highlight/github.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.min.css">
+
+  <script>
+    document._writeOriginal = document.write;
+    document.write = function(str) {
+        if (str.indexOf('livereload.js') > -1) {
+            document._writeOriginal(str);
+        } else {
+            document._writeOriginal('<!-- Be Hijack!! -->');
+        }
+    }
+    document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+
+    var _hmt = _hmt || [];
+    (function() {
+      if(window.location.toString().includes('localhost')){return;}
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ef70aa81a514031bd54bec5283faa0cf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/tools.html">工具</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="http://luangeng.space/post/">归档</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          <div class="toggle-search _login" style="display: none;"><span>Welcome </span><span id="cuser"></span></div>
+          <div class="toggle-search _login" style="display: none;"><a href="http://luangeng.space/" onclick="logout()">Logout</a></div>
+          <div class="toggle-search no_login"><a href="http://luangeng.space/login.html">登录</a></div>
+          <div class="toggle-search no_login" ><a href="http://luangeng.space/signup.html">注册</a></div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="http://luangeng.space" rel="home">
+              
+              LuanGeng
+            </a>
+          </h1>
+          <span class="site-description"> 不积跬步无以至千里 </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Spring Cloud Bus-RabbitMQ</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-11 · 1185 Words
+                                        
+                                        · Tags: springcloud
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="http://luangeng.space/post/spring/spring-cloud-rabbitmq/" class="leancloud_visitors" data-flag-title="Spring Cloud Bus-RabbitMQ">
+                                            <span class="leancloud-visitors-count"></span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AMQP代理作为传输对象。</p>
+<p>Spring Cloud Bus又被称为消息总线，负责管理和传播所有分布式系统中的消息，通过集成MQ实现广播机制，目前常用的有Kafka和RabbitMQ。利用bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景。及利用消息总线，可以实现当配置中心的refresh命令触发后，通过广播发送到每一个配置使用端。</p>
+<p>Spring已经在Config包中完成了大部分的工作，我们只需要在之前的配置中心的基础上，做如下修改：</p>
+<p>1.给config-server和config-client增加依赖：</p>
+<pre><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre><p>2.给config-server和config-client配置文件中增加MQ</p>
+<pre><code>spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=lg
+spring.rabbitmq.password=lg
+</code></pre><p>3.依次启动RabbitMQ 、 Eureka 、config-server 、config-client1、config-client2</p>
+<p>4.在github上修改配置文件，刷新config-client查看配置，此时未更新</p>
+<p>然后执行 <code>curl -X POST http://localhost:8011/bus/refresh</code> 后，再次查看config-client配置，此时已经更新</p>
+<p>5.登录RabbitMQ 管理页面，可查看到connecting，queue等信息。</p>
+<p>有时候可能需要部分刷新，即只刷新指定的config-client，spring同样支持，只需要在调用/bus/refresh接口时传递destination参数即可，如：</p>
+<p><code>/bus/refresh?destination=config-client:8031</code> 或 <code>/bus/refresh?destination=config-client:**</code></p>
+<p>自定义消息并通过消息总线发送</p>
+<p>在之前几个项目的基础上，我们做如下修改：</p>
+<p>1.config-server类增加Sender类</p>
+<pre><code>@Component
+public class Sender {
+
+    private static AtomicInteger count = new AtomicInteger(1);
+
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
+
+    public void send() {
+        String msg = &quot;msg&quot; + count.getAndIncrement() + &quot; &quot; + new Date();
+        System.out.println(&quot;Sender : &quot; + msg);
+        this.rabbitTemplate.convertAndSend(&quot;hello&quot;, msg);
+    }
+}
+</code></pre><p>2.config-server类增加定时任务，给主类加注解@EnableScheduling，每3秒发一次消息：</p>
+<pre><code>@Component
+public class ScheduledTasks {
+
+    @Autowired
+    private Sender sender;
+
+    @Scheduled(initiaDelay=5000, fixedRate = 3000)
+    public void reportCurrentTime() {
+        sender.send();
+    }
+
+}
+</code></pre><p>3.分别给config-client1和config-client2增加接受类Receiver</p>
+<pre><code>@Component
+@RabbitListener(queues = &quot;hello&quot;)
+public class Receiver {
+
+    @RabbitHandler
+    public void process(String msg) {
+        System.out.println(&quot;Receiver : &quot; + msg);
+    }
+
+}
+</code></pre><p>4.依次启动 eureka config-server config-client</p>
+<p>5.观察控制台输出如下：</p>
+<p>config-server：</p>
+<pre><code>Sender : msg1 Sun Aug 06 21:56:03 CST 2017
+Sender : msg2 Sun Aug 06 21:56:06 CST 2017
+Sender : msg3 Sun Aug 06 21:56:09 CST 2017
+Sender : msg4 Sun Aug 06 21:56:12 CST 2017
+Sender : msg5 Sun Aug 06 21:56:15 CST 2017
+Sender : msg6 Sun Aug 06 21:56:18 CST 2017
+Sender : msg7 Sun Aug 06 21:56:21 CST 2017
+Sender : msg8 Sun Aug 06 21:56:24 CST 2017
+Sender : msg9 Sun Aug 06 21:56:27 CST 2017
+</code></pre><p>config-client1：</p>
+<pre><code>Receiver : msg2 Sun Aug 06 21:56:06 CST 2017
+Receiver : msg4 Sun Aug 06 21:56:12 CST 2017
+Receiver : msg6 Sun Aug 06 21:56:18 CST 2017
+Receiver : msg8 Sun Aug 06 21:56:24 CST 2017
+</code></pre><p>config-client2：</p>
+<pre><code>Receiver : msg1 Sun Aug 06 21:56:03 CST 2017
+Receiver : msg3 Sun Aug 06 21:56:09 CST 2017
+Receiver : msg5 Sun Aug 06 21:56:15 CST 2017
+Receiver : msg7 Sun Aug 06 21:56:21 CST 2017
+Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
+</code></pre><p>可见client从单个queue中依次取消息</p>
+<p>参考：http://projects.spring.io/spring-cloud/spring-cloud.html</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="http://luangeng.space">http://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="http://luangeng.space/post/spring/spring-cloud-rabbitmq/">http://luangeng.space/post/spring/spring-cloud-rabbitmq/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="http://luangeng.space/post/2017/jquery-event/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>jQuery事件</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="http://luangeng.space/post/2017/html5-cavas/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>HTML5 canvas绘图</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="http://luangeng.space/post/spring/spring-cloud-zuul/" rel="bookmark" class="leancloud-count">Spring Cloud Zuul 网关
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="http://luangeng.space/post/spring/spring-cloud-hystrix/" rel="bookmark" class="leancloud-count">Spring Cloud 断路器 Hystrix
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="http://luangeng.space/post/spring/spring-cloud-eureka/" rel="bookmark" class="leancloud-count">Spring Cloud Config 配置服务
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="http://luangeng.space/post/spring/spring-cloud-config/" rel="bookmark" class="leancloud-count">Spring Cloud Eureka 注册，发布，调用服务
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch-douban/" class="leancloud-count">爬取豆瓣电影使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="http://luangeng.space/post/2018/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="http://luangeng.space/post/2018/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="http://luangeng.space/post/2018/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="http://luangeng.space/post/2018/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="http://luangeng.space/post/2018/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="https://luangeng2008.gitee.io/cdn/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 微信公众号 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="http://luangeng.space/tags/java">Java</a></li>
+                <li><a href="http://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="http://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="http://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="http://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/">练习题</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/">英语</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="http://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='http://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/java' style="font-size:17px;margin:5px; padding:4px"><code>java(20)</code></a>
+            
+            <a href='http://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='http://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='http://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='http://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='http://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='http://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='http://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(5)</code></a>
+            
+            <a href='http://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/spring/spring-cloud-config/">Spring Cloud Eureka 注册，发布，调用服务</a></li>
+                  
+                  
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/spring/spring-cloud-eureka/">Spring Cloud Config 配置服务</a></li>
+                  
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/spring/spring-cloud-hystrix/">Spring Cloud 断路器 Hystrix</a></li>
+                  
+                  
+                  
+                  
+                
+                <li><a href="http://luangeng.space/post/spring/spring-cloud-zuul/">Spring Cloud Zuul 网关</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-douban/">爬取豆瓣电影使用Elasticsearch检索</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="http://luangeng.space/post/2018/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="archives" class="widget widget_archive">
+            <h3>Archives</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2018'>2018(11)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2017'>2017(73)</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a href='http://luangeng.space/archive/2016'>2016(32)</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="search" class="widget widget_search">
+            <h3>Search</h3>
+            <form method="get" class="searchform themeform" action="https://cn.bing.com/search">
+                <div>
+                    <input type="text" class="search" name="q" placeholder="Bing search">
+                </div>
+            </form>
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="https://luangeng2008.gitee.io/cdn/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p> 小礼物走一波~ </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="http://luangeng.space/about"><span>关于</span></a>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+    <li>
+        <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+            <i class="fa fa-twitter"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+            <i class="fa fa-github"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+    </li>
+    <li>
+        <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+            <i class="fa fa-facebook-square"></i>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/highlight/highlight.pack.js"></script>
+<script src="https://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/picturefill.min.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="https://cdn.bootcss.com/limonte-sweetalert2/7.21.1/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

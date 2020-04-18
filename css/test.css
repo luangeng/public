@@ -1,0 +1,36 @@
+canvas{
+        border: 0px;
+        display: block;
+        margin: 10px;
+        cursor: pointer;
+}
+span{
+    margin:10px;
+}
+
+input{
+    height:25px;
+    width:120px;
+    margin:10px;
+}
+
+button{
+    margin:10px;
+    border:1px Solid #357AE8;
+    color:#fff;
+    font-size:18px;
+    background:#357AE8;
+    width:120px;
+    height:30px;
+}
+
+body{
+	background-color:rgb(20,20,20);
+background-image:url(p3.jpg);
+background-repeat:repeat;
+background-attachment:fixed;
+background-position: 50% 10%;
+color:rgb(200,200,200);
+font-family:Arial,Verdana,Sans-serif;
+font-size: 150%
+}

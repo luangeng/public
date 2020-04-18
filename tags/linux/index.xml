@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on LuanGeng</title>
+    <link>http://luangeng.space/tags/linux/</link>
+    <description>Recent content in linux on LuanGeng</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <lastBuildDate>Fri, 08 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://luangeng.space/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux常用命令</title>
+      <link>http://luangeng.space/post/2017/linux-cmd/</link>
+      <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://luangeng.space/post/2017/linux-cmd/</guid>
+      <description>man 查询命令帮助 info 查询命令文档 whatis 查询命令简介 whereis 查询命令文件位置 which 查询命令运行位置 finger 显示用户的信息 who 显示当前登录用户 whoami 显示用户ID sudo 以管理员身份</description>
+    </item>
+    
+    <item>
+      <title>vim基本使用</title>
+      <link>http://luangeng.space/post/2017/linux-vim/</link>
+      <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://luangeng.space/post/2017/linux-vim/</guid>
+      <description>i 进入插入状态 esc 退出插入状态 x 删除一个字符 dd 删除一行，并拷贝 yy 拷贝 p 粘贴 u 撤销 ctrl+r 重做 :w 保存 :q 退出 :q! → 退出不保存</description>
+    </item>
+    
+  </channel>
+</rss>
