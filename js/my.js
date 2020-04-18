@@ -70,7 +70,7 @@ function addCount(Counter) {
   var $visitors = $(".leancloud_visitors");
   if ($visitors.length==0) return;
   var url = $visitors.attr('id').trim();
-  url = url.substring(url.indexOf("/", 10));
+  // url = url.substring(url.indexOf("/", 10));
   var title = $visitors.attr('data-flag-title').trim();
   var query = new AV.Query(Counter);
 
