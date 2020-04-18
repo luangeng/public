@@ -71,6 +71,7 @@ function addCount(Counter) {
   var $visitors = $(".leancloud_visitors");
   if ($visitors.length==0) return;
   var url = $visitors.attr('id').trim();
+  url = url.substring(url.indexOf("/", 10));
   var title = $visitors.attr('data-flag-title').trim();
   var query = new AV.Query(Counter);
 
@@ -78,7 +79,7 @@ function addCount(Counter) {
   query.equalTo("url", url);
   query.find({
     success: function(results) {
-      if (results.length > 0) {//说明LeanCloud中已经记录了这篇文章
+      if (results.length > 0) {
         var counter = results[0];
         counter.fetchWhenSave(true);
         counter.increment("hits");// 将点击次数加1
