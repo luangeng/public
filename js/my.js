@@ -3,7 +3,6 @@ function init() {
     hljs.initHighlightingOnLoad();
     baidu();
     AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
-    isLogin();
     var Counter = AV.Object.extend("Counter");
     addCount(Counter);
     showHitCount(Counter);
@@ -116,37 +115,6 @@ function addCount(Counter) {
       console.log('Error:' + error.code + " " + error.message);
     }
   });
-}
-
-function isLogin() {
-//
-    var url = window.location.toString();
-    if(url.includes('code') && url.includes('state')){
-        var state_local = token_storage.getItem('git_state');
-        let code=url.substr(url.indexOf('code=')+5,20);
-        let state=url.substr(url.indexOf('state=')+6,6);
-        if (state_local != state){
-            return;
-        }
-        //
-
-        //
-        }
-//
-  var currentUser = AV.User.current();
-  if (currentUser) {
-      $('.no_login').hide();
-      $('._login').show();
-      $('#cuser').text(currentUser.attributes.username);
-    return true;
-  }
-  $('.no_login').show();
-  $('._login').hide();
-  return false;
-}
-
-function logout(){
-    AV.User.logOut();
 }
 
 function makeCode(){

@@ -252,7 +252,7 @@ box-shadow: 6px 0 0 rgba(0,0,0,0.04), -6px 0 0 rgba(0,0,0,0.04); }
 .col-3cm .main { background: url(img/sidebar/s-right-s2.png) repeat-y right 0; }
 .col-3cm .main-inner {  padding-right: 260px; }
 .col-3cm .s1 { float: left; margin-left: -260px; }
-.col-3cm .s2 { float: right; margin-right: -260px; /* ingenuity! */ position: relative; right: -100%; }
+.col-3cm .s2 { float: right; margin-right: -260px; /* ingenuity! */ position: relative; left: 1120px; }
 .col-3cm .content { float: right; }
 
 /* 3 column, content left */
