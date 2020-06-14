@@ -157,17 +157,21 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="http://luangeng.space/post/" rel="bookmark" title="Posts">Posts</a>
+              <a href="http://luangeng.space/post/2018/elasticsearch-douban/" rel="bookmark" title="爬取豆瓣电影使用Elasticsearch检索">爬取豆瓣电影使用Elasticsearch检索</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2018-12-05 · 0 Words
+                  Posted @ 2018-12-05 · 1767 Words
                   
+                  · Tags: elasticsearch
+                  
+                  
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p></p>
+              <p>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &quot;Movie&quot;; public static final String TYPE_COMMENT = &quot;Comment&quot;; public static final String TYPE_OTHER = &quot;Other&quot;; public static final int STATUS_UNCRAWLED = 0; public</p>
           </div>
       </div>
   </article>
@@ -178,19 +182,46 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="http://luangeng.space/about/" rel="bookmark" title="关于">关于</a>
+              <a href="http://luangeng.space/post/2018/elasticsearch-api/" rel="bookmark" title="elasticsearch JAVA API">elasticsearch JAVA API</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2010-10-10 · 487 Words
+                  Posted @ 2018-12-04 · 423 Words
+                  
+                  · Tags: elasticsearch
                   
                   
-                  · Categorie: About
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p>本站致力于致力于学习、提升技术能力，帮您取得理想技术岗位。 本站提供了基础编程技术教程,包括了HTML、CSS、Javascript、Java</p>
+              <p>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &quot;1&quot;) .source(&quot;user&quot;, &quot;kimchy&quot;, &quot;postDate&quot;, new Date(), &quot;message&quot;, &quot;trying out Elasticsearch&quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); //</p>
+          </div>
+      </div>
+  </article>
+</div>
+
+              
+              <div class="featured">
+  <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
+      <div class="post-inner post-hover">
+          <h2 class="post-title">
+              <a href="http://luangeng.space/post/2018/elasticsearch/" rel="bookmark" title="elasticsearch入门教程">elasticsearch入门教程</a>
+          </h2>
+          <div class="post-meta group">
+              <p class="post-byline">
+                  Posted @ 2018-12-03 · 1160 Words
+                  
+                  · Tags: elasticsearch
+                  
+                  
+                  · Categorie: 学习笔记
+                  
+              </p>
+          </div>
+          <div class="entry excerpt">
+              <p>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</p>
           </div>
       </div>
   </article>
