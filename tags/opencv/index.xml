@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>opencv on 网络空间</title>
-    <link>http://luangeng.space/tags/opencv/</link>
+    <link>https://luangeng.space/tags/opencv/</link>
     <description>Recent content in opencv on 网络空间</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Sat, 22 Oct 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://luangeng.space/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luangeng.space/tags/opencv/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>OpenCV 绘制图像直方图</title>
-      <link>http://luangeng.space/post/2016/opencv1/</link>
+      <link>https://luangeng.space/post/2016/opencv1/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/2016/opencv1/</guid>
+      <guid>https://luangeng.space/post/2016/opencv1/</guid>
       <description>OpenCV绘制图像直方图，版本2.4.11 直方图可展示图像中的像素分布,是用以表示数字图像中亮度分布的直方图，标绘了图像中每个亮度值的像素</description>
     </item>
     

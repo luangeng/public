@@ -1,13 +1,12 @@
 
 function init() {
     hljs.initHighlightingOnLoad();
-    baidu();
+    //baidu();
     AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
     var Counter = AV.Object.extend("Counter");
     addCount(Counter);
     showHitCount(Counter);
 
-     ////
     var qrcode = new QRCode(document.getElementById("weixin-qrcode"), {width : 150,height : 150 });
     qrcode.makeCode(window.location.toString());
 

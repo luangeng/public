@@ -1,1043 +1,1043 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://luangeng.space/categories/</loc>
+        <loc>https://luangeng.space/categories/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/elasticsearch/</loc>
+        <loc>https://luangeng.space/tags/elasticsearch/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/</loc>
+        <loc>https://luangeng.space/post/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/</loc>
+        <loc>https://luangeng.space/tags/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+        <loc>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/elasticsearch-douban/</loc>
+        <loc>https://luangeng.space/post/2018/elasticsearch-douban/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/elasticsearch-api/</loc>
+        <loc>https://luangeng.space/post/2018/elasticsearch-api/</loc>
         <lastmod>2018-12-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/elasticsearch/</loc>
+        <loc>https://luangeng.space/post/2018/elasticsearch/</loc>
         <lastmod>2018-12-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/spring/</loc>
+        <loc>https://luangeng.space/tags/spring/</loc>
         <lastmod>2018-11-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/springboot/</loc>
+        <loc>https://luangeng.space/tags/springboot/</loc>
         <lastmod>2018-11-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/zeromq-springboot/</loc>
+        <loc>https://luangeng.space/post/2018/zeromq-springboot/</loc>
         <lastmod>2018-11-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/git/</loc>
+        <loc>https://luangeng.space/tags/git/</loc>
         <lastmod>2018-09-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/github/</loc>
+        <loc>https://luangeng.space/tags/github/</loc>
         <lastmod>2018-09-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/github_login/</loc>
+        <loc>https://luangeng.space/post/2018/github_login/</loc>
         <lastmod>2018-09-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/oauth2/</loc>
+        <loc>https://luangeng.space/tags/oauth2/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/token-front/</loc>
+        <loc>https://luangeng.space/post/2018/token-front/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/elasticJob/</loc>
+        <loc>https://luangeng.space/post/2018/elasticJob/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/dingding/</loc>
+        <loc>https://luangeng.space/post/2018/dingding/</loc>
         <lastmod>2018-08-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/tool/</loc>
+        <loc>https://luangeng.space/tags/tool/</loc>
         <lastmod>2018-05-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/birthday/</loc>
+        <loc>https://luangeng.space/post/2018/birthday/</loc>
         <lastmod>2018-05-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/redis/</loc>
+        <loc>https://luangeng.space/tags/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/redis/</loc>
+        <loc>https://luangeng.space/categories/redis/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/redis/redis-command-string/</loc>
+        <loc>https://luangeng.space/post/redis/redis-command-string/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/netty/</loc>
+        <loc>https://luangeng.space/tags/netty/</loc>
         <lastmod>2017-09-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-file/</loc>
+        <loc>https://luangeng.space/post/netty/netty-file/</loc>
         <lastmod>2017-09-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-rpc/</loc>
+        <loc>https://luangeng.space/post/netty/netty-rpc/</loc>
         <lastmod>2017-09-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-protobuf/</loc>
+        <loc>https://luangeng.space/post/netty/netty-protobuf/</loc>
         <lastmod>2017-09-17T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-jdk/</loc>
+        <loc>https://luangeng.space/post/netty/netty-jdk/</loc>
         <lastmod>2017-09-16T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-http/</loc>
+        <loc>https://luangeng.space/post/netty/netty-http/</loc>
         <lastmod>2017-09-15T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-tcpdecoder/</loc>
+        <loc>https://luangeng.space/post/netty/netty-tcpdecoder/</loc>
         <lastmod>2017-09-14T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-tcp/</loc>
+        <loc>https://luangeng.space/post/netty/netty-tcp/</loc>
         <lastmod>2017-09-13T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/netty/netty-servlet/</loc>
+        <loc>https://luangeng.space/post/netty/netty-servlet/</loc>
         <lastmod>2017-09-12T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/jQuery/</loc>
+        <loc>https://luangeng.space/tags/jQuery/</loc>
         <lastmod>2017-09-11T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/jquery-event/</loc>
+        <loc>https://luangeng.space/post/2017/jquery-event/</loc>
         <lastmod>2017-09-11T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-cloud-rabbitmq/</loc>
+        <loc>https://luangeng.space/post/spring/spring-cloud-rabbitmq/</loc>
         <lastmod>2017-09-11T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/springcloud/</loc>
+        <loc>https://luangeng.space/tags/springcloud/</loc>
         <lastmod>2017-09-11T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/html/</loc>
+        <loc>https://luangeng.space/tags/html/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/html5-cavas/</loc>
+        <loc>https://luangeng.space/post/2017/html5-cavas/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/RocketMQ/</loc>
+        <loc>https://luangeng.space/tags/RocketMQ/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/rocketMq-Concept/</loc>
+        <loc>https://luangeng.space/post/2017/rocketMq-Concept/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-cloud-zuul/</loc>
+        <loc>https://luangeng.space/post/spring/spring-cloud-zuul/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/springmvc/</loc>
+        <loc>https://luangeng.space/post/2017/springmvc/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/ajax/</loc>
+        <loc>https://luangeng.space/tags/ajax/</loc>
         <lastmod>2017-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/html5-ajax/</loc>
+        <loc>https://luangeng.space/post/2017/html5-ajax/</loc>
         <lastmod>2017-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-cloud-hystrix/</loc>
+        <loc>https://luangeng.space/post/spring/spring-cloud-hystrix/</loc>
         <lastmod>2017-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/zookeeper/</loc>
+        <loc>https://luangeng.space/tags/zookeeper/</loc>
         <lastmod>2017-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-lock/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-lock/</loc>
         <lastmod>2017-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/linux/</loc>
+        <loc>https://luangeng.space/tags/linux/</loc>
         <lastmod>2017-09-08T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/linux-cmd/</loc>
+        <loc>https://luangeng.space/post/2017/linux-cmd/</loc>
         <lastmod>2017-09-08T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-cloud-eureka/</loc>
+        <loc>https://luangeng.space/post/spring/spring-cloud-eureka/</loc>
         <lastmod>2017-09-08T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-cluster/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-cluster/</loc>
         <lastmod>2017-09-08T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-cloud-config/</loc>
+        <loc>https://luangeng.space/post/spring/spring-cloud-config/</loc>
         <lastmod>2017-09-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/redis/redis-install/</loc>
+        <loc>https://luangeng.space/post/redis/redis-install/</loc>
         <lastmod>2017-09-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-config/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-config/</loc>
         <lastmod>2017-09-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-ws/</loc>
+        <loc>https://luangeng.space/post/spring/spring-ws/</loc>
         <lastmod>2017-09-06T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/linux-vim/</loc>
+        <loc>https://luangeng.space/post/2017/linux-vim/</loc>
         <lastmod>2017-09-06T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-watch/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-watch/</loc>
         <lastmod>2017-09-06T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/mysql/</loc>
+        <loc>https://luangeng.space/tags/mysql/</loc>
         <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/mysql-type/</loc>
+        <loc>https://luangeng.space/post/2017/mysql-type/</loc>
         <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-java/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-java/</loc>
         <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-jpa/</loc>
+        <loc>https://luangeng.space/post/spring/spring-jpa/</loc>
         <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/mysql-sql/</loc>
+        <loc>https://luangeng.space/post/2017/mysql-sql/</loc>
         <lastmod>2017-09-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-swagger/</loc>
+        <loc>https://luangeng.space/post/spring/spring-swagger/</loc>
         <lastmod>2017-09-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-cmd/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-cmd/</loc>
         <lastmod>2017-09-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/markdown/</loc>
+        <loc>https://luangeng.space/post/2017/markdown/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/redis/redis-intr/</loc>
+        <loc>https://luangeng.space/post/redis/redis-intr/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/spring/spring-rest/</loc>
+        <loc>https://luangeng.space/post/spring/spring-rest/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2018/rocketmq/</loc>
+        <loc>https://luangeng.space/post/2018/rocketmq/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/zookeeper/zookeeper-base/</loc>
+        <loc>https://luangeng.space/post/zookeeper/zookeeper-base/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/maven/</loc>
+        <loc>https://luangeng.space/tags/maven/</loc>
         <lastmod>2017-09-02T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/maven/</loc>
+        <loc>https://luangeng.space/post/2017/maven/</loc>
         <lastmod>2017-09-02T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/mysql-procedure/</loc>
+        <loc>https://luangeng.space/post/2017/mysql-procedure/</loc>
         <lastmod>2017-09-01T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/spring-annotation/</loc>
+        <loc>https://luangeng.space/post/2017/spring-annotation/</loc>
         <lastmod>2017-07-01T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/cxf-interceptor/</loc>
+        <loc>https://luangeng.space/post/2017/cxf-interceptor/</loc>
         <lastmod>2017-03-22T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-1/</loc>
+        <loc>https://luangeng.space/post/english/1-1/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-2/</loc>
+        <loc>https://luangeng.space/post/english/1-2/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-3/</loc>
+        <loc>https://luangeng.space/post/english/1-3/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-4/</loc>
+        <loc>https://luangeng.space/post/english/1-4/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-5/</loc>
+        <loc>https://luangeng.space/post/english/1-5/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-6/</loc>
+        <loc>https://luangeng.space/post/english/1-6/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-7/</loc>
+        <loc>https://luangeng.space/post/english/1-7/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/1-8/</loc>
+        <loc>https://luangeng.space/post/english/1-8/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-1/</loc>
+        <loc>https://luangeng.space/post/english/2-1/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-2/</loc>
+        <loc>https://luangeng.space/post/english/2-2/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-3/</loc>
+        <loc>https://luangeng.space/post/english/2-3/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-4/</loc>
+        <loc>https://luangeng.space/post/english/2-4/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-5/</loc>
+        <loc>https://luangeng.space/post/english/2-5/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-6/</loc>
+        <loc>https://luangeng.space/post/english/2-6/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-7/</loc>
+        <loc>https://luangeng.space/post/english/2-7/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/2-8/</loc>
+        <loc>https://luangeng.space/post/english/2-8/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-1/</loc>
+        <loc>https://luangeng.space/post/english/3-1/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-2/</loc>
+        <loc>https://luangeng.space/post/english/3-2/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-3/</loc>
+        <loc>https://luangeng.space/post/english/3-3/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-4/</loc>
+        <loc>https://luangeng.space/post/english/3-4/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-5/</loc>
+        <loc>https://luangeng.space/post/english/3-5/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-6/</loc>
+        <loc>https://luangeng.space/post/english/3-6/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-7/</loc>
+        <loc>https://luangeng.space/post/english/3-7/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/3-8/</loc>
+        <loc>https://luangeng.space/post/english/3-8/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-1/</loc>
+        <loc>https://luangeng.space/post/english/4-1/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-2/</loc>
+        <loc>https://luangeng.space/post/english/4-2/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-3/</loc>
+        <loc>https://luangeng.space/post/english/4-3/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-4/</loc>
+        <loc>https://luangeng.space/post/english/4-4/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-5/</loc>
+        <loc>https://luangeng.space/post/english/4-5/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-6/</loc>
+        <loc>https://luangeng.space/post/english/4-6/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-7/</loc>
+        <loc>https://luangeng.space/post/english/4-7/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/english/4-8/</loc>
+        <loc>https://luangeng.space/post/english/4-8/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/%E8%8B%B1%E8%AF%AD/</loc>
+        <loc>https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/</loc>
+        <loc>https://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/</loc>
         <lastmod>2017-03-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/opencv/</loc>
+        <loc>https://luangeng.space/tags/opencv/</loc>
         <lastmod>2016-10-22T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/opencv1/</loc>
+        <loc>https://luangeng.space/post/2016/opencv1/</loc>
         <lastmod>2016-10-22T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2017/curl/</loc>
+        <loc>https://luangeng.space/post/2017/curl/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/idea-key/</loc>
+        <loc>https://luangeng.space/post/2016/idea-key/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/mysql/</loc>
+        <loc>https://luangeng.space/post/2016/mysql/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/exercise/oddeven/</loc>
+        <loc>https://luangeng.space/post/exercise/oddeven/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/exercise/reverseList/</loc>
+        <loc>https://luangeng.space/post/exercise/reverseList/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/exercise/string-reverse-word/</loc>
+        <loc>https://luangeng.space/post/exercise/string-reverse-word/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/exercise/string-caption/</loc>
+        <loc>https://luangeng.space/post/exercise/string-caption/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/</loc>
+        <loc>https://luangeng.space/categories/%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/%E6%9C%89%E7%82%B9%E6%84%8F%E6%80%9D/</loc>
+        <loc>https://luangeng.space/categories/%E6%9C%89%E7%82%B9%E6%84%8F%E6%80%9D/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/exercise/deadlock/</loc>
+        <loc>https://luangeng.space/post/exercise/deadlock/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+        <loc>https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
+        <loc>https://luangeng.space/categories/%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/struts/</loc>
+        <loc>https://luangeng.space/post/2016/struts/</loc>
         <lastmod>2016-08-23T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/git-base/</loc>
+        <loc>https://luangeng.space/post/2016/git-base/</loc>
         <lastmod>2016-08-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/git-undo/</loc>
+        <loc>https://luangeng.space/post/2016/git-undo/</loc>
         <lastmod>2016-08-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/tags/java/</loc>
+        <loc>https://luangeng.space/tags/java/</loc>
         <lastmod>2016-05-26T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-proxy/</loc>
+        <loc>https://luangeng.space/post/2016/java-proxy/</loc>
         <lastmod>2016-05-26T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-nio/</loc>
+        <loc>https://luangeng.space/post/2016/java-nio/</loc>
         <lastmod>2016-05-21T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-locks/</loc>
+        <loc>https://luangeng.space/post/2016/java-locks/</loc>
         <lastmod>2016-05-20T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-oddeven/</loc>
+        <loc>https://luangeng.space/post/2016/java-oddeven/</loc>
         <lastmod>2016-05-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-jdbc/</loc>
+        <loc>https://luangeng.space/post/2016/java-jdbc/</loc>
         <lastmod>2016-05-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-annotation/</loc>
+        <loc>https://luangeng.space/post/2016/java-annotation/</loc>
         <lastmod>2016-05-17T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-innerclass/</loc>
+        <loc>https://luangeng.space/post/2016/java-innerclass/</loc>
         <lastmod>2016-05-16T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-comparator/</loc>
+        <loc>https://luangeng.space/post/2016/java-comparator/</loc>
         <lastmod>2016-05-15T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-countdownlatch/</loc>
+        <loc>https://luangeng.space/post/2016/java-countdownlatch/</loc>
         <lastmod>2016-05-14T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-jvm/</loc>
+        <loc>https://luangeng.space/post/2016/java-jvm/</loc>
         <lastmod>2016-05-13T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-blockingqueue/</loc>
+        <loc>https://luangeng.space/post/2016/java-blockingqueue/</loc>
         <lastmod>2016-05-11T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-reflection/</loc>
+        <loc>https://luangeng.space/post/2016/java-reflection/</loc>
         <lastmod>2016-05-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-clone/</loc>
+        <loc>https://luangeng.space/post/2016/java-clone/</loc>
         <lastmod>2016-05-08T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-hashcode/</loc>
+        <loc>https://luangeng.space/post/2016/java-hashcode/</loc>
         <lastmod>2016-05-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-serializable/</loc>
+        <loc>https://luangeng.space/post/2016/java-serializable/</loc>
         <lastmod>2016-05-06T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-singleton/</loc>
+        <loc>https://luangeng.space/post/2016/java-singleton/</loc>
         <lastmod>2016-05-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-threadlocal/</loc>
+        <loc>https://luangeng.space/post/2016/java-threadlocal/</loc>
         <lastmod>2016-05-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-gz/</loc>
+        <loc>https://luangeng.space/post/2016/java-gz/</loc>
         <lastmod>2016-05-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-io/</loc>
+        <loc>https://luangeng.space/post/2016/java-io/</loc>
         <lastmod>2016-05-02T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/post/2016/java-enum/</loc>
+        <loc>https://luangeng.space/post/2016/java-enum/</loc>
         <lastmod>2016-05-01T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/categories/About/</loc>
+        <loc>https://luangeng.space/categories/About/</loc>
         <lastmod>2010-10-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/about/</loc>
+        <loc>https://luangeng.space/about/</loc>
         <lastmod>2010-10-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>http://luangeng.space/</loc>
+        <loc>https://luangeng.space/</loc>
         <lastmod>2010-10-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>

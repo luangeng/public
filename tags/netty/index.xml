@@ -2,85 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>netty on 网络空间</title>
-    <link>http://luangeng.space/tags/netty/</link>
+    <link>https://luangeng.space/tags/netty/</link>
     <description>Recent content in netty on 网络空间</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
     <lastBuildDate>Tue, 19 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://luangeng.space/tags/netty/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luangeng.space/tags/netty/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Netty--使用TCP协议传输文件</title>
-      <link>http://luangeng.space/post/netty/netty-file/</link>
+      <link>https://luangeng.space/post/netty/netty-file/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-file/</guid>
+      <guid>https://luangeng.space/post/netty/netty-file/</guid>
       <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
     </item>
     
     <item>
       <title>Netty--RPC的原理和实现</title>
-      <link>http://luangeng.space/post/netty/netty-rpc/</link>
+      <link>https://luangeng.space/post/netty/netty-rpc/</link>
       <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-rpc/</guid>
+      <guid>https://luangeng.space/post/netty/netty-rpc/</guid>
       <description>RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调</description>
     </item>
     
     <item>
       <title>Netty--Google Protobuf编解码</title>
-      <link>http://luangeng.space/post/netty/netty-protobuf/</link>
+      <link>https://luangeng.space/post/netty/netty-protobuf/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-protobuf/</guid>
+      <guid>https://luangeng.space/post/netty/netty-protobuf/</guid>
       <description>Google Protobuf是一种轻便高效的结构化数据存储格式，可以用于结构化数据序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储</description>
     </item>
     
     <item>
       <title>Netty--JDK序列化编解码传输对象</title>
-      <link>http://luangeng.space/post/netty/netty-jdk/</link>
+      <link>https://luangeng.space/post/netty/netty-jdk/</link>
       <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-jdk/</guid>
+      <guid>https://luangeng.space/post/netty/netty-jdk/</guid>
       <description>使用JDK序列化不需要额外的类库，只需要实现Serializable即可，但是序列化之后的码流只有Java才能反序列化，所以它不是跨语言的，</description>
     </item>
     
     <item>
       <title>Netty--HTTP服务器原理和实现</title>
-      <link>http://luangeng.space/post/netty/netty-http/</link>
+      <link>https://luangeng.space/post/netty/netty-http/</link>
       <pubDate>Fri, 15 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-http/</guid>
+      <guid>https://luangeng.space/post/netty/netty-http/</guid>
       <description>基于Netty的HTTP协议栈可以方便的进行异步非阻塞的HTTP服务器的开发。 当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个</description>
     </item>
     
     <item>
       <title>Netty--TCP粘包和拆包</title>
-      <link>http://luangeng.space/post/netty/netty-tcpdecoder/</link>
+      <link>https://luangeng.space/post/netty/netty-tcpdecoder/</link>
       <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-tcpdecoder/</guid>
+      <guid>https://luangeng.space/post/netty/netty-tcpdecoder/</guid>
       <description>TCP协议以流的方式进行数据传输，它无法理解其上层协议的数据意义，而是根据TCP缓冲区的大小对数据进行拆分或组装，即上层一个完整的包可能被拆</description>
     </item>
     
     <item>
       <title>Netty--TCP协议发送和接收数据</title>
-      <link>http://luangeng.space/post/netty/netty-tcp/</link>
+      <link>https://luangeng.space/post/netty/netty-tcp/</link>
       <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-tcp/</guid>
+      <guid>https://luangeng.space/post/netty/netty-tcp/</guid>
       <description>Netty是业界最流行的NIO开发框架，使用Netty可以构建高性能异步通信能力，经常用于RPC底层通信框架。Netty的API使用简单，功</description>
     </item>
     
     <item>
       <title>Netty--简单实现一个Servlet容器</title>
-      <link>http://luangeng.space/post/netty/netty-servlet/</link>
+      <link>https://luangeng.space/post/netty/netty-servlet/</link>
       <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://luangeng.space/post/netty/netty-servlet/</guid>
+      <guid>https://luangeng.space/post/netty/netty-servlet/</guid>
       <description>Servlet（Server Applet）是用Java编写的服务器端程序。其主要功能在于交互式地浏览和修改数据，生成动态Web内容。狭义的S</description>
     </item>
     
