@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>springcloud on 网络空间</title>
+    <title>springcloud on Computer and Software Technology Open Course</title>
     <link>https://luangeng.space/tags/springcloud/</link>
-    <description>Recent content in springcloud on 网络空间</description>
+    <description>Recent content in springcloud on Computer and Software Technology Open Course</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
@@ -14,46 +14,46 @@
     
     <item>
       <title>Spring Cloud Bus-RabbitMQ</title>
-      <link>https://luangeng.space/post/spring/spring-cloud-rabbitmq/</link>
+      <link>https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/spring/spring-cloud-rabbitmq/</guid>
+      <guid>https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/</guid>
       <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
     </item>
     
     <item>
       <title>Spring Cloud Zuul 网关</title>
-      <link>https://luangeng.space/post/spring/spring-cloud-zuul/</link>
+      <link>https://luangeng.space/post/java/spring/spring-cloud-zuul/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/spring/spring-cloud-zuul/</guid>
+      <guid>https://luangeng.space/post/java/spring/spring-cloud-zuul/</guid>
       <description>Spring Cloud 服务网关Zuul 服务网关是分布式架构中不可缺少的组成部分，是外部网络和内部服务之间的屏障，例如权限控制之类的逻辑应该在这里实现，而不是放</description>
     </item>
     
     <item>
       <title>Spring Cloud 断路器 Hystrix</title>
-      <link>https://luangeng.space/post/spring/spring-cloud-hystrix/</link>
+      <link>https://luangeng.space/post/java/spring/spring-cloud-hystrix/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/spring/spring-cloud-hystrix/</guid>
+      <guid>https://luangeng.space/post/java/spring/spring-cloud-hystrix/</guid>
       <description>断路器 断路器就像电路中的断路器一样，当短路发生时，它第一时刻熔断，切断了故障电路，保护其他用电单元。 在分布式架构中，断路器的作用类似，当某个</description>
     </item>
     
     <item>
       <title>Spring Cloud Config 配置服务</title>
-      <link>https://luangeng.space/post/spring/spring-cloud-eureka/</link>
+      <link>https://luangeng.space/post/java/spring/spring-cloud-eureka/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/spring/spring-cloud-eureka/</guid>
+      <guid>https://luangeng.space/post/java/spring/spring-cloud-eureka/</guid>
       <description>spring cloud 配置服务提供了一种非常方便的应用配置管理功能，用来解决分布式系统中配置文件太多导致的各种问题，而它自身的配置也非常简单。 服务端用来从gi</description>
     </item>
     
     <item>
       <title>Spring Cloud Eureka 注册，发布，调用服务</title>
-      <link>https://luangeng.space/post/spring/spring-cloud-config/</link>
+      <link>https://luangeng.space/post/java/spring/spring-cloud-config/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/spring/spring-cloud-config/</guid>
+      <guid>https://luangeng.space/post/java/spring/spring-cloud-config/</guid>
       <description>Spring Cloud为服务治理做了一层抽象接口，所以在Spring Cloud应用中可以支持多种不同的服务治理框架，如Netflix Eureka、Co</description>
     </item>
     

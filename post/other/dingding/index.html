@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>spring-security-oauth2 授权服务集成钉钉扫码登录 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="spring-security-oauth2 授权服务集成钉钉扫码登录 - Computer and Software Technology Open Course">
+  <meta name="description" content="钉钉扫码登录">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="spring-security-oauth2 授权服务集成钉钉扫码登录 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="钉钉扫码登录">
+  <meta property="og:title" content="spring-security-oauth2 授权服务集成钉钉扫码登录 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/other/dingding/" />
+  <meta property="og:description" content="钉钉扫码登录">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/other/dingding/">
+  <link rel='shortlink' href="https://luangeng.space/post/other/dingding/">
+  <link rel="shortcut icon" href="../../static/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="../../../../static/css/font-awesome.css">
+  <link rel="stylesheet" href="../../../../static/css/github.css">
+  <link rel="stylesheet" href="../../../../static/css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">spring-security-oauth2 授权服务集成钉钉扫码登录</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2018-08-07 · 3442 Words
+                                        
+                                        · Tags: oauth2
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/other/dingding/" class="leancloud_visitors" data-flag-title="spring-security-oauth2 授权服务集成钉钉扫码登录">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>spring boot版本</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;2.0.2.RELEASE&lt;/version&gt;
+    &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+&lt;/parent&gt;
+</code></pre><p>spring-security-oauth2版本</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.security.oauth&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-security-oauth2&lt;/artifactId&gt;
+    &lt;version&gt;2.2.0.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>实现原理：</p>
+<p>参照spring-security-oauth2授权流程，UsernamePasswordAuthenticationFilter拦截/login的post请求，创建UsernamePasswordAuthenticationToken，调用AuthenticationManager
+中对应的Provider的authenticate方法，其中使用用户名和密码在数据库中比对验证用户是否可登陆，如是则创建对应的Token完成认证。
+而扫码登陆无需输入密码，改为从钉钉获取扫码人的信息，再去数据库中比对是否有登陆权限。</p>
+<p>由于钉钉扫码后自动重定向到注册的回调地址，所以增加auth.html，自动从url中获取临时code，然后post提交到/auth。</p>
+<p>auth.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;/&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;script src=&quot;https://libs.baidu.com/jquery/2.0.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form method=&quot;post&quot; th:action=&quot;@{/auth}&quot; id=&quot;login_form&quot; name=&quot;login_form&quot;&gt;
+    &lt;input id=&quot;login_type&quot; name=&quot;login_type&quot; class=&quot;form-control&quot; type=&quot;hidden&quot;/&gt;
+    &lt;input id=&quot;login_code&quot; name=&quot;login_code&quot; class=&quot;form-control&quot; type=&quot;hidden&quot;/&gt;
+    &lt;input id=&quot;login_from&quot; name=&quot;login_from&quot; class=&quot;form-control&quot; type=&quot;hidden&quot;/&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+//&lt;![CDATA[
+
+    $(function() {
+        let params = window.location.search.split(&quot;&amp;&quot;);
+    if(!params[0].startsWith('code=')){
+        return;
+    }
+    var tmp_auth_code = params[0].substr(params[0].indexOf(&quot;code=&quot;)+5);
+    if (tmp_auth_code.trim().length&lt;3){
+        return;
+    }
+    $(&quot;#login_code&quot;).val(tmp_auth_code);
+    $(&quot;#login_from&quot;).val(&quot;http://localhost:9000/server/token&quot;);
+    $(&quot;#login_type&quot;).val(&quot;dingding&quot;);
+    document.getElementById('login_form').submit();
+
+});
+
+//  ]]&gt;
+
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre><p>当然如果你不需要传递其他的参数，也可以直接拦截/auth的get请求。</p>
+<p>后台增加拦截/auth的过滤器，参考源码中UsernamePasswordAuthenticationFilter，继承自AbstractAuthenticationProcessingFilter</p>
+<pre><code>/**
+ * 第三方登录授权过滤器
+ */
+public class ThirdAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+
+    public ThirdAuthenticationFilter() {
+        super(new AntPathRequestMatcher(&quot;/auth&quot;, &quot;POST&quot;));
+    }
+
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
+        String code = request.getParameter(&quot;login_code&quot;);
+        String type = request.getParameter(&quot;login_type&quot;);
+        AbstractAuthenticationToken authToken = new ThirdAuthenticationToken(code, &quot;&quot;);
+        ((ThirdAuthenticationToken) authToken).setLoginType(type);
+        setDetails(request, authToken);
+        Authentication auth = this.getAuthenticationManager().authenticate(authToken);
+        return auth;
+    }
+
+    protected void setDetails(HttpServletRequest request,
+                              AbstractAuthenticationToken authRequest) {
+        authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
+    }
+}
+</code></pre><p>新增第三方登录的token表示，作用是封装授权必要的信息，参考源码中的UsernamePasswordAuthenticationToken</p>
+<pre><code>public class ThirdAuthenticationToken extends AbstractAuthenticationToken {
+    private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
+
+    private final Object principal;
+    private Object credentials;
+    private String loginType;
+
+    public ThirdAuthenticationToken(Object principal, Object credentials) {
+        super(null);
+        this.principal = principal;
+        this.credentials = credentials;
+        setAuthenticated(false);
+    }
+
+    public ThirdAuthenticationToken(Object principal, Object credentials,
+                                    Collection&lt;? extends GrantedAuthority&gt; authorities) {
+        super(authorities);
+        this.principal = principal;
+        this.credentials = credentials;
+        super.setAuthenticated(true);
+    }
+
+    public Object getCredentials() {
+        return this.credentials;
+    }
+
+    public Object getPrincipal() {
+        return this.principal;
+    }
+
+    public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+        super.setAuthenticated(false);
+    }
+
+    @Override
+    public void eraseCredentials() {
+        super.eraseCredentials();
+        credentials = null;
+    }
+
+    public String getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(String loginType) {
+        this.loginType = loginType;
+    }
+}
+</code></pre><p>新增第三方授权验证器，作用是验证扫码用户是否有效，是否锁定，是否过期等，参考源码中的DaoAuthenticationProvider</p>
+<pre><code>public class ThirdAuthenticationProvider implements AuthenticationProvider {
+
+    protected final Log logger = LogFactory.getLog(getClass());
+    protected MessageSourceAccessor messages = SpringSecurityMessageSource.getAccessor();
+    @Autowired
+    private DingService dingService;
+    @Autowired
+    private UserDetailsService userService;
+    private UserDetailsChecker authenticationChecks = new DefaultAuthenticationChecks();
+    private GrantedAuthoritiesMapper authoritiesMapper = new NullAuthoritiesMapper();
+
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        String code = (String) authentication.getPrincipal();
+        String type = ((ThirdAuthenticationToken) authentication).getLoginType();
+        if (!type.equalsIgnoreCase(&quot;dingding&quot;)) {
+            throw new UsernameNotFoundException(&quot;登录类型错误：&quot; + type);
+        }
+        DingService.UserInfo userinfo = dingService.getUserInfo(code);
+        if (userinfo == null) {
+            throw new UsernameNotFoundException(&quot;钉钉扫码登录失败，未获取到用户信息&quot;);
+        }
+        String username = userinfo.getname();//
+
+        UserDetails user = userService.loadUserByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(&quot;用户在系统中不存在：&quot; + username);
+        }
+        authenticationChecks.check(user);
+
+        ThirdAuthenticationToken result = new ThirdAuthenticationToken(user, &quot;&quot;, authoritiesMapper.mapAuthorities(user.getAuthorities()));
+        result.setDetails(authentication.getDetails());
+
+        return result;
+    }
+
+    @Override
+    public boolean supports(Class&lt;?&gt; authentication) {
+        return (ThirdAuthenticationToken.class.isAssignableFrom(authentication));
+    }
+
+    public void setUserService(UserDetailsService userService) {
+        this.userService = userService;
+    }
+
+    private class DefaultAuthenticationChecks implements UserDetailsChecker {
+        public void check(UserDetails user) {
+            if (!user.isAccountNonLocked()) {
+                logger.debug(&quot;User account is locked&quot;);
+                throw new LockedException(messages.getMessage(
+                        &quot;AbstractUserDetailsAuthenticationProvider.locked&quot;,
+                        &quot;User account is locked&quot;));
+            }
+
+            if (!user.isEnabled()) {
+                logger.debug(&quot;User account is disabled&quot;);
+                throw new DisabledException(messages.getMessage(
+                        &quot;AbstractUserDetailsAuthenticationProvider.disabled&quot;,
+                        &quot;User is disabled&quot;));
+            }
+
+            if (!user.isAccountNonExpired()) {
+                logger.debug(&quot;User account is expired&quot;);
+                throw new AccountExpiredException(messages.getMessage(
+                        &quot;AbstractUserDetailsAuthenticationProvider.expired&quot;,
+                        &quot;User account has expired&quot;));
+            }
+            if (!user.isCredentialsNonExpired()) {
+                logger.debug(&quot;User account credentials have expired&quot;);
+                throw new CredentialsExpiredException(messages.getMessage(
+                        &quot;AbstractUserDetailsAuthenticationProvider.credentialsExpired&quot;,
+                        &quot;User credentials have expired&quot;));
+            }
+        }
+    }
+
+}
+</code></pre><p>新增从钉钉服务器获取token和用户信息的服务类</p>
+<pre><code>@Slf4j
+@Service
+public class DingService {
+
+    private static final int DING_OK = 0;
+    private static final int RETRY_COUNT = 2;
+    private static final int RETRY_DELAY = 1000 * 60 * 4;
+    private static final int REQUEST_TIMEOUT = 4000;
+    private static final int TOKEN_REFRESH_FIXED_RATE = 1000 * 60 * 110;
+    private static final String JSON_TYPE = &quot;application/json; charset=UTF-8&quot;;
+    private static final String per_token_url = &quot;https://oapi.dingtalk.com/sns/get_persistent_code?access_token=&quot;;
+    private static final String sns_token_url = &quot;https://oapi.dingtalk.com/sns/get_sns_token?access_token=&quot;;
+    private static final String user_info_url = &quot;https://oapi.dingtalk.com/sns/getuserinfo?sns_token=&quot;;
+
+    private int failCount = 0;
+
+    @Value(&quot;${dingding.appId}&quot;)
+    private String appId;
+
+    @Value(&quot;${dingding.appSecret}&quot;)
+    private String appSecret;
+
+    private RestTemplate template;
+
+    private AccessToken accessToken = null;
+
+    public DingService() {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(REQUEST_TIMEOUT);
+        requestFactory.setReadTimeout(REQUEST_TIMEOUT);
+        template = new RestTemplate(requestFactory);
+    }
+
+    public void getAccessToken() throws InterruptedException {
+        String acc_token_url = &quot;https://oapi.dingtalk.com/sns/gettoken?appid=&quot; + appId + &quot;&amp;appsecret=&quot; + appSecret;
+        ResponseEntity&lt;AccessToken&gt; accessTokenVal = template.getForEntity(acc_token_url, AccessToken.class);
+        if (accessTokenVal.getStatusCode().equals(HttpStatus.OK)) {
+            failCount = 0;
+            AccessToken token = accessTokenVal.getBody();
+            if (token != null &amp;&amp; token.getErrcode() == DING_OK) {
+                accessToken = token;
+            } else {
+                log.error(&quot;获取钉钉token失败：&quot; + (token == null ? &quot;返回值为空&quot; : token.getErrmsg()));
+            }
+        } else if (failCount &lt; RETRY_COUNT) {
+            failCount++;
+            log.error(&quot;获取钉钉token失败：请求未返回成功&quot;);
+            Thread.sleep(RETRY_DELAY);
+            getAccessToken();
+        }
+    }
+
+    public PerToken getPerToken(String code) {
+        checkSuccess(accessToken);
+        String token = accessToken.getAccess_token();
+        String param = &quot;{'tmp_auth_code':'&quot; + code + &quot;'}&quot;;
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType(JSON_TYPE);
+        headers.setContentType(type);
+        HttpEntity&lt;String&gt; requestEntity = new HttpEntity&lt;String&gt;(param, headers);
+        PerToken perToken = template.postForObject(per_token_url + token, requestEntity, PerToken.class);
+        perToken.setTmpToken(token);
+        return perToken;
+    }
+
+    public SnsToken getSnsToken(String code) {
+        PerToken perToken = getPerToken(code);
+        checkSuccess(perToken);
+        String param = &quot;{'openid': '&quot; + perToken.getOpenid() + &quot;','persistent_code': '&quot; + perToken.getPersistent_code() + &quot;'}&quot;;
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType(JSON_TYPE);
+        headers.setContentType(type);
+        HttpEntity&lt;String&gt; requestEntity = new HttpEntity&lt;String&gt;(param, headers);
+        SnsToken s = template.postForObject(sns_token_url + perToken.getTmpToken(), requestEntity, SnsToken.class);
+        return s;
+    }
+
+    public UserInfo getUserInfo(String code) {
+        SnsToken snsToken = getSnsToken(code);
+        checkSuccess(snsToken);
+        ResponseEntity&lt;ResuserInfo&gt; userInfo = template.getForEntity(user_info_url + snsToken.getSns_token(), ResuserInfo.class);
+        if (userInfo.getStatusCode().equals(HttpStatus.OK)) {
+            return userInfo.getBody().getUser_info();
+        }
+        return null;
+    }
+
+    private void checkSuccess(DingBase data) throws DingServiceException {
+        if (data == null) {
+            log.error(&quot;调用钉钉接口失败：请求未返回成功&quot;);
+            throw new DingServiceException(&quot;调用钉钉接口失败：请求未返回成功&quot;);
+        }
+        if (data.getErrcode() != DING_OK) {
+            log.error(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
+            throw new DingServiceException(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
+        }
+    }
+
+    @Data
+    private static class DingBase {
+        private int errcode;
+        private String errmsg;
+    }
+
+    @Data
+    private static class PerToken extends DingBase {
+        private String openid;
+        private String unionid;
+        private String persistent_code;
+        private String tmpToken;
+    }
+
+    @Data
+    private static class AccessToken extends DingBase {
+        private String access_token;
+    }
+
+    @Data
+    public static class UserInfo {
+        private String dingId;
+        private String nick;
+        private String unionid;
+        private String openid;
+    }
+
+    @Data
+    public static class ResuserInfo extends DingBase {
+        private UserInfo user_info;
+    }
+
+    @Data
+    private static class SnsToken extends DingBase {
+        private String sns_token;
+    }
+
+    @Component
+    private class TimedTask {
+        @Scheduled(fixedRate = TOKEN_REFRESH_FIXED_RATE)
+        public void fetchAccessToken() throws InterruptedException {
+            getAccessToken();
+        }
+    }
+}
+</code></pre><p>企业用户也可以通过以下方式获取到员工工号：</p>
+<pre><code>package com.luangeng.oauthserver.ding;
+
+import com.luangeng.oauthserver.exception.DingServiceException;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+/**
+ * 钉钉扫码登录验证服务
+ */
+@Slf4j
+@Service
+public class DingService {
+
+    private static final int DING_OK = 0;
+    private static final int MAX_RETRY_COUNT = 10;
+    private static final int RETRY_DELAY = 1000 * 60 * 3;
+    private static final int REQUEST_TIMEOUT = 1000 * 40;
+    private static final int TOKEN_REFRESH_FIXED_RATE = 1000 * 60 * 110;
+
+    private static final String ACC_TOKEN_URL = &quot;https://oapi.dingtalk.com/sns/gettoken?appid=%s&amp;appsecret=%s&quot;;
+    private static final String PER_TOKEN_URL = &quot;https://oapi.dingtalk.com/sns/get_persistent_code?access_token=&quot;;
+    private static final String USER_ID_URL = &quot;https://oapi.dingtalk.com/user/getUseridByUnionid?access_token=%s&amp;unionid=%s&quot;;
+    private static final String CORP_TOKEN_URL = &quot;https://oapi.dingtalk.com/gettoken?corpid=%s&amp;corpsecret=%s&quot;;
+    private static final String USER_DETAIL_URL = &quot;https://oapi.dingtalk.com/user/get?access_token=%s&amp;userid=%s&quot;;
+
+    @Value(&quot;${dingding.appId}&quot;)
+    private String appId;
+
+    @Value(&quot;${dingding.appSecret}&quot;)
+    private String appSecret;
+
+    @Value(&quot;${dingding.corpId}&quot;)
+    private String corpId;
+
+    @Value(&quot;${dingding.corpSecret}&quot;)
+    private String corpSecret;
+
+    private int retryCount = 0;
+
+    private RestTemplate template;
+
+    //有效期为7200秒
+    private AccessToken accessToken;
+
+    //有效期为7200秒
+    private CorpToken corpToken;
+
+    public DingdingService() {
+        SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+        requestFactory.setConnectTimeout(REQUEST_TIMEOUT);
+        requestFactory.setReadTimeout(REQUEST_TIMEOUT);
+        template = new RestTemplate(requestFactory);
+    }
+
+    private void getAccessToken() throws InterruptedException {
+        String url = String.format(ACC_TOKEN_URL, appId, appSecret);
+        ResponseEntity&lt;AccessToken&gt; accessTokenVal = template.getForEntity(url, AccessToken.class);
+        if (accessTokenVal.getStatusCode().equals(HttpStatus.OK)) {
+            retryCount = 0;
+            AccessToken token = accessTokenVal.getBody();
+            if (token != null &amp;&amp; token.getErrcode() == DING_OK) {
+                accessToken = token;
+            } else {
+                log.error(&quot;获取钉钉token失败：&quot; + (token == null ? &quot;获取AccessToken为空&quot; : token.getErrmsg()));
+            }
+        } else if (retryCount &lt;= MAX_RETRY_COUNT) {
+            retryCount++;
+            log.error(&quot;获取钉钉token失败：获取AccessToken失败&quot;);
+            Thread.sleep(RETRY_DELAY);
+            getAccessToken();
+            retryCount = 0;
+        }
+    }
+
+    private void getCorpToken() throws InterruptedException {
+        String url = String.format(CORP_TOKEN_URL, corpId, corpSecret);
+        ResponseEntity&lt;CorpToken&gt; accessTokenVal = template.getForEntity(url, CorpToken.class);
+        if (accessTokenVal.getStatusCode().equals(HttpStatus.OK)) {
+            retryCount = 0;
+            CorpToken token = accessTokenVal.getBody();
+            if (token != null &amp;&amp; token.getErrcode() == DING_OK) {
+                corpToken = token;
+            } else {
+                log.error(&quot;获取钉钉token失败：&quot; + (token == null ? &quot;获取CorpToken为空&quot; : token.getErrmsg()));
+            }
+        } else if (retryCount &lt; MAX_RETRY_COUNT) {
+            retryCount++;
+            log.error(&quot;获取钉钉token失败：获取CorpToken失败&quot;);
+            Thread.sleep(RETRY_DELAY);
+            getCorpToken();
+            retryCount = 0;
+        }
+    }
+
+    /**
+     * 获取永久token
+     */
+    private PerToken getPerToken(String code) {
+        checkSuccess(accessToken);
+        String token = accessToken.getAccess_token();
+        String param = &quot;{'tmp_auth_code':'&quot; + code + &quot;'}&quot;;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        HttpEntity&lt;String&gt; requestEntity = new HttpEntity&lt;String&gt;(param, headers);
+        PerToken perToken = template.postForObject(PER_TOKEN_URL + token, requestEntity, PerToken.class);
+        perToken.setTmpToken(token);
+        return perToken;
+    }
+
+    /**
+     * 获取工号
+     */
+    public String getEmployeeNum(String code) {
+        PerToken info = getPerToken(code);
+        checkSuccess(info);
+        ResponseEntity&lt;UserId&gt; user = template.getForEntity(String.format(USER_ID_URL, corpToken.getAccess_token(),
+                info.getUnionid()), UserId.class);
+        if (user.getStatusCode().equals(HttpStatus.OK)) {
+            UserId id = user.getBody();
+            if (id != null) {
+                return id.getUserid();
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取详细信息
+     */
+    public UserDetail getUserDetail(String code) {
+        String userId = getEmployeeNum(code);
+        ResponseEntity&lt;UserDetail&gt; user = template.getForEntity(String.format(USER_DETAIL_URL, corpToken.getAccess_token(),
+                userId), UserDetail.class);
+        if (user.getStatusCode().equals(HttpStatus.OK)) {
+            return user.getBody();
+        }
+        return null;
+    }
+
+    private void checkSuccess(DingBase data) throws DingServiceException {
+        if (data == null) {
+            log.error(&quot;调用钉钉接口失败：请求未返回成功&quot;);
+            throw new DingServiceException(&quot;调用钉钉接口失败：请求未返回成功&quot;);
+        }
+        if (data.getErrcode() != DING_OK) {
+            log.error(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
+            throw new DingServiceException(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
+        }
+    }
+
+    @Data
+    private static class DingBase {
+        private int errcode;
+        private String errmsg;
+    }
+
+    @Data
+    private static class PerToken extends DingBase {
+        private String openid;
+        private String unionid;
+        private String persistent_code;
+        private String tmpToken;
+    }
+
+    @Data
+    private static class AccessToken extends DingBase {
+        private String access_token;
+    }
+
+    @Data
+    private static class CorpToken extends DingBase {
+        private String access_token;
+        private String expires_in;
+    }
+
+    @Data
+    private static class UserId extends DingBase {
+        private String userid;
+        private String contactType;
+    }
+
+    @Data
+    public static class UserDetail extends DingBase {
+        private String name;
+        private String jobnumber;
+        private String email;
+        private String active;
+        private String mobile;
+        private String userid;
+        private String position;
+        private String unionid;
+    }
+
+    @Component
+    private class TimedTask {
+        @Scheduled(fixedRate = TOKEN_REFRESH_FIXED_RATE)
+        public void fetchToken() throws InterruptedException {
+            getAccessToken();
+            getCorpToken();
+        }
+    }
+
+}
+</code></pre><p>然后在配置类中注册上边的组件：</p>
+<pre><code>@Bean
+    ThirdAuthenticationFilter thirdLoginFilter() throws Exception {
+        ThirdAuthenticationFilter filter = new ThirdAuthenticationFilter();
+        filter.setAuthenticationManager(super.authenticationManager());
+        filter.setAuthenticationFailureHandler(ytoSimpleUrlAuthenticationFailureHandler());
+        filter.setAuthenticationSuccessHandler(new ThridAuthenticationSuccessHandler());
+        return filter;
+    }
+
+@Bean
+    public ThirdAuthenticationProvider myProvider() {
+        ThirdAuthenticationProvider my = new ThirdAuthenticationProvider();
+        my.setUserService(userDetailsService);
+        return my;
+    }
+
+@Autowired
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+        auth.authenticationProvider(myProvider());
+//                .inMemoryAuthentication().withUser(&quot;z&quot;).password(&quot;z&quot;).roles(&quot;USER&quot;).
+//                and().withUser(&quot;admin&quot;).password(&quot;admin&quot;).roles(&quot;ADMIN&quot;);
+    }
+
+
+.addFilterBefore(thirdLoginFilter(), UsernamePasswordAuthenticationFilter.class)
+</code></pre><p>在登陆页中增加钉钉的js</p>
+<pre><code>function opending(){
+  var obj = DDLogin({
+     id:&quot;login_container&quot;,//这里需要你在自己的页面定义一个HTML标签并设置id，例如&lt;div id=&quot;login_container&quot;&gt;&lt;/div&gt;或&lt;span id=&quot;login_container&quot;&gt;&lt;/span&gt;
+     goto: encodeURIComponent(ding_url+&quot;appid=&quot;+appid+&quot;&amp;response_type=code&amp;scope=snsapi_login&amp;state=&quot;+state+&quot;&amp;redirect_uri=&quot;+redirect_url),
+     width : &quot;300&quot;,
+     height: &quot;300&quot;
+ });
+}
+
+var hanndleMessage = function (event) {
+    var origin = event.origin;
+    console.log(&quot;origin&quot;, event.origin);
+    //判断是否来自ddLogin扫码事件。
+    if( origin == &quot;https://login.dingtalk.com&quot; ) {
+        var tmp_code = event.data;
+        //拿到loginTmpCode后,在这里构造跳转链接进行跳转
+        window.parent.postMessage(tmp_code,'*');
+        window.location.href=ding_url+&quot;appid=&quot;+appid+&quot;&amp;response_type=code&amp;scope=snsapi_login&amp;state=&quot;+state+&quot;&amp;redirect_uri=&quot;+redirect_url+&quot;&amp;loginTmpCode=&quot;+tmp_code;
+    }
+};
+
+if (typeof window.addEventListener != 'undefined') {
+    window.addEventListener('message', hanndleMessage, false);
+} else if (typeof window.attachEvent != 'undefined') {
+    window.attachEvent('onmessage', hanndleMessage);
+}
+</code></pre><h2 id="运行">运行：</h2>
+<p>打开登录页，点击钉钉扫码登录，页面弹出二维码</p>
+<p><img src="pic/2018-7/dingding.png" alt="pic"></p>
+<p>使用手机钉钉扫码，并点击确认登录，浏览器跳转到/auth，被拦截器拦截，后台从钉钉服务器获取用户工号，如果账号正常即完成认证，否则重定向到错误提示页。</p>
+<p>代码路径：https://github.com/luangeng/spring-boot-oauth2-demo</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/dingding/">https://luangeng.space/post/other/dingding/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/other/elasticJob/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>SpringBoot集成elastic-job-lite</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/other/birthday/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>如何制作一个漂亮的生日祝福网页</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/other/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="../../static/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="https://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="https://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/other/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        
+
+        
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="../../static/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="../../../../static/js/highlight.pack.js"></script>
+<script src="../../../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="../../../../static/js/picturefill.min.js"></script>
+<script type="text/javascript" src="../../../../static/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="../../../../static/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="../../../../static/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

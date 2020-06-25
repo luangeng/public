@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jQuery on 网络空间</title>
+    <title>jQuery on Computer and Software Technology Open Course</title>
     <link>https://luangeng.space/tags/jQuery/</link>
-    <description>Recent content in jQuery on 网络空间</description>
+    <description>Recent content in jQuery on Computer and Software Technology Open Course</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
@@ -14,10 +14,10 @@
     
     <item>
       <title>jQuery事件</title>
-      <link>https://luangeng.space/post/2017/jquery-event/</link>
+      <link>https://luangeng.space/post/other/jquery-event/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/2017/jquery-event/</guid>
+      <guid>https://luangeng.space/post/other/jquery-event/</guid>
       <description>blur() 触发或绑定blur事件。 $(&amp;quot;input&amp;quot;).blur(function(){ $(&amp;quot;input&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;#D6D6FF&amp;quot;); }); change() 触发或绑定change事件, 该事件仅适用于文本域（text field），以及 textarea 和 select 元素。 $(&amp;quot;.field&amp;quot;).change(function(){ $(this).css(&amp;quot;background-color&amp;quot;,&amp;quot;#FFFFCC&amp;quot;); }); click() 触发或绑定</description>
     </item>
     

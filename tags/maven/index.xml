@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>maven on 网络空间</title>
+    <title>maven on Computer and Software Technology Open Course</title>
     <link>https://luangeng.space/tags/maven/</link>
-    <description>Recent content in maven on 网络空间</description>
+    <description>Recent content in maven on Computer and Software Technology Open Course</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
@@ -14,10 +14,10 @@
     
     <item>
       <title>Maven安装配置使用</title>
-      <link>https://luangeng.space/post/2017/maven/</link>
+      <link>https://luangeng.space/post/other/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/2017/maven/</guid>
+      <guid>https://luangeng.space/post/other/maven/</guid>
       <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
     </item>
     

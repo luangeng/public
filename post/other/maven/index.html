@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Maven安装配置使用 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Maven安装配置使用 - Computer and Software Technology Open Course">
+  <meta name="description" content="Maven安装配置使用">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="Maven安装配置使用 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Maven安装配置使用">
+  <meta property="og:title" content="Maven安装配置使用 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/other/maven/" />
+  <meta property="og:description" content="Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/other/maven/">
+  <link rel='shortlink' href="https://luangeng.space/post/other/maven/">
+  <link rel="shortcut icon" href="../../static/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="../../../../static/css/font-awesome.css">
+  <link rel="stylesheet" href="../../../../static/css/github.css">
+  <link rel="stylesheet" href="../../../../static/css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Maven安装配置使用</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-02 · 2799 Words
+                                        
+                                        · Tags: maven
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/other/maven/" class="leancloud_visitors" data-flag-title="Maven安装配置使用">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>Maven介绍</p>
+<p>Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。
+Maven 有一个生命周期，当你运行 mvn install 的时候被调用。这条命令告诉 Maven 执行一系列的有序的步骤，直到到达你指定的生命周期。遍历生命周期旅途中的一个影响就是，Maven 运行了许多默认的插件目标，这些目标完成了像编译和创建一个 JAR 文件这样的工作。此外，Maven能够很方便的帮你管理项目报告，生成站点，管理JAR文件。</p>
+<p>安装</p>
+<p>1.下载: <a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
+<p>2.安装:</p>
+<pre><code>zip:  $unzip apache-maven-3.3.9-bin.zip
+
+tar:  $tar xzvf apache-maven-3.3.9-bin.tar.gz
+</code></pre><p>3.添加PATH:</p>
+<p>在 /etc/paths 中加入: maven中的bin/</p>
+<p>或执行  $export PATH=~/dev/tools/apache-maven-3.3.9/bin:$PATH</p>
+<p>4.验证:
+<code>$mvn -v</code></p>
+<p>IntelliJ IDEA集成</p>
+<p>安装maven插件 详细 <a href="https://www.jetbrains.com/help/idea/2016.2/maven.html">https://www.jetbrains.com/help/idea/2016.2/maven.html</a></p>
+<p>基本概念</p>
+<p>maven项目的默认目录结构:</p>
+<p>目录</p>
+<p>目的</p>
+<p>${basedir}</p>
+<p>存放 pom.xml和所有的子目录</p>
+<p>${basedir}/src/main/java</p>
+<p>项目的 java源代码</p>
+<p>${basedir}/src/main/resources</p>
+<p>项目的资源，比如说 property文件</p>
+<p>${basedir}/src/test/java</p>
+<p>项目的测试类，比如说 JUnit代码</p>
+<p>${basedir}/src/test/resources</p>
+<p>测试使用的资源</p>
+<hr>
+<p>POM (Project Object Model)
+一个项目所有的配置都放置在 POM 文件中,包括项目的类型、名字，管理依赖关系，定制插件的行为等等。</p>
+<p>在POM中，groupId + artifactId + packaging + version 才称为项目标识,能唯一确定一个项目, 可用来指定项目所依赖的其他项目，插件，或者父项目。</p>
+<p>格式一般如下：     groupId:artifactId:packaging:version      比如:     com.mycompanyname.helloworld: helloworld: jar: 1.0-SNAPSHOT</p>
+<p>大项目一般会分成几个子项目。在这种情况下，每个子项目就会有自己的 POM 文件，然后它们会有一个共同的父项目。这样只要构建父项目就能够构建所有的子项目了。子项目的 POM 会继承父项目的 POM。另外，所有的 POM都继承了一个 Super-POM。Super-POM 设置了一些默认值，比如默认的目录结构，默认的插件等.</p>
+<p>Maven 插件
+maven整合了各种插件, 如Jar，Compiler，Surefire等。Jar 用来建立Jar文件， Compiler 插件用来编译源代码和单元测试代码。Surefire 插件运行单元测试。</p>
+<p>编译后 的 classes 会放在 ${basedir}/target/classes 下面， JAR 文件会放在 ${basedir}/target 下面, test类 class 文件放在 target/test-classes/ 目录下面</p>
+<p>maven 项目在默认情况下会产生 JAR 文件</p>
+<p>Maven 生命周期
+生命周期指项目的构建过程，它包含了一系列的有序的阶段 (phase)，而一个阶段就是构建过程中的一个步骤。mvn package 是一个maven的生命周期阶段 (lifecycle phase)。</p>
+<p>插件目标可以绑定到生命周期阶段上。一个生命周期阶段可以绑定多个插件目标。当 maven 在构建过程中逐步的通过每个阶段时，会执行该阶段所有的插件目标。</p>
+<p>maven 能支持不同的生命周期，但是最常用的是默认的Maven生命周期。如果你没有对它进行任何的插件配置或者定制的话，那么命令 mvn package 会依次执行默认生命周期中直到包括 package 阶段前的所有阶段的插件目标：</p>
+<p>process-resources 阶段：resources:resources</p>
+<p>compile 阶段：compiler:compile</p>
+<p>process-classes 阶段：(默认无目标)</p>
+<p>process-test-resources 阶段：resources:testResources</p>
+<p>test-compile 阶段：compiler:testCompile</p>
+<p>test 阶段：surefire:test</p>
+<p>prepare-package 阶段：(默认无目标)</p>
+<p>package 阶段：jar:jar</p>
+<p>Maven 依赖管理
+在 POM 中，依赖关系是在 dependencies 部分中定义的。比如:</p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;junit&lt;/groupId&gt;
+      &lt;artifactId&gt;junit&lt;/artifactId&gt;
+      &lt;version&gt;3.8.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><p>因为被依赖的 jar 文件会有自己的依赖关系。那么我们是不是需要把那些间接依赖的 jar 文件也都定义在POM中呢？答案是不需要，因为 maven 提供了传递依赖的特性.</p>
+<p>所谓传递依赖是指 maven 会检查被依赖的 jar 文件，把它的依赖关系纳入最终解决的依赖关系链中。针对上面的 junit 依赖关系，如果你看一下 maven 的本地库: ~/.m2/repository/junit/junit/3.8.1/ ，</p>
+<p>发现 maven 不但下载了 junit-3.8.1.jar，还下载了它的 POM 文件。这样 maven 就能检查 junit 的依赖关系，把它所需要的依赖也包括进来。</p>
+<p>在 POM 的 dependencies 部分中，scope 决定了依赖关系的适用范围。我们的例子中 junit 的 scope 是 test，那么它只会在执行 compiler:testCompile and surefire:test 目标的时候才会被加到 classpath 中，在执行 compiler:compile 目标时是拿不到 junit 的。</p>
+<p>我们还可以指定 scope 为 provided，意思是 JDK 或者容器会提供所需的jar文件。比如说在做web应用开发的时候，我们在编译的时候需要 servlet API jar 文件，但是在打包的时候不需要把这个 jar 文件打在 WAR 中，因为servlet容器或者应用服务器会提供的。</p>
+<p>scope 的默认值是 compile，即任何时候都会被包含在 classpath 中，在打包的时候也会被包括进去。</p>
+<p>Maven 库
+当第一次运行 maven 命令的时候，会从 maven 默认的远程库(<a href="http://repo1.maven.org/maven2">http://repo1.maven.org/maven2</a>) 下载 maven 的核心插件和可供下载的 jar 文件。</p>
+<p>但是不是所有的 jar 文件都是可以从默认的远程库下载的，比如说我们自己开发的项目。这个时候，有两个选择：要么在公司内部设置定制库，要么手动下载和安装所需的jar文件到本地库。</p>
+<p>本地库是指 maven 下载了插件或者 jar 文件后存放在本地机器上的拷贝。在 Linux 上，它的位置在 ~/.m2/repository，在 Windows XP 上，在 C:\Documents and Settings\username.m2\repository ，在 Windows 7 上，在 C:\Users\username.m2\repository。当 maven 查找需要的 jar 文件时，它会先在本地库中寻找，只有在找不到的情况下，才会去远程库中找。</p>
+<p>运行下面的命令能把项目安装到本地库：     $mvn install</p>
+<p>一旦一个项目被安装到了本地库后，其他的项目就可以通过 maven 坐标和这个项目建立依赖关系。</p>
+<p>比如如果我现在有一个新项目需要用到 helloworld，那么在运行了上面的 mvn install 命令后，我就可以如下所示来建立依赖关系：</p>
+<pre><code>&lt;dependency&gt;
+      &lt;groupId&gt;com.mycompany.helloworld&lt;/groupId&gt;
+      &lt;artifactId&gt;helloworld&lt;/artifactId&gt;
+      &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>依赖Jar查找:  <a href="http://search.maven.org/">http://search.maven.org/</a></p>
+<p>标准目录结构：</p>
+<pre><code>src
+
+  -main
+      –bin 脚本库
+      –java java源代码文件
+      –resources 资源库，会自动复制到classes目录里
+      –filters 资源过滤文件
+      –assembly 组件的描述配置（如何打包）
+      –config 配置文件
+      –webapp web应用的目录。WEB-INF、css、js等
+  -test
+      –java 单元测试java源代码文件
+      –resources 测试需要用的资源库
+      –filters 测试资源过滤库
+  -site Site（一些文档）
+target
+LICENSE.txt
+README.txt
+</code></pre><p>工程根目录下就只有src和target两个目录
+target是有存放项目构建后的文件和目录，jar包、war包、编译的class文件等。</p>
+<p>target里的所有内容都是maven构建的时候生成的</p>
+<p>使用maven构建项目</p>
+<p>1.新建项目:</p>
+<p>~$mvn archetype:generate -DgroupId=com.mycompany.helloworld -DartifactId=helloworld -Dpackage=com.mycompany.helloworld -Dversion=1.0-SNAPSHOT</p>
+<p>archetype:generate 目标会列出一系列的 archetype 让你选择。 Archetype 可以理解成项目的模型。 Maven 为我们提供了很多种的项目模型，包括从简单的 Swing 到复杂的 Web 应用。我们选择默认的 maven-archetype-quickstart</p>
+<p>maven 的 archetype 插件建立了一个 helloworld 目录，这个名字来自 artifactId 。这个目录下面的 pom.xml 用于描述项目，配置插件和管理依赖关系。</p>
+<p>源代码和资源文件放在 src/main 下面，而测试代码和资源放在 src/test 下面。</p>
+<p>2.构建</p>
+<p>~$cd helloworld &amp;&amp; mvn package</p>
+<p>3.运行</p>
+<p>~$java -cp target/helloworld-1.0-SNAPSHOT.jar com.mycompany.helloworld.App</p>
+<p>参考文档:</p>
+<p><a href="http://maven.apache.org/configure.html">http://maven.apache.org/configure.html</a></p>
+<p><a href="http://www.oracle.com/technetwork/cn/community/java/apache-maven-getting-started-1-406235-zhs.html">http://www.oracle.com/technetwork/cn/community/java/apache-maven-getting-started-1-406235-zhs.html</a></p>
+<pre><code>&lt;!-- 阿里云仓库 --&gt;
+       &lt;mirror&gt;
+           &lt;id&gt;alimaven&lt;/id&gt;
+           &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+           &lt;name&gt;aliyun maven&lt;/name&gt;
+           &lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;
+       &lt;/mirror&gt;
+
+       &lt;!-- 中央仓库1 --&gt;
+       &lt;mirror&gt;
+           &lt;id&gt;repo1&lt;/id&gt;
+           &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+           &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+           &lt;url&gt;http://repo1.maven.org/maven2/&lt;/url&gt;
+       &lt;/mirror&gt;
+
+       &lt;!-- 中央仓库2 --&gt;
+       &lt;mirror&gt;
+           &lt;id&gt;repo2&lt;/id&gt;
+           &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+           &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+           &lt;url&gt;http://repo2.maven.org/maven2/&lt;/url&gt;
+       &lt;/mirror&gt;
+</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/maven/">https://luangeng.space/post/other/maven/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/java/zookeeper/zookeeper-base/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>zookeeper-基本概念</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/db/mysql/mysql-procedure/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>MySql 存储过程</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/other/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="../../static/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="https://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="https://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        
+
+        
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="../../static/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="../../../../static/js/highlight.pack.js"></script>
+<script src="../../../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="../../../../static/js/picturefill.min.js"></script>
+<script type="text/javascript" src="../../../../static/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="../../../../static/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="../../../../static/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

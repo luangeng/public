@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Netty--使用TCP协议传输文件 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Netty--使用TCP协议传输文件 - Computer and Software Technology Open Course">
+  <meta name="description" content="Netty--使用TCP协议传输文件">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="Netty--使用TCP协议传输文件 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Netty--使用TCP协议传输文件">
+  <meta property="og:title" content="Netty--使用TCP协议传输文件 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/java/netty/netty-file/" />
+  <meta property="og:description" content="简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/java/netty/netty-file/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/netty/netty-file/">
+  <link rel="shortcut icon" href="../../static/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="../../../../static/css/font-awesome.css">
+  <link rel="stylesheet" href="../../../../static/css/github.css">
+  <link rel="stylesheet" href="../../../../static/css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Netty--使用TCP协议传输文件</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-19 · 2274 Words
+                                        
+                                        · Tags: netty
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/java/netty/netty-file/" class="leancloud_visitors" data-flag-title="Netty--使用TCP协议传输文件">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>简介：</p>
+<p>用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。</p>
+<p>实现：</p>
+<p>使用Netty进行文件传输，服务端读取文件并将文件拆分为多个数据块发送，接收端接收数据块，并按顺序将数据写入文件。</p>
+<p>工程结构：</p>
+<p><img src="pic/netty/3.png" alt=""></p>
+<p>Maven配置：</p>
+<pre><code>&lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.netty&lt;/groupId&gt;
+            &lt;artifactId&gt;netty-all&lt;/artifactId&gt;
+            &lt;version&gt;4.1.15.Final&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;3.8.1&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre><p>传输对象：type为数据块类型，index为数据块的序列，length为数据块的大小，data为要传输的数据。</p>
+<pre><code>public class TransData {
+
+    private TypeEnum type;
+
+    private int index;
+
+    private int length;
+
+    private ByteBuf data;
+
+    public TransData() {
+    }
+
+    public TransData(TypeEnum type, ByteBuf data) {
+        this.type = type;
+        this.data = data;
+    }
+
+    public TypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TypeEnum type) {
+        this.type = type;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public ByteBuf getData() {
+        return data;
+    }
+
+    public void setData(ByteBuf data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;TransData{&quot; +
+                &quot;type=&quot; + type +
+                &quot;, index=&quot; + index +
+                &quot;, length=&quot; + length +
+                '}';
+    }
+}
+</code></pre><p>类型枚举：</p>
+<pre><code>public enum TypeEnum {
+
+    UNKNOW(0),
+
+    CMD(1),
+
+    MSG(2),
+
+    DATA(3),
+
+    BEGIN(4),
+
+    END(5);
+
+    short value;
+
+    TypeEnum(int value) {
+        this.value = (short) value;
+    }
+
+    public static TypeEnum get(short s) {
+        for (TypeEnum e : TypeEnum.values()) {
+            if (e.value == s) {
+                return e;
+            }
+        }
+        return UNKNOW;
+    }
+
+    public short value() {
+        return this.value;
+    }
+
+}
+</code></pre><p>解码器，从数据块还原Java对象</p>
+<pre><code>public class Decode extends ReplayingDecoder&lt;Void&gt; {
+
+    @Override
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List&lt;Object&gt; out) throws Exception {
+        TransData data = new TransData();
+        data.setType(TypeEnum.get(in.readShort()));
+        data.setIndex(in.readInt());
+        data.setLength(in.readInt());
+        data.setData(in.readBytes(data.getLength()));
+        out.add(data);
+    }
+}
+</code></pre><p>编码器：</p>
+<pre><code>public class Encode extends MessageToByteEncoder&lt;TransData&gt; {
+
+    @Override
+    protected void encode(ChannelHandlerContext ctx, TransData msg, ByteBuf out) throws Exception {
+        out.writeShort(msg.getType().value())
+                .writeInt(msg.getIndex())
+                .writeInt(msg.getData().readableBytes())
+                .writeBytes(msg.getData());
+    }
+}
+</code></pre><p>数据接收器</p>
+<pre><code>public class Receiver {
+
+    private SortedQueue queue = new SortedQueue();
+    private String dstPath = System.getProperty(&quot;user.dir&quot;) + File.separator + &quot;received&quot;;
+    private String fileName;
+    private long receivedSize = 0;
+    private long totalSize = 0;
+    private int chunkIndex = 0;
+    private FileOutputStream out;
+    private FileChannel ch;
+    private long t1;
+    private int process = 0;
+
+    public Receiver(TransData data) {
+        init(Tool.getMsg(data));
+    }
+
+    public void init(String msg) {
+        String[] ss = msg.split(&quot;/:/&quot;);
+        fileName = ss[0].trim();
+        totalSize = Long.valueOf(ss[1].trim());
+        //new File(dstPath).mkdirs();
+        File f = new File(dstPath + File.separator + fileName);
+        if (f.exists()) {
+            f.delete();
+        }
+        try {
+            out = new FileOutputStream(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ch = out.getChannel();
+        queue.clear();
+        System.out.println(&quot;receive begin: &quot; + fileName + &quot;  &quot; + Tool.size(totalSize));
+        new MyThread().start();
+        t1 = System.currentTimeMillis();
+    }
+
+    public void receiver(TransData data) {
+        queue.put(data);
+    }
+
+    public void end() throws IOException {
+        long cost = Math.round((System.currentTimeMillis() - t1) / 1000f);
+        System.out.println(&quot;receive over: &quot; + fileName + &quot;   Cost Time: &quot; + cost + &quot;s&quot;);
+        if (out != null) {
+            out.close();
+            out = null;
+            ch = null;
+        }
+        fileName = null;
+        chunkIndex = 0;
+        totalSize = 0;
+        receivedSize = 0;
+        process = 0;
+        queue.clear();
+    }
+
+    private void printProcess() {
+        int ps = (int) (receivedSize * 100 / totalSize);
+        if (ps != process) {
+            this.process = ps;
+            System.out.print(process + &quot;% &quot;);
+            if (this.process % 10 == 0 || process &gt;= 100) {
+                System.out.println();
+            }
+        }
+    }
+
+    private class MyThread extends Thread {
+        public void run() {
+            try {
+                while (true) {
+                    TransData data = queue.offer(chunkIndex++);
+                    if (data.getType() == TypeEnum.END) {
+                        end();
+                        break;
+                    }
+                    ByteBuf bfn = data.getData();
+                    receivedSize += data.getLength();
+                    ByteBuffer bf = bfn.nioBuffer();
+                    ch.write(bf);
+                    printProcess();
+                    bfn.release();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+}
+</code></pre><p>数据发送器，异步发送，每次传输任务实例化一个发送器对象。</p>
+<pre><code>public class Sender implements Runnable {
+
+    String path;
+    String name;
+    File f;
+    FileInputStream in;
+    FileChannel ch;
+    ByteBuffer bf;
+    int index = 0;
+    Channel channel;
+    private long t0;
+
+    public Sender(String path, String name, Channel c) {
+        this.path = path;
+        this.name = name;
+        this.channel = c;
+    }
+
+    @Override
+    public void run() {
+        begin(path);
+        send();
+    }
+
+    public void begin(String path) {
+        f = new File(path + File.separator + name);
+        if (!f.exists() || !f.isFile() || !f.canRead()) {
+            Tool.sendMsg(channel, &quot;file can not read.&quot;);
+        }
+
+        try {
+            in = new FileInputStream(f);
+            ch = in.getChannel();
+            bf = ByteBuffer.allocate(20480);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        t0 = System.currentTimeMillis();
+        System.out.println(&quot;send begin: &quot; + name + &quot;  &quot; + Tool.size(f.length()));
+        Tool.sendBegin(channel, name + &quot;/:/&quot; + f.length());
+    }
+
+    public void send() {
+        if (in == null) {
+            return;
+        }
+        try {
+            while (ch.read(bf) != -1) {
+                while (!channel.isWritable()) {
+                    TimeUnit.MILLISECONDS.sleep(5);
+                }
+                bf.flip();
+                Tool.sendData(channel, bf, index);
+                index++;
+                bf.clear();
+            }
+            Tool.sendEnd(channel, index);
+
+            long cost = Math.round((System.currentTimeMillis() - t0) / 1000f);
+            System.out.println(&quot;send over: &quot; + f.getName() + &quot;   Cost Time: &quot; + cost + &quot;s&quot;);
+            clear();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clear() throws IOException {
+        in.close();
+        bf.clear();
+        f = null;
+        in = null;
+        index = 0;
+    }
+
+}
+</code></pre><p>发送器线程池：</p>
+<pre><code>public class SenderThreadPool {
+
+    private static ExecutorService exe = Executors.newFixedThreadPool(10);
+
+    public static void exe(Runnable run) {
+        exe.execute(run);
+    }
+
+}
+</code></pre><p>有序的数据队列，缓存接收到的数据，并按序号排序。</p>
+<pre><code>/*
+按序列取出队列中的元素，如果序列缺失则阻塞
+ */
+public class SortedQueue {
+
+    final Lock lock = new ReentrantLock();
+    final Condition canTake = lock.newCondition();
+    private final AtomicInteger count = new AtomicInteger();
+    private LinkedList&lt;TransData&gt; list = new LinkedList&lt;TransData&gt;();
+
+    public void put(TransData node) {
+        lock.lock();
+        boolean p = false;
+        for (int i = 0; i &lt; list.size(); i++) {
+            if (node.getIndex() &lt; list.get(i).getIndex()) {
+                list.add(i, node);
+                p = true;
+                break;
+            }
+        }
+        if (p == false) {
+            list.add(node);
+        }
+        count.incrementAndGet();
+        canTake.signal();
+        lock.unlock();
+    }
+
+    public TransData offer(int index) {
+        lock.lock();
+        try {
+            while (list.isEmpty() || list.get(0).getIndex() != index) {
+                canTake.await();
+            }
+            count.getAndDecrement();
+            return list.pop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
+        return null;
+    }
+
+    public int size() {
+        return count.get();
+    }
+
+    public void clear() {
+        list.clear();
+        count.set(0);
+    }
+}
+</code></pre><p>服务端Handler：</p>
+<pre><code>public class ServerHandler extends SimpleChannelInboundHandler&lt;TransData&gt; {
+
+    private String cpath = System.getProperty(&quot;user.dir&quot;);
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, TransData data) throws Exception {
+        handle(ctx, data);
+    }
+
+    private void handle(ChannelHandlerContext ctx, TransData data) throws Exception {
+        if (data.getType() == TypeEnum.CMD) {
+            String cmd = Tool.getMsg(data);
+            if (cmd.equalsIgnoreCase(&quot;ls&quot;)) {
+                ls(ctx.channel());
+            } else if (cmd.startsWith(&quot;cd &quot;)) {
+                cd(ctx.channel(), cmd);
+            } else if (cmd.startsWith(&quot;get &quot;)) {
+                String name = cmd.substring(4);
+                Sender sender = new Sender(cpath, name, ctx.channel());
+                SenderThreadPool.exe(sender);
+            } else if (cmd.equalsIgnoreCase(&quot;pwd&quot;)) {
+                Tool.sendMsg(ctx.channel(), &quot;now at: &quot; + cpath);
+            } else {
+                Tool.sendMsg(ctx.channel(), &quot;unknow command!&quot;);
+            }
+        }
+    }
+
+    private void ls(Channel channel) {
+        int k = 0;
+        StringBuilder sb = new StringBuilder();
+        File file = new File(cpath);
+        for (File f : file.listFiles()) {
+            if (f.isDirectory()) {
+                sb.append(k);
+                sb.append(&quot;/:/&quot;);
+                sb.append(&quot;目录&quot;);
+                sb.append(&quot;/:/&quot;);
+                sb.append(f.getName());
+                sb.append(&quot;\n&quot;);
+                k++;
+            }
+        }
+        for (File f : file.listFiles()) {
+            if (f.isFile()) {
+                sb.append(k);
+                sb.append(&quot;/:/&quot;);
+                sb.append(Tool.size(f.length()));
+                sb.append(&quot;/:/&quot;);
+                sb.append(f.getName());
+                sb.append(&quot;\n&quot;);
+                k++;
+            }
+        }
+        Tool.sendMsg(channel, &quot;ls &quot; + sb.toString());
+    }
+
+    private void cd(Channel channel, String cmd) {
+        String dir = cmd.substring(3).trim();
+        if (dir.equals(&quot;..&quot;)) {
+            File f = new File(cpath);
+            f = f.getParentFile();
+            cpath = f.getAbsolutePath();
+            Tool.sendMsg(channel, &quot;new path &quot; + cpath);
+            ls(channel);
+        } else {
+            String path1 = cpath + File.separator + dir;
+            File f1 = new File(path1);
+            if (f1.exists()) {
+                cpath = path1;
+                Tool.sendMsg(channel, &quot;new path &quot; + cpath);
+                ls(channel);
+            } else {
+                Tool.sendMsg(channel, &quot;error, path not found&quot;);
+            }
+        }
+    }
+
+}
+</code></pre><p>客户端Handler：</p>
+<pre><code>public class ClientHandler extends SimpleChannelInboundHandler&lt;TransData&gt; {
+
+    private static Map&lt;Integer, String&gt; map = new HashMap();
+
+    Receiver receiver;
+
+    public static String getName(int i) {
+        return map.get(Integer.valueOf(i));
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        Tool.sendCmd(ctx.channel(), &quot;pwd&quot;);
+        Tool.sendCmd(ctx.channel(), &quot;ls&quot;);
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, TransData data) throws Exception {
+        TypeEnum type = data.getType();
+        if (type == TypeEnum.MSG) {
+            String msg = Tool.getMsg(data);
+            if (msg.startsWith(&quot;ls &quot;)) {
+                praseLs(msg);
+            } else if (msg.startsWith(&quot;msg &quot;)) {
+                System.out.println(msg.substring(4));
+            } else {
+                System.out.println(msg);
+            }
+        } else if (type == TypeEnum.DATA || type == TypeEnum.END) {
+            receiver.receiver(data);
+        } else if (type == TypeEnum.BEGIN) {
+            receiver = new Receiver(data);
+        } else {
+            System.out.println(Tool.getMsg(data));
+        }
+    }
+
+    private void praseLs(String msg) {
+        map.clear();
+        String ss = msg.substring(3).trim();
+        String[] paths = ss.split(&quot;\n&quot;);
+        for (String p : paths) {
+            p = p.trim();
+            String[] dd = p.split(&quot;/:/&quot;);
+            if (dd.length == 3) {
+                System.out.println(dd[0] + &quot; &quot; + dd[1] + &quot; &quot; + dd[2]);
+                map.put(Integer.valueOf(dd[0].trim()), dd[2].trim());
+            }
+        }
+    }
+
+}
+</code></pre><p>客户端启动：</p>
+<pre><code>public class TransClient {
+
+    private static TransClient client = new TransClient();
+    private String ip;
+    private int port;
+    private Channel channel = null;
+    private Thread t = new ClientThread();
+
+    private TransClient() {
+    }
+
+    public static TransClient instance() {
+        return client;
+    }
+
+    public void start(String ip, int port) {
+        if (t.isAlive()) {
+            return;
+        }
+        this.ip = ip;
+        this.port = port;
+        t.start();
+    }
+
+    public void readCmd() {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
+            String cmd = sc.nextLine().trim();
+            if (cmd.equalsIgnoreCase(&quot;exit&quot;)) {
+                channel.closeFuture();
+                return;
+            } else if (cmd.startsWith(&quot;get &quot;)) {
+                int i = Integer.valueOf(cmd.substring(4).trim());
+                cmd = &quot;get &quot; + ClientHandler.getName(i);
+            } else if (cmd.startsWith(&quot;cd &quot;)) {
+                String p = cmd;
+                p = p.substring(3).trim();
+                if (!p.equals(&quot;..&quot;)) {
+                    try {
+                        int i = Integer.valueOf(p);
+                        cmd = &quot;cd &quot; + ClientHandler.getName(i);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+            Tool.sendCmd(channel, cmd);
+        }
+    }
+
+    private class ClientThread extends Thread {
+        @Override
+        public void run() {
+            Bootstrap bootstrap = new Bootstrap();
+            EventLoopGroup group = new NioEventLoopGroup();
+            try {
+                bootstrap.group(group).channel(NioSocketChannel.class);
+                bootstrap.handler(new ChannelInitializer&lt;Channel&gt;() {
+                    @Override
+                    protected void initChannel(Channel ch) throws Exception {
+                        ChannelPipeline pipeline = ch.pipeline();
+                        ch.pipeline().addLast(new Decode());
+                        ch.pipeline().addLast(new Encode());
+                        pipeline.addLast(new ClientHandler());
+                    }
+                });
+                bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+
+                channel = bootstrap.connect(ip, port).sync().channel();
+                System.out.println(&quot;Trans Client connect to &quot; + ip + &quot;:&quot; + port);
+                channel.closeFuture().sync();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                group.shutdownGracefully();
+                System.out.println(&quot;Trans Client stoped.&quot;);
+            }
+        }
+    }
+
+}
+</code></pre><p>服务端启动：</p>
+<pre><code>public class TransServer {
+
+    private int port;
+    private static TransServer server = new TransServer();
+    private Thread t = new ServerThread();
+
+    private TransServer() {
+    }
+
+    public static TransServer instance() {
+        return server;
+    }
+
+    public void start(int port) {
+        this.port = port;
+        t.start();
+    }
+
+    private class ServerThread extends Thread {
+        @Override
+        public void run() {
+            EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+            EventLoopGroup workerGroup = new NioEventLoopGroup(1);
+            try {
+                ServerBootstrap bootstrap = new ServerBootstrap();
+                bootstrap.group(bossGroup, workerGroup)
+                        .channel(NioServerSocketChannel.class)
+                        .option(ChannelOption.SO_BACKLOG, 100)
+                        .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
+                            @Override
+                            protected void initChannel(SocketChannel ch) throws Exception {
+                                ch.pipeline().addLast(new Decode());
+                                ch.pipeline().addLast(new Encode());
+                                ch.pipeline().addLast(new ServerHandler());
+                            }
+                        });
+                ChannelFuture future = bootstrap.bind(port).sync();
+                System.out.println(&quot;Trans Server started, port: &quot; + port);
+                future.channel().closeFuture().sync();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println(&quot;Trans Server shuting down&quot;);
+                bossGroup.shutdownGracefully();
+                workerGroup.shutdownGracefully();
+            }
+        }
+    }
+
+}
+</code></pre><p>工具类，发送消息和数据。</p>
+<pre><code>public class Tool {
+
+    public static final Charset CHARSET = Charset.forName(&quot;UTF8&quot;);
+
+    public static void sendMsg(Channel ch, String msg) {
+        ByteBuffer bf = CHARSET.encode(msg);
+        ByteBuf bfn = Unpooled.copiedBuffer(bf);
+        TransData d = new TransData(TypeEnum.MSG, bfn);
+        ch.writeAndFlush(d);
+    }
+
+    public static void sendCmd(Channel ch, String msg) {
+        ByteBuffer bf = CHARSET.encode(msg);
+        ByteBuf bfn = Unpooled.copiedBuffer(bf);
+        TransData d = new TransData(TypeEnum.CMD, bfn);
+        ch.writeAndFlush(d);
+    }
+
+    public static String getMsg(TransData data) {
+        CharBuffer cb = CHARSET.decode(data.getData().nioBuffer());
+        return cb.toString().trim();
+    }
+
+
+    public static void sendBegin(Channel ch, String msg) {
+        ByteBuffer bf = CHARSET.encode(msg);
+        ByteBuf bfn = Unpooled.copiedBuffer(bf);
+        TransData d = new TransData(TypeEnum.BEGIN, bfn);
+        ch.writeAndFlush(d);
+    }
+
+    public static void sendData(Channel ch, ByteBuffer bf, int index) {
+        TransData data = new TransData();
+        data.setType(TypeEnum.DATA);
+        ByteBuf bfn = Unpooled.copiedBuffer(bf);
+        data.setData(bfn);
+        data.setIndex(index);
+        ch.writeAndFlush(data);
+    }
+
+    public static void sendEnd(Channel ch, int index) {
+        TransData data = new TransData(TypeEnum.END, Unpooled.EMPTY_BUFFER);
+        data.setIndex(index);
+        ch.writeAndFlush(data);
+    }
+
+    public static String size(long num) {
+        long m = 1 &lt;&lt; 20;
+        if (num / m == 0) {
+            return (num / 1024) + &quot;KB&quot;;
+        }
+        return num / m + &quot;MB&quot;;
+    }
+
+}
+</code></pre><p>配置读取类：</p>
+<pre><code>public class ConfigTool {
+
+    private static final String CONFIG_PATH = System.getProperty(&quot;user.dir&quot;) + File.separator + &quot;config&quot; + File.separator + &quot;app.properties&quot;;
+
+    private static Properties ppt = new Properties();
+
+    static {
+        try {
+            ppt.load(new FileInputStream(CONFIG_PATH));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void reload() {
+        ppt.clear();
+        try {
+            ppt.load(new FileInputStream(CONFIG_PATH));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getValue(String key) {
+        key = key.trim();
+        if (ppt.containsKey(key)) {
+            String value = ppt.getProperty(key).trim();
+            if (&quot;&quot;.equals(value)) {
+                return null;
+            }
+            return value;
+        }
+        return null;
+    }
+
+    public static int getInt(String key) {
+        String s = getValue(key);
+        return Integer.valueOf(s);
+    }
+
+}
+</code></pre><p>启动类：</p>
+<pre><code>public class CmdApp {
+
+    public static void main(String[] args) {
+
+        String mode = ConfigTool.getValue(&quot;mode&quot;);
+        String ip = ConfigTool.getValue(&quot;server.ip&quot;);
+        int port = ConfigTool.getInt(&quot;server.port&quot;);
+
+        if (mode == null) {
+            System.out.println(&quot;error&quot;);
+        } else if (mode.equals(&quot;server&quot;)) {
+            TransServer.instance().start(port);
+        } else if (mode.equals(&quot;client&quot;)) {
+            TransClient.instance().start(ip, port);
+            TransClient.instance().readCmd();
+        } else if (mode.equals(&quot;both&quot;)) {
+            TransServer.instance().start(port);
+            TransClient.instance().start(ip, port);
+            TransClient.instance().readCmd();
+        }
+
+    }
+}
+</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-file/">https://luangeng.space/post/java/netty/netty-file/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/db/redis/redis-command-string/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Redis命令</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/java/netty/netty-rpc/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Netty--RPC的原理和实现</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-rpc/" rel="bookmark" class="leancloud-count">Netty--RPC的原理和实现
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-protobuf/" rel="bookmark" class="leancloud-count">Netty--Google Protobuf编解码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-jdk/" rel="bookmark" class="leancloud-count">Netty--JDK序列化编解码传输对象
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-http/" rel="bookmark" class="leancloud-count">Netty--HTTP服务器原理和实现
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-tcpdecoder/" rel="bookmark" class="leancloud-count">Netty--TCP粘包和拆包
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-tcp/" rel="bookmark" class="leancloud-count">Netty--TCP协议发送和接收数据
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-servlet/" rel="bookmark" class="leancloud-count">Netty--简单实现一个Servlet容器
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/other/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="../../static/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="https://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="https://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-servlet/">Netty--简单实现一个Servlet容器</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-tcp/">Netty--TCP协议发送和接收数据</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-tcpdecoder/">Netty--TCP粘包和拆包</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-http/">Netty--HTTP服务器原理和实现</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-jdk/">Netty--JDK序列化编解码传输对象</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-protobuf/">Netty--Google Protobuf编解码</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-rpc/">Netty--RPC的原理和实现</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        
+
+        
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="../../static/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="../../../../static/js/highlight.pack.js"></script>
+<script src="../../../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="../../../../static/js/picturefill.min.js"></script>
+<script type="text/javascript" src="../../../../static/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="../../../../static/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="../../../../static/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

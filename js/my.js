@@ -1,7 +1,6 @@
 
 function init() {
     hljs.initHighlightingOnLoad();
-    //baidu();
     AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
     var Counter = AV.Object.extend("Counter");
     addCount(Counter);
@@ -12,20 +11,6 @@ function init() {
 
     $(window).scroll(function() { this.scrollY > 700 ? $("#back-to-top").show() : $("#back-to-top").hide(); });
     queryRanking();
-}
-
-//百度推送
-function baidu(){
-  var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
 }
 
 //给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。

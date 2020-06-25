@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 网络空间</title>
+    <title>Tags on Computer and Software Technology Open Course</title>
     <link>https://luangeng.space/tags/</link>
-    <description>Recent content in Tags on 网络空间</description>
+    <description>Recent content in Tags on Computer and Software Technology Open Course</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
@@ -193,20 +193,20 @@
     </item>
     
     <item>
+      <title>Java</title>
+      <link>https://luangeng.space/tags/Java/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/tags/Java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>练习题</title>
       <link>https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>java</title>
-      <link>https://luangeng.space/tags/java/</link>
-      <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://luangeng.space/tags/java/</guid>
       <description></description>
     </item>
     

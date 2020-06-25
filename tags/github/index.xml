@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>github on 网络空间</title>
+    <title>github on Computer and Software Technology Open Course</title>
     <link>https://luangeng.space/tags/github/</link>
-    <description>Recent content in github on 网络空间</description>
+    <description>Recent content in github on Computer and Software Technology Open Course</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2017. All rights reserved.</copyright>
@@ -14,10 +14,10 @@
     
     <item>
       <title>集成通过github登录网站功能</title>
-      <link>https://luangeng.space/post/2018/github_login/</link>
+      <link>https://luangeng.space/post/other/github_login/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/2018/github_login/</guid>
+      <guid>https://luangeng.space/post/other/github_login/</guid>
       <description>使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</description>
     </item>
     

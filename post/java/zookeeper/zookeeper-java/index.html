@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>zookeeper-Java API - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="zookeeper-Java API - Computer and Software Technology Open Course">
+  <meta name="description" content="zookeeper-Java API">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="zookeeper-Java API - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="zookeeper-Java API">
+  <meta property="og:title" content="zookeeper-Java API - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/java/zookeeper/zookeeper-java/" />
+  <meta property="og:description" content="Zookeeper&ndash;Java API及示例 zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/java/zookeeper/zookeeper-java/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/zookeeper/zookeeper-java/">
+  <link rel="shortcut icon" href="../../static/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="../../../../static/css/font-awesome.css">
+  <link rel="stylesheet" href="../../../../static/css/github.css">
+  <link rel="stylesheet" href="../../../../static/css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">zookeeper-Java API</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-05 · 1464 Words
+                                        
+                                        · Tags: zookeeper
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/java/zookeeper/zookeeper-java/" class="leancloud_visitors" data-flag-title="zookeeper-Java API">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <h2 id="zookeeper--java-api及示例">Zookeeper&ndash;Java API及示例</h2>
+<p>zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该类的接口来和服务器交互。</p>
+<p>主要接口如下：</p>
+<p><code>String create(String path, byte[] data, List&lt;ACL&gt; acl, CreateMode createMode)</code></p>
+<p>创建一个给定的目录节点path，并给它设置数据(所创建节点的父节点必须先存在)，CreateMode标识有4种形式的目录节点，分别是：</p>
+<ul>
+<li>
+<p>PERSISTENT：持久化节点，节点储存的数据不会丢失</p>
+</li>
+<li>
+<p>PERSISTENT_SEQUENTIAL：按顺序自动编号的持久化节点，根据已经存在的节点名自动加一，并返回该名称</p>
+</li>
+<li>
+<p>EPHEMERAL：临时节点，一旦创建该节点的客户端与服务端session超时，该节点自动删除。</p>
+</li>
+<li>
+<p>EPHEMERAL_SEQUENTAL:临时自动编号节点</p>
+</li>
+</ul>
+<hr>
+<p><code>Stat exists(String path, boolean watch)</code>   <code>Stat exists(String path, Watcher watcher)</code></p>
+<p>判断某个path是否存在，并设置是否监控这个目录节点，这个watcher是在创建zk示例时指定的watcher。</p>
+<p>重载方法可以指定特定的watcher</p>
+<hr>
+<p><code>void delete(String path, int version)</code></p>
+<p>删除path所对应的节点，version为-1时删除所有版本即删除节点的所有数据, 有子节点的节点需要先删除子节点，否则删除失败。</p>
+<hr>
+<p><code>List&lt;String&gt; getChilden(String path, boolean watch)</code></p>
+<p>获取path下所有的子节点，同样有一个指定watcher的重载方法</p>
+<hr>
+<p><code>Stat setData(String path, byte[] data, int version)</code></p>
+<p>给path设置数据，可以指定数据的版本号，如果version为-1则匹配所有版本</p>
+<hr>
+<p><code>byte[] getData(String path, boolean watch, Stat stat)</code></p>
+<p>获取这个path对应节点的数据，数据的版本可以通过stat来指定，watch为设置是否监控该节点的状态</p>
+<hr>
+<p><code>void addAuthInfo(String scheme, byte[] auth)</code></p>
+<p>客户端将自己的授权信息提交给服务器，服务器将根据授权信息检查客户端的访问权限</p>
+<hr>
+<p><code>Stat setACL(String path, List&lt;ACL&gt; acl, int version)</code></p>
+<p>给节点重新设置访问权限，zk中节点的权限不具有继承性。ACL由perms和Id组成，Perms由ALL, READ, WRITE, CREATE, DELETE, ADMIN几种。</p>
+<p>ID标识了访问目录节点的身份列表，有ANYONE_ID_UNSAFE=new Id(&ldquo;world&rdquo;,&ldquo;anyone&rdquo;)  AUTH_IDS=new Id(&ldquo;auth&rdquo;,&quot;&quot;)</p>
+<hr>
+<p><code>List&lt;ACL&gt; getACL(String path, Stat stat)</code></p>
+<p>获取某个目录节点的访问权限列表</p>
+<hr>
+<p>示例：</p>
+<pre><code>public class ZnodeTest {
+
+    // 会话超时时间
+    private static final int SESSION_TIMEOUT = 30000;
+
+    // 创建 ZooKeeper 实例
+    ZooKeeper zk;
+
+    // 创建 Watcher 实例
+    Watcher wh = new Watcher() {
+        public void process(WatchedEvent event) {
+            System.out.println(&quot;监控到：&quot; + event.getType());
+        }
+    };
+
+    // 初始化 ZooKeeper 实例
+    private void createZKInstance() throws IOException {
+        zk = new ZooKeeper(&quot;localhost&quot;, ZnodeTest.SESSION_TIMEOUT, this.wh);
+    }
+
+    private void ZKOperations() throws IOException, InterruptedException, KeeperException {
+        List&lt;String&gt; level2 = zk.getChildren(&quot;/&quot;, false);
+        for (String s : level2) {
+            System.out.println(&quot;level2:&quot; + s);
+        }
+        rDelete(&quot;/zoo&quot;);
+
+        System.out.println(&quot;创建节点zoo&quot;);
+        zk.create(&quot;/zoo&quot;, &quot;zoo data&quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+
+        System.out.println(&quot;创建子节点keep&quot;);
+        zk.create(&quot;/zoo/keep&quot;, &quot;keep data&quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+        zk.create(&quot;/zoo/keep&quot;, &quot;keep data&quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
+
+        System.out.println(&quot;查看是否创建成功： &quot; + new String(zk.getData(&quot;/zoo&quot;, false, null)));
+
+        System.out.println(&quot;修改节点数据 &quot;);
+        zk.setData(&quot;/zoo&quot;, &quot;zoo data update&quot;.getBytes(), -1);
+
+        System.out.println(&quot;查看是否修改成功： &quot; + new String(zk.getData(&quot;/zoo&quot;, false, null)));
+
+        System.out.println(&quot;查看子节点&quot;);
+        List&lt;String&gt; keeps = zk.getChildren(&quot;/zoo&quot;, false);
+        for (String s : keeps) {
+            System.out.println(&quot;keeps:&quot; + s);
+        }
+
+        System.out.println(&quot;删除节点 &quot;);
+        rDelete(&quot;/zoo&quot;);
+
+        System.out.println(&quot;查看节点是否被删除： &quot; + zk.exists(&quot;/zoo&quot;, false));
+
+    }
+
+    private void rDelete(String path) throws KeeperException, InterruptedException {
+        if (zk.exists(path, false) == null) {
+            return;
+        }
+        List&lt;String&gt; ls = zk.getChildren(path, false);
+        for (String s : ls) {
+            rDelete(path + &quot;/&quot; + s);
+        }
+        zk.delete(path, -1);
+    }
+
+    private void rCreate(String path){
+
+    }
+
+    private void ZKClose() throws InterruptedException {
+        zk.close();
+    }
+
+
+    public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
+        ZnodeTest dm = new ZnodeTest();
+        dm.createZKInstance();
+        dm.ZKOperations();
+        dm.ZKClose();
+    }
+
+}
+</code></pre><p>输出：</p>
+<pre><code>监控到：None
+level2:zookeeper
+创建节点zoo
+创建子节点keep
+查看是否创建成功： zoo data
+修改节点数据
+查看是否修改成功： zoo data update
+查看子节点
+keeps:keep0000000001
+keeps:keep0000000000
+删除节点
+查看节点是否被删除： null
+</code></pre><p>递归删除节点及其子节点：</p>
+<pre><code>private void rDelete(String path) throws KeeperException, InterruptedException {
+        if (zk.exists(path, false) == null) {
+            return;
+        }
+        List&lt;String&gt; ls = zk.getChildren(path, false);
+        for (String s : ls) {
+            rDelete(path + &quot;/&quot; + s);
+        }
+        zk.delete(path, -1);
+    }
+</code></pre><p>参考：</p>
+<p><a href="http://zookeeper.apache.org/doc/r3.2.2/api/org/apache/zookeeper/ZooKeeper.html#create%28java.lang.String,%20byte%5B%5D,%20java.util.List,%20org.apache.zookeeper.CreateMode%29">http://zookeeper.apache.org/doc/r3.2.2/api/org/apache/zookeeper/ZooKeeper.html#create%28java.lang.String,%20byte%5B%5D,%20java.util.List,%20org.apache.zookeeper.CreateMode%29</a></p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-java/">https://luangeng.space/post/java/zookeeper/zookeeper-java/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/db/mysql/mysql-type/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Mysql常用数据类型</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/java/spring/spring-jpa/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>使用Spring Boot 和Spring Data JPA访问mysql数据库</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/java/zookeeper/zookeeper-cmd/" rel="bookmark" class="leancloud-count">zookeeper-安装及命令
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/zookeeper/zookeeper-base/" rel="bookmark" class="leancloud-count">zookeeper-基本概念
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/other/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="../../static/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="https://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="https://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/zookeeper/zookeeper-base/">zookeeper-基本概念</a></li>
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/zookeeper/zookeeper-cmd/">zookeeper-安装及命令</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/zookeeper/zookeeper-watch/">zookeeper-Watcher</a></li>
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/zookeeper/zookeeper-config/">zookeeper-配置服务</a></li>
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/zookeeper/zookeeper-cluster/">zookeeper-集群管理</a></li>
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/zookeeper/zookeeper-lock/">zookeeper-分布式锁和消息队列</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        
+
+        
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="../../static/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="../../../../static/js/highlight.pack.js"></script>
+<script src="../../../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="../../../../static/js/picturefill.min.js"></script>
+<script type="text/javascript" src="../../../../static/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="../../../../static/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="../../../../static/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Netty--RPC的原理和实现 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Netty--RPC的原理和实现 - Computer and Software Technology Open Course">
+  <meta name="description" content="Netty--RPC的原理和实现">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="Netty--RPC的原理和实现 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Netty--RPC的原理和实现">
+  <meta property="og:title" content="Netty--RPC的原理和实现 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/java/netty/netty-rpc/" />
+  <meta property="og:description" content="RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/java/netty/netty-rpc/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/netty/netty-rpc/">
+  <link rel="shortcut icon" href="../../static/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="../../../../static/css/font-awesome.css">
+  <link rel="stylesheet" href="../../../../static/css/github.css">
+  <link rel="stylesheet" href="../../../../static/css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Netty--RPC的原理和实现</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-18 · 2503 Words
+                                        
+                                        · Tags: netty
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/java/netty/netty-rpc/" class="leancloud_visitors" data-flag-title="Netty--RPC的原理和实现">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调用本地的方法一样。</p>
+<p>以下为一个简单的RPC框架实现，使用Netty作为通信底层实现，发送和接收Java对象；使用zookeeper做服务中心，本机调试时可不启用。</p>
+<p>工程结构如下：</p>
+<p>其中common为client端和server端共同需要的，定义RPC请求、应答结构</p>
+<p>RpcRequest， 用于封装client期望的类名和方法名，以及调用该方法所需参数的类型和值。Id唯一标识每一个Request</p>
+<pre><code>public class RpcRequest implements Serializable {
+    private Long id;
+    private String className;
+    private String methodName;
+    private Class&lt;?&gt;[] parameterTypes;
+    private Object[] parameters;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public Class&lt;?&gt;[] getParameterTypes() {
+        return parameterTypes;
+    }
+
+    public void setParameterTypes(Class&lt;?&gt;[] parameterTypes) {
+        this.parameterTypes = parameterTypes;
+    }
+
+    public Object[] getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(Object[] parameters) {
+        this.parameters = parameters;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;RpcRequest{&quot; +
+                &quot;requestId='&quot; + id + '\'' +
+                &quot;, className='&quot; + className + '\'' +
+                &quot;, methodName='&quot; + methodName + '\'' +
+                &quot;, parameterTypes=&quot; + Arrays.toString(parameterTypes) +
+                &quot;, parameters=&quot; + Arrays.toString(parameters) +
+                '}';
+    }
+}
+</code></pre><p>RpcResponse， 封装调用方法返回的结果或异常；Id为对应Request的Id，一一对应。</p>
+<pre><code>public class RpcResponse implements Serializable {
+    private Long id;
+    private Exception exception;
+    private Object result;
+
+    public Object getResult() throws Exception {
+        if (this.exception != null) {
+            throw this.exception;
+        }
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Exception getException() {
+        return exception;
+    }
+
+    public void setException(Exception exception) {
+        this.exception = exception;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;RpcResponse{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, exception=&quot; + exception +
+                &quot;, result=&quot; + result +
+                '}';
+    }
+}
+</code></pre><p>ResponseHolder， 持有RpcResponse对象，提供等待结果返回从而阻塞获取的特性</p>
+<pre><code>public class ResponseHolder {
+    private RpcResponse response;
+
+    public void setResponse(RpcResponse response) {
+        this.response = response;
+        synchronized (this) {
+            notify();
+        }
+    }
+
+    public RpcResponse getResponse() throws Exception {
+        synchronized (this) {
+            wait(10000);
+        }
+        return response;
+    }
+
+    public RpcResponse getResponse(long timeout) throws Exception {
+        synchronized (this) {
+            wait(timeout);
+        }
+        return response;
+    }
+}
+</code></pre><p>服务端</p>
+<p>RpcServer， 在独立的线程中启动Netty，初始化拆包和序列化反序列化handler</p>
+<pre><code>public class RpcServer extends Thread {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RpcServer.class);
+
+    private static boolean start = false;
+
+    private static RpcServer server = new RpcServer();
+
+    private RpcServer() {
+    }
+
+    public static void startUp() {
+        if (start) {
+            LOGGER.info(&quot;Server already startup.&quot;);
+            return;
+        }
+        server.start();
+    }
+
+    private static void bind(int port) {
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = new NioEventLoopGroup(4);
+        try {
+            ServerBootstrap bootstrap = new ServerBootstrap();
+            bootstrap.group(bossGroup, workerGroup);
+            bootstrap.channel(NioServerSocketChannel.class);
+            bootstrap.option(ChannelOption.SO_BACKLOG, 128);
+            bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
+            bootstrap.childHandler(new MyChannelInitializer());
+
+            ChannelFuture future = bootstrap.bind(port).sync();
+            LOGGER.info(&quot;server started on port:&quot; + port);
+            start = true;
+            future.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
+        }
+    }
+
+    public static void shutDown() {
+        start = false;
+    }
+
+    @Override
+    public void run() {
+        int port = 8080;
+        bind(port);
+    }
+
+    private static class MyChannelInitializer extends ChannelInitializer&lt;SocketChannel&gt; {
+        @Override
+        public void initChannel(SocketChannel channel) throws Exception {
+            channel.pipeline()
+                    .addLast(new LengthFieldBasedFrameDecoder(65535, 0, 4, 0, 4))
+                    .addLast(new ObjectDecoder(ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())))
+                    .addLast(new LengthFieldPrepender(4))
+                    .addLast(new ObjectEncoder())
+                    .addLast(new ServerHandler());
+        }
+    }
+
+}
+</code></pre><p>ServerHandle， 接收Request请求并通过反射调用相应的方法，将结果或异常设置到Response对象并返回</p>
+<pre><code>public class ServerHandler extends SimpleChannelInboundHandler&lt;RpcRequest&gt; {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServerHandler.class);
+
+    @Override
+    public void channelRead0(final ChannelHandlerContext ctx, RpcRequest request) throws Exception {
+        RpcResponse response = new RpcResponse();
+        LOGGER.info(&quot;server read:&quot; + request.toString());
+        response.setId(request.getId());
+        try {
+            Object result = invoke(request);
+            response.setResult(result);
+        } catch (Exception e) {
+            response.setException(e);
+        }
+        ctx.writeAndFlush(response);
+        LOGGER.info(&quot;server send:&quot; + response.toString());
+    }
+
+    public Object invoke(RpcRequest request) throws Exception {
+        String classname = request.getClassName();
+        String methodname = request.getMethodName();
+        Class[] parameterTypes = request.getParameterTypes();
+        Object[] parameters = request.getParameters();
+
+        Object o = ServiceMng.getService(classname);
+        Class clazz = o.getClass();
+        Method method = clazz.getMethod(methodname, parameterTypes);
+        Object result = method.invoke(o, parameters);
+        return result;
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        LOGGER.error(&quot;server caught exception&quot;, cause);
+        ctx.close();
+    }
+}
+</code></pre><p>RpcClass， 标识为服务类的注解</p>
+<pre><code>@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Component
+public @interface RpcClass {
+    Class&lt;?&gt; value();
+}
+</code></pre><p>ServeiceMng， 注册和获取服务类，通过Spring扫描，缓存接口名称和服务对象的映射</p>
+<pre><code>@Service
+public class ServiceMng implements ApplicationContextAware {
+
+    private static ApplicationContext context;
+
+    //所有提供的服务
+    private static Map&lt;String, Object&gt; serviceMap = new HashMap&lt;&gt;();
+
+    public static Object getService(String name) {
+        return serviceMap.get(name);
+    }
+
+    public static &lt;T&gt; T getBean(Class&lt;T&gt; clazz) {
+        return context.getBean(clazz);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        context = applicationContext;
+        Map&lt;String, Object&gt; beansMap = context.getBeansWithAnnotation(RpcClass.class);
+        for (Map.Entry entry : beansMap.entrySet()) {
+            String interfaceName = entry.getValue().getClass().getAnnotation(RpcClass.class).value().getName();
+            serviceMap.put(interfaceName, entry.getValue());
+        }
+        if (!serviceMap.isEmpty()) {
+            //ServiceCenter.register(&quot;DemoService&quot;, IPUtil.getLoaclIP()+&quot;8080&quot;);
+            RpcServer.startUp();
+        }
+    }
+
+}
+</code></pre><p>服务类和接口：</p>
+<pre><code>public interface DemoService {
+
+    String hello(String name);
+
+    String hello(String msg, String name);
+
+    Pojo test(Pojo pojo);
+}
+</code></pre><pre><code>@RpcClass(DemoService.class)
+@Service
+public class DemoServiceImpl implements DemoService {
+
+    @Override
+    public String hello(String name) {
+        return &quot;Hello! &quot; + name;
+    }
+
+    @Override
+    public String hello(String msg, String name) {
+        return msg + name;
+    }
+
+    @Override
+    public Pojo test(Pojo pojo) {
+        pojo.setId(-pojo.getId());
+        pojo.setName(pojo.getName().toUpperCase());
+        pojo.setMan(!pojo.isMan());
+        pojo.getList().add(&quot;last&quot;);
+        return pojo;
+    }
+
+}
+</code></pre><p>客户端</p>
+<p>RpcClient， 封装一个client与server的tcp连接，并缓存服务端地址和该连接的映射</p>
+<pre><code>public class RpcClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RpcClient.class);
+
+    //已连接主机的缓存
+    private static Map&lt;String, RpcClient&gt; clientMap = new HashMap&lt;String, RpcClient&gt;();
+
+    private Channel channel;
+
+    private EventLoopGroup group;
+
+    private String ip;
+
+    private int port;
+
+    private RpcClient(String ip, int port) {
+        this.ip = ip;
+        this.port = port;
+    }
+
+    public static RpcClient getConnect(String host, int port) throws InterruptedException {
+        if (clientMap.containsKey(host + port)) {
+            return clientMap.get(host + port);
+        }
+        RpcClient con = connect(host, port);
+        clientMap.put(host + port, con);
+        return con;
+    }
+
+    private static RpcClient connect(String host, int port) throws InterruptedException {
+        RpcClient client = new RpcClient(host, port);
+
+        EventLoopGroup group = new NioEventLoopGroup();
+        Bootstrap bootstrap = new Bootstrap();
+        bootstrap.group(group);
+        bootstrap.channel(NioSocketChannel.class);
+        bootstrap.option(ChannelOption.SO_KEEPALIVE, true);
+        bootstrap.handler(new ChannelInitializer&lt;SocketChannel&gt;() {
+            @Override
+            public void initChannel(SocketChannel channel) throws Exception {
+                channel.pipeline()
+                        .addLast(new LengthFieldBasedFrameDecoder(65535, 0, 4, 0, 4))
+                        .addLast(new ObjectDecoder(ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())))
+                        .addLast(new LengthFieldPrepender(4))
+                        .addLast(new ObjectEncoder())
+                        .addLast(new ClientHandler());
+            }
+        });
+
+        ChannelFuture future = bootstrap.connect(host, port).sync();
+        LOGGER.info(&quot;client connect to &quot; + host + &quot;:&quot; + port);
+        Channel c = future.channel();
+
+        client.setChannel(c);
+        client.setGroup(group);
+        return client;
+    }
+
+    public RpcResponse invoke(RpcRequest request) throws Exception {
+        ClientHandler handle = channel.pipeline().get(ClientHandler.class);
+        Assert.notNull(handle);
+        return handle.invoke(request);
+    }
+
+    public void closeConnect() {
+        this.group.shutdownGracefully();
+    }
+
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
+
+    public void setGroup(EventLoopGroup group) {
+        this.group = group;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+}
+</code></pre><p>Clienthandler， 发送请求和接收Server端的回应，其中responseMap对象在丢失大量连接的情况下会导致内存溢出，暂未解决</p>
+<pre><code>public class ClientHandler extends SimpleChannelInboundHandler&lt;RpcResponse&gt; {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClientHandler.class);
+
+    private Channel channel;
+
+    //request Id 与 response的映射
+    private Map&lt;Long, ResponseHolder&gt; responseMap = new ConcurrentHashMap&lt;Long, ResponseHolder&gt;();
+
+    @Override
+    public void channelRead0(ChannelHandlerContext ctx, RpcResponse response) throws Exception {
+        ResponseHolder holder = responseMap.get(response.getId());
+        if (holder != null) {
+            responseMap.remove(response.getId());
+            holder.setResponse(response);
+        }
+    }
+
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        super.channelRegistered(ctx);
+        channel = ctx.channel();
+    }
+
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        LOGGER.error(&quot;exceptionCaught&quot;, cause);
+        ctx.close();
+    }
+
+    public RpcResponse invoke(RpcRequest request) throws Exception {
+        ResponseHolder holder = new ResponseHolder();
+        responseMap.put(request.getId(), holder);
+        channel.writeAndFlush(request);
+        return holder.getResponse();
+    }
+
+}
+</code></pre><p>RpcProxy， 通过动态代理封装Request对象的构建和与服务端的连接，然后发送请求，等待反馈结果</p>
+<pre><code>public class RpcProxy implements InvocationHandler {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RpcProxy.class);
+
+    private static AtomicLong id = new AtomicLong(0);
+
+    private RpcClient client = null;
+
+    public static &lt;T&gt; T get(Class&lt;?&gt; interfaceClass) {
+        return (T) Proxy.newProxyInstance(
+                interfaceClass.getClassLoader(),
+                new Class&lt;?&gt;[]{interfaceClass},
+                new RpcProxy()
+        );
+    }
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        RpcRequest request = new RpcRequest();
+        request.setId(id.incrementAndGet());
+        request.setClassName(method.getDeclaringClass().getName());
+        request.setMethodName(method.getName());
+        request.setParameterTypes(method.getParameterTypes());
+        request.setParameters(args);
+
+        if (client == null) {
+            client = RpcClient.getConnect(&quot;localhost&quot;, 8080);
+        }
+        RpcResponse r = client.invoke(request);
+        return r.getResult();
+    }
+
+    public void close() {
+        this.client.closeConnect();
+    }
+}
+</code></pre><p>Zookeeper服务中心</p>
+<p>ServiceCenter， Server端用来注册一个服务，Client端用来获取可用Server端的地址</p>
+<pre><code>public class ServiceCenter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceCenter.class);
+
+    private static final String APPS_PATH = &quot;/__apps__&quot;;
+    private static ZooKeeper zk;
+
+    private static void connect() throws InterruptedException, KeeperException, IOException {
+        if (zk != null) {
+            return;
+        }
+        CountDownLatch latch = new CountDownLatch(1);
+        //服务中心地址，从配置文件读取
+        String serverCenterAddress = &quot;localhost&quot;;
+
+        zk = new ZooKeeper(serverCenterAddress, 30000, null);
+        latch.await();
+        if (zk.exists(APPS_PATH, false) == null) {
+            zk.create(APPS_PATH, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+        }
+    }
+
+    public static void register(String serviceName, String address) {
+        try {
+            connect();
+            if (zk.exists(APPS_PATH + &quot;/&quot; + serviceName, false) == null) {
+                zk.create(APPS_PATH + &quot;/&quot; + serviceName, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+            }
+            String path = zk.create(APPS_PATH + &quot;/&quot; + serviceName + &quot;/&quot;, address.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (KeeperException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String queryService(String serviceName) throws KeeperException, InterruptedException {
+        List&lt;String&gt; apps = zk.getChildren(APPS_PATH + &quot;/&quot; + serviceName, false);
+        if (apps.isEmpty()) {
+            return null;
+        }
+        //Collections.sort(apps);
+        byte[] data = zk.getData(apps.get(0), false, null);
+        return new String(data);
+    }
+
+}
+</code></pre><p>测试代码：</p>
+<p>POJO</p>
+<pre><code>public class Pojo implements Serializable {
+
+    private int id;
+
+    private String name;
+
+    private Date birth;
+
+    private boolean man;
+
+    private List&lt;String&gt; list;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    。。。
+
+    @Override
+    public String toString() {
+        return &quot;Pojo{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                &quot;, birth=&quot; + birth +
+                &quot;, man=&quot; + man +
+                &quot;, list=&quot; + list +
+                '}';
+    }
+}
+</code></pre><p>RpcTest</p>
+<pre><code>public class RpcTest {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RpcTest.class);
+
+    public static void main(String[] args) throws InterruptedException {
+
+        //
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;rpcApplication.xml&quot;);
+
+        //
+        DemoService demoService = RpcProxy.get(DemoService.class);
+
+        for (int i = 0; i &lt; 100; i++) {
+
+            String result = demoService.hello(&quot;luangeng&quot; + i);
+            LOGGER.info(&quot;result: &quot; + result);
+
+            result = demoService.hello(&quot;你好，&quot;, &quot;luangeng&quot; + i);
+            LOGGER.info(&quot;result: &quot; + result);
+
+            Pojo p = new Pojo();
+            p.setId(i);
+            p.setName(&quot;luanegng&quot; + i);
+            p.setMan(true);
+            p.setBirth(new Date());
+            p.setList(new ArrayList&lt;&gt;());
+            p.getList().add(&quot;pojo&quot; + i);
+            Pojo p2 = demoService.test(p);
+            LOGGER.info(p2.toString());
+            LOGGER.info(&quot; &quot;);
+        }
+
+    }
+}
+</code></pre><p>输出结果：</p>
+<pre><code>2017-12-02 19:34:33,887 INFO [com.luangeng.rpc.test.RpcTest] - result: Hello! luangeng0
+2017-12-02 19:34:33,889 INFO [com.luangeng.rpc.test.RpcTest] - result: 你好，luangeng0
+2017-12-02 19:34:33,894 INFO [com.luangeng.rpc.test.RpcTest] - Pojo{id=0, name='LUANEGNG0', birth=Sat Dec 02 19:34:33 CST 2017, man=false, list=[pojo0, last]}
+2017-12-02 19:34:33,894 INFO [com.luangeng.rpc.test.RpcTest] -
+2017-12-02 19:34:33,896 INFO [com.luangeng.rpc.test.RpcTest] - result: Hello! luangeng1
+2017-12-02 19:34:33,898 INFO [com.luangeng.rpc.test.RpcTest] - result: 你好，luangeng1
+2017-12-02 19:34:33,900 INFO [com.luangeng.rpc.test.RpcTest] - Pojo{id=-1, name='LUANEGNG1', birth=Sat Dec 02 19:34:33 CST 2017, man=false, list=[pojo1, last]}
+2017-12-02 19:34:33,900 INFO [com.luangeng.rpc.test.RpcTest] -
+2017-12-02 19:34:33,902 INFO [com.luangeng.rpc.test.RpcTest] - result: Hello! luangeng2
+2017-12-02 19:34:33,903 INFO [com.luangeng.rpc.test.RpcTest] - result: 你好，luangeng2
+2017-12-02 19:34:33,905 INFO [com.luangeng.rpc.test.RpcTest] - Pojo{id=-2, name='LUANEGNG2', birth=Sat Dec 02 19:34:33 CST 2017, man=false, list=[pojo2, last]}
+2017-12-02 19:34:33,905 INFO [com.luangeng.rpc.test.RpcTest] -
+2017-12-02 19:34:33,906 INFO [com.luangeng.rpc.test.RpcTest] - result: Hello! luangeng3
+2017-12-02 19:34:33,908 INFO [com.luangeng.rpc.test.RpcTest] - result: 你好，luangeng3
+2017-12-02 19:34:33,910 INFO [com.luangeng.rpc.test.RpcTest] - Pojo{id=-3, name='LUANEGNG3', birth=Sat Dec 02 19:34:33 CST 2017, man=false, list=[pojo3, last]}
+</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-rpc/">https://luangeng.space/post/java/netty/netty-rpc/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/java/netty/netty-file/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Netty--使用TCP协议传输文件</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/java/netty/netty-protobuf/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Netty--Google Protobuf编解码</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-protobuf/" rel="bookmark" class="leancloud-count">Netty--Google Protobuf编解码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-jdk/" rel="bookmark" class="leancloud-count">Netty--JDK序列化编解码传输对象
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-http/" rel="bookmark" class="leancloud-count">Netty--HTTP服务器原理和实现
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-tcpdecoder/" rel="bookmark" class="leancloud-count">Netty--TCP粘包和拆包
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-tcp/" rel="bookmark" class="leancloud-count">Netty--TCP协议发送和接收数据
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/java/netty/netty-servlet/" rel="bookmark" class="leancloud-count">Netty--简单实现一个Servlet容器
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/other/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="../../static/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="https://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="https://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-servlet/">Netty--简单实现一个Servlet容器</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-tcp/">Netty--TCP协议发送和接收数据</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-tcpdecoder/">Netty--TCP粘包和拆包</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-http/">Netty--HTTP服务器原理和实现</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-jdk/">Netty--JDK序列化编解码传输对象</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-protobuf/">Netty--Google Protobuf编解码</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/netty/netty-file/">Netty--使用TCP协议传输文件</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        
+
+        
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="../../static/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="../../../../static/js/highlight.pack.js"></script>
+<script src="../../../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="../../../../static/js/picturefill.min.js"></script>
+<script type="text/javascript" src="../../../../static/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="../../../../static/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="../../../../static/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

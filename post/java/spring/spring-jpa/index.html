@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>使用Spring Boot 和Spring Data JPA访问mysql数据库 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="使用Spring Boot 和Spring Data JPA访问mysql数据库 - Computer and Software Technology Open Course">
+  <meta name="description" content="使用Spring Boot 和Spring Data JPA访问mysql数据库">
+  <meta name="author" content="luangeng">
+  <meta name="generator" content="http://gohugo.io/"/>
+  <meta itemprop="name" content="使用Spring Boot 和Spring Data JPA访问mysql数据库 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="使用Spring Boot 和Spring Data JPA访问mysql数据库">
+  <meta property="og:title" content="使用Spring Boot 和Spring Data JPA访问mysql数据库 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/java/spring/spring-jpa/" />
+  <meta property="og:description" content="在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/java/spring/spring-jpa/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/spring/spring-jpa/">
+  <link rel="shortcut icon" href="../../static/img/favicon.ico"/>
+
+  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
+  <link rel="stylesheet" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" href="../../../../static/css/font-awesome.css">
+  <link rel="stylesheet" href="../../../../static/css/github.css">
+  <link rel="stylesheet" href="../../../../static/css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/teach/">教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>学习笔记</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">使用Spring Boot 和Spring Data JPA访问mysql数据库</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2017-09-05 · 1981 Words
+                                        
+                                        · Tags: springboot
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/java/spring/spring-jpa/" class="leancloud_visitors" data-flag-title="使用Spring Boot 和Spring Data JPA访问mysql数据库">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使用ORM框架，比如：Hibernate，
+通过整合Hibernate，解决抽象各个Java实体基本的“增删改查”操作，通常会以泛型的方式封装一个模板Dao来进行抽象简化，
+那些具体的Dao实现完全就是对模板Dao的简单代理，Spring-data-jpa正可以完成这一项工作。</p>
+<p>JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。
+他的出现主要是为了简化现有的持久化开发工作和整合ORM技术，结束现在Hibernate，TopLink，JDO等ORM框架各自为营的局面。
+Spring Data JPA 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架，可使开发者用极简的代码即可实现对数据的访问和操作。
+它提供了包括增删改查等在内的常用实现，并支持扩展，使用 Spring Data JPA 可以极大提高开发效率。</p>
+<p>1.新建Spring Boot项目，</p>
+<p>2.添加spring jpa依赖</p>
+<pre><code>        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre><p>3.添加User实体类</p>
+<pre><code>@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    private Integer age;
+
+    protected User(){
+    }
+
+    public User(String name, int age)
+    {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+}
+</code></pre><hr>
+<p>4.添加配置文件</p>
+<pre><code>spring.jpa.hibernate.ddl-auto=create
+
+spring.datasource.url=jdbc:mysql://localhost:3306/lgtest
+spring.datasource.username=root
+spring.datasource.password=pwd
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.hibernate.ddl-auto值可以是none, update, create, create-drop，根据Hibernate的说明，他们的意义如下：
+</code></pre><p>none： 表示Hibernate不改变表结构</p>
+<p>update： Hibernate会根据Entity修改表结构</p>
+<p>create： Hibernate每次加载都创建表，但是SessionFactory关闭时不drop表</p>
+<p>create-drop： Hibernate每次加载都创建表，SessionFactory关闭时drop表</p>
+<p>所以第一次运行时应该选择Create，之后应该选择为update或none。</p>
+<p>内存数据库如H2的默认值为create-drop，MySql默认值为none。</p>
+<p>5.创建数据访问接口</p>
+<pre><code>public interface UserRepository extends CrudRepository&lt;User, Long&gt; {
+
+    List&lt;User&gt; findByName(String name);
+
+    @Modifying
+    @Query(&quot;update User u set u.name = ?1 where u.id = ?2&quot;)
+    int modifyByIdAndUserId(String name, Long id);
+
+    @Transactional(timeout = 10)
+    @Modifying
+    @Query(&quot;delete from User where name = ?1&quot;)
+    void deleteByUserName(String name);
+
+}
+</code></pre><p>JpaRepository接口本身已经实现了创建（save）、更新（save）、删除（delete）、查询（findAll、findOne）等基本操作的函数，因此对于这些基础操作的数据访问就不需要开发者再自己定义。</p>
+<p>6.创建一个controller做测试</p>
+<pre><code>@RestController
+@RequestMapping(&quot;/user&quot;)
+public class UserController {
+
+    @Resource
+    private UserRepository repository;
+
+    @RequestMapping(&quot;/add&quot;)
+    public User addUser(@RequestParam(value=&quot;name&quot;)String name, @RequestParam(value=&quot;age&quot;)Integer age) {
+        return repository.save(new User(name, age));
+    }
+
+    @RequestMapping(&quot;/delete&quot;)
+    public void delete(@RequestParam(value=&quot;id&quot;)Long id) {
+        repository.delete(id);
+    }
+
+    @RequestMapping(&quot;/queryAll&quot;)
+    public List&lt;User&gt; queryAll() {
+        return (List&lt;User&gt;) repository.findAll();
+    }
+
+    @RequestMapping(&quot;/queryById&quot;)
+    public User queryById(@RequestParam(value=&quot;id&quot;)Long id) {
+        return  repository.findOne(id);
+    }
+
+    @RequestMapping(&quot;/queryByName&quot;)
+    public List&lt;User&gt; queryByName(@RequestParam(value=&quot;name&quot;)String name) {
+        return repository.findByName(name);
+    }
+
+}
+</code></pre><p>启动即可调试。</p>
+<p>补充：</p>
+<p>自定义简单查询
+自定义的简单查询就是根据方法名来自动生成SQL，支持findBy,readBy,queryBy,countBy, getBy，deleteBy后面加属性名称</p>
+<p>如User findByUserName(String userName);</p>
+<p>可以组合And、 Or，如 User findByUserNameOrEmail(String username, String email);</p>
+<p>可以组合LIKE、 IgnoreCase、 OrderBy如：</p>
+<p><code>List&lt;User&gt; findByEmailLike(String email);</code></p>
+<p><code>User findByUserNameIgnoreCase(String userName);</code></p>
+<p><code>List&lt;User&gt; findByUserNameOrderByEmailDesc(String email);</code></p>
+<pre><code>Keyword	Sample	JPQL snippet
+And	findByLastnameAndFirstname	… where x.lastname = ?1 and x.firstname = ?2
+Or	findByLastnameOrFirstname	… where x.lastname = ?1 or x.firstname = ?2
+Is,Equals	findByFirstnameIs,findByFirstnameEquals	… where x.firstname = ?1
+Between	findByStartDateBetween	… where x.startDate between ?1 and ?2
+LessThan	findByAgeLessThan	… where x.age &lt; ?1
+LessThanEqual	findByAgeLessThanEqual	… where x.age ⇐ ?1
+GreaterThan	findByAgeGreaterThan	… where x.age &gt; ?1
+GreaterThanEqual	findByAgeGreaterThanEqual	… where x.age &gt;= ?1
+After	findByStartDateAfter	… where x.startDate &gt; ?1
+Before	findByStartDateBefore	… where x.startDate &lt; ?1
+IsNull	findByAgeIsNull	… where x.age is null
+IsNotNull,NotNull	findByAge(Is)NotNull	… where x.age not null
+Like	findByFirstnameLike	… where x.firstname like ?1
+NotLike	findByFirstnameNotLike	… where x.firstname not like ?1
+StartingWith	findByFirstnameStartingWith	… where x.firstname like ?1 (parameter bound with appended %)
+EndingWith	findByFirstnameEndingWith	… where x.firstname like ?1 (parameter bound with prepended %)
+Containing	findByFirstnameContaining	… where x.firstname like ?1 (parameter bound wrapped in %)
+OrderBy	findByAgeOrderByLastnameDesc	… where x.age = ?1 order by x.lastname desc
+Not	findByLastnameNot	… where x.lastname &lt;&gt; ?1
+In	findByAgeIn(Collection ages)	… where x.age in ?1
+NotIn	findByAgeNotIn(Collection age)	… where x.age not in ?1
+TRUE	findByActiveTrue()	… where x.active = true
+FALSE	findByActiveFalse()	… where x.active = false
+IgnoreCase	findByFirstnameIgnoreCase	… where UPPER(x.firstame) = UPPER(?1)
+</code></pre><p>分页查询</p>
+<p>分页查询在实际使用中非常普遍了，spring data jpa已经帮我们实现了分页的功能，在查询的方法中，需要传入参数Pageable,当查询中有多个参数的时候Pageable建议做为最后一个参数传入</p>
+<p>Page<!-- raw HTML omitted --> findALL(Pageable pageable);</p>
+<p>Page<!-- raw HTML omitted --> findByUserName(String userName,Pageable pageable);</p>
+<p>Pageable 是spring封装的分页实现类，使用的时候需要传入页数、每页条数和排序规则</p>
+<pre><code>@Test
+public void testPageQuery() throws Exception {
+    int page=1,size=10;
+    Sort sort = new Sort(Direction.DESC, &quot;id&quot;);
+    Pageable pageable = new PageRequest(page, size, sort);
+    userRepository.findALL(pageable);
+    userRepository.findByUserName(&quot;testName&quot;, pageable);
+}
+</code></pre><p>限制数量查询：</p>
+<pre><code>ser findFirstByOrderByLastnameAsc();
+
+User findTopByOrderByAgeDesc();
+
+Page&lt;User&gt; queryFirst10ByLastname(String lastname, Pageable pageable);
+
+List&lt;User&gt; findFirst10ByLastname(String lastname, Sort sort);
+
+List&lt;User&gt; findTop10ByLastname(String lastname, Pageable pageable);
+</code></pre><p>自定义SQL查询</p>
+<p>spring data也是支持自定义的SQL查询的；在SQL的查询方法上面使用@Query注解，删除和修改使用@Modifying. 也可以根据需要添加 @Transactional 开启事务，查询超时的设置等</p>
+<pre><code>@Modifying
+@Query(&quot;update User u set u.userName = ?1 where c.id = ?2&quot;)
+int modifyByIdAndUserId(String  userName, Long id);
+
+@Transactional
+@Modifying
+@Query(&quot;delete from User where id = ?1&quot;)
+void deleteByUserId(Long id);
+
+@Transactional(timeout = 10)
+@Query(&quot;select u from User u where u.emailAddress = ?1&quot;)
+User findByEmailAddress(String emailAddress);
+</code></pre><p>枚举</p>
+<p>如果希望数据库中存储的是枚举对应的String类型，而不是枚举的索引值，需要在属性上面添加@Enumerated(EnumType.STRING) 注解</p>
+<p>@Enumerated(EnumType.STRING)
+@Column(nullable = true)
+private UserType type;</p>
+<p>不需要和数据库映射的属性</p>
+<p>在实体类上加入注解@Entity，会让实体类和表关连，如果其中某个属性不需要和数据库关联，只需要加上@Transient注解既可。</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-jpa/">https://luangeng.space/post/java/spring/spring-jpa/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/java/zookeeper/zookeeper-java/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>zookeeper-Java API</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/db/mysql/mysql-sql/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Mysql基础语法</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-swagger/" rel="bookmark" class="leancloud-count">Spring Boot 集成Swagger2生成RESTful API文档
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-rest/" rel="bookmark" class="leancloud-count">Spring Boot自定义配置与加载
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新文章</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/other/token-front/" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="../../static/img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列文章</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/netty">Netty</a></li>
+                <li><a href="https://luangeng.space/tags/zookeeper">Zookeeper</a></li>
+                <li><a href="https://luangeng.space/tags/springcloud">Spring Cloud</a></li>
+                <li><a href="https://luangeng.space/tags/elasticsearch">Elasticsearch</a></li>
+            </ul>
+        </div>
+
+        <div id="categories" class="widget widget_categories">
+            <h3>分类</h3>
+            <ul>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+                </li>
+                
+                <li class="cat-item cat-item-1">
+                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>Tags</h3>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关文章</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-rest/">Spring Boot自定义配置与加载</a></li>
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-swagger/">Spring Boot 集成Swagger2生成RESTful API文档</a></li>
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-ws/">Spring Boot发布和调用RESTful web service</a></li>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/other/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                  
+                  
+                  
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        
+
+        
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>Donate</h3>
+            <div class="widget qrcode">
+                <img src="../../static/img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="../../../../static/js/highlight.pack.js"></script>
+<script src="../../../../static/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="../../../../static/js/picturefill.min.js"></script>
+<script type="text/javascript" src="../../../../static/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="../../../../static/js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script src="../../../../static/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+
