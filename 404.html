@@ -20,14 +20,14 @@
   <link rel='shortlink' href="https://luangeng.space/404.html">
   <link rel="shortcut icon" href="img/favicon.ico"/>
 
-  <link rel="stylesheet" href="themes/hueman/style.css" type="text/css" media="all"/>
-  <link rel="stylesheet" href="themes/hueman/responsive.css" type="text/css" media="all"/>
-  <link rel="stylesheet" href="themes/hueman-child/style.css" type="text/css" media="all"/>
-  <link rel="stylesheet" href="themes/hueman-child/user.css" type="text/css" media="all"/>
-  <link rel="stylesheet" href="font/hack/css/hack.min.css">
-  <link href="../../static/css/font-awesome.css">
-  <link href="../../static/css/github.css">
-  <link href="../../static/css/sweetalert2.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
 
   
 
@@ -277,23 +277,30 @@
             </ul>
         </div>
 
-        <div id="categories" class="widget widget_categories">
-            <h3>分类</h3>
+        
+
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新文章</h3>
             <ul>
                 
-                <li class="cat-item cat-item-1">
-                    <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
-                </li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li class="cat-item cat-item-1">
-                    <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
-                </li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li class="cat-item cat-item-1">
-                    <a rel="nofollow" href="https://luangeng.space/categories/Vue/">Vue</a>
-                </li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门文章</h3>
+            <ul id="ranking_side_ul"></ul>
         </div>
 
         <div id="links" class="widget widget_links">
@@ -354,36 +361,8 @@
             
         </div>
 
-        
-
-        <div id="recent" class="widget widget_recent_entries">
-            <h3>最新文章</h3>
-            <ul>
-                
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
-                
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
-                
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
-                
-                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
-                
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
-                
-            </ul>
-        </div>
-
-        <div id="ranking_side" class="widget widget_rank_entries">
-            <h3>热门文章</h3>
-            <ul id="ranking_side_ul"></ul>
-        </div>
-
-        
-
-        
-
         <div id="donate" class="widget widget_recent_entries">
-            <h3>Donate</h3>
+            <h3>支持</h3>
             <div class="widget qrcode">
                 <img src="img/zan.png" alt="weixin" width="172px" height="172px"/>
                 <p>  </p>
