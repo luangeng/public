@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Go 错误处理 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go 错误处理 - Computer and Software Technology Open Course">
+  <meta name="description" content="Go 错误处理">
+  <meta itemprop="name" content="Go 错误处理 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go 错误处理">
+  <meta property="og:title" content="Go 错误处理 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Error-handling/" />
+  <meta property="og:site_name" content="luangeng"/>
+  <meta property="og:description" content="Basics of error handling: func sqrt(n float64) (float64, error) { if n &lt; 0 { return 0, fmt.Errorf(&ldquo;invalid argument &lsquo;%f&rsquo;, must be &gt;= 0&rdquo;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&ldquo;sqrt of %f is %f\n&rdquo;, n, res) } else { fmt.Printf(&ldquo;sqrt of %f returned error &lsquo;%s&rsquo;\n&rdquo;, n, err) } } func main() { printSqrt(16) printSqrt(-16) } sqrt">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Error-handling/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Error-handling/">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories//"></a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>Go</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Go 错误处理</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2019-09-09 · 1627 Words
+                                        
+                                        · Tags: Go
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/go/basic/Error-handling/" class="leancloud_visitors" data-flag-title="Go 错误处理">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>Basics of error handling:</p>
+<p>func sqrt(n float64) (float64, error) {
+if n &lt; 0 {
+return 0, fmt.Errorf(&ldquo;invalid argument &lsquo;%f&rsquo;, must be &gt;= 0&rdquo;, n)
+}
+return math.Sqrt(n), nil
+}</p>
+<p>func printSqrt(n float64) {
+if res, err := sqrt(n); err == nil {
+fmt.Printf(&ldquo;sqrt of %f is %f\n&rdquo;, n, res)
+} else {
+fmt.Printf(&ldquo;sqrt of %f returned error &lsquo;%s&rsquo;\n&rdquo;, n, err)
+}</p>
+<p>}</p>
+<p>func main() {
+printSqrt(16)
+printSqrt(-16)
+}</p>
+<pre><code>sqrt of 16.000000 is 4.000000
+sqrt of -16.000000 returned error 'invalid argument '-16.000000', must be &gt;= 0'
+Unlike languages like C# or Python, Go handles failures by returning error values, not raising exceptions.
+
+Go also provides exceptions with panic and recover but they should be used rarely.
+
+Errors are values, just like integers or string.
+
+Type error is a built-in interface which implements Error() string method.
+
+To indicate success, return nil.
+
+To create an error you can use standard library functions errors.New(msg string) or fmt.Errorf(format string, args... interface{}).
+
+You can also return custom error types by defining structs that implement Error() string method.
+
+If a function returns an error, it should always be the last returned value.
+
+Always check returned errors. A key to writing robust software is checking errors and handling them appropriately. Beginners often fail to check for errors and are then are faced with debugging mysterious failures.
+
+## Returning an error
+To indicate a failure, return a value of error type.
+
+To indicate no error, return nil.
+
+// somewhat inefficient way of appending a string at the end of a file
+func appendToFile(path string, s string) error {
+	d, err := ioutil.ReadFile(path)
+  if err != nil {
+		return err
+  }
+	d = append(d, []byte(s)...)
+  return ioutil.WriteFile(path, d, 0644)
+}
+If the function also returns one or more values, error should be the last returned value:
+
+func sqrt(n int) (int, error) {
+	if n &lt; 0 {
+		return 0, fmt.Errorf(&quot;n should be &gt;= 0, is %d&quot;, n)
+	}
+	return n*n, nil
+}
+Pitfalls
+If you're using custom error types, don't return underlying type, always return error type.,
+
+type CustomError struct {
+}
+
+func (e *CustomError) Error() string {
+	return &quot;this is a custom error&quot;
+}
+
+func returnsCustomError(pleaseFail bool) *CustomError {
+	if pleaseFail {
+		return &amp;CustomError{}
+	}
+	return nil
+}
+
+func caller() {
+	var err error
+	if err == nil {
+		fmt.Printf(&quot;err is nil, as expected\n&quot;);
+  }
+	err = returnsCustomError(false))
+	if err != nil {
+		fmt.Printf(&quot;returnCustomError() failed with '%s'\n&quot;, err)
+  }
+}
+Unexpectedly it looks like returnsCustomError() returned an error even though it returned nil.
+
+This is a variant of nil interface pitfall.
+
+#note link to that chapter
+
+Uninitialized err value is nil because it's the zero value of interface types.
+
+returnsCustomError() returns nil value of CustomError struct.
+
+This nil value is assigned to err variable. This is equivalent to:
+
+var err error
+err = (*CustomError)(nil)
+At this point err is no longer equal to zero value of interface type. It's value is *CustomError whose value is nil.
+
+Therefore err no longer equals to nil.
+
+To put it differently:
+
+var err1 error
+var err2 error = nil
+var err3 error = (*CustomError)(nil)
+if err1 == nil &amp;&amp; err2 == nil {
+	fmt.Printf(&quot;unitialized interface value and inteface value assigned nil are both zero values of interface type and therefore equal to 'nil'\n&quot;)
+}
+if err3 != nil {
+	fmt.Printf(&quot;interface value assigned to a struct type whose value is nil is not zero value of interface type and therefore not equal to 'nil'\n&quot;)
+}
+
+## Creating standard error values
+There are several ways to create an error value.
+
+errors.New
+The simplest way, errors.New(msg string) creates error value from string.
+
+return errors.New(&quot;error created with errors.New&quot;)
+fmt.Errorf
+For more complex error messages, fmt.Errorf(format string, args ...interface{}) takes a formatting string and arguments:
+
+return fmt.Errorf(&quot;error created with %s&quot;, &quot;fmt.Errorf&quot;)
+It’s a shortcut for errors.New(fmt.Sprintf(...)).
+
+global error variable
+// ErrGlobal exported so that others can compare returned error value with this variable
+var ErrGlobal = errors.New(&quot;global error variable&quot;)
+
+return ErrGlobal
+Sometimes you want the error to have an identity so that callers can test if returned error is this specific error. You can do it by declaring global variable as ErrGlobal in example above.
+
+One example of such error from standard library is io.EOF although usually the naming convention for such errors is Err*.
+
+You can also create custom error types.
+
+## Custom error types
+In Go error type is a built-in interface with a single method Error() string.
+
+All rules governing interfaces apply to error type.
+
+Among others, any type that implements error interface can be used as value of error type.
+
+// MyError is a custom error type
+type MyError struct {
+	msg string
+}
+
+func (e *MyError) Error() string {
+	return e.msg
+}
+
+var err error = &amp;MyError{msg: &quot;This is custom error type&quot;}
+fmt.Printf(&quot;err: %s\n&quot;, err)
+</code></pre><p>err: This is custom error type
+Why use custom type in addition to built-in ways of creating errors?</p>
+<p>Potential use cases are:</p>
+<p>wrap existing error and add more information, like a call stack
+add structured information to the error. Code handling the error can check for custom type using type assertion or type switch and access this information</p>
+<h2 id="handling-an-error">Handling an error</h2>
+<p>In Go errors can be returned from a function call. The convention is that if a method can fail, the last returned argument is an error.</p>
+<p>func DoAndReturnSomething() (string, error) {
+if os.Getenv(&ldquo;ERROR&rdquo;) == &ldquo;1&rdquo; {
+return &ldquo;&quot;, errors.New(&ldquo;The method failed&rdquo;)
+}</p>
+<pre><code>// The method succeeded.
+return &quot;Success!&quot;, nil
+</code></pre>
+<p>}
+You use multiple variable assignments to check if the method failed.</p>
+<p>result, err := DoAndReturnSomething()
+if err != nil {
+panic(err)
+}</p>
+<p>// This is executed only if the method didn&rsquo;t return an error
+fmt.Println(result)
+If you are not interested in the error, you can simply ignore it by assigning it to _.</p>
+<p>result, _ := DoAndReturnSomething()
+fmt.Println(result)
+Of course, ignoring an error can have serious implications. Therefore, this is generally not recommended.</p>
+<p>If you have multiple method calls, and one or more methods in the chain may return an error, you should propagate the error to the first level that can handle it.</p>
+<p>func Foo() error {
+return errors.New(&ldquo;I failed!&quot;)
+}</p>
+<p>func Bar() (string, error) {
+err := Foo()
+if err != nil {
+return &ldquo;&quot;, err
+}</p>
+<pre><code>return &quot;I succeeded&quot;, nil
+</code></pre>
+<p>}</p>
+<p>func Baz() (string, string, error) {
+res, err := Bar()
+if err != nil {
+return &ldquo;&quot;, &ldquo;&quot;, err
+}</p>
+<pre><code>return &quot;Foo&quot;, &quot;Bar&quot;, nil
+</code></pre>
+<p>}</p>
+<h2 id="handling-errors-in-short-programs">Handling errors in short programs</h2>
+<p>Propagating errors up to the callers is tedious. You end up with many lines looking like:</p>
+<p>r, err := os.Open(&ldquo;my file&rdquo;)
+if err != nil {
+return err
+}
+This kind of error handling diligence is crucial for writing robust software.</p>
+<p>Sometimes you write shorter cmd-line programs where such discipline is not warranted.</p>
+<p>You can simplify error handling with a helper functions PanicIfErr(err error, args &hellip;interface{}):</p>
+<p>r, err := os.Open(&ldquo;my file&rdquo;)
+PanicIfErr(err)
+Implementation of such helper:</p>
+<p>// FmtArgs formats args as a string. First argument should be format string
+// and the rest are arguments to the format
+func FmtArgs(args &hellip;interface{}) string {
+if len(args) == 0 {
+return &quot;&rdquo;
+}
+format := args[0].(string)
+if len(args) == 1 {
+return format
+}
+return fmt.Sprintf(format, args[1:]&hellip;)
+}</p>
+<p>func panicWithMsg(defaultMsg string, args &hellip;interface{}) {
+s := FmtArgs(args&hellip;)
+if s == &quot;&rdquo; {
+s = defaultMsg
+}
+fmt.Printf(&quot;%s\n&rdquo;, s)
+panic(s)
+}</p>
+<p>// PanicIf panics if cond is true
+func PanicIf(cond bool, args &hellip;interface{}) {
+if !cond {
+return
+}
+panicWithMsg(&ldquo;PanicIf: condition failed&rdquo;, args&hellip;)
+}</p>
+<p>// PanicIfErr panics if err is not nil
+func PanicIfErr(err error, args &hellip;interface{}) {
+if err == nil {
+return
+}
+panicWithMsg(err.Error(), args&hellip;)
+}</p>
+<p>func main() {
+PanicIfErr(nil)                              // nothing happens
+PanicIfErr(errors.New(&ldquo;there was an error&rdquo;)) // will panic
+}</p>
+<pre><code>there was an error
+panic: there was an error
+
+goroutine 1 [running]:
+main.panicWithMsg(0x4c4e61, 0x12, 0x0, 0x0, 0x0)
+	/tmp/src313740862/main.go:30 +0x126
+main.PanicIfErr(0x4dc660, 0xc00005a1e0, 0x0, 0x0, 0x0)
+	/tmp/src313740862/main.go:46 +0x6c
+main.main()
+	/tmp/src313740862/main.go:51 +0x84
+exit status 2
+
+## Add callstack to error messages
+If you come from languages like Java, C# or Python, you might be used to the fact that exceptions include call stack for the location that created the exception.
+
+Collecting callstacks is expensive and Go doesn’t add callstack to errors.
+
+Callstacks are useful in debugging. If you’re ok with additional cost, you can use package github.com/pkg/errors to augment errors with callstack.
+
+func wrappedError() error {
+	err := errors.New(&quot;Original error&quot;)
+	// create a new error value which wraps original err and
+	// adds calls tack
+	return pkgerrors.WithStack(err)
+}
+
+func main() {
+	// %+v prints original error add callstack
+	fmt.Printf(&quot;err: %+v\n\n&quot;, wrappedError())
+
+	// errors created with pkg/errors include callstack by default
+	fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
+}
+As you can see top part of the callstack includes Go runtime code.
+
+
+
+## Writing good error messages
+Good error messages help in debugging problems.
+
+In production deployments error messages are logged. When something goes wrong log file is the main source for debugging clues.
+
+When creating error messages, think about that and include as much useful information as possible.
+
+Bad error message:
+
+func openLog(path string) (io.Reader, error) {
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, errors.New(&quot;failed to open log file&quot;)
+    }
+    ...
+}
+Better error message:
+
+func openLog(path string) (io.Reader, error) {
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, errors.New(&quot;openLog('%s'), os.Open() failed with '%s'&quot;, path, err)
+    }
+    ...
+}
+Second version of error message includes more debugging clues: * which function generated the error * path of the file we were trying to open * the error message from os.Open() so that we can tell if it was because the file doesn’t exist or we don’t have access rights to it etc.
+
+</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Error-handling/">https://luangeng.space/post/go/basic/Error-handling/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Methods/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Go 方法</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Defer/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Go Defer</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go Images
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/Go">Go</a></li>
+            </ul>
+        </div>
+
+        
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/fileIO/">Go 文件和I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/info/">Go 介绍</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/install/">Go 安装</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Pointers/">Go 指针</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/array/">Go 数组</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/slice/">Go slice类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/maps/">Go map类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/struct/">Go struct类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Interfaces/">Go 接口</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/if-switch-goto/">Go 判断</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Methods/">Go 方法</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Packages/">Go 包管理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/XML/">Go XML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/YAML/">Go YAML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/SQL/">Go SQL</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Client/">Go HTTP Client</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Server/">Go HTTP Server</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Testing/">Go 测试</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">Go sync.Pool for better performance</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/gob/">Go gob</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/go' style="font-size:17px;margin:5px; padding:4px"><code>go(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

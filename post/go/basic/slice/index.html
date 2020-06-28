@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Go slice类型 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go slice类型 - Computer and Software Technology Open Course">
+  <meta name="description" content="Go slice类型">
+  <meta itemprop="name" content="Go slice类型 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go slice类型">
+  <meta property="og:title" content="Go slice类型 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/slice/" />
+  <meta property="og:site_name" content="luangeng"/>
+  <meta property="og:description" content="Slices 切片是相同类型的值的可增长序列。 其他语言称它们为数组或向量。 slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。 切片具有长度和">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/slice/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/slice/">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories//"></a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>Go</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Go slice类型</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2019-09-09 · 3195 Words
+                                        
+                                        · Tags: Go
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/go/basic/slice/" class="leancloud_visitors" data-flag-title="Go slice类型">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <h1 id="slices">Slices</h1>
+<p>切片是相同类型的值的可增长序列。</p>
+<p>其他语言称它们为数组或向量。</p>
+<p>slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。</p>
+<p>切片具有长度和容量。</p>
+<p>容量表示一个切片可以包含的元素总数。 这就是基础数组的大小。</p>
+<p>长度是切片中当前元素的数量。</p>
+<p>容量和长度之间的区别在于，在必须重新分配基础数组之前，可以在一个切片上附加多少个元素。</p>
+<p>切片的零值为nil。</p>
+<pre><code>slice := make([]int, 0, 5)
+// append element to end of slice
+slice = append(slice, 5)
+// append multiple elements to end
+slice = append(slice, 3, 4)
+fmt.Printf(&quot;length of slice is: %d\n&quot;, len(slice))
+fmt.Printf(&quot;capacity of slice is: %d\n&quot;, cap(slice))
+</code></pre><blockquote>
+<p>length of slice is: 3<br>
+capacity of slice is: 5</p>
+</blockquote>
+<h2 id="创建-slice">创建 slice</h2>
+<p>大多数时候，不必显式创建切片。 切片的零值为nil，append的值为零：</p>
+<pre><code>var a []int
+fmt.Printf(&quot;a is %#v\n&quot;, a)
+a = append(a, 3)
+fmt.Printf(&quot;a is %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a is []int(nil)<br>
+a is []int{3}</p>
+</blockquote>
+<p>创建空切片的两种方法:</p>
+<pre><code>var nilSlice []bool
+empty1 := []bool{}
+empty2 := make([]bool, 0)
+fmt.Printf(&quot;nilSlice is %#v\n&quot;, nilSlice)
+// empty slice is different than nil slice
+fmt.Printf(&quot;empty1 is %#v\n&quot;, empty1)
+fmt.Printf(&quot;empty2 is %#v\n&quot;, empty2)
+</code></pre><blockquote>
+<p>nilSlice is []bool(nil)<br>
+empty1 is []bool{}<br>
+empty2 is []bool{}<br>
+Empty slice is different than nil slice.</p>
+</blockquote>
+<p>创建静态预分配的切片：</p>
+<pre><code>a := []int{3, 1, 4, 1}
+fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
+</code></pre><blockquote>
+<p>a has 4 elements</p>
+</blockquote>
+<p>创建全是0的静态预分配的切片：</p>
+<pre><code>a := make([]string, 4)
+fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
+</code></pre><blockquote>
+<p>a has 4 elements</p>
+</blockquote>
+<p>如果知道切片的预期大小，则可以为其内容预分配空间，这有助于提高性能：</p>
+<pre><code>n := 30
+a := make([]int, 0, n)
+fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
+for i := 0; i &lt; n; i++ {
+	a = append(a, i)
+}
+fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
+</code></pre><blockquote>
+<p>a has lenght 0 and capacity 30<br>
+a has lenght 30 and capacity 30</p>
+</blockquote>
+<h2 id="长度和容量">长度和容量</h2>
+<p>Slices have both length and capacity. The length of a slice is the number of elements currently in the slice, while the capacity is the number of elements the slice can hold before needing to be reallocated.</p>
+<p>When creating a slice using the built-in make() function, you can specify its length, and optionally its capacity. You can check capacity and length with len() and cap():</p>
+<pre><code>var s = make([]int, 3, 5)
+fmt.Printf(&quot;Length:   %d\n&quot;, len(s))
+fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
+</code></pre><blockquote>
+<p>Length:   3<br>
+Capacity: 5</p>
+</blockquote>
+<p>如果未明确指定容量，它将默认为指定的长度的值。</p>
+<pre><code>var s = make([]int, 4)
+fmt.Printf(&quot;Length:   %d\n&quot;, len(s))
+fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
+</code></pre><blockquote>
+<p>Length:   4<br>
+Capacity: 4</p>
+</blockquote>
+<p>对于切片的元素类型，由make（）创建的元素设置为零值：</p>
+<pre><code>var s = make([]int, 3)
+for idx, val := range s {
+	fmt.Println(idx, val)
+}
+</code></pre><blockquote>
+<p>0 0<br>
+1 0<br>
+2 0</p>
+</blockquote>
+<p>即使索引在容量之内，也不能访问超出切片长度的元素：</p>
+<pre><code>s := make([]int, 3, 20)
+fmt.Println(s[5])
+</code></pre><blockquote>
+<p>panic: runtime error: index out of range [5] with length 3</p>
+<p>goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src554923030/main.go:9 +0x1d<br>
+exit status 2</p>
+</blockquote>
+<h1 id="追加slace">追加slace</h1>
+<p>内置函数append（slice，elements &hellip;）将元素添加到切片中并返回新的切片。
+追加一个值</p>
+<pre><code>a := []string{&quot;hello&quot;}
+a = append(a, &quot;world&quot;)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;hello&rdquo;, &ldquo;world&rdquo;}</p>
+</blockquote>
+<p>追加多个值</p>
+<pre><code>a := []string{&quot;hello&quot;}
+a = append(a, &quot;world&quot;, &quot;now&quot;)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;hello&rdquo;, &ldquo;world&rdquo;, &ldquo;now&rdquo;}</p>
+</blockquote>
+<p>追加slice到另一个slice</p>
+<pre><code>a := []string{&quot;!&quot;}
+a2 := []string{&quot;Hello&quot;, &quot;world&quot;}
+a = append(a, a2...)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&quot;!&quot;, &ldquo;Hello&rdquo;, &ldquo;world&rdquo;}</p>
+</blockquote>
+<p>Append 会生成一个新的slice
+Maybe you noticed the pattern a = append(a, &hellip;.).</p>
+<p>切片使用固定大小的数组进行存储。 当切片元素的数量超过数组的大小时，append需要重新分配数组并创建一个新的切片。 为了提高效率，新分配的数组有一些备用元素，因此不会在每次将元素追加到切片时都重新分配内部数组。</p>
+<p>该程序显示重新分配新数组需要多少元素。</p>
+<pre><code>var a []int
+ptr := fmt.Sprintf(&quot;%p&quot;, a)
+n := 0
+nAppends := 0
+for {
+	a = append(a, 1)
+	nAppends++
+	currPtr := fmt.Sprintf(&quot;%p&quot;, a)
+	if currPtr != ptr {
+		fmt.Printf(&quot;Appends needed to re-allocate slice: %d\n&quot;, nAppends)
+		nAppends = 0
+		ptr = currPtr
+		n++
+		if n == 6 {
+			break
+		}
+	}
+}
+</code></pre><blockquote>
+<p>Appends needed to re-allocate slice: 1<br>
+Appends needed to re-allocate slice: 1<br>
+Appends needed to re-allocate slice: 1<br>
+Appends needed to re-allocate slice: 2<br>
+Appends needed to re-allocate slice: 4<br>
+Appends needed to re-allocate slice: 8</p>
+</blockquote>
+<p>可见,重新创建数组所需的追加数量随切片的大小而增加。</p>
+<p>Go不允许比较切片，因此我们使用以下事实：在当前实现中，我们可以获取切片的地址（％p），并且该地址可以用作切片的标识。</p>
+<p>这是内部实现的详细信息，将来可能会更改。</p>
+<h2 id="filter-a-slice">Filter a slice</h2>
+<p>Go没有用于过滤切片的通用功能，因此我们必须采用老式的方法：</p>
+<p>为结果创建一个新的切片
+遍历原始切片的所有元素
+检查是否应保留或拒绝元素
+如果应保留，则附加到结果</p>
+<pre><code>func filterEvenValues(a []int) []int {
+	var res []int
+	for _, el := range a {
+		if el%2 == 0 {
+			continue
+		}
+		res = append(res, el)
+	}
+	return res
+}
+
+a := []int{1, 2, 3, 4}
+res := filterEvenValues(a)
+fmt.Printf(&quot;%#v\n&quot;, res)
+</code></pre><blockquote>
+<p>[]int{1, 3}</p>
+</blockquote>
+<p>我们可以通过重新使用切片的内部数组来更有效地执行此操作，因为我们知道结果将始终小于原始切片：</p>
+<pre><code>a := []int{1, 2, 3, 4}
+res := filterEvenValuesInPlace(a)
+fmt.Printf(&quot;%#v\n&quot;, res)
+</code></pre><blockquote>
+<p>[]int{2, 4}</p>
+</blockquote>
+<p>这样可以避免为结果分配新的数组，但也更加危险。
+原始切片a现在已被修改，但从代码来看并不太明显。</p>
+<h1 id="从slice中删除元素">从slice中删除元素</h1>
+<p>我们在示例中使用[] int，但是代码可用于所有类型的切片。</p>
+<p>删除单个元素</p>
+<pre><code>s := []int{10, 11, 12, 13}
+
+i := 2 // index of 12
+s = append(s[:i], s[i+1:]...)
+
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>s: []int{10, 11, 13}</p>
+</blockquote>
+<p>删除多个元素</p>
+<pre><code>s := []int{10, 11, 12, 13}
+
+i := 1 // index of 11
+n := 2 // remove 2 elements
+
+s = append(s[:i], s[i+n:]...)
+
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>s: []int{10, 13}</p>
+</blockquote>
+<p>清除效率
+关于效率的注意事项：Go编译器足够聪明，可以重复使用原始切片中的空间，因此此方法非常有效。 它不会分配新的空间，而只是复制切片中的元素。 我们可以验证一下：</p>
+<pre><code>s := []int{10, 11, 12, 13}
+fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+
+i := 1 // index of 11
+n := 2 // remove 2 elements
+
+s = append(s[:i], s[i+n:]...)
+
+fmt.Print(&quot;\nAfter removal:\n&quot;)
+fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+
+s = append(s, 1, 2, 3, 4)
+fmt.Printf(&quot;\nAfter appending beyond remaining capacity:\n&quot;)
+fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>&amp;s[0]: 0xc00007e020, cap(s): 4<br>
+s: []int{10, 11, 12, 13}</p>
+<p>After removal:<br>
+&amp;s[0]: 0xc00007e020, cap(s): 4<br>
+s: []int{10, 13}</p>
+<p>After appending beyond remaining capacity:<br>
+&amp;s[0]: 0xc000088000, cap(s): 8<br>
+s: []int{10, 13, 1, 2, 3, 4}</p>
+</blockquote>
+<p>%p formatting directive prints the physical address in memory of a variable. We can verify that s points to the same physical memory and has the same capacity before and after removal, so the underlying array.</p>
+<p>We can also see that appending 4 elements, which is beyond remaining capacity of 2, caused the array to be re-allocated.</p>
+<p>Optimized, in-place removal
+If we don&rsquo;t care to preserve the order of elements, we can optimize removal even further:</p>
+<pre><code>s := []int{10, 11, 12, 13}
+
+i := 1 // index of 11
+lastIdx := len(s) - 1
+
+s[i] = s[lastIdx]
+s = s[:lastIdx]
+
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>s: []int{10, 13, 12}</p>
+</blockquote>
+<p>We overwrite the element we want to remove with the last element in the slice and shrink the slice by 1.</p>
+<p>This copies a single elements compared to copying all elements from i to end of slice. This doesn&rsquo;t matter in small slices but is much faster if you have slices with thousands of elements</p>
+<h1 id="复制slice">复制slice</h1>
+<p>一种选择是分配与原始切片相同长度的新切片，并使用copy（）方法：</p>
+<pre><code>src := []int{1, 2, 3}
+dst := make([]int, len(src))
+copy(dst, src)
+</code></pre><blockquote>
+<p>src: []int{1, 2, 3}<br>
+dst: []int{1, 2, 3}</p>
+</blockquote>
+<p>另一种选择是将（）原始切片追加到一个空切片：</p>
+<pre><code>src := []int{1, 2, 3}
+dst := append([]int(nil), src...)
+</code></pre><blockquote>
+<p>src: []int{1, 2, 3}<br>
+dst: []int{1, 2, 3}</p>
+</blockquote>
+<p>两种方法都同样有效。</p>
+<h1 id="slice的初始值">slice的初始值</h1>
+<p>切片的初始值为nil。</p>
+<p>nil切片的长度和容量为0。</p>
+<p>nil切片没有底层数组。</p>
+<p>非nil切片的长度和容量也可以为0，例如[] int {}或make（[] int，5）[5：]。</p>
+<p>任何具有nil值的类型都可以转换为nil slice：</p>
+<pre><code>s := []int(nil)
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><p>测试切片是否为空，请检查len是否为0：</p>
+<pre><code>s := []int(nil)
+if len(s) == 0 {
+	fmt.Printf(&quot;s  is empty: %#v\n&quot;, s)
+}
+
+var s2 []int
+if len(s2) == 0 {
+	fmt.Printf(&quot;s2 is empty: %#v\n&quot;, s2)
+}
+
+s3 := make([]int, 0)
+if len(s2) == 0 {
+	fmt.Printf(&quot;s3 is empty: %#v\n&quot;, s3)
+}
+</code></pre><h2 id="slice技巧">Slice技巧</h2>
+<p>Here are the vector methods and their slice-manipulation analogues:
+以下是向量方法及其切片操作类似物：</p>
+<p>Append a whole slice
+a = append(a, b&hellip;)
+Copy
+b = make([]T, len(a))
+copy(b, a)
+// or
+b = append([]T(nil), a&hellip;)
+// or
+b = append(a[:0:0], a&hellip;)  // See <a href="https://github.com/go101/go101/wiki">https://github.com/go101/go101/wiki</a>
+Cut
+a = append(a[:i], a[j:]&hellip;)
+Delete
+a = append(a[:i], a[i+1:]&hellip;)
+// or
+a = a[:i+copy(a[i:], a[i+1:])]
+Delete without preserving order
+a[i] = a[len(a)-1]
+a = a[:len(a)-1]
+NOTE If the type of the element is a pointer or a struct with pointer fields, which need to be garbage collected, the above implementations of Cut and Delete have a potential memory leak problem: some elements with values are still referenced by slice a and thus can not be collected. The following code can fix this problem:</p>
+<p>Cut
+copy(a[i:], a[j:])
+for k, n := len(a)-j+i, len(a); k &lt; n; k++ {
+a[k] = nil // or the zero value of T
+}
+a = a[:len(a)-j+i]
+Delete
+copy(a[i:], a[i+1:])
+a[len(a)-1] = nil // or the zero value of T
+a = a[:len(a)-1]
+Delete without preserving order
+a[i] = a[len(a)-1]
+a[len(a)-1] = nil
+a = a[:len(a)-1]
+Expand
+a = append(a[:i], append(make([]T, j), a[i:]&hellip;)&hellip;)
+Extend
+a = append(a, make([]T, j)&hellip;)
+Insert
+a = append(a[:i], append([]T{x}, a[i:]&hellip;)&hellip;)
+NOTE The second append creates a new slice with its own underlying storage and copies elements in a[i:] to that slice, and these elements are then copied back to slice a (by the first append). The creation of the new slice (and thus memory garbage) and the second copy can be avoided by using an alternative way:</p>
+<p>Insert
+s = append(s, 0 /* use the zero value of the element type */)
+copy(s[i+1:], s[i:])
+s[i] = x
+Insert slice at index i:
+a = append(a[:i], append(b, a[i:]&hellip;)&hellip;)
+Push
+a = append(a, x)
+Pop
+x, a = a[len(a)-1], a[:len(a)-1]
+Push Front/Unshift
+a = append([]T{x}, a&hellip;)
+Pop Front/Shift
+x, a = a[0], a[1:]
+Additional Tricks
+Filtering without allocating
+This trick uses the fact that a slice shares the same backing array and capacity as the original, so the storage is reused for the filtered slice. Of course, the original contents are modified.</p>
+<p>b := a[:0]
+for _, x := range a {
+if f(x) {
+b = append(b, x)
+}
+}
+For elements which must be garbage collected, the following code can be included afterwards:</p>
+<p>for i := len(b); i &lt; len(a); i++ {
+a[i] = nil // or the zero value of T
+}
+Reversing
+To replace the contents of a slice with the same elements but in reverse order:</p>
+<p>for i := len(a)/2-1; i &gt;= 0; i&ndash; {
+opp := len(a)-1-i
+a[i], a[opp] = a[opp], a[i]
+}
+The same thing, except with two indices:</p>
+<p>for left, right := 0, len(a)-1; left &lt; right; left, right = left+1, right-1 {
+a[left], a[right] = a[right], a[left]
+}
+Shuffling
+Fisher–Yates algorithm:</p>
+<p>Since go1.10, this is available at math/rand.Shuffle
+for i := len(a) - 1; i &gt; 0; i&ndash; {
+j := rand.Intn(i + 1)
+a[i], a[j] = a[j], a[i]
+}
+Batching with minimal allocation
+Useful if you want to do batch processing on large slices.</p>
+<p>actions := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+batchSize := 3
+var batches [][]int</p>
+<p>for batchSize &lt; len(actions) {
+actions, batches = actions[batchSize:], append(batches, actions[0:batchSize:batchSize])
+}
+batches = append(batches, actions)
+Yields the following:</p>
+<p>[[0 1 2] [3 4 5] [6 7 8] [9]]
+In-place deduplicate (comparable)
+import &ldquo;sort&rdquo;</p>
+<p>in := []int{3,2,1,4,3,2,1,4,1} // any item can be sorted
+sort.Ints(in)
+j := 0
+for i := 1; i &lt; len(in); i++ {
+if in[j] == in[i] {
+continue
+}
+j++
+// preserve the original data
+// in[i], in[j] = in[j], in[i]
+// only set what is required
+in[j] = in[i]
+}
+result := in[:j+1]
+fmt.Println(result) // [1 2 3 4]</p>
+<h2 id="optimize-by-pre-allocating-slice">Optimize by pre-allocating slice</h2>
+<p>Allocations are, relatively speaking, expensive.</p>
+<p>Appending new data to a slice requires re-allocating memory if the new size goes over current capacity of the slice.</p>
+<p>Knowing that, if you know the final size of the slice, you can pre-allocate the required capacity and avoid re-allocations.</p>
+<p>You don&rsquo;t need to know the exact size: knowing the upper bounds is just as good. Guesstimating is better than nothing.</p>
+<p>Consider appending to an empty slice:</p>
+<p>s := []byte(&ldquo;123456&rdquo;)
+var d []byte
+fmt.Printf(&ldquo;d: %p, len: %d, cap: %d\n&rdquo;, d, len(d), cap(d))
+d = append(d, s&hellip;)
+fmt.Printf(&ldquo;d: %p, len: %d, cap: %d\n&rdquo;, d, len(d), cap(d))
+d = append(d, s&hellip;)
+fmt.Printf(&ldquo;d: %p, len: %d, cap: %d\n&rdquo;, d, len(d), cap(d))
+d = append(d, s&hellip;)
+fmt.Printf(&ldquo;d: %p, len: %d, cap: %d\n&rdquo;, d, len(d), cap(d))</p>
+<pre><code>d: 0x0, len: 0, cap: 0
+d: 0xc000016070, len: 6, cap: 8
+d: 0xc000016090, len: 12, cap: 16
+d: 0xc0000180a0, len: 18, cap: 32
+The results might vary depending on the the version of the compiler and runtime. In Go 1.12 appending 6 bytes to an empty slice 4 times required 32 allocation.
+
+By printing the address of slice with %p we can see if it gets re-allocated.
+
+As the cap shows, first allocation was for 8 bytes, it was then re-allocated to 16 bytes and finally to 32 bytes.
+
+On each re-allocation, the content had to be copied, so we copied 6 + 6*2 + 6*3 bytes in total. To store 24 bytes, we wasted time copying 36 bytes.
+
+Memory allocations and copying memory takes time.
+
+Go runtime is smart in that it doubles the the capacity, anticipating that we might need more space in the future.
+
+We can be smarter than that and pre-allocate the slice:
+
+s := []byte(&quot;123456&quot;)
+d := make([]byte, 0, len(s)*4)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+</code></pre><p>d: 0xc00007e020, len: 0, cap: 24
+d: 0xc00007e020, len: 6, cap: 24
+d: 0xc00007e020, len: 12, cap: 24
+d: 0xc00007e020, len: 24, cap: 24
+Here we can see that we start with the right capacity from the beginning and at no time the runtime had to make additional allocation or memory copy.</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/slice/">https://luangeng.space/post/go/basic/slice/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/array/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Go 数组</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/maps/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Go map类型</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go Images
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/Go">Go</a></li>
+            </ul>
+        </div>
+
+        
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/fileIO/">Go 文件和I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/info/">Go 介绍</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/install/">Go 安装</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Pointers/">Go 指针</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/array/">Go 数组</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/maps/">Go map类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/struct/">Go struct类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Interfaces/">Go 接口</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/if-switch-goto/">Go 判断</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Methods/">Go 方法</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Error-handling/">Go 错误处理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Packages/">Go 包管理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/XML/">Go XML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/YAML/">Go YAML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/SQL/">Go SQL</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Client/">Go HTTP Client</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Server/">Go HTTP Server</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Testing/">Go 测试</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">Go sync.Pool for better performance</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/gob/">Go gob</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/go' style="font-size:17px;margin:5px; padding:4px"><code>go(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

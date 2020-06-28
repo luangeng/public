@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Go Images - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go Images - Computer and Software Technology Open Course">
+  <meta name="description" content="Go Images">
+  <meta itemprop="name" content="Go Images - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go Images">
+  <meta property="og:title" content="Go Images - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Images/" />
+  <meta property="og:site_name" content="luangeng"/>
+  <meta property="og:description" content="Images (PNG, JPEG, BMP, TIFF, WEBP, VP8, GIF) Standard library provides the foundation for working with images.
+Package image provides:
+an image.Image interface describing a bitmap image an implementation for most common ways of representing an image in memory, for example Image.RGBA a way to register image format decoders (e.g. PNG, JPEG etc. with image.RegisterFormat. Standard library provides:
+GIF decoder and encoder PNG decoder and encoder JPEG decoder and encoder The are libraries for:">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Images/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Images/">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories//"></a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>Go</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Go Images</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2019-09-09 · 2221 Words
+                                        
+                                        · Tags: Go
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/go/basic/Images/" class="leancloud_visitors" data-flag-title="Go Images">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <h1 id="images-png-jpeg-bmp-tiff-webp-vp8-gif">Images (PNG, JPEG, BMP, TIFF, WEBP, VP8, GIF)</h1>
+<p>Standard library provides the foundation for working with images.</p>
+<p>Package image provides:</p>
+<p>an image.Image interface describing a bitmap image
+an implementation for most common ways of representing an image in memory, for example Image.RGBA
+a way to register image format decoders (e.g. PNG, JPEG etc. with image.RegisterFormat.
+Standard library provides:</p>
+<p>GIF decoder and encoder
+PNG decoder and encoder
+JPEG decoder and encoder
+The are libraries for:</p>
+<p>BMP decoder and encoder
+TIFF decoder and encoder
+WEBP decoder
+vp8 decoder
+vp8l decoder.
+The image.Image interface is minimal:</p>
+<p>type Image interface {
+// ColorModel returns the Image&rsquo;s color model.
+ColorModel() color.Model
+// Bounds returns the domain for which At can return non-zero color.
+// The bounds do not necessarily contain the point (0, 0).
+Bounds() Rectangle
+// At returns the color of the pixel at (x, y).
+// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
+// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
+At(x, y int) color.Color
+}
+Here&rsquo;s an example of decoding a PNG image from an URL and printing the size of the image using Bounds() method:</p>
+<p>func showImageSize(uri string) {
+resp, err := http.Get(uri)
+if err != nil {
+log.Fatalf(&ldquo;http.Get('%s&rsquo;) failed with %s\n&rdquo;, uri, err)
+}
+defer resp.Body.Close()
+if resp.StatusCode &gt;= 400 {
+log.Fatalf(&ldquo;http.Get() failed with &lsquo;%s&rsquo;\n&rdquo;, resp.Status)
+}
+img, err := png.Decode(resp.Body)
+if err != nil {
+log.Fatalf(&ldquo;png.Decode() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}
+size := img.Bounds().Size()
+fmt.Printf(&ldquo;Image &lsquo;%s&rsquo;\n&rdquo;, uri)
+fmt.Printf(&rdquo;  size: %dx%d\n&rdquo;, size.X, size.Y)
+fmt.Printf(&rdquo;  format in memory: &lsquo;%T&rsquo;\n&rdquo;, img)
+}
+Output:</p>
+<p>Image &lsquo;<a href="https://www.programming-books.io/covers/Go.png'">https://www.programming-books.io/covers/Go.png'</a>
+size: 595x842
+format in memory: &lsquo;*image.NRGBA&rsquo;</p>
+<h2 id="basic-concepts">Basic concepts</h2>
+<p>An image represents a rectangular grid of picture elements (pixel). In the image package, the pixel is represented as one of the color defined in image/color package. The 2-D geometry of the image is represented as image.Rectangle, while image.Point denotes a position on the grid.</p>
+<p>Image and 2-D geometry</p>
+<p>The above figure illustrates the basic concepts of an image in the package. An image of size 15x14 pixels has a rectangular bounds started at upper left corner (e.g. co-ordinate (-3, -4) in the above figure), and its axes increase right and down to lower right corner (e.g. co-ordinate (12, 10) in the figure). Note that the bounds do not necessarily start from or contain point (0,0).</p>
+<p>Image related type
+In Go, an image always implement the following image.Image interface</p>
+<p>type Image interface {
+// ColorModel returns the Image&rsquo;s color model.
+ColorModel() color.Model
+// Bounds returns the domain for which At can return non-zero color.
+// The bounds do not necessarily contain the point (0, 0).
+Bounds() Rectangle
+// At returns the color of the pixel at (x, y).
+// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
+// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
+At(x, y int) color.Color
+}
+in which the color.Color interface is defined as</p>
+<p>type Color interface {
+// RGBA returns the alpha-premultiplied red, green, blue and alpha values
+// for the color. Each value ranges within [0, 0xffff], but is represented
+// by a uint32 so that multiplying by a blend factor up to 0xffff will not
+// overflow.
+//
+// An alpha-premultiplied color component c has been scaled by alpha (a),
+// so has valid values 0 &lt;= c &lt;= a.
+RGBA() (r, g, b, a uint32)
+}
+and color.Model is an interface declared as</p>
+<p>type Model interface {
+Convert(c Color) Color
+}
+Accessing image dimension and pixel
+Suppose we have an image stored as variable img, then we can obtain the dimension and image pixel by:</p>
+<p>// Image bounds and dimension
+b := img.Bounds()
+width, height := b.Dx(), b.Dy()
+// do something with dimension &hellip;</p>
+<p>// Corner co-ordinates
+top := b.Min.Y
+left := b.Min.X
+bottom := b.Max.Y
+right := b.Max.X</p>
+<p>// Accessing pixel. The (x,y) position must be
+// started from (left, top) position not (0,0)
+for y := top; y &lt; bottom; y++ {
+for x := left; x &lt; right; x++ {
+cl := img.At(x, y)
+r, g, b, a := cl.RGBA()
+// do something with r,g,b,a color component
+}
+}
+Note that in the package, the value of each R,G,B,A component is between 0-65535 (0x0000 - 0xffff), not 0-255.</p>
+<h2 id="loading-and-saving-image">Loading and saving image</h2>
+<p>In memory, an image can be seen as a matrix of pixel (color). However, when an image being stored in a permanent storage, it may be stored as is (RAW format), Bitmap or other image formats with particular compression algorithm for saving storage space, e.g. PNG, JPEG, GIF, etc. When loading an image with particular format, the image must be decoded to image.Image with corresponding algorithm. An image.Decode function declared as</p>
+<p>func Decode(r io.Reader) (Image, string, error)
+is provided for this particular usage. In order to be able to handle various image formats, prior to calling the image.Decode function, the decoder must be registered through image.RegisterFormat function defined as</p>
+<p>func RegisterFormat(name, magic string,
+decode func(io.Reader) (Image, error), decodeConfig func(io.Reader) (Config, error))
+Currently, the image package supports three file formats: JPEG, GIF and PNG. To register a decoder, add the following</p>
+<p>import _ &ldquo;image/jpeg&rdquo;    //register JPEG decoder
+to the application’s main package. Somewhere in your code (not necessary in main package), to load a JPEG image, use the following snippets:</p>
+<p>f, err := os.Open(&ldquo;inputimage.jpg&rdquo;)
+if err != nil {
+log.Fatalf(&ldquo;os.Open() failed with %s\n&rdquo;, err)
+}
+defer f.Close()</p>
+<p>img, fmtName, err := image.Decode(f)
+if err != nil {
+log.Fatalf(&ldquo;image.Decode() failed with %s\n&rdquo;, err)
+}</p>
+<p>// <code>fmtName</code> contains the name used during format registration
+// Work with <code>img</code> &hellip;
+Save to PNG
+To save an image into particular format, the corresponding encoder must be imported explicitly, i.e.</p>
+<p>import &ldquo;image/png&rdquo;    //needed to use <code>png</code> encoder
+then an image can be saved with the following snippets:</p>
+<p>f, err := os.Create(&ldquo;outimage.png&rdquo;)
+if err != nil {
+log.Fatalf(&ldquo;os.Create() failed with %s\n&rdquo;, err)
+}
+defer f.Close()</p>
+<p>// Encode to <code>PNG</code> with <code>DefaultCompression</code> level
+// then save to file
+err = png.Encode(f, img)
+if err != nil {
+log.Fatalf(&ldquo;png.Encode() failed with %s\n&rdquo;, err)
+}
+If you want to specify compression level other than DefaultCompression level, create an encoder, e.g.</p>
+<p>enc := png.Encoder{
+CompressionLevel: png.BestSpeed,
+}
+err := enc.Encode(f, img)
+Save to JPEG
+To save to jpeg format, use the following:</p>
+<p>import &ldquo;image/jpeg&rdquo;</p>
+<p>// Somewhere in the same package
+f, err := os.Create(&ldquo;outimage.jpg&rdquo;)
+if err != nil {
+log.Fatalf(&ldquo;os.Create() failed with %s\n&rdquo;, err)
+}
+defer f.Close()</p>
+<p>// Specify the quality, between 0-100
+// Higher is better
+opt := jpeg.Options{
+Quality: 90,
+}
+err = jpeg.Encode(f, img, &amp;opt)
+if err != nil {
+log.Fatalf(&ldquo;jpeg.Encode() failed with %s\n&rdquo;, err)
+}
+Save to GIF
+To save the image to GIF file, use the following snippets.</p>
+<p>import &ldquo;image/gif&rdquo;</p>
+<p>// Samewhere in the same package
+f, err := os.Create(&ldquo;outimage.gif&rdquo;)
+if err != nil {
+log.Fatalf(&ldquo;os.Create() failed with %s\n&rdquo;, err)
+}
+defer f.Close()</p>
+<p>opt := gif.Options {
+NumColors: 256,
+// Add more parameters as needed
+}</p>
+<p>err = gif.Encode(f, img, &amp;opt)
+if err != nil {
+log.Fatalf(&ldquo;gif.Encode() failed with %s\n&rdquo;, err)
+}</p>
+<h2 id="cropping-image">Cropping image</h2>
+<p>Most of image type in image package having SubImage(r Rectangle) Image method, except image.Uniform. Based on this fact, We can implement a function to crop an arbitrary image as follows</p>
+<p>func CropImage(img image.Image, cropRect image.Rectangle) (cropImg image.Image, newImg bool) {
+//Interface for asserting whether <code>img</code>
+//implements SubImage or not.
+//This can be defined globally.
+type CropableImage interface {
+image.Image
+SubImage(r image.Rectangle) image.Image
+}</p>
+<pre><code>if p, ok := img.(CropableImage); ok {
+    // Call SubImage. This should be fast,
+    // since SubImage (usually) shares underlying pixel.
+    cropImg = p.SubImage(cropRect)
+} else if cropRect = cropRect.Intersect(img.Bounds()); !cropRect.Empty() {
+    // If `img` does not implement `SubImage`,
+    // copy (and silently convert) the image portion to RGBA image.
+    rgbaImg := image.NewRGBA(cropRect)
+    for y := cropRect.Min.Y; y &lt; cropRect.Max.Y; y++ {
+        for x := cropRect.Min.X; x &lt; cropRect.Max.X; x++ {
+            rgbaImg.Set(x, y, img.At(x, y))
+        }
+    }
+    cropImg = rgbaImg
+    newImg = true
+} else {
+    // Return an empty RGBA image
+    cropImg = &amp;image.RGBA{}
+    newImg = true
+}
+
+return cropImg, newImg
+</code></pre>
+<p>}
+Note that the cropped image may shared its underlying pixels with the original image. If this is the case, any modification to the cropped image will affect the original image.</p>
+<h2 id="convert-color-image-to-grayscale">Convert color image to grayscale</h2>
+<p>Some digital image processing algorithm such as edge detection, information carried by the image intensity (i.e. grayscale value) is sufficient. Using color information (R, G, B channel) may provides slightly better result, but the algorithm complexity will be increased. Thus, in this case, we need to convert the color image to grayscale image prior to applying such algorithm.</p>
+<p>The following code is an example of converting arbitrary image to 8-bit grayscale image. The image is retrieved from remote location using net/http package, converted to grayscale, and finally saved as PNG image.</p>
+<p>package main</p>
+<p>import (
+&ldquo;image&rdquo;
+&ldquo;log&rdquo;
+&ldquo;net/http&rdquo;
+&ldquo;os&rdquo;</p>
+<pre><code>_ &quot;image/jpeg&quot;
+&quot;image/png&quot;
+</code></pre>
+<p>)</p>
+<p>func main() {
+// Load image from remote through http
+// The Go gopher was designed by Renee French. (<a href="http://reneefrench.blogspot.com/">http://reneefrench.blogspot.com/</a>)
+// Images are available under the Creative Commons 3.0 Attributions license.
+resp, err := http.Get(&ldquo;<a href="http://golang.org/doc/gopher/fiveyears.jpg%22">http://golang.org/doc/gopher/fiveyears.jpg&quot;</a>)
+if err != nil {
+log.Fatal(err)
+}
+defer resp.Body.Close()</p>
+<pre><code>// Decode image to JPEG
+img, _, err := image.Decode(resp.Body)
+if err != nil {
+    log.Fatal(err)
+}
+log.Printf(&quot;Image type: %T&quot;, img)
+
+// Convert image to grayscale
+grayImg := image.NewGray(img.Bounds())
+for y := img.Bounds().Min.Y; y &lt; img.Bounds().Max.Y; y++ {
+    for x := img.Bounds().Min.X; x &lt; img.Bounds().Max.X; x++ {
+        grayImg.Set(x, y, img.At(x, y))
+    }
+}
+
+// Working with grayscale image, e.g. convert to png
+f, err := os.Create(&quot;fiveyears_gray.png&quot;)
+if err != nil {
+    log.Fatal(err)
+}
+defer f.Close()
+
+if err := png.Encode(f, grayImg); err != nil {
+    log.Fatal(err)
+}
+</code></pre>
+<p>}
+Color conversion occurs when assigning pixel through Set(x, y int, c color.Color) which is implemented in image.go as</p>
+<p>func (p *Gray) Set(x, y int, c color.Color) {
+if !(Point{x, y}.In(p.Rect)) {
+return
+}</p>
+<pre><code>i := p.PixOffset(x, y)
+p.Pix[i] = color.GrayModel.Convert(c).(color.Gray).Y
+</code></pre>
+<p>}
+in which, color.GrayModel is defined in color.go as</p>
+<p>func grayModel(c Color) Color {
+if _, ok := c.(Gray); ok {
+return c
+}
+r, g, b, _ := c.RGBA()</p>
+<pre><code>// These coefficients (the fractions 0.299, 0.587 and 0.114) are the same
+// as those given by the JFIF specification and used by func RGBToYCbCr in
+// ycbcr.go.
+//
+// Note that 19595 + 38470 + 7471 equals 65536.
+//
+// The 24 is 16 + 8. The 16 is the same as used in RGBToYCbCr. The 8 is
+// because the return value is 8 bit color, not 16 bit color.
+y := (19595*r + 38470*g + 7471*b + 1&lt;&lt;15) &gt;&gt; 24
+
+return Gray{uint8(y)}
+</code></pre>
+<p>}
+Based on the above facts, the intensity Y is calculated with the following formula:</p>
+<p>Luminance: Y = 0.299R + 0.587G + 0.114B
+If we want to apply different formula/algorithms to convert a color into an intesity, e.g.</p>
+<p>Mean: Y = (R + G + B) / 3 Luma: Y = 0.2126R + 0.7152G + 0.0722B Luster: Y = (min(R, G, B) + max(R, G, B))/2
+then, the following snippets can be used.</p>
+<p>// Convert image to grayscale
+grayImg := image.NewGray(img.Bounds())
+for y := img.Bounds().Min.Y; y &lt; img.Bounds().Max.Y; y++ {
+for x := img.Bounds().Min.X; x &lt; img.Bounds().Max.X; x++ {
+R, G, B, _ := img.At(x, y).RGBA()
+//Luma: Y = 0.2126<em>R + 0.7152</em>G + 0.0722<em>B
+Y := (0.2126</em>float64(R) + 0.7152<em>float64(G) + 0.0722</em>float64(B)) * (255.0 / 65535)
+grayPix := color.Gray{uint8(Y)}
+grayImg.Set(x, y, grayPix)
+}
+}
+The above calculation is done by floating point multiplication, and certainly is not the most efficient one, but it’s enough for demonstrating the idea. The other point is, when calling Set(x, y int, c color.Color) with color.Gray as third argument, the color model will not perform color conversion as can be seen in the previous grayModel function.</p>
+<h2 id="resizing-images">Resizing images</h2>
+<p>There are several libraries for resizing images in Go. Package golang.org/x/image/draw is one of the options:</p>
+<p>func resize(src image.Image, dstSize image.Point) *image.RGBA {
+srcRect := src.Bounds()
+dstRect := image.Rectangle{
+Min: image.Point{0, 0},
+Max: dstSize,
+}
+dst := image.NewRGBA(dstRect)
+draw.CatmullRom.Scale(dst, dstRect, src, srcRect, draw.Over, nil)
+return dst
+}
+Notable points:</p>
+<p>we return image.RGBA, not image.Image because Go&rsquo;s best practice is to accept interface as arguments to functions, but return concrete types
+image bounds don&rsquo;t have to start at (0,0) so for the source image we ask for bounding rectangle. We create destination image ourselves so we create bounds that start at (0,0)
+scaling interface is very generic and as a result somewhat complicated. Package draw is, at its core, a compositing engine which allows compositing (drawing) bitmap images with a specific operation. draw.Over is an operation that draws one image over another, optionally using a mask.
+resizing is implementing as Scaler interface which takes destination image, a rectangle within destination image, source image, a rectangle within source images and paints source rectangle into destination rectangle. Resizing happens when destination rectangle has different dimension that source rectangle
+the package implements 4 different scaling algorithms:
+nearest neighbor - fast, low quality
+approximate bi-linear - slower, better quality
+bi-linear - even slower, high quality
+catmull-rom - slowest, highest qulity
+draw.CatmullRom is a global variable for an instance implementing catmull-rom algorithm. Other algorithms are available as draw.NearestNeighbor, draw.ApproxBiLinear and draw.BiLinear package global variables
+putting it all together: to resize a source image to a given size, we create a destination image of desired size and use Scale method of one of the global scalers to paint source image into a destination, with resizing being a side effect of using a scaler.</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Images/">https://luangeng.space/post/go/basic/Images/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Go Cryptography</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Command/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Go 命令</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go Images
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/Go">Go</a></li>
+            </ul>
+        </div>
+
+        
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/fileIO/">Go 文件和I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/info/">Go 介绍</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/install/">Go 安装</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Pointers/">Go 指针</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/array/">Go 数组</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/slice/">Go slice类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/maps/">Go map类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/struct/">Go struct类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Interfaces/">Go 接口</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/if-switch-goto/">Go 判断</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Methods/">Go 方法</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Error-handling/">Go 错误处理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Packages/">Go 包管理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/XML/">Go XML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/YAML/">Go YAML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/SQL/">Go SQL</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Client/">Go HTTP Client</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Server/">Go HTTP Server</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Testing/">Go 测试</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">Go sync.Pool for better performance</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/gob/">Go gob</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/go' style="font-size:17px;margin:5px; padding:4px"><code>go(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

@@ -1,28 +1,434 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>https://luangeng.space/categories/</loc>
-        <lastmod>2018-12-05T00:00:00+00:00</lastmod>
+        <loc>https://luangeng.space/post/go/basic/info/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/tags/elasticsearch/</loc>
-        <lastmod>2018-12-05T00:00:00+00:00</lastmod>
+        <loc>https://luangeng.space/post/go/basic/install/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/basetype/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Variables/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Constants/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/string/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Pointers/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/array/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/slice/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/maps/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/struct/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Interfaces/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/if-switch-goto/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/forwhileloops/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/range-statement/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/function/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Methods/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Error-handling/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Defer/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Panic-and-recover/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Concurrency/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Channels-and-select/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Mutex/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Packages/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/fileIO/</loc>
+        <lastmod>2019-09-08T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Time-and-date/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Command-line-arguments/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Logging/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Executing-commands/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Hex-base64-encoding/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/JSON/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/XML/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/CSV/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/YAML/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/SQL/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/HTTP-Client/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/HTTP-Server/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/HTTP-server-middleware/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Text-and-HTML-templates/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Reflection/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Context/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Testing/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Cross-compilation/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Inlining-functions/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/gob/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Plugin/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Package-fmt/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Protobuf-in-Go/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Console-IO/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Cryptography/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Images/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/post/go/basic/Command/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/categories/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/tags/Go/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/categories/Go/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
         <loc>https://luangeng.space/post/</loc>
-        <lastmod>2018-12-05T00:00:00+00:00</lastmod>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
         <loc>https://luangeng.space/tags/</loc>
+        <lastmod>2019-09-09T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/tags/elasticsearch/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>

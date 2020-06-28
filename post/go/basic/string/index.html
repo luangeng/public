@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Go 字符串 - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go 字符串 - Computer and Software Technology Open Course">
+  <meta name="description" content="Go 字符串">
+  <meta itemprop="name" content="Go 字符串 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go 字符串">
+  <meta property="og:title" content="Go 字符串 - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/string/" />
+  <meta property="og:site_name" content="luangeng"/>
+  <meta property="og:description" content="字符串 go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/string/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/string/">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories//"></a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>Go</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Go 字符串</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2019-09-09 · 3366 Words
+                                        
+                                        · Tags: Go
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/go/basic/string/" class="leancloud_visitors" data-flag-title="Go 字符串">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <h1 id="字符串">字符串</h1>
+<p>go中的string是不可变的byte序列
+Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page.
+与Python或Java等语言不同，它们在内部未表示为Unicode。 因此，从文件或网络连接读取字符串时，没有从字节到内部表示的转换步骤。 将字符串写入文件时，不会转换为代码页。
+Go strings don’t assume any particular code page. They are just bytes.
+转到字符串不需要任何特定的代码页。 它们只是字节。
+Go source code files are always UTF-8 so strings defined in source code are also valid UTF-8 strings.
+Additionally, functions in the standard library that involve converting characters to upper-case or lower-case etc. assume that raw bytes represent UTF-8-encoded Unicode strings and perform transformations using Unicode rules.</p>
+<p>Note the distinction between string literals delimited by double quotes (aka interpreted literals) as in &ldquo;bar&rdquo;, and those delimited by backticks (aka raw literals) as in <code>foo</code>. Text between double quotes forms the value of the literal, with a backslash used to escape characters as in &ldquo;\n&rdquo; for newline. Text between backticks is treated as uninterpreted (implicitly UTF-8-encoded); in particular, backslashes have no special meaning and the string may contain newlines.</p>
+<p>Go源代码文件始终是UTF-8，因此源代码中定义的字符串也是有效的UTF-8字符串。
+此外，标准库中涉及将字符转换为大写或小写等的函数都假定原始字节代表UTF-8编码的Unicode字符串，并使用Unicode规则执行转换。</p>
+<p>请注意，如&quot;bar&quot;表示的双引号（又称解释文字）与如&rsquo;foo'表示的以反引号（即原始文字）界定的字符串文字之间的区别。 双引号之间的文本形成文字的值，并使用反斜杠将换行符转义为“ \ n”，以转义字符。 反引号之间的文本被视为未解释（隐式为UTF-8编码）； 特别是，反斜杠没有特殊含义，并且字符串可能包含换行符。</p>
+<p>string的基本使用:</p>
+<pre><code>var s string // empty string &quot;&quot;
+s1 := &quot;string\nliteral\nwith\tescape characters&quot;
+s2 := `raw string literal
+which doesn't recognize escape characters like \n
+`
+
+// 可以使用+来拼接字符串
+fmt.Printf(&quot;sum of string: %s\n&quot;, s+s1+s2)
+
+// 使用==来比较字符串
+if s1 == s2 {
+	fmt.Printf(&quot;s1 is equal to s2\n&quot;)
+} else {
+	fmt.Printf(&quot;s1 is not equal to s2\n&quot;)
+}
+
+fmt.Printf(&quot;substring of s1: %s\n&quot;, s1[3:5])
+fmt.Printf(&quot;byte (character) at position 3 in s1: %d\n&quot;, s1[3])
+
+// C语言风格的string格式化
+s = fmt.Sprintf(&quot;%d + %f = %s&quot;, 1, float64(3), &quot;4&quot;)
+fmt.Printf(&quot;s: %s\n&quot;, s)
+</code></pre><blockquote>
+<p>sum of string: string<br>
+literal<br>
+with	escape charactersraw string literal<br>
+which doesn&rsquo;t recognize escape characters like \n</p>
+<p>s1 is not equal to s2<br>
+substring of s1: in<br>
+byte (character) at position 3 in s1: 105<br>
+s: 1 + 3.000000 = 4</p>
+</blockquote>
+<h2 id="标准库中重要的字符串操作">标准库中重要的字符串操作:</h2>
+<ul>
+<li><strong>strings</strong> 实现字符串搜索，拆分，大小写转换</li>
+<li><strong>bytes</strong> has the same functionality as strings package but operates on []byte byte slices</li>
+<li><strong>strconv</strong> 用于字符串与整数和浮点数之间的转换</li>
+<li><strong>unicode/utf8</strong> 从UTF-8编码的字符串解码和编码为UTF-8编码的字符串</li>
+<li><strong>regexp</strong> 实现正则表达式</li>
+<li><strong>text/scanner</strong> 用于扫描和标记化UTF-8编码的文本</li>
+<li><strong>text/template</strong> 用于从模板生成更大的字符串</li>
+<li><strong>html/template</strong> 具有text/template的所有功能，但理解用于生成HTML的语法结构，可以防止代码注入攻击</li>
+</ul>
+<h2 id="在string中找指定的字符串">在string中找指定的字符串</h2>
+<p>使用strings.Index寻找子字符串的位置:</p>
+<pre><code>s := &quot;where hello is?&quot;
+toFind := &quot;hello&quot;
+idx := strings.Index(s, toFind)
+fmt.Printf(&quot;'%s' is in s starting at position %d\n&quot;, toFind, idx)
+
+// 没有找到返回 -1
+idx = strings.Index(s, &quot;not present&quot;)
+fmt.Printf(&quot;Index of non-existent substring is: %d\n&quot;, idx)
+</code></pre><blockquote>
+<p>&lsquo;hello&rsquo; is in s starting at position 6 <br>
+Index of non-existent substring is: -1</p>
+</blockquote>
+<p>Find the position of string within another string starting from the end
+Above we searched from the beginning of the string. We can also search from the end using strings.LastIndex:</p>
+<p>s := &ldquo;hello and second hello&rdquo;
+toFind := &ldquo;hello&rdquo;
+idx := strings.LastIndex(s, toFind)
+fmt.Printf(&ldquo;when searching from end, &lsquo;%s&rsquo; is in s at position %d\n&rdquo;, toFind, idx)</p>
+<pre><code>when searching from end, 'hello' is in s at position 17
+Find all occurrences of a substring
+Above, we only found the first occurrence of the substring. Here’s how to find all occurrences:
+
+s := &quot;first is, second is, third is&quot;
+toFind := &quot;is&quot;
+currStart := 0
+for {
+	idx := strings.Index(s, toFind)
+	if idx == -1 {
+		break
+	}
+	fmt.Printf(&quot;found '%s' at position %d\n&quot;, toFind, currStart+idx)
+	currStart += idx + len(toFind)
+	s = s[idx+len(toFind):]
+}
+</code></pre><blockquote>
+<p>found &lsquo;is&rsquo; at position 6 <br>
+found &lsquo;is&rsquo; at position 17 <br>
+found &lsquo;is&rsquo; at position 27</p>
+</blockquote>
+<h3 id="是否包含字符串">是否包含字符串</h3>
+<p>使用strings.Contains查看字符串中是否包含另一个字符串</p>
+<pre><code>s := &quot;is hello there?&quot;
+toFind := &quot;hello&quot;
+if strings.Contains(s, toFind) {
+	fmt.Printf(&quot;'%s' contains '%s'\n&quot;, s, toFind)
+} else {
+	fmt.Printf(&quot;'%s' doesn't contain '%s'\n&quot;, s, toFind)
+}
+</code></pre><blockquote>
+<p>&lsquo;is hello there?&rsquo; contains &lsquo;hello&rsquo;</p>
+</blockquote>
+<h3 id="是否以另一个字符串开头">是否以另一个字符串开头</h3>
+<p>使用strings.HasPrefix</p>
+<pre><code>s := &quot;this is string&quot;
+toFind := &quot;this&quot;
+if strings.HasPrefix(s, toFind) {
+	fmt.Printf(&quot;'%s' starts with '%s'\n&quot;, s, toFind)
+} else {
+	fmt.Printf(&quot;'%s' doesn't start with '%s'\n&quot;, s, toFind)
+}
+</code></pre><blockquote>
+<p>&lsquo;this is string&rsquo; starts with &lsquo;this&rsquo;</p>
+</blockquote>
+<h2 id="是否以另一个字符串结尾">是否以另一个字符串结尾</h2>
+<p>Using strings.HasSuffix:</p>
+<pre><code>s := &quot;this is string&quot;
+toFind := &quot;string&quot;
+if strings.HasSuffix(s, toFind) {
+	fmt.Printf(&quot;'%s' ends with '%s'\n&quot;, s, toFind)
+} else {
+	fmt.Printf(&quot;'%s' doesn't end with '%s'\n&quot;, s, toFind)
+}
+</code></pre><blockquote>
+<p>&lsquo;this is string&rsquo; ends with &lsquo;string&rsquo;</p>
+</blockquote>
+<h2 id="string比较">string比较</h2>
+<p>可以使用 ==, &gt; 和 &lt; 来比较字符串,比较是对原始字节执行的。</p>
+<p>This works as you would expect for ascii (i.e. english) text but might not be what you want when strings use mixed case (e.g. “abba” is &gt; “Zorro”) or use letters from non-english alphabets.</p>
+<h3 id="使用stringscompare比较字符串">使用strings.Compare比较字符串</h3>
+<p>You can also compare with strings.Compare but use ==, &gt; and &lt; instead as it has the same semantics.</p>
+<h3 id="大小写敏感的比较">大小写敏感的比较</h3>
+<p>使用strings.EqualFold进行忽略大小写的比较:</p>
+<pre><code>s1 := &quot;gone&quot;
+s2 := &quot;GoNe&quot;
+if strings.EqualFold(s1, s2) {
+	fmt.Printf(&quot;'%s' is equal '%s' when ignoring case\n&quot;, s1, s2)
+} else {
+	fmt.Printf(&quot;'%s' is not equal '%s' when ignoring case\n&quot;, s1, s2)
+}
+</code></pre><blockquote>
+<p>&lsquo;gone&rsquo; is equal &lsquo;GoNe&rsquo; when ignoring case</p>
+</blockquote>
+<p>The exact rule is: both string are considered UTF-8-encoded strings and characters are compared using Unicode case-folding.</p>
+<pre><code>s1 := &quot;string one&quot;
+s2 := &quot;string two&quot;
+
+if s1 == s2 {
+	fmt.Printf(&quot;s1 is equal to s2\n&quot;)
+} else {
+	fmt.Printf(&quot;s1 is not equal to s2\n&quot;)
+}
+
+if s1 == s1 {
+	fmt.Printf(&quot;s1 is equal to s1\n&quot;)
+} else {
+	fmt.Printf(&quot;inconcivable! s1 is not equal to itself\n&quot;)
+}
+
+if s1 &gt; s2 {
+	fmt.Printf(&quot;s1 is &gt; than s2\n&quot;)
+} else {
+	fmt.Printf(&quot;s1 is not &gt; than s2\n&quot;)
+}
+
+if s1 &lt; s2 {
+	fmt.Printf(&quot;s1 is &lt; than s2\n&quot;)
+} else {
+	fmt.Printf(&quot;s1 is not &lt; than s2\n&quot;)
+}
+</code></pre><blockquote>
+<p>s1 is not equal to s2<br>
+s1 is equal to s1<br>
+s1 is not &gt; than s2<br>
+s1 is &lt; than s2</p>
+</blockquote>
+<h2 id="大小写转换">大小写转换</h2>
+<pre><code>s := &quot;Mixed Case&quot;
+fmt.Printf(&quot;ToLower(s): '%s'\n&quot;, strings.ToLower(s))
+fmt.Printf(&quot;ToUpper(s): '%s'\n&quot;, strings.ToUpper(s))
+fmt.Printf(&quot;ToTitle(s): '%s'\n&quot;, strings.ToTitle(s))
+</code></pre><blockquote>
+<p>ToLower(s): &lsquo;mixed case&rsquo;<br>
+ToUpper(s): &lsquo;MIXED CASE&rsquo;<br>
+ToTitle(s): &lsquo;MIXED CASE&rsquo;</p>
+</blockquote>
+<h2 id="string转int-float32-float64的几种方法">string转int, float32, float64的几种方法</h2>
+<pre><code>s := &quot;234&quot;
+i, err := strconv.Atoi(s)
+if err != nil {
+	fmt.Printf(&quot;strconv.Atoi() failed with: '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;strconv.Atoi('%s'): %d\n&quot;, s, i)
+
+i, err = strconv.Atoi(&quot;not a number&quot;)
+if err != nil {
+	fmt.Printf(&quot;strconv.Atoi('not a number') failed with: '%s'\n&quot;, err)
+}
+
+i64, err := strconv.ParseInt(s, 10, 64)
+if err != nil {
+	fmt.Printf(&quot;strconv.ParseInt() failed with: '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;strconv.ParseInt('%s', 64): %d\n&quot;, s, i64)
+
+s = &quot;-3.234&quot;
+f64, err := strconv.ParseFloat(s, 64)
+if err != nil {
+	fmt.Printf(&quot;strconv.ParseFloat() failed with: '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;strconv.ParseFloat('%s', 64): %g\n&quot;, s, f64)
+
+var f2 float64
+_, err = fmt.Sscanf(s, &quot;%f&quot;, &amp;f2)
+if err != nil {
+	fmt.Printf(&quot;fmt.Sscanf() failed with: '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;fmt.Sscanf(): %g\n&quot;, f2)
+</code></pre><blockquote>
+<p>strconv.Atoi(&lsquo;234&rsquo;): 234<br>
+strconv.Atoi(&lsquo;not a number&rsquo;) failed with: &lsquo;strconv.Atoi: parsing &ldquo;not a number&rdquo;: invalid syntax&rsquo;<br>
+strconv.ParseInt(&lsquo;234&rsquo;, 64): 234<br>
+strconv.ParseFloat('-3.234&rsquo;, 64): -3.234<br>
+fmt.Sscanf(): -3.234</p>
+</blockquote>
+<h2 id="trim-strings-remove-chars-or-substrings">Trim strings (remove chars or substrings)</h2>
+<p>strings.TrimSpace   strings.TrimSpace(s string) 删除字符串开头和结尾的空格:</p>
+<pre><code>s := &quot;  str\n &quot;
+fmt.Printf(&quot;TrimSpace: %#v =&gt; %#v\n&quot;, s, strings.TrimSpace(s))
+</code></pre><blockquote>
+<p>TrimSpace: &quot;  str\n &quot; =&gt; &ldquo;str&rdquo;</p>
+</blockquote>
+<p>strings.TrimPrefix, strings.TrimSuffix 删除开头或结尾的指定字符串</p>
+<pre><code>prefix := &quot;aba&quot;
+s1 := &quot;abacdda&quot;
+trimmed1 := strings.TrimPrefix(s1, prefix)
+fmt.Printf(&quot;TrimPrefix %#v of %#v =&gt; %#v\n\n&quot;, prefix, s1, trimmed1)
+
+s2 := &quot;abacdda&quot;
+suffix := &quot;da&quot;
+trimmed2 := strings.TrimSuffix(s2, suffix)
+fmt.Printf(&quot;TrimSuffix %#v of %#v =&gt; %#v\n\n&quot;, suffix, s2, trimmed2)
+</code></pre><blockquote>
+<p>TrimPrefix &ldquo;aba&rdquo; of &ldquo;abacdda&rdquo; =&gt; &ldquo;cdda&rdquo;</p>
+<p>TrimSuffix &ldquo;da&rdquo; of &ldquo;abacdda&rdquo; =&gt; &ldquo;abacd&rdquo;</p>
+</blockquote>
+<p>strings.Trim 从字符串中删除给定剪切集中的所有字符：</p>
+<pre><code>s := &quot;abacdda&quot;
+cutset := &quot;zab&quot;
+
+trimmed := strings.Trim(s, cutset)
+fmt.Printf(&quot;Trim chars %#v from %#v =&gt; %#v\n\n&quot;, cutset, s, trimmed)
+
+trimmed = strings.TrimLeft(s, cutset)
+fmt.Printf(&quot;TrimLeft chars %#v from %#v =&gt; %#v\n\n&quot;, cutset, s, trimmed)
+
+trimmed = strings.TrimRight(s, cutset)
+fmt.Printf(&quot;TrimRight chars %#v from %#v =&gt; %#v\n\n&quot;, cutset, s, trimmed)
+</code></pre><blockquote>
+<p>Trim chars &ldquo;zab&rdquo; from &ldquo;abacdda&rdquo; =&gt; &ldquo;cdd&rdquo;</p>
+<p>TrimLeft chars &ldquo;zab&rdquo; from &ldquo;abacdda&rdquo; =&gt; &ldquo;cdda&rdquo;</p>
+<p>TrimRight chars &ldquo;zab&rdquo; from &ldquo;abacdda&rdquo; =&gt; &ldquo;abacdd&rdquo;</p>
+</blockquote>
+<p>strings.Replace替换指定字符串</p>
+<pre><code>s := &quot;this is string&quot;
+toRemove := &quot; is&quot;
+
+ after := strings.Replace(s, toRemove, &quot;&quot;, -1)    
+fmt.Printf(&quot;Removed %#v from %#v =&gt; %#v\n\n&quot;, toRemove, s, after)
+</code></pre><blockquote>
+<p>Removed &quot; is&rdquo; from &ldquo;this is string&rdquo; =&gt; &ldquo;this string&rdquo;</p>
+</blockquote>
+<pre><code>s := &quot;original string original&quot;
+s2 := strings.Replace(s, &quot;original&quot;, &quot;replaced&quot;, -1)
+fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
+</code></pre><blockquote>
+<p>s2: &lsquo;replaced string replaced&rsquo;</p>
+</blockquote>
+<p>strings.Replace 函数最后一个参数代表最大的替换数,-1代表替换所有的</p>
+<p>使用正则表达式替换字符串</p>
+<pre><code>s := &quot;original string original&quot;
+rx := regexp.MustCompile(&quot;(?U)or.*al&quot;)
+s2 := rx.ReplaceAllString(s, &quot;replaced&quot;)
+fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
+</code></pre><blockquote>
+<p>s2: &lsquo;replaced string replaced&rsquo;</p>
+</blockquote>
+<p>This shows how to do strings replacements with regular expressions. (?U)or.*al is a non-greedy ((?U) flag) regular expression that matches original string.</p>
+<p>We replace all parts of the string matching the regex with a string replaced.</p>
+<p>Regular expression is non-greedy, meaning it matches the shortest possible string as opposed to default greedy match which looks for longest possible match.</p>
+<h2 id="拆分和合并">拆分和合并</h2>
+<p>您可以将字符串分割为[] string片段，或者将其重新连接为字符串:</p>
+<pre><code>s := &quot;this is a string&quot;
+a := strings.Split(s, &quot; &quot;)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+
+s2 := strings.Join(a, &quot;,&quot;)
+fmt.Printf(&quot;s2: %#v\n&quot;, s2)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;this&rdquo;, &ldquo;is&rdquo;, &ldquo;a&rdquo;, &ldquo;string&rdquo;}
+s2: &ldquo;this,is,a,string&rdquo;
+使用Join连接字符串比使用+快</p>
+</blockquote>
+<h2 id="格式化文本">格式化文本</h2>
+<p>Go的标准库fmt包实现了C语言风格的字符串格式化:</p>
+<pre><code>s := fmt.Sprintf(&quot;Hello %s&quot;, &quot;World&quot;)
+fmt.Printf(&quot;s: '%s'\n&quot;, s)
+s = fmt.Sprintf(&quot;%d + %f = %d&quot;, 2, float64(3), 5)
+fmt.Println(s)
+</code></pre><blockquote>
+<p>s: &lsquo;Hello World&rsquo; <br>
+2 + 3.000000 = 5</p>
+</blockquote>
+<p>The first argument to fmt.Sprintf is a formatting string which defines how to format subsequent arguments. Subsequent arguments are the values that will be formatted.</p>
+<p>fmt.Sprintf creates a formatted string.</p>
+<p>For convenience, there’s also:</p>
+<p>fmt.Fprintf(w io.Writer, string format, args&hellip; interface{}), which will write a formatted string to a given writer
+fmt.Printf(format string, args.. interface{}) which writes a formatted string to os.Stdout.
+The function Sprintf formats the string in the first parameter, replacing the verbs with the values of the subsequent parameters and returns the result. Like Sprintf, the function Printf also formats but instead of returning the result it prints the string.</p>
+<p>List of string formatting verbs
+%v    // the value in a default format
+// when printing structs, the plus flag (%+v) adds field names
+%#v   // a Go-syntax representation of the value
+%T    // a Go-syntax representation of the type of the value
+%%    // a literal percent sign; consumes no value
+Boolean:</p>
+<p>%t    // the word true or false
+Integer:</p>
+<p>%b    // base 2
+%c    // the character represented by the corresponding Unicode code point
+%d    // base 10
+%o    // base 8
+%q    // a single-quoted character literal safely escaped with Go syntax.
+%x    // base 16, with lower-case letters for a-f
+%X    // base 16, with upper-case letters for A-F
+%U    // Unicode format: U+1234; same as &ldquo;U+%04X&rdquo;
+Floating-point and complex constituents:</p>
+<p>%b    // decimalless scientific notation with exponent a power of two,
+// in the manner of strconv.FormatFloat with the &lsquo;b&rsquo; format,
+// e.g. -123456p-78
+%e    // scientific notation, e.g. -1.234456e+78
+%E    // scientific notation, e.g. -1.234456E+78
+%f    // decimal point but no exponent, e.g. 123.456
+%F    // synonym for %f
+%g    // %e for large exponents, %f otherwise
+%G    // %E for large exponents, %F otherwise
+String and slice of bytes (treated equivalently with these verbs):</p>
+<p>%s    // the uninterpreted bytes of the string or slice
+%q    // a double-quoted string safely escaped with Go syntax
+%x    // base 16, lower-case, two characters per byte
+%X    // base 16, upper-case, two characters per byte
+Pointer:</p>
+<p>%p    // base 16 notation, with leading 0x</p>
+<h2 id="parse-text">Parse text</h2>
+<p>Using fmt.Sscanf
+fmt.Sscanf is the reverse of fmt.Sprintf. Given a string and formatting directive you can parse string into components.</p>
+<p>// extract int and float from a string
+s := &ldquo;48 123.45&rdquo;
+var f float64
+var i int
+nParsed, err := fmt.Sscanf(s, &ldquo;%d %f&rdquo;, &amp;i, &amp;f)
+if err != nil {
+log.Fatalf(&ldquo;first fmt.Sscanf failed with %s\n&rdquo;, err)
+}
+fmt.Printf(&ldquo;i: %d, f: %f, extracted %d values\n&rdquo;, i, f, nParsed)</p>
+<p>var i2 int
+_, err = fmt.Sscanf(s, &ldquo;%d %f %d&rdquo;, &amp;i, &amp;f, &amp;i2)
+if err != nil {
+fmt.Printf(&ldquo;second fmt.Sscanf failed with %s\n&rdquo;, err)
+}</p>
+<pre><code>i: 48, f: 123.450000, extracted 2 values
+second fmt.Sscanf failed with EOF
+fmt.Sscanf supports the same formatting directives as fmt.Sprintf.
+
+If formatting string doesn't match parsed string, fmt.Sscanf returns an error. In our examples the error is EOF because we wanted to extract more values than were in the string.
+
+Using strings.Split
+string.Split allows to split a string by a separator.
+
+s := &quot;this,. is,. a,. string&quot;
+a := strings.Split(s, &quot;,.&quot;)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><p>a: []string{&ldquo;this&rdquo;, &quot; is&rdquo;, &quot; a&rdquo;, &quot; string&rdquo;}</p>
+<h2 id="read-file-line-by-line">Read file line by line</h2>
+<p>Often we need to read a file line by line.</p>
+<p>Read file into memory and split into lines
+// ReadFileAsLines reads a file and splits it into lines
+func ReadFileAsLines(path string) ([]string, error) {
+d, err := ioutil.ReadFile(path)
+if err != nil {
+return nil, err
+}
+s := string(d)
+lines := strings.Split(s, &ldquo;\n&rdquo;)
+return lines, nil
+}</p>
+<pre><code>There are 32 lines in 'main.go'
+Iterate over lines in a file
+It’s more efficient to only process one line at a time, as opposed to reading the whole file into memory.
+
+We can do that using bufio.Scanner:
+
+func IterLinesInFile(filePath string, process func (s string) bool) error {
+    file, err := os.Open(filePath)
+    if err != nil {
+        return err
+    }
+    defer file.Close()
+    scanner := bufio.NewScanner(file)
+    // Scan() reads next line and returns false when reached end or error
+    for scanner.Scan() {
+        line := scanner.Text()
+        if !process(line) {
+          return nil
+        }
+        // process the line
+    }
+    // check if Scan() finished because of error or because it reached end of file
+    return scanner.Err()
+}
+</code></pre><p>38 lines in &lsquo;main.go&rsquo;</p>
+<h2 id="normalize-newlines">Normalize newlines</h2>
+<p>3 types of newlines
+There are 3 ways to represent a newline.</p>
+<p>Unix: using single character LF, which is byte 10 (0x0a), represented as “” in Go string literal.</p>
+<p>Windows: using 2 characters: CR LF, which is bytes 13 10 (0x0d, 0x0a), represented as “” in Go string literal.</p>
+<p>Mac OS: using 1 character CR (byte 13 (0x0d)), represented as “” in Go string literal. This is the least popular.</p>
+<p>When splitting strings into lines you have to decide how you’ll handle this.</p>
+<p>You can assume that your code will only see e.g. Unix style line endings and only handle “”, but this won’t work at all on files with Mac line endings and files with Windows line endings will have a CR character in them.</p>
+<p>A simple way to handle multiple newline representations is to normalize the newlines and then operate on the normalized version.</p>
+<p>Finally you can write code that handles all newline endings. Inevitably, such code is a bit more complicated.</p>
+<p>Normalize newlines
+// NormalizeNewlines normalizes \r\n (windows) and \r (mac)
+// into \n (unix)
+func NormalizeNewlines(d []byte) []byte {
+// replace CR LF \r\n (windows) with LF \n (unix)
+d = bytes.Replace(d, []byte{13, 10}, []byte{10}, -1)
+// replace CF \r (mac) with LF \n (unix)
+d = bytes.Replace(d, []byte{13}, []byte{10}, -1)
+return d
+}</p>
+<pre><code>&quot;new\nline&quot;</code></pre>
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/string/">https://luangeng.space/post/go/basic/string/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Constants/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Go Constants</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Pointers/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Go 指针</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go Images
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/Go">Go</a></li>
+            </ul>
+        </div>
+
+        
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/fileIO/">Go 文件和I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/info/">Go 介绍</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/install/">Go 安装</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Pointers/">Go 指针</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/array/">Go 数组</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/slice/">Go slice类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/maps/">Go map类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/struct/">Go struct类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Interfaces/">Go 接口</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/if-switch-goto/">Go 判断</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Methods/">Go 方法</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Error-handling/">Go 错误处理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Packages/">Go 包管理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/XML/">Go XML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/YAML/">Go YAML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/SQL/">Go SQL</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Client/">Go HTTP Client</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Server/">Go HTTP Server</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Testing/">Go 测试</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">Go sync.Pool for better performance</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/gob/">Go gob</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/go' style="font-size:17px;margin:5px; padding:4px"><code>go(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

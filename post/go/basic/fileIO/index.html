@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="https://luangeng.space">
+  <title>Go 文件和I/O - Computer and Software Technology Open Course</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go 文件和I/O - Computer and Software Technology Open Course">
+  <meta name="description" content="Go 文件和I/O">
+  <meta itemprop="name" content="Go 文件和I/O - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go 文件和I/O">
+  <meta property="og:title" content="Go 文件和I/O - Computer and Software Technology Open Course" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/fileIO/" />
+  <meta property="og:site_name" content="luangeng"/>
+  <meta property="og:description" content="Files and I/O Go has a very robust support for working with files. Here&rsquo;s a program that opens a file, reads its content and closes the file: path := &ldquo;main.go&rdquo; f, err := os.Open(path) if err != nil { log.Fatalf(&ldquo;os.Open() failed with %s\n&rdquo;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&ldquo;ioutil.ReadAll() failed with &lsquo;%s&rsquo;\n&rdquo;, err) } lines := bytes.Split(d, []byte{&#39;\n&rsquo;}) fmt.Printf(&ldquo;File %s has %d">
+ 
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/fileIO/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/fileIO/">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+<div id="wrapper">
+    <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories//"></a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go教程</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              Computer and Software Technology Open Course
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+    <div class="container" id="page">
+        <div class="container-inner">
+            <div class="main">
+                <div class="main-inner group">
+                    <section class="content">
+                        <div class="page-title pad group">
+                            <ul class="meta-single group">
+                                
+                                <li class="category">
+                                    <span>Go</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+
+                        <div class="pad group">
+
+                            <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                <div class="post-inner group">
+
+                                    <h1 class="post-title">Go 文件和I/O</h1>
+
+                                    <p class="post-byline">
+                                        Posted @ 2019-09-08 · 2725 Words
+                                        
+                                        · Tags: Go
+                                        
+                                        
+                                        
+                                        
+                                        · Hits:
+                                        <span id="https://luangeng.space/post/go/basic/fileIO/" class="leancloud_visitors" data-flag-title="Go 文件和I/O">
+                                            <span class="leancloud-visitors-count">0</span>
+                                        </span>
+                                    </p>
+
+
+                                    <div class="clear"></div>
+
+                                    <div class="entry">
+                                        <div class="entry-inner">
+                                            
+                                            <p>Files and I/O
+Go has a very robust support for working with files.</p>
+<p>Here&rsquo;s a program that opens a file, reads its content and closes the file:</p>
+<p>path := &ldquo;main.go&rdquo;
+f, err := os.Open(path)
+if err != nil {
+log.Fatalf(&ldquo;os.Open() failed with %s\n&rdquo;, err)
+}
+defer f.Close()</p>
+<p>d, err := ioutil.ReadAll(f)
+if err != nil {
+log.Fatalf(&ldquo;ioutil.ReadAll() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>lines := bytes.Split(d, []byte{'\n&rsquo;})
+fmt.Printf(&ldquo;File %s has %d lines\n&rdquo;, path, len(lines))</p>
+<pre><code>File main.go has 29 lines
+
+## Reading files
+Read the whole file
+The simplest way to read a whole file is:
+
+d, err := ioutil.ReadFile(&quot;foo.txt&quot;)
+if err != nil {
+    log.Fatalf(&quot;ioutil.ReadFile failed with '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;Size of 'foo.txt': %d bytes\n&quot;, len(d))
+Open file for reading, close file
+f, err := os.Open(&quot;foo.txt&quot;)
+if err != nil {
+    log.Fatalf(&quot;os.Open failed with '%s'\n&quot;, err)
+}
+defer f.Close()
+Open returns *os.File which implements io.Reader and io.Closer interfaces.
+
+You should always close files to avoid leaking file descriptors. defer is perfect for ensuring Close will be called on exit of the function.
+
+Read file line by line
+// ReadLines reads all lines from a file
+func ReadLines(filePath string) ([]string, error) {
+	file, err := os.OpenFile(filePath, os.O_RDONLY, 0666)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	res := make([]string, 0)
+	for scanner.Scan() {
+		line := scanner.Text()
+		res = append(res, line)
+	}
+	if err = scanner.Err(); err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+func main() {
+	path := &quot;main.go&quot;
+	lines, err := ReadLines(path)
+	if err != nil {
+		log.Fatalf(&quot;ReadLines failed with '%s'\n&quot;, err)
+	}
+	fmt.Printf(&quot;File %s has %d lines\n&quot;, path, len(lines))
+}
+</code></pre><p>File main.go has 41 lines</p>
+<h2 id="writing-files">Writing files</h2>
+<p>Write the whole file
+The simplest way to write data to a file:</p>
+<p>d := []byte(&ldquo;content of the file&rdquo;)
+err := ioutil.WriteFile(&ldquo;foo.txt&rdquo;, d, 0644)
+if err != nil {
+log.Fatalf(&ldquo;ioutil.WriteFile failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}
+Open file for writing
+f, err := os.Create(&ldquo;foo.txt&rdquo;)
+if err != nil {
+log.Fatalf(&ldquo;os.Open failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}
+Create returns *os.File which implements io.Writer and io.Closer interfaces.</p>
+<p>If file doesn’t exist, it’ll be created.</p>
+<p>If file does exist, it’ll be truncated.</p>
+<p>You should always close files to avoid leaking file descriptors.</p>
+<p>Be aware that Close on a file can return an error so for a robust code you should check for errors from Close.</p>
+<p>Writes can be buffered and Close might need to flush remaining cached bytes to disk. That might fail and return an error.</p>
+<p>Open file for appending
+f, err := os.OpenFile(filePath, os.O_WRONLY | os.O_APPEND | os.O_CREATE, 0666)
+if err != nil {
+log.Fatalf(&ldquo;os.Open failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}
+Second argument to os.OpenFile is a flag that determines the exact mode for opening the file.</p>
+<p>When you open for reading, use os.Open.</p>
+<p>When you open for writing to a new file, use os.Create.</p>
+<p>When you open for appending to existing file, use os.OpenFile with the following flags: * os.O_WRONLY. Could also be os.RDWR if we also to both read and write * os.O_APPEND means that if file exists, we’ll append * os.O_CREATE means that if file doesn’t exist, we’ll create it. Without this flag opening non-existing file would fail</p>
+<p>Write to a file
+d := []byte(&ldquo;data to write&rdquo;)
+nWritten, err := f.Write(d)
+File permissions when creating files
+When you create a new file with os.Create or os.OpenFile, you need to provide file permissions for the new file.</p>
+<p>For most cases 0644 is a good choice.</p>
+<p>Those are Unix style permissions in octal format.</p>
+<p>Let’s deconstruct parts of 0644</p>
+<p>0 means this is a number in octal format. That means that each number is in 0-7 range (compare to regular decimal notation where each number is in 0-9 range)
+6 is permissions for the creator of the file. It’s a bitmask 4 + 2. 4 means read permissions, 2 means write permission. When combined it means read/write access
+4 is permissions for the group that user belongs to. I.e. every user that also belongs to the same group will have those permissions. 4 means only read permissions
+last 4 is for everyone. Again, 4 means only read permissions
+for completeness, 1 represents executable permissions so if this is meant to be an executable file, the permissions flag would be 0755 i.e. for each user/group/anonymous component we add 1 to set executable bit
+Those permissions are native to Unix and Mac OS but they map loosely on Windows.</p>
+<p>To manage Windows permissions you need to use Windows API.</p>
+<h2 id="file-operations">File operations</h2>
+<p>Get file size
+// GetFileSize returns file size or error if e.g. file doesn&rsquo;t exist
+func GetFileSize(path string) (int64, error) {
+st, err := os.Lstat(path)
+if err != nil {
+return -1, err
+}
+return st.Size(), nil
+}</p>
+<p>func main() {
+path := &ldquo;main.go&rdquo;
+size, err := GetFileSize(path)
+if err != nil {
+log.Fatalf(&ldquo;GetFileSize failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}
+fmt.Printf(&ldquo;File %s is %d bytes in size\n&rdquo;, path, size)
+}</p>
+<pre><code>File main.go is 501 bytes in size
+Instead of os.Stat we can also use os.Lstat. The difference is that os.Stat follows symbolic links and os.Lstat doesn’t.
+
+In other words: for a symbolic link os.Lstat returns information about link and os.Stat about the file that it links to.
+
+Get information about the file
+func main() {
+	st, err := os.Stat(&quot;main.go&quot;)
+	if err != nil {
+		log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
+	}
+	fmt.Printf(`Name: %s
+Size: %d
+IsDir: %v
+Mode: %x
+ModTime: %s
+OS info: %#v
+`, st.Name(), st.Size(), st.IsDir(), st.Mode, st.ModTime(), st.Sys())
+}
+</code></pre><p>Name: main.go
+Size: 363
+IsDir: false
+Mode: 4999c0
+ModTime: 2019-11-06 04:41:24.675411079 +0000 UTC
+OS info: &amp;syscall.Stat_t{Dev:0x5, Ino:0xba8, Nlink:0x1, Mode:0x81a4, Uid:0x0, Gid:0x0, X__pad0:0, Rdev:0x0, Size:363, Blksize:4096, Blocks:8, Atim:syscall.Timespec{Sec:1573015285, Nsec:208585110}, Mtim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, Ctim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, X__unused:[3]int64{0, 0, 0}}
+Check if a file exists
+// IsPathxists returns true if a given path exists, false if it doesn&rsquo;t.
+// It might return an error if e.g. file exists but you don&rsquo;t have
+// access
+func IsPathExists(path string) (bool, error) {
+_, err := os.Lstat(path)
+if err == nil {
+return true, nil
+}
+if os.IsNotExist(err) {
+return false, nil
+}
+// error other than not existing e.g. permission denied
+return false, err
+}</p>
+<p>func printExists(path string) {
+exists, err := IsPathExists(path)
+if err == nil {
+fmt.Printf(&ldquo;File &lsquo;%s&rsquo; exists: %v\n&rdquo;, path, exists)
+} else {
+fmt.Printf(&ldquo;IsFileExists('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
+}
+}
+func main() {
+printExists(&ldquo;main.go&rdquo;)
+printExists(&ldquo;non-existent-file.txt&rdquo;)
+}</p>
+<pre><code>File 'main.go' exists: true
+File 'non-existent-file.txt' exists: false
+Checking if a file exists is surprisingly tricky and it’s impossible to write a generic function that handles all the nuances.
+
+Here are decisions we made:
+
+it treats files and directories the same. If a path exists and you want to distinguish between directory and a file, you would need to call IsDir() on result of os.Lstat
+if a file is a symbolic link, do we test the link or the real file it links to? We used os.Lstat so we test the link. We could also use os.Stat to resolve the symbolic link
+“path doesn’t exist” is only one of possible errors returned by os.Lstat. Do we want to distinguish between “file doesn’t exist” and “file exists and we don’t have access”? We decided to be more informative but in some cases it would be simpler to just return a bool and always return false if os.Lstat fails
+Delete a file
+path := &quot;foo.txt&quot;
+err := os.Remove(path)
+if err != nil {
+    if os.IsNotExist(err) {
+        fmt.Printf(&quot;os.Remove failed because file doesn't exist\n&quot;)
+    } else {
+        fmt.Printf(&quot;os.Remove failed with '%s'\n&quot;, err)
+    }
+}
+os.Remove returns an error for files that don’t exist.
+
+Usually you want to ignore such errors which you can do by testing error with os.IsNotExist(err).
+
+Rename a file
+oldPath := &quot;old_name.txt&quot;
+newPath := &quot;new_name.txt&quot;
+err := os.Rename(oldPath, newPath)
+if err != nil {
+    fmt.Printf(&quot;os.Rename failed with '%s'\n&quot;, err)
+}
+Copy a file
+// CopyFile copies a src file to dst
+func CopyFile(dst, src string) error {
+	srcFile, err := os.Open(src)
+	if err != nil {
+		return err
+	}
+	defer srcFile.Close()
+
+	dstFile, err := os.Create(dst)
+	if err != nil {
+		return err
+	}
+	_, err = io.Copy(dstFile, srcFile)
+	err2 := dstFile.Close()
+	if err == nil &amp;&amp; err2 != nil {
+		err = err2
+	}
+	if err != nil {
+		// delete the destination if copy failed
+		os.Remove(dst)
+	}
+	return err
+}
+</code></pre><p>Writing a generic function for copying files is tricky and it’s impossible to write a function that serves all use cases.</p>
+<p>Here are policy decisions we made:</p>
+<p>should we over-write existing files or return error if destination exists? We decided to over-write
+what permissions should new file have? We decided for the simplest case of using default permissions. Another option would be to copy permissions from source or allow the caller to provide permissions
+If you want different behavior, you will have to modify the code as needed.</p>
+<h2 id="directory-operations">Directory operations</h2>
+<p>Create directory
+dir := &ldquo;my_dir&rdquo;
+err := os.Mkdir(dir, 0755)
+if err != nil {
+fmt.Printf(&ldquo;os.Mkdir('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, dir)
+}
+dir := filepath.Join(&ldquo;topdir&rdquo;, &ldquo;subdir&rdquo;)
+err := os.MkdirAll(dir, 0755)
+if err != nil {
+fmt.Printf(&ldquo;os.MkdirAll('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, dir)
+}
+os.Mkdir only succeeds if parent directory of dir already exists.</p>
+<p>os.MkdirAll will create all intermediary directories.</p>
+<p>0755 describes permissions for the directory.</p>
+<p>Those are Unix style permissions in octal format.</p>
+<p>Let’s deconstruct parts of 0755 * 0 means this is a number in octal format. That means that each number is in 0-7 range (compare to regular decimal notation where each number is in 0-9 range) * 7 is permissions for the creator of the file. It’s a bitmask 4 + 2 + 1. 4 means read permissions, 2 means write permission, 1 means that directory can be traversed. When combined it means read/write/traverse access * 5 is permissions for the group that user belongs to. I.e. every user that also belongs to the same group will have those permissions. 4 + 1 means read and traverse permissions, but not write permissions * last 5 is for everyone. Again, 5 means read and traverse permissions</p>
+<p>Delete directory
+dir := &ldquo;my_dir&rdquo;
+err := os.Remove(dir)
+if err != nil {
+fmt.Printf(&ldquo;os.Remove('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
+}
+os.Remove only works for empty directories i.e. directories without any files of sub-directories.</p>
+<p>dir := &ldquo;my_dir&rdquo;
+err := os.RemoveAll(dir)
+if err != nil {
+fmt.Printf(&ldquo;os.RemoveAll('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
+}
+os.RemoveAll removes the directory and all its children (files and sub-directories).</p>
+<p>List files in a directory
+To list files and directories in a given directory we can use ioutil.ReadDir:</p>
+<p>func main() {
+dir := &ldquo;.&rdquo;
+fileInfos, err := ioutil.ReadDir(dir)
+if err != nil {
+log.Fatalf(&ldquo;ioutil.ReadDir('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, dir, err)
+}
+for i, fi := range fileInfos {
+if i &lt; 4 {
+fmt.Printf(&ldquo;Path: %s, is dir: %v, size: %d bytes\n&rdquo;, fi.Name(), fi.IsDir(), fi.Size())
+}
+}
+}</p>
+<pre><code>Path: app, is dir: false, size: 2202180 bytes
+Path: go.mod, is dir: false, size: 21 bytes
+Path: main.go, is dir: false, size: 400 bytes
+List files recursively
+func main() {
+	nShown := 0
+	err := filepath.Walk(&quot;.&quot;, func(path string, fi os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if nShown &gt; 4 {
+			return nil
+		}
+		nShown++
+		fmt.Printf(&quot;Path: %s, is dir: %v, size: %d bytes\n&quot;, fi.Name(), fi.IsDir(), fi.Size())
+		return nil
+	})
+
+	if err != nil {
+		fmt.Printf(&quot;filepath.Walk failed with '%s'\n&quot;, err)
+	}
+}
+</code></pre><p>Path: ., is dir: true, size: 0 bytes
+Path: app, is dir: false, size: 2179294 bytes
+Path: go.mod, is dir: false, size: 21 bytes
+Path: main.go, is dir: false, size: 466 bytes
+To visit files in a directory recursively use filepath.Walk.</p>
+<p>You provide a callback function that will be called for every file and directory under directory.</p>
+<p>Callback function is called even for files/directories that we can’t read e.g. due to insufficient permissions.</p>
+<p>We can end traversal early by returning non-nil error from callback function.</p>
+<h2 id="file-path-operations">File path operations</h2>
+<p>Unfortunately different operating systems have different rules about the format of file paths.</p>
+<p>For example, on Unix and Mac OS, path separator character is / and on Windows it’s .</p>
+<p>For portable programs, it’s important to use functions in filepath package that understand conventions used by a given operating system.</p>
+<p>Note: filepath package manages OS file paths. There’s also path package with similar functionality but it always uses / as path separator.</p>
+<p>Join a path
+path := filepath.Join(&ldquo;dir&rdquo;, &ldquo;sub&rdquo;, &ldquo;file.txt&rdquo;)
+fmt.Printf(&ldquo;path: %s\n&rdquo;, path)</p>
+<pre><code>path: dir/sub/file.txt
+You can join more than 2 path elements.
+
+On Windows the above would return dir\file.txt, on Unix and Mac OS it would return dir/file.txt.
+
+Split a path into a directory and file
+path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
+file := filepath.Base(path)
+fmt.Printf(&quot;path: %s, file: %s\n&quot;, path, file)
+</code></pre><p>path: dir/file.txt, file: file.txt
+Split list of paths
+parts := filepath.SplitList(&quot;/usr/bin:/tmp&rdquo;)
+fmt.Printf(&ldquo;parts: %#v\n&rdquo;, parts)</p>
+<pre><code>parts: []string{&quot;/usr/bin&quot;, &quot;/tmp&quot;}
+Get file name from path
+path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
+dir, file := filepath.Split(path)
+fmt.Printf(&quot;dir: %s, file: %s\n&quot;, dir, file)
+</code></pre><p>dir: dir/, file: file.txt
+Get directory name from path
+path := filepath.Join(&ldquo;dir&rdquo;, &ldquo;file.txt&rdquo;)
+dir := filepath.Dir(path)
+fmt.Printf(&ldquo;path: %s, dif: %s\n&rdquo;, path, dir)</p>
+<pre><code>path: dir/file.txt, dif: dir
+Get file extension
+ext := filepath.Ext(&quot;file.txt&quot;)
+fmt.Printf(&quot;ext: %s\n&quot;, ext)
+</code></pre><p>ext: .txt</p>
+<h2 id="io-related-interfaces">I/O related interfaces</h2>
+<p>Go standard library defines several interfaces related to i/o.</p>
+<p>They are crucial for abstracting i/o operation from the concrete object.</p>
+<p>Thanks to io.Reader interface we can write code that operates on any type that implements that interface, be it a type representing a file on disk, a network connection, or a buffer in memory.</p>
+<p>Having, for example, a JSON decoder operate on io.Reader is more powerful than JSON decoder that can only work on files.</p>
+<p>For maximum flexibility, when possible you should write functions that operate on least specific interfaces like io.Reader or io.Writer and not concrete types like *os.File.</p>
+<p>io.Reader
+type Reader interface {
+Read(p []byte) (n int, err error)
+}
+io.Reader is a crucial abstraction for reading from sequential stream of bytes.</p>
+<p>Read function reads up to len(p) bytes into a buffer p, returning the number of bytes read and error status.</p>
+<p>It might return less than the len(p), even 0 bytes.</p>
+<p>When it reaches end of file, it returns io.EOF as error. Notice that Read is allowed to return data in the same call as returning io.EOF so handling end of file requires attention to details.</p>
+<p>io.Reader doesn’t allow going back in the stream. For that the type must implement io.Seeker or io.ReaderAt interfaces.</p>
+<p>io.Writer
+type Writer interface {
+Write(p []byte) (n int, err error)
+}
+io.Writer is for writing to a sequential stream of bytes.</p>
+<p>Write writes bytes in p and returns the number of bytes written and error status.</p>
+<p>Write guarantees that it’ll write all data or return an error i.e. if returned n is &lt; len(p) then err must be non-nil.</p>
+<p>io.Closer
+type Closer interface {
+Close() error
+}
+Closer describes streams that must be explicitly closed.</p>
+<p>Close returns an error because it’s required in some real-world cases. For example, when doing buffered writes to a file, Close might need to flush remaining buffered data to a file, which might fail.</p>
+<p>For that reason it’s important to check error returned from Close when closing a write-able streams.</p>
+<p>io.ReaderAt
+type ReaderAt interface {
+ReadAt(p []byte, off int64) (n int, err error)
+}
+io.ReaderAt is like io.Reader but allows to read at any position in the stream.</p>
+<p>This is possible in files but not in network connections.</p>
+<p>io.WriterAt
+type WriterAt interface {
+WriteAt(p []byte, off int64) (n int, err error)
+}
+io.WriterAt is like io.Write but allows to write at an arbitrary position in the stream.</p>
+<p>io.Seeker
+type Seeker interface {
+Seek(offset int64, whence int) (int64, error)
+}
+io.Seeker allows seeking within the stream. If you can seek, you can also implement io.ReaderAt and io.WriterAt.</p>
+
+                                            
+                                        </div>
+
+                                        <div style="margin-top:40px">
+                                            <marquee direction="right" behavior="alternate" scrollamount="4" loop="6">
+                                                --------------------------END--------------------------
+                                            </marquee>
+                                        </div>
+
+                                        <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者：luangeng</li>
+            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+                
+                
+                
+            
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/fileIO/">https://luangeng.space/post/go/basic/fileIO/</a></li>
+            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            </li>
+        </ul>
+    </div>
+</div>
+
+                                        <div class="clear"></div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </article>
+                            
+                            <div class="clear"></div>
+                            <ul class="post-nav group">
+                                <li class="next">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Packages/" rel="next">
+                                        <i class="fa fa-chevron-right"></i>
+                                        <strong>Next</strong>
+                                        <span>Go 包管理</span>
+                                    </a>
+                                    
+                                </li>
+                                <li class="previous">
+                                    
+                                    <a href="https://luangeng.space/post/go/basic/Time-and-date/" rel="prev">
+                                        <i class="fa fa-chevron-left"></i>
+                                        <strong>Previous</strong>
+                                        <span>Go 日期和时间</span>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                            <br>
+
+
+                            <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                            
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go Images
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+
+                        </div>
+                    </section>
+                    <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                       target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="img/qrcode.png" alt="weixin" width="172px" height="172px"/>
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+		
+		<div id="Series" class="widget widget_archive">
+            <h3>系列</h3>
+            <ul>
+                <li><a href="https://luangeng.space/tags/java">Java</a></li>
+                <li><a href="https://luangeng.space/tags/Go">Go</a></li>
+            </ul>
+        </div>
+
+        
+
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/info/">Go 介绍</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/install/">Go 安装</a></li>
+                  
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Pointers/">Go 指针</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/array/">Go 数组</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/slice/">Go slice类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/maps/">Go map类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/struct/">Go struct类型</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Interfaces/">Go 接口</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/if-switch-goto/">Go 判断</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Methods/">Go 方法</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Error-handling/">Go 错误处理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Packages/">Go 包管理</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/XML/">Go XML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/YAML/">Go YAML</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/SQL/">Go SQL</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Client/">Go HTTP Client</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-Server/">Go HTTP Server</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Testing/">Go 测试</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">Go sync.Pool for better performance</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/gob/">Go gob</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                  
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
+            
+            <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/go' style="font-size:17px;margin:5px; padding:4px"><code>go(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven' style="font-size:17px;margin:5px; padding:4px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql' style="font-size:17px;margin:5px; padding:4px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis' style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring' style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot' style="font-size:17px;margin:5px; padding:4px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud' style="font-size:17px;margin:5px; padding:4px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool' style="font-size:17px;margin:5px; padding:4px"><code>tool(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper' style="font-size:17px;margin:5px; padding:4px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%BB%83%E4%B9%A0%E9%A2%98' style="font-size:17px;margin:5px; padding:4px"><code>练习题(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD' style="font-size:17px;margin:5px; padding:4px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px"/>
+                <p>  </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages </a>
+            · Powered by <a href="https://gohugo.io/" style="font-weight: bold">Hugo</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 · </span>
+            <a href="https://luangeng.space/about"><span>关于</span></a>
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+                <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+                    <i class="fa fa-facebook-square"></i>
+                </a>
+            </li>
+        </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+
+</div>
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+
+<script>
+    init();
+</script>
+</body>
+</html>
+

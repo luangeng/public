@@ -387,7 +387,7 @@
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/markdown/</guid>
-      <description># markdown语法 * list * list 0. list 0. list `code` code 多行代码 { main{} } &amp;gt;1111（引用） &amp;gt;&amp;gt;222222 &amp;gt;&amp;gt;&amp;gt;33333 &amp;gt;&amp;gt;&amp;gt;&amp;gt;44444 **bold** [link](https://cn.bing.com/w) 链接 ![pic](/img/loading.gif) 图片 markdown语法 list list list list code code 多行代码</description>
+      <description># markdown语法 * list * list 0. list 0. list `code` code 多行代码 { main{} } &amp;gt;1111（引用） &amp;gt;&amp;gt;222222 &amp;gt;&amp;gt;&amp;gt;33333 &amp;gt;&amp;gt;&amp;gt;&amp;gt;44444 **bold** [link](https://cn.bing.com/w) 链接 ![pic](/img/loading.gif) 图片 后面加三个空格换行... 第二行... ma</description>
     </item>
     
     <item>
