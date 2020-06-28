@@ -484,14 +484,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/tags/git/</loc>
-        <lastmod>2018-09-18T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://luangeng.space/tags/github/</loc>
+        <loc>https://luangeng.space/tags/oauth2/</loc>
         <lastmod>2018-09-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -500,13 +493,6 @@
     <url>
         <loc>https://luangeng.space/post/other/github_login/</loc>
         <lastmod>2018-09-18T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://luangeng.space/tags/oauth2/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -696,13 +682,6 @@
     <url>
         <loc>https://luangeng.space/post/java/spring/springmvc/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://luangeng.space/tags/ajax/</loc>
-        <lastmod>2017-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -1256,6 +1235,13 @@
     <url>
         <loc>https://luangeng.space/post/java/struts/</loc>
         <lastmod>2016-08-23T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/tags/git/</loc>
+        <lastmod>2016-08-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

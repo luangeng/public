@@ -4,13 +4,13 @@ function init() {
     AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
     var Counter = AV.Object.extend("Counter");
     addCount(Counter);
-    showHitCount(Counter);
+    //showHitCount(Counter);
 
     var qrcode = new QRCode(document.getElementById("weixin-qrcode"), {width : 150,height : 150 });
     qrcode.makeCode(window.location.toString());
 
     $(window).scroll(function() { this.scrollY > 700 ? $("#back-to-top").show() : $("#back-to-top").hide(); });
-    queryRanking();
+    //queryRanking();
 }
 
 //给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。

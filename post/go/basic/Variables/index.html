@@ -187,10 +187,12 @@ s: %s
 err: %v
 `, i, i2, s, err)
 }
-</code></pre><p>i: 4
-i2: 0
-s:
+</code></pre><blockquote>
+<p>i: 4<br>
+i2: 0<br>
+s: <br>
 err: <!-- raw HTML omitted --></p>
+</blockquote>
 <h2 id="基本变量声明">基本变量声明</h2>
 <p>Go is a statically typed language. We know the type of a variable at compilation time.
 Go是一种静态类型的语言。 我们在编译时就知道变量的类型。</p>
@@ -233,8 +235,10 @@ func main() {
 	x, y := multipleReturn()  // x = 1, y = 2
 	w, z := multipleReturn2() // w = 3, z = 4
 	fmt.Printf(&quot;x: %d, y: %d\nw: %d, z: %d\n&quot;, x, y, w, z)
-</code></pre><p>x: 1, y: 2
+</code></pre><blockquote>
+<p>x: 1, y: 2<br>
 w: 3, z: 4</p>
+</blockquote>
 <h2 id="空白标识符">空白标识符</h2>
 <p>为了避免出错，Go编译器不允许代码中有未使用的变量。</p>
 <p>但是，在某些情况下，我们不需要使用某个存储在变量中的值。</p>
@@ -249,20 +253,25 @@ func main() {
 	sum, _ := SumProduct(1, 2) // 第二个返回值被丢弃了
 	fmt.Println(sum)           // -&gt; 3
 }
-</code></pre><p>3</p>
+</code></pre><blockquote>
+<p>3</p>
+</blockquote>
 <h3 id="使用-range">使用 range</h3>
-<p>func main() {
-pets := []string{&ldquo;dog&rdquo;, &ldquo;cat&rdquo;, &ldquo;fish&rdquo;}</p>
-<pre><code>// range returns both the current index and value
-// but sometimes we only need one or the other
-for _, pet := range pets {
-    fmt.Println(pet)
+<pre><code>func main() {
+	pets := []string{&quot;dog&quot;, &quot;cat&quot;, &quot;fish&quot;}
+
+	// range returns both the current index and value
+	// but sometimes we only need one or the other
+	for _, pet := range pets {
+		fmt.Println(pet)
+	}
 }
-</code></pre>
-<p>}</p>
-<pre><code>dog
-cat
-fish</code></pre>
+</code></pre><blockquote>
+<p>dog<br>
+cat<br>
+fish</p>
+</blockquote>
+
                                             
                                         </div>
 
@@ -741,8 +750,6 @@ fish</code></pre>
                   
                   
                   
-                  
-                  
                 
                 <li><a href="https://luangeng.space/post/go/basic/fileIO/">Go 文件和I/O</a></li>
                   
@@ -752,6 +759,8 @@ fish</code></pre>
                 
                 <li><a href="https://luangeng.space/post/go/basic/install/">Go 安装</a></li>
                   
+                
+                <li><a href="https://luangeng.space/post/go/basic/basetype/">Go基本数据类型</a></li>
                   
                   
                 
@@ -945,25 +954,19 @@ fish</code></pre>
         <div id="tags" class="widget">
             <h3>标签</h3>
             
-            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
+            <a href='https://luangeng.space/tags/Go' style="font-size:17px;margin:5px; padding:4px"><code>Go(56)</code></a>
             
             <a href='https://luangeng.space/tags/Java' style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
             
             <a href='https://luangeng.space/tags/RocketMQ' style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
             
-            <a href='https://luangeng.space/tags/ajax' style="font-size:17px;margin:5px; padding:4px"><code>ajax(1)</code></a>
-            
             <a href='https://luangeng.space/tags/elasticsearch' style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
             
             <a href='https://luangeng.space/tags/git' style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
             
-            <a href='https://luangeng.space/tags/github' style="font-size:17px;margin:5px; padding:4px"><code>github(1)</code></a>
-            
-            <a href='https://luangeng.space/tags/go' style="font-size:17px;margin:5px; padding:4px"><code>go(1)</code></a>
-            
             <a href='https://luangeng.space/tags/html' style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
             
-            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(1)</code></a>
+            <a href='https://luangeng.space/tags/jQuery' style="font-size:17px;margin:5px; padding:4px"><code>jQuery(2)</code></a>
             
             <a href='https://luangeng.space/tags/linux' style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
             
@@ -973,7 +976,7 @@ fish</code></pre>
             
             <a href='https://luangeng.space/tags/netty' style="font-size:17px;margin:5px; padding:4px"><code>netty(8)</code></a>
             
-            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(2)</code></a>
+            <a href='https://luangeng.space/tags/oauth2' style="font-size:17px;margin:5px; padding:4px"><code>oauth2(3)</code></a>
             
             <a href='https://luangeng.space/tags/opencv' style="font-size:17px;margin:5px; padding:4px"><code>opencv(1)</code></a>
             
