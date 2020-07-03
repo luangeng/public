@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go基本数据类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2598 Words
+                                        Posted @ 2019-09-09 · 2592 Words
                                         
                                         · Tags: Go
                                         
@@ -156,20 +156,26 @@ b = false
 fmt.Printf(&quot;b is: '%v'\n&quot;, b)
 var b2 bool
 fmt.Printf(&quot;zero value of bool is: '%v'\n&quot;, b2)
-</code></pre><p>b is: &lsquo;true&rsquo;
+</code></pre><blockquote>
+<p>b is: &lsquo;true&rsquo;<br>
 b is: &lsquo;false&rsquo;</p>
+</blockquote>
 <p>bool变量的大小（例如 为struct的一部分时）为1个byte。</p>
 <pre><code>b := true
 fmt.Printf(&quot;size of bool is: %d\n&quot;, unsafe.Sizeof(b))
-</code></pre><p>size of bool is: 1</p>
+</code></pre><blockquote>
+<p>size of bool is: 1</p>
+</blockquote>
 <h1 id="integers">Integers</h1>
 <p>Go有固定大小的无符号和有符号整数类型：</p>
-<p>int8, uint8
-byte 是 uint8的别名
-int16, uint16
-int32, uint32
-rune 是 int32的别名
-int64, uint64</p>
+<ul>
+<li>int8, uint8</li>
+<li>byte 是 uint8的别名</li>
+<li>int16, uint16</li>
+<li>int32, uint32</li>
+<li>rune 是 int32的别名</li>
+<li>int64, uint64</li>
+</ul>
 <p>go中还有与体系结构相关的整数：</p>
 <p>int在32位处理器上为int32，在64位处理器上为int64
 uint在32位处理器上是uint32，在64位处理器上是uint64</p>
@@ -180,8 +186,10 @@ fmt.Printf(&quot;i1: %s\n&quot;, strconv.Itoa(i1))
 
 var i2 int32 = 148
 fmt.Printf(&quot;i2: %s\n&quot;, strconv.Itoa(int(i2)))
-</code></pre><p>i1: -38
+</code></pre><blockquote>
+<p>i1: -38<br>
 i2: 148</p>
+</blockquote>
 <h4 id="用-fmtsprintf将int转化为string">用 fmt.Sprintf将int转化为string</h4>
 <pre><code>var i1 int = -38
 s1 := fmt.Sprintf(&quot;%d&quot;, i1)
@@ -190,8 +198,10 @@ fmt.Printf(&quot;i1: %s\n&quot;, s1)
 var i2 int32 = 148
 s2 := fmt.Sprintf(&quot;%d&quot;, i2)
 fmt.Printf(&quot;i2: %s\n&quot;, s2)
-</code></pre><p>i1: -38
+</code></pre><blockquote>
+<p>i1: -38<br>
 i2: 148</p>
+</blockquote>
 <h4 id="用-strconvatoi将string转为int">用 strconv.Atoi将string转为int</h4>
 <pre><code>s := &quot;-48&quot;
 i1, err := strconv.Atoi(s)
@@ -199,7 +209,9 @@ if err != nil {
 	log.Fatalf(&quot;strconv.Atoi() failed with %s\n&quot;, err)
 }
 fmt.Printf(&quot;i1: %d\n&quot;, i1)
-</code></pre><p>i1: -48</p>
+</code></pre><blockquote>
+<p>i1: -48</p>
+</blockquote>
 <h4 id="用-fmtsscanf将string转为int">用 fmt.Sscanf将string转为int</h4>
 <pre><code>s := &quot;348&quot;
 var i int
@@ -208,12 +220,16 @@ if err != nil {
 	log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;i1: %d\n&quot;, i)
-</code></pre><p>i1: 348</p>
+</code></pre><blockquote>
+<p>i1: 348</p>
+</blockquote>
 <h1 id="浮点类型">浮点类型</h1>
-<p>Go具有与IEEE 754标准相对应的浮点数类型：
-float32 为 4 byte 长的浮点型数字 (即C语言中的float)
-float64 为 8 byte 长的浮点型数字 (即C语言中的double)
-float32 和 float64 的初始值为 0.0.</p>
+<p>Go具有与IEEE 754标准相对应的浮点数类型：</p>
+<ul>
+<li>float32 为 4 byte 长的浮点型数字 (即C语言中的float)</li>
+<li>float64 为 8 byte 长的浮点型数字 (即C语言中的double)</li>
+<li>float32 和 float64 的初始值为 0.0.</li>
+</ul>
 <h4 id="使用-formatfloat-将float转为string">使用 FormatFloat 将float转为string</h4>
 <pre><code>var f32 float32 = 1.3
 bitSize := 32
@@ -224,13 +240,17 @@ var f64 float64 = 8.1234
 bitSize = 64
 s2 := strconv.FormatFloat(f64, 'e', -1, bitSize)
 fmt.Printf(&quot;f64: %s\n&quot;, s2)
-</code></pre><p>f32: 1.3E+00
+</code></pre><blockquote>
+<p>f32: 1.3E+00<br>
 f64: 8.1234e+00</p>
+</blockquote>
 <h4 id="用-sprintf-将float转为字符串">用 Sprintf 将float转为字符串</h4>
 <pre><code>var f64 float64 = 1.54
 s := fmt.Sprintf(&quot;%f&quot;, f64)
 fmt.Printf(&quot;f is: '%s'\n&quot;, s)
-</code></pre><p>f is: &lsquo;1.540000&rsquo;</p>
+</code></pre><blockquote>
+<p>f is: &lsquo;1.540000&rsquo;</p>
+</blockquote>
 <p>使用 strconv.FormatFloat 比 fmt.Sprintf 快</p>
 <h4 id="用-parsefloat将string转为float">用 ParseFloat将string转为float</h4>
 <pre><code>s := &quot;1.2341&quot;
@@ -239,7 +259,9 @@ if err != nil {
 	log.Fatalf(&quot;strconv.ParseFloat() failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;f64: %f\n&quot;, f64)
-</code></pre><p>f64: 1.234100</p>
+</code></pre><blockquote>
+<p>f64: 1.234100</p>
+</blockquote>
 <h4 id="使用-sscanf将string转为float">使用 Sscanf将string转为float</h4>
 <pre><code>s := &quot;1.2341&quot;
 var f float64
@@ -248,29 +270,37 @@ if err != nil {
 	log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;f: %f\n&quot;, f)
-</code></pre><p>f: 1.234100</p>
+</code></pre><blockquote>
+<p>f: 1.234100</p>
+</blockquote>
 <h1 id="字符型">字符型</h1>
-<p>Go 有两种字符类型
-byte是1个byte的值，是uint8类型的别名
-rune是4个byte的Unicode值，是int32类型的别名
-byte and rune的初始值为0</p>
+<p>Go 有两种字符类型</p>
+<ul>
+<li>byte是1个byte的值，是uint8类型的别名</li>
+<li>rune是4个byte的Unicode值，是int32类型的别名
+byte and rune的初始值为0</li>
+</ul>
 <h4 id="用byte遍历string">用byte遍历string</h4>
 <pre><code>s := &quot;str&quot;
 for i := 0; i &lt; len(s); i++ {
 	c := s[i]
 	fmt.Printf(&quot;Byte at index %d is '%c' (0x%x)\n&quot;, i, c, c)
 }
-</code></pre><p>Byte at index 0 is &lsquo;s&rsquo; (0x73)
-Byte at index 1 is &lsquo;t&rsquo; (0x74)
+</code></pre><blockquote>
+<p>Byte at index 0 is &lsquo;s&rsquo; (0x73)<br>
+Byte at index 1 is &lsquo;t&rsquo; (0x74)<br>
 Byte at index 2 is &lsquo;r&rsquo; (0x72)</p>
+</blockquote>
 <h4 id="用rune遍历string">用rune遍历string</h4>
 <pre><code>s := &quot;日本語&quot;
 for i, runeChar := range s {
 	fmt.Printf(&quot;Rune at byte position %d is %#U\n&quot;, i, runeChar)
 }
-</code></pre><p>Rune at byte position 0 is U+65E5 &lsquo;日&rsquo;
-Rune at byte position 3 is U+672C &lsquo;本&rsquo;
+</code></pre><blockquote>
+<p>Rune at byte position 0 is U+65E5 &lsquo;日&rsquo;<br>
+Rune at byte position 3 is U+672C &lsquo;本&rsquo;<br>
 Rune at byte position 6 is U+8A9E &lsquo;語&rsquo;</p>
+</blockquote>
 <p>string是byte组成的数组
 当使用rune遍历string的使用go假定string是UTF-8编码的Unicode字符串
 UTF-8是一种可变长度编码，可将rune编码为1、2、3或4个byte。
@@ -295,8 +325,10 @@ var (
 a2 := [...]int{1, 2, 3} // array of 3 integers
 
 fmt.Printf(&quot;Size of a1: %d.\nSize of a2: %d\n&quot;, len(a1), len(a2))
-</code></pre><p>Size of a1: 2.
+</code></pre><blockquote>
+<p>Size of a1: 2.<br>
 Size of a2: 3</p>
+</blockquote>
 <h1 id="slices">Slices</h1>
 <p>Go中的slice用于在大多数其他语言（如Ruby，Python或C＃）中使用数组，或在C ++中使用std :: vector。
 切片的大小可以增长和缩小。 它被实现为对基础固定大小数组的视图。
@@ -325,10 +357,12 @@ checkKey(&quot;number4&quot;)
 delete(m, &quot;number3&quot;)
 fmt.Printf(&quot;deleted key 'number3\n&quot;)
 checkKey(&quot;number3&quot;) // and now it doesn't exist
-</code></pre><p>value for key &lsquo;number3&rsquo; is 3
-key &lsquo;number4&rsquo; doesn&rsquo;t exist in map
-deleted key &lsquo;number3
+</code></pre><blockquote>
+<p>value for key &lsquo;number3&rsquo; is 3<br>
+key &lsquo;number4&rsquo; doesn&rsquo;t exist in map<br>
+deleted key &lsquo;number3<br>
 key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
+</blockquote>
 <h1 id="structs">Structs</h1>
 <p>结构将多个值分组为一个实体。零值结构是一个结构，其字段设置为各自的零值。</p>
 <pre><code>type MyStruct struct {
@@ -336,143 +370,149 @@ key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
 	StringVal        string
 	unexportedIntVal int
 }
-
-# Interfaces
-接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义：
-</code></pre><p>type Reader interface {
-Read(p []byte) (n int, err error)
-}</p>
-<pre><code>接口越小越好.
-
-# Empty interface
-类型interface {}称为空接口。根据定义，它是一个没有定义方法的接口。
+</code></pre><h1 id="interfaces">Interfaces</h1>
+<p>接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义：</p>
+<pre><code>type Reader interface {
+    Read(p []byte) (n int, err error)
+}
+</code></pre><p>接口越小越好.</p>
+<h1 id="empty-interface">Empty interface</h1>
+<p>类型interface {}称为空接口。根据定义，它是一个没有定义方法的接口。
 这意味着每种类型都符合一个空接口。在Go接口{}中用作动态类型。
 它与C＃或Java中的对象相似，因为它将类型和值组合为一个值。
-空接口也是您在Go中实现联合类型的方式。空接口的零值为nil。
-
-# Pointers
-指向类型的指针是该类型的值在内存中的地址。指针的零值为nil。与C不同，Go没有指针运算。 您可以输入变量的地址，但不能添加或减去指针。
-
-指针基础
-</code></pre><p>var a int = 4
+空接口也是您在Go中实现联合类型的方式。空接口的零值为nil。</p>
+<h1 id="pointers">Pointers</h1>
+<p>指向类型的指针是该类型的值在内存中的地址。指针的零值为nil。与C不同，Go没有指针运算。 您可以输入变量的地址，但不能添加或减去指针。</p>
+<p>指针基础</p>
+<pre><code>var a int = 4
 pa := &amp;a
-fmt.Printf(&ldquo;Address of a variable in memory is %p. Its value is: %d\n&rdquo;, pa, *pa)</p>
-<pre><code>Address of a variable in memory is 0xc00007c010. Its value is: 4
-
-# Channels
-通道是类型化队列，用于goroutine以线程安全的方式相互通信。通道的零值为零。
-Channel使用示例
-</code></pre><p>// create unbuffered channel of int values with capacity of 1
+fmt.Printf(&quot;Address of a variable in memory is %p. Its value is: %d\n&quot;, pa, *pa)
+</code></pre><blockquote>
+<p>Address of a variable in memory is 0xc00007c010. Its value is: 4</p>
+</blockquote>
+<h1 id="channels">Channels</h1>
+<p>通道是类型化队列，用于goroutine以线程安全的方式相互通信。通道的零值为零。
+Channel使用示例</p>
+<pre><code>// create unbuffered channel of int values with capacity of 1
 ch := make(chan int)
 // start a new goroutine that sends value 3 over a channel
 go func() { ch &lt;- 3 }()
 // read the value from a channel
 // it waits until goroutine above sends a value
 n := &lt;-ch
-fmt.Printf(&ldquo;n: %d\n&rdquo;, n)</p>
-<pre><code>n: 3
+fmt.Printf(&quot;n: %d\n&quot;, n)
+</code></pre><blockquote>
+<p>n: 3</p>
+</blockquote>
+<h1 id="初始值">初始值</h1>
+<p>如果未显式分配Go中的变量，则使用已知值对其进行初始化,这个值称为零值.
+这与C/C ++不同，在C/C ++中，未明确分配的变量具有未定义的值。</p>
+<ul>
+<li>type	zero value</li>
+<li>bool	false</li>
+<li>integers	0</li>
+<li>floating point numbers	0.0</li>
+<li>string	&quot;&rdquo;</li>
+<li>pointer	nil</li>
+<li>slice	nil</li>
+<li>map	nil</li>
+<li>interface	nil</li>
+<li>channel	nil</li>
+<li>array	all elements have zero value</li>
+<li>struct	all members set to zero value</li>
+<li>function	nil</li>
+</ul>
+<p>通过代码查看:</p>
+<pre><code>fmt.Println(&quot;zero values for basic types:&quot;)
 
-# 初始值
-如果未显式分配Go中的变量，则使用已知值对其进行初始化,这个值称为零值.
-这与C / C ++不同，在C / C ++中，未明确分配的变量具有未定义的值。
+var zeroBool bool
+fmt.Printf(&quot;bool:       %v\n&quot;, zeroBool)
 
-type	zero value
-bool	false
-integers	0
-floating point numbers	0.0
-string	&quot;&quot;
-pointer	nil
-slice	nil
-map	nil
-interface	nil
-channel	nil
-array	all elements have zero value
-struct	all members set to zero value
-function	nil
-Said differently:
-</code></pre><p>fmt.Println(&ldquo;zero values for basic types:&quot;)</p>
-<p>var zeroBool bool
-fmt.Printf(&ldquo;bool:       %v\n&rdquo;, zeroBool)</p>
-<p>var zeroInt int
-fmt.Printf(&ldquo;int:        %v\n&rdquo;, zeroInt)</p>
-<p>var zeroF32 float32
-fmt.Printf(&ldquo;float32:    %v\n&rdquo;, zeroF32)</p>
-<p>var zeroF64 float64
-fmt.Printf(&ldquo;float64:    %v\n&rdquo;, zeroF64)</p>
-<p>var zeroStr string
-fmt.Printf(&ldquo;string:     %#v\n&rdquo;, zeroStr)</p>
-<p>var zeroPtr *int
-fmt.Printf(&ldquo;pointer:    %v\n&rdquo;, zeroPtr)</p>
-<p>var zeroSlice []uint32
-fmt.Printf(&ldquo;slice:      %v\n&rdquo;, zeroSlice)</p>
-<p>var zeroMap map[string]int
-fmt.Printf(&ldquo;map:        %#v\n&rdquo;, zeroMap)</p>
-<p>var zeroInterface interface{}
-fmt.Printf(&ldquo;interface:  %v\n&rdquo;, zeroInterface)</p>
-<p>var zeroChan chan bool
-fmt.Printf(&ldquo;channel:    %v\n&rdquo;, zeroChan)</p>
-<p>var zeroArray [5]int
-fmt.Printf(&ldquo;array:      %v\n&rdquo;, zeroArray)</p>
-<p>type struc struct {
-a int
-b string
+var zeroInt int
+fmt.Printf(&quot;int:        %v\n&quot;, zeroInt)
+
+var zeroF32 float32
+fmt.Printf(&quot;float32:    %v\n&quot;, zeroF32)
+
+var zeroF64 float64
+fmt.Printf(&quot;float64:    %v\n&quot;, zeroF64)
+
+var zeroStr string
+fmt.Printf(&quot;string:     %#v\n&quot;, zeroStr)
+
+var zeroPtr *int
+fmt.Printf(&quot;pointer:    %v\n&quot;, zeroPtr)
+
+var zeroSlice []uint32
+fmt.Printf(&quot;slice:      %v\n&quot;, zeroSlice)
+
+var zeroMap map[string]int
+fmt.Printf(&quot;map:        %#v\n&quot;, zeroMap)
+
+var zeroInterface interface{}
+fmt.Printf(&quot;interface:  %v\n&quot;, zeroInterface)
+
+var zeroChan chan bool
+fmt.Printf(&quot;channel:    %v\n&quot;, zeroChan)
+
+var zeroArray [5]int
+fmt.Printf(&quot;array:      %v\n&quot;, zeroArray)
+
+type struc struct {
+	a int
+	b string
 }
 var zeroStruct struc
-fmt.Printf(&ldquo;struct:     %#v\n&rdquo;, zeroStruct)</p>
-<p>var zeroFunc func(bool)
-fmt.Printf(&ldquo;function:   %v\n&rdquo;, zeroFunc)</p>
-<pre><code>zero values for basic types:
-bool:       false
-int:        0
-float32:    0
-float64:    0
-string:     &quot;&quot;
-pointer:    &lt;nil&gt;
-slice:      []
-map:        map[string]int(nil)
-interface:  &lt;nil&gt;
-channel:    &lt;nil&gt;
-array:      [0 0 0 0 0]
-struct:     main.struc{a:0, b:&quot;&quot;}
-function:   &lt;nil&gt;
+fmt.Printf(&quot;struct:     %#v\n&quot;, zeroStruct)
 
-
-# 类型转换
-与C语言不同，Go不会在类型之间进行隐式转换。您必须在兼容类型之间显式转换：
-</code></pre><p>// 您可以在数字之间进行转换，即各种大小的整数和浮点数
+var zeroFunc func(bool)
+fmt.Printf(&quot;function:   %v\n&quot;, zeroFunc)
+</code></pre><blockquote>
+<p>zero values for basic types:<br>
+bool:       false<br>
+int:        0<br>
+float32:    0<br>
+float64:    0<br>
+string:     &quot;&rdquo;<br>
+pointer:    <!-- raw HTML omitted --><br>
+slice:      []<br>
+map:        map[string]int(nil)<br>
+interface:  <!-- raw HTML omitted --><br>
+channel:    <!-- raw HTML omitted --><br>
+array:      [0 0 0 0 0]<br>
+struct:     main.struc{a:0, b:&quot;&quot;}<br>
+function:   <!-- raw HTML omitted --></p>
+</blockquote>
+<h1 id="类型转换">类型转换</h1>
+<p>与C语言不同，Go不会在类型之间进行隐式转换。您必须在兼容类型之间显式转换：</p>
+<pre><code>// 您可以在数字之间进行转换，即各种大小的整数和浮点数
 var i1 int32 = 3
 var i2 int = int(i1) // we must explicitly cast from int32 to int
-var f float64 = float64(i1)</p>
-<p>s := &ldquo;string&rdquo;
+var f float64 = float64(i1)
+
+s := &quot;string&quot;
 // we can cast between string and []byte and vice-versa
 // note that unless optimizted by the compiler, this involves allocation
-var d []byte = []byte(s)</p>
-<pre><code>
-# Type aliases
-Type aliases were introduced in Go 1.9 to make code refactoring easier.
-
-Imagine you have a package foo that exports type Bar.
-
-You want to rename type Bar to NewBar.
-
-Without type aliases you would have to change all the packages that use foo.Bar to use foo.NewBar at the same time you’re renaming the type.
-
-With type aliases you can split this into a 2 step process.
-
-First update dependencies by introducing an alias for foo.Bar and replacing all uses of foo.Bar with the alias.
-</code></pre><p>import &ldquo;foo&rdquo;
+var d []byte = []byte(s)
+</code></pre><h1 id="type-aliases">Type aliases</h1>
+<p>Type aliases were introduced in Go 1.9 to make code refactoring easier.</p>
+<p>Imagine you have a package foo that exports type Bar.</p>
+<p>You want to rename type Bar to NewBar.</p>
+<p>Without type aliases you would have to change all the packages that use foo.Bar to use foo.NewBar at the same time you’re renaming the type.</p>
+<p>With type aliases you can split this into a 2 step process.</p>
+<p>First update dependencies by introducing an alias for foo.Bar and replacing all uses of foo.Bar with the alias.</p>
+<pre><code>import &quot;foo&quot;
 type Bar = foo.Bar // Bar is now an alias of foo.Bar
-Now you can rename foo.Bar to foo.NewBar and update the alias:</p>
-<p>import &ldquo;foo&rdquo;
+Now you can rename foo.Bar to foo.NewBar and update the alias:
+
+import &quot;foo&quot;
 type Bar = foo.NewBar
-This is a much smaller change.</p>
-<pre><code>You can now gradually get rid of the alias and use the new foo.NewBar type directly.
+This is a much smaller change.
+</code></pre><p>You can now gradually get rid of the alias and use the new foo.NewBar type directly.</p>
+<p>The process sounds like a hassle, but in large code bases it can be a better approach than renaming everything at once.</p>
+<p>It’s tempting to use type aliases for other things, but you should resist.</p>
+<p>Type aliases add a layer of indirection, which hurts readability of the code. There should be a good reason to use them.</p>
 
-The process sounds like a hassle, but in large code bases it can be a better approach than renaming everything at once.
-
-It’s tempting to use type aliases for other things, but you should resist.
-
-Type aliases add a layer of indirection, which hurts readability of the code. There should be a good reason to use them.</code></pre>
                                             
                                         </div>
 
@@ -616,17 +656,6 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -637,8 +666,19 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -725,7 +765,7 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -965,7 +1005,7 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -995,7 +1035,7 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -1031,13 +1071,13 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -1100,7 +1140,7 @@ Type aliases add a layer of indirection, which hurts readability of the code. Th
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

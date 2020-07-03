@@ -2,24 +2,19 @@
 <html>
 <head>
   <base href="https://luangeng.space">
-  <title>Go Logging - Computer and Software Technology Open Course</title>
+  <title>Go 日志 - Computer and Software Technology Open Course</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Logging - Computer and Software Technology Open Course">
-  <meta name="description" content="Go Logging">
-  <meta itemprop="name" content="Go Logging - Computer and Software Technology Open Course">
-  <meta itemprop="description" content="Go Logging">
-  <meta property="og:title" content="Go Logging - Computer and Software Technology Open Course" />
+  <meta name="keywords" content="Go 日志 - Computer and Software Technology Open Course">
+  <meta name="description" content="Go 日志">
+  <meta itemprop="name" content="Go 日志 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go 日志">
+  <meta property="og:title" content="Go 日志 - Computer and Software Technology Open Course" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Logging/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Logging Logging is a very deep subject because different programs have different logging requirements.
-Logging with fmt.Printf and fmt.Fprintf The simplest way to log is to write to standard output (stdout):
-fmt.Printf(&ldquo;Logging to %s\n&rdquo;, &ldquo;stdout&rdquo;) To write to standard error (stderr):
-fmt.Fprintf(os.Stderr, &ldquo;Logging to %s\n&rdquo;, &ldquo;stderr&rdquo;) Logging with log package Standard package log offers more functionality:
-log.Printf(&ldquo;Logging&rdquo;) log.Printf(&ldquo;Second line\n&rdquo;)
-2019/11/06 02:17:58 Logging 2019/11/06 02:17:58 Second line Compared to fmt.Printf, log.Printf: * by default logs to stderr (os.">
+  <meta property="og:description" content="Logging is a very deep subject because different programs have different logging requirements. 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方式是打印在标准输出中(stdout): fmt.Printf(&quot;Logging to">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Logging/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Logging/">
@@ -131,10 +126,10 @@ log.Printf(&ldquo;Logging&rdquo;) log.Printf(&ldquo;Second line\n&rdquo;)
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Go Logging</h1>
+                                    <h1 class="post-title">Go 日志</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 201 Words
+                                        Posted @ 2019-09-09 · 322 Words
                                         
                                         · Tags: Go
                                         
@@ -142,7 +137,7 @@ log.Printf(&ldquo;Logging&rdquo;) log.Printf(&ldquo;Second line\n&rdquo;)
                                         
                                         
                                         · Hits:
-                                        <span id="https://luangeng.space/post/go/basic/Logging/" class="leancloud_visitors" data-flag-title="Go Logging">
+                                        <span id="https://luangeng.space/post/go/basic/Logging/" class="leancloud_visitors" data-flag-title="Go 日志">
                                             <span class="leancloud-visitors-count">0</span>
                                         </span>
                                     </p>
@@ -153,33 +148,30 @@ log.Printf(&ldquo;Logging&rdquo;) log.Printf(&ldquo;Second line\n&rdquo;)
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Logging
-Logging is a very deep subject because different programs have different logging requirements.</p>
-<p>Logging with fmt.Printf and fmt.Fprintf
-The simplest way to log is to write to standard output (stdout):</p>
-<p>fmt.Printf(&ldquo;Logging to %s\n&rdquo;, &ldquo;stdout&rdquo;)
-To write to standard error (stderr):</p>
-<p>fmt.Fprintf(os.Stderr, &ldquo;Logging to %s\n&rdquo;, &ldquo;stderr&rdquo;)
-Logging with log package
-Standard package log offers more functionality:</p>
-<p>log.Printf(&ldquo;Logging&rdquo;)
-log.Printf(&ldquo;Second line\n&rdquo;)</p>
-<pre><code>2019/11/06 02:17:58 Logging
-2019/11/06 02:17:58 Second line
-Compared to fmt.Printf, log.Printf: * by default logs to stderr (os.Stderr) * adds current time to each log line * ensures that echo log is on it’s own line by adding \n if not explicitly provided
-
-To log fatal issues:
-
-f, err := os.Open(&quot;file.txt&quot;)
+                                            <p>Logging is a very deep subject because different programs have different logging requirements.</p>
+<h1 id="使用fmtprintf-和-fmtfprintf打印日志">使用fmt.Printf 和 fmt.Fprintf打印日志</h1>
+<p>日志的一种简单方式是打印在标准输出中(stdout):</p>
+<pre><code>fmt.Printf(&quot;Logging to %s\n&quot;, &quot;stdout&quot;)
+</code></pre><h3 id="打印日志到stderr">打印日志到stderr:</h3>
+<pre><code>fmt.Fprintf(os.Stderr, &quot;Logging to %s\n&quot;, &quot;stderr&quot;)
+</code></pre><h1 id="使用log包打印日志">使用log包打印日志</h1>
+<p>标准log包提供了更多的功能:</p>
+<pre><code>log.Printf(&quot;Logging&quot;)
+log.Printf(&quot;Second line\n&quot;)
+</code></pre><blockquote>
+<p>2019/11/06 02:17:58 Logging<br>
+2019/11/06 02:17:58 Second line</p>
+</blockquote>
+<p>Compared to fmt.Printf, log.Printf: * by default logs to stderr (os.Stderr) * adds current time to each log line * ensures that echo log is on it’s own line by adding \n if not explicitly provided</p>
+<h3 id="打印致命错误">打印致命错误:</h3>
+<pre><code>f, err := os.Open(&quot;file.txt&quot;)
 if err != nil {
     log.Fatalf(&quot;os.Open('file.txt') failed with '%s'\n&quot;, err)
 }
-log.Fatalf logs the message and calls os.Exit(1) to end the process.
-
-Logging to a file
-Log package allows changing where the log output is sent. We can log to a file:
-
-logfile, err := os.OpenFile(&quot;test.log&quot;, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+</code></pre><p>log.Fatalf打印错误日志并且调用os.Exit(1)来终止进程</p>
+<h3 id="日志记录到文件">日志记录到文件</h3>
+<p>log包可以改变日志输出到哪里,比如文件:</p>
+<pre><code>logfile, err := os.OpenFile(&quot;test.log&quot;, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 if err != nil {
 	log.Fatalf(&quot;os.OpenFile() failed with '%s\n&quot;, err)
 }
@@ -187,15 +179,16 @@ defer logfile.Close()
 
 log.SetOutput(logfile)
 log.Println(&quot;Log entry&quot;)
-</code></pre><p>Logging to syslog
-When running on Unix, we might log to syslog:</p>
-<p>syslogger, err := syslog.New(syslog.LOG_INFO, &ldquo;syslog_example&rdquo;)
+</code></pre><h3 id="日志记录到syslog">日志记录到syslog</h3>
+<p>当程序运行在Unix时, 日志可以记录到syslog:</p>
+<pre><code>syslogger, err := syslog.New(syslog.LOG_INFO, &quot;syslog_example&quot;)
 if err != nil {
-log.Fatalln(err)
-}</p>
-<p>log.SetOutput(syslogger)
-log.Println(&ldquo;Log entry&rdquo;)</p>
+	log.Fatalln(err)
+}
 
+log.SetOutput(syslogger)
+log.Println(&quot;Log entry&quot;)
+</code></pre>
                                             
                                         </div>
 
@@ -339,17 +332,6 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -360,8 +342,19 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -448,7 +441,7 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -690,7 +683,7 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -720,7 +713,7 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -760,7 +753,7 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -823,7 +816,7 @@ log.Println(&ldquo;Log entry&rdquo;)</p>
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

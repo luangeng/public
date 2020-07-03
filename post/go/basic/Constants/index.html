@@ -2,23 +2,19 @@
 <html>
 <head>
   <base href="https://luangeng.space">
-  <title>Go Constants - Computer and Software Technology Open Course</title>
+  <title>Go 常量 - Computer and Software Technology Open Course</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Constants - Computer and Software Technology Open Course">
-  <meta name="description" content="Go Constants">
-  <meta itemprop="name" content="Go Constants - Computer and Software Technology Open Course">
-  <meta itemprop="description" content="Go Constants">
-  <meta property="og:title" content="Go Constants - Computer and Software Technology Open Course" />
+  <meta name="keywords" content="Go 常量 - Computer and Software Technology Open Course">
+  <meta name="description" content="Go 常量">
+  <meta itemprop="name" content="Go 常量 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go 常量">
+  <meta property="og:title" content="Go 常量 - Computer and Software Technology Open Course" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Constants/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Constants Go supports constants of character, string, boolean, and numeric values.
-Constant basics:
-// Greeting is an exported (public) string constant const Greeting string = &ldquo;Hello World&rdquo;
-// we can group const declarations const ( // years is an unexported (package private) int constant years int = 10 truth bool = true )
-Constants can be used like variables, except that their value can&#39;t change. An example: // collection: Essential Go package main import ( &quot;fmt&quot; &quot;math&quot; ) const s string = &quot;constant&quot; func main() { fmt.">
+  <meta property="og:description" content="Go支持character, string,boolean和数字型的常量. 常量基本使用: // Greeting 是public的string常量 const Greeting string = &quot;Hello World&quot; // 可以">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Constants/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Constants/">
@@ -130,10 +126,10 @@ Constants can be used like variables, except that their value can&#39;t change. 
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Go Constants</h1>
+                                    <h1 class="post-title">Go 常量</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 899 Words
+                                        Posted @ 2019-09-09 · 980 Words
                                         
                                         · Tags: Go
                                         
@@ -141,7 +137,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
                                         
                                         
                                         · Hits:
-                                        <span id="https://luangeng.space/post/go/basic/Constants/" class="leancloud_visitors" data-flag-title="Go Constants">
+                                        <span id="https://luangeng.space/post/go/basic/Constants/" class="leancloud_visitors" data-flag-title="Go 常量">
                                             <span class="leancloud-visitors-count">0</span>
                                         </span>
                                     </p>
@@ -152,23 +148,20 @@ Constants can be used like variables, except that their value can&#39;t change. 
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="constants">Constants</h1>
-<p>Go supports constants of character, string, boolean, and numeric values.</p>
-<p>Constant basics:</p>
-<p>// Greeting is an exported (public) string constant
-const Greeting string = &ldquo;Hello World&rdquo;</p>
-<p>// we can group const declarations
+                                            <p>Go支持character, string,boolean和数字型的常量.
+常量基本使用:</p>
+<pre><code>// Greeting 是public的string常量
+const Greeting string = &quot;Hello World&quot;
+
+// 可以组合常量声明
 const (
-// years is an unexported (package private) int constant
-years int  = 10
-truth bool = true
-)</p>
-<pre><code>Constants can be used like variables, except that their value can't change.
-
-An example:
-
-// collection: Essential Go
-package main
+	// years是private的int常量
+	years int  = 10
+	truth bool = true
+)
+</code></pre><p>Constants can be used like variables, except that their value can&rsquo;t change.
+常量也可当做变量来使用只不过他们的值不能改变:</p>
+<pre><code>package main
 
 import (
 	&quot;fmt&quot;
@@ -193,82 +186,90 @@ func main() {
 	const x = 10
 	fmt.Println(math.Sin(x)) // -0.5440211108893699
 }
-</code></pre><p>constant
-10
-n=10 is of type int
-4.3
+</code></pre><blockquote>
+<p>constant<br>
+10<br>
+n=10 is of type int<br>
+4.3<br>
 -0.5440211108893699</p>
+</blockquote>
 <h2 id="typed-vs-untyped-constants">Typed vs. untyped constants</h2>
 <p>As explained in type casting, Go doesn’t perform implicit type casts between integer types.</p>
 <p>Untyped constants make using integer types easier:</p>
-<p>const untypedNumber = 345</p>
-<p>// if this was a variable declaration, untypedNumber would have its type
+<pre><code>const untypedNumber = 345
+
+// if this was a variable declaration, untypedNumber would have its type
 // inferred as int.
-// since it&rsquo;s a const, it remains untyped until it&rsquo;s e.g. assigned to a variable
+// since it's a const, it remains untyped until it's e.g. assigned to a variable
 var i int = untypedNumber      // no need to cast to int
 var u16 uint16 = untypedNumber // no need to cast to uint16
-var f float64 = untypedNumber  // no need to cast to float64</p>
-<p>// incompatible assignments are detected by the compiler
+var f float64 = untypedNumber  // no need to cast to float64
+
+// incompatible assignments are detected by the compiler
 // 345 is too big to fit in int8 and compiler detects that
-var b int8 = untypedNumber</p>
-<pre><code># test
-./main.go:17:6: constant 345 overflows int8
-exit status 2
-
-## iota
-iota makes it easy to declare sequentially growing numeric constants:
-
-const (
+var b int8 = untypedNumber
+</code></pre><blockquote>
+<p>./main.go:17:6: constant 345 overflows int8<br>
+exit status 2</p>
+</blockquote>
+<h2 id="iota">iota</h2>
+<p>iota makes it easy to declare sequentially growing numeric constants:</p>
+<pre><code>const (
 	Low = iota
 	Medium
 	High
 )
 fmt.Printf(&quot;Low: %d\nMedium: %d\nHigh: %d\n&quot;, Low, Medium, High)
-</code></pre><p>Low: 0
-Medium: 1
+</code></pre><blockquote>
+<p>Low: 0<br>
+Medium: 1<br>
 High: 2
 iota sets the value of Low to 0 and instructs the compiler that the following constants have increasing numeric values.</p>
+</blockquote>
 <p>Creating bitmask values with iota
 Iota can be very useful when creating a bitmask. For instance, to represent the state of a network connection which may be secure, authenticated, and/or ready, we might create a bitmask like the following:</p>
 <pre><code>const (
-    Secure = 1 &lt;&lt; iota // 0b001
-    Authn              // 0b010
-    Ready              // 0b100
+	Secure = 1 &lt;&lt; iota // 0b001
+	Authn              // 0b010
+	Ready              // 0b100
 )
 
 ConnState := Secure | Authn // 0b011: Connection is secure and authenticated, but not yet Ready
 
 fmt.Printf(`Secure:    0x%x (0b%03b)
-</code></pre>
-<p>Authn:     0x%x (0b%03b)
+Authn:     0x%x (0b%03b)
 ConnState: 0x%x (0b%03b)
-`, Secure, Secure, Authn, Authn, ConnState, ConnState)</p>
-<pre><code>Secure:    0x1 (0b001)
+`, Secure, Secure, Authn, Authn, ConnState, ConnState)
+</code></pre><blockquote>
+<p>Secure:    0x1 (0b001)
 Authn:     0x2 (0b010)
-ConnState: 0x3 (0b011)
-Skipping values
-The value of iota is still incremented for every entry in a constant list even if iota is not used:
-
-const ( // iota is reset to 0
+ConnState: 0x3 (0b011)</p>
+</blockquote>
+<h3 id="skipping-values">Skipping values</h3>
+<p>The value of iota is still incremented for every entry in a constant list even if iota is not used:</p>
+<pre><code>const ( // iota is reset to 0
 	a = 1 &lt;&lt; iota // a == 1
 	b = 1 &lt;&lt; iota // b == 2
 	c = 3         // c == 3  (iota is not used but still incremented)
 	d = 1 &lt;&lt; iota // d == 8
 )
 fmt.Printf(&quot;a: %d, b: %d, c: %d, d: %d\n&quot;, a, b, c, d)
-</code></pre><p>a: 1, b: 2, c: 3, d: 8
-It will also be incremented even if no constant is created at all, meaning the empty identifier can be used to skip values entirely:</p>
-<p>const (
-a = iota // a = 0
-_        // iota is incremented  to 1
-b        // b = 2
+</code></pre><blockquote>
+<p>a: 1, b: 2, c: 3, d: 8</p>
+</blockquote>
+<p>It will also be incremented even if no constant is created at all, meaning the empty identifier can be used to skip values entirely:</p>
+<pre><code>const (
+	a = iota // a = 0
+	_        // iota is incremented  to 1
+	b        // b = 2
 )
-fmt.Printf(&ldquo;a: %d, b: %d\n&rdquo;, a, b)</p>
-<pre><code>a: 0, b: 2
-Using iota in an expression list
-Because iota is incremented after each ConstSpec, values within the same expression list will have the same value for iota:
-
-const (
+fmt.Printf(&quot;a: %d, b: %d\n&quot;, a, b)
+</code></pre><blockquote>
+<p>a: 0, b: 2</p>
+</blockquote>
+<p>Using iota in an expression list
+Because iota is incremented after each ConstSpec, values within the same expression list will have the same value for iota:</p>
+<pre><code>const (
 	bit0, mask0 = 1 &lt;&lt; iota, 1&lt;&lt;iota - 1 // bit0 == 1, mask0 == 0
 	bit1, mask1                          // bit1 == 2, mask1 == 1
 	_, _                                 // skips iota == 2
@@ -276,60 +277,57 @@ const (
 )
 fmt.Printf(&quot;bit0: %d, mask0: 0x%x\n&quot;, bit0, mask0)
 fmt.Printf(&quot;bit3: %d, mask3: 0x%x\n&quot;, bit3, mask3)
-</code></pre><p>bit0: 1, mask0: 0x0
-bit3: 8, mask3: 0x7
-Using iota in an expression
+</code></pre><blockquote>
+<p>bit0: 1, mask0: 0x0<br>
+bit3: 8, mask3: 0x7</p>
+</blockquote>
+<p>Using iota in an expression
 iota can be used in expressions, so it can also be used to assign values other than simple incrementing integers starting from zero. To create constants for SI units, use this example from Effective Go:</p>
-<p>type ByteSize int</p>
-<p>const (
-_           = iota // ignore first value by assigning to blank identifier
-KB ByteSize = 1 &laquo; (10 * iota)
-MB
-GB
-TB
-PB
+<pre><code>type ByteSize int
+
+const (
+	_           = iota // ignore first value by assigning to blank identifier
+	KB ByteSize = 1 &lt;&lt; (10 * iota)
+	MB
+	GB
+	TB
+	PB
 )
-fmt.Printf(&ldquo;KB: %d\n&rdquo;, KB)</p>
-<pre><code>KB: 1024
-
-## Emulating enums
-Go doesn’t have a syntax for enumerations, but you can emulate it with constants and a naming scheme.
-
-Consider a C++ enum:
-
-enum {
+fmt.Printf(&quot;KB: %d\n&quot;, KB)
+</code></pre><blockquote>
+<p>KB: 1024</p>
+</blockquote>
+<h2 id="模拟枚举">模拟枚举</h2>
+<p>Go doesn’t have a syntax for enumerations, but you can emulate it with constants and a naming scheme.</p>
+<p>Consider a C++ enum:</p>
+<pre><code>enum {
     tagHtml,
     tagBody,
     taDiv
 };
-In Go you can do it as:
-
-const (
+</code></pre><p>In Go you can do it as:</p>
+<pre><code>const (
     tagBody = iota
     tagDiv
     tagHr
 )
-This declares 3 untyped, numeric constants. iota starts numbering of constants. tagBody has value of 0, tagDiv a value of 1 etc. This is convenient way to assign unique numeric values.
-
-If the values matter, you can assign them explicitly:
-
-const (
+</code></pre><p>This declares 3 untyped, numeric constants. iota starts numbering of constants. tagBody has value of 0, tagDiv a value of 1 etc. This is convenient way to assign unique numeric values.</p>
+<p>If the values matter, you can assign them explicitly:</p>
+<pre><code>const (
 	one   = 1
 	five  = 5
 	seven = 7
 )
-Adding type safety
-In the above example tagBody etc. is an untyped constant so it can be assigned to any numeric type.
-
-We can define a unique type for our enum:
-
-type HTMLTag int
-
-const (
+</code></pre><p>Adding type safety
+In the above example tagBody etc. is an untyped constant so it can be assigned to any numeric type.</p>
+<p>We can define a unique type for our enum:</p>
+<p>type HTMLTag int</p>
+<pre><code>const (
     tagBody HTMLTag = iota
     tagDiv
     tagHr
-)</code></pre>
+)
+</code></pre>
                                             
                                         </div>
 
@@ -582,7 +580,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -852,7 +850,7 @@ const (
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -888,13 +886,13 @@ const (
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -957,7 +955,7 @@ const (
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

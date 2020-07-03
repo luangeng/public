@@ -2,19 +2,19 @@
 <html>
 <head>
   <base href="https://luangeng.space">
-  <title>Go Hex和 base64 encoding - Computer and Software Technology Open Course</title>
+  <title>Go Hex和 base64编码 - Computer and Software Technology Open Course</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Hex和 base64 encoding - Computer and Software Technology Open Course">
-  <meta name="description" content="Go Hex和 base64 encoding">
-  <meta itemprop="name" content="Go Hex和 base64 encoding - Computer and Software Technology Open Course">
-  <meta itemprop="description" content="Go Hex和 base64 encoding">
-  <meta property="og:title" content="Go Hex和 base64 encoding - Computer and Software Technology Open Course" />
+  <meta name="keywords" content="Go Hex和 base64编码 - Computer and Software Technology Open Course">
+  <meta name="description" content="Go Hex和 base64编码">
+  <meta itemprop="name" content="Go Hex和 base64编码 - Computer and Software Technology Open Course">
+  <meta itemprop="description" content="Go Hex和 base64编码">
+  <meta property="og:title" content="Go Hex和 base64编码 - Computer and Software Technology Open Course" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Hex-base64-encoding/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Hex, base64 encoding Sometimes you need to encode bytes into a text. Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters. Hex encode and decode We can encode a []byte into a string and decode from string into []byte. d := []byte{0x01, 0xff, 0x3a, 0xcd} s := hex.EncodeToString(d) fmt.Printf(&ldquo;Hex: %s\n&rdquo;, s) d2, err := hex.DecodeString(s)">
+  <meta property="og:description" content="有时候你需要将bytes编码非文本text. Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters. Hex编码和解码 我们可以把[]byte编码为st">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">
@@ -126,10 +126,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Go Hex和 base64 encoding</h1>
+                                    <h1 class="post-title">Go Hex和 base64编码</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 525 Words
+                                        Posted @ 2019-09-09 · 586 Words
                                         
                                         · Tags: Go
                                         
@@ -137,7 +137,7 @@
                                         
                                         
                                         · Hits:
-                                        <span id="https://luangeng.space/post/go/basic/Hex-base64-encoding/" class="leancloud_visitors" data-flag-title="Go Hex和 base64 encoding">
+                                        <span id="https://luangeng.space/post/go/basic/Hex-base64-encoding/" class="leancloud_visitors" data-flag-title="Go Hex和 base64编码">
                                             <span class="leancloud-visitors-count">0</span>
                                         </span>
                                     </p>
@@ -148,28 +148,28 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Hex, base64 encoding
-Sometimes you need to encode bytes into a text.</p>
+                                            <p>有时候你需要将bytes编码非文本text.</p>
 <p>Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters.</p>
-<p>Hex encode and decode
-We can encode a []byte into a string and decode from string into []byte.</p>
-<p>d := []byte{0x01, 0xff, 0x3a, 0xcd}
+<h2 id="hex编码和解码">Hex编码和解码</h2>
+<p>我们可以把[]byte编码为string,也可以把string解码为 []byte</p>
+<pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 s := hex.EncodeToString(d)
-fmt.Printf(&ldquo;Hex: %s\n&rdquo;, s)</p>
-<p>d2, err := hex.DecodeString(s)
+fmt.Printf(&quot;Hex: %s\n&quot;, s)
+
+d2, err := hex.DecodeString(s)
 if err != nil {
-log.Fatalf(&ldquo;hex.DecodeString() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+	log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
 }
 if !bytes.Equal(d, d2) {
-log.Fatalf(&ldquo;decoded version is different than original&rdquo;)
-}</p>
-<pre><code>Hex: 01ff3acd
-Hex encoding with fmt.Sprintf
-We can encode to string using fmt.Sprintf and %x directive. Similarly, we can decode using fmt.Sscanf and %x.
-
-Directive %x supports integers in addtion to []byte.
-
-d := []byte{0x01, 0xff, 0x3a, 0xcd}
+	log.Fatalf(&quot;decoded version is different than original&quot;)
+}
+</code></pre><blockquote>
+<p>Hex: 01ff3acd</p>
+</blockquote>
+<h2 id="使用fmtsprintf编码hex">使用fmt.Sprintf编码Hex</h2>
+<p>We can encode to string using fmt.Sprintf and %x directive. Similarly, we can decode using fmt.Sscanf and %x.</p>
+<p>Directive %x supports integers in addtion to []byte.</p>
+<pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 s := fmt.Sprintf(&quot;%x&quot;, d)
 fmt.Printf(&quot;Hex: %s\n&quot;, s)
 
@@ -184,33 +184,42 @@ if !bytes.Equal(d, decoded) {
 
 n := 3824
 fmt.Printf(&quot;%d in hex is 0x%x\n&quot;, n, n)
-</code></pre><p>Hex: 01ff3acd
-3824 in hex is 0xef0
-Hex encoding to writer, decoding from reader
+</code></pre><blockquote>
+<p>Hex: 01ff3acd<br>
+3824 in hex is 0xef0</p>
+</blockquote>
+<p>Hex encoding to writer, decoding from reader
 For encoding and decoding larger values in streaming mode, we can encode to a io.Writer and decode from io.Reader.</p>
-<p>d := []byte{0x01, 0xff, 0x3a, 0xcd}</p>
-<p>writer := &amp;bytes.Buffer{}
-hexWriter := hex.NewEncoder(writer)</p>
-<p>_, err := hexWriter.Write(d)
-if err != nil {
-log.Fatalf(&ldquo;hexWriter.Write() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<p>encoded := writer.Bytes()
-fmt.Printf(&ldquo;Hex: %s\n&rdquo;, string(encoded))</p>
-<p>reader := bytes.NewBuffer(encoded)
-hexReader := hex.NewDecoder(reader)</p>
-<p>decoded, err := ioutil.ReadAll(hexReader)
-if err != nil {
-fmt.Printf(&ldquo;ioutil.ReadAll() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<p>if !bytes.Equal(d, decoded) {
-log.Fatalf(&ldquo;decoded version is different than original&rdquo;)
-}</p>
-<pre><code>Hex: 01ff3acd
-Base64 encode and decode
-We can encode a []byte into a string and decode from string into []byte.
+<pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 
-d := []byte{0x01, 0xff, 0x3a, 0xcd}
+writer := &amp;bytes.Buffer{}
+hexWriter := hex.NewEncoder(writer)
+
+_, err := hexWriter.Write(d)
+if err != nil {
+	log.Fatalf(&quot;hexWriter.Write() failed with '%s'\n&quot;, err)
+}
+
+encoded := writer.Bytes()
+fmt.Printf(&quot;Hex: %s\n&quot;, string(encoded))
+
+reader := bytes.NewBuffer(encoded)
+hexReader := hex.NewDecoder(reader)
+
+decoded, err := ioutil.ReadAll(hexReader)
+if err != nil {
+	fmt.Printf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+}
+
+if !bytes.Equal(d, decoded) {
+	log.Fatalf(&quot;decoded version is different than original&quot;)
+}
+</code></pre><blockquote>
+<p>Hex: 01ff3acd</p>
+</blockquote>
+<h2 id="base64编码和解码">Base64编码和解码</h2>
+<p>使用base64也可以编码[]byte</p>
+<pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 s := base64.StdEncoding.EncodeToString(d)
 fmt.Printf(&quot;base64: %s\n&quot;, s)
 
@@ -221,25 +230,29 @@ if err != nil {
 if !bytes.Equal(d, d2) {
 	log.Fatalf(&quot;decoded version is different than original&quot;)
 }
-</code></pre><p>base64: Af86zQ==
-URL-safe base64
-Original base64 encoding unfortunately might produce characters that are not valid in urls.</p>
+</code></pre><blockquote>
+<p>base64: Af86zQ==</p>
+</blockquote>
+<h4 id="url-safe-base64">URL-safe base64</h4>
+<p>Original base64 encoding unfortunately might produce characters that are not valid in urls.</p>
 <p>Given that urls are important those days we have a variant of base64 encoding that doesn’t have that flaw:</p>
-<p>d := []byte{0x01, 0xff, 0x3a, 0xcd}
+<pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 s := base64.URLEncoding.EncodeToString(d)
-fmt.Printf(&ldquo;base64: %s\n&rdquo;, s)</p>
-<p>d2, err := base64.URLEncoding.DecodeString(s)
+fmt.Printf(&quot;base64: %s\n&quot;, s)
+
+d2, err := base64.URLEncoding.DecodeString(s)
 if err != nil {
-log.Fatalf(&ldquo;hex.DecodeString() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+	log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
 }
 if !bytes.Equal(d, d2) {
-log.Fatalf(&ldquo;decoded version is different than original&rdquo;)
-}</p>
-<pre><code>base64: Af86zQ==
-Base64 encoding to writer, decoding from reader
-For encoding and decoding larger values in streaming mode, we can encode to an io.Writer and decode from io.Reader.
-
-d := []byte{0x01, 0xff, 0x3a, 0xcd}
+	log.Fatalf(&quot;decoded version is different than original&quot;)
+}
+</code></pre><blockquote>
+<p>base64: Af86zQ==</p>
+</blockquote>
+<p>Base64 encoding to writer, decoding from reader
+For encoding and decoding larger values in streaming mode, we can encode to an io.Writer and decode from io.Reader.</p>
+<pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 
 writer := &amp;bytes.Buffer{}
 base64Writer := base64.NewEncoder(base64.StdEncoding, writer)
@@ -267,7 +280,9 @@ if err != nil {
 if !bytes.Equal(d, decoded) {
 	log.Fatalf(&quot;decoded version is different than original&quot;)
 }
-</code></pre><p>Base64: Af86zQ==</p>
+</code></pre><blockquote>
+<p>Base64: Af86zQ==</p>
+</blockquote>
 
                                             
                                         </div>
@@ -412,17 +427,6 @@ if !bytes.Equal(d, decoded) {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -433,8 +437,19 @@ if !bytes.Equal(d, decoded) {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -521,7 +536,7 @@ if !bytes.Equal(d, decoded) {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -763,7 +778,7 @@ if !bytes.Equal(d, decoded) {
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -793,7 +808,7 @@ if !bytes.Equal(d, decoded) {
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -829,7 +844,7 @@ if !bytes.Equal(d, decoded) {
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
@@ -896,7 +911,7 @@ if !bytes.Equal(d, decoded) {
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

@@ -45,20 +45,16 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Variables/</guid>
-      <description>变量 声明变量有以下几种方式: // declaration of a single top-level variable var topLevel int64 = 5 // grouping of multiple top-level declarations var ( intVal int // value is initialized with zero-value str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of type func(a int) string // it&#39;s</description>
+      <description>Go中声明变量有以下几种方式: // declaration of a single top-level variable var topLevel int64 = 5 // grouping of multiple top-level declarations var ( intVal int // value is initialized with zero-value str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of type func(a int) string //</description>
     </item>
     
     <item>
-      <title>Go Constants</title>
+      <title>Go 常量</title>
       <link>https://luangeng.space/post/go/basic/Constants/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Constants/</guid>
-      <description>Constants Go supports constants of character, string, boolean, and numeric values.
-Constant basics:
-// Greeting is an exported (public) string constant const Greeting string = &amp;ldquo;Hello World&amp;rdquo;
-// we can group const declarations const ( // years is an unexported (package private) int constant years int = 10 truth bool = true )
-Constants can be used like variables, except that their value can&#39;t change. An example: // collection: Essential Go package main import ( &amp;quot;fmt&amp;quot; &amp;quot;math&amp;quot; ) const s string = &amp;quot;constant&amp;quot; func main() { fmt.</description>
+      <description>Go支持character, string,boolean和数字型的常量. 常量基本使用: // Greeting 是public的string常量 const Greeting string = &amp;quot;Hello World&amp;quot; // 可以</description>
     </item>
     
     <item>
@@ -67,7 +63,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/string/</guid>
-      <description>字符串 go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与</description>
+      <description>go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt</description>
     </item>
     
     <item>
@@ -85,7 +81,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/array/</guid>
-      <description>Go 数组 Go中的数组是相同类型元素的有序集合。数组的长度是固定不变的,不能扩展,因此比较少用.大部分情况下我们可以使用slice,它的长度可以</description>
+      <description>Go中的数组是相同类型元素的有序集合。数组的长度是固定不变的,不能扩展,因此比较少用.大部分情况下我们可以使用slice,它的长度可以扩大和</description>
     </item>
     
     <item>
@@ -94,7 +90,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/slice/</guid>
-      <description>Slices 切片是相同类型的值的可增长序列。 其他语言称它们为数组或向量。 slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。 切片具有长度和</description>
+      <description>切片是相同类型的值的可增长序列。 其他语言称它们为数组或向量。 slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。 切片具有长度和容</description>
     </item>
     
     <item>
@@ -103,7 +99,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/maps/</guid>
-      <description>Maps Map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C++). ma</description>
+      <description>Map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C++). map</description>
     </item>
     
     <item>
@@ -112,7 +108,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/struct/</guid>
-      <description>Structs A struct groups related variables into a single entity. struct的作用是将几个相关的变量组合成一个独立的实体. Additionally, structs can have methods, similar to classes in C++ or Java. 另外,struct可以有方法,如同Ja</description>
+      <description>struct的作用是将几个相关的变量组合成一个独立的实体. 另外,struct可以有方法,如同Java和C++中的类. 不同于Java和C++中</description>
     </item>
     
     <item>
@@ -121,7 +117,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Interfaces/</guid>
-      <description>接口 接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定给定对象的行为。 例如：一个标准库定义了io.</description>
+      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定给定对象的行为。 例如：一个标准库定义了io.Re</description>
     </item>
     
     <item>
@@ -139,16 +135,16 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/forwhileloops/</guid>
-      <description>循环 Go中只有for循环,for循环的完整形式如下: for i := 0; i &amp;lt; 5; i += 2 { fmt.Printf(&amp;quot;i: %d\n&amp;quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的(可以不写)</description>
+      <description>Go中只有for循环,for循环的完整形式如下: for i := 0; i &amp;lt; 5; i += 2 { fmt.Printf(&amp;quot;i: %d\n&amp;quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的 比如没有初始化:</description>
     </item>
     
     <item>
-      <title>Go range statement</title>
+      <title>Go range</title>
       <link>https://luangeng.space/post/go/basic/range-statement/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/range-statement/</guid>
-      <description>range语句 迭代字符串 s := &amp;quot;Hey 世界&amp;quot; for i, r := range s { fmt.Printf(&amp;quot;idx: %d, rune: %d\n&amp;quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 Notice that range assumes that string is UTF-8 encoded</description>
+      <description>迭代字符串 s := &amp;quot;Hey 世界&amp;quot; for i, r := range s { fmt.Printf(&amp;quot;idx: %d, rune: %d\n&amp;quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 Notice that range assumes that string is UTF-8 encoded and iterates over Unicode characters (runes), not</description>
     </item>
     
     <item>
@@ -157,7 +153,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/function/</guid>
-      <description>Go 函数 基本函数示例: // addCheckOverflow adds two int16 numbers and additionally // returns true if the result overflowed func addCheckOverflow(a, b uint16) (uint16, bool) { res := a + b overflowed := res &amp;lt; a || res &amp;lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&amp;quot;%5d + %5d = %5d, overflowed: %v\n\n&amp;quot;, 1, 3, res, overflowed) res,</description>
+      <description>基本函数示例: // addCheckOverflow adds two int16 numbers and additionally // returns true if the result overflowed func addCheckOverflow(a, b uint16) (uint16, bool) { res := a + b overflowed := res &amp;lt; a || res &amp;lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&amp;quot;%5d + %5d = %5d, overflowed: %v\n\n&amp;quot;, 1, 3, res, overflowed) res, overflowed = addCheckOverflow(65520,</description>
     </item>
     
     <item>
@@ -166,7 +162,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Methods/</guid>
-      <description>A method is a function tied to a type, usually a struct but it works with any type. This is similar to classes in languages like Java or C++. Basics of methods: type Person struct { FirstName string LastName string } func (p *Person) PrintFullName() { fmt.Printf(&amp;quot;%s %s\n&amp;rdquo;, p.FirstName, p.LastName) } func main() { p := &amp;amp;Person{ &amp;ldquo;John&amp;rdquo;, &amp;ldquo;Doe&amp;rdquo;, } p.PrintFullName() } John Doe The instance on which the method</description>
+      <description>方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C++中的类相似 方法基本例子: type Person struct { FirstName string</description>
     </item>
     
     <item>
@@ -175,7 +171,7 @@ Constants can be used like variables, except that their value can&#39;t change. 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Error-handling/</guid>
-      <description>Basics of error handling: func sqrt(n float64) (float64, error) { if n &amp;lt; 0 { return 0, fmt.Errorf(&amp;ldquo;invalid argument &amp;lsquo;%f&amp;rsquo;, must be &amp;gt;= 0&amp;rdquo;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&amp;ldquo;sqrt of %f is %f\n&amp;rdquo;, n, res) } else { fmt.Printf(&amp;ldquo;sqrt of %f returned error &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, n, err) } } func main() { printSqrt(16) printSqrt(-16) } sqrt</description>
+      <description>基本错误处理: func sqrt(n float64) (float64, error) { if n &amp;lt; 0 { return 0, fmt.Errorf(&amp;quot;invalid argument &#39;%f&#39;, must be &amp;gt;= 0&amp;quot;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&amp;quot;sqrt of %f is %f\n&amp;quot;, n, res) } else { fmt.Printf(&amp;quot;sqrt of %f returned error &#39;%s&#39;\n&amp;quot;, n, err) } } func main() { printSqrt(16)</description>
     </item>
     
     <item>
@@ -250,7 +246,7 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes.<
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Packages/</guid>
-      <description>Packages A package in Go represents a unit of related code. Other languages often call them libraries. A package consists of multiple files in a single directory. There&amp;rsquo;s one-to-one mapping between a directory and a package. You can have multiple packages in a single repository. Go standard library is provided as a set of packages. A package is identified by import path e.g. github.com/gomarkdown/markdown is an import path of a</description>
+      <description>Go中的包代表了相关联的代码的单位,在其他语言中经常称为库. 包由一个目录下的多个文件组成.这个目录和包是一对一映射的. 一个仓库中可以包含多个</description>
     </item>
     
     <item>
@@ -259,7 +255,7 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes.<
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/fileIO/</guid>
-      <description>Files and I/O Go has a very robust support for working with files. Here&amp;rsquo;s a program that opens a file, reads its content and closes the file: path := &amp;ldquo;main.go&amp;rdquo; f, err := os.Open(path) if err != nil { log.Fatalf(&amp;ldquo;os.Open() failed with %s\n&amp;rdquo;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&amp;ldquo;ioutil.ReadAll() failed with &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, err) } lines := bytes.Split(d, []byte{&#39;\n&amp;rsquo;}) fmt.Printf(&amp;ldquo;File %s has %d</description>
+      <description>Go对文件操作的支持很健壮. 下面的程序打开,读取并关闭了一个文件: path := &amp;quot;main.go&amp;quot; f, err := os.Open(path) if err != nil { log.Fatalf(&amp;quot;os.Open() failed with %s\n&amp;quot;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&amp;quot;ioutil.ReadAll() failed with &#39;%s&#39;\n&amp;quot;, err) } lines :=</description>
     </item>
     
     <item>
@@ -268,7 +264,7 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes.<
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Time-and-date/</guid>
-      <description>Time and date The Go time package provides functionality for handling time and date. Major types in the package: structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds Get current time and date now := time.Now() Construct a time and date at a given moment in time t :=</description>
+      <description>The Go time package provides functionality for handling time and date. Major types in the package: structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds Get current time and date now := time.Now() Construct a time and date at a given moment in time t := time.Date(year int, month</description>
     </item>
     
     <item>
@@ -286,17 +282,12 @@ flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: 
     </item>
     
     <item>
-      <title>Go Logging</title>
+      <title>Go 日志</title>
       <link>https://luangeng.space/post/go/basic/Logging/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Logging/</guid>
-      <description>Logging Logging is a very deep subject because different programs have different logging requirements.
-Logging with fmt.Printf and fmt.Fprintf The simplest way to log is to write to standard output (stdout):
-fmt.Printf(&amp;ldquo;Logging to %s\n&amp;rdquo;, &amp;ldquo;stdout&amp;rdquo;) To write to standard error (stderr):
-fmt.Fprintf(os.Stderr, &amp;ldquo;Logging to %s\n&amp;rdquo;, &amp;ldquo;stderr&amp;rdquo;) Logging with log package Standard package log offers more functionality:
-log.Printf(&amp;ldquo;Logging&amp;rdquo;) log.Printf(&amp;ldquo;Second line\n&amp;rdquo;)
-2019/11/06 02:17:58 Logging 2019/11/06 02:17:58 Second line Compared to fmt.Printf, log.Printf: * by default logs to stderr (os.</description>
+      <description>Logging is a very deep subject because different programs have different logging requirements. 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方式是打印在标准输出中(stdout): fmt.Printf(&amp;quot;Logging to</description>
     </item>
     
     <item>
@@ -311,12 +302,12 @@ cmd := exec.Command(&amp;ldquo;go&amp;rdquo;, &amp;ldquo;version&amp;rdquo;) out
     </item>
     
     <item>
-      <title>Go Hex和 base64 encoding</title>
+      <title>Go Hex和 base64编码</title>
       <link>https://luangeng.space/post/go/basic/Hex-base64-encoding/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Hex-base64-encoding/</guid>
-      <description>Hex, base64 encoding Sometimes you need to encode bytes into a text. Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters. Hex encode and decode We can encode a []byte into a string and decode from string into []byte. d := []byte{0x01, 0xff, 0x3a, 0xcd} s := hex.EncodeToString(d) fmt.Printf(&amp;ldquo;Hex: %s\n&amp;rdquo;, s) d2, err := hex.DecodeString(s)</description>
+      <description>有时候你需要将bytes编码非文本text. Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters. Hex编码和解码 我们可以把[]byte编码为st</description>
     </item>
     
     <item>
@@ -337,7 +328,7 @@ d, err = json.</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/XML/</guid>
-      <description>XML Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.
+      <description>Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.
 Parse XML into a struct Parsing XML is similar to parsing JSON. You define structures that map to the structure of XML and unmarshal from []byte slice or io.Reader into a struct.
 var xmlStr = ` JohnSan FranciscoCA&amp;lt;person age=&amp;quot;23&amp;quot;&amp;gt; &amp;lt;first-name&amp;gt;Julia&amp;lt;/first-name&amp;gt; &amp;lt;/person&amp;gt;  `
 type People struct { Person []Person xml:&amp;quot;person&amp;quot; }
@@ -362,7 +353,7 @@ r := csv.NewReader(buf) var record []string nRecords := 0 var err error for { re
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/YAML/</guid>
-      <description>YAML YAML is a popular format for serializing data in a human friendly format. Think JSON but easier to read.
+      <description>YAML is a popular format for serializing data in a human friendly format. Think JSON but easier to read.
 Thanks to its expressivness and readability, YAML is popular as a format for configuration files.
 It’s also used in more complex scenarios like driving Ansible server automation.
 There is no package in standard library for hanlding YAML format but there are community libraries including gopkg.in/yaml.v2.
@@ -375,13 +366,7 @@ Reading YAML file into a Go struct dependencies:</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/SQL/</guid>
-      <description>SQL Remarks For a list of SQL database drivers see the official Go wiki article SQLDrivers.
-The SQL drivers are imported and prefixed by _, so that they are only available to driver.
-MySQL To enable MySQL, a database driver is needed. For example github.com/go-sql-driver/mysql.
-import ( “database/sql” _ “github.com/go-sql-driver/mysql” )
-Opening a database Opening a database is database specific, here there are examples for some databases.
-Sqlite 3
-file := &amp;ldquo;path/to/file&amp;rdquo; db_, err := sql.</description>
+      <description>Remarks For a list of SQL database drivers see the official Go wiki article SQLDrivers. The SQL drivers are imported and prefixed by _, so that they are only available to driver. MySQL To enable MySQL, a database driver is needed. For example github.com/go-sql-driver/mysql. import ( “database/sql” _ “github.c</description>
     </item>
     
     <item>
@@ -390,10 +375,10 @@ file := &amp;ldquo;path/to/file&amp;rdquo; db_, err := sql.</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-Client/</guid>
-      <description>HTTP Client Package net/http in standard library provides functionality to make HTTP network requests.
+      <description>Package net/http in standard library provides functionality to make HTTP network requests.
 In the examples we use httpbin.org which is a clever service that can return specific HTTP responses, which is useful for demonstrating various aspects of HTTP protocol.
 Basic HTTP GET For simplicity this example uses http.Get(). In real programs you should use custom client with a timeout as described below.
-uri := &amp;ldquo;https://httpbin.org/html&amp;quot; resp, err := http.</description>
+uri := &amp;ldquo;https://httpbin.org/html&amp;quot; resp, err := http.Get(uri) if err !</description>
     </item>
     
     <item>
@@ -402,11 +387,12 @@ uri := &amp;ldquo;https://httpbin.org/html&amp;quot; resp, err := http.</descrip
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-Server/</guid>
-      <description>HTTP Server http.ServeMux provides a multiplexer which calls handlers for HTTP requests. Alternatives to the standard library multiplexer include:
+      <description>http.ServeMux provides a multiplexer which calls handlers for HTTP requests. Alternatives to the standard library multiplexer include:
 Gorilla Mux
 Hello World The typical way to begin writing web servers in Go is to use the standard library net/http module.
 There is also a tutorial for it here.
-The following code also uses it. Here is the simplest possible HTTP server implementation. It responds &amp;ldquo;Hello World&amp;rdquo; to any HTTP request.</description>
+The following code also uses it. Here is the simplest possible HTTP server implementation. It responds &amp;ldquo;Hello World&amp;rdquo; to any HTTP request.
+Save the following code in a server.</description>
     </item>
     
     <item>
@@ -415,9 +401,9 @@ The following code also uses it. Here is the simplest possible HTTP server imple
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-server-middleware/</guid>
-      <description>HTTP server middleware Introduction In Go Middleware can be used to execute code before and after handler function. It uses the power of Single Function Interfaces. Can be introduced at any time without affecting the other middleware. For Ex: Authentication logging can be added in later stages of development without disturbing the existing code.
+      <description>Introduction In Go Middleware can be used to execute code before and after handler function. It uses the power of Single Function Interfaces. Can be introduced at any time without affecting the other middleware. For Ex: Authentication logging can be added in later stages of development without disturbing the existing code.
 Remarks The Signature of middleware should be (http.ResponseWriter, *http.Request) i.e. of http.handlerFunc type.
-Normal Handler Function func loginHandler(w http.</description>
+Normal Handler Function func loginHandler(w http.ResponseWriter, r *http.</description>
     </item>
     
     <item>
@@ -457,7 +443,7 @@ context with timeout (deadline) is a generic way to implement timeouts for funct
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Testing/</guid>
-      <description>Testing Go comes with its own testing facilities that has everything needed to run tests and benchmarks. Unlike in most other programming languages, there is often no need for a separate testing framework, although some exist. Basic Test main.go: package main import ( &amp;ldquo;fmt&amp;rdquo; ) func main() { fmt.Println(Sum(4,5)) } func Sum(a, b int) int { return a + b } main_test.go: package main import ( &amp;ldquo;testing&amp;rdquo; ) // Test</description>
+      <description>Go comes with its own testing facilities that has everything needed to run tests and benchmarks. Unlike in most other programming languages, there is often no need for a separate testing framework, although some exist. 基本使用 main.go: package main import ( &amp;quot;fmt&amp;quot; ) func main() { fmt.Println(Sum(4,5)) } func Sum(a, b int) int { return a + b } main_test.go: package main import ( &amp;quot;testing&amp;quot; ) //</description>
     </item>
     
     <item>
@@ -475,9 +461,9 @@ context with timeout (deadline) is a generic way to implement timeouts for funct
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/</guid>
-      <description>Profiling using go tool pprof Basic cpu and memory profiling Add the following code in you main program.
+      <description>Basic cpu and memory profiling Add the following code in you main program.
 var cpuprofile = flag.String(&amp;ldquo;cpuprofile&amp;rdquo;, &amp;ldquo;&amp;quot;, &amp;ldquo;write cpu profile file&amp;rdquo;) var memprofile = flag.String(&amp;ldquo;memprofile&amp;rdquo;, &amp;ldquo;&amp;quot;, &amp;ldquo;write memory profile to file&amp;rdquo;)
-func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;rdquo; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&amp;ldquo;could not create CPU profile: &amp;ldquo;, err) } if err := pprof.StartCPUProfile(f); err != nil { log.</description>
+func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;rdquo; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&amp;ldquo;could not create CPU profile: &amp;ldquo;, err) } if err := pprof.StartCPUProfile(f); err != nil { log.Fatal(&amp;ldquo;could not start CPU profile: &amp;ldquo;, err) } defer pprof.</description>
     </item>
     
     <item>
@@ -521,7 +507,7 @@ functions are variadic (eg.</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/</guid>
-      <description>sync.Pool for better performance Allocating and freeing objects with high frequency can be relatively expensive.
+      <description>Allocating and freeing objects with high frequency can be relatively expensive.
 A common technique for improving performance is re-using memory.
 sync.Pool is a thread-safe cache for re-using allocations.
 package main
@@ -549,19 +535,16 @@ Encode data to file and decode from file type User struct { Username string Pass
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Plugin/</guid>
-      <description>Plugin Introduction Go provides a plugin mechanism that can be used to dynamically link other Go code at runtime. As of Go 1.8, it is only usable on Linux. Defining and using a plugin package main import &amp;ldquo;fmt&amp;rdquo; var V int func F() { fmt.Printf(&amp;ldquo;Hello, number %d\n&amp;rdquo;, V) } This can be built with: $ go build -buildmode=plugin And then loaded and used from your application: p, err := plugin.Open(&amp;ldquo;plugin_name.so&amp;rdquo;)</description>
+      <description>介绍 Go provides a plugin mechanism that can be used to dynamically link other Go code at runtime. As of Go 1.8, it is only usable on Linux. Defining and using a plugin package main import &amp;ldquo;fmt&amp;rdquo; var V int func F() { fmt.Printf(&amp;ldquo;Hello, number %d\n&amp;rdquo;, V) } This can be built with: $ go build -buildmode=plugin And then loaded and used from your application: p, err := plugin.Open(&amp;ldquo;plugin_name.so&amp;rdquo;)</description>
     </item>
     
     <item>
-      <title>Go fmt</title>
+      <title>Go fmt包</title>
       <link>https://luangeng.space/post/go/basic/Package-fmt/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Package-fmt/</guid>
-      <description>Package fmt Package fmt in standard library can format strings and parse data out of strings.
-Basic fmt Package fmt implements formatted I/O using format verbs:
-Verb	Meaning %v	default format %T	type of the value %s	uninterpreted bytes of the string or slice Formatting functions There are 4 main function types in fmt and several variations within.
-Print, Println, Printf fmt.Print(&amp;ldquo;Hello World&amp;rdquo;) // prints: Hello World fmt.Println(&amp;ldquo;Hello World&amp;rdquo;) // prints: Hello World\n fmt.</description>
+      <description>Package fmt in standard library can format strings and parse data out of strings. Basic fmt Package fmt implements formatted I/O using format verbs: Verb Meaning %v default format %T type of the value %s uninterpreted bytes of the string or slice Formatting functions There are 4 main function types in fmt and several variations within. Print, Println, Printf fmt.Print(&amp;ldquo;Hello World&amp;rdquo;) // prints: Hello World fmt.Println(&amp;ldquo;Hello World&amp;rdquo;) // prints: Hello</description>
     </item>
     
     <item>
@@ -570,7 +553,7 @@ Print, Println, Printf fmt.Print(&amp;ldquo;Hello World&amp;rdquo;) // prints: H
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Protobuf-in-Go/</guid>
-      <description>Protobuf in Go Introduction Protobuf or Protocol Buffer encodes and decodes data so that different applications or modules written in unlike languages can exchange large numbers of messages quickly and reliably without overloading the communication channel. With protobuf, the performance is directly proportional to the number of message you tend to send. It compresses the message to to be sent into a serialized binary format by providing you with the tools to encode the message at the source and decode it at the destination.</description>
+      <description>Introduction Protobuf or Protocol Buffer encodes and decodes data so that different applications or modules written in unlike languages can exchange large numbers of messages quickly and reliably without overloading the communication channel. With protobuf, the performance is directly proportional to the number of message you tend to send. It compresses the message to to be sent into a serialized binary format by providing you with the tools to encode the message at the source and decode it at the destination.</description>
     </item>
     
     <item>

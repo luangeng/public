@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/function/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Go 函数 基本函数示例: // addCheckOverflow adds two int16 numbers and additionally // returns true if the result overflowed func addCheckOverflow(a, b uint16) (uint16, bool) { res := a &#43; b overflowed := res &lt; a || res &lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&quot;%5d &#43; %5d = %5d, overflowed: %v\n\n&quot;, 1, 3, res, overflowed) res,">
+  <meta property="og:description" content="基本函数示例: // addCheckOverflow adds two int16 numbers and additionally // returns true if the result overflowed func addCheckOverflow(a, b uint16) (uint16, bool) { res := a &#43; b overflowed := res &lt; a || res &lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&quot;%5d &#43; %5d = %5d, overflowed: %v\n\n&quot;, 1, 3, res, overflowed) res, overflowed = addCheckOverflow(65520,">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/function/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/function/">
@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go 函数</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1605 Words
+                                        Posted @ 2019-09-09 · 1634 Words
                                         
                                         · Tags: Go
                                         
@@ -148,8 +148,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="go-函数">Go 函数</h1>
-<p>基本函数示例:</p>
+                                            <p>基本函数示例:</p>
 <pre><code>// addCheckOverflow adds two int16 numbers and additionally
 // returns true if the result overflowed
 func addCheckOverflow(a, b uint16) (uint16, bool) {
@@ -301,27 +300,31 @@ func main() {
 <p>Functions are first-class values in Go:</p>
 <p>they can be assigned to variables
 they can be passed as values to functions
-Assigning functions to variables
-// intOp is a variable whose type is function that takes
+Assigning functions to variables</p>
+<pre><code>// intOp is a variable whose type is function that takes
 // 2 integers as arguments and returns an integer
-var intOp func(int, int) int</p>
-<p>func intAdd(a, b int) int {
-return a + b
-}</p>
-<p>func main() {
-intOp = intAdd
-fmt.Printf(&ldquo;intOp(2, 3) = %d\n&rdquo;, intOp(2, 3))</p>
-<pre><code>// we can assign literal functions as well
-intOp = func(a, b int) int {
-    return a * b
+var intOp func(int, int) int
+
+func intAdd(a, b int) int {
+	return a + b
 }
-fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
-</code></pre>
-<p>}</p>
-<pre><code>intOp(2, 3) = 5
-intOp(2, 3) = 6
-Passing functions as arguments
-func funcAdd(a, b int) int {
+
+func main() {
+	intOp = intAdd
+	fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
+
+	// we can assign literal functions as well
+	intOp = func(a, b int) int {
+		return a * b
+	}
+	fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
+}
+</code></pre><blockquote>
+<p>intOp(2, 3) = 5<br>
+intOp(2, 3) = 6</p>
+</blockquote>
+<h3 id="函数作为参数传递">函数作为参数传递</h3>
+<pre><code>func funcAdd(a, b int) int {
 	return a + b
 }
 
@@ -337,13 +340,16 @@ func main() {
 		return a * b
 	})
 }
-</code></pre><p>intOp(2, 3) = 5
-intOp(2, 3) = 6
-Common uses for function arguments:</p>
+</code></pre><blockquote>
+<p>intOp(2, 3) = 5<br>
+intOp(2, 3) = 6</p>
+</blockquote>
+<p>函数型参数的一般用法:</p>
 <p>filepath.Walk takes a callback function to be called for every file found
-ast.Inspect traverses a tree and calls a function for each node
-Comparing functions
-A function variable can only be compared to nil value.</p>
+ast.Inspect traverses a tree and calls a function for each node</p>
+<h3 id="函数的比较">函数的比较</h3>
+<p>A function variable can only be compared to nil value.
+函数变量只能和nil进行比较,</p>
 <p>You can&rsquo;t compare a function to another function. Go decided to not implement that because the rules for comparing functions have tricky corner cases that could be surprising to users.</p>
 <p>Mocking functionality in tests
 Sometimes it&rsquo;s hard to write tests for a piece of code.</p>
@@ -356,60 +362,65 @@ Sometimes it&rsquo;s hard to write tests for a piece of code.</p>
 <p>To switch between them we use variable for one level of indirection.</p>
 <p>This technique is called mocking.</p>
 <p>Here&rsquo;s a sketch of how this might work:</p>
-<p>var isUserAdminFn func(string) bool</p>
-<p>func isUserAdminProduction(userName string) bool {
-// an real implementation that talks to database
-return false
-}</p>
-<p>func isUserAdminMock(userName string) bool {
-// a fake implementation used for tests
-return userName == &ldquo;admin&rdquo;
-}</p>
-<p>func isUserAdmin(userName string) bool {
-return isUserAdminFn(userName)
-}</p>
-<p>func main() {
-isUserAdminFn = isUserAdminProduction
-// in test you would use:
-// isUserAdminFn = isUserAdminMock
-}</p>
-<h2 id="closures">Closures</h2>
+<pre><code>var isUserAdminFn func(string) bool
+
+func isUserAdminProduction(userName string) bool {
+    // an real implementation that talks to database
+    return false
+}
+
+func isUserAdminMock(userName string) bool {
+    // a fake implementation used for tests
+    return userName == &quot;admin&quot;
+}
+
+func isUserAdmin(userName string) bool {
+    return isUserAdminFn(userName)
+}
+
+func main() {
+    isUserAdminFn = isUserAdminProduction
+    // in test you would use:
+    // isUserAdminFn = isUserAdminMock
+}
+</code></pre><h2 id="closures">Closures</h2>
 <p>A closure is a function taken together with an environment. The function is typically an anonymous function defined inside another function. The environment is the lexical scope of the enclosing function (very basic idea of a lexical scope of a function would be the scope that exists between the function’s braces.)</p>
-<p>func g() {
-i := 0
-f := func() { // anonymous function
-fmt.Println(&ldquo;f called&rdquo;)
+<pre><code>func g() {
+    i := 0
+    f := func() { // anonymous function
+        fmt.Println(&quot;f called&quot;)
+    }
 }
-}
-Within the body of an anonymous function (say f) defined within another function (say g), variables present in scopes of both f and g are accessible. However, it is the scope of g that forms the environment part of the closure (function part is f) and as a result, changes made to the variables in g’s scope retain their values (i.e. the environment persists between calls to f).</p>
+</code></pre><p>Within the body of an anonymous function (say f) defined within another function (say g), variables present in scopes of both f and g are accessible. However, it is the scope of g that forms the environment part of the closure (function part is f) and as a result, changes made to the variables in g’s scope retain their values (i.e. the environment persists between calls to f).</p>
 <p>Consider the below function:</p>
-<p>func NaturalNumbers() func() int {
-i := 0
-f:= func() int { // f is the function part of closure
-i++
-return i
+<pre><code>func NaturalNumbers() func() int {
+    i := 0
+    f:= func() int { // f is the function part of closure
+        i++
+        return i
+    }
+    return f
 }
-return f
-}
-In above definition, NaturalNumbers has an inner function f which NaturalNumbers returns. Inside f, variable i defined within the scope of NaturalNumbers is being accessed.</p>
+</code></pre><p>In above definition, NaturalNumbers has an inner function f which NaturalNumbers returns. Inside f, variable i defined within the scope of NaturalNumbers is being accessed.</p>
 <p>We get a new function from NaturalNumbers like so:</p>
 <p>n := NaturalNumbers()
 Now n is a closure. It is a function (defined by f) which also has an associated environment (scope of NaturalNumbers).</p>
 <p>In case of n, the environment part only contains one variable: i</p>
 <p>Since n is a function, it can be called:</p>
-<p>fmt.Println(n()) // 1
+<pre><code>fmt.Println(n()) // 1
 fmt.Println(n()) // 2
 fmt.Println(n()) // 3
-As evident from above output, each time n is called, it increments i. i starts at 0, and each call to n executes i++.</p>
+</code></pre><p>As evident from above output, each time n is called, it increments i. i starts at 0, and each call to n executes i++.</p>
 <p>The value of i is retained between calls. That is, the environment, being a part of closure, persists.</p>
 <p>Calling NaturalNumbers again would create and return a new function. This would initialize a new i within NaturalNumbers. Which means that the newly returned function forms another closure having the same part for function (still f) but a brand new environment (a newly initialized i).</p>
-<p>o := NaturalNumbers()</p>
-<p>fmt.Println(n()) // 4
+<pre><code>o := NaturalNumbers()
+
+fmt.Println(n()) // 4
 fmt.Println(o()) // 1
 fmt.Println(o()) // 2
 fmt.Println(n()) // 5
-Both n and o are closures containing same function part (which gives them the same behavior), but different environments. Thus, use of closures allow functions to have access to a persistent environment that can be used to retain information between calls.</p>
-<p>Another example:</p>
+</code></pre><p>Both n and o are closures containing same function part (which gives them the same behavior), but different environments. Thus, use of closures allow functions to have access to a persistent environment that can be used to retain information between calls.</p>
+<p>另一个例子:</p>
 <pre><code>func multiples(i int) func() int {
     var x int = 0
     return func() int {
@@ -468,7 +479,7 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
                                     <a href="https://luangeng.space/post/go/basic/range-statement/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Go range statement</span>
+                                        <span>Go range</span>
                                     </a>
                                     
                                 </li>
@@ -569,17 +580,6 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -590,8 +590,19 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -678,7 +689,7 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -920,7 +931,7 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -950,7 +961,7 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                   
                 
@@ -984,13 +995,13 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -1053,7 +1064,7 @@ fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

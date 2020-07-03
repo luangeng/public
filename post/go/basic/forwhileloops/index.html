@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/forwhileloops/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="循环 Go中只有for循环,for循环的完整形式如下: for i := 0; i &lt; 5; i &#43;= 2 { fmt.Printf(&quot;i: %d\n&quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的(可以不写)">
+  <meta property="og:description" content="Go中只有for循环,for循环的完整形式如下: for i := 0; i &lt; 5; i &#43;= 2 { fmt.Printf(&quot;i: %d\n&quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的 比如没有初始化:">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/forwhileloops/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/forwhileloops/">
@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go 循环</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1086 Words
+                                        Posted @ 2019-09-09 · 1059 Words
                                         
                                         · Tags: Go
                                         
@@ -148,8 +148,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="循环">循环</h1>
-<p>Go中只有for循环,for循环的完整形式如下:</p>
+                                            <p>Go中只有for循环,for循环的完整形式如下:</p>
 <pre><code>for i := 0; i &lt; 5; i += 2 {
 	fmt.Printf(&quot;i: %d\n&quot;, i)
 }
@@ -158,7 +157,7 @@
 i: 2<br>
 i: 4</p>
 </blockquote>
-<p>for循环中的每个部分都不是必须的(可以不写)</p>
+<p>for循环中的每个部分都不是必须的</p>
 <p>比如没有初始化:</p>
 <pre><code>i := 0
 for ; i &lt; 5; i += 2 {
@@ -183,7 +182,7 @@ i: 2<br>
 i: 4<br>
 i: 6</p>
 </blockquote>
-<p>没有自增语句(循环内部自增)</p>
+<p>没有自增语句</p>
 <pre><code>for i := 0; i &lt; 5; {
 	fmt.Printf(&quot;i: %d\n&quot;, i)
 	i += 2
@@ -193,7 +192,7 @@ i: 6</p>
 i: 2<br>
 i: 4</p>
 </blockquote>
-<p>无限循环(循环内部break)</p>
+<p>无限循环</p>
 <pre><code>i := 0
 for {
 	fmt.Printf(&quot;i: %d\n&quot;, i)
@@ -434,7 +433,7 @@ n: 2</p>
                                     <a href="https://luangeng.space/post/go/basic/range-statement/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>Go range statement</span>
+                                        <span>Go range</span>
                                     </a>
                                     
                                 </li>
@@ -526,17 +525,6 @@ n: 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -547,8 +535,19 @@ n: 2</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -635,7 +634,7 @@ n: 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -877,7 +876,7 @@ n: 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -905,7 +904,7 @@ n: 2</p>
                   
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -941,13 +940,13 @@ n: 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -1010,7 +1009,7 @@ n: 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

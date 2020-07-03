@@ -14,13 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/SQL/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="SQL Remarks For a list of SQL database drivers see the official Go wiki article SQLDrivers.
-The SQL drivers are imported and prefixed by _, so that they are only available to driver.
-MySQL To enable MySQL, a database driver is needed. For example github.com/go-sql-driver/mysql.
-import ( “database/sql” _ “github.com/go-sql-driver/mysql” )
-Opening a database Opening a database is database specific, here there are examples for some databases.
-Sqlite 3
-file := &ldquo;path/to/file&rdquo; db_, err := sql.">
+  <meta property="og:description" content="Remarks For a list of SQL database drivers see the official Go wiki article SQLDrivers. The SQL drivers are imported and prefixed by _, so that they are only available to driver. MySQL To enable MySQL, a database driver is needed. For example github.com/go-sql-driver/mysql. import ( “database/sql” _ “github.c">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/SQL/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/SQL/">
@@ -135,7 +129,7 @@ file := &ldquo;path/to/file&rdquo; db_, err := sql.">
                                     <h1 class="post-title">Go SQL</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 100 Words
+                                        Posted @ 2019-09-09 · 145 Words
                                         
                                         · Tags: Go
                                         
@@ -154,28 +148,27 @@ file := &ldquo;path/to/file&rdquo; db_, err := sql.">
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>SQL
-Remarks
+                                            <p>Remarks
 For a list of SQL database drivers see the official Go wiki article SQLDrivers.</p>
 <p>The SQL drivers are imported and prefixed by _, so that they are only available to driver.</p>
 <h2 id="mysql">MySQL</h2>
 <p>To enable MySQL, a database driver is needed. For example github.com/go-sql-driver/mysql.</p>
-<p>import ( “database/sql” _ “github.com/go-sql-driver/mysql” )</p>
-<h2 id="opening-a-database">Opening a database</h2>
+<pre><code>import ( “database/sql” _ “github.com/go-sql-driver/mysql” )
+</code></pre><h2 id="打开数据库">打开数据库</h2>
 <p>Opening a database is database specific, here there are examples for some databases.</p>
-<p>Sqlite 3</p>
-<p>file := &ldquo;path/to/file&rdquo;
-db_, err := sql.Open(&ldquo;sqlite3&rdquo;, file)
+<h3 id="sqlite-3">Sqlite 3</h3>
+<pre><code>file := &quot;path/to/file&quot;
+db_, err := sql.Open(&quot;sqlite3&quot;, file)
 if err != nil {
-panic(err)
+    panic(err)
 }
-MySql</p>
-<p>dsn := &ldquo;mysql_username:CHANGEME@tcp(localhost:3306)/dbname&rdquo;
-db, err := sql.Open(&ldquo;mysql&rdquo;, dsn)
+</code></pre><h3 id="mysql-1">MySql</h3>
+<pre><code>dsn := &quot;mysql_username:CHANGEME@tcp(localhost:3306)/dbname&quot;
+db, err := sql.Open(&quot;mysql&quot;, dsn)
 if err != nil {
-panic(err)
-}</p>
-
+    panic(err)
+}
+</code></pre>
                                             
                                         </div>
 
@@ -319,17 +312,6 @@ panic(err)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -340,8 +322,19 @@ panic(err)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -428,7 +421,7 @@ panic(err)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -670,7 +663,7 @@ panic(err)
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -700,7 +693,7 @@ panic(err)
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -736,13 +729,13 @@ panic(err)
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -803,7 +796,7 @@ panic(err)
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

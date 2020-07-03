@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Packages/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Packages A package in Go represents a unit of related code. Other languages often call them libraries. A package consists of multiple files in a single directory. There&rsquo;s one-to-one mapping between a directory and a package. You can have multiple packages in a single repository. Go standard library is provided as a set of packages. A package is identified by import path e.g. github.com/gomarkdown/markdown is an import path of a">
+  <meta property="og:description" content="Go中的包代表了相关联的代码的单位,在其他语言中经常称为库. 包由一个目录下的多个文件组成.这个目录和包是一对一映射的. 一个仓库中可以包含多个">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Packages/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Packages/">
@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go 包管理</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 735 Words
+                                        Posted @ 2019-09-09 · 1000 Words
                                         
                                         · Tags: Go
                                         
@@ -148,59 +148,59 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="packages">Packages</h1>
-<p>A package in Go represents a unit of related code. Other languages often call them libraries.</p>
-<p>A package consists of multiple files in a single directory. There&rsquo;s one-to-one mapping between a directory and a package.</p>
-<p>You can have multiple packages in a single repository.</p>
-<p>Go standard library is provided as a set of packages.</p>
-<p>A package is identified by import path e.g. github.com/gomarkdown/markdown is an import path of a package that parses markdown format.</p>
-<h2 id="installing-packages-locally-with-go-get">Installing packages locally with go get</h2>
-<p>In order to import a package in your program you must first download the package locally.</p>
-<p>go get -u github.com/gomarkdown/markdown downloads package files from <a href="https://github.com/gomarkdown/markdown/">https://github.com/gomarkdown/markdown/</a>.</p>
-<p>-u means update i.e. if the package is already downloaded locally, it’ll be updated to latest version.</p>
-<p>The code will be downloaded into $GOPATH/src/github.com/gomarkdown/markdown i.e. package import path is also a name of directory where the package files are stored locally.</p>
+                                            <p>Go中的包代表了相关联的代码的单位,在其他语言中经常称为库.
+包由一个目录下的多个文件组成.这个目录和包是一对一映射的.
+一个仓库中可以包含多个包.
+Go的标准库就是通过一系列包来提供的.
+包是用导入路径来标识的,比如github.com/gomarkdown/markdown是解析markdown格式的包的导入路径.</p>
+<h2 id="用go-get本地安装包">用go get本地安装包</h2>
+<p>In order to import a package in your program you must first download the package locally.
+你必须先把包下载到本地才能安装.
+比如使用go get -u github.com/gomarkdown/markdown从https://github.com/gomarkdown/markdown/下载包代码
+-u的意思是如果之前下载过则更新此包到最新的版本
+代码将被下载到$GOPATH/src/github.com/gomarkdown/markdown, 因此包导入路径就是包代码在本地存储的路径.</p>
 <p>Import path is appended to $GOPATH/src.</p>
 <p>Most of the time import path is also the location of source files but go get also allows for redirects via meta-data embedded in HTML files.</p>
-<h2 id="importing-packages">Importing packages</h2>
-<p>You can import packages with:</p>
-<p>import &ldquo;path/to/package1&rdquo;
-import &ldquo;path/to/package2&rdquo;
-or group multiple imports together:</p>
-<p>import (
-&ldquo;path/to/package1&rdquo;
-&ldquo;path/to/package2&rdquo;
+<h2 id="导入包">导入包</h2>
+<p>可以用以下方式导入包:</p>
+<pre><code>import &quot;path/to/package1&quot;
+import &quot;path/to/package2&quot;
+</code></pre><p>或者组合在一起导入:</p>
+<pre><code>import (
+    &quot;path/to/package1&quot;
+    &quot;path/to/package2&quot;
 )
-This will look in the corresponding import paths inside of the $GOPATH for .go files and lets you access exported names through packagename.AnyExportedName.</p>
-<p>You can also access local packages inside of the current folder by prefacing packages with ./. In a project with a structure like this:</p>
-<p>project
+</code></pre><p>This will look in the corresponding import paths inside of the $GOPATH for .go files and lets you access exported names through packagename.AnyExportedName.</p>
+<p>在下面的工程结构中,你还可以通过./前缀访问当前目录下的本地包</p>
+<pre><code>project
 ├── src
 │   ├── package1
 │   │   └── file1.go
 │   └── package2
 │       └── file2.go
 └── main.go
-You could call this in main.go in order to import the code in file1.go and file2.go:</p>
-<p>import (
-&ldquo;./src/package1&rdquo;
-&ldquo;./src/package2&rdquo;
+</code></pre><p>You could call this in main.go in order to import the code in file1.go and file2.go:</p>
+<pre><code>import (
+    &quot;./src/package1&quot;
+    &quot;./src/package2&quot;
 )
-Since package-names can collide in different libraries you may want to alias one package to a new name. You can do this by prefixing your import-statement with the name you want to use.</p>
-<p>import (
-&ldquo;fmt&rdquo; //fmt from the standardlibrary
-tfmt &ldquo;some/thirdparty/fmt&rdquo; //fmt from some other library
+</code></pre><p>Since package-names can collide in different libraries you may want to alias one package to a new name. You can do this by prefixing your import-statement with the name you want to use.</p>
+<pre><code>import (
+    &quot;fmt&quot; //fmt from the standardlibrary
+    tfmt &quot;some/thirdparty/fmt&quot; //fmt from some other library
 )
-This allows you to access the former fmt package using fmt.* and the latter fmt package using tfmt.*.</p>
+</code></pre><p>This allows you to access the former fmt package using fmt.* and the latter fmt package using tfmt.*.</p>
 <p>It is considered a bad style but you can import the package into the global namespace to avoid using package prefix:</p>
-<p>import (
-. &ldquo;fmt&rdquo;
+<pre><code>import (
+    . &quot;fmt&quot;
 )
-With the above Printf is the same as fmt.Printf.</p>
+</code></pre><p>With the above Printf is the same as fmt.Printf.</p>
 <p>Go compiler reports an error if you import a package but don&rsquo;t use it. To work-around this, you can set the alias to the underscore:</p>
 <p>import (
 _ &ldquo;fmt&rdquo;
 )
 This might be necessary if you don&rsquo;t use the package directly but need the side-effects of running package&rsquo;s init function.</p>
-<h2 id="creating-a-package">Creating a package</h2>
+<h2 id="新建包">新建包</h2>
 <p>So you want to create a Go package.</p>
 <p>You can use any source code hosting service. For this tutorial let’s assume that you’re using <a href="https://github.com">https://github.com</a>, your account is kjk and you want to create package foo.</p>
 <p>Create a repository foo on GitHub.</p>
@@ -215,18 +215,18 @@ return &ldquo;bar&rdquo;
 }
 This is a simplest package that defines function Bar.</p>
 <p>Notice that package name foo matches directory name foo. It’s not required but recommended.</p>
-<h2 id="package-initialization">Package initialization</h2>
-<p>Package can have one or more init methods.</p>
-<p>Those methods are run only once before main function is executed.</p>
-<p>package foo</p>
-<p>func init() {
-// init code
+<h2 id="包初始化">包初始化</h2>
+<p>包可以有一个或多个初始化方法, 这些方法在main函数执行前只跑一次</p>
+<pre><code>package foo
+
+func init() {
+    // init code
 }
-If you just want to run the package initialization without referencing anything from it use the following import expression.</p>
+</code></pre><p>If you just want to run the package initialization without referencing anything from it use the following import expression.</p>
 <p>import _ &ldquo;foo&rdquo;
 Package initialization function can be used to create initial state needed by code in the package.</p>
 <p>Avoid temptation of doing too much in init function. Such implicit logic negatively impacts other people’s ability to understand the code.</p>
-<h2 id="package-naming-best-practices">Package naming best practices</h2>
+<h2 id="包命名最佳实践">包命名最佳实践:</h2>
 <p>It’s best if package name is the same as the name of last path element of import path.</p>
 <p>If your GitHub account is github.com/kjk and you’re writing package markdown, it’s import path should be github.com/kjk/markdown.</p>
 <p>A common mistake is to include go as part of import path e.g. naming the package markdown and giving it import path github.com/kjk/go-markdown.</p>
@@ -374,17 +374,6 @@ Package initialization function can be used to create initial state needed by co
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -395,8 +384,19 @@ Package initialization function can be used to create initial state needed by co
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -483,7 +483,7 @@ Package initialization function can be used to create initial state needed by co
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -725,7 +725,7 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -755,7 +755,7 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -789,13 +789,13 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -858,7 +858,7 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

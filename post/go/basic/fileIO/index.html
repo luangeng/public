@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/fileIO/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Files and I/O Go has a very robust support for working with files. Here&rsquo;s a program that opens a file, reads its content and closes the file: path := &ldquo;main.go&rdquo; f, err := os.Open(path) if err != nil { log.Fatalf(&ldquo;os.Open() failed with %s\n&rdquo;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&ldquo;ioutil.ReadAll() failed with &lsquo;%s&rsquo;\n&rdquo;, err) } lines := bytes.Split(d, []byte{&#39;\n&rsquo;}) fmt.Printf(&ldquo;File %s has %d">
+  <meta property="og:description" content="Go对文件操作的支持很健壮. 下面的程序打开,读取并关闭了一个文件: path := &quot;main.go&quot; f, err := os.Open(path) if err != nil { log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&quot;ioutil.ReadAll() failed with &#39;%s&#39;\n&quot;, err) } lines :=">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/fileIO/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/fileIO/">
@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go 文件和I/O</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-08 · 2725 Words
+                                        Posted @ 2019-09-08 · 2765 Words
                                         
                                         · Tags: Go
                                         
@@ -148,28 +148,29 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Files and I/O
-Go has a very robust support for working with files.</p>
-<p>Here&rsquo;s a program that opens a file, reads its content and closes the file:</p>
-<p>path := &ldquo;main.go&rdquo;
+                                            <p>Go对文件操作的支持很健壮.</p>
+<p>下面的程序打开,读取并关闭了一个文件:</p>
+<pre><code>path := &quot;main.go&quot;
 f, err := os.Open(path)
 if err != nil {
-log.Fatalf(&ldquo;os.Open() failed with %s\n&rdquo;, err)
+	log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err)
 }
-defer f.Close()</p>
-<p>d, err := ioutil.ReadAll(f)
+defer f.Close()
+
+d, err := ioutil.ReadAll(f)
 if err != nil {
-log.Fatalf(&ldquo;ioutil.ReadAll() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<p>lines := bytes.Split(d, []byte{'\n&rsquo;})
-fmt.Printf(&ldquo;File %s has %d lines\n&rdquo;, path, len(lines))</p>
-<pre><code>File main.go has 29 lines
+	log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+}
 
-## Reading files
-Read the whole file
-The simplest way to read a whole file is:
-
-d, err := ioutil.ReadFile(&quot;foo.txt&quot;)
+lines := bytes.Split(d, []byte{'\n'})
+fmt.Printf(&quot;File %s has %d lines\n&quot;, path, len(lines))
+</code></pre><blockquote>
+<p>File main.go has 29 lines</p>
+</blockquote>
+<h2 id="读文件">读文件</h2>
+<p>Read the whole fil读取全部文件
+读取整个文件最简单的方法:</p>
+<pre><code>d, err := ioutil.ReadFile(&quot;foo.txt&quot;)
 if err != nil {
     log.Fatalf(&quot;ioutil.ReadFile failed with '%s'\n&quot;, err)
 }
@@ -180,13 +181,10 @@ if err != nil {
     log.Fatalf(&quot;os.Open failed with '%s'\n&quot;, err)
 }
 defer f.Close()
-Open returns *os.File which implements io.Reader and io.Closer interfaces.
-
-You should always close files to avoid leaking file descriptors. defer is perfect for ensuring Close will be called on exit of the function.
-
-Read file line by line
-// ReadLines reads all lines from a file
-func ReadLines(filePath string) ([]string, error) {
+</code></pre><p>Open returns *os.File which implements io.Reader and io.Closer interfaces.</p>
+<p>You should always close files to avoid leaking file descriptors. defer is perfect for ensuring Close will be called on exit of the function.</p>
+<h4 id="逐行读取文件">逐行读取文件</h4>
+<pre><code>func ReadLines(filePath string) ([]string, error) {
 	file, err := os.OpenFile(filePath, os.O_RDONLY, 0666)
 	if err != nil {
 		return nil, err
@@ -212,21 +210,22 @@ func main() {
 	}
 	fmt.Printf(&quot;File %s has %d lines\n&quot;, path, len(lines))
 }
-</code></pre><p>File main.go has 41 lines</p>
-<h2 id="writing-files">Writing files</h2>
-<p>Write the whole file
-The simplest way to write data to a file:</p>
-<p>d := []byte(&ldquo;content of the file&rdquo;)
-err := ioutil.WriteFile(&ldquo;foo.txt&rdquo;, d, 0644)
+</code></pre><blockquote>
+<p>File main.go has 41 lines</p>
+</blockquote>
+<h2 id="写文件">写文件</h2>
+<p>写文件最简单的方式:</p>
+<pre><code>d := []byte(&quot;content of the file&quot;)
+err := ioutil.WriteFile(&quot;foo.txt&quot;, d, 0644)
 if err != nil {
-log.Fatalf(&ldquo;ioutil.WriteFile failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+    log.Fatalf(&quot;ioutil.WriteFile failed with '%s'\n&quot;, err)
 }
 Open file for writing
-f, err := os.Create(&ldquo;foo.txt&rdquo;)
+f, err := os.Create(&quot;foo.txt&quot;)
 if err != nil {
-log.Fatalf(&ldquo;os.Open failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+    log.Fatalf(&quot;os.Open failed with '%s'\n&quot;, err)
 }
-Create returns *os.File which implements io.Writer and io.Closer interfaces.</p>
+</code></pre><p>Create returns *os.File which implements io.Writer and io.Closer interfaces.</p>
 <p>If file doesn’t exist, it’ll be created.</p>
 <p>If file does exist, it’ll be truncated.</p>
 <p>You should always close files to avoid leaking file descriptors.</p>
@@ -257,30 +256,31 @@ for completeness, 1 represents executable permissions so if this is meant to be 
 Those permissions are native to Unix and Mac OS but they map loosely on Windows.</p>
 <p>To manage Windows permissions you need to use Windows API.</p>
 <h2 id="file-operations">File operations</h2>
-<p>Get file size
-// GetFileSize returns file size or error if e.g. file doesn&rsquo;t exist
+<p>获取文件大小:</p>
+<pre><code>// GetFileSize returns file size or error if e.g. file doesn't exist
 func GetFileSize(path string) (int64, error) {
-st, err := os.Lstat(path)
-if err != nil {
-return -1, err
+	st, err := os.Lstat(path)
+	if err != nil {
+		return -1, err
+	}
+	return st.Size(), nil
 }
-return st.Size(), nil
-}</p>
-<p>func main() {
-path := &ldquo;main.go&rdquo;
-size, err := GetFileSize(path)
-if err != nil {
-log.Fatalf(&ldquo;GetFileSize failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}
-fmt.Printf(&ldquo;File %s is %d bytes in size\n&rdquo;, path, size)
-}</p>
-<pre><code>File main.go is 501 bytes in size
-Instead of os.Stat we can also use os.Lstat. The difference is that os.Stat follows symbolic links and os.Lstat doesn’t.
 
-In other words: for a symbolic link os.Lstat returns information about link and os.Stat about the file that it links to.
-
-Get information about the file
 func main() {
+	path := &quot;main.go&quot;
+	size, err := GetFileSize(path)
+	if err != nil {
+		log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
+	}
+	fmt.Printf(&quot;File %s is %d bytes in size\n&quot;, path, size)
+}
+</code></pre><blockquote>
+<p>ile main.go is 501 bytes in size</p>
+</blockquote>
+<p>Instead of os.Stat we can also use os.Lstat. The difference is that os.Stat follows symbolic links and os.Lstat doesn’t.</p>
+<p>In other words: for a symbolic link os.Lstat returns information about link and os.Stat about the file that it links to.</p>
+<p>获取文件信息:</p>
+<pre><code>func main() {
 	st, err := os.Stat(&quot;main.go&quot;)
 	if err != nil {
 		log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
@@ -293,50 +293,53 @@ ModTime: %s
 OS info: %#v
 `, st.Name(), st.Size(), st.IsDir(), st.Mode, st.ModTime(), st.Sys())
 }
-</code></pre><p>Name: main.go
-Size: 363
-IsDir: false
-Mode: 4999c0
-ModTime: 2019-11-06 04:41:24.675411079 +0000 UTC
-OS info: &amp;syscall.Stat_t{Dev:0x5, Ino:0xba8, Nlink:0x1, Mode:0x81a4, Uid:0x0, Gid:0x0, X__pad0:0, Rdev:0x0, Size:363, Blksize:4096, Blocks:8, Atim:syscall.Timespec{Sec:1573015285, Nsec:208585110}, Mtim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, Ctim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, X__unused:[3]int64{0, 0, 0}}
-Check if a file exists
-// IsPathxists returns true if a given path exists, false if it doesn&rsquo;t.
-// It might return an error if e.g. file exists but you don&rsquo;t have
+</code></pre><blockquote>
+<p>Name: main.go<br>
+Size: 363<br>
+IsDir: false<br>
+Mode: 4999c0<br>
+ModTime: 2019-11-06 04:41:24.675411079 +0000 UTC<br>
+OS info: &amp;syscall.Stat_t{Dev:0x5, Ino:0xba8, Nlink:0x1, Mode:0x81a4, Uid:0x0, Gid:0x0, X__pad0:0, Rdev:0x0, Size:363, Blksize:4096, Blocks:8, Atim:syscall.&gt; Timespec{Sec:1573015285, Nsec:208585110}, Mtim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, Ctim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, &gt; X__unused:[3]int64{0, 0, 0}}
+检查文件是否存在:</p>
+</blockquote>
+<pre><code>// IsPathxists returns true if a given path exists, false if it doesn't.
+// It might return an error if e.g. file exists but you don't have
 // access
 func IsPathExists(path string) (bool, error) {
-_, err := os.Lstat(path)
-if err == nil {
-return true, nil
+	_, err := os.Lstat(path)
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
+	// error other than not existing e.g. permission denied
+	return false, err
 }
-if os.IsNotExist(err) {
-return false, nil
-}
-// error other than not existing e.g. permission denied
-return false, err
-}</p>
-<p>func printExists(path string) {
-exists, err := IsPathExists(path)
-if err == nil {
-fmt.Printf(&ldquo;File &lsquo;%s&rsquo; exists: %v\n&rdquo;, path, exists)
-} else {
-fmt.Printf(&ldquo;IsFileExists('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
-}
+
+func printExists(path string) {
+	exists, err := IsPathExists(path)
+	if err == nil {
+		fmt.Printf(&quot;File '%s' exists: %v\n&quot;, path, exists)
+	} else {
+		fmt.Printf(&quot;IsFileExists('%s') failed with '%s'\n&quot;, path, err)
+	}
 }
 func main() {
-printExists(&ldquo;main.go&rdquo;)
-printExists(&ldquo;non-existent-file.txt&rdquo;)
-}</p>
-<pre><code>File 'main.go' exists: true
-File 'non-existent-file.txt' exists: false
-Checking if a file exists is surprisingly tricky and it’s impossible to write a generic function that handles all the nuances.
-
-Here are decisions we made:
-
-it treats files and directories the same. If a path exists and you want to distinguish between directory and a file, you would need to call IsDir() on result of os.Lstat
+	printExists(&quot;main.go&quot;)
+	printExists(&quot;non-existent-file.txt&quot;)
+}
+</code></pre><blockquote>
+<p>File &lsquo;main.go&rsquo; exists: true<br>
+File &lsquo;non-existent-file.txt&rsquo; exists: false
+Checking if a file exists is surprisingly tricky and it’s impossible to write a generic function that handles all the nuances.</p>
+</blockquote>
+<p>Here are decisions we made:</p>
+<p>it treats files and directories the same. If a path exists and you want to distinguish between directory and a file, you would need to call IsDir() on result of os.Lstat
 if a file is a symbolic link, do we test the link or the real file it links to? We used os.Lstat so we test the link. We could also use os.Stat to resolve the symbolic link
-“path doesn’t exist” is only one of possible errors returned by os.Lstat. Do we want to distinguish between “file doesn’t exist” and “file exists and we don’t have access”? We decided to be more informative but in some cases it would be simpler to just return a bool and always return false if os.Lstat fails
-Delete a file
-path := &quot;foo.txt&quot;
+“path doesn’t exist” is only one of possible errors returned by os.Lstat. Do we want to distinguish between “file doesn’t exist” and “file exists and we don’t have access”? We decided to be more informative but in some cases it would be simpler to just return a bool and always return false if os.Lstat fails</p>
+<h3 id="删除文件">删除文件</h3>
+<pre><code>path := &quot;foo.txt&quot;
 err := os.Remove(path)
 if err != nil {
     if os.IsNotExist(err) {
@@ -345,19 +348,17 @@ if err != nil {
         fmt.Printf(&quot;os.Remove failed with '%s'\n&quot;, err)
     }
 }
-os.Remove returns an error for files that don’t exist.
-
-Usually you want to ignore such errors which you can do by testing error with os.IsNotExist(err).
-
-Rename a file
-oldPath := &quot;old_name.txt&quot;
+</code></pre><p>os.Remove returns an error for files that don’t exist.</p>
+<p>Usually you want to ignore such errors which you can do by testing error with os.IsNotExist(err).</p>
+<h3 id="重命名文件">重命名文件</h3>
+<pre><code>oldPath := &quot;old_name.txt&quot;
 newPath := &quot;new_name.txt&quot;
 err := os.Rename(oldPath, newPath)
 if err != nil {
     fmt.Printf(&quot;os.Rename failed with '%s'\n&quot;, err)
 }
-Copy a file
-// CopyFile copies a src file to dst
+</code></pre><h3 id="拷贝文件">拷贝文件</h3>
+<pre><code>// CopyFile copies a src file to dst
 func CopyFile(dst, src string) error {
 	srcFile, err := os.Open(src)
 	if err != nil {
@@ -385,55 +386,58 @@ func CopyFile(dst, src string) error {
 <p>should we over-write existing files or return error if destination exists? We decided to over-write
 what permissions should new file have? We decided for the simplest case of using default permissions. Another option would be to copy permissions from source or allow the caller to provide permissions
 If you want different behavior, you will have to modify the code as needed.</p>
-<h2 id="directory-operations">Directory operations</h2>
-<p>Create directory
-dir := &ldquo;my_dir&rdquo;
+<h2 id="目录操作">目录操作</h2>
+<h4 id="创建目录">创建目录</h4>
+<pre><code>dir := &quot;my_dir&quot;
 err := os.Mkdir(dir, 0755)
 if err != nil {
-fmt.Printf(&ldquo;os.Mkdir('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, dir)
+    fmt.Printf(&quot;os.Mkdir('%s') failed with '%s'\n&quot;, dir)
 }
-dir := filepath.Join(&ldquo;topdir&rdquo;, &ldquo;subdir&rdquo;)
+dir := filepath.Join(&quot;topdir&quot;, &quot;subdir&quot;)
 err := os.MkdirAll(dir, 0755)
 if err != nil {
-fmt.Printf(&ldquo;os.MkdirAll('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, dir)
+    fmt.Printf(&quot;os.MkdirAll('%s') failed with '%s'\n&quot;, dir)
 }
-os.Mkdir only succeeds if parent directory of dir already exists.</p>
+</code></pre><p>os.Mkdir only succeeds if parent directory of dir already exists.</p>
 <p>os.MkdirAll will create all intermediary directories.</p>
 <p>0755 describes permissions for the directory.</p>
 <p>Those are Unix style permissions in octal format.</p>
 <p>Let’s deconstruct parts of 0755 * 0 means this is a number in octal format. That means that each number is in 0-7 range (compare to regular decimal notation where each number is in 0-9 range) * 7 is permissions for the creator of the file. It’s a bitmask 4 + 2 + 1. 4 means read permissions, 2 means write permission, 1 means that directory can be traversed. When combined it means read/write/traverse access * 5 is permissions for the group that user belongs to. I.e. every user that also belongs to the same group will have those permissions. 4 + 1 means read and traverse permissions, but not write permissions * last 5 is for everyone. Again, 5 means read and traverse permissions</p>
-<p>Delete directory
-dir := &ldquo;my_dir&rdquo;
+<h4 id="删除目录">删除目录</h4>
+<pre><code>dir := &quot;my_dir&quot;
 err := os.Remove(dir)
 if err != nil {
-fmt.Printf(&ldquo;os.Remove('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
+    fmt.Printf(&quot;os.Remove('%s') failed with '%s'\n&quot;, path, err)
 }
-os.Remove only works for empty directories i.e. directories without any files of sub-directories.</p>
-<p>dir := &ldquo;my_dir&rdquo;
+os.Remove only works for empty directories i.e. directories without any files of sub-directories.
+
+dir := &quot;my_dir&quot;
 err := os.RemoveAll(dir)
 if err != nil {
-fmt.Printf(&ldquo;os.RemoveAll('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
+    fmt.Printf(&quot;os.RemoveAll('%s') failed with '%s'\n&quot;, path, err)
 }
-os.RemoveAll removes the directory and all its children (files and sub-directories).</p>
-<p>List files in a directory
-To list files and directories in a given directory we can use ioutil.ReadDir:</p>
-<p>func main() {
-dir := &ldquo;.&rdquo;
-fileInfos, err := ioutil.ReadDir(dir)
-if err != nil {
-log.Fatalf(&ldquo;ioutil.ReadDir('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, dir, err)
+</code></pre><p>os.RemoveAll removes the directory and all its children (files and sub-directories).</p>
+<h4 id="列出目录中的文件">列出目录中的文件</h4>
+<p>To list files and directories in a given directory we can use ioutil.ReadDir:</p>
+<pre><code>func main() {
+	dir := &quot;.&quot;
+	fileInfos, err := ioutil.ReadDir(dir)
+	if err != nil {
+		log.Fatalf(&quot;ioutil.ReadDir('%s') failed with '%s'\n&quot;, dir, err)
+	}
+	for i, fi := range fileInfos {
+		if i &lt; 4 {
+			fmt.Printf(&quot;Path: %s, is dir: %v, size: %d bytes\n&quot;, fi.Name(), fi.IsDir(), fi.Size())
+		}
+	}
 }
-for i, fi := range fileInfos {
-if i &lt; 4 {
-fmt.Printf(&ldquo;Path: %s, is dir: %v, size: %d bytes\n&rdquo;, fi.Name(), fi.IsDir(), fi.Size())
-}
-}
-}</p>
-<pre><code>Path: app, is dir: false, size: 2202180 bytes
+</code></pre><blockquote>
+<p>Path: app, is dir: false, size: 2202180 bytes
 Path: go.mod, is dir: false, size: 21 bytes
-Path: main.go, is dir: false, size: 400 bytes
-List files recursively
-func main() {
+Path: main.go, is dir: false, size: 400 bytes</p>
+</blockquote>
+<h4 id="递归列出文件">递归列出文件</h4>
+<pre><code>func main() {
 	nShown := 0
 	err := filepath.Walk(&quot;.&quot;, func(path string, fi os.FileInfo, err error) error {
 		if err != nil {
@@ -451,15 +455,17 @@ func main() {
 		fmt.Printf(&quot;filepath.Walk failed with '%s'\n&quot;, err)
 	}
 }
-</code></pre><p>Path: ., is dir: true, size: 0 bytes
-Path: app, is dir: false, size: 2179294 bytes
-Path: go.mod, is dir: false, size: 21 bytes
-Path: main.go, is dir: false, size: 466 bytes
-To visit files in a directory recursively use filepath.Walk.</p>
+</code></pre><blockquote>
+<p>Path: ., is dir: true, size: 0 bytes<br>
+Path: app, is dir: false, size: 2179294 bytes<br>
+Path: go.mod, is dir: false, size: 21 bytes<br>
+Path: main.go, is dir: false, size: 466 bytes</p>
+</blockquote>
+<p>To visit files in a directory recursively use filepath.Walk.</p>
 <p>You provide a callback function that will be called for every file and directory under directory.</p>
 <p>Callback function is called even for files/directories that we can’t read e.g. due to insufficient permissions.</p>
 <p>We can end traversal early by returning non-nil error from callback function.</p>
-<h2 id="file-path-operations">File path operations</h2>
+<h2 id="文件目录操作">文件目录操作</h2>
 <p>Unfortunately different operating systems have different rules about the format of file paths.</p>
 <p>For example, on Unix and Mac OS, path separator character is / and on Windows it’s .</p>
 <p>For portable programs, it’s important to use functions in filepath package that understand conventions used by a given operating system.</p>
@@ -678,7 +684,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -918,7 +924,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -948,7 +954,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -984,13 +990,13 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -1053,7 +1059,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

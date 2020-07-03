@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Methods/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="A method is a function tied to a type, usually a struct but it works with any type. This is similar to classes in languages like Java or C&#43;&#43;. Basics of methods: type Person struct { FirstName string LastName string } func (p *Person) PrintFullName() { fmt.Printf(&quot;%s %s\n&rdquo;, p.FirstName, p.LastName) } func main() { p := &amp;Person{ &ldquo;John&rdquo;, &ldquo;Doe&rdquo;, } p.PrintFullName() } John Doe The instance on which the method">
+  <meta property="og:description" content="方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C&#43;&#43;中的类相似 方法基本例子: type Person struct { FirstName string">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Methods/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Methods/">
@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go 方法</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 381 Words
+                                        Posted @ 2019-09-09 · 412 Words
                                         
                                         · Tags: Go
                                         
@@ -148,41 +148,37 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>A method is a function tied to a type, usually a struct but it works with any type.</p>
-<p>This is similar to classes in languages like Java or C++.</p>
-<p>Basics of methods:</p>
-<p>type Person struct {
-FirstName string
-LastName  string
-}</p>
-<p>func (p *Person) PrintFullName() {
-fmt.Printf(&quot;%s %s\n&rdquo;, p.FirstName, p.LastName)
-}</p>
-<p>func main() {
-p := &amp;Person{
-&ldquo;John&rdquo;,
-&ldquo;Doe&rdquo;,
+                                            <p>方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C++中的类相似</p>
+<p>方法基本例子:</p>
+<pre><code>type Person struct {
+	FirstName string
+	LastName  string
 }
-p.PrintFullName()
-}</p>
-<pre><code>John Doe
-The instance on which the method operates is called a receiver.
 
-In the above example method PrintFullName takes a receiver p whose type is *Person.
+func (p *Person) PrintFullName() {
+	fmt.Printf(&quot;%s %s\n&quot;, p.FirstName, p.LastName)
+}
 
-People coming from other languages are tempted to name the receiver this (mimicking C++) or self (mimicking Python). That is bad style in Go.
-
-In Go, the rule for naming receiver is:
-
-be short (usually a single letter)
-be the same for all methods
-
-## Value vs. pointer receiver
-Method receiver can be either a value or a pointer.
-
-As a convenience, the Go allows calling a pointer receiver on a value and calling a value receiver on a pointer:
-
-type Person struct {
+func main() {
+	p := &amp;Person{
+		&quot;John&quot;,
+		&quot;Doe&quot;,
+	}
+	p.PrintFullName()
+}
+</code></pre><blockquote>
+<p>John Doe</p>
+</blockquote>
+<p>The instance on which the method operates is called a receiver.</p>
+<p>In the above example method PrintFullName takes a receiver p whose type is *Person.</p>
+<p>People coming from other languages are tempted to name the receiver this (mimicking C++) or self (mimicking Python). That is bad style in Go.</p>
+<p>In Go, the rule for naming receiver is:</p>
+<p>be short (usually a single letter)
+be the same for all methods</p>
+<h2 id="value-vs-pointer-receiver">Value vs. pointer receiver</h2>
+<p>Method receiver can be either a value or a pointer.</p>
+<p>As a convenience, the Go allows calling a pointer receiver on a value and calling a value receiver on a pointer:</p>
+<pre><code>type Person struct {
 	FirstName string
 	LastName  string
 }
@@ -204,34 +200,40 @@ func main() {
 	p.PrintFullNamePointer()
 	p.PrintFullNameValue()
 }
-</code></pre><p>address of p:                         0xc00000c060
-PrintFullNamePointer: p is            0xc00000c060
-PrintFullNameValue:   address of p is 0xc00000c080
-A value receiver is called on a copy of a value:</p>
-<p>type Foo struct {
-Str string
-}</p>
-<p>func (f Foo) Print() {
-fmt.Printf(&ldquo;Value of Str inside Print: &lsquo;%s&rsquo;\n&rdquo;, f.Str)
-fmt.Printf(&ldquo;Address of &amp;f  inside Print: 0x%p\n&rdquo;, &amp;f)
-f.Str = &ldquo;changed&rdquo;
-}</p>
-<p>func main() {
-fv := Foo{
-Str: &ldquo;Foo&rdquo;,
+</code></pre><blockquote>
+<p>address of p:                         0xc00000c060<br>
+PrintFullNamePointer: p is            0xc00000c060<br>
+PrintFullNameValue:   address of p is 0xc00000c080</p>
+</blockquote>
+<p>A value receiver is called on a copy of a value:</p>
+<pre><code>type Foo struct {
+	Str string
 }
-fv.Print()
-fmt.Printf(&ldquo;Address of &amp;fv before Print: 0x%p\n&rdquo;, &amp;fv);
-fmt.Printf(&ldquo;Value of Str after Print: &lsquo;%s&rsquo;\n&rdquo;, fv.Str)
-}</p>
-<pre><code>Value of Str inside Print: 'Foo'
-Address of &amp;f  inside Print: 0x0xc000010220
-Address of &amp;fv before Print: 0x0xc000010210
-Value of Str after Print: 'Foo'
-You can see above the consequences of calling value receiver on a copy of a value:
 
-the address of f receiver is different that the address of fv value. This indicates it's a different value i.e. f is a copy of fv that Go compiler created implicilty
-changing f inside Print value receiver doesn't change the fv value</code></pre>
+func (f Foo) Print() {
+	fmt.Printf(&quot;Value of Str inside Print: '%s'\n&quot;, f.Str)
+	fmt.Printf(&quot;Address of &amp;f  inside Print: 0x%p\n&quot;, &amp;f)
+	f.Str = &quot;changed&quot;
+}
+
+func main() {
+	fv := Foo{
+		Str: &quot;Foo&quot;,
+	}
+	fv.Print()
+	fmt.Printf(&quot;Address of &amp;fv before Print: 0x%p\n&quot;, &amp;fv);
+	fmt.Printf(&quot;Value of Str after Print: '%s'\n&quot;, fv.Str)
+}
+</code></pre><blockquote>
+<p>Value of Str inside Print: &lsquo;Foo&rsquo;<br>
+Address of &amp;f  inside Print: 0x0xc000010220<br>
+Address of &amp;fv before Print: 0x0xc000010210<br>
+Value of Str after Print: &lsquo;Foo&rsquo;</p>
+</blockquote>
+<p>You can see above the consequences of calling value receiver on a copy of a value:</p>
+<p>the address of f receiver is different that the address of fv value. This indicates it&rsquo;s a different value i.e. f is a copy of fv that Go compiler created implicilty
+changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
+
                                             
                                         </div>
 
@@ -375,17 +377,6 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -396,8 +387,19 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -484,7 +486,7 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -726,7 +728,7 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -756,7 +758,7 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -790,13 +792,13 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -859,7 +861,7 @@ changing f inside Print value receiver doesn't change the fv value</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

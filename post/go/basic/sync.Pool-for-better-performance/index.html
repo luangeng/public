@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="sync.Pool for better performance Allocating and freeing objects with high frequency can be relatively expensive.
+  <meta property="og:description" content="Allocating and freeing objects with high frequency can be relatively expensive.
 A common technique for improving performance is re-using memory.
 sync.Pool is a thread-safe cache for re-using allocations.
 package main
@@ -134,7 +134,7 @@ var pool = sync.Pool{ // New creates an object when the pool has nothing availab
                                     <h1 class="post-title">Go sync.Pool for better performance</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 231 Words
+                                        Posted @ 2019-09-09 · 227 Words
                                         
                                         · Tags: Go
                                         
@@ -153,8 +153,7 @@ var pool = sync.Pool{ // New creates an object when the pool has nothing availab
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="syncpool-for-better-performance">sync.Pool for better performance</h1>
-<p>Allocating and freeing objects with high frequency can be relatively expensive.</p>
+                                            <p>Allocating and freeing objects with high frequency can be relatively expensive.</p>
 <p>A common technique for improving performance is re-using memory.</p>
 <p>sync.Pool is a thread-safe cache for re-using allocations.</p>
 <p>package main</p>
@@ -348,17 +347,6 @@ As with all performance optimization techniques you should not over-use sync.Poo
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -369,8 +357,19 @@ As with all performance optimization techniques you should not over-use sync.Poo
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -457,7 +456,7 @@ As with all performance optimization techniques you should not over-use sync.Poo
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -699,7 +698,7 @@ As with all performance optimization techniques you should not over-use sync.Poo
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -729,7 +728,7 @@ As with all performance optimization techniques you should not over-use sync.Poo
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -765,13 +764,13 @@ As with all performance optimization techniques you should not over-use sync.Poo
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -832,7 +831,7 @@ As with all performance optimization techniques you should not over-use sync.Poo
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

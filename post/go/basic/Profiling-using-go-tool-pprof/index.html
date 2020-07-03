@@ -14,9 +14,9 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Profiling using go tool pprof Basic cpu and memory profiling Add the following code in you main program.
+  <meta property="og:description" content="Basic cpu and memory profiling Add the following code in you main program.
 var cpuprofile = flag.String(&ldquo;cpuprofile&rdquo;, &ldquo;&quot;, &ldquo;write cpu profile file&rdquo;) var memprofile = flag.String(&ldquo;memprofile&rdquo;, &ldquo;&quot;, &ldquo;write memory profile to file&rdquo;)
-func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&ldquo;could not create CPU profile: &ldquo;, err) } if err := pprof.StartCPUProfile(f); err != nil { log.">
+func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&ldquo;could not create CPU profile: &ldquo;, err) } if err := pprof.StartCPUProfile(f); err != nil { log.Fatal(&ldquo;could not start CPU profile: &ldquo;, err) } defer pprof.">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">
@@ -131,7 +131,7 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
                                     <h1 class="post-title">Go Profiling using go tool pprof</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 545 Words
+                                        Posted @ 2019-09-09 · 540 Words
                                         
                                         · Tags: Go
                                         
@@ -150,8 +150,7 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="profiling-using-go-tool-pprof">Profiling using go tool pprof</h1>
-<p>Basic cpu and memory profiling
+                                            <p>Basic cpu and memory profiling
 Add the following code in you main program.</p>
 <p>var cpuprofile = flag.String(&ldquo;cpuprofile&rdquo;, &ldquo;&quot;, &ldquo;write cpu profile <code>file</code>&rdquo;)
 var memprofile = flag.String(&ldquo;memprofile&rdquo;, &ldquo;&quot;, &ldquo;write memory profile to <code>file</code>&rdquo;)</p>
@@ -388,17 +387,6 @@ flat  flat%   sum%        cum   cum%
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -409,8 +397,19 @@ flat  flat%   sum%        cum   cum%
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -497,7 +496,7 @@ flat  flat%   sum%        cum   cum%
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -739,7 +738,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -769,7 +768,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -805,13 +804,13 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -872,7 +871,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>

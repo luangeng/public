@@ -14,7 +14,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Error-handling/" />
   <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Basics of error handling: func sqrt(n float64) (float64, error) { if n &lt; 0 { return 0, fmt.Errorf(&ldquo;invalid argument &lsquo;%f&rsquo;, must be &gt;= 0&rdquo;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&ldquo;sqrt of %f is %f\n&rdquo;, n, res) } else { fmt.Printf(&ldquo;sqrt of %f returned error &lsquo;%s&rsquo;\n&rdquo;, n, err) } } func main() { printSqrt(16) printSqrt(-16) } sqrt">
+  <meta property="og:description" content="基本错误处理: func sqrt(n float64) (float64, error) { if n &lt; 0 { return 0, fmt.Errorf(&quot;invalid argument &#39;%f&#39;, must be &gt;= 0&quot;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&quot;sqrt of %f is %f\n&quot;, n, res) } else { fmt.Printf(&quot;sqrt of %f returned error &#39;%s&#39;\n&quot;, n, err) } } func main() { printSqrt(16)">
  
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Error-handling/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Error-handling/">
@@ -129,7 +129,7 @@
                                     <h1 class="post-title">Go 错误处理</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1627 Words
+                                        Posted @ 2019-09-09 · 1658 Words
                                         
                                         · Tags: Go
                                         
@@ -148,50 +148,43 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Basics of error handling:</p>
-<p>func sqrt(n float64) (float64, error) {
-if n &lt; 0 {
-return 0, fmt.Errorf(&ldquo;invalid argument &lsquo;%f&rsquo;, must be &gt;= 0&rdquo;, n)
+                                            <p>基本错误处理:</p>
+<pre><code>func sqrt(n float64) (float64, error) {
+	if n &lt; 0 {
+		return 0, fmt.Errorf(&quot;invalid argument '%f', must be &gt;= 0&quot;, n)
+	}
+	return math.Sqrt(n), nil
 }
-return math.Sqrt(n), nil
-}</p>
-<p>func printSqrt(n float64) {
-if res, err := sqrt(n); err == nil {
-fmt.Printf(&ldquo;sqrt of %f is %f\n&rdquo;, n, res)
-} else {
-fmt.Printf(&ldquo;sqrt of %f returned error &lsquo;%s&rsquo;\n&rdquo;, n, err)
-}</p>
-<p>}</p>
-<p>func main() {
-printSqrt(16)
-printSqrt(-16)
-}</p>
-<pre><code>sqrt of 16.000000 is 4.000000
-sqrt of -16.000000 returned error 'invalid argument '-16.000000', must be &gt;= 0'
-Unlike languages like C# or Python, Go handles failures by returning error values, not raising exceptions.
 
-Go also provides exceptions with panic and recover but they should be used rarely.
+func printSqrt(n float64) {
+	if res, err := sqrt(n); err == nil {
+		fmt.Printf(&quot;sqrt of %f is %f\n&quot;, n, res)
+	} else {
+		fmt.Printf(&quot;sqrt of %f returned error '%s'\n&quot;, n, err)
+	}
 
-Errors are values, just like integers or string.
+}
 
-Type error is a built-in interface which implements Error() string method.
-
-To indicate success, return nil.
-
-To create an error you can use standard library functions errors.New(msg string) or fmt.Errorf(format string, args... interface{}).
-
-You can also return custom error types by defining structs that implement Error() string method.
-
-If a function returns an error, it should always be the last returned value.
-
-Always check returned errors. A key to writing robust software is checking errors and handling them appropriately. Beginners often fail to check for errors and are then are faced with debugging mysterious failures.
-
-## Returning an error
-To indicate a failure, return a value of error type.
-
-To indicate no error, return nil.
-
-// somewhat inefficient way of appending a string at the end of a file
+func main() {
+	printSqrt(16)
+	printSqrt(-16)
+}
+</code></pre><blockquote>
+<p>sqrt of 16.000000 is 4.000000<br>
+sqrt of -16.000000 returned error &lsquo;invalid argument &lsquo;-16.000000&rsquo;, must be &gt;= 0&rsquo;</p>
+</blockquote>
+<p>Unlike languages like C# or Python, Go handles failures by returning error values, not raising exceptions.</p>
+<p>Go also provides exceptions with panic and recover but they should be used rarely.</p>
+<p>Errors are values, just like integers or string.</p>
+<p>Type error is a built-in interface which implements Error() string method.</p>
+<p>To indicate success, return nil.</p>
+<p>To create an error you can use standard library functions errors.New(msg string) or fmt.Errorf(format string, args&hellip; interface{}).</p>
+<p>You can also return custom error types by defining structs that implement Error() string method.</p>
+<p>If a function returns an error, it should always be the last returned value.</p>
+<p>Always check returned errors. A key to writing robust software is checking errors and handling them appropriately. Beginners often fail to check for errors and are then are faced with debugging mysterious failures.</p>
+<h2 id="返回错误">返回错误</h2>
+<p>为了指示一个错误,函数应该返回一个错误值.函数没有错误时,返回nil.</p>
+<pre><code>// somewhat inefficient way of appending a string at the end of a file
 func appendToFile(path string, s string) error {
 	d, err := ioutil.ReadFile(path)
   if err != nil {
@@ -200,18 +193,16 @@ func appendToFile(path string, s string) error {
 	d = append(d, []byte(s)...)
   return ioutil.WriteFile(path, d, 0644)
 }
-If the function also returns one or more values, error should be the last returned value:
-
-func sqrt(n int) (int, error) {
+</code></pre><p>如果函数有多个返回值时,error始终应该是最后一个:</p>
+<pre><code>func sqrt(n int) (int, error) {
 	if n &lt; 0 {
 		return 0, fmt.Errorf(&quot;n should be &gt;= 0, is %d&quot;, n)
 	}
 	return n*n, nil
 }
-Pitfalls
-If you're using custom error types, don't return underlying type, always return error type.,
-
-type CustomError struct {
+</code></pre><p>Pitfalls
+If you&rsquo;re using custom error types, don&rsquo;t return underlying type, always return error type.,</p>
+<pre><code>type CustomError struct {
 }
 
 func (e *CustomError) Error() string {
@@ -235,19 +226,13 @@ func caller() {
 		fmt.Printf(&quot;returnCustomError() failed with '%s'\n&quot;, err)
   }
 }
-Unexpectedly it looks like returnsCustomError() returned an error even though it returned nil.
-
-This is a variant of nil interface pitfall.
-
-#note link to that chapter
-
-Uninitialized err value is nil because it's the zero value of interface types.
-
-returnsCustomError() returns nil value of CustomError struct.
-
-This nil value is assigned to err variable. This is equivalent to:
-
-var err error
+</code></pre><p>Unexpectedly it looks like returnsCustomError() returned an error even though it returned nil.</p>
+<p>This is a variant of nil interface pitfall.</p>
+<p>#note link to that chapter</p>
+<p>Uninitialized err value is nil because it&rsquo;s the zero value of interface types.</p>
+<p>returnsCustomError() returns nil value of CustomError struct.</p>
+<p>This nil value is assigned to err variable. This is equivalent to:</p>
+<pre><code>var err error
 err = (*CustomError)(nil)
 At this point err is no longer equal to zero value of interface type. It's value is *CustomError whose value is nil.
 
@@ -264,210 +249,202 @@ if err1 == nil &amp;&amp; err2 == nil {
 if err3 != nil {
 	fmt.Printf(&quot;interface value assigned to a struct type whose value is nil is not zero value of interface type and therefore not equal to 'nil'\n&quot;)
 }
-
-## Creating standard error values
-There are several ways to create an error value.
-
-errors.New
-The simplest way, errors.New(msg string) creates error value from string.
-
-return errors.New(&quot;error created with errors.New&quot;)
+</code></pre><h2 id="creating-standard-error-values">Creating standard error values</h2>
+<p>There are several ways to create an error value.</p>
+<p>errors.New
+The simplest way, errors.New(msg string) creates error value from string.</p>
+<p>return errors.New(&ldquo;error created with errors.New&rdquo;)
 fmt.Errorf
-For more complex error messages, fmt.Errorf(format string, args ...interface{}) takes a formatting string and arguments:
-
-return fmt.Errorf(&quot;error created with %s&quot;, &quot;fmt.Errorf&quot;)
-It’s a shortcut for errors.New(fmt.Sprintf(...)).
-
-global error variable
+For more complex error messages, fmt.Errorf(format string, args &hellip;interface{}) takes a formatting string and arguments:</p>
+<p>return fmt.Errorf(&ldquo;error created with %s&rdquo;, &ldquo;fmt.Errorf&rdquo;)
+It’s a shortcut for errors.New(fmt.Sprintf(&hellip;)).</p>
+<p>global error variable
 // ErrGlobal exported so that others can compare returned error value with this variable
-var ErrGlobal = errors.New(&quot;global error variable&quot;)
-
-return ErrGlobal
-Sometimes you want the error to have an identity so that callers can test if returned error is this specific error. You can do it by declaring global variable as ErrGlobal in example above.
-
-One example of such error from standard library is io.EOF although usually the naming convention for such errors is Err*.
-
-You can also create custom error types.
-
-## Custom error types
-In Go error type is a built-in interface with a single method Error() string.
-
-All rules governing interfaces apply to error type.
-
-Among others, any type that implements error interface can be used as value of error type.
-
-// MyError is a custom error type
+var ErrGlobal = errors.New(&ldquo;global error variable&rdquo;)</p>
+<p>return ErrGlobal
+Sometimes you want the error to have an identity so that callers can test if returned error is this specific error. You can do it by declaring global variable as ErrGlobal in example above.</p>
+<p>One example of such error from standard library is io.EOF although usually the naming convention for such errors is Err*.</p>
+<p>You can also create custom error types.</p>
+<h2 id="custom-error-types">Custom error types</h2>
+<p>In Go error type is a built-in interface with a single method Error() string.</p>
+<p>All rules governing interfaces apply to error type.</p>
+<p>Among others, any type that implements error interface can be used as value of error type.</p>
+<p>// MyError is a custom error type
 type MyError struct {
-	msg string
+msg string
+}</p>
+<p>func (e *MyError) Error() string {
+return e.msg
+}</p>
+<p>var err error = &amp;MyError{msg: &ldquo;This is custom error type&rdquo;}
+fmt.Printf(&ldquo;err: %s\n&rdquo;, err)</p>
+<pre><code>err: This is custom error type
+Why use custom type in addition to built-in ways of creating errors?
+
+Potential use cases are:
+
+wrap existing error and add more information, like a call stack
+add structured information to the error. Code handling the error can check for custom type using type assertion or type switch and access this information
+
+## Handling an error
+In Go errors can be returned from a function call. The convention is that if a method can fail, the last returned argument is an error.
+
+func DoAndReturnSomething() (string, error) {
+    if os.Getenv(&quot;ERROR&quot;) == &quot;1&quot; {
+        return &quot;&quot;, errors.New(&quot;The method failed&quot;)
+    }
+
+    // The method succeeded.
+    return &quot;Success!&quot;, nil
+}
+You use multiple variable assignments to check if the method failed.
+
+result, err := DoAndReturnSomething()
+if err != nil {
+    panic(err)
 }
 
-func (e *MyError) Error() string {
-	return e.msg
+// This is executed only if the method didn't return an error
+fmt.Println(result)
+If you are not interested in the error, you can simply ignore it by assigning it to _.
+
+result, _ := DoAndReturnSomething()
+fmt.Println(result)
+Of course, ignoring an error can have serious implications. Therefore, this is generally not recommended.
+
+If you have multiple method calls, and one or more methods in the chain may return an error, you should propagate the error to the first level that can handle it.
+
+func Foo() error {
+    return errors.New(&quot;I failed!&quot;)
 }
 
-var err error = &amp;MyError{msg: &quot;This is custom error type&quot;}
-fmt.Printf(&quot;err: %s\n&quot;, err)
-</code></pre><p>err: This is custom error type
-Why use custom type in addition to built-in ways of creating errors?</p>
-<p>Potential use cases are:</p>
-<p>wrap existing error and add more information, like a call stack
-add structured information to the error. Code handling the error can check for custom type using type assertion or type switch and access this information</p>
-<h2 id="handling-an-error">Handling an error</h2>
-<p>In Go errors can be returned from a function call. The convention is that if a method can fail, the last returned argument is an error.</p>
-<p>func DoAndReturnSomething() (string, error) {
-if os.Getenv(&ldquo;ERROR&rdquo;) == &ldquo;1&rdquo; {
-return &ldquo;&quot;, errors.New(&ldquo;The method failed&rdquo;)
-}</p>
-<pre><code>// The method succeeded.
-return &quot;Success!&quot;, nil
-</code></pre>
-<p>}
-You use multiple variable assignments to check if the method failed.</p>
-<p>result, err := DoAndReturnSomething()
-if err != nil {
-panic(err)
-}</p>
-<p>// This is executed only if the method didn&rsquo;t return an error
-fmt.Println(result)
-If you are not interested in the error, you can simply ignore it by assigning it to _.</p>
-<p>result, _ := DoAndReturnSomething()
-fmt.Println(result)
-Of course, ignoring an error can have serious implications. Therefore, this is generally not recommended.</p>
-<p>If you have multiple method calls, and one or more methods in the chain may return an error, you should propagate the error to the first level that can handle it.</p>
-<p>func Foo() error {
-return errors.New(&ldquo;I failed!&quot;)
-}</p>
-<p>func Bar() (string, error) {
-err := Foo()
-if err != nil {
-return &ldquo;&quot;, err
-}</p>
-<pre><code>return &quot;I succeeded&quot;, nil
-</code></pre>
-<p>}</p>
-<p>func Baz() (string, string, error) {
-res, err := Bar()
-if err != nil {
-return &ldquo;&quot;, &ldquo;&quot;, err
-}</p>
-<pre><code>return &quot;Foo&quot;, &quot;Bar&quot;, nil
-</code></pre>
-<p>}</p>
-<h2 id="handling-errors-in-short-programs">Handling errors in short programs</h2>
-<p>Propagating errors up to the callers is tedious. You end up with many lines looking like:</p>
-<p>r, err := os.Open(&ldquo;my file&rdquo;)
-if err != nil {
-return err
+func Bar() (string, error) {
+    err := Foo()
+    if err != nil {
+        return &quot;&quot;, err
+    }
+
+    return &quot;I succeeded&quot;, nil
 }
-This kind of error handling diligence is crucial for writing robust software.</p>
-<p>Sometimes you write shorter cmd-line programs where such discipline is not warranted.</p>
-<p>You can simplify error handling with a helper functions PanicIfErr(err error, args &hellip;interface{}):</p>
-<p>r, err := os.Open(&ldquo;my file&rdquo;)
+
+func Baz() (string, string, error) {
+    res, err := Bar()
+    if err != nil {
+        return &quot;&quot;, &quot;&quot;, err
+    }
+
+    return &quot;Foo&quot;, &quot;Bar&quot;, nil
+}
+
+## Handling errors in short programs
+Propagating errors up to the callers is tedious. You end up with many lines looking like:
+
+r, err := os.Open(&quot;my file&quot;)
+if err != nil {
+    return err
+}
+This kind of error handling diligence is crucial for writing robust software.
+
+Sometimes you write shorter cmd-line programs where such discipline is not warranted.
+
+You can simplify error handling with a helper functions PanicIfErr(err error, args ...interface{}):
+
+r, err := os.Open(&quot;my file&quot;)
 PanicIfErr(err)
-Implementation of such helper:</p>
-<p>// FmtArgs formats args as a string. First argument should be format string
+Implementation of such helper:
+
+// FmtArgs formats args as a string. First argument should be format string
 // and the rest are arguments to the format
-func FmtArgs(args &hellip;interface{}) string {
-if len(args) == 0 {
-return &quot;&rdquo;
+func FmtArgs(args ...interface{}) string {
+	if len(args) == 0 {
+		return &quot;&quot;
+	}
+	format := args[0].(string)
+	if len(args) == 1 {
+		return format
+	}
+	return fmt.Sprintf(format, args[1:]...)
 }
-format := args[0].(string)
-if len(args) == 1 {
-return format
+
+func panicWithMsg(defaultMsg string, args ...interface{}) {
+	s := FmtArgs(args...)
+	if s == &quot;&quot; {
+		s = defaultMsg
+	}
+	fmt.Printf(&quot;%s\n&quot;, s)
+	panic(s)
 }
-return fmt.Sprintf(format, args[1:]&hellip;)
-}</p>
-<p>func panicWithMsg(defaultMsg string, args &hellip;interface{}) {
-s := FmtArgs(args&hellip;)
-if s == &quot;&rdquo; {
-s = defaultMsg
+
+// PanicIf panics if cond is true
+func PanicIf(cond bool, args ...interface{}) {
+	if !cond {
+		return
+	}
+	panicWithMsg(&quot;PanicIf: condition failed&quot;, args...)
 }
-fmt.Printf(&quot;%s\n&rdquo;, s)
-panic(s)
-}</p>
-<p>// PanicIf panics if cond is true
-func PanicIf(cond bool, args &hellip;interface{}) {
-if !cond {
-return
-}
-panicWithMsg(&ldquo;PanicIf: condition failed&rdquo;, args&hellip;)
-}</p>
-<p>// PanicIfErr panics if err is not nil
-func PanicIfErr(err error, args &hellip;interface{}) {
-if err == nil {
-return
-}
-panicWithMsg(err.Error(), args&hellip;)
-}</p>
-<p>func main() {
-PanicIfErr(nil)                              // nothing happens
-PanicIfErr(errors.New(&ldquo;there was an error&rdquo;)) // will panic
-}</p>
-<pre><code>there was an error
-panic: there was an error
 
-goroutine 1 [running]:
-main.panicWithMsg(0x4c4e61, 0x12, 0x0, 0x0, 0x0)
-	/tmp/src313740862/main.go:30 +0x126
-main.PanicIfErr(0x4dc660, 0xc00005a1e0, 0x0, 0x0, 0x0)
-	/tmp/src313740862/main.go:46 +0x6c
-main.main()
-	/tmp/src313740862/main.go:51 +0x84
-exit status 2
-
-## Add callstack to error messages
-If you come from languages like Java, C# or Python, you might be used to the fact that exceptions include call stack for the location that created the exception.
-
-Collecting callstacks is expensive and Go doesn’t add callstack to errors.
-
-Callstacks are useful in debugging. If you’re ok with additional cost, you can use package github.com/pkg/errors to augment errors with callstack.
-
-func wrappedError() error {
-	err := errors.New(&quot;Original error&quot;)
-	// create a new error value which wraps original err and
-	// adds calls tack
-	return pkgerrors.WithStack(err)
+// PanicIfErr panics if err is not nil
+func PanicIfErr(err error, args ...interface{}) {
+	if err == nil {
+		return
+	}
+	panicWithMsg(err.Error(), args...)
 }
 
 func main() {
-	// %+v prints original error add callstack
-	fmt.Printf(&quot;err: %+v\n\n&quot;, wrappedError())
-
-	// errors created with pkg/errors include callstack by default
-	fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
+	PanicIfErr(nil)                              // nothing happens
+	PanicIfErr(errors.New(&quot;there was an error&quot;)) // will panic
 }
-As you can see top part of the callstack includes Go runtime code.
-
-
-
-## Writing good error messages
-Good error messages help in debugging problems.
-
-In production deployments error messages are logged. When something goes wrong log file is the main source for debugging clues.
-
-When creating error messages, think about that and include as much useful information as possible.
-
-Bad error message:
-
-func openLog(path string) (io.Reader, error) {
-    f, err := os.Open(path)
-    if err != nil {
-        return nil, errors.New(&quot;failed to open log file&quot;)
-    }
-    ...
-}
-Better error message:
-
-func openLog(path string) (io.Reader, error) {
-    f, err := os.Open(path)
-    if err != nil {
-        return nil, errors.New(&quot;openLog('%s'), os.Open() failed with '%s'&quot;, path, err)
-    }
-    ...
-}
-Second version of error message includes more debugging clues: * which function generated the error * path of the file we were trying to open * the error message from os.Open() so that we can tell if it was because the file doesn’t exist or we don’t have access rights to it etc.
-
+</code></pre><p>there was an error
+panic: there was an error</p>
+<p>goroutine 1 [running]:
+main.panicWithMsg(0x4c4e61, 0x12, 0x0, 0x0, 0x0)
+/tmp/src313740862/main.go:30 +0x126
+main.PanicIfErr(0x4dc660, 0xc00005a1e0, 0x0, 0x0, 0x0)
+/tmp/src313740862/main.go:46 +0x6c
+main.main()
+/tmp/src313740862/main.go:51 +0x84
+exit status 2</p>
+<h2 id="add-callstack-to-error-messages">Add callstack to error messages</h2>
+<p>If you come from languages like Java, C# or Python, you might be used to the fact that exceptions include call stack for the location that created the exception.</p>
+<p>Collecting callstacks is expensive and Go doesn’t add callstack to errors.</p>
+<p>Callstacks are useful in debugging. If you’re ok with additional cost, you can use package github.com/pkg/errors to augment errors with callstack.</p>
+<p>func wrappedError() error {
+err := errors.New(&ldquo;Original error&rdquo;)
+// create a new error value which wraps original err and
+// adds calls tack
+return pkgerrors.WithStack(err)
+}</p>
+<p>func main() {
+// %+v prints original error add callstack
+fmt.Printf(&ldquo;err: %+v\n\n&rdquo;, wrappedError())</p>
+<pre><code>// errors created with pkg/errors include callstack by default
+fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
 </code></pre>
+<p>}
+As you can see top part of the callstack includes Go runtime code.</p>
+<h2 id="writing-good-error-messages">Writing good error messages</h2>
+<p>Good error messages help in debugging problems.</p>
+<p>In production deployments error messages are logged. When something goes wrong log file is the main source for debugging clues.</p>
+<p>When creating error messages, think about that and include as much useful information as possible.</p>
+<p>Bad error message:</p>
+<p>func openLog(path string) (io.Reader, error) {
+f, err := os.Open(path)
+if err != nil {
+return nil, errors.New(&ldquo;failed to open log file&rdquo;)
+}
+&hellip;
+}
+Better error message:</p>
+<p>func openLog(path string) (io.Reader, error) {
+f, err := os.Open(path)
+if err != nil {
+return nil, errors.New(&ldquo;openLog('%s&rsquo;), os.Open() failed with &lsquo;%s&rsquo;&quot;, path, err)
+}
+&hellip;
+}
+Second version of error message includes more debugging clues: * which function generated the error * path of the file we were trying to open * the error message from os.Open() so that we can tell if it was because the file doesn’t exist or we don’t have access rights to it etc.</p>
+
                                             
                                         </div>
 
@@ -611,17 +588,6 @@ Second version of error message includes more debugging clues: * which function 
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/Constants/" rel="bookmark" class="leancloud-count">Go Constants
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -632,8 +598,19 @@ Second version of error message includes more debugging clues: * which function 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -720,7 +697,7 @@ Second version of error message includes more debugging clues: * which function 
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt
+                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -962,7 +939,7 @@ Second version of error message includes more debugging clues: * which function 
                 <li><a href="https://luangeng.space/post/go/basic/Variables/">Go 变量</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go Constants</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Constants/">Go 常量</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/string/">Go 字符串</a></li>
@@ -992,7 +969,7 @@ Second version of error message includes more debugging clues: * which function 
                 <li><a href="https://luangeng.space/post/go/basic/forwhileloops/">Go 循环</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range statement</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/range-statement/">Go range</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/function/">Go 函数</a></li>
@@ -1026,13 +1003,13 @@ Second version of error message includes more debugging clues: * which function 
                 <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go Logging</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64 encoding</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
@@ -1095,7 +1072,7 @@ Second version of error message includes more debugging clues: * which function 
                 <li><a href="https://luangeng.space/post/go/basic/Plugin/">Go 插件</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Package-fmt/">Go fmt包</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
