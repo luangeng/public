@@ -16,9 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/HTTP-server-middleware/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Introduction In Go Middleware can be used to execute code before and after handler function. It uses the power of Single Function Interfaces. Can be introduced at any time without affecting the other middleware. For Ex: Authentication logging can be added in later stages of development without disturbing the existing code.
-Remarks The Signature of middleware should be (http.ResponseWriter, *http.Request) i.e. of http.handlerFunc type.
-Normal Handler Function func loginHandler(w http.ResponseWriter, r *http.">
+    content="介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单一功能接口的功能。 可以随时引入而不会影响其他中间件。 对于Ex：身份验证日">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">
@@ -132,7 +130,7 @@ Normal Handler Function func loginHandler(w http.ResponseWriter, r *http.">
                                     <h1 class="post-title">Go HTTP server middleware</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 289 Words
+                                        Posted @ 2019-09-09 · 394 Words
                                         
                                         · Tags: Go
                                         
@@ -151,82 +149,88 @@ Normal Handler Function func loginHandler(w http.ResponseWriter, r *http.">
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Introduction
-In Go Middleware can be used to execute code before and after handler function. It uses the power of Single Function Interfaces. Can be introduced at any time without affecting the other middleware. For Ex: Authentication logging can be added in later stages of development without disturbing the existing code.</p>
-<p>Remarks
-The Signature of middleware should be (http.ResponseWriter, *http.Request) i.e. of http.handlerFunc type.</p>
-<p>Normal Handler Function
-func loginHandler(w http.ResponseWriter, r *http.Request) {
-// Steps to login
-}</p>
-<p>func main() {
-http.HandleFunc(&quot;/login&rdquo;, loginHandler)
-http.ListenAndServe(&quot;:8080&rdquo;, nil)
-}</p>
-<p>Middleware Calculate time required for handlerFunc to execute
+                                            <p>介绍
+在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单一功能接口的功能。 可以随时引入而不会影响其他中间件。 对于Ex：身份验证日志记录可以在开发的后期阶段添加，而不会干扰现有代码。</p>
+<p>备注
+中间件的签名应为（http.ResponseWriter，* http.Request），即为http.handlerFunc类型。</p>
+<p>正常处理程序功能</p>
+<pre><code>func loginHandler(w http.ResponseWriter, r *http.Request) {
+      // Steps to login
+}
+
+func main() {
+    http.HandleFunc(&quot;/login&quot;, loginHandler)
+    http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+
+Middleware Calculate time required for handlerFunc to execute
 // logger middlerware that logs time taken to process each request
 func Logger(h http.Handler) http.Handler {
-return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-startTime := time.Now()
-h.ServeHttp(w,r)
-endTime := time.Since(startTime)
-log.Printf(&quot;%s %d %v&rdquo;, r.URL, r.Method, endTime)
-})
-}</p>
-<p>func loginHandler(w http.ResponseWriter, r *http.Request) {
-// Steps to login
-}</p>
-<p>func main() {
-http.HandleFunc(&quot;/login&rdquo;, Logger(loginHandler))
-http.ListenAndServe(&quot;:8080&rdquo;, nil)
-}</p>
-<p>CORS Middleware
-func CORS(h http.Handler) http.Handler {
-return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-origin := r.Header.Get(&ldquo;Origin&rdquo;)
-w.Header().Set(&ldquo;Access-Control-Allow-Origin&rdquo;, origin)
-if r.Method == &ldquo;OPTIONS&rdquo; {
-w.Header().Set(&ldquo;Access-Control-Allow-Credentials&rdquo;, &ldquo;true&rdquo;)
-w.Header().Set(&ldquo;Access-Control-Allow-Methods&rdquo;, &ldquo;GET,POST&rdquo;)</p>
-<pre><code>        w.RespWriter.Header().Set(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type, X-CSRF-Token, Authorization&quot;)
-        return
-    } else {
-        h.ServeHTTP(w, r)
-    }
-})
-</code></pre>
-<p>}</p>
-<p>func main() {
-http.HandleFunc(&quot;/login&rdquo;, Logger(CORS(loginHandler)))
-http.ListenAndServe(&quot;:8080&rdquo;, nil)
-}</p>
-<h2 id="auth-middleware">Auth Middleware</h2>
-<p>func Authenticate(h http.Handler) http.Handler {
-return CustomHandlerFunc(func(w *http.ResponseWriter, r *http.Request) {
-// extract params from req
-// post params | headers etc
-if CheckAuth(params) {
-log.Println(&ldquo;Auth Pass&rdquo;)
-// pass control to next middleware in chain or handler func
-h.ServeHTTP(w, r)
-} else {
-log.Println(&ldquo;Auth Fail&rdquo;)
-// Responsd Auth Fail
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        startTime := time.Now()
+        h.ServeHttp(w,r)
+        endTime := time.Since(startTime)
+        log.Printf(&quot;%s %d %v&quot;, r.URL, r.Method, endTime)
+    })
 }
-})
-}</p>
-<h2 id="recovery-handler-to-prevent-server-from-crashing">Recovery Handler to prevent server from crashing</h2>
-<p>func Recovery(h http.Handler) http.Handler {
-return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
-defer func() {
-if err := recover(); err != nil {
-// respondInternalServerError
-}
-}()
-h.ServeHTTP(w , r)
-})
-}</p>
 
+func loginHandler(w http.ResponseWriter, r *http.Request) {
+            // Steps to login
+}
+
+func main() {
+    http.HandleFunc(&quot;/login&quot;, Logger(loginHandler))
+    http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+</code></pre><h2 id="cors-middleware">CORS Middleware</h2>
+<pre><code>func CORS(h http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        origin := r.Header.Get(&quot;Origin&quot;)
+        w.Header().Set(&quot;Access-Control-Allow-Origin&quot;, origin)
+        if r.Method == &quot;OPTIONS&quot; {
+            w.Header().Set(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;)
+            w.Header().Set(&quot;Access-Control-Allow-Methods&quot;, &quot;GET,POST&quot;)
+
+            w.RespWriter.Header().Set(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type, X-CSRF-Token, Authorization&quot;)
+            return
+        } else {
+            h.ServeHTTP(w, r)
+        }
+    })
+}
+
+func main() {
+    http.HandleFunc(&quot;/login&quot;, Logger(CORS(loginHandler)))
+    http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+</code></pre><h2 id="auth-middleware">Auth Middleware</h2>
+<pre><code>func Authenticate(h http.Handler) http.Handler {
+    return CustomHandlerFunc(func(w *http.ResponseWriter, r *http.Request) {
+        // extract params from req
+        // post params | headers etc
+        if CheckAuth(params) {
+            log.Println(&quot;Auth Pass&quot;)
+            // pass control to next middleware in chain or handler func
+            h.ServeHTTP(w, r)
+        } else {
+            log.Println(&quot;Auth Fail&quot;)
+            // Responsd Auth Fail
+        }
+    })
+}
+
+## Recovery Handler to prevent server from crashing
+func Recovery(h http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+        defer func() {
+            if err := recover(); err != nil {
+                // respondInternalServerError
+            }
+        }()
+        h.ServeHTTP(w , r)
+    })
+}
+</code></pre>
                                             
                                         </div>
 

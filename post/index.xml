@@ -346,10 +346,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-Client/</guid>
-      <description>Package net/http in standard library provides functionality to make HTTP network requests.
-In the examples we use httpbin.org which is a clever service that can return specific HTTP responses, which is useful for demonstrating various aspects of HTTP protocol.
-Basic HTTP GET For simplicity this example uses http.Get(). In real programs you should use custom client with a timeout as described below.
-uri := &amp;ldquo;https://httpbin.org/html&amp;quot; resp, err := http.Get(uri) if err !</description>
+      <description>标准库中的net / http软件包提供了发出HTTP网络请求的功能。 在示例中，我们使用httpbin.org这是一个聪明的服务，可以返回特定的</description>
     </item>
     
     <item>
@@ -358,12 +355,7 @@ uri := &amp;ldquo;https://httpbin.org/html&amp;quot; resp, err := http.Get(uri) 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-Server/</guid>
-      <description>http.ServeMux provides a multiplexer which calls handlers for HTTP requests. Alternatives to the standard library multiplexer include:
-Gorilla Mux
-Hello World The typical way to begin writing web servers in Go is to use the standard library net/http module.
-There is also a tutorial for it here.
-The following code also uses it. Here is the simplest possible HTTP server implementation. It responds &amp;ldquo;Hello World&amp;rdquo; to any HTTP request.
-Save the following code in a server.</description>
+      <description>http.ServeMux提供了一个多路复用器，该多路复用器调用HTTP请求的处理程序。 标准库多路复用器的替代方法包括： Gorilla Mux Hello World 开始使用Go</description>
     </item>
     
     <item>
@@ -372,9 +364,7 @@ Save the following code in a server.</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-server-middleware/</guid>
-      <description>Introduction In Go Middleware can be used to execute code before and after handler function. It uses the power of Single Function Interfaces. Can be introduced at any time without affecting the other middleware. For Ex: Authentication logging can be added in later stages of development without disturbing the existing code.
-Remarks The Signature of middleware should be (http.ResponseWriter, *http.Request) i.e. of http.handlerFunc type.
-Normal Handler Function func loginHandler(w http.ResponseWriter, r *http.</description>
+      <description>介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单一功能接口的功能。 可以随时引入而不会影响其他中间件。 对于Ex：身份验证日</description>
     </item>
     
     <item>
