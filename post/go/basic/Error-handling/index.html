@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 错误处理</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1658 Words
+                                        Posted @ 2019-09-09 · 2510 Words
                                         
                                         · Tags: Go
                                         
@@ -174,15 +174,15 @@ func main() {
 <p>sqrt of 16.000000 is 4.000000<br>
 sqrt of -16.000000 returned error &lsquo;invalid argument &lsquo;-16.000000&rsquo;, must be &gt;= 0&rsquo;</p>
 </blockquote>
-<p>Unlike languages like C# or Python, Go handles failures by returning error values, not raising exceptions.</p>
-<p>Go also provides exceptions with panic and recover but they should be used rarely.</p>
-<p>Errors are values, just like integers or string.</p>
-<p>Type error is a built-in interface which implements Error() string method.</p>
-<p>To indicate success, return nil.</p>
-<p>To create an error you can use standard library functions errors.New(msg string) or fmt.Errorf(format string, args&hellip; interface{}).</p>
-<p>You can also return custom error types by defining structs that implement Error() string method.</p>
-<p>If a function returns an error, it should always be the last returned value.</p>
-<p>Always check returned errors. A key to writing robust software is checking errors and handling them appropriately. Beginners often fail to check for errors and are then are faced with debugging mysterious failures.</p>
+<p>与C＃或Python等语言不同，Go通过返回错误值而不引发异常来处理故障。</p>
+<p>Go还提供了紧急和恢复异常，但很少使用。</p>
+<p>错误是值，就像整数或字符串一样。</p>
+<p>类型错误是实现Error（）字符串方法的内置接口。</p>
+<p>为了表示成功，请返回nil。</p>
+<p>要创建错误，您可以使用标准库函数errors.New（msg字符串）或fmt.Errorf（格式字符串，args &hellip; interface {}）。</p>
+<p>您还可以通过定义实现Error（）字符串方法的结构来返回自定义错误类型。</p>
+<p>如果函数返回错误，则应始终为最后返回的值。</p>
+<p>始终检查返回的错误。 编写功能强大的软件的关键是检查错误并进行适当处理。 初学者通常无法检查错误，然后面临调试神秘故障的麻烦。</p>
 <h2 id="返回错误">返回错误</h2>
 <p>为了指示一个错误,函数应该返回一个错误值.函数没有错误时,返回nil.</p>
 <pre><code>// somewhat inefficient way of appending a string at the end of a file
@@ -201,8 +201,8 @@ func appendToFile(path string, s string) error {
 	}
 	return n*n, nil
 }
-</code></pre><p>Pitfalls
-If you&rsquo;re using custom error types, don&rsquo;t return underlying type, always return error type.,</p>
+</code></pre><h2 id="pitfalls">Pitfalls</h2>
+<p>如果您使用的是自定义错误类型，请不要返回底层类型，而请务必返回错误类型。</p>
 <pre><code>type CustomError struct {
 }
 
@@ -227,21 +227,18 @@ func caller() {
 		fmt.Printf(&quot;returnCustomError() failed with '%s'\n&quot;, err)
   }
 }
-</code></pre><p>Unexpectedly it looks like returnsCustomError() returned an error even though it returned nil.</p>
-<p>This is a variant of nil interface pitfall.</p>
-<p>#note link to that chapter</p>
-<p>Uninitialized err value is nil because it&rsquo;s the zero value of interface types.</p>
-<p>returnsCustomError() returns nil value of CustomError struct.</p>
-<p>This nil value is assigned to err variable. This is equivalent to:</p>
+</code></pre><p>出乎意料的是，即使返回null，它看起来也像returnCustomError（）返回了错误。</p>
+<p>这是nil接口陷阱的一种变体。</p>
+<p>#note链接到该章</p>
+<p>未初始化的err值为nil，因为它是接口类型的零值。</p>
+<p>returnCustomError（）返回CustomError结构的nil值。</p>
+<p>此nil值分配给err变量。 这等效于：</p>
 <pre><code>var err error
 err = (*CustomError)(nil)
-At this point err is no longer equal to zero value of interface type. It's value is *CustomError whose value is nil.
-
-Therefore err no longer equals to nil.
-
-To put it differently:
-
-var err1 error
+</code></pre><p>此时，err不再等于接口类型的零值。 它的值为* CustomError，其值为nil。</p>
+<p>因此，err不再等于nil。</p>
+<p>换句话说：</p>
+<pre><code>var err1 error
 var err2 error = nil
 var err3 error = (*CustomError)(nil)
 if err1 == nil &amp;&amp; err2 == nil {
@@ -250,47 +247,50 @@ if err1 == nil &amp;&amp; err2 == nil {
 if err3 != nil {
 	fmt.Printf(&quot;interface value assigned to a struct type whose value is nil is not zero value of interface type and therefore not equal to 'nil'\n&quot;)
 }
-</code></pre><h2 id="creating-standard-error-values">Creating standard error values</h2>
-<p>There are several ways to create an error value.</p>
-<p>errors.New
-The simplest way, errors.New(msg string) creates error value from string.</p>
-<p>return errors.New(&ldquo;error created with errors.New&rdquo;)
-fmt.Errorf
-For more complex error messages, fmt.Errorf(format string, args &hellip;interface{}) takes a formatting string and arguments:</p>
-<p>return fmt.Errorf(&ldquo;error created with %s&rdquo;, &ldquo;fmt.Errorf&rdquo;)
-It’s a shortcut for errors.New(fmt.Sprintf(&hellip;)).</p>
-<p>global error variable
-// ErrGlobal exported so that others can compare returned error value with this variable
-var ErrGlobal = errors.New(&ldquo;global error variable&rdquo;)</p>
-<p>return ErrGlobal
-Sometimes you want the error to have an identity so that callers can test if returned error is this specific error. You can do it by declaring global variable as ErrGlobal in example above.</p>
-<p>One example of such error from standard library is io.EOF although usually the naming convention for such errors is Err*.</p>
-<p>You can also create custom error types.</p>
-<h2 id="custom-error-types">Custom error types</h2>
-<p>In Go error type is a built-in interface with a single method Error() string.</p>
-<p>All rules governing interfaces apply to error type.</p>
-<p>Among others, any type that implements error interface can be used as value of error type.</p>
-<p>// MyError is a custom error type
+</code></pre><h2 id="创建标准错误值">创建标准错误值</h2>
+<p>有几种创建错误值的方法:</p>
+<ul>
+<li>errors.New   最简单的方式, errors.New(msg string)从字符串创建错误</li>
+</ul>
+<p><code>return errors.New(&quot;error created with errors.New&quot;)</code></p>
+<ul>
+<li>fmt.Errorf   用来打印复杂的错误, fmt.Errorf(format string, args &hellip;interface{}) 可接受格式化string和参数</li>
+</ul>
+<p><code>return fmt.Errorf(&quot;error created with %s&quot;, &quot;fmt.Errorf&quot;)</code>
+这是errors.New(fmt.Sprintf(&hellip;))的简写</p>
+<h2 id="全局错误变量">全局错误变量</h2>
+<pre><code>// ErrGlobal exported so that others can compare returned error value with this variable
+var ErrGlobal = errors.New(&quot;global error variable&quot;)
+
+return ErrGlobal
+</code></pre><p>有时您希望错误具有标识，以便调用者可以测试返回的错误是否是此特定错误。 您可以通过在上面的示例中将全局变量声明为ErrGlobal来实现。</p>
+<p>标准库中此类错误的一个示例是io.EOF，尽管通常此类错误的命名约定为Err *。</p>
+<p>您还可以创建自定义错误类型。</p>
+<h2 id="自定义错误">自定义错误</h2>
+<p>在Go中，错误类型是带有单个方法Error（）字符串的内置接口。</p>
+<p>所有管理接口的规则均适用于错误类型。</p>
+<p>其中，任何实现错误接口的类型都可以用作错误类型的值。</p>
+<pre><code>// MyError is a custom error type
 type MyError struct {
-msg string
-}</p>
-<p>func (e *MyError) Error() string {
-return e.msg
-}</p>
-<p>var err error = &amp;MyError{msg: &ldquo;This is custom error type&rdquo;}
-fmt.Printf(&ldquo;err: %s\n&rdquo;, err)</p>
-<pre><code>err: This is custom error type
-Why use custom type in addition to built-in ways of creating errors?
+	msg string
+}
 
-Potential use cases are:
+func (e *MyError) Error() string {
+	return e.msg
+}
 
-wrap existing error and add more information, like a call stack
-add structured information to the error. Code handling the error can check for custom type using type assertion or type switch and access this information
-
-## Handling an error
-In Go errors can be returned from a function call. The convention is that if a method can fail, the last returned argument is an error.
-
-func DoAndReturnSomething() (string, error) {
+var err error = &amp;MyError{msg: &quot;This is custom error type&quot;}
+fmt.Printf(&quot;err: %s\n&quot;, err)
+</code></pre><blockquote>
+<p>err: This is custom error type</p>
+</blockquote>
+<p>除了创建错误的内置方法之外，为什么还要使用自定义类型？</p>
+<p>潜在的用例是：</p>
+<p>包装现有错误并添加更多信息，例如调用堆栈
+向错误添加结构化信息。 处理该错误的代码可以使用类型断言或类型切换检查自定义类型，并访问此信息</p>
+<h2 id="处理错误">处理错误</h2>
+<p>在Go中，可以从函数调用中返回错误。 约定是，如果方法可能失败，则最后返回的参数是错误。</p>
+<pre><code>func DoAndReturnSomething() (string, error) {
     if os.Getenv(&quot;ERROR&quot;) == &quot;1&quot; {
         return &quot;&quot;, errors.New(&quot;The method failed&quot;)
     }
@@ -298,24 +298,20 @@ func DoAndReturnSomething() (string, error) {
     // The method succeeded.
     return &quot;Success!&quot;, nil
 }
-You use multiple variable assignments to check if the method failed.
-
-result, err := DoAndReturnSomething()
+</code></pre><p>您使用多个变量分配来检查方法是否失败。</p>
+<pre><code>result, err := DoAndReturnSomething()
 if err != nil {
     panic(err)
 }
 
 // This is executed only if the method didn't return an error
 fmt.Println(result)
-If you are not interested in the error, you can simply ignore it by assigning it to _.
-
-result, _ := DoAndReturnSomething()
+</code></pre><p>如果您对该错误不感兴趣，则可以通过将其分配给_来忽略它。</p>
+<pre><code>result, _ := DoAndReturnSomething()
 fmt.Println(result)
-Of course, ignoring an error can have serious implications. Therefore, this is generally not recommended.
-
-If you have multiple method calls, and one or more methods in the chain may return an error, you should propagate the error to the first level that can handle it.
-
-func Foo() error {
+</code></pre><p>当然，忽略错误可能会带来严重的影响。 因此，通常不建议这样做。</p>
+<p>如果您有多个方法调用，并且链中的一个或多个方法可能返回错误，则应将错误传播到可以处理该错误的第一级。</p>
+<pre><code>func Foo() error {
     return errors.New(&quot;I failed!&quot;)
 }
 
@@ -336,25 +332,19 @@ func Baz() (string, string, error) {
 
     return &quot;Foo&quot;, &quot;Bar&quot;, nil
 }
-
-## Handling errors in short programs
-Propagating errors up to the callers is tedious. You end up with many lines looking like:
-
-r, err := os.Open(&quot;my file&quot;)
+</code></pre><h2 id="在短程序中处理错误">在短程序中处理错误</h2>
+<p>将错误传播给调用者是很乏味的, 最终会看到许多类似以下内容的行：</p>
+<pre><code>r, err := os.Open(&quot;my file&quot;)
 if err != nil {
     return err
 }
-This kind of error handling diligence is crucial for writing robust software.
-
-Sometimes you write shorter cmd-line programs where such discipline is not warranted.
-
-You can simplify error handling with a helper functions PanicIfErr(err error, args ...interface{}):
-
-r, err := os.Open(&quot;my file&quot;)
+</code></pre><p>这种错误处理的努力对于编写健壮的软件至关重要。</p>
+<p>有时，您编写了较短的cmd-line程序，而这些纪律是没有必要的。</p>
+<p>您可以使用辅助函数PanicIfErr（err error，args &hellip; interface {}）简化错误处理：</p>
+<pre><code>r, err := os.Open(&quot;my file&quot;)
 PanicIfErr(err)
-Implementation of such helper:
-
-// FmtArgs formats args as a string. First argument should be format string
+</code></pre><p>此类助手的实现：</p>
+<pre><code>// FmtArgs formats args as a string. First argument should be format string
 // and the rest are arguments to the format
 func FmtArgs(args ...interface{}) string {
 	if len(args) == 0 {
@@ -396,55 +386,58 @@ func main() {
 	PanicIfErr(nil)                              // nothing happens
 	PanicIfErr(errors.New(&quot;there was an error&quot;)) // will panic
 }
-</code></pre><p>there was an error
-panic: there was an error</p>
-<p>goroutine 1 [running]:
-main.panicWithMsg(0x4c4e61, 0x12, 0x0, 0x0, 0x0)
-/tmp/src313740862/main.go:30 +0x126
-main.PanicIfErr(0x4dc660, 0xc00005a1e0, 0x0, 0x0, 0x0)
-/tmp/src313740862/main.go:46 +0x6c
-main.main()
-/tmp/src313740862/main.go:51 +0x84
+</code></pre><blockquote>
+<p>there was an error<br>
+panic: there was an error<br>
+goroutine 1 [running]:<br>
+main.panicWithMsg(0x4c4e61, 0x12, 0x0, 0x0, 0x0)<br>
+/tmp/src313740862/main.go:30 +0x126<br>
+main.PanicIfErr(0x4dc660, 0xc00005a1e0, 0x0, 0x0, 0x0)<br>
+/tmp/src313740862/main.go:46 +0x6c<br>
+main.main()<br>
+/tmp/src313740862/main.go:51 +0x84<br>
 exit status 2</p>
-<h2 id="add-callstack-to-error-messages">Add callstack to error messages</h2>
-<p>If you come from languages like Java, C# or Python, you might be used to the fact that exceptions include call stack for the location that created the exception.</p>
-<p>Collecting callstacks is expensive and Go doesn’t add callstack to errors.</p>
-<p>Callstacks are useful in debugging. If you’re ok with additional cost, you can use package github.com/pkg/errors to augment errors with callstack.</p>
-<p>func wrappedError() error {
-err := errors.New(&ldquo;Original error&rdquo;)
-// create a new error value which wraps original err and
-// adds calls tack
-return pkgerrors.WithStack(err)
-}</p>
-<p>func main() {
-// %+v prints original error add callstack
-fmt.Printf(&ldquo;err: %+v\n\n&rdquo;, wrappedError())</p>
-<pre><code>// errors created with pkg/errors include callstack by default
-fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
-</code></pre>
-<p>}
-As you can see top part of the callstack includes Go runtime code.</p>
-<h2 id="writing-good-error-messages">Writing good error messages</h2>
-<p>Good error messages help in debugging problems.</p>
-<p>In production deployments error messages are logged. When something goes wrong log file is the main source for debugging clues.</p>
-<p>When creating error messages, think about that and include as much useful information as possible.</p>
-<p>Bad error message:</p>
-<p>func openLog(path string) (io.Reader, error) {
-f, err := os.Open(path)
-if err != nil {
-return nil, errors.New(&ldquo;failed to open log file&rdquo;)
+</blockquote>
+<h2 id="将调用堆栈添加到错误消息">将调用堆栈添加到错误消息</h2>
+<p>如果您来自Java，C＃或Python之类的语言，则您可能会习惯于这样的事实，即异常包括用于创建异常的位置的调用堆栈。</p>
+<p>收集调用栈非常昂贵，并且Go不会将调用栈添加到错误中。</p>
+<p>调用堆栈在调试中很有用。 如果您可以接受额外费用，则可以使用github.com/pkg/errors包来增加callstack的错误。</p>
+<pre><code>func wrappedError() error {
+	err := errors.New(&quot;Original error&quot;)
+	// create a new error value which wraps original err and
+	// adds calls tack
+	return pkgerrors.WithStack(err)
 }
-&hellip;
+
+func main() {
+	// %+v prints original error add callstack
+	fmt.Printf(&quot;err: %+v\n\n&quot;, wrappedError())
+
+	// errors created with pkg/errors include callstack by default
+	fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
 }
-Better error message:</p>
-<p>func openLog(path string) (io.Reader, error) {
-f, err := os.Open(path)
-if err != nil {
-return nil, errors.New(&ldquo;openLog('%s&rsquo;), os.Open() failed with &lsquo;%s&rsquo;&quot;, path, err)
+</code></pre><p>如您所见，调用栈的顶部包括Go运行时代码。</p>
+<h2 id="编写良好的错误消息">编写良好的错误消息</h2>
+<p>良好的错误消息有助于调试问题。</p>
+<p>在生产部署中，将记录错误消息。 当出现问题时，日志文件是调试线索的主要来源。</p>
+<p>在创建错误消息时，请考虑一下并包括尽可能多的有用信息。</p>
+<p>不好的错误讯息：</p>
+<pre><code>func openLog(path string) (io.Reader, error) {
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, errors.New(&quot;failed to open log file&quot;)
+    }
+    ...
 }
-&hellip;
+</code></pre><p>良好的错误消息</p>
+<pre><code>func openLog(path string) (io.Reader, error) {
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, errors.New(&quot;openLog('%s'), os.Open() failed with '%s'&quot;, path, err)
+    }
+    ...
 }
-Second version of error message includes more debugging clues: * which function generated the error * path of the file we were trying to open * the error message from os.Open() so that we can tell if it was because the file doesn’t exist or we don’t have access rights to it etc.</p>
+</code></pre><p>错误消息的第二版包含更多调试线索：哪个函数生成了错误,我们正试图打开的文件的路径,来自os.Open（）的错误消息，以便我们可以判断是否是因为文件没有 存在，或者我们没有访问权限等。</p>
 
                                             
                                         </div>
@@ -982,7 +975,7 @@ Second version of error message includes more debugging clues: * which function 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic和recover</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>

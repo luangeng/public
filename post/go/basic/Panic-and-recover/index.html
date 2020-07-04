@@ -3,24 +3,20 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go Panic and recover - 计算机与软件技术公开课</title>
+  <title>Go Panic和recover - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Panic and recover - 计算机与软件技术公开课">
-  <meta name="description" content="Go Panic and recover">
-  <meta itemprop="name" content="Go Panic and recover - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go Panic and recover">
-  <meta property="og:title" content="Go Panic and recover - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go Panic和recover - 计算机与软件技术公开课">
+  <meta name="description" content="Go Panic和recover">
+  <meta itemprop="name" content="Go Panic和recover - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go Panic和recover">
+  <meta property="og:title" content="Go Panic和recover - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Panic-and-recover/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="This chapter assumes knowledge of defer.
-In Go panic and recover are technically similar to exception handling in languages like C#, Java or Python.
-panic is equivalent of throw or raise and recover fills the role of catch.
-However, while those other languages often use exceptions as a way to propagate errors up the call chain, using panic in Go is highly discouraged.
-It should only be used in truly exceptional cases.">
+    content="本章假定您掌握defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic等同于">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Panic-and-recover/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Panic-and-recover/">
@@ -131,10 +127,10 @@ It should only be used in truly exceptional cases.">
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Go Panic and recover</h1>
+                                    <h1 class="post-title">Go Panic和recover</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 963 Words
+                                        Posted @ 2019-09-09 · 1852 Words
                                         
                                         · Tags: Go
                                         
@@ -142,7 +138,7 @@ It should only be used in truly exceptional cases.">
                                         
                                         
                                         · Hits:
-                                        <span id="https://luangeng.space/post/go/basic/Panic-and-recover/" class="leancloud_visitors" data-flag-title="Go Panic and recover">
+                                        <span id="https://luangeng.space/post/go/basic/Panic-and-recover/" class="leancloud_visitors" data-flag-title="Go Panic和recover">
                                             <span class="leancloud-visitors-count">0</span>
                                         </span>
                                     </p>
@@ -153,51 +149,46 @@ It should only be used in truly exceptional cases.">
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>This chapter assumes knowledge of defer.</p>
-<p>In Go panic and recover are technically similar to exception handling in languages like C#, Java or Python.</p>
-<p>panic is equivalent of throw or raise and recover fills the role of catch.</p>
-<p>However, while those other languages often use exceptions as a way to propagate errors up the call chain, using panic in Go is highly discouraged.</p>
-<p>It should only be used in truly exceptional cases.</p>
-<p>For ordinary error handling, read chapter on error handling.</p>
-<h2 id="panic">Panic</h2>
-<p>A panic halts normal execution flow and exits the current function.</p>
-<p>Any deferred calls will then be executed before control is passed to the next function higher on the stack.</p>
-<p>Each stack’s function will exit and run deferred calls until the panic is handled using a deferred recover(), or until the panic reaches main() and terminates the program.</p>
-<p>If this occurs, the argument provided to panic and a stack trace will be printed to stderr.</p>
-<p>func foo() {
-defer fmt.Println(&ldquo;Exiting foo&rdquo;)
-panic(&ldquo;bar&rdquo;)
-}</p>
-<p>func main() {
-defer fmt.Println(&ldquo;Exiting main&rdquo;)
-foo()
-}</p>
-<pre><code>Exiting foo
-Exiting main
-panic: bar
+                                            <p>本章假定您掌握defer。</p>
+<p>在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。</p>
+<p>panic等同于引发或引发和恢复填充捕捉的作用。</p>
+<p>但是，尽管其他语言经常使用异常作为在呼叫链上传播错误的方式，但强烈建议不要在Go中使用panic。</p>
+<p>仅应在真正特别的情况下使用。</p>
+<p>对于普通的错误处理，请阅读有关错误处理的章节。</p>
+<h2 id="panic">panic</h2>
+<p>panic用来停止正常执行流程并退出当前函数。</p>
+<p>然后，在将控制权传递到堆栈上的下一个函数之前，将执行所有defer。</p>
+<p>堆栈上的每个函数都将退出并运行defer，直到使用defer的restore()处理panic，或者直到panic到达main()并终止程序为止。</p>
+<p>如果发生这种情况，提供给panic的参数和堆栈跟踪信息将输出到stderr。</p>
+<pre><code>func foo() {
+	defer fmt.Println(&quot;Exiting foo&quot;)
+	panic(&quot;bar&quot;)
+}
 
-goroutine 1 [running]:
-main.foo()
-	/tmp/src315791376/main.go:10 +0xb9
-main.main()
-	/tmp/src315791376/main.go:15 +0xa2
-exit status 2
-panic accepts any type as its parameter.
-
-## Recover
-Recover attempts to recover from a panic.
-
-The recover must be attempted in a deferred statement as normal execution flow has been halted.
-
-The recover statement must appear directly within the deferred function enclosure.
-
-Recover statements in functions called by deferred function calls will not be honored.
-
-The recover() call will return the argument provided to the initial panic, if the program is currently panicking.
-
-If the program is not currently panicking, recover() will return nil.
-
-func foo() {
+func main() {
+	defer fmt.Println(&quot;Exiting main&quot;)
+	foo()
+}
+</code></pre><blockquote>
+<p>Exiting foo<br>
+Exiting main<br>
+panic: bar<br>
+goroutine 1 [running]:<br>
+main.foo()<br>
+/tmp/src315791376/main.go:10 +0xb9<br>
+main.main()<br>
+/tmp/src315791376/main.go:15 +0xa2<br>
+exit status 2</p>
+</blockquote>
+<p>panic可以接受任何类型的参数。</p>
+<h2 id="恢复">恢复</h2>
+<p>recover用来从panic中恢复。</p>
+<p>由于正常的执行流程已暂停，因此必须在defer语句中尝试进行恢复。</p>
+<p>恢复语句必须直接出现在defer函数中。</p>
+<p>由defer函数调用的函数中的恢复语句将不被接受。</p>
+<p>如果程序当前处于panic状态，则recover()调用将返回提供给初始紧急状态的参数。</p>
+<p>如果该程序当前未出现紧急情况，则recover()将返回nil。</p>
+<pre><code>func foo() {
 	panic(&quot;bar&quot;)
 }
 
@@ -216,70 +207,67 @@ func main() {
 	bar()
 	fmt.Println(&quot;Exiting main the normal way&quot;)
 }
-</code></pre><p>Entering main
+</code></pre><blockquote>
+<p>Entering main
 Recovered with message bar
 Exiting main the normal way</p>
-<h2 id="recovering-from-panic">Recovering from panic</h2>
-<p>A common mistake is to declare a slice and start requesting indexes from it without initializing it, which leads to an “index out of range” panic.</p>
-<p>The following code explains how to recover from the panic without exiting the program, which is the normal behavior for a panic.</p>
-<p>In most situations, returning an error in this fashion rather than exiting the program on a panic is only useful for development or testing purposes.</p>
-<p>type Foo struct {
-Is []int
-}</p>
-<p>func (fp *Foo) Panic() (err error) {
-defer PanicRecovery(&amp;err)
-fp.Is[0] = 5
-return nil
-}</p>
-<p>func PanicRecovery(err *error) {</p>
-<pre><code>if r := recover(); r != nil {
-    if _, ok := r.(runtime.Error); ok {
-        //fmt.Println(&quot;Panicing&quot;)
-        //panic(r)
-        *err = r.(error)
-    } else {
-        *err = r.(error)
-    }
+</blockquote>
+<h2 id="从panic中恢复">从panic中恢复</h2>
+<p>一个常见的错误是声明一个slice并开始使用索引访问数据而不进行初始化，这会引发“index out of range”的panic。</p>
+<p>以下代码说明了如何在不退出程序的情况下从panic中恢复，这是处理panic的正确方法。</p>
+<p>在大多数情况下，以这种方式返回错误而不是紧急退出程序仅对开发或测试有用。</p>
+<pre><code>type Foo struct {
+	Is []int
 }
-</code></pre>
-<p>}</p>
-<p>func main() {
-fp := &amp;Foo{}
-if err := fp.Panic(); err != nil {
-fmt.Printf(&ldquo;Error: %v\n&rdquo;, err)
+
+func (fp *Foo) Panic() (err error) {
+	defer PanicRecovery(&amp;err)
+	fp.Is[0] = 5
+	return nil
 }
-fmt.Println(&ldquo;ok&rdquo;)
-}</p>
-<pre><code>Error: runtime error: index out of range [0] with length 0
-ok
-The use of a separate function (rather than closure) allows re-use of the same function in other functions prone to panic.
 
+func PanicRecovery(err *error) {
 
-## Use cases for panic
-Using of panic in Go should be extremely rare but it does have valid use cases.
+	if r := recover(); r != nil {
+		if _, ok := r.(runtime.Error); ok {
+			//fmt.Println(&quot;Panicing&quot;)
+			//panic(r)
+			*err = r.(error)
+		} else {
+			*err = r.(error)
+		}
+	}
+}
 
-Force crash on bad API usage
-This is similar to using assert in other languages.
-
-Imagine you're writing a httpGet function that downloads content of the URL.
-
-What should happen when URL is empty string? It's obviously a mistake on the part of the caller.
-
-You can return an error but you can also for a crash with panic:
-
-func httpGet(uri string) ([]byte, error) {
+func main() {
+	fp := &amp;Foo{}
+	if err := fp.Panic(); err != nil {
+		fmt.Printf(&quot;Error: %v\n&quot;, err)
+	}
+	fmt.Println(&quot;ok&quot;)
+}
+</code></pre><blockquote>
+<p>Error: runtime error: index out of range [0] with length 0<br>
+ok</p>
+</blockquote>
+<p>The use of a separate function (rather than closure) allows re-use of the same function in other functions prone to panic.</p>
+<p>使用单独的功能（而不是关闭功能）允许在其他容易出现恐慌的功能中重复使用同一功能。</p>
+<h2 id="panic用例">panic用例</h2>
+<p>在Go中使用panic应该非常少见，但确实有有效的用例。</p>
+<p>因API使用不当而导致崩溃,这类似于在其他语言中使用assert。</p>
+<p>假设您正在编写一个httpGet函数来下载URL的内容。</p>
+<p>URL为空字符串应该怎么办？ 调用侧显然是错误的。</p>
+<p>您可以返回错误，但也可以因panic而崩溃：</p>
+<pre><code>func httpGet(uri string) ([]byte, error) {
     if uri == &quot;&quot; {
         panic(&quot;uri cannot be empty&quot;)
     }
     // ... download the url
 }
-Sometimes it's better because an error can be ignored or the program might assume that it's a valid error condition, like a website being down.
-
-Forcing a crash increases chances that the developer will look at the problem and fix it.
-
-If you do it often, this helper function will be useful:
-
-func panicIf(cond bool, args ...interface{}) {
+</code></pre><p>有时会更好，因为可以忽略错误，或者程序可能认为这是有效的错误情况，例如网站关闭。</p>
+<p>强制崩溃会增加开发人员查看问题并解决问题的机会。</p>
+<p>如果您经常这样做，此辅助功能将非常有用：</p>
+<pre><code>func panicIf(cond bool, args ...interface{}) {
 	if !cond {
 		return
 	}
@@ -291,35 +279,38 @@ func panicIf(cond bool, args ...interface{}) {
 	err := fmt.Errorf(format, args)
 	panic(err)
 }
-Now this can be written as a single line:
-
-func httpGet(uri string) ([]byte, error) {
+</code></pre><p>现在可以将其写成一行：</p>
+<pre><code>func httpGet(uri string) ([]byte, error) {
     panicIf(uri == &quot;&quot;, &quot;uri cannot be empty&quot;)
     // ... download the url
 }
-Function panicIf is flexible. You can call it as:
+</code></pre><p>函数panicIf是灵活的。 您可以这样调用：</p>
+<ul>
+<li>panicIf(n &lt; 0) and it&rsquo;ll panic with generic error message</li>
+<li>panicIf(n &lt; 0, &ldquo;n must be &gt;= 0&rdquo;) to provide more descriptive message</li>
+<li>panicIf(n &lt; 0, &ldquo;n is %d and must be &gt;= 0&rdquo;, n) to provide even more descriptive message</li>
+</ul>
+<p>Simplifying flow control in isolated piece of code
+Sometimes it’s easier to propagate an error by panicking and recovering rather than returning errors.</p>
+<p>This might be true e.g. in a parser.</p>
+<p>When you use that technique, you should observe one rule: panic should not cross public API boundary.</p>
+<p>In other words, if you implement a parser library, you should always recover all panics your code creates. Panic used for easier flow control should never reach the caller of your package API.</p>
+<p>Protect a program from a crash in a goroutine
+Unhandled panic in a goroutine crashes a program.</p>
+<p>This is the right behavior most of the time (panic indicates a serious bug and you should fix bugs, not cover them up).</p>
+<p>In rare occasions we don&rsquo;t want a single goroutine to bring down the whole program so we can wrap the code with a function that does recover at the top.</p>
+<p>This technique is used in Go’s http server package which handles each connection in a separate goroutine. In a web server we don&rsquo;t want a rare bug in request handling code to crash the program.</p>
+<p>在孤立的代码段中简化流控制
+有时候，通过恐慌和恢复而不是返回错误，更容易传播错误。</p>
+<p>这可能是正确的，例如在解析器中。</p>
+<p>使用该技术时，应遵守一条规则：恐慌症不应越过公共API边界。</p>
+<p>换句话说，如果实现解析器库，则应始终恢复代码创建的所有恐慌。用于更轻松地进行流控制的紧急情况永远不会到达包API的调用者。</p>
+<p>保护程序免受goroutine崩溃的影响
+goroutine中未处理的恐慌导致程序崩溃。</p>
+<p>在大多数情况下，这是正确的行为（恐慌表示严重的错误，您应该修复错误，而不是掩盖错误）。</p>
+<p>在极少数情况下，我们不希望使用单个goroutine破坏整个程序，因此我们可以使用在顶部恢复的函数包装代码。</p>
+<p>Go的http服务器程序包中使用了此技术，该程序包在单独的goroutine中处理每个连接。在Web服务器中，我们不希望请求处理代码中出现罕见的bug会使程序崩溃。</p>
 
-panicIf(n &lt; 0) and it'll panic with generic error message
-panicIf(n &lt; 0, &quot;n must be &gt;= 0&quot;) to provide more descriptive message
-panicIf(n &lt; 0, &quot;n is %d and must be &gt;= 0&quot;, n) to provide even more descriptive message
-Simplifying flow control in isolated piece of code
-Sometimes it’s easier to propagate an error by panicking and recovering rather than returning errors.
-
-This might be true e.g. in a parser.
-
-When you use that technique, you should observe one rule: panic should not cross public API boundary.
-
-In other words, if you implement a parser library, you should always recover all panics your code creates. Panic used for easier flow control should never reach the caller of your package API.
-
-Protect a program from a crash in a goroutine
-Unhandled panic in a goroutine crashes a program.
-
-This is the right behavior most of the time (panic indicates a serious bug and you should fix bugs, not cover them up).
-
-In rare occasions we don't want a single goroutine to bring down the whole program so we can wrap the code with a function that does recover at the top.
-
-This technique is used in Go’s http server package which handles each connection in a separate goroutine. In a web server we don't want a rare bug in request handling code to crash the program.
-</code></pre>
                                             
                                         </div>
 

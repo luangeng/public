@@ -16,10 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Defer/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Defer In a complicated function, it’s easy to forgot to release a resource (e.g. to close a file handle or to unlock a mutex).
-You can use defer statement to place code releasing a resource close to code that acquires the resource:
-func foo() { f, err := os.Open(&ldquo;myfile.txt&rdquo;) if err != nil { return } defer f.Close()
-// &hellip; lots of code } In the above example, defer f.Close() ensures that f.">
+    content="使用复杂的函数的时候很容易忘记释放资源（例如关闭文件句柄或解锁互斥锁）。 您可以使用defer语句将释放资源的代码放置在与获取该资源的代码接近">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Defer/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Defer/">
@@ -133,7 +130,7 @@ func foo() { f, err := os.Open(&ldquo;myfile.txt&rdquo;) if err != nil { return 
                                     <h1 class="post-title">Go Defer</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 813 Words
+                                        Posted @ 2019-09-09 · 1274 Words
                                         
                                         · Tags: Go
                                         
@@ -152,51 +149,55 @@ func foo() { f, err := os.Open(&ldquo;myfile.txt&rdquo;) if err != nil { return 
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Defer
-In a complicated function, it’s easy to forgot to release a resource (e.g. to close a file handle or to unlock a mutex).</p>
-<p>You can use defer statement to place code releasing a resource close to code that acquires the resource:</p>
-<p>func foo() {
-f, err := os.Open(&ldquo;myfile.txt&rdquo;)
-if err != nil {
-return
-}
-defer f.Close()</p>
-<p>// &hellip; lots of code
-}
-In the above example, defer f.Close() ensures that f.Close() will be called before we exit foo.</p>
-<p>Placing defer f.Close() right after os.Open() makes it easy to audit the code and verify Close is always called. This is especially useful for large functions with multiple exit points.</p>
-<p>If deferred code is more complicated, you can use a function literal:</p>
-<p>func foo() {
-mutex1.Lock()
-mutex2.Lock()</p>
-<p>defer func() {
-mutex2.Unlock()
-mutex1.Unlock()
-}()</p>
-<p>// &hellip; more code
-}
-You can use multiple defer statements. They’ll be called in reverse order i.e. defer declared first will be executed last.</p>
-<p>Deferred functions are called even if a panic happens.</p>
-<h2 id="defer-in-depth">Defer in depth</h2>
-<p>defer statements marks a function to be executed at the end of current function.</p>
-<p>Defer statement is an ordinary function call prefixed by the keyword defer.</p>
-<p>defer someFunction()
-A deferred function is executed once the function that contains the defer statement returns. Actual call to the deferred function occurs when the enclosing function: - executes a return statement - falls off the end - panics</p>
-<p>Example:</p>
-<p>func logExit(name string) {
-fmt.Printf(&ldquo;Function %s returned\n&rdquo;, name)
-}</p>
-<p>func main() {
-fmt.Println(&ldquo;First main statement&rdquo;)
-defer logExit(&ldquo;main&rdquo;) // position of defer statement here does not matter
-fmt.Println(&ldquo;Last main statement&rdquo;)
-}</p>
-<pre><code>First main statement
-Last main statement
-Function main returned
-If a function has multiple deferred statements, they form a stack. The last defer is the first one to execute after the enclosing function returns, followed by subsequent calls to preceding defers in order (below example returns by causing a panic):
+                                            <p>使用复杂的函数的时候很容易忘记释放资源（例如关闭文件句柄或解锁互斥锁）。</p>
+<p>您可以使用defer语句将释放资源的代码放置在与获取该资源的代码接近的位置：</p>
+<pre><code>func foo() {
+  f, err := os.Open(&quot;myfile.txt&quot;)
+  if err != nil {
+    return
+  }
+  defer f.Close()
 
-func logNum(i int) {
+  // ... lots of code
+}
+</code></pre><p>在上面的示例中，defer f.Close()确保在退出foo之前调用f.Close()。</p>
+<p>将defer f.Close()紧随os.Open()之后，可以轻松审核代码并确认始终调用Close。 这对于具有多个出口点的大型函数特别有用。</p>
+<p>如果defer的代码更复杂，则可以使用匿名函数：</p>
+<pre><code>func foo() {
+  mutex1.Lock()
+  mutex2.Lock()
+
+  defer func() {
+    mutex2.Unlock()
+    mutex1.Unlock()
+  }()
+
+  // ... more code
+}
+</code></pre><p>您可以使用多个defer语句。 它们将以相反的顺序调用，即首先声明的defer将最后执行。</p>
+<p>即使发生紧急情况，也会调用defer函数。</p>
+<h2 id="defer深度">defer深度</h2>
+<p>defer语句标记了要在当前函数结束时执行的函数。</p>
+<p>Defer语句是以关键字defer为前缀的普通函数调用。</p>
+<p><code>defer someFunction()</code></p>
+<p>一旦包含defer语句的函数返回，便执行一个deferred函数。 当以下封闭函数发生实际调用deferred函数时：-执行return语句-掉到头-panic
+例子:</p>
+<pre><code>func logExit(name string) {
+	fmt.Printf(&quot;Function %s returned\n&quot;, name)
+}
+
+func main() {
+	fmt.Println(&quot;First main statement&quot;)
+	defer logExit(&quot;main&quot;) // position of defer statement here does not matter
+	fmt.Println(&quot;Last main statement&quot;)
+}
+</code></pre><blockquote>
+<p>First main statement<br>
+Last main statement<br>
+Function main returned</p>
+</blockquote>
+<p>如果一个函数有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer（以下示例通过触发panic而返回）：</p>
+<pre><code>func logNum(i int) {
 	fmt.Printf(&quot;Num %d\n&quot;, i)
 }
 
@@ -212,34 +213,38 @@ func main() {
 	// not deferred since execution flow never reaches this line
 	defer logNum(4)
 }
-</code></pre><p>First main statement
-Num 3
-Num 2
-Num 1
-panic: panic occurred</p>
-<p>goroutine 1 [running]:
-main.main()
-/tmp/src963563549/main.go:17 +0x152
-exit status 2
-Deferred functions have their arguments evaluated at the time defer executes:</p>
-<p>func logNum(i int) {
-fmt.Printf(&ldquo;Num %d\n&rdquo;, i)
-}</p>
-<p>func main() {
-i := 1
-defer logNum(i) // deferred function call: logNum(1)
-fmt.Println(&ldquo;First main statement&rdquo;)
-i++
-defer logNum(i)     // deferred function call: logNum(2)
-defer logNum(i * i) // deferred function call: logNum(4)
-}</p>
-<pre><code>First main statement
-Num 4
-Num 2
-Num 1
-If a function has named return values, a deferred anonymous function within that function can access and update the returned value even after the function has returned:
+</code></pre><blockquote>
+<p>First main statement<br>
+Num 3<br>
+Num 2<br>
+Num 1<br>
+panic: panic occurred<br>
+goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src963563549/main.go:17 +0x152<br>
+exit status 2</p>
+</blockquote>
+<p>defer函数在执行时会计算其参数：</p>
+<pre><code>func logNum(i int) {
+	fmt.Printf(&quot;Num %d\n&quot;, i)
+}
 
-func plusOne(i int) (result int) {
+func main() {
+	i := 1
+	defer logNum(i) // deferred function call: logNum(1)
+	fmt.Println(&quot;First main statement&quot;)
+	i++
+	defer logNum(i)     // deferred function call: logNum(2)
+	defer logNum(i * i) // deferred function call: logNum(4)
+}
+</code></pre><blockquote>
+<p>First main statement<br>
+Num 4<br>
+Num 2<br>
+Num 1</p>
+</blockquote>
+<p>如果一个函数具有命名的返回值，则即使该函数返回，该函数中的defer匿名函数也可以访问和更新返回的值：</p>
+<pre><code>func plusOne(i int) (result int) {
 	// anonymous function must be called by adding ()
 	defer func() { result++ }()
 
@@ -251,55 +256,63 @@ func plusOne(i int) (result int) {
 func main() {
 	fmt.Println(plusOne(1)) // 2
 }
-</code></pre><p>2</p>
+</code></pre><blockquote>
+<p>2</p>
+</blockquote>
 <h2 id="defer-pitfalls">Defer pitfalls</h2>
-<p>When using defer keep the following in mind: deferred functions are called at the end of a function.</p>
-<p>Deferred statements have a function scope, not a block scope.</p>
-<p>In other words: deferred calls are executed when exiting a function not when executing block created with if or for statements.</p>
-<p>func main() {
-fmt.Print(&ldquo;Before if\n&rdquo;)
-if true {
-defer fmt.Print(&ldquo;inside if\n&rdquo;)
-}</p>
-<pre><code>fmt.Print(&quot;Ater if\n&quot;)
-</code></pre>
-<p>}</p>
-<pre><code>Before if
-Ater if
-inside if
-You might expect that deferred statement to be executed when we exit if branch but it’s executed as the last thing in a function.
+<p>使用defer时，请牢记以下几点：defer函数在函数结束时调用。</p>
+<p>defer语句是函数范围，而不是代码块范围, 换句话说：defer调用在退出函数时执行，而不是在执行使用if或for语句创建的块时执行。</p>
+<pre><code>func main() {
+	fmt.Print(&quot;Before if\n&quot;)
+	if true {
+		defer fmt.Print(&quot;inside if\n&quot;)
+	}
 
-Using outside variables in defer functions
-func main() {
+	fmt.Print(&quot;Ater if\n&quot;)
+}
+</code></pre><blockquote>
+<p>Before if<br>
+Ater if<br>
+inside if</p>
+</blockquote>
+<p>您可能希望该defer语句在我们退出if分支时执行，实际上是作为函数调用的最后一件事执行。</p>
+<p>在defer函数中使用外部变量:</p>
+<pre><code>func main() {
 	for i := 0; i &lt; 2; i++ {
 		defer func() {
 			fmt.Printf(&quot;%d\n&quot;, i)
 		}()
 	}
 }
-</code></pre><p>2
-2
-A common mistake is to think that this code will print 0 and 1. Those are the values of i when we see defer.</p>
-<p>However, defer creates a closure which only captures variable i by a reference. It doesn&rsquo;t capture the value of the variable.</p>
-<p>It should be become clear when we look at what code executes:</p>
-<p>var i int
+</code></pre><blockquote>
+<p>2<br>
+2</p>
+</blockquote>
+<p>一个常见的错误是认为该代码将输出0和1。当我们看到defer时，这些就是i的值。</p>
+<p>但是，defer创建一个仅通过引用捕获变量i的闭包。 它不捕获变量的值。</p>
+<p>当我们看什么代码执行时，应该变得很清楚：</p>
+<pre><code>var i int
 for i = 0; i &lt; 2; i++ {
-// create closure that references i by reference
-}</p>
-<p>fmt.Printf(&quot;%d\n&rdquo;, i) // from created by defer in second loop iteration (remember: reverse order)
-fmt.Printf(&quot;%d\n&rdquo;, i) // from closure created by defer in first loop iteration
-Now it’s clear that when we call deferred fmt.Printf, i is 2.</p>
-<p>We can fix this by forcing a capture of the variable:</p>
-<p>func main() {
-for i := 0; i &lt; 2; i++ {
-defer func(i2 int) {
-fmt.Printf(&quot;%d\n&rdquo;, i2)
-}(i)
+	// create closure that references i by reference
 }
-}</p>
-<pre><code>1
-0
-A closure might be slightly more expensive as it requires allocating an object to collect all the variables captured by the closure.</code></pre>
+
+fmt.Printf(&quot;%d\n&quot;, i) // from created by defer in second loop iteration (remember: reverse order)
+fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop iteration
+</code></pre><p>现在很明显，当我们调用deferred fmt.Printf时，我是2。</p>
+<p>我们可以通过强制捕获变量来解决此问题：</p>
+<pre><code>func main() {
+	for i := 0; i &lt; 2; i++ {
+		defer func(i2 int) {
+			fmt.Printf(&quot;%d\n&quot;, i2)
+		}(i)
+	}
+}
+</code></pre><blockquote>
+<p>1<br>
+0</p>
+</blockquote>
+<p>闭包可能会稍微昂贵一些，因为它需要分配一个对象来收集闭包捕获的所有变量。</p>
+
                                             
                                         </div>
 
@@ -350,7 +363,7 @@ A closure might be slightly more expensive as it requires allocating an object t
                                     <a href="https://luangeng.space/post/go/basic/Panic-and-recover/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>Go Panic and recover</span>
+                                        <span>Go Panic和recover</span>
                                     </a>
                                     
                                 </li>
@@ -836,7 +849,7 @@ A closure might be slightly more expensive as it requires allocating an object t
                   
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic and recover</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic和recover</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>

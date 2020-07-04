@@ -180,23 +180,16 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Defer/</guid>
-      <description>Defer In a complicated function, it’s easy to forgot to release a resource (e.g. to close a file handle or to unlock a mutex).
-You can use defer statement to place code releasing a resource close to code that acquires the resource:
-func foo() { f, err := os.Open(&amp;ldquo;myfile.txt&amp;rdquo;) if err != nil { return } defer f.Close()
-// &amp;hellip; lots of code } In the above example, defer f.Close() ensures that f.</description>
+      <description>使用复杂的函数的时候很容易忘记释放资源（例如关闭文件句柄或解锁互斥锁）。 您可以使用defer语句将释放资源的代码放置在与获取该资源的代码接近</description>
     </item>
     
     <item>
-      <title>Go Panic and recover</title>
+      <title>Go Panic和recover</title>
       <link>https://luangeng.space/post/go/basic/Panic-and-recover/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Panic-and-recover/</guid>
-      <description>This chapter assumes knowledge of defer.
-In Go panic and recover are technically similar to exception handling in languages like C#, Java or Python.
-panic is equivalent of throw or raise and recover fills the role of catch.
-However, while those other languages often use exceptions as a way to propagate errors up the call chain, using panic in Go is highly discouraged.
-It should only be used in truly exceptional cases.</description>
+      <description>本章假定您掌握defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic等同于</description>
     </item>
     
     <item>
