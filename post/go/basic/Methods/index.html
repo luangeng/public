@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 方法 - Computer and Software Technology Open Course</title>
+  <title>Go 方法 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 方法 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 方法 - 计算机与软件技术公开课">
   <meta name="description" content="Go 方法">
-  <meta itemprop="name" content="Go 方法 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 方法 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 方法">
-  <meta property="og:title" content="Go 方法 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 方法 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Methods/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C&#43;&#43;中的类相似 方法基本例子: type Person struct { FirstName string">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C&#43;&#43;中的类相似 方法基本例子: type Person struct { FirstName string">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Methods/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Methods/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 方法</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 412 Words
+                                        Posted @ 2019-09-09 · 550 Words
                                         
                                         · Tags: Go
                                         
@@ -169,15 +170,17 @@ func main() {
 </code></pre><blockquote>
 <p>John Doe</p>
 </blockquote>
-<p>The instance on which the method operates is called a receiver.</p>
-<p>In the above example method PrintFullName takes a receiver p whose type is *Person.</p>
-<p>People coming from other languages are tempted to name the receiver this (mimicking C++) or self (mimicking Python). That is bad style in Go.</p>
-<p>In Go, the rule for naming receiver is:</p>
-<p>be short (usually a single letter)
-be the same for all methods</p>
-<h2 id="value-vs-pointer-receiver">Value vs. pointer receiver</h2>
-<p>Method receiver can be either a value or a pointer.</p>
-<p>As a convenience, the Go allows calling a pointer receiver on a value and calling a value receiver on a pointer:</p>
+<p>该方法在其上运行的实例称为接收器。</p>
+<p>在上面的示例方法中，PrintFullName使用类型为* Person的接收者p。</p>
+<p>来自其他语言的人很容易将接收者命名为“this”（模仿C ++）或“self”（模仿Python）。 在Go中这是不好的风格。</p>
+<p>在Go中，命名接收者的规则是：</p>
+<ul>
+<li>简短（通常是一个字母）</li>
+<li>所有方法都相同</li>
+</ul>
+<h2 id="值-vs-指针接收器">值 vs 指针接收器</h2>
+<p>方法接收者可以是值或指针。</p>
+<p>为方便起见，Go允许在值上调用指针接收器，并在指针上调用值接收器：</p>
 <pre><code>type Person struct {
 	FirstName string
 	LastName  string
@@ -205,7 +208,7 @@ func main() {
 PrintFullNamePointer: p is            0xc00000c060<br>
 PrintFullNameValue:   address of p is 0xc00000c080</p>
 </blockquote>
-<p>A value receiver is called on a copy of a value:</p>
+<p>在值的副本上调用值接收者：</p>
 <pre><code>type Foo struct {
 	Str string
 }
@@ -230,9 +233,11 @@ Address of &amp;f  inside Print: 0x0xc000010220<br>
 Address of &amp;fv before Print: 0x0xc000010210<br>
 Value of Str after Print: &lsquo;Foo&rsquo;</p>
 </blockquote>
-<p>You can see above the consequences of calling value receiver on a copy of a value:</p>
-<p>the address of f receiver is different that the address of fv value. This indicates it&rsquo;s a different value i.e. f is a copy of fv that Go compiler created implicilty
-changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
+<p>您可以在上方看到在值的副本上调用值接收器的后果：</p>
+<ul>
+<li>f接收器的地址与fv值的地址不同。 这表示它是一个不同的值，即f是Go编译器创建的fv的副本</li>
+<li>在Print函数中更改接收器f的值不会更改fv值</li>
+</ul>
 
                                             
                                         </div>
@@ -249,18 +254,17 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Methods/">https://luangeng.space/post/go/basic/Methods/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -322,17 +326,6 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -343,7 +336,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -354,18 +347,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -376,7 +358,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -387,7 +369,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -398,8 +380,30 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -777,7 +781,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -795,7 +799,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -825,7 +829,7 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -840,13 +844,13 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1034,14 +1038,13 @@ changing f inside Print value receiver doesn&rsquo;t change the fv value</p>
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

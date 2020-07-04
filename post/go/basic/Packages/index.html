@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 包管理 - Computer and Software Technology Open Course</title>
+  <title>Go 包管理 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 包管理 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 包管理 - 计算机与软件技术公开课">
   <meta name="description" content="Go 包管理">
-  <meta itemprop="name" content="Go 包管理 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 包管理 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 包管理">
-  <meta property="og:title" content="Go 包管理 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 包管理 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Packages/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Go中的包代表了相关联的代码的单位,在其他语言中经常称为库. 包由一个目录下的多个文件组成.这个目录和包是一对一映射的. 一个仓库中可以包含多个">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="Go中的包代表了相关联的代码的单位,在其他语言中经常称为库. 包由一个目录下的多个文件组成.这个目录和包是一对一映射的. 一个仓库中可以包含多个">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Packages/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Packages/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 包管理</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1000 Words
+                                        Posted @ 2019-09-09 · 1455 Words
                                         
                                         · Tags: Go
                                         
@@ -159,8 +160,8 @@ Go的标准库就是通过一系列包来提供的.
 比如使用go get -u github.com/gomarkdown/markdown从https://github.com/gomarkdown/markdown/下载包代码
 -u的意思是如果之前下载过则更新此包到最新的版本
 代码将被下载到$GOPATH/src/github.com/gomarkdown/markdown, 因此包导入路径就是包代码在本地存储的路径.</p>
-<p>Import path is appended to $GOPATH/src.</p>
-<p>Most of the time import path is also the location of source files but go get also allows for redirects via meta-data embedded in HTML files.</p>
+<p>导入路径被添加到$GOPATH/src.</p>
+<p>多数情况下，导入路径也是源文件的位置，但是go get也允许通过嵌入HTML文件的元数据进行重定向。</p>
 <h2 id="导入包">导入包</h2>
 <p>可以用以下方式导入包:</p>
 <pre><code>import &quot;path/to/package1&quot;
@@ -170,7 +171,7 @@ import &quot;path/to/package2&quot;
     &quot;path/to/package1&quot;
     &quot;path/to/package2&quot;
 )
-</code></pre><p>This will look in the corresponding import paths inside of the $GOPATH for .go files and lets you access exported names through packagename.AnyExportedName.</p>
+</code></pre><p>这将在$ GOPATH中查找.go文件的相应导入路径，并允许您通过packagename.AnyExportedName访问导出的名称。</p>
 <p>在下面的工程结构中,你还可以通过./前缀访问当前目录下的本地包</p>
 <pre><code>project
 ├── src
@@ -179,42 +180,43 @@ import &quot;path/to/package2&quot;
 │   └── package2
 │       └── file2.go
 └── main.go
-</code></pre><p>You could call this in main.go in order to import the code in file1.go and file2.go:</p>
+</code></pre><p>您可以在main.go中调用此命令，以将file1.go和file2.go导入代码中：</p>
 <pre><code>import (
     &quot;./src/package1&quot;
     &quot;./src/package2&quot;
 )
-</code></pre><p>Since package-names can collide in different libraries you may want to alias one package to a new name. You can do this by prefixing your import-statement with the name you want to use.</p>
+</code></pre><p>由于软件包名称可能会在不同的库中发生冲突，因此您可能希望将一个软件包别名为新名称。 您可以通过在导入语句前面加上要使用的名称来完成此操作:</p>
 <pre><code>import (
     &quot;fmt&quot; //fmt from the standardlibrary
     tfmt &quot;some/thirdparty/fmt&quot; //fmt from some other library
 )
-</code></pre><p>This allows you to access the former fmt package using fmt.* and the latter fmt package using tfmt.*.</p>
-<p>It is considered a bad style but you can import the package into the global namespace to avoid using package prefix:</p>
+</code></pre><p>这使您可以使用fmt.访问前一个fmt软件包，并使用tfmt.*访问后一个fmt软件包。</p>
+<p>这是一种不好的样式，但是您可以将包导入全局名称空间，以避免使用包前缀：</p>
 <pre><code>import (
     . &quot;fmt&quot;
 )
-</code></pre><p>With the above Printf is the same as fmt.Printf.</p>
-<p>Go compiler reports an error if you import a package but don&rsquo;t use it. To work-around this, you can set the alias to the underscore:</p>
-<p>import (
-_ &ldquo;fmt&rdquo;
+</code></pre><p>上面的Printf与fmt.Printf相同。</p>
+<p>如果您导入软件包但不使用它，Go编译器将报告错误。 要解决此问题，可以将别名设置为下划线：</p>
+<pre><code>import (
+    _ &quot;fmt&quot;
 )
-This might be necessary if you don&rsquo;t use the package directly but need the side-effects of running package&rsquo;s init function.</p>
+</code></pre><p>如果您不直接使用软件包，但需要运行软件包的init函数的时候应该这么做。</p>
 <h2 id="新建包">新建包</h2>
-<p>So you want to create a Go package.</p>
-<p>You can use any source code hosting service. For this tutorial let’s assume that you’re using <a href="https://github.com">https://github.com</a>, your account is kjk and you want to create package foo.</p>
-<p>Create a repository foo on GitHub.</p>
-<p>Create a directory $GOPATH/src/github.com/kjk and checkout repository foo there:</p>
-<p>$ mkdir -p $GOPATH/src/github.com/kjk
+<p>如果您想创建一个Go包。</p>
+<p>您可以使用任何源代码托管服务。对于本教程，假设您使用的是https://github.com，您的帐户为kjk，要创建包foo。</p>
+<p>在GitHub创建仓库foo</p>
+<p>创建目录 $GOPATH/src/github.com/kjk 然后在这个目录checkout代码</p>
+<pre><code>$ mkdir -p $GOPATH/src/github.com/kjk
 $ cd $GOPATH/src/github.com/kjk
 $ git clone github.com/kjk/foo
-Create a file main.go:</p>
-<p>package foo</p>
-<p>func Bar() string {
-return &ldquo;bar&rdquo;
+</code></pre><p>创建文件main.go:</p>
+<pre><code>package foo
+
+func Bar() string {
+    return &quot;bar&quot;
 }
-This is a simplest package that defines function Bar.</p>
-<p>Notice that package name foo matches directory name foo. It’s not required but recommended.</p>
+</code></pre><p>这是定义包Bar方法的最简单的包。</p>
+<p>请注意，程序包名称foo与目录名称foo匹配。 它不是必需的，但是建议这么做。</p>
 <h2 id="包初始化">包初始化</h2>
 <p>包可以有一个或多个初始化方法, 这些方法在main函数执行前只跑一次</p>
 <pre><code>package foo
@@ -222,14 +224,14 @@ This is a simplest package that defines function Bar.</p>
 func init() {
     // init code
 }
-</code></pre><p>If you just want to run the package initialization without referencing anything from it use the following import expression.</p>
-<p>import _ &ldquo;foo&rdquo;
-Package initialization function can be used to create initial state needed by code in the package.</p>
-<p>Avoid temptation of doing too much in init function. Such implicit logic negatively impacts other people’s ability to understand the code.</p>
+</code></pre><p>如果您只想运行程序包初始化而不从中引用任何内容，请使用以下导入表达式。</p>
+<p>import _ &ldquo;foo&rdquo;</p>
+<p>包初始化功能用于创建包中代码所需的初始状态。</p>
+<p>不要在init函数中做太多事情。 这种隐式逻辑会对其他人理解代码产生负面影响。</p>
 <h2 id="包命名最佳实践">包命名最佳实践:</h2>
-<p>It’s best if package name is the same as the name of last path element of import path.</p>
-<p>If your GitHub account is github.com/kjk and you’re writing package markdown, it’s import path should be github.com/kjk/markdown.</p>
-<p>A common mistake is to include go as part of import path e.g. naming the package markdown and giving it import path github.com/kjk/go-markdown.</p>
+<p>最好将程序包名称与导入路径的最后一个路径元素的名称相同。</p>
+<p>如果您的GitHub帐户为github.com/kjk，而您正在编写包markdown，则其导入路径应为github.com/kjk/markdown。</p>
+<p>一个常见的错误是将go包含在导入路径中，例如 命名包markdown并给它导入路径github.com/kjk/go-markdown。</p>
 
                                             
                                         </div>
@@ -246,18 +248,17 @@ Package initialization function can be used to create initial state needed by co
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Packages/">https://luangeng.space/post/go/basic/Packages/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -319,17 +320,6 @@ Package initialization function can be used to create initial state needed by co
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -340,7 +330,7 @@ Package initialization function can be used to create initial state needed by co
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -351,18 +341,7 @@ Package initialization function can be used to create initial state needed by co
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -373,7 +352,7 @@ Package initialization function can be used to create initial state needed by co
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -384,7 +363,7 @@ Package initialization function can be used to create initial state needed by co
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -395,8 +374,30 @@ Package initialization function can be used to create initial state needed by co
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -776,7 +777,7 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -792,7 +793,7 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -822,7 +823,7 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -837,13 +838,13 @@ Package initialization function can be used to create initial state needed by co
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1031,14 +1032,13 @@ Package initialization function can be used to create initial state needed by co
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

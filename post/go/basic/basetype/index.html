@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go基本数据类型 - Computer and Software Technology Open Course</title>
+  <title>Go基本数据类型 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go基本数据类型 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go基本数据类型 - 计算机与软件技术公开课">
   <meta name="description" content="Go基本数据类型">
-  <meta itemprop="name" content="Go基本数据类型 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go基本数据类型 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go基本数据类型">
-  <meta property="og:title" content="Go基本数据类型 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go基本数据类型 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/basetype/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Booleans bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) b = false fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) var b2 bool fmt.Printf(&quot;zero value of bool is: &#39;%v&#39;\n&quot;, b2) b is: &lsquo;true&rsquo; b is: &lsquo;false&rsquo; bool变量的">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="Booleans bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) b = false fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) var b2 bool fmt.Printf(&quot;zero value of bool is: &#39;%v&#39;\n&quot;, b2) b is: &lsquo;true&rsquo; b is: &lsquo;false&rsquo; bool变量的">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/basetype/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/basetype/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go基本数据类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2592 Words
+                                        Posted @ 2019-09-09 · 2762 Words
                                         
                                         · Tags: Go
                                         
@@ -148,7 +149,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h1 id="booleans">Booleans</h1>
+                                            <h2 id="booleans">Booleans</h2>
 <p>bool类型的值可以是true或false，初始为false</p>
 <pre><code>var b bool = true
 fmt.Printf(&quot;b is: '%v'\n&quot;, b)
@@ -166,7 +167,7 @@ fmt.Printf(&quot;size of bool is: %d\n&quot;, unsafe.Sizeof(b))
 </code></pre><blockquote>
 <p>size of bool is: 1</p>
 </blockquote>
-<h1 id="integers">Integers</h1>
+<h2 id="integers">Integers</h2>
 <p>Go有固定大小的无符号和有符号整数类型：</p>
 <ul>
 <li>int8, uint8</li>
@@ -223,7 +224,7 @@ fmt.Printf(&quot;i1: %d\n&quot;, i)
 </code></pre><blockquote>
 <p>i1: 348</p>
 </blockquote>
-<h1 id="浮点类型">浮点类型</h1>
+<h2 id="浮点类型">浮点类型</h2>
 <p>Go具有与IEEE 754标准相对应的浮点数类型：</p>
 <ul>
 <li>float32 为 4 byte 长的浮点型数字 (即C语言中的float)</li>
@@ -273,7 +274,7 @@ fmt.Printf(&quot;f: %f\n&quot;, f)
 </code></pre><blockquote>
 <p>f: 1.234100</p>
 </blockquote>
-<h1 id="字符型">字符型</h1>
+<h2 id="字符型">字符型</h2>
 <p>Go 有两种字符类型</p>
 <ul>
 <li>byte是1个byte的值，是uint8类型的别名</li>
@@ -305,7 +306,7 @@ Rune at byte position 6 is U+8A9E &lsquo;語&rsquo;</p>
 当使用rune遍历string的使用go假定string是UTF-8编码的Unicode字符串
 UTF-8是一种可变长度编码，可将rune编码为1、2、3或4个byte。
 返回的索引i是tune开始的字符串中的字节位置。 而不是tune数量。</p>
-<h1 id="constants">Constants</h1>
+<h2 id="常量">常量</h2>
 <p>Go支持字符，字符串，布尔值和数字值的常量,</p>
 <pre><code>const (
 	i  int = 32       // int constant
@@ -318,7 +319,7 @@ var (
 	// we can declare them as top-level variables
 	b = []byte{3, 4} // this could not be a constant
 )
-</code></pre><h1 id="arrays">Arrays</h1>
+</code></pre><h2 id="数组">数组</h2>
 <p>Go中的数组具有固定大小。 因此，它们很少使用。在大多数情况下，我们使用可以扩大和缩小其大小的slice。数组基础使用方法:</p>
 <pre><code>var a1 = [2]byte{3, 8} // array of 2 bytes
 // when using [...] size will be deduced from { ... }
@@ -329,11 +330,11 @@ fmt.Printf(&quot;Size of a1: %d.\nSize of a2: %d\n&quot;, len(a1), len(a2))
 <p>Size of a1: 2.<br>
 Size of a2: 3</p>
 </blockquote>
-<h1 id="slices">Slices</h1>
+<h2 id="切片">切片</h2>
 <p>Go中的slice用于在大多数其他语言（如Ruby，Python或C＃）中使用数组，或在C ++中使用std :: vector。
 切片的大小可以增长和缩小。 它被实现为对基础固定大小数组的视图。
 切片的初始值值为nil。</p>
-<h1 id="maps">Maps</h1>
+<h2 id="map">map</h2>
 <p>map是从键到值的无序映射。其他语言称它们为字典（Python）或哈希表（C ++）。map的初始值为nil。
 map基本使用方法:</p>
 <pre><code>m := make(map[string]int)
@@ -363,25 +364,25 @@ key &lsquo;number4&rsquo; doesn&rsquo;t exist in map<br>
 deleted key &lsquo;number3<br>
 key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
 </blockquote>
-<h1 id="structs">Structs</h1>
+<h2 id="struct">struct</h2>
 <p>结构将多个值分组为一个实体。零值结构是一个结构，其字段设置为各自的零值。</p>
 <pre><code>type MyStruct struct {
 	IntVal           int
 	StringVal        string
 	unexportedIntVal int
 }
-</code></pre><h1 id="interfaces">Interfaces</h1>
+</code></pre><h2 id="interface">Interface</h2>
 <p>接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义：</p>
 <pre><code>type Reader interface {
     Read(p []byte) (n int, err error)
 }
 </code></pre><p>接口越小越好.</p>
-<h1 id="empty-interface">Empty interface</h1>
+<h2 id="empty-interface">Empty interface</h2>
 <p>类型interface {}称为空接口。根据定义，它是一个没有定义方法的接口。
 这意味着每种类型都符合一个空接口。在Go接口{}中用作动态类型。
 它与C＃或Java中的对象相似，因为它将类型和值组合为一个值。
 空接口也是您在Go中实现联合类型的方式。空接口的零值为nil。</p>
-<h1 id="pointers">Pointers</h1>
+<h2 id="指针">指针</h2>
 <p>指向类型的指针是该类型的值在内存中的地址。指针的零值为nil。与C不同，Go没有指针运算。 您可以输入变量的地址，但不能添加或减去指针。</p>
 <p>指针基础</p>
 <pre><code>var a int = 4
@@ -390,7 +391,7 @@ fmt.Printf(&quot;Address of a variable in memory is %p. Its value is: %d\n&quot;
 </code></pre><blockquote>
 <p>Address of a variable in memory is 0xc00007c010. Its value is: 4</p>
 </blockquote>
-<h1 id="channels">Channels</h1>
+<h2 id="channel">Channel</h2>
 <p>通道是类型化队列，用于goroutine以线程安全的方式相互通信。通道的零值为零。
 Channel使用示例</p>
 <pre><code>// create unbuffered channel of int values with capacity of 1
@@ -404,7 +405,7 @@ fmt.Printf(&quot;n: %d\n&quot;, n)
 </code></pre><blockquote>
 <p>n: 3</p>
 </blockquote>
-<h1 id="初始值">初始值</h1>
+<h2 id="初始值">初始值</h2>
 <p>如果未显式分配Go中的变量，则使用已知值对其进行初始化,这个值称为零值.
 这与C/C ++不同，在C/C ++中，未明确分配的变量具有未定义的值。</p>
 <ul>
@@ -494,24 +495,23 @@ s := &quot;string&quot;
 // we can cast between string and []byte and vice-versa
 // note that unless optimizted by the compiler, this involves allocation
 var d []byte = []byte(s)
-</code></pre><h1 id="type-aliases">Type aliases</h1>
-<p>Type aliases were introduced in Go 1.9 to make code refactoring easier.</p>
-<p>Imagine you have a package foo that exports type Bar.</p>
-<p>You want to rename type Bar to NewBar.</p>
-<p>Without type aliases you would have to change all the packages that use foo.Bar to use foo.NewBar at the same time you’re renaming the type.</p>
-<p>With type aliases you can split this into a 2 step process.</p>
-<p>First update dependencies by introducing an alias for foo.Bar and replacing all uses of foo.Bar with the alias.</p>
+</code></pre><h1 id="类型别名">类型别名</h1>
+<p>Go 1.9中引入了类型别名，以简化代码重构。</p>
+<p>假设您有一个导出为类型Bar的包foo。</p>
+<p>你想把类型Bar重命名为NewBar</p>
+<p>如果没有类型别名，则必须在重命名类型的同时将所有使用foo.Bar的软件包更改为使用foo.NewBar。</p>
+<p>使用类型别名，您可以将其分为两个步骤。</p>
+<p>首先通过为foo.Bar引入别名并用别名替换foo.Bar的所有用法来更新依赖项。</p>
 <pre><code>import &quot;foo&quot;
 type Bar = foo.Bar // Bar is now an alias of foo.Bar
-Now you can rename foo.Bar to foo.NewBar and update the alias:
-
-import &quot;foo&quot;
+</code></pre><p>现在，您可以将foo.Bar重命名为foo.NewBar并更新别名：</p>
+<pre><code>import &quot;foo&quot;
 type Bar = foo.NewBar
-This is a much smaller change.
-</code></pre><p>You can now gradually get rid of the alias and use the new foo.NewBar type directly.</p>
-<p>The process sounds like a hassle, but in large code bases it can be a better approach than renaming everything at once.</p>
-<p>It’s tempting to use type aliases for other things, but you should resist.</p>
-<p>Type aliases add a layer of indirection, which hurts readability of the code. There should be a good reason to use them.</p>
+</code></pre><p>这是一个非常小的改动.</p>
+<p>现在，您可以逐渐摆脱别名并直接使用新的foo.NewBar类型。</p>
+<p>这个过程听起来很麻烦，但是在大型代码库中，这比一次重命名所有内容更好。</p>
+<p>在其他情况下使用类型别名很诱人，但是应该尽量不使用。</p>
+<p>类型别名增加了一个间接层，这会损害代码的可读性。 应该有充分的理由使用它们。</p>
 
                                             
                                         </div>
@@ -528,18 +528,17 @@ This is a much smaller change.
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/basetype/">https://luangeng.space/post/go/basic/basetype/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -601,17 +600,6 @@ This is a much smaller change.
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -622,7 +610,7 @@ This is a much smaller change.
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -633,18 +621,7 @@ This is a much smaller change.
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -655,7 +632,7 @@ This is a much smaller change.
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -666,7 +643,7 @@ This is a much smaller change.
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -677,8 +654,30 @@ This is a much smaller change.
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1056,7 +1055,7 @@ This is a much smaller change.
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -1074,7 +1073,7 @@ This is a much smaller change.
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -1104,7 +1103,7 @@ This is a much smaller change.
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -1119,13 +1118,13 @@ This is a much smaller change.
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1313,14 +1312,13 @@ This is a much smaller change.
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

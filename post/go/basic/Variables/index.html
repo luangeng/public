@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 变量 - Computer and Software Technology Open Course</title>
+  <title>Go 变量 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 变量 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 变量 - 计算机与软件技术公开课">
   <meta name="description" content="Go 变量">
-  <meta itemprop="name" content="Go 变量 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 变量 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 变量">
-  <meta property="og:title" content="Go 变量 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 变量 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Variables/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Go中声明变量有以下几种方式: // declaration of a single top-level variable var topLevel int64 = 5 // grouping of multiple top-level declarations var ( intVal int // value is initialized with zero-value str string = &quot;str&quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of type func(a int) string //">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // value is initialized with zero-value str string = &quot;str&quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Variables/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Variables/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 变量</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 722 Words
+                                        Posted @ 2019-09-09 · 689 Words
                                         
                                         · Tags: Go
                                         
@@ -149,42 +150,41 @@
                                         <div class="entry-inner">
                                             
                                             <p>Go中声明变量有以下几种方式:</p>
-<pre><code>// declaration of a single top-level variable
+<pre><code>// 声明单个顶层变量
 var topLevel int64 = 5
 
-// grouping of multiple top-level declarations
+// 组合声明多个变量
 var (
-	intVal int            // value is initialized with zero-value
-	str    string = &quot;str&quot; // assigning
+    intVal int         // value is initialized with zero-value
+    str string = &quot;str&quot; // assigning
 
-	// functions are first-class values so can be assigned to variables
-	// fn is variable of type func(a int) string
-	// it's uninitialized so is nil (zero-value for function variables)
-	fn func(a int) string
+    // functions are first-class values so can be assigned to variables
+    // fn is variable of type func(a int) string
+    // it's uninitialized so is nil (zero-value for function variables)
+    fn func(a int) string
 )
 
 func f() {
-	// shorthand using local type inference
-	// type of `i` is int and is inferred from the value
-	// note: this is not allowed at top-level
-	i := 4
+    // shorthand using local type inference
+    // type of `i` is int and is inferred from the value
+    // note: this is not allowed at top-level
+    i := 4
 
-	// grouping inside a function
-	var (
-		i2 int
-		s  string
-	)
+    // grouping inside a function
+    var (
+        i2 int
+        s  string
+    )
 
-	// _ is like a variable whose value is discarded. It's called blank identifier.
-	// Useful when we don't care about one of the values returned by a function
-	_, err := io.Copy(dst, src) // don't care how many bytes were written
-	// ...
+    // _ is like a variable whose value is discarded. It's called blank identifier.
+    // Useful when we don't care about one of the values returned by a function
+    _, err := io.Copy(dst, src) // don't care how many bytes were written
+    // ...
 
-	fmt.Printf(`i: %d
-	i2: %d
-s: %s
-err: %v
-`, i, i2, s, err)
+    fmt.Printf(`i: %d
+    i2: %d
+    s: %s
+    err: %v`, i, i2, s, err)
 }
 </code></pre><blockquote>
 <p>i: 4<br>
@@ -210,30 +210,30 @@ u := int64(100)    // declare variable of type int64 and init with 100
 var u2 int64 = 100 // declare variable of type int64 and init with 100
 </code></pre><h2 id="多变量声明">多变量声明</h2>
 <p>在Go语言中你可以一次声明多个变量:</p>
-<pre><code>// You can declare multiple variables of the same type in one line
+<pre><code>// 相同类型的变量可以在一行中声明
 var a, b, c string
 
 var d, e string = &quot;Hello&quot;, &quot;world!&quot;
 
-// You can also use short declaration to assign multiple variables
+// 使用短声明方式声明多个变量
 x, y, z := 1, 2, 3
 
 foo, bar := 4, &quot;stack&quot; // `foo` is type `int`, `bar` is type `string`
 </code></pre><p>如果一个函数返回了多个值,你可以使用这些值给多个变量赋值:</p>
 <pre><code>func multipleReturn() (int, int) {
-	return 1, 2
+    return 1, 2
 }
 
 func multipleReturn2() (a int, b int) {
-	a = 3
-	b = 4
-	return
+    a = 3
+    b = 4
+    return
 }
 
 func main() {
-	x, y := multipleReturn()  // x = 1, y = 2
-	w, z := multipleReturn2() // w = 3, z = 4
-	fmt.Printf(&quot;x: %d, y: %d\nw: %d, z: %d\n&quot;, x, y, w, z)
+    x, y := multipleReturn()  // x = 1, y = 2
+    w, z := multipleReturn2() // w = 3, z = 4
+    fmt.Printf(&quot;x: %d, y: %d\nw: %d, z: %d\n&quot;, x, y, w, z)
 </code></pre><blockquote>
 <p>x: 1, y: 2<br>
 w: 3, z: 4</p>
@@ -244,31 +244,16 @@ w: 3, z: 4</p>
 <p>在这些情况下，您将使用“空白标识符” _来分配和放弃分配的值。</p>
 <p>可以为空白标识符分配任何类型的值，并且最常用于返回多个值的函数,如:</p>
 <pre><code>func SumProduct(a, b int) (int, int) {
-	return a + b, a * b
+    return a + b, a * b
 }
 
 func main() {
-	// only need the sum
-	sum, _ := SumProduct(1, 2) // 第二个返回值被丢弃了
-	fmt.Println(sum)           // -&gt; 3
+    // only need the sum
+    sum, _ := SumProduct(1, 2) // 第二个返回值被丢弃了
+    fmt.Println(sum)           // -&gt; 3
 }
 </code></pre><blockquote>
 <p>3</p>
-</blockquote>
-<h3 id="使用-range">使用 range</h3>
-<pre><code>func main() {
-	pets := []string{&quot;dog&quot;, &quot;cat&quot;, &quot;fish&quot;}
-
-	// range returns both the current index and value
-	// but sometimes we only need one or the other
-	for _, pet := range pets {
-		fmt.Println(pet)
-	}
-}
-</code></pre><blockquote>
-<p>dog<br>
-cat<br>
-fish</p>
 </blockquote>
 
                                             
@@ -286,18 +271,17 @@ fish</p>
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Variables/">https://luangeng.space/post/go/basic/Variables/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -359,17 +343,6 @@ fish</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -380,7 +353,7 @@ fish</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -391,18 +364,7 @@ fish</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -413,7 +375,7 @@ fish</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -424,7 +386,7 @@ fish</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -435,8 +397,30 @@ fish</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -814,7 +798,7 @@ fish</p>
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -832,7 +816,7 @@ fish</p>
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -862,7 +846,7 @@ fish</p>
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -877,13 +861,13 @@ fish</p>
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1071,14 +1055,13 @@ fish</p>
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 日期和时间 - Computer and Software Technology Open Course</title>
+  <title>Go 日期和时间 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 日期和时间 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 日期和时间 - 计算机与软件技术公开课">
   <meta name="description" content="Go 日期和时间">
-  <meta itemprop="name" content="Go 日期和时间 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 日期和时间 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 日期和时间">
-  <meta property="og:title" content="Go 日期和时间 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 日期和时间 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Time-and-date/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="The Go time package provides functionality for handling time and date. Major types in the package: structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds Get current time and date now := time.Now() Construct a time and date at a given moment in time t := time.Date(year int, month">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="Go时间包提供了处理时间和日期的功能。 包中的主要类型： structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds 获取当前日期和时间: now := time.Now()">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Time-and-date/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Time-and-date/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 日期和时间</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1413 Words
+                                        Posted @ 2019-09-09 · 2200 Words
                                         
                                         · Tags: Go
                                         
@@ -148,71 +149,67 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>The Go time package provides functionality for handling time and date.</p>
-<p>Major types in the package:</p>
+                                            <p>Go时间包提供了处理时间和日期的功能。</p>
+<p>包中的主要类型：</p>
 <p>structure time.Time represents time and date values
 time.Duration represents difference between two time.Time values in nanoseconds
-time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds
-Get current time and date
-now := time.Now()</p>
-<p>Construct a time and date at a given moment in time
-t := time.Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time</p>
-<p>loc must be provided and represents time zone. Use time.UTC variable for UTC time zone.</p>
-<p>Compare two times for equality
-areEqual := t1.Equal(t2)</p>
-<p>Add duration to time
-newTime := now.Add(5 * time.Second + time.Millisecond * 100)</p>
-<p>Time values are immutable. Add returns a new value.</p>
-<p>Subtract duration from time
-newTime := now.Add(-6 * time.Second)</p>
-<p>To subtract 6 seconds we add -6 seconds.</p>
-<p>Add years, months, days to time
-Adding a duration is for durations smaller than 24 hours.</p>
-<p>To advance time by calendar years, months or days, use:</p>
-<p>years := 2
+time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds</p>
+<p>获取当前日期和时间:</p>
+<pre><code>now := time.Now()
+</code></pre><p>用给定的时间点构造时间和日期</p>
+<pre><code>t := time.Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time
+</code></pre><p>loc必须提供并代表时区。 将time.UTC变量用于UTC时区。</p>
+<p>比较时间是否相等</p>
+<pre><code>areEqual := t1.Equal(t2)
+</code></pre><p>加一段时间</p>
+<pre><code>newTime := now.Add(5 * time.Second + time.Millisecond * 100)
+</code></pre><p>时间值是不可变的。 Add返回一个新值。</p>
+<p>减一段时间</p>
+<pre><code>newTime := now.Add(-6 * time.Second)
+</code></pre><p>要减去6秒，我们需要加上-6秒。</p>
+<p>时间加减要求是时间小于24小时。要按日历年，月或日加减时间，如下所示：</p>
+<pre><code>years := 2
 months := 3
 days := 13
 t2 := t.AddDate(years, months, days)
-Convert time to Unix representation of time
+</code></pre><p>Convert time to Unix representation of time
 For interoperability with existing code you often need to use Unix time, which is defined as number of seconds since January 1, 1970 UTC.</p>
 <p>unixTime := t.Unix()</p>
-<p>Get year, month and day from time
-year, month, day := t.Day()</p>
-<h2 id="format-time">Format time</h2>
-<p>Most languages inherited time formatting method from strftime function C library which uses somewhat cryptic format strings like %Y-%m-%d.</p>
-<p>Go designers came up with arguably more intuitive way of time parsing and formatting where you show a template of how you want the result to look like:</p>
-<p>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
-fmt.Println(t.Format(&ldquo;2006-02-01 15:04:05.000 MST&rdquo;))
-fmt.Println(t.Format(&ldquo;2006-02-1 15pm&rdquo;))
-fmt.Println(t.Format(&ldquo;Jan 06 Mon 2 01&rdquo;))
-fmt.Println(t.Format(&ldquo;January 6 Mon 2 1&rdquo;))
-fmt.Println(t.Format(&ldquo;Month: Jan &lsquo;1&rsquo;, &lsquo;01&rsquo;, _2&rdquo;))</p>
-<pre><code>2017-04-09 03:38:45.000 UTC
+<p>获取年月日</p>
+<pre><code>year, month, day := t.Day()
+</code></pre><h2 id="格式化日期时间">格式化日期时间</h2>
+<p>大多数语言都从strftime函数C库继承了时间格式化方法，该函数使用了一些神秘的格式字符串，例如％Y-％m-％d。</p>
+<p>Go设计人员提出了可以说是更直观的时间解析和格式设置方法，在其中您可以显示一个模板，以显示所需的结果：</p>
+<pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
+fmt.Println(t.Format(&quot;2006-02-01 15:04:05.000 MST&quot;))
+fmt.Println(t.Format(&quot;2006-02-1 15pm&quot;))
+fmt.Println(t.Format(&quot;Jan 06 Mon 2 01&quot;))
+fmt.Println(t.Format(&quot;January 6 Mon 2 1&quot;))
+fmt.Println(t.Format(&quot;Month: Jan '1', '01', _2&quot;))
+</code></pre><blockquote>
+<p>2017-04-09 03:38:45.000 UTC
 2017-04-9 03am
 Sep 17 Mon 4 09
 September 6 Mon 4 9
-Month: Sep '9', '09',  4
-Formatting string is an arbitrary string with some parts being replaced by the data from time.Time value:
-
-template	meaning
-2006, 06	4 or 2 digit year
-2	month, 1-12
-1	day, 1-31
-15	hour
-5	second
-MST	time zone as a string
--0700	time zone as numeric offset
-Jan, January	short or long month name
-Mon, Monday	short or long day name
-Days, months, years, hours, minutes and seconds can be zero-padded by adding 0 to format number. It’ll only be shown for numbers &lt; 10. 02 means zero-padded month i.e. 04 or 11.
-
-Some values can be space-padded. _2 will be 4 or 11.
-
-Package time also defines constants for some well-known formats for date/time formatting e.g. time.RFC822 is date format defined in RFC 822 which is date format in e-mail messages.
-
-Here’s a full list of pre-defined formats:
-
-const (
+Month: Sep &lsquo;9&rsquo;, &lsquo;09&rsquo;,  4</p>
+</blockquote>
+<p>格式化字符串是将一个任意字符串中某些部分被time.Time值中的数据替换：</p>
+<ul>
+<li>2006, 06	4或2位年</li>
+<li>2	月, 1-12</li>
+<li>1	d天, 1-31</li>
+<li>15	小时</li>
+<li>5	秒</li>
+<li>MST	时区字符串</li>
+<li>-0700	        时区数字偏移</li>
+<li>Jan, January	月的单词</li>
+<li>Mon, Monday	星期单词</li>
+</ul>
+<p>通过将格式编号加0，可以将天，月，年，小时，分钟和秒补零。 仅显示数字&lt;10。02表示零填充月份，即04或11。</p>
+<p>某些值可以用空格填充。 _2将是4或11。</p>
+<p>打包时间还定义了一些众所周知的日期/时间格式的常量，例如日期/时间格式。 time.RFC822是RFC 822中定义的日期格式，它是电子邮件中的日期格式。</p>
+<p>以下是预定义格式的完整列表：</p>
+<pre><code>const (
         ANSIC       = &quot;Mon Jan _2 15:04:05 2006&quot;
         UnixDate    = &quot;Mon Jan _2 15:04:05 MST 2006&quot;
         RubyDate    = &quot;Mon Jan 02 15:04:05 -0700 2006&quot;
@@ -230,73 +227,79 @@ const (
         StampMicro = &quot;Jan _2 15:04:05.000000&quot;
         StampNano  = &quot;Jan _2 15:04:05.000000000&quot;
 )
-What if you prefer strftime style of formatting time? That’s available too.
-
-## Parse time
-Parsing is the reverse of formatting:
-
-s := &quot;2017-04-09 03:38:45.000 UTC&quot;
+</code></pre><p>如果您喜欢格式化时间的strftime样式怎么办？ 也可以。</p>
+<h2 id="解析时间">解析时间</h2>
+<p>解析时间和格式化相反</p>
+<pre><code>s := &quot;2017-04-09 03:38:45.000 UTC&quot;
 t, err := time.Parse(&quot;2006-02-01 15:04:05.000 MST&quot;, s)
 if err != nil {
 	log.Fatalf(&quot;time.Parse() failed wiht '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;year: %d, month: %d, day: %d\n&quot;, t.Year(), t.Month(), t.Day())
-</code></pre><p>year: 2017, month: 9, day: 4
-Parsing template uses the same style as formatting.</p>
-<p>What if you prefer strftime style of parsing time? That’s available too.</p>
-<h2 id="format-time-like-strftime">Format time like strftime</h2>
-<p>If you prefer strftime style of formatting time values (as used in Python or Ruby) or porting code that uses that style, you can use one of several libraries.</p>
-<p>Here’s an example using github.com/jehiah/go-strftime package:</p>
-<p>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
-fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&rdquo;, t))
-Side note on package naming: since the package name is strftime, the import path / repository path should be github.com/jehiah/strftime. It’s bad style to add go or go- to repository path.
-Unfortunately, when it comes to parsing things are not as good. There are two packages:</p>
-<p><a href="https://godoc.org/github.com/jeffjen/datefmt">https://godoc.org/github.com/jeffjen/datefmt</a>
-<a href="https://godoc.org/github.com/knz/strtime">https://godoc.org/github.com/knz/strtime</a>
-but they both are cgo-wrappers around C libraries, which makes them more finicky to build, especially on Windows.</p>
-<p>List of strftime directives
-Code	Meaning	Example
-%a	Weekday as locale’s abbreviated name.	Mon
-%A	Weekday as locale’s full name.	Monday
-%b	The abbreviated month name	Jan
-%B	The full month name	January
-%d	Day of the month	01..31
-%e	Day of the month without a leading zero	1..31
-%j	Day of the year	001..366
-%m	Month of the year	01..12
-%U	Week number of the current year, starting with the first Sunday as the first day of the first week	00..53
-%W	Week number of the current year, starting with the first Monday as the first day of the first week	00..53
-%w	Day of the week (Sunday is 0)	0..6
-%x	Preferred representation for the date alone, no time
-%y	Year without a century	00..99
-%Y	Year with century
-%H	Hour of the day, 24-hour clock	00..23
-%I	Hour of the day, 12-hour clock	01..12
-%l	Hour of the day, 12-hour clock without a leading zero	1..12
-%M	Minute of the hour	00..59
-%P	Meridian indicator (&ldquo;am&rdquo; or &ldquo;pm&rdquo;)	am
-%p	Meridian indicator (&ldquo;AM&rdquo; or &ldquo;PM&rdquo;)	PM
-%S	Second of the minute	00..60
-%X	Preferred representation for the time alone, no date
-%Z	Time zone name
-%c	The preferred local date and time representation
-%%	Literal &ldquo;%&rdquo; character
-You can also use <a href="http://www.strfti.me/">http://www.strfti.me/</a> service to help you build strftime formatting strings.</p>
-<h2 id="compare-time-and-date">Compare time and date</h2>
-<p>Sometime you will need to know, with 2 dates objects, if there are corresponding to the same date, or find which date is after the other.</p>
-<p>In Go, there is 4 way to compare dates:</p>
-<p>date1 == date2, returns true when the 2 are the same moment
-date1 != date2, returns true when the 2 are different moment
-date1.Before(date2), returns true when the first is strictly before the second
-date1.After(date2), returns true when the first is strictly after the second
-WARNING: When the 2 Time to compare are the same (or correspond to the exact same date), functions After and Before will return false, as a date is neither before nor after itself - date1 == date1, returns true - date1 != date1, returns false - date1.After(date1), returns false - date1.Before(date1), returns false
-TIPS: If you need to know if a date is before or equal another one, just need to combine the 4 operators - date1 == date2 || date1.After(date2), returns true when date1 is after or equal date2 or using ! (date1.Before(date2)) - date1 == date2 || date1.Before(date2), returns true when date1 is before or equal date2 or using !(date1.After(date2))
-Some examples to see how to use:</p>
-<p>// Init 2 dates for example
+</code></pre><blockquote>
+<p>year: 2017, month: 9, day: 4</p>
+</blockquote>
+<p>解析模板使用与格式化相同的样式。</p>
+<p>如果您更喜欢strftime样式的解析时间怎么办？ 也可以。</p>
+<h2 id="像strftime一样格式化时间">像strftime一样格式化时间</h2>
+<p>如果您喜欢格式化时间值的strftime样式（如在Python或Ruby中使用的）或使用该样式的移植代码，则可以使用以下几种库之一。</p>
+<p>这是使用github.com/jehiah/go-strftime软件包的示例：</p>
+<pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
+fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
+</code></pre><p>关于软件包命名的附带说明：由于软件包名称为strftime，因此导入路径/存储库路径应为github.com/jehiah/strftime。 添加go或go-to-repository路径的样式不好。
+不幸的是，当涉及到解析时，效果并不理想。 有两个软件包：</p>
+<ul>
+<li><a href="https://godoc.org/github.com/jeffjen/datefmt">https://godoc.org/github.com/jeffjen/datefmt</a></li>
+<li><a href="https://godoc.org/github.com/knz/strtime">https://godoc.org/github.com/knz/strtime</a>
+但是它们都是围绕C库的cgo包装器，这使它们的构建更加灵活，尤其是在Windows上。</li>
+</ul>
+<p>strftime指令列表:</p>
+<ul>
+<li>%a	Weekday as locale’s abbreviated name.	Mon</li>
+<li>%A	Weekday as locale’s full name.	Monday</li>
+<li>%b	The abbreviated month name	Jan</li>
+<li>%B	The full month name	January</li>
+<li>%d	Day of the month	01..31</li>
+<li>%e	Day of the month without a leading zero	1..31</li>
+<li>%j	Day of the year	001..366</li>
+<li>%m	Month of the year	01..12</li>
+<li>%U	Week number of the current year, starting with the first Sunday as the first day of the first week	00..53</li>
+<li>%W	Week number of the current year, starting with the first Monday as the first day of the first week	00..53</li>
+<li>%w	Day of the week (Sunday is 0)	0..6</li>
+<li>%x	Preferred representation for the date alone, no time</li>
+<li>%y	Year without a century	00..99</li>
+<li>%Y	Year with century</li>
+<li>%H	Hour of the day, 24-hour clock	00..23</li>
+<li>%I	Hour of the day, 12-hour clock	01..12</li>
+<li>%l	Hour of the day, 12-hour clock without a leading zero	1..12</li>
+<li>%M	Minute of the hour	00..59</li>
+<li>%P	Meridian indicator (&ldquo;am&rdquo; or &ldquo;pm&rdquo;)	am</li>
+<li>%p	Meridian indicator (&ldquo;AM&rdquo; or &ldquo;PM&rdquo;)	PM</li>
+<li>%S	Second of the minute	00..60</li>
+<li>%X	Preferred representation for the time alone, no date</li>
+<li>%Z	Time zone name</li>
+<li>%c	The preferred local date and time representation</li>
+<li>%%	Literal &ldquo;%&rdquo; character</li>
+</ul>
+<p>您还可以使用http://www.strfti.me/服务来帮助您构建strftime格式字符串。</p>
+<h2 id="比较时间和日期">比较时间和日期</h2>
+<p>有时您将需要使用2个日期对象来知道是否存在与同一日期相对应的日期，或者找到哪个日期在另一个日期之后。</p>
+<p>在Go中，有4种比较日期的方式：</p>
+<ul>
+<li>date1 == date2, returns true when the 2 are the same moment</li>
+<li>date1 != date2, returns true when the 2 are different moment</li>
+<li>date1.Before(date2), returns true when the first is strictly before the second</li>
+<li>date1.After(date2), returns true when the first is strictly after the second</li>
+</ul>
+<p>警告：当两个比较时间相同（或对应于完全相同的日期）时，After和Before函数将返回false，因为日期既不早于其本身也不在其后-date1 == date1，则返回true-date1！= date1，返回false-date1。After（date1），返回false-date1.Before（date1），返回false
+提示：如果您需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After（date2），当date1在date2之后或等于date2或使用！返回true。 （date1.Before（date2））-date1 == date2 || date1.Before（date2），如果date1在date2之前或等于date2或使用！（date1.After（date2）），则返回true。</p>
+<p>使用示例:</p>
+<pre><code>//初始化时间
 var date1 = time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
 var date2 = time.Date(2017, time.July, 25, 16, 22, 42, 123, time.UTC)
-var date3 = time.Date(2017, time.July, 25, 16, 22, 42, 123, time.UTC)</p>
-<pre><code>bool1 := date1.Before(date2) // true, because date1 is before date2
+var date3 = time.Date(2017, time.July, 25, 16, 22, 42, 123, time.UTC)
+
+bool1 := date1.Before(date2) // true, because date1 is before date2
 bool2 := date1.After(date2) // false, because date1 is not after date2
 
 bool3 := date2.Before(date1) // false, because date2 is not before date1
@@ -312,8 +315,8 @@ bool9 := date1.After(date3) // false, because date1 is not after date3 (that are
 bool10:= date1.Before(date3) // false, because date1 is not before date3 (that are the same)
 
 bool11 := !(date1.Before(date3)) // true, because date1 is not before date3
-bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code></pre>
-
+bool12 := !(date1.After(date3)) // true, because date1 is not after date3
+</code></pre>
                                             
                                         </div>
 
@@ -329,18 +332,17 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Time-and-date/">https://luangeng.space/post/go/basic/Time-and-date/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -402,17 +404,6 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -423,7 +414,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -434,18 +425,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -456,7 +436,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -467,7 +447,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -478,8 +458,30 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -859,7 +861,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -875,7 +877,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -905,7 +907,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -920,13 +922,13 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1114,14 +1116,13 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3</code>
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

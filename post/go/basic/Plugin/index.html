@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 插件 - Computer and Software Technology Open Course</title>
+  <title>Go 插件 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 插件 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 插件 - 计算机与软件技术公开课">
   <meta name="description" content="Go 插件">
-  <meta itemprop="name" content="Go 插件 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 插件 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 插件">
-  <meta property="og:title" content="Go 插件 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 插件 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Plugin/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="介绍 Go provides a plugin mechanism that can be used to dynamically link other Go code at runtime. As of Go 1.8, it is only usable on Linux. Defining and using a plugin package main import &ldquo;fmt&rdquo; var V int func F() { fmt.Printf(&ldquo;Hello, number %d\n&rdquo;, V) } This can be built with: $ go build -buildmode=plugin And then loaded and used from your application: p, err := plugin.Open(&ldquo;plugin_name.so&rdquo;)">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。 在Go1.8中，仅在Linux上可用。 定义和使用插件 package main import &quot;fmt&quot; var V int func F() { fmt.Printf(&quot;Hello, number %d\n&quot;, V)">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Plugin/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Plugin/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 插件</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 115 Words
+                                        Posted @ 2019-09-09 · 142 Words
                                         
                                         · Tags: Go
                                         
@@ -148,33 +149,37 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>介绍
-Go provides a plugin mechanism that can be used to dynamically link other Go code at runtime.</p>
-<p>As of Go 1.8, it is only usable on Linux.</p>
-<h2 id="defining-and-using-a-plugin">Defining and using a plugin</h2>
-<p>package main</p>
-<p>import &ldquo;fmt&rdquo;</p>
-<p>var V int</p>
-<p>func F() { fmt.Printf(&ldquo;Hello, number %d\n&rdquo;, V) }
-This can be built with:</p>
-<p>$ go build -buildmode=plugin
-And then loaded and used from your application:</p>
-<p>p, err := plugin.Open(&ldquo;plugin_name.so&rdquo;)
-if err != nil {
-panic(err)
-}</p>
-<p>v, err := p.Lookup(&ldquo;V&rdquo;)
-if err != nil {
-panic(err)
-}</p>
-<p>f, err := p.Lookup(&ldquo;F&rdquo;)
-if err != nil {
-panic(err)
-}</p>
-<p>*v.(*int) = 7
-f.(func())() // prints &ldquo;Hello, number 7&rdquo;
-Example from The State of Go 2017.</p>
+                                            <p>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。</p>
+<p>在Go1.8中，仅在Linux上可用。</p>
+<h2 id="定义和使用插件">定义和使用插件</h2>
+<pre><code>package main
 
+import &quot;fmt&quot;
+
+var V int
+
+func F() { fmt.Printf(&quot;Hello, number %d\n&quot;, V) }
+</code></pre><p>使用以下命令build:</p>
+<pre><code>$ go build -buildmode=plugin
+</code></pre><p>在你的程序中加载并使用:</p>
+<pre><code>p, err := plugin.Open(&quot;plugin_name.so&quot;)
+if err != nil {
+    panic(err)
+}
+
+v, err := p.Lookup(&quot;V&quot;)
+if err != nil {
+    panic(err)
+}
+
+f, err := p.Lookup(&quot;F&quot;)
+if err != nil {
+    panic(err)
+}
+
+*v.(*int) = 7
+f.(func())() // 打印 &quot;Hello, number 7&quot;
+</code></pre>
                                             
                                         </div>
 
@@ -190,18 +195,17 @@ Example from The State of Go 2017.</p>
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Plugin/">https://luangeng.space/post/go/basic/Plugin/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -263,17 +267,6 @@ Example from The State of Go 2017.</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -284,7 +277,7 @@ Example from The State of Go 2017.</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -295,18 +288,7 @@ Example from The State of Go 2017.</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -317,7 +299,7 @@ Example from The State of Go 2017.</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -328,7 +310,7 @@ Example from The State of Go 2017.</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -339,8 +321,30 @@ Example from The State of Go 2017.</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -720,7 +724,7 @@ Example from The State of Go 2017.</p>
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -738,7 +742,7 @@ Example from The State of Go 2017.</p>
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -768,7 +772,7 @@ Example from The State of Go 2017.</p>
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -783,13 +787,13 @@ Example from The State of Go 2017.</p>
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -975,14 +979,13 @@ Example from The State of Go 2017.</p>
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

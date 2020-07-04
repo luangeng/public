@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go fmt包 - Computer and Software Technology Open Course</title>
+  <title>Go fmt包 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go fmt包 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go fmt包 - 计算机与软件技术公开课">
   <meta name="description" content="Go fmt包">
-  <meta itemprop="name" content="Go fmt包 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go fmt包 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go fmt包">
-  <meta property="og:title" content="Go fmt包 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go fmt包 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Package-fmt/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Package fmt in standard library can format strings and parse data out of strings. Basic fmt Package fmt implements formatted I/O using format verbs: Verb Meaning %v default format %T type of the value %s uninterpreted bytes of the string or slice Formatting functions There are 4 main function types in fmt and several variations within. Print, Println, Printf fmt.Print(&ldquo;Hello World&rdquo;) // prints: Hello World fmt.Println(&ldquo;Hello World&rdquo;) // prints: Hello">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Package-fmt/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Package-fmt/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go fmt包</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 420 Words
+                                        Posted @ 2019-09-09 · 598 Words
                                         
                                         · Tags: Go
                                         
@@ -148,90 +149,95 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Package fmt in standard library can format strings and parse data out of strings.</p>
-<h2 id="basic-fmt">Basic fmt</h2>
-<p>Package fmt implements formatted I/O using format verbs:</p>
-<p>Verb	Meaning
-%v	default format
-%T	type of the value
-%s	uninterpreted bytes of the string or slice
-Formatting functions
-There are 4 main function types in fmt and several variations within.</p>
-<p>Print, Println, Printf
-fmt.Print(&ldquo;Hello World&rdquo;)        // prints: Hello World
-fmt.Println(&ldquo;Hello World&rdquo;)      // prints: Hello World\n
-fmt.Printf(&ldquo;Hello %s&rdquo;, &ldquo;World&rdquo;) // prints: Hello World
-Sprintf
-formattedString := fmt.Sprintf(&quot;%v %s&rdquo;, 2, &ldquo;words&rdquo;) // returns string &ldquo;2 words&rdquo;
-Fprint
-byteCount, err := fmt.Fprint(w, &ldquo;Hello World&rdquo;) // writes to io.Writer w
-Fprint can be used inside http handlers:</p>
-<p>func handler(w http.ResponseWriter, r *http.Request) {
-fmt.Fprint(w, &ldquo;Hello %s!&quot;, &ldquo;Browser&rdquo;)
-}   // Writes: &ldquo;Hello Browser!&rdquo; to HTTP response
-Scan
-Scan scans text read from standard input.</p>
-<p>var s string
+                                            <p>标准库中的fmt包可以格式化字符串和从字符串中解析数据.</p>
+<h3 id="基本的fmt">基本的fmt</h3>
+<p>包fmt使用格式动词实现格式化的I/O：</p>
+<ul>
+<li>%v	    默认格式</li>
+<li>%T	    值的类型</li>
+<li>%s	    字符串或片的未解释字节</li>
+</ul>
+<p>格式化函数</p>
+<p>fmt中有4个主要的函数类型，和它们的几个变体。</p>
+<p>Print, Println, Printf</p>
+<pre><code>fmt.Print(&quot;Hello World&quot;)        // prints: Hello World
+fmt.Println(&quot;Hello World&quot;)      // prints: Hello World\n
+fmt.Printf(&quot;Hello %s&quot;, &quot;World&quot;) // prints: Hello World
+</code></pre><p>Sprintf</p>
+<pre><code>formattedString := fmt.Sprintf(&quot;%v %s&quot;, 2, &quot;words&quot;) // returns string &quot;2 words&quot;
+</code></pre><p>Fprint</p>
+<pre><code>byteCount, err := fmt.Fprint(w, &quot;Hello World&quot;) // writes to io.Writer w
+</code></pre><p>Fprint可以在http handlers中使用:</p>
+<pre><code>func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, &quot;Hello %s!&quot;, &quot;Browser&quot;)
+}   // Writes: &quot;Hello Browser!&quot; to HTTP response
+</code></pre><h3 id="scan">Scan</h3>
+<p>Scan从标准输入中扫描文本</p>
+<pre><code>var s string
 fmt.Scanln(&amp;s) // pass pointer to buffer
 // Scanln is similar to fmt.Scan(), but it stops scanning at new line.
-fmt.Println(s) // whatever was inputted</p>
-<h2 id="stringer-interface">Stringer interface</h2>
-<p>fmt.Stringer interface consists of a single String() string function:</p>
-<p>type Stringer interface {
-String() string
+fmt.Println(s) // whatever was inputted
+
+## Stringer interface
+fmt.Stringer interface consists of a single String() string function:
+
+type Stringer interface {
+	String() string
 }
-The intent is to provide a string representation of the value.</p>
-<p>If String() method is defined on a type, string formatting methods like fmt.Printf use it for %s formatting directive:</p>
-<p>type User1 struct {
-Name  string
-Email string
-}</p>
-<p>type User2 struct {
-Name  string
-Email string
-}</p>
-<p>// String satisfies the fmt.Stringer interface
+The intent is to provide a string representation of the value.
+
+If String() method is defined on a type, string formatting methods like fmt.Printf use it for %s formatting directive:
+
+type User1 struct {
+    Name  string
+    Email string
+}
+
+type User2 struct {
+    Name  string
+    Email string
+}
+
+// String satisfies the fmt.Stringer interface
 // Defining it on type User2 makes it available on *User2 as well
 func (u User2) String() string {
-return fmt.Sprintf(&quot;%s &lt;%s&gt;&rdquo;, u.Name, u.Email)
-}</p>
-<p>func main() {
-u1 := &amp;User1{
-Name:  &ldquo;John Doe&rdquo;,
-Email: &ldquo;<a href="mailto:johndoe@example.com">johndoe@example.com</a>&rdquo;,
-}</p>
-<pre><code>fmt.Printf(&quot;u1: type: %T, value: %s\n\n&quot;, u1, u1)
-
-u2 := User2{
-    Name:  &quot;John Doe&quot;,
-    Email: &quot;johndoe@example.com&quot;,
+    return fmt.Sprintf(&quot;%s &lt;%s&gt;&quot;, u.Name, u.Email)
 }
 
-fmt.Printf(&quot;u2: type:  %T, value: %s\n\n&quot;, u2, u2)
+func main() {
+    u1 := &amp;User1{
+        Name:  &quot;John Doe&quot;,
+        Email: &quot;johndoe@example.com&quot;,
+    }
 
-    // method define on type User2 is also available on type *User2
-u3 := &amp;User2{
-    Name:  &quot;John Doe&quot;,
-    Email: &quot;johndoe@example.com&quot;,
+    fmt.Printf(&quot;u1: type: %T, value: %s\n\n&quot;, u1, u1)
+
+    u2 := User2{
+        Name:  &quot;John Doe&quot;,
+        Email: &quot;johndoe@example.com&quot;,
+    }
+
+    fmt.Printf(&quot;u2: type:  %T, value: %s\n\n&quot;, u2, u2)
+
+		// method define on type User2 is also available on type *User2
+    u3 := &amp;User2{
+        Name:  &quot;John Doe&quot;,
+        Email: &quot;johndoe@example.com&quot;,
+    }
+
+    fmt.Printf(&quot;u3: type: %T, value: %s\n&quot;, u3, u3)
 }
+</code></pre><blockquote>
+<p>u1: type: *main.User1, value: &amp;{John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a>}<br>
+u2: type:  main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a><br>
+u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a></p>
+</blockquote>
+<p>类型User1没有实现Stringer接口，因此％s使用结构的标准格式显示它。</p>
+<p>类型User2实现了Stringer接口，因此％s使用String（）方法获取值。</p>
+<p>类型User2和* User2不同。</p>
+<p>但是，为方便起见，在User2上定义的方法也可以在* User2上使用（但反之则不行）。</p>
+<p>因此，最好在struct上定义String()方法，而不是struct的指针。</p>
 
-fmt.Printf(&quot;u3: type: %T, value: %s\n&quot;, u3, u3)
-</code></pre>
-<p>}</p>
-<pre><code>u1: type: *main.User1, value: &amp;{John Doe johndoe@example.com}
-
-u2: type:  main.User2, value: John Doe &lt;johndoe@example.com&gt;
-
-u3: type: *main.User2, value: John Doe &lt;johndoe@example.com&gt;
-Type User1 doesn't implement Stringer interface, so %s displays it using the standard formatting for structs.
-
-Type User2 implements Stringer interface so %s uses String() method to get the value.
-
-Types User2 and *User2 are not the same.
-
-However, as a convenience, a method defined on User2 is also available on *User2 (but not the other way around).
-
-As a result, it's better to define String() methods on the struct type vs. a pointer to it.</code></pre>
                                             
                                         </div>
 
@@ -247,18 +253,17 @@ As a result, it's better to define String() methods on the struct type vs. a poi
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Package-fmt/">https://luangeng.space/post/go/basic/Package-fmt/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -320,17 +325,6 @@ As a result, it's better to define String() methods on the struct type vs. a poi
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -341,7 +335,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -352,18 +346,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -374,7 +357,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -385,7 +368,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -396,8 +379,30 @@ As a result, it's better to define String() methods on the struct type vs. a poi
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -777,7 +782,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -795,7 +800,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -825,7 +830,7 @@ As a result, it's better to define String() methods on the struct type vs. a poi
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -840,13 +845,13 @@ As a result, it's better to define String() methods on the struct type vs. a poi
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1032,14 +1037,13 @@ As a result, it's better to define String() methods on the struct type vs. a poi
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

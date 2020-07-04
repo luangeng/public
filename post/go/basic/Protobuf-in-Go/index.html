@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go Protobuf in Go - Computer and Software Technology Open Course</title>
+  <title>Go Protobuf in Go - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Protobuf in Go - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go Protobuf in Go - 计算机与软件技术公开课">
   <meta name="description" content="Go Protobuf in Go">
-  <meta itemprop="name" content="Go Protobuf in Go - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go Protobuf in Go - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go Protobuf in Go">
-  <meta property="og:title" content="Go Protobuf in Go - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go Protobuf in Go - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Protobuf-in-Go/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Introduction Protobuf or Protocol Buffer encodes and decodes data so that different applications or modules written in unlike languages can exchange large numbers of messages quickly and reliably without overloading the communication channel. With protobuf, the performance is directly proportional to the number of message you tend to send. It compresses the message to to be sent into a serialized binary format by providing you with the tools to encode the message at the source and decode it at the destination.">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="介绍 Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go Protobuf in Go</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 367 Words
+                                        Posted @ 2019-09-09 · 640 Words
                                         
                                         · Tags: Go
                                         
@@ -148,63 +149,67 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Introduction
-Protobuf or Protocol Buffer encodes and decodes data so that different applications or modules written in unlike languages can exchange large numbers of messages quickly and reliably without overloading the communication channel. With protobuf, the performance is directly proportional to the number of message you tend to send. It compresses the message to to be sent into a serialized binary format by providing you with the tools to encode the message at the source and decode it at the destination.</p>
-<p>Remarks
-There are two steps of using protobuf.</p>
-<p>First you must compile the protocol buffer definitions
-Import the above definitions, with the support library into your program.
-gRPC Support</p>
-<p>If a proto file specifies RPC services, protoc-gen-go can be instructed to generate code compatible with gRPC (<a href="http://www.grpc.io/)">http://www.grpc.io/)</a>. To do this, pass the plugins parameter to protoc-gen-go; the usual way is to insert it into the –go_out argument to protoc:</p>
-<p>$ protoc &ndash;go_out=plugins=grpc:. *.proto</p>
-<h2 id="using-protobuf-with-go">Using Protobuf with Go</h2>
-<p>The message you want to serialize and send that you can include into a file test.proto, containing</p>
-<p>package example;</p>
-<p>enum FOO { X = 17; };</p>
-<p>message Test {
-required string label = 1;
-optional int32 type = 2 [default=77];
-repeated int64 reps = 3;
-optional group OptionalGroup = 4 {
-required string RequiredField = 5;
+                                            <p>介绍
+Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道过载。 使用protobuf，其性能与您倾向于发送的消息数量成正比。 通过为您提供工具以在源处对消息进行编码并在目标处对消息进行解码，它将压缩要发送的消息为序列化的二进制格式。</p>
+<p>备注
+使用protobuf有两个步骤。</p>
+<p>首先，您必须编译协议缓冲区定义
+将以上定义以及支持库导入到您的程序中。
+gRPC支持</p>
+<p>如果proto文件指定了RPC服务，则可以指示protoc-gen-go生成与gRPC（http://www.grpc.io/）兼容的代码。 为此，请将plugins参数传递给protoc-gen-go; 通常的方法是将其插入到protoc的–go_out参数中：</p>
+<p><code>$ protoc --go_out=plugins=grpc:. *.proto</code></p>
+<h2 id="在go中使用protobuf">在Go中使用Protobuf</h2>
+<p>您想要序列化并发送的消息可以包含在文件test.proto中，其中包含</p>
+<pre><code>package example;
+
+enum FOO { X = 17; };
+
+message Test {
+    required string label = 1;
+    optional int32 type = 2 [default=77];
+    repeated int64 reps = 3;
+    optional group OptionalGroup = 4 {
+    required string RequiredField = 5;
+    }
 }
+</code></pre><p>要编译协议缓冲区定义，请在将–go_out参数设置为要将Go代码输出到的目录下运行protoc。</p>
+<p><code>$ protoc --go_out=. *.proto</code></p>
+<p>要从示例包创建并使用Test对象:</p>
+<pre><code>package main
+
+import (
+    &quot;log&quot;
+
+    &quot;github.com/golang/protobuf/proto&quot;
+    &quot;path/to/example&quot;
+)
+
+func main() {
+    test := &amp;example.Test {
+        Label: proto.String(&quot;hello&quot;),
+        Type:  proto.Int32(17),
+        Reps:  []int64{1, 2, 3},
+        Optionalgroup: &amp;example.Test_OptionalGroup {
+            RequiredField: proto.String(&quot;good bye&quot;),
+        },
+    }
+    data, err := proto.Marshal(test)
+    if err != nil {
+        log.Fatal(&quot;marshaling error: &quot;, err)
+    }
+    newTest := &amp;example.Test{}
+    err = proto.Unmarshal(data, newTest)
+    if err != nil {
+        log.Fatal(&quot;unmarshaling error: &quot;, err)
+    }
+    // Now test and newTest contain the same data.
+    if test.GetLabel() != newTest.GetLabel() {
+        log.Fatalf(&quot;data mismatch %q != %q&quot;, test.GetLabel(), newTest.GetLabel())
+    }
+    // etc.
 }
-To compile the protocol buffer definition, run protoc with the –go_out parameter set to the directory you want to output the Go code to.</p>
-<p>$ protoc &ndash;go_out=. *.proto
-To create and play with a Test object from the example package,</p>
-<p>package main</p>
-<p>import (
-&ldquo;log&rdquo;</p>
-<pre><code>&quot;github.com/golang/protobuf/proto&quot;
-&quot;path/to/example&quot;
-</code></pre>
-<p>)</p>
-<p>func main() {
-test := &amp;example.Test {
-Label: proto.String(&ldquo;hello&rdquo;),
-Type:  proto.Int32(17),
-Reps:  []int64{1, 2, 3},
-Optionalgroup: &amp;example.Test_OptionalGroup {
-RequiredField: proto.String(&ldquo;good bye&rdquo;),
-},
-}
-data, err := proto.Marshal(test)
-if err != nil {
-log.Fatal(&ldquo;marshaling error: &ldquo;, err)
-}
-newTest := &amp;example.Test{}
-err = proto.Unmarshal(data, newTest)
-if err != nil {
-log.Fatal(&ldquo;unmarshaling error: &ldquo;, err)
-}
-// Now test and newTest contain the same data.
-if test.GetLabel() != newTest.GetLabel() {
-log.Fatalf(&ldquo;data mismatch %q != %q&rdquo;, test.GetLabel(), newTest.GetLabel())
-}
-// etc.
-}
-To pass extra parameters to the plugin, use a comma-separated parameter list separated from the output directory by a colon:</p>
-<p>$ protoc &ndash;go_out=plugins=grpc,import_path=mypackage:. *.proto</p>
+</code></pre><p>要将额外的参数传递给插件，请使用逗号分隔的参数列表，该列表与输出目录之间用冒号分隔：</p>
+<p><code>$ protoc --go_out=plugins=grpc,import_path=mypackage:. *.proto</code></p>
 
                                             
                                         </div>
@@ -221,18 +226,17 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">https://luangeng.space/post/go/basic/Protobuf-in-Go/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -294,17 +298,6 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -315,7 +308,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -326,18 +319,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -348,7 +330,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -359,7 +341,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -370,8 +352,30 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -751,7 +755,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -769,7 +773,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -799,7 +803,7 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -814,13 +818,13 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1006,14 +1010,13 @@ To pass extra parameters to the plugin, use a comma-separated parameter list sep
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

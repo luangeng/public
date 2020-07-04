@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go Command line arguments - Computer and Software Technology Open Course</title>
+  <title>Go Command line arguments - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Command line arguments - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go Command line arguments - 计算机与软件技术公开课">
   <meta name="description" content="Go Command line arguments">
-  <meta itemprop="name" content="Go Command line arguments - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go Command line arguments - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go Command line arguments">
-  <meta property="og:title" content="Go Command line arguments - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go Command line arguments - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Command-line-arguments/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Command line arguments Package flag in standard library is for parsing cmd-line arguments:
-var ( flgHelp bool flgEcho string )
-func parseCmdLineFlags() { flag.BoolVar(&amp;flgHelp, &ldquo;help&rdquo;, false, &ldquo;if true, show help&rdquo;) flag.StringVar(&amp;flgEcho, &ldquo;echo&rdquo;, &ldquo;&quot;, &ldquo;&quot;) flag.Parse() }
-func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&ldquo;flag -echo: &lsquo;%s&rsquo;\n&rdquo;, flgEcho)
-remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&quot;Remainig arg: &#39;%s&#39;\n&quot;, arg) }  }
-flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: &#39;arg&#39; Output above is a result of calling go run $file -echo echo-arg additional arg.">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="标准库中的软件包标志用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;flgHelp, &quot;help&quot;, false, &quot;if true, show help&quot;) flag.StringVar(&amp;flgEcho, &quot;echo&quot;, &quot;&quot;, &quot;&quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&quot;flag -echo: &#39;%s&#39;\n&quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&quot;Remainig arg: &#39;%s&#39;\n&quot;,">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Command-line-arguments/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Command-line-arguments/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -37,7 +34,6 @@ flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: 
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -94,7 +90,7 @@ flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: 
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -134,7 +130,7 @@ flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: 
                                     <h1 class="post-title">Go Command line arguments</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 743 Words
+                                        Posted @ 2019-09-09 · 837 Words
                                         
                                         · Tags: Go
                                         
@@ -153,111 +149,106 @@ flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: 
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Command line arguments
-Package flag in standard library is for parsing cmd-line arguments:</p>
-<p>var (
-flgHelp bool
-flgEcho string
-)</p>
-<p>func parseCmdLineFlags() {
-flag.BoolVar(&amp;flgHelp, &ldquo;help&rdquo;, false, &ldquo;if true, show help&rdquo;)
-flag.StringVar(&amp;flgEcho, &ldquo;echo&rdquo;, &ldquo;&quot;, &ldquo;&quot;)
-flag.Parse()
-}</p>
-<p>func main() {
-parseCmdLineFlags()
-if flgHelp {
-flag.Usage()
-os.Exit(0)
+                                            <p>标准库中的软件包标志用于解析命令行参数：</p>
+<pre><code>var (
+	flgHelp bool
+	flgEcho string
+)
+
+func parseCmdLineFlags() {
+	flag.BoolVar(&amp;flgHelp, &quot;help&quot;, false, &quot;if true, show help&quot;)
+	flag.StringVar(&amp;flgEcho, &quot;echo&quot;, &quot;&quot;, &quot;&quot;)
+	flag.Parse()
 }
-fmt.Printf(&ldquo;flag -echo: &lsquo;%s&rsquo;\n&rdquo;, flgEcho)</p>
-<pre><code>remainingArgs := flag.Args()
-for _, arg := range remainingArgs {
-    fmt.Printf(&quot;Remainig arg: '%s'\n&quot;, arg)
+
+func main() {
+	parseCmdLineFlags()
+	if flgHelp {
+		flag.Usage()
+		os.Exit(0)
+	}
+	fmt.Printf(&quot;flag -echo: '%s'\n&quot;, flgEcho)
+
+	remainingArgs := flag.Args()
+	for _, arg := range remainingArgs {
+		fmt.Printf(&quot;Remainig arg: '%s'\n&quot;, arg)
+	}
 }
-</code></pre>
-<p>}</p>
-<pre><code>flag -echo: 'echo-arg'
-Remainig arg: 'additional'
-Remainig arg: 'arg'
-Output above is a result of calling go run $file -echo echo-arg additional arg.
-
-Defining arguments
-Let’s say your program has an integer -retries option.
-
-You register such option with flag package using:
-
-var flgRetries int
+</code></pre><blockquote>
+<p>flag -echo: &lsquo;echo-arg&rsquo;<br>
+Remainig arg: &lsquo;additional&rsquo;<br>
+Remainig arg: &lsquo;arg&rsquo;</p>
+</blockquote>
+<p>上面的输出是调用go run $ file -echo echo-arg Additional arg的结果。</p>
+<p>定义参数
+假设您的程序有一个-retries整数选项。</p>
+<p>您可以使用以下标志包注册此类选项：</p>
+<pre><code>var flgRetries int
 defaultRetries := 0
 usage := &quot;retries specifies number of times to retry the operation&quot;
 flag.IntVar(&amp;flgRetries, &quot;retries&quot;, defaultRetries, usage)
-There are functions for other common types:
-
-flag.BoolVar
-flag.DurationVar
-flag.Float64Var
-flag.IntVar, flag.UIntVar, flag.Int64Var, flag.UInt64Var
-flag.StringVar
-If you register int argument with name retries, the way to provide it on cmd-line is -retries ${value} or -retries=${value}.
-
-POSIX variant --retries or Windows variant /retries are not recognized.
-
-For boolean values you can say: -help (implicitly true), -help=true or -help=false.
-
--help false is not a valid form for boolean variables.
-
-Parsing and accessing remaining arguments
-After parsing arguments, call flag.Parse().
-
-Parsing fails if:
-
-unknown flag was given on command-line
+</code></pre><p>还有其他常见类型的功能：</p>
+<ul>
+<li>flag.BoolVar</li>
+<li>flag.DurationVar</li>
+<li>flag.Float64Var</li>
+<li>flag.IntVar, flag.UIntVar, flag.Int64Var, flag.UInt64Var</li>
+<li>flag.StringVar
+If you register int argument with name retries, the way to provide it on cmd-line is -retries ${value} or -retries=${value}.</li>
+</ul>
+<p>POSIX variant &ndash;retries or Windows variant /retries are not recognized.</p>
+<p>For boolean values you can say: -help (implicitly true), -help=true or -help=false.</p>
+<p>-help false is not a valid form for boolean variables.</p>
+<p>Parsing and accessing remaining arguments
+After parsing arguments, call flag.Parse().</p>
+<p>Parsing fails if:</p>
+<p>unknown flag was given on command-line
 a flag didn’t parse based on its type (e.g. it was registered as int but the value was not a valid number)
-In case of failure, help text describing flags is shown and program exits with error code 2.
-
-You can explicitly print help text using flag.Usage(). This is often triggered by -help flag.
-
-Help text is based on usage text provided in flag.IntVar and others.
-
-Command-line arguments that don’t start with - are untouched and can be accessed with flag.Args().
-
-Limitations
-Features missing from flag package:
-
-no support for POSIX style --name, only -name is supported
-no support for short alternatives e.g. -n being synonym with --name
-no suport for Windows style /name
-If you need those features, your options are:
-
-access raw cmd-line arguments
-use a third party library
-
-## Access raw command line arguments
-If flag package or a third-party library doesn’t provide the features you want, you can parse the arguments yourself.
-
-func main() {
-	fmt.Printf(&quot;Name of executable: '%s'\n&quot;, os.Args[0])
-	args := os.Args[1:]
-	for i, arg := range args {
-		fmt.Printf(&quot;Arg %d, value: '%s'\n&quot;, i, arg)
-	}
+In case of failure, help text describing flags is shown and program exits with error code 2.</p>
+<p>You can explicitly print help text using flag.Usage(). This is often triggered by -help flag.</p>
+<p>Help text is based on usage text provided in flag.IntVar and others.</p>
+<p>Command-line arguments that don’t start with - are untouched and can be accessed with flag.Args().</p>
+<h2 id="局限性">局限性</h2>
+<p>flag包缺少的功能：
+no support for POSIX style &ndash;name, only -name is supported
+no support for short alternatives e.g. -n being synonym with &ndash;name
+no suport for Windows style /name</p>
+<p>If you need those features, your options are:</p>
+<p>access raw cmd-line arguments
+use a third party library</p>
+<h2 id="access-raw-command-line-arguments">Access raw command line arguments</h2>
+<p>If flag package or a third-party library doesn’t provide the features you want, you can parse the arguments yourself.</p>
+<p>func main() {
+fmt.Printf(&ldquo;Name of executable: &lsquo;%s&rsquo;\n&rdquo;, os.Args[0])
+args := os.Args[1:]
+for i, arg := range args {
+fmt.Printf(&ldquo;Arg %d, value: &lsquo;%s&rsquo;\n&rdquo;, i, arg)
 }
-</code></pre><p>Name of executable: &lsquo;/tmp/go-build870077205/b001/exe/main&rsquo;
-Arg 0, value: &lsquo;-echo&rsquo;
-Arg 1, value: &lsquo;echo-arg&rsquo;
-Arg 2, value: &lsquo;additional&rsquo;
-Arg 3, value: &lsquo;arg&rsquo;
-The above output is a result of go run $file -echo echo-arg additional arg.</p>
-<p>Raw arguments
-Raw command-line arguments can be accessed via []string slice os.Args.</p>
-<p>First element is name of the executable.</p>
-<p>Remaining elements are cmd-line arguments as decoded by OS shell.</p>
-<p>On Windows cmd-line arguments are a single UTF-16 Unicode string.</p>
-<p>Go runtime converts them to UTF-8 string and splits into separate arguments to unify handling across different operating systems.</p>
-<h2 id="libraries-for-advanced-parsing-of-command-line-arguments">Libraries for advanced parsing of command-line arguments</h2>
-<p>Functionaly provided by standard library package flag is limited.</p>
-<p>There is a number of libraries that provide more functionality for command line parsing:</p>
-<p>argparse - Command line argument parser inspired by Python’s argparse module.
+}</p>
+<pre><code>Name of executable: '/tmp/go-build870077205/b001/exe/main'
+Arg 0, value: '-echo'
+Arg 1, value: 'echo-arg'
+Arg 2, value: 'additional'
+Arg 3, value: 'arg'
+The above output is a result of go run $file -echo echo-arg additional arg.
+
+Raw arguments
+Raw command-line arguments can be accessed via []string slice os.Args.
+
+First element is name of the executable.
+
+Remaining elements are cmd-line arguments as decoded by OS shell.
+
+On Windows cmd-line arguments are a single UTF-16 Unicode string.
+
+Go runtime converts them to UTF-8 string and splits into separate arguments to unify handling across different operating systems.
+
+## Libraries for advanced parsing of command-line arguments
+Functionaly provided by standard library package flag is limited.
+
+There is a number of libraries that provide more functionality for command line parsing:
+
+argparse - Command line argument parser inspired by Python’s argparse module.
 cli - Feature-rich and easy to use command-line package based on golang struct tags.
 cli - Simple and complete API for building command line interfaces in Go.
 cli-init - The easy way to start building Golang command line applications.
@@ -276,8 +267,7 @@ pflag - Drop-in replacement for Go’s flag package, implementing POSIX/GNU-styl
 sflags - Struct based flags generator for flag, urfave/cli, pflag, cobra, kingpin and other libraries.
 strumt - Library to create prompt chain.
 ukautz/clif - Small command line interface framework.
-urfave/cli - Simple, fast, and fun package for building command line apps in Go (formerly codegangsta/cli).</p>
-
+urfave/cli - Simple, fast, and fun package for building command line apps in Go (formerly codegangsta/cli).</code></pre>
                                             
                                         </div>
 
@@ -293,18 +283,17 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Command-line-arguments/">https://luangeng.space/post/go/basic/Command-line-arguments/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -366,17 +355,6 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -387,18 +365,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -409,7 +376,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -420,7 +387,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -431,7 +398,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -442,8 +409,30 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
                 <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Executing-commands/" rel="bookmark" class="leancloud-count">Go Executing commands
+                <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -823,7 +812,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -839,7 +828,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -869,7 +858,7 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -884,13 +873,13 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1078,14 +1067,13 @@ urfave/cli - Simple, fast, and fun package for building command line apps in Go 
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

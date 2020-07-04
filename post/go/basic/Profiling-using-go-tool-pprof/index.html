@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go Profiling using go tool pprof - Computer and Software Technology Open Course</title>
+  <title>Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Profiling using go tool pprof - Computer and Software Technology Open Course">
-  <meta name="description" content="Go Profiling using go tool pprof">
-  <meta itemprop="name" content="Go Profiling using go tool pprof - Computer and Software Technology Open Course">
-  <meta itemprop="description" content="Go Profiling using go tool pprof">
-  <meta property="og:title" content="Go Profiling using go tool pprof - Computer and Software Technology Open Course" />
+  <meta name="keywords" content="Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课">
+  <meta name="description" content="Go 使用Go工具pprof进行性能分析">
+  <meta itemprop="name" content="Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go 使用Go工具pprof进行性能分析">
+  <meta property="og:title" content="Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Basic cpu and memory profiling Add the following code in you main program.
-var cpuprofile = flag.String(&ldquo;cpuprofile&rdquo;, &ldquo;&quot;, &ldquo;write cpu profile file&rdquo;) var memprofile = flag.String(&ldquo;memprofile&rdquo;, &ldquo;&quot;, &ldquo;write memory profile to file&rdquo;)
-func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&ldquo;could not create CPU profile: &ldquo;, err) } if err := pprof.StartCPUProfile(f); err != nil { log.Fatal(&ldquo;could not start CPU profile: &ldquo;, err) } defer pprof.">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="基本的cpu和内存分析 在主程序中添加以下代码。 var cpuprofile = flag.String(&quot;cpuprofile&quot;, &quot;&quot;, &quot;write cpu profile `file`&quot;) var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to `file`&quot;) func main() { flag.Parse() if *cpuprofile != &quot;&quot; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&quot;could not create CPU profile: &quot;, err) } if err">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -34,7 +34,6 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -91,7 +90,7 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -128,10 +127,10 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Go Profiling using go tool pprof</h1>
+                                    <h1 class="post-title">Go 使用Go工具pprof进行性能分析</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 540 Words
+                                        Posted @ 2019-09-09 · 578 Words
                                         
                                         · Tags: Go
                                         
@@ -139,7 +138,7 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
                                         
                                         
                                         · Hits:
-                                        <span id="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/" class="leancloud_visitors" data-flag-title="Go Profiling using go tool pprof">
+                                        <span id="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/" class="leancloud_visitors" data-flag-title="Go 使用Go工具pprof进行性能分析">
                                             <span class="leancloud-visitors-count">0</span>
                                         </span>
                                     </p>
@@ -150,100 +149,102 @@ func main() { flag.Parse() if *cpuprofile != &quot;&rdquo; { f, err := os.Create
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Basic cpu and memory profiling
-Add the following code in you main program.</p>
-<p>var cpuprofile = flag.String(&ldquo;cpuprofile&rdquo;, &ldquo;&quot;, &ldquo;write cpu profile <code>file</code>&rdquo;)
-var memprofile = flag.String(&ldquo;memprofile&rdquo;, &ldquo;&quot;, &ldquo;write memory profile to <code>file</code>&rdquo;)</p>
-<p>func main() {
-flag.Parse()
-if *cpuprofile != &quot;&rdquo; {
-f, err := os.Create(*cpuprofile)
-if err != nil {
-log.Fatal(&ldquo;could not create CPU profile: &ldquo;, err)
+                                            <p>基本的cpu和内存分析
+在主程序中添加以下代码。</p>
+<pre><code>var cpuprofile = flag.String(&quot;cpuprofile&quot;, &quot;&quot;, &quot;write cpu profile `file`&quot;)
+var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to `file`&quot;)
+
+func main() {
+    flag.Parse()
+    if *cpuprofile != &quot;&quot; {
+        f, err := os.Create(*cpuprofile)
+        if err != nil {
+            log.Fatal(&quot;could not create CPU profile: &quot;, err)
+        }
+        if err := pprof.StartCPUProfile(f); err != nil {
+            log.Fatal(&quot;could not start CPU profile: &quot;, err)
+        }
+        defer pprof.StopCPUProfile()
+    }
+    ...
+    if *memprofile != &quot;&quot; {
+        f, err := os.Create(*memprofile)
+        if err != nil {
+            log.Fatal(&quot;could not create memory profile: &quot;, err)
+        }
+        runtime.GC() // get up-to-date statistics
+        if err := pprof.WriteHeapProfile(f); err != nil {
+            log.Fatal(&quot;could not write memory profile: &quot;, err)
+        }
+        f.Close()
+    }
 }
-if err := pprof.StartCPUProfile(f); err != nil {
-log.Fatal(&ldquo;could not start CPU profile: &ldquo;, err)
-}
-defer pprof.StopCPUProfile()
-}
-&hellip;
-if *memprofile != &quot;&rdquo; {
-f, err := os.Create(*memprofile)
-if err != nil {
-log.Fatal(&ldquo;could not create memory profile: &ldquo;, err)
-}
-runtime.GC() // get up-to-date statistics
-if err := pprof.WriteHeapProfile(f); err != nil {
-log.Fatal(&ldquo;could not write memory profile: &ldquo;, err)
-}
-f.Close()
-}
-}
-After that build the go program if added in main go build main.go. Run main program with flags defined in code main.exe -cpuprofile cpu.prof -memprof mem.prof. If the profiling is done for test cases run the tests with same flags go test -cpuprofile cpu.prof -memprofile mem.prof</p>
-<h2 id="using-benchmarks-to-create-profile">Using Benchmarks to Create Profile</h2>
+</code></pre><p>After that build the go program if added in main go build main.go. Run main program with flags defined in code main.exe -cpuprofile cpu.prof -memprof mem.prof. If the profiling is done for test cases run the tests with same flags go test -cpuprofile cpu.prof -memprofile mem.prof</p>
+<h2 id="使用基准创建配置文件">使用基准创建配置文件</h2>
 <p>For a non-main packages as well as main, instead of adding flags inside the code, write benchmarks in the test package , for example:</p>
-<p>func BenchmarkHello(b *testing.B) {
-for i := 0; i &lt; b.N; i++ {
-fmt.Sprintf(&ldquo;hello&rdquo;)
+<pre><code>func BenchmarkHello(b *testing.B) {
+    for i := 0; i &lt; b.N; i++ {
+        fmt.Sprintf(&quot;hello&quot;)
+    }
 }
+</code></pre><p>Then run the test with the profile flag</p>
+<p><code>go test -cpuprofile cpu.prof -bench=.</code></p>
+<p>And the benchmarks will be run and create a prof file with filename cpu.prof (in the above example).</p>
+<h2 id="基本内存配置">基本内存配置</h2>
+<pre><code>var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to `file`&quot;)
+
+func main() {
+    flag.Parse()
+    if *memprofile != &quot;&quot; {
+        f, err := os.Create(*memprofile)
+        if err != nil {
+            log.Fatal(&quot;could not create memory profile: &quot;, err)
+        }
+        runtime.GC() // get up-to-date statistics
+        if err := pprof.WriteHeapProfile(f); err != nil {
+            log.Fatal(&quot;could not write memory profile: &quot;, err)
+        }
+        f.Close()
+    }
 }
-Then run the test with the profile flag</p>
-<p>go test -cpuprofile cpu.prof -bench=.
-And the benchmarks will be run and create a prof file with filename cpu.prof (in the above example).</p>
-<h2 id="basic-memory-profiling">Basic memory profiling</h2>
-<p>var memprofile = flag.String(&ldquo;memprofile&rdquo;, &ldquo;&quot;, &ldquo;write memory profile to <code>file</code>&rdquo;)</p>
-<p>func main() {
-flag.Parse()
-if *memprofile != &quot;&rdquo; {
-f, err := os.Create(*memprofile)
-if err != nil {
-log.Fatal(&ldquo;could not create memory profile: &ldquo;, err)
-}
-runtime.GC() // get up-to-date statistics
-if err := pprof.WriteHeapProfile(f); err != nil {
-log.Fatal(&ldquo;could not write memory profile: &ldquo;, err)
-}
-f.Close()
-}
-}
-$ go build main.go
+</code></pre><pre><code>$ go build main.go
 $ main.exe -memprofile mem.prof
-$ go tool pprof main.exe mem.prof</p>
-<h2 id="set-cpublock-profile-rate">Set CPU/Block profile rate</h2>
-<p>// Sets the CPU profiling rate to hz samples per second
+$ go tool pprof main.exe mem.prof
+</code></pre><h2 id="设置cpu块配置文件速率">设置CPU/块配置文件速率</h2>
+<pre><code>// Sets the CPU profiling rate to hz samples per second
 // If hz &lt;= 0, SetCPUProfileRate turns off profiling
-runtime.SetCPUProfileRate(hz)</p>
-<p>// Controls the fraction of goroutine blocking events that are reported in the blocking profile
+runtime.SetCPUProfileRate(hz)
+
+// Controls the fraction of goroutine blocking events that are reported in the blocking profile
 // Rate = 1 includes every blocking event in the profile
 // Rate &lt;= 0 turns off profiling
-runtime.SetBlockProfileRate(rate)</p>
-<h2 id="accessing-profile-file">Accessing Profile File</h2>
+runtime.SetBlockProfileRate(rate)
+</code></pre><h2 id="访问配置文件">访问配置文件</h2>
 <p>Once a prof file has been generated, one can access the prof file using go tools:</p>
-<p>go tool pprof cpu.prof
+<p><code>go tool pprof cpu.prof</code>
 This will enter into a command line interface for exploring the profile</p>
-<p>Common commands include:</p>
-<p>(pprof) top
-lists top processes in memory</p>
-<p>(pprof) peek
-Lists all processes, use regex to narrow search.</p>
-<p>(pprof) web
-Opens an graph (in svg format) of the process.</p>
-<p>An example of the top command:</p>
-<p>69.29s of 100.84s total (68.71%)
+<p>常用命令包括：</p>
+<ul>
+<li>(pprof) top    Lists top processes in memory</li>
+<li>(pprof) peek   Lists all processes, use regex to narrow search.</li>
+<li>(pprof) web    Opens an graph (in svg format) of the process.</li>
+</ul>
+<p>top命令的示例：</p>
+<pre><code>69.29s of 100.84s total (68.71%)
 Dropped 176 nodes (cum &lt;= 0.50s)
 Showing top 10 nodes out of 73 (cum &gt;= 12.03s)
-flat  flat%   sum%        cum   cum%
-12.44s 12.34% 12.34%     27.87s 27.64%  runtime.mapaccess1
-10.94s 10.85% 23.19%     10.94s 10.85%  runtime.duffcopy
-9.45s  9.37% 32.56%     54.61s 54.16%  github.com/tester/test.(*Circle).Draw
-8.88s  8.81% 41.36%      8.88s  8.81%  runtime.aeshashbody
-7.90s  7.83% 49.20%     11.04s 10.95%  runtime.mapaccess1_fast64
-5.86s  5.81% 55.01%      9.59s  9.51%  github.com/tester/test.(*Circle).isCircle
-5.03s  4.99% 60.00%      8.89s  8.82%  github.com/tester/test.(*Circle).openCircle
-3.14s  3.11% 63.11%      3.14s  3.11%  runtime.aeshash64
-3.08s  3.05% 66.16%      7.85s  7.78%  runtime.mallocgc
-2.57s  2.55% 68.71%     12.03s 11.93%  runtime.memhash</p>
-
+        flat  flat%   sum%        cum   cum%
+    12.44s 12.34% 12.34%     27.87s 27.64%  runtime.mapaccess1
+    10.94s 10.85% 23.19%     10.94s 10.85%  runtime.duffcopy
+        9.45s  9.37% 32.56%     54.61s 54.16%  github.com/tester/test.(*Circle).Draw
+        8.88s  8.81% 41.36%      8.88s  8.81%  runtime.aeshashbody
+        7.90s  7.83% 49.20%     11.04s 10.95%  runtime.mapaccess1_fast64
+        5.86s  5.81% 55.01%      9.59s  9.51%  github.com/tester/test.(*Circle).isCircle
+        5.03s  4.99% 60.00%      8.89s  8.82%  github.com/tester/test.(*Circle).openCircle
+        3.14s  3.11% 63.11%      3.14s  3.11%  runtime.aeshash64
+        3.08s  3.05% 66.16%      7.85s  7.78%  runtime.mallocgc
+        2.57s  2.55% 68.71%     12.03s 11.93%  runtime.memhash
+        ```</code></pre>
                                             
                                         </div>
 
@@ -259,18 +260,17 @@ flat  flat%   sum%        cum   cum%
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -332,17 +332,6 @@ flat  flat%   sum%        cum   cum%
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -353,7 +342,7 @@ flat  flat%   sum%        cum   cum%
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -364,18 +353,7 @@ flat  flat%   sum%        cum   cum%
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -386,7 +364,7 @@ flat  flat%   sum%        cum   cum%
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -397,7 +375,7 @@ flat  flat%   sum%        cum   cum%
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -408,8 +386,30 @@ flat  flat%   sum%        cum   cum%
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -789,7 +789,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -807,7 +807,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -837,7 +837,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -856,7 +856,7 @@ flat  flat%   sum%        cum   cum%
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1044,14 +1044,13 @@ flat  flat%   sum%        cum   cum%
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

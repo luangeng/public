@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go JSON - Computer and Software Technology Open Course</title>
+  <title>Go JSON - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go JSON - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go JSON - 计算机与软件技术公开课">
   <meta name="description" content="Go JSON">
-  <meta itemprop="name" content="Go JSON - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go JSON - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go JSON">
-  <meta property="og:title" content="Go JSON - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go JSON - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/JSON/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="JSON Package encoding/json in standard library provides functionality for serializing data as JSON and parsing JSON into data.
-Serialize a struct as JSON type Person struct { fullName string Name string Age int json:&quot;age&quot; City string json:&quot;city&quot; }
-p := Person{ Name: &ldquo;John&rdquo;, Age: 37, City: &ldquo;SF&rdquo;, } d, err := json.Marshal(&amp;p) if err != nil { log.Fatalf(&ldquo;json.MarshalIndent failed with &lsquo;%s&rsquo;\n&rdquo;, err) } fmt.Printf(&ldquo;Person in compact JSON: %s\n&rdquo;, string(d))
-d, err = json.">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&quot;age&quot;` City string `json:&quot;city&quot;`">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/JSON/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/JSON/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -35,7 +34,6 @@ d, err = json.">
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -92,7 +90,7 @@ d, err = json.">
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -132,7 +130,7 @@ d, err = json.">
                                     <h1 class="post-title">Go JSON</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1760 Words
+                                        Posted @ 2019-09-09 · 1895 Words
                                         
                                         · Tags: Go
                                         
@@ -151,63 +149,54 @@ d, err = json.">
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>JSON
-Package encoding/json in standard library provides functionality for serializing data as JSON and parsing JSON into data.</p>
-<p>Serialize a struct as JSON
-type Person struct {
-fullName string
-Name     string
-Age      int    <code>json:&quot;age&quot;</code>
-City     string <code>json:&quot;city&quot;</code>
-}</p>
-<p>p := Person{
-Name: &ldquo;John&rdquo;,
-Age:  37,
-City: &ldquo;SF&rdquo;,
+                                            <p>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能.</p>
+<h3 id="序列化struct为json">序列化struct为JSON</h3>
+<pre><code>type Person struct {
+	fullName string
+	Name     string
+	Age      int    `json:&quot;age&quot;`
+	City     string `json:&quot;city&quot;`
+}
+
+p := Person{
+	Name: &quot;John&quot;,
+	Age:  37,
+	City: &quot;SF&quot;,
 }
 d, err := json.Marshal(&amp;p)
 if err != nil {
-log.Fatalf(&ldquo;json.MarshalIndent failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
-fmt.Printf(&ldquo;Person in compact JSON: %s\n&rdquo;, string(d))</p>
-<p>d, err = json.MarshalIndent(p, &ldquo;&quot;, &quot;  &ldquo;)
+fmt.Printf(&quot;Person in compact JSON: %s\n&quot;, string(d))
+
+d, err = json.MarshalIndent(p, &quot;&quot;, &quot;  &quot;)
 if err != nil {
-log.Fatalf(&ldquo;json.MarshalIndent failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
-fmt.Printf(&ldquo;Person in pretty-printed JSON:\n%s\n&rdquo;, string(d))</p>
-<pre><code>Person in compact JSON: {&quot;Name&quot;:&quot;John&quot;,&quot;age&quot;:37,&quot;city&quot;:&quot;SF&quot;}
-Person in pretty-printed JSON:
-{
-  &quot;Name&quot;: &quot;John&quot;,
-  &quot;age&quot;: 37,
-  &quot;city&quot;: &quot;SF&quot;
-}
-Both json.Marshal and json.MarshalIndent take interface{} as first argument. We can pass any Go value, it’ll be wrapped into interface{} with their type.
-
-Marshaller will use reflection to inspect passed value and encode it as JSON strings.
-
-When serializing structs, only exported fields (whose names start with capital letter) are serialized / deserialized.
-
-In our example, fullName is not serialized.
-
-Structs are serialized as JSON dictionaries. By default dictionary keys are the same as struct field names.
-
-Struct field Name is serialized under dictionary key Name.
-
-We can provide custom mappings with struct tags.
-
-We can attach arbitrary struct tags string to struct fields.
-
-json:&quot;age&quot; instructs JSON encoder / decoder to use name age for dictionary key representing field Age.
-
-When serializing structs, passing the value and a pointer to it generates the same result.
-
-Passing a pointer is more efficient because passing by value creates unnecessary copy.
-
-json.MarshallIndent allows for pretty-printing of nested structures. The result takes up more space but is easier to read.
-
-Parse JSON into a struct
-type Person struct {
+fmt.Printf(&quot;Person in pretty-printed JSON:\n%s\n&quot;, string(d))
+</code></pre><blockquote>
+<p>Person in compact JSON: {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;age&rdquo;:37,&ldquo;city&rdquo;:&ldquo;SF&rdquo;}<br>
+Person in pretty-printed JSON:<br>
+{<br>
+&ldquo;Name&rdquo;: &ldquo;John&rdquo;,<br>
+&ldquo;age&rdquo;: 37,<br>
+&ldquo;city&rdquo;: &ldquo;SF&rdquo;<br>
+}</p>
+</blockquote>
+<p>Both json.Marshal and json.MarshalIndent take interface{} as first argument. We can pass any Go value, it’ll be wrapped into interface{} with their type.</p>
+<p>Marshaller will use reflection to inspect passed value and encode it as JSON strings.</p>
+<p>When serializing structs, only exported fields (whose names start with capital letter) are serialized / deserialized.</p>
+<p>In our example, fullName is not serialized.</p>
+<p>Structs are serialized as JSON dictionaries. By default dictionary keys are the same as struct field names.</p>
+<p>Struct field Name is serialized under dictionary key Name.</p>
+<p>We can provide custom mappings with struct tags.</p>
+<p>We can attach arbitrary struct tags string to struct fields.</p>
+<p>json:&ldquo;age&rdquo; instructs JSON encoder / decoder to use name age for dictionary key representing field Age.</p>
+<p>When serializing structs, passing the value and a pointer to it generates the same result.</p>
+<p>Passing a pointer is more efficient because passing by value creates unnecessary copy.</p>
+<p>json.MarshallIndent allows for pretty-printing of nested structures. The result takes up more space but is easier to read.</p>
+<h3 id="把json转为struct">把JSON转为struct</h3>
+<pre><code>type Person struct {
 	Name       *string `json:&quot;name&quot;`
 	Age        int     `json:&quot;age&quot;`
 	City       string
@@ -227,9 +216,11 @@ if err != nil {
 }
 fmt.Printf(&quot;Person struct parsed from JSON: %#v\n&quot;, p)
 fmt.Printf(&quot;Name: %#v\n&quot;, *p.Name)
-</code></pre><p>Person struct parsed from JSON: main.Person{Name:(*string)(0xc000010330), Age:24, City:&ldquo;ny&rdquo;, Occupation:&quot;&quot;}
-Name: &ldquo;Jane&rdquo;
-Parsing is the opposite of serializing.</p>
+</code></pre><blockquote>
+<p>Person struct parsed from JSON: main.Person{Name:(*string)(0xc000010330), Age:24, City:&ldquo;ny&rdquo;, Occupation:&quot;&quot;}<br>
+Name: &ldquo;Jane&rdquo;</p>
+</blockquote>
+<p>Parsing is the opposite of serializing.</p>
 <p>Unlike with serializing, when parsing into structs, we must pass a pointer to struct. Otherwise json.Unmarshal will receive and modify a copy of the struct, not the struct itself. The copy will be then discarded after returning from json.Unmarshal.</p>
 <p>Notice that JSON element city was decoded into City struct field even though the names don’t match and we didn’t provide explicit mapping with json struct tag.</p>
 <p>That happened because JSON decoder has a little bit of smarts when matching dictionary key names to struct field names. It’s best to not rely on such smarts and define mappings explicitly.</p>
@@ -249,32 +240,34 @@ See more in type mappings.</p>
 <h2 id="parsing-arbitrary-json-documents">Parsing arbitrary JSON documents</h2>
 <p>Parsing into a struct is very convenient but sometimes you don’t know the structure of JSON document upfront.</p>
 <p>For arbitrary JSON documents we can decode into a map[string]interface{}, which can represent all valid JSON documents.</p>
-<p>var jsonStr = <code>{ &quot;name&quot;: &quot;Jane&quot;, &quot;age&quot;: 24, &quot;city&quot;: &quot;ny&quot; }</code></p>
-<p>var doc map[string]interface{}
+<pre><code>var jsonStr = `{
+	&quot;name&quot;: &quot;Jane&quot;,
+	&quot;age&quot;: 24,
+	&quot;city&quot;: &quot;ny&quot;
+}`
+
+var doc map[string]interface{}
 err := json.Unmarshal([]byte(jsonStr), &amp;doc)
 if err != nil {
-log.Fatalf(&ldquo;json.Unmarshal failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+	log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
 }
-fmt.Printf(&ldquo;doc: %#v\n&rdquo;, doc)
-name, ok := doc[&ldquo;name&rdquo;].(string)
+fmt.Printf(&quot;doc: %#v\n&quot;, doc)
+name, ok := doc[&quot;name&quot;].(string)
 if !ok {
-log.Fatalf(&ldquo;doc has no key &lsquo;name&rsquo; or its value is not string\n&rdquo;)
+	log.Fatalf(&quot;doc has no key 'name' or its value is not string\n&quot;)
 }
-fmt.Printf(&ldquo;name: %#v\n&rdquo;, name)</p>
-<pre><code>doc: map[string]interface {}{&quot;age&quot;:24, &quot;city&quot;:&quot;ny&quot;, &quot;name&quot;:&quot;Jane&quot;}
-name: &quot;Jane&quot;
-For basic JSON types, the value in the map is bool, int, float64 or string.
-
-For JSON arrays, the value is []interface{}.
-
-For JSON dictionaries, the value is (again) map[string]interface{}.
-
-This approach is flexible but dealing with map[string]interface{} to access values is rather painful.
-
-## Decoding into anonymous structs
-When parsing into a struct we can avoid declaring struct types by using anonymous structs.
-
-var jsonBlob = []byte(`
+fmt.Printf(&quot;name: %#v\n&quot;, name)
+</code></pre><blockquote>
+<p>doc: map[string]interface {}{&ldquo;age&rdquo;:24, &ldquo;city&rdquo;:&ldquo;ny&rdquo;, &ldquo;name&rdquo;:&ldquo;Jane&rdquo;}<br>
+name: &ldquo;Jane&rdquo;</p>
+</blockquote>
+<p>For basic JSON types, the value in the map is bool, int, float64 or string.</p>
+<p>For JSON arrays, the value is []interface{}.</p>
+<p>For JSON dictionaries, the value is (again) map[string]interface{}.</p>
+<p>This approach is flexible but dealing with map[string]interface{} to access values is rather painful.</p>
+<h3 id="反序列化为匿名struct">反序列化为匿名struct</h3>
+<p>When parsing into a struct we can avoid declaring struct types by using anonymous structs.</p>
+<pre><code>var jsonBlob = []byte(`
 {
   &quot;_total&quot;: 1,
   &quot;_links&quot;: {
@@ -322,74 +315,70 @@ if err != nil {
 	fmt.Println(&quot;error:&quot;, err)
 }
 fmt.Printf(&quot;%+v&quot;, js)
-</code></pre><p>{Total:1 Links:{Next:https://api.twitch.tv/kraken/channels/foo/subscriptions?direction=ASC&amp;limit=25&amp;offset=25} Subs:[{Created:2011-11-23T02:53:17Z User:{Name:bar ID:123456}}]}</p>
-<h2 id="decoding-json-from-a-file">Decoding JSON from a file</h2>
-<p>We can decode JSON data from a file on disk or, more broadly, any io.Reader, like a network connection.</p>
-<p>The following example reads the file and decodes the content:</p>
-<p>type Student struct {
-Name     string
-Standard int <code>json:&quot;Standard&quot;</code>
-}</p>
-<p>func decodeFromReader(r io.Reader) ([]*Student, error) {
-var res []*Student</p>
-<pre><code>dec := json.NewDecoder(r)
-err := dec.Decode(&amp;res)
-if err != nil {
-    return nil, err
+</code></pre><blockquote>
+<p>{Total:1 Links:{Next:https://api.twitch.tv/kraken/channels/foo/subscriptions?direction=ASC&amp;limit=25&amp;offset=25} Subs:[{Created:2011-11-23T02:53:17Z User:{Name:bar ID:123456}}]}</p>
+</blockquote>
+<h2 id="从文件反序列化json">从文件反序列化JSON</h2>
+<p>我们可以从磁盘上的文件,或者任何io.Reader,比如网络连接来反序列化JSON.
+下面的例子从文件读取JSON并反序列化:</p>
+<pre><code>type Student struct {
+	Name     string
+	Standard int `json:&quot;Standard&quot;`
 }
-return res, nil
-</code></pre>
-<p>}</p>
-<p>func decodeFromString(s string) ([]*Student, error) {
-r := bytes.NewBufferString(s)
-return decodeFromReader(r)
-}</p>
-<p>func decodeFromFile(path string) ([]*Student, error) {
-f, err := os.Open(path)
-if err != nil {
-return nil, err
+
+func decodeFromReader(r io.Reader) ([]*Student, error) {
+	var res []*Student
+
+	dec := json.NewDecoder(r)
+	err := dec.Decode(&amp;res)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
-defer f.Close()
-return decodeFromReader(f)
-}</p>
-<pre><code>Student: John Doe, standard: 4
+
+func decodeFromString(s string) ([]*Student, error) {
+	r := bytes.NewBufferString(s)
+	return decodeFromReader(r)
+}
+
+func decodeFromFile(path string) ([]*Student, error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	return decodeFromReader(f)
+}
+</code></pre><blockquote>
+<p>Student: John Doe, standard: 4
 Student: Peter Parker, standard: 11
-Student: Bilbo Baggins, standard: 150
-By writing a helper function decodeFromReader, we can easily write wrappers that will work on files, strings or network connections.
-
-
-## Configuring JSON serialization
-Hide/skip certain fields
-To export Revenue and Sales, but hide them from encoding/decoding, use json:&quot;-&quot; or rename the variable to begin with a lowercase letter. Note that this prevents the variable from being visible outside the package.
-
-type Company struct {
+Student: Bilbo Baggins, standard: 150</p>
+</blockquote>
+<p>By writing a helper function decodeFromReader, we can easily write wrappers that will work on files, strings or network connections.</p>
+<h2 id="configuring-json-serialization">Configuring JSON serialization</h2>
+<p>Hide/skip certain fields
+To export Revenue and Sales, but hide them from encoding/decoding, use json:&quot;-&rdquo; or rename the variable to begin with a lowercase letter. Note that this prevents the variable from being visible outside the package.</p>
+<pre><code>type Company struct {
     Name     string `json:&quot;name&quot;`
     Location string `json:&quot;location&quot;`
     Revenue  int    `json:&quot;-&quot;`
     sales    int
 }
-Ignore empty fields
-To prevent Location from being included in the JSON when it is set to its zero value, add ,omitempty to the json tag.
-
-type Company struct {
+</code></pre><p>Ignore empty fields
+To prevent Location from being included in the JSON when it is set to its zero value, add ,omitempty to the json tag.</p>
+<pre><code>type Company struct {
     Name     string `json:&quot;name&quot;`
     Location string `json:&quot;location,omitempty&quot;`
 }
-
-
-## Custom JSON marshaling
-Writing custom JSON marshalling
-Sometimes a type doesn’t have an obvious mapping to JSON.
-
-How would you serialize time.Time? There are so many possibilities.
-
-Go provides a default JSON mapping for time.Time. We can implement custom marshaller for user-defined types like structs.
-
-For existing types we can define a new (but compatible) type.
-
-Here’s a custom marshalling and unmarshaling for time.Time that only serializes year/month/date part:
-
-type Event struct {
+</code></pre><h2 id="custom-json-marshaling">Custom JSON marshaling</h2>
+<p>Writing custom JSON marshalling
+Sometimes a type doesn’t have an obvious mapping to JSON.</p>
+<p>How would you serialize time.Time? There are so many possibilities.</p>
+<p>Go provides a default JSON mapping for time.Time. We can implement custom marshaller for user-defined types like structs.</p>
+<p>For existing types we can define a new (but compatible) type.</p>
+<p>Here’s a custom marshalling and unmarshaling for time.Time that only serializes year/month/date part:</p>
+<pre><code>type Event struct {
 	What string
 	When time.Time
 }
@@ -453,117 +442,115 @@ Notice that receiver type of UnmashalJSON is a pointer to the type.</p>
 <p>This is necessary for changes to persist outside the function itself.</p>
 <p>Marshaling structs with private fields
 Consider a struct with both exported and unexported fields:</p>
-<p>type MyStruct struct {
-uuid string
-Name string
+<pre><code>type MyStruct struct {
+    uuid string
+    Name string
 }
-Imagine you want to Marshal() this struct into valid JSON for storage in something like etcd.</p>
+</code></pre><p>Imagine you want to Marshal() this struct into valid JSON for storage in something like etcd.</p>
 <p>However, since uuid in not exported, the json.Marshal() skips it.</p>
 <p>To marshal private fields without making them public we can use a custom marshaller:</p>
-<p>type MyStruct struct {
-uuid string
-Name string
-}</p>
-<p>func (m MyStruct) MarshalJSON() ([]byte, error) {
-j, err := json.Marshal(struct {
-Uuid string
-Name string
-}{
-Uuid: m.uuid,
-Name: m.Name,
-})
-if err != nil {
-return nil, err
+<pre><code>type MyStruct struct {
+	uuid string
+	Name string
 }
-return j, nil
-}</p>
-<p>s := MyStruct{
-uuid: &ldquo;uid-john&rdquo;,
-Name: &ldquo;John&rdquo;,
+
+func (m MyStruct) MarshalJSON() ([]byte, error) {
+	j, err := json.Marshal(struct {
+		Uuid string
+		Name string
+	}{
+		Uuid: m.uuid,
+		Name: m.Name,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return j, nil
+}
+
+s := MyStruct{
+	uuid: &quot;uid-john&quot;,
+	Name: &quot;John&quot;,
 }
 d, err := json.Marshal(&amp;s)
 if err != nil {
-log.Fatalf(&ldquo;json.MarshalIndent failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
-fmt.Printf(&ldquo;Person in compact JSON: %s\n&rdquo;, string(d))</p>
-<pre><code>Person in compact JSON: {&quot;Uuid&quot;:&quot;uid-john&quot;,&quot;Name&quot;:&quot;John&quot;}
+fmt.Printf(&quot;Person in compact JSON: %s\n&quot;, string(d))
+</code></pre><p>Person in compact JSON: {&ldquo;Uuid&rdquo;:&ldquo;uid-john&rdquo;,&ldquo;Name&rdquo;:&ldquo;John&rdquo;}
 Custom marshaling behind the scenes
-How does custom marshaling works?
-
-Package JSON defines 2 interfaces: Marshaler and Unmarshaler.
-
-type Marshaler interface {
-    MarshalJSON() ([]byte, error)
+How does custom marshaling works?</p>
+<p>Package JSON defines 2 interfaces: Marshaler and Unmarshaler.</p>
+<p>type Marshaler interface {
+MarshalJSON() ([]byte, error)
+}</p>
+<p>type Unmarshaler interface {
+UnmarshalJSON([]byte) error
 }
-
-type Unmarshaler interface {
-    UnmarshalJSON([]byte) error
-}
-By implementing those functions we make our type conform to Marshaler or Unmarshaler interface.
-
-JSON encoder / decoder checks if the value being encoded conforms to those interfaces and will call those functions instead of executing default logic.
-
-## Go to JSON type mappings
-Mapping between Go types and JSON types:
-
-JSON type	Go type
+By implementing those functions we make our type conform to Marshaler or Unmarshaler interface.</p>
+<p>JSON encoder / decoder checks if the value being encoded conforms to those interfaces and will call those functions instead of executing default logic.</p>
+<h2 id="go-to-json-type-mappings">Go to JSON type mappings</h2>
+<p>Mapping between Go types and JSON types:</p>
+<p>JSON type	Go type
 null	nil
 boolean	bool
 number	float64 or int
 string	string
 array	slice
 dictionary	map[struct]interface{} or struct
-Here’s how they look in practice:
-
-func printSerialized(v interface{}, w io.Writer) {
-	d, err := json.Marshal(v)
-	if err != nil {
-		log.Fatalf(&quot;json.Marshal failed with '%s'\n&quot;, err)
-	}
-	fmt.Fprintf(w, &quot;%T\t%s\n&quot;, v, string(d))
+Here’s how they look in practice:</p>
+<p>func printSerialized(v interface{}, w io.Writer) {
+d, err := json.Marshal(v)
+if err != nil {
+log.Fatalf(&ldquo;json.Marshal failed with &lsquo;%s&rsquo;\n&rdquo;, err)
 }
-
-w := new(tabwriter.Writer)
-w.Init(os.Stdout, 5, 0, 1, ' ', 0)
-fmt.Fprint(w, &quot;Go type:\tJSON value:\n&quot;)
-fmt.Fprint(w, &quot;\t\n&quot;)
+fmt.Fprintf(w, &ldquo;%T\t%s\n&rdquo;, v, string(d))
+}</p>
+<p>w := new(tabwriter.Writer)
+w.Init(os.Stdout, 5, 0, 1, ' &lsquo;, 0)
+fmt.Fprint(w, &ldquo;Go type:\tJSON value:\n&rdquo;)
+fmt.Fprint(w, &ldquo;\t\n&rdquo;)
 printSerialized(nil, w)
 printSerialized(5, w)
 printSerialized(8.23, w)
-printSerialized(&quot;john&quot;, w)
+printSerialized(&ldquo;john&rdquo;, w)
 ai := []int{5, 4, 18}
 printSerialized(ai, w)
-a := []interface{}{4, &quot;string&quot;}
+a := []interface{}{4, &ldquo;string&rdquo;}
 printSerialized(a, w)
 d := map[string]interface{}{
-	&quot;i&quot;: 5,
-	&quot;s&quot;: &quot;foo&quot;,
+&ldquo;i&rdquo;: 5,
+&ldquo;s&rdquo;: &ldquo;foo&rdquo;,
 }
 printSerialized(d, w)
 s := struct {
-	Name string
-	Age  int
+Name string
+Age  int
 }{
-	Name: &quot;John&quot;,
-	Age:  37,
+Name: &ldquo;John&rdquo;,
+Age:  37,
 }
 printSerialized(s, w)
-w.Flush()
-</code></pre><p>Go type:                        JSON value:</p>
-<p><!-- raw HTML omitted -->                           null
+w.Flush()</p>
+<pre><code>Go type:                        JSON value:
+                                
+&lt;nil&gt;                           null
 int                             5
 float64                         8.23
-string                          &ldquo;john&rdquo;
+string                          &quot;john&quot;
 []int                           [5,4,18]
-[]interface {}                  [4,&ldquo;string&rdquo;]
-map[string]interface {}         {&ldquo;i&rdquo;:5,&ldquo;s&rdquo;:&ldquo;foo&rdquo;}
-struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Age&rdquo;:37}</p>
-<h2 id="easy-generation-of-json-struct-definition">Easy generation of JSON struct definition</h2>
-<p>Writing struct definitions that map structure of JSON file is tedious.</p>
-<p>If you have a sample JSON file, you can auto-generate Go definitions using online tools:</p>
-<p><a href="https://app.quicktype.io/">https://app.quicktype.io/</a>
-<a href="https://mholt.github.io/json-to-go/">https://mholt.github.io/json-to-go/</a></p>
+[]interface {}                  [4,&quot;string&quot;]
+map[string]interface {}         {&quot;i&quot;:5,&quot;s&quot;:&quot;foo&quot;}
+struct { Name string; Age int } {&quot;Name&quot;:&quot;John&quot;,&quot;Age&quot;:37}
 
+## Easy generation of JSON struct definition
+Writing struct definitions that map structure of JSON file is tedious.
+
+If you have a sample JSON file, you can auto-generate Go definitions using online tools:
+
+https://app.quicktype.io/
+https://mholt.github.io/json-to-go/
+</code></pre>
                                             
                                         </div>
 
@@ -579,18 +566,17 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/JSON/">https://luangeng.space/post/go/basic/JSON/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -652,17 +638,6 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -673,7 +648,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -684,18 +659,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -706,7 +670,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -717,7 +681,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -728,8 +692,30 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1109,7 +1095,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -1127,7 +1113,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -1155,7 +1141,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -1170,13 +1156,13 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1364,14 +1350,13 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

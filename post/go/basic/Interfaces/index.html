@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 接口 - Computer and Software Technology Open Course</title>
+  <title>Go 接口 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 接口 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 接口 - 计算机与软件技术公开课">
   <meta name="description" content="Go 接口">
-  <meta itemprop="name" content="Go 接口 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 接口 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 接口">
-  <meta property="og:title" content="Go 接口 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 接口 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Interfaces/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定给定对象的行为。 例如：一个标准库定义了io.Re">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Interfaces/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Interfaces/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 接口</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2382 Words
+                                        Posted @ 2019-09-09 · 2447 Words
                                         
                                         · Tags: Go
                                         
@@ -150,19 +151,19 @@
                                             
                                             <p>接口在类型上定义了一组方法。
 接口用于抽象行为。
-在Go中，接口只是一组方法。 我们使用接口来指定给定对象的行为。</p>
-<p>例如：一个标准库定义了io.Reader接口：</p>
+在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。</p>
+<p>例如：标准库中定义的io.Reader接口：</p>
 <pre><code>type Reader interface {
     Read(d []byte) (int, error)
 }
 </code></pre><p>对二进制数据流进行操作的大多数函数（例如json解码器）都将io.Reader用作数据源。 这样，我们可以为物理文件，内存中的字节，网络连接实现Reader接口，并在所有这些源上使用json.Decode。</p>
 <p>下面是定义和实现一个简单的接口:</p>
-<pre><code>// Stringer is an interface with a single method
+<pre><code>// Stringer是只有一个方法的接口
 type Stringer interface {
 	String() string
 }
 
-// User struct that implements Stringer interface
+// User struct实现了Stringer接口
 type User struct {
 	Name string
 }
@@ -171,8 +172,8 @@ func (u *User) String() string {
 	return u.Name
 }
 
-// Any type can implement an interface. Here we create
-// an alias of int type an implement Stringer interface
+// 任何类型都可以实现接口 Here we create
+// 这里我们创建int的别称来实现Stringer接口
 
 type MyInt int
 
@@ -180,8 +181,8 @@ func (mi MyInt) String() string {
 	return strconv.Itoa(int(mi))
 }
 
-// printTypeAndString accepts an interface. 's' can be any value
-// that implements Stringer interface
+// printTypeAndString 接收一个接口作为参数, 's'可以是实现了Stringer接口的任意值
+
 func printTypeAndString(s Stringer) {
 	fmt.Printf(&quot;%T: %s\n&quot;, s, s)
 }
@@ -204,16 +205,16 @@ main.MyInt: 5</p>
 <pre><code>type Painter interface {
     Paint()
 }
-</code></pre><p>实现类型不必声明它正在实现接口。 定义相同签名的方法就足够了。</p>
+</code></pre><p>类型实现接口时不必声明它正在实现那个接口。 定义相同签名的方法就可以了。</p>
 <pre><code>type Rembrandt struct{}
 
 func (r Rembrandt) Paint() {
     // use a lot of canvas here
 }
-</code></pre><p>现在，我们可以将这个结构用作接口。</p>
+</code></pre><p>现在，我们可以将这个struct用作接口。</p>
 <pre><code>var p Painter
 p = Rembrandt{}
-</code></pre><p>接口可以被任意数量的类型满足（或实现）。 一个类型也可以实现任意数量的接口。</p>
+</code></pre><p>接口可以被任意数量的类型实现。 一个类型也可以实现任意数量的接口。</p>
 <pre><code>type Singer interface {
         Sing()
 }
@@ -233,10 +234,11 @@ func (h *Human) Write() {
 }
 
 type OnlySinger struct{}
+
 func (o *OnlySinger) Sing() {
     fmt.Println(&quot;singing&quot;)
 }
-</code></pre><p>这里Human结构同时实现了Singer和Writer接口,而OnlySinger只实现了Sinnger接口.</p>
+</code></pre><p>这里Human同时实现了Singer和Writer接口,而OnlySinger只实现了Sinnger接口.</p>
 <h2 id="空接口">空接口</h2>
 <p>空接口类型是不包含任何方法的接口。 我们将其声明为<code>interface {}</code>。 它不包含任何方法，因此每种类型都可以满足要求。 因此，空接口可以包含任何类型值。</p>
 <pre><code>var a interface{}
@@ -248,11 +250,11 @@ type StructType struct {
     k string
 }
 
-// all are valid statements
+// 下列声明都合法
 a = i
 a = s
 a = &amp;StructType{1, 2, &quot;hello&quot;}
-</code></pre><p>接口最常见的用例是确保变量支持一个或多个行为。 相比之下，空接口的主要用例是定义一个变量，该变量可以保留任何值，而不管其具体类型如何。
+</code></pre><p>接口最常见的作用是确保变量支持一个或多个行为。 相比之下，空接口的主要作用是定义一个变量，该变量可以保留任何值，而不管其具体类型是什么。<br>
 为了使这些值恢复为原始类型，我们只需要做:</p>
 <pre><code>i = a.(int)
 s = a.(string)
@@ -261,10 +263,8 @@ m := a.(*StructType)
 <pre><code>i, ok := a.(int)
 s, ok := a.(string)
 m, ok := a.(*StructType)
-</code></pre><p>ok表示接口a是否可转换为给定类型。 如果无法执行，返回值ok将为false。</p>
-<h2 id="interface-values">Interface Values</h2>
-<p>If you declare a variable of an interface, it may store any value type that implements the methods declared by the interface!</p>
-<p>If we declare h of interface Singer, it may store a value of type Human or OnlySinger. This is because of the fact that they all implement methods specified by the Singer interface.</p>
+</code></pre><p>返回值ok表示接口a是否可转换为给定类型。 如果无法执行，ok将为false。</p>
+<h2 id="接口值">接口值</h2>
 <p>如果声明了接口的变量，则它可以存储任何实现了接口声明方法的任何类型！</p>
 <p>如果我们声明h为接口Singer，则它可以存储Human或OnlySinger类型的值。 这是因为它们都实现了Singer接口指定的方法。</p>
 <pre><code>var h Singer
@@ -296,10 +296,10 @@ type Painter interface {
         fmt.Println(&quot;Unknown type&quot;)
     }
 }
-</code></pre><h2 id="ensure-that-type-implements-interface">Ensure that type implements interface</h2>
+</code></pre><h2 id="确保类型实现了接口">确保类型实现了接口</h2>
 <p>在Go中，接口是隐式满足的。 您不必声明类型是一定要实现某个接口的。
 这很方便，但也可能导致无法完全实现接口错误，并且编译器无法检测到这种情况。
-有一种方法可以进行编译类型检查：</p>
+有一种方法可以进行编译期的类型检查：</p>
 <pre><code>type MyReadCloser struct {
 }
 
@@ -317,19 +317,16 @@ exit status 2</p>
 <blockquote>
 <p>var _ io.ReadCloser = &amp;MyReadCloser{}</p>
 </blockquote>
-<p>We tried to assign *MyReadCloser type to variable of type io.ReadCloser.</p>
-<p>Since *MyReadCloser doesn’t implement Close method, the compiler detected this is an invalid assignement at compile time.</p>
-<p>We assigned the value to blank identifier _ because we don’t actually use that variable for anything.</p>
-<h1 id="empty-interface">Empty interface</h1>
+<p>我们尝试把<em>MyReadCloser赋值给io.ReadCloser
+因为</em>MyReadCloser没有实现Close方法,编译器在编译期间检测到这是非法的赋值
+我们把值赋给空变量_是因为这个值并不会被使用</p>
+<h2 id="空接口-1">空接口</h2>
 <p>技术上讲, 空接口就是没有方法的接口.从而可以说任何类型都实现了空接口</p>
-<p>In practice, empty interface is Go’s version of object type in Java or C# in that it combines a type and its value.
-实际上, Go中的空接口就像Java和C++中的object类型,它结合了类型及其值。
-Empty interface is effectively a dynamic type in a static language.
-空接口等效于静态语言中的动态类型
-Empty interface is also a way to implement union types in Go.
-空接口也是Go中实现union类型的一种方法.
-Since every type conforms to interface{}, you can assign any value to a variable of interface{} type.</p>
-<p>At that point, you can no longer tell what is the real type at compile time.</p>
+<p>实际上, Go中的空接口就像Java和C++中的object类型,它结合了类型及其值。<br>
+空接口等效于静态语言中的动态类型<br>
+空接口也是Go中实现union类型的一种方法.<br>
+由于每种类型都符合interface {}，因此您可以将任何值分配给interface {}类型的变量。</p>
+<p>那时，您将无法在编译时知道它的真实类型。</p>
 <p>空接口的零值为nil.</p>
 <p>使用示例:</p>
 <pre><code>func printVariableType(v interface{}) {
@@ -354,8 +351,8 @@ func main() {
 v is of type &lsquo;int&rsquo;<br>
 v is of type &lsquo;int32&rsquo;</p>
 </blockquote>
-<p>At compile time, when you have a variable whose type is interface (including empty interface) you don’t know what is the real, underlying type.</p>
-<p>You can access underlying type at runtime using type assertion.</p>
+<p>在编译时，如果变量的类型为interface（包括空接口），则您不知道什么是真正的基础类型。</p>
+<p>您可以在运行时使用类型断言来访问基础类型:</p>
 <pre><code>func printTypeAndValue(iv interface{}) {
 	if v, ok := iv.(string); ok {
 		fmt.Printf(&quot;iv is of type string and has value '%s'\n&quot;, v)
@@ -401,12 +398,10 @@ in.main()<br>
 /tmp/src178978545/type assertion.go:41 +0x9a<br>
 it status 2</p>
 </blockquote>
-<h2 id="type-assertion">Type assertion</h2>
-<p>For completness, you can use short version of type switch: v := iv.(int) (vs. v, ok := iv.(int)).</p>
-<p>The difference is that the short version will panic if iv is not of the asserted type:
-类型断言允许您检查空接口的值是否为给定的类型。</p>
+<h2 id="类型断言">类型断言</h2>
+<p>类型断言允许您检查空接口的值是否为给定的类型。</p>
 <p>为了完整起见，您可以使用类型switch的简短版本：v:= iv.(int)（v, ok：= iv.(int)）。</p>
-<p>区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
+<p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
 <pre><code>func panicOnInvalidConversion(iv interface{}) {
 	v := iv.(int)
 	fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
@@ -426,7 +421,7 @@ exit status 2</p>
 </blockquote>
 <p>As a rule of thumb, you shouldn’t try to discover underlying value of interface type as it pierces through an abstraction.
 根据经验，您不应该尝试发现贯穿抽象的接口类型的底层值。</p>
-<h2 id="type-switch">Type switch</h2>
+<h2 id="类型switch">类型switch</h2>
 <p>switch语句可以基于接口包装的类型进行分派。</p>
 <p>如果具有接口值，则可以根据底层类型进行切换：</p>
 <pre><code>func smartConvertToInt(iv interface{}) (int, error) {
@@ -480,18 +475,17 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Interfaces/">https://luangeng.space/post/go/basic/Interfaces/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -553,17 +547,6 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -574,7 +557,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -585,18 +568,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -607,7 +579,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -618,7 +590,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -629,8 +601,30 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1008,7 +1002,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -1026,7 +1020,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -1056,7 +1050,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -1071,13 +1065,13 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1265,14 +1259,13 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

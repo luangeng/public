@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go map类型 - Computer and Software Technology Open Course</title>
+  <title>Go map类型 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go map类型 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go map类型 - 计算机与软件技术公开课">
   <meta name="description" content="Go map类型">
-  <meta itemprop="name" content="Go map类型 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go map类型 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go map类型">
-  <meta property="og:title" content="Go map类型 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go map类型 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/maps/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C&#43;&#43;). map">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C&#43;&#43;). map">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/maps/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/maps/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go map类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2671 Words
+                                        Posted @ 2019-09-09 · 2783 Words
                                         
                                         · Tags: Go
                                         
@@ -148,11 +149,11 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Map是无序的key-value对的集合.</p>
+                                            <p>map是无序的key-value对的集合.</p>
 <p>map的零值为nil</p>
 <p>map在其他语言中称为字典(C#, Python)或hash表(C++).
-map上的迭代具有随机顺序。 在这方面，许多语言是不同的。
-map基本用法:</p>
+map上的迭代具有随机顺序。 在这方面，许多语言是不同的。</p>
+<p>map基本用法:</p>
 <pre><code>m := make(map[string]int)
 
 // set the value
@@ -162,16 +163,16 @@ m[&quot;four&quot;] = 4
 // get the value and see if the value exists
 key := &quot;four&quot;
 if value, ok := m[key]; ok {
-	fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
 } else {
-	fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
 }
 
 key = &quot;five&quot;
 if value, ok := m[key]; ok {
-	fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
 } else {
-	fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
 }
 
 // if value doesn't exist, the result of lookup is zero value. In this case zero value of int is 0
@@ -180,7 +181,7 @@ fmt.Printf(&quot;\nValue for non-existing key: %d\n\n&quot;, m[&quot;not-exists&
 // iterating over keys and values
 fmt.Printf(&quot;All keys and their values:\n&quot;)
 for key, value := range m {
-	fmt.Printf(&quot;%s =&gt; %d\n&quot;, key, value)
+    fmt.Printf(&quot;%s =&gt; %d\n&quot;, key, value)
 }
 
 fmt.Printf(&quot;\nBefore deletion: len(m)=%d\n&quot;, len(m))
@@ -197,13 +198,13 @@ four =&gt; 4</p>
 After deletion : len(m)=1</p>
 </blockquote>
 <h2 id="map的声明和初始化">map的声明和初始化</h2>
-<p>使用map关键字声明map, 后面写key和value的类型:</p>
+<p>使用map关键字声明map, 后面是key和value的类型:</p>
 <pre><code>// Keys are ints, values are ints.
 var m1 map[int]int // initialized to nil
 
 // Keys are strings, values are ints.
 var m2 map[string]int // initialized to nil
-</code></pre><p>映射是引用类型，一旦定义，它们的零值为nil。 写入nil映射将导致panic，而读取将始终返回零值。</p>
+</code></pre><p>map是引用类型，一旦定义，它们的零值为nil。 写入nil map将导致panic，而读取将始终返回其零值。</p>
 <p>使用make方法初始化map</p>
 <pre><code>m := make(map[string]int)
 With the two-parameter form of make, it’s possible to specify an initial entry capacity for the map, overriding the default capacity:
@@ -247,14 +248,13 @@ var m = map[string]Person{}
 // Declare via short variable declaration and initialize with a literal value.
 m := map[string]Person{}
 </code></pre><h2 id="创建map">创建map</h2>
-<p>可以使用复合语法在单个语句中声明和初始化映射。</p>
-<p>Using automatic type short variable declaration:
-使用自动类型短变量声明：</p>
+<p>可以使用复合语法在单个语句中声明和初始化map。</p>
+<p>使用自动类型短变量声明：</p>
 <pre><code>mapIntInt := map[int]int{10: 100, 20: 100, 30: 1000}
 mapIntString := map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
 mapStringInt := map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
 mapStringString := map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
-</code></pre><p>The same code, but with Variable types:</p>
+</code></pre><p>或者</p>
 <pre><code>var mapIntInt = map[int]int{10: 100, 20: 100, 30: 1000}
 var mapIntString = map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
 var mapStringInt = map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
@@ -278,11 +278,11 @@ mapStringPerson := map[string]Person{
 }
 
 var hitMap = map[RouteHit]int{
-  RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
-  RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
+    RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
+    RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
 hitMap := map[RouteHit]int{
-  RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
-  RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
+    RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
+    RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
 </code></pre><p>只需在方括号{}中不输入任何值即可创建一个空的map。</p>
 <pre><code>mapIntInt := map[int]int{}
 mapIntString := map[int]string{}
@@ -298,9 +298,9 @@ fmt.Println(map[string]string{
 
 // 等效于
 data := map[string]string{
-  &quot;FirstName&quot;: &quot;John&quot;,
-  &quot;LastName&quot;: &quot;Doe&quot;,
-  &quot;Age&quot;: &quot;30&quot;}
+    &quot;FirstName&quot;: &quot;John&quot;,
+    &quot;LastName&quot;: &quot;Doe&quot;,
+    &quot;Age&quot;: &quot;30&quot;}
 fmt.Println(data)
 </code></pre><h2 id="通过key获取value">通过key获取value</h2>
 <p>要获取map中的value,只需要<code>value := mapName[ key ]</code></p>
@@ -355,19 +355,20 @@ src[&quot;two&quot;] = 2
 dst := make(map[string]int)
 
 for key, value := range src {
-	dst[key] = value
+    dst[key] = value
 }
 </code></pre><h2 id="使用range遍历map">使用range遍历map</h2>
 <p>Iteration order is not specified. Go randomizes the order of iteration on purpose so that code doesn’t incorrectly rely on specific order.</p>
+<p>未指定迭代顺序。 故意随机化迭代顺序，以使代码不会错误地依赖于特定顺序。</p>
 <p>同时迭代key和value:</p>
 <pre><code>people := map[string]int{
-	&quot;john&quot;: 30,
-	&quot;jane&quot;: 29,
-	&quot;mark&quot;: 11,
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
 }
 
 for key, value := range people {
-	fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
+    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
 }
 </code></pre><blockquote>
 <p>key: john, value: 30<br>
@@ -376,13 +377,13 @@ key: mark, value: 11</p>
 </blockquote>
 <p>仅迭代key</p>
 <pre><code>people := map[string]int{
-	&quot;john&quot;: 30,
-	&quot;jane&quot;: 29,
-	&quot;mark&quot;: 11,
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
 }
 
 for key := range people {
-	fmt.Printf(&quot;key: %s\n&quot;, key)
+    fmt.Printf(&quot;key: %s\n&quot;, key)
 }
 </code></pre><blockquote>
 <p>key: mark<br>
@@ -391,13 +392,13 @@ key: jane</p>
 </blockquote>
 <p>仅迭代value</p>
 <pre><code>people := map[string]int{
-	&quot;john&quot;: 30,
-	&quot;jane&quot;: 29,
-	&quot;mark&quot;: 11,
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
 }
 
 for _, value := range people {
-	fmt.Printf(&quot;value: %d\n&quot;, value)
+    fmt.Printf(&quot;value: %d\n&quot;, value)
 }
 </code></pre><blockquote>
 <p>value: 30<br>
@@ -462,13 +463,17 @@ fmt.Printf(&quot;\nAfter appending to slice: %#v\n&quot;, m[&quot;key1&quot;])
 
 delete(m, &quot;key1&quot;)
 fmt.Printf(&quot;\ndelete() sets back to nil slice: %#v\n&quot;, m[&quot;key1&quot;])
-</code></pre><p>Non-existing key returns zero value of []int, i.e. nil: []int(nil)</p>
-<p>After appending to slice: []int{8, 3}</p>
-<p>delete() sets back to nil slice: []int(nil)
-Notice that in m[&ldquo;key1&rdquo;] = append(m[&ldquo;key1&rdquo;], 8) we don&rsquo;t have to check if m[&ldquo;key1&rdquo;] exists. This is a result of interplay of 3 rules:</p>
-<p>m[&ldquo;foo&rdquo;] returns zero-value if foo key is not present is the map
-zero-value of slice is nil
-a = append(nil, 3) is valid and creates a single-element slice []int{3}</p>
+</code></pre><blockquote>
+<p>Non-existing key returns zero value of []int, i.e. nil: []int(nil)<br>
+After appending to slice: []int{8, 3}<br>
+delete() sets back to nil slice: []int(nil)</p>
+</blockquote>
+<p>注意到在m[&ldquo;key1&rdquo;] = append(m[&ldquo;key1&rdquo;], 8)时我们没有检查m[&ldquo;key1&rdquo;]是否存在. 这是三个规则相互影响的结果：</p>
+<ol>
+<li>m[&ldquo;foo&rdquo;] 如果不存在foo键，则返回零值</li>
+<li>slice的零值是nil</li>
+<li>a = append(nil, 3)语句合法并且创建了一个单元素的slice[]int{3}</li>
+</ol>
 <h2 id="并发访问map">并发访问map</h2>
 <p>Go中的map不是并发安全的</p>
 <p>确保并发安全的一种访问方法是使用sync.Mutex或sync.RWMutex锁定所有映射进行读取和写入。</p>
@@ -476,43 +481,43 @@ a = append(nil, 3) is valid and creates a single-element slice []int{3}</p>
 <pre><code>package main
 
 import (
-	&quot;fmt&quot;
-	&quot;sync&quot;
+    &quot;fmt&quot;
+    &quot;sync&quot;
 )
 
 // ConcurrentMap is a wrapper around map that is safe for concurrent use
 type ConcurrentMap struct {
-	sync.RWMutex
-	m map[string]int
+    sync.RWMutex
+    m map[string]int
 }
 
 // Get gets a value for a key
 func (r *ConcurrentMap) Get(key string) int {
-	r.RLock()
-	defer r.RUnlock()
-	return r.m[key]
+    r.RLock()
+    defer r.RUnlock()
+    return r.m[key]
 }
 
 // Set sets a key to a given value
 func (r *ConcurrentMap) Set(key string, val int) {
-	r.Lock()
-	defer r.Unlock()
-	r.m[key] = val
+    r.Lock()
+    defer r.Unlock()
+    r.m[key] = val
 }
 
 // Add increases the value under a key by n
 func (r *ConcurrentMap) Add(key string, n int) int {
-	r.Lock()
-	defer r.Unlock()
-	r.m[key] += n
-	return r.m[key]
+    r.Lock()
+    defer r.Unlock()
+    r.m[key] += n
+    return r.m[key]
 }
 
 func main() {
-	counter := ConcurrentMap{m: make(map[string]int)}
+    counter := ConcurrentMap{m: make(map[string]int)}
 
-	n := counter.Add(&quot;some_key&quot;, 2)
-	fmt.Printf(&quot;Final value is: %d\n&quot;, n)
+    n := counter.Add(&quot;some_key&quot;, 2)
+    fmt.Printf(&quot;Final value is: %d\n&quot;, n)
 }
 </code></pre><blockquote>
 <p>Final value is: 2</p>
@@ -564,18 +569,17 @@ exit status 2</p>
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/maps/">https://luangeng.space/post/go/basic/maps/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -637,17 +641,6 @@ exit status 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -658,7 +651,7 @@ exit status 2</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -669,18 +662,7 @@ exit status 2</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -691,7 +673,7 @@ exit status 2</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -702,7 +684,7 @@ exit status 2</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -713,8 +695,30 @@ exit status 2</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1092,7 +1096,7 @@ exit status 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -1110,7 +1114,7 @@ exit status 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -1140,7 +1144,7 @@ exit status 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -1155,13 +1159,13 @@ exit status 2</p>
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1349,14 +1353,13 @@ exit status 2</p>
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

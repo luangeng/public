@@ -34,7 +34,7 @@ a,
 .comment-tabs li.active a,
 .comment-awaiting-moderation,
 .child-menu a:hover,
-.child-menu .current_page_item > a,
+.child-menu .current_page_item>a,
 .wp-pagenavi a {
     color: #2c6589;
 }
@@ -48,8 +48,8 @@ a,
 .s1 .widget_calendar caption,
 #footer .widget_calendar caption,
 .author-bio .bio-avatar:after,
-.commentlist li.bypostauthor > .comment-body:after,
-.commentlist li.comment-author-admin > .comment-body:after {
+.commentlist li.bypostauthor>.comment-body:after,
+.commentlist li.comment-author-admin>.comment-body:after {
     background-color: #2c6589;
 }
 
@@ -101,12 +101,13 @@ a,
     border: 1px solid #f5f5f5;
 }
 
-#nav-topbar.nav-container, .nav-container {
-    background: none;
+#nav-topbar.nav-container,
+.nav-container {
+    background: #ffffff08;
     transition: all 0.3s ease-in-out;
 }
 
-.nav > li {
+.nav>li {
     font-weight: 600;
 }
 
@@ -232,11 +233,13 @@ a,
     color: #dddddd;
 }
 
-.entry .gist table, .entry table.mEvent {
+.entry .gist table,
+.entry table.mEvent {
     text-align: left;
 }
 
-.entry .gist table td, .entry table.mEvent td {
+.entry .gist table td,
+.entry table.mEvent td {
     text-align: left;
 }
 

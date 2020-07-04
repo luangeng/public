@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go range - Computer and Software Technology Open Course</title>
+  <title>Go range - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go range - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go range - 计算机与软件技术公开课">
   <meta name="description" content="Go range">
-  <meta itemprop="name" content="Go range - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go range - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go range">
-  <meta property="og:title" content="Go range - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go range - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/range-statement/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="迭代字符串 s := &quot;Hey 世界&quot; for i, r := range s { fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 Notice that range assumes that string is UTF-8 encoded and iterates over Unicode characters (runes), not">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="遍历字符串 s := &quot;Hey 世界&quot; for i, r := range s { fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 请注意，范围假定字符串是UTF-">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/range-statement/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/range-statement/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go range</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 912 Words
+                                        Posted @ 2019-09-09 · 1369 Words
                                         
                                         · Tags: Go
                                         
@@ -148,7 +149,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>迭代字符串</p>
+                                            <h2 id="遍历字符串">遍历字符串</h2>
 <pre><code>s := &quot;Hey 世界&quot;
 for i, r := range s {
 	fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, r)
@@ -161,9 +162,9 @@ idx: 3, rune: 32<br>
 idx: 4, rune: 19990<br>
 idx: 7, rune: 30028</p>
 </blockquote>
-<p>Notice that range assumes that string is UTF-8 encoded and iterates over Unicode characters (runes), not bytes of the string.</p>
-<p>First returned value i is byte index of the rune in the string, not Unicode character index.</p>
-<p>To iterate over characters, use byte indexes:</p>
+<p>请注意，范围假定字符串是UTF-8编码的，并且遍历Unicode字符(rune)而不是字符串的字节。</p>
+<p>返回的第一个值i是字符串中符文的字节索引，而不是Unicode字符索引。</p>
+<p>要遍历字符，请使用字节索引：</p>
 <pre><code>s := &quot;a 世&quot;
 for i := 0; i &lt; len(s); i++ {
 	c := s[i]
@@ -198,112 +199,119 @@ for key, value := range m {
 <p>key: three, value: 3<br>
 key: five, value: 5</p>
 </blockquote>
-<h2 id="range-over-a-string">range over a string</h2>
-<p>Iterate over bytes
-You can iterate over bytes in a string:</p>
-<p>s := &ldquo;a 世&rdquo;
+<h2 id="对string使用range">对string使用range</h2>
+<p>遍历字节
+您可以遍历字符串中的字节：</p>
+<pre><code>s := &quot;a 世&quot;
 for i := range s {
-b := s[i]
-fmt.Printf(&ldquo;idx: %d, byte: %d\n&rdquo;, i, b)
-}</p>
-<pre><code>idx: 0, byte: 97
-idx: 1, byte: 32
-idx: 2, byte: 228
-
-Iterate over runes
-Things are more complicated when you want to iterate over logical characters (runes) in a string:
-
-s := &quot;Hey 世界&quot;
+	b := s[i]
+	fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, b)
+}
+</code></pre><blockquote>
+<p>idx: 0, byte: 97<br>
+idx: 1, byte: 32<br>
+idx: 2, byte: 228</p>
+</blockquote>
+<p>遍历runes
+当您要遍历字符串中的逻辑字符时，事情变得更加复杂：</p>
+<pre><code>s := &quot;Hey 世界&quot;
 for i, rune := range s {
 	fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, rune)
 }
-</code></pre><p>idx: 0, rune: 72
-idx: 1, rune: 101
-idx: 2, rune: 121
-idx: 3, rune: 32
-idx: 4, rune: 19990
-idx: 7, rune: 30028
-In Go strings are immutable sequence of bytes. Think a read-only []byte slice.</p>
-<p>Each byte is in 0 to 255 range.</p>
-<p>There are many more characters in all the world’s alphabets.</p>
-<p>Unicode standard defines unique value for every known character. Unicode calls them code points and they are integers that can fit in 32 bits.</p>
-<p>To represent Unicode code points, Go has a rune type. It is an alias for int32.</p>
-<p>Literal strings in Go source code are UTF-8 encoded.</p>
-<p>Every Unicode code point can be encoded with 1 to 4 bytes.</p>
-<p>In this form of iteration, Go assumes that a string is UTF-8 encoded. range decodes each code point as UTF-8, returns decoded rune and its byte index in string.</p>
-<p>You can see the byte index of last code point jumped by 3 because code point before it represents a Chinese character and required 3 bytes in UTF-8 encoding.</p>
-<p>Strings and UTF-8
-Go strings are slices of bytes. You can put arbitrary binary data in them.</p>
-<p>How the bytes are interpreted is up to your code.</p>
-<p>Most of the time a string represents Unicode string in UTF-8 encoding but outside of string literals in Go source code, Go doesn&rsquo;t check or ensure that string data form a valid UTF-8 sequence.</p>
-<p>That being said, Go provides functionality for working with UTF-8 encoded data.</p>
-<p>The behavior of range is one example of that.</p>
-<h2 id="range-over-a-slice">range over a slice</h2>
-<p>There are 3 variants of iterating over a slice with range.</p>
-<p>Get both index and element:</p>
-<p>a := []int{3, 15, 8}
+</code></pre><blockquote>
+<p>idx: 0, rune: 72<br>
+idx: 1, rune: 101<br>
+idx: 2, rune: 121<br>
+idx: 3, rune: 32<br>
+idx: 4, rune: 19990<br>
+idx: 7, rune: 30028</p>
+</blockquote>
+<p>在Go语言中，字符串是不可变的字节序列, 参考只读的[]byte切片。</p>
+<p>每个字节的范围是0到255。</p>
+<p>世界上有非常多的文字.</p>
+<p>Unicode标准为每个已知字符定义唯一值。 Unicode称它们为代码点，它们是可以容纳32位的整数。</p>
+<p>为了表示Unicode代码点，Go具有rune类型。它是int32的别名。</p>
+<p>Go源代码中的文字字符串是UTF-8编码的。</p>
+<p>每个Unicode代码点都可以使用1到4个字节进行编码。</p>
+<p>在这种迭代形式中，Go假定字符串是UTF-8编码的。 range将每个代码点解码为UTF-8，以字符串形式返回解码的rune及其字节索引。</p>
+<p>您会看到最后一个代码点的字节索引跳了3个，因为它之前的代码点代表一个汉字，并且需要3个字节的UTF-8编码。</p>
+<p>字符串和UTF-8
+Go中string是字节片。您可以将任意二进制数据放入其中。</p>
+<p>如何解释字节取决于您的代码。</p>
+<p>大多数情况下，字符串以UTF-8编码表示Unicode字符串，但在Go源代码中的字符串文字之外，Go不会检查或确保字符串数据形成有效的UTF-8序列。</p>
+<p>话虽如此，Go提供了用于处理UTF-8编码数据的功能。</p>
+<p>range的行为就是一个例子。</p>
+<h2 id="对slice使用range">对slice使用range</h2>
+<p>在slice上使用range有3种变体:</p>
+<p>同时获取索引和元素:</p>
+<pre><code>a := []int{3, 15, 8}
 for i, el := range a {
-fmt.Printf(&ldquo;idx: %d, element: %d\n&rdquo;, i, el)
-}</p>
-<pre><code>idx: 0, element: 3
-idx: 1, element: 15
-idx: 2, element: 8
-Get only index:
-
-a := []int{3, 15, 8}
+	fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
+}
+</code></pre><blockquote>
+<p>idx: 0, element: 3<br>
+idx: 1, element: 15<br>
+idx: 2, element: 8</p>
+</blockquote>
+<p>仅获取索引:</p>
+<pre><code>a := []int{3, 15, 8}
 for i := range a {
 	fmt.Printf(&quot;idx: %d\n&quot;, i)
 }
-</code></pre><p>idx: 0
-idx: 1
+</code></pre><blockquote>
+<p>idx: 0<br>
+idx: 1<br>
 idx: 2
-Get only element:</p>
-<p>a := []int{3, 15, 8}
+仅获取元素</p>
+</blockquote>
+<pre><code>a := []int{3, 15, 8}
 for _, el := range a {
-fmt.Printf(&ldquo;element: %d\n&rdquo;, el)
-}</p>
-<pre><code>element: 3
-element: 15
-element: 8
-
-
-## range over a map
-Iteration over a map has undefined order. In fact, Go compiler goes to the trouble of randomizing the order so that programmers don't rely on accidental order.
-
-There are 3 variants of iterating over a map with range.
-
-Get both key and value
-
-m := map[string]int{
+	fmt.Printf(&quot;element: %d\n&quot;, el)
+}
+</code></pre><blockquote>
+<p>element: 3<br>
+element: 15<br>
+element: 8</p>
+</blockquote>
+<h2 id="对map使用range">对map使用range</h2>
+<p>map上的迭代具有不确定的顺序。 实际上，Go编译器会麻烦地将顺序随机化，这样程序员就不必依赖偶然的顺序了。</p>
+<p>在map上使用range迭代有3种变体。</p>
+<p>同时获取key和value:</p>
+<pre><code>m := map[string]int{
 	&quot;three&quot;: 3,
 	&quot;five&quot;:  5,
 }
 for key, value := range m {
 	fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
 }
-</code></pre><p>key: five, value: 5
-key: three, value: 3
-Get only key</p>
-<p>m := map[string]int{
-&ldquo;three&rdquo;: 3,
-&ldquo;five&rdquo;:  5,
+</code></pre><blockquote>
+<p>key: five, value: 5<br>
+key: three, value: 3</p>
+</blockquote>
+<p>仅获取key:</p>
+<pre><code>m := map[string]int{
+	&quot;three&quot;: 3,
+	&quot;five&quot;:  5,
 }
 for key := range m {
-fmt.Printf(&ldquo;key: %s\n&rdquo;, key)
-}</p>
-<pre><code>key: three
-key: five
-Get only value
-
-m := map[string]int{
+	fmt.Printf(&quot;key: %s\n&quot;, key)
+}
+</code></pre><blockquote>
+<p>key: three<br>
+key: five</p>
+</blockquote>
+<p>仅获取value:</p>
+<pre><code>m := map[string]int{
 	&quot;three&quot;: 3,
 	&quot;five&quot;:  5,
 }
 for _, value := range m {
 	fmt.Printf(&quot;value: %d\n&quot;, value)
 }
-</code></pre><p>value: 3
+</code></pre><blockquote>
+<p>value: 3<br>
 value: 5</p>
+</blockquote>
 <h2 id="对channel使用range">对channel使用range</h2>
 <pre><code>func fillAndCloseChannel(ch chan int) {
 	for i := 0; i &lt; 3; i++ {
@@ -323,9 +331,9 @@ for v := range ch {
 v: 4<br>
 v: 5</p>
 </blockquote>
-<p>range over a channel receives elements sent over a channel.</p>
-<p>Iteration ends when channel is closed.</p>
-<p>This is a more convenient version of:</p>
+<p>channel上的range接收通过channel发送的元素。</p>
+<p>channel关闭时，迭代结束。</p>
+<p>以下是更方便的方法：</p>
 <pre><code>ch := make(chan int)
 go fillAndCloseChannel(ch)
 
@@ -352,18 +360,17 @@ for {
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/range-statement/">https://luangeng.space/post/go/basic/range-statement/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -425,17 +432,6 @@ for {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -446,7 +442,7 @@ for {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -457,18 +453,7 @@ for {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -479,7 +464,7 @@ for {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -490,7 +475,7 @@ for {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -501,8 +486,30 @@ for {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -880,7 +887,7 @@ for {
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -898,7 +905,7 @@ for {
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -928,7 +935,7 @@ for {
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -943,13 +950,13 @@ for {
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1137,14 +1144,13 @@ for {
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

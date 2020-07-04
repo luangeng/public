@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go Cryptography - Computer and Software Technology Open Course</title>
+  <title>Go Cryptography - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Cryptography - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go Cryptography - 计算机与软件技术公开课">
   <meta name="description" content="Go Cryptography">
-  <meta itemprop="name" content="Go Cryptography - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go Cryptography - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go Cryptography">
-  <meta property="og:title" content="Go Cryptography - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go Cryptography - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Cryptography/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="Cryptography Introduction Find out how to encrypt and decrypt data with Go. Keep in mind that this is not a course about cryptography but rather how to achieve it with Go.
-Encryption and decryption with AES GCM You have a file and a password and you want to encrypt the file with a password.
-There are many encryption algorithms.
-This chapter describes how to use symmetric algorithm AES (Advanced Encryption Standard) in GCM mode.">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="介绍 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 您有一个">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Cryptography/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Cryptography/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -35,7 +34,6 @@ This chapter describes how to use symmetric algorithm AES (Advanced Encryption S
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -92,7 +90,7 @@ This chapter describes how to use symmetric algorithm AES (Advanced Encryption S
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -132,7 +130,7 @@ This chapter describes how to use symmetric algorithm AES (Advanced Encryption S
                                     <h1 class="post-title">Go Cryptography</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 660 Words
+                                        Posted @ 2019-09-09 · 942 Words
                                         
                                         · Tags: Go
                                         
@@ -151,117 +149,121 @@ This chapter describes how to use symmetric algorithm AES (Advanced Encryption S
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Cryptography
-Introduction
-Find out how to encrypt and decrypt data with Go. Keep in mind that this is not a course about cryptography but rather how to achieve it with Go.</p>
-<h2 id="encryption-and-decryption-with-aes-gcm">Encryption and decryption with AES GCM</h2>
-<p>You have a file and a password and you want to encrypt the file with a password.</p>
-<p>There are many encryption algorithms.</p>
-<p>This chapter describes how to use symmetric algorithm AES (Advanced Encryption Standard) in GCM mode.</p>
-<p>GCM mode provides both encryption and authentication.</p>
-<p>Without authentication an attacker could change encrypted bytes which would result in successful decryption but corrupted data. By adding authentication, GCM mode detects that encrypted data were corrupted.</p>
-<p>Symmetric means that we can use the same password to both encrypt and decrypt the data.</p>
-<p>AES uses 16 bytes key as a password. Humans prefer passwords of arbitrary length.</p>
-<p>To support humans we need to derive AES key from a human password. This is harder than it looks so you should use one of the methods that are well researched and considered cryptographically secure. One of those methods is scrypt key derivation function.</p>
-<p>package main</p>
-<p>import (
-&ldquo;bytes&rdquo;
-&ldquo;crypto/aes&rdquo;
-&ldquo;crypto/cipher&rdquo;
-&ldquo;crypto/rand&rdquo;
-&ldquo;errors&rdquo;
-&ldquo;fmt&rdquo;
-&ldquo;io&rdquo;
-&ldquo;io/ioutil&rdquo;
-&ldquo;log&rdquo;</p>
-<pre><code>&quot;golang.org/x/crypto/scrypt&quot;
-</code></pre>
-<p>)</p>
-<p>func aesKeyFromPassword(password string) ([]byte, error) {
-// DO NOT use this salt value; generate your own random salt. 8 bytes is
-// a good length. Keep the salt secret.
-secretSalt := []byte{0xbc, 0x1e, 0x07, 0xd7, 0xb2, 0xa2, 0x5e, 0x2c}
-return scrypt.Key([]byte(password), secretSalt, 32768, 8, 1, 32)
-}</p>
-<p>func aesGcmEncrypt(unencrypted []byte, password string) ([]byte, error) {
-key, err := aesKeyFromPassword(password)
-if err != nil {
-return nil, err
-}
-block, err := aes.NewCipher(key)
-if err != nil {
-return nil, err
-}</p>
-<pre><code>gcm, err := cipher.NewGCM(block)
-if err != nil {
-    return nil, err
+                                            <p>介绍
+了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。</p>
+<h2 id="使用aes-gcm进行加密和解密">使用AES GCM进行加密和解密</h2>
+<p>您有一个文件和一个密码，并且想要使用密码对文件进行加密。</p>
+<p>有很多加密算法。</p>
+<p>本章介绍如何在GCM模式下使用对称算法AES（高级加密标准）。</p>
+<p>GCM模式同时提供加密和身份验证。</p>
+<p>未经身份验证，攻击者可能会更改加密字节，这将导致解密成功但数据损坏。 通过添加身份验证，GCM模式可以检测到加密数据已损坏。</p>
+<p>对称意味着我们可以使用相同的密码来加密和解密数据。</p>
+<p>AES使用16个字节的密钥作为密码。 人类喜欢任意长度的密码。</p>
+<p>为了支持人类，我们需要从人类密码派生AES密钥。 这比看起来要难，因此您应该使用经过充分研究并被认为是加密安全的方法之一。 这些方法之一是scrypt密钥派生功能。</p>
+<pre><code>package main
+
+import (
+	&quot;bytes&quot;
+	&quot;crypto/aes&quot;
+	&quot;crypto/cipher&quot;
+	&quot;crypto/rand&quot;
+	&quot;errors&quot;
+	&quot;fmt&quot;
+	&quot;io&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+
+	&quot;golang.org/x/crypto/scrypt&quot;
+)
+
+func aesKeyFromPassword(password string) ([]byte, error) {
+	// DO NOT use this salt value; generate your own random salt. 8 bytes is
+	// a good length. Keep the salt secret.
+	secretSalt := []byte{0xbc, 0x1e, 0x07, 0xd7, 0xb2, 0xa2, 0x5e, 0x2c}
+	return scrypt.Key([]byte(password), secretSalt, 32768, 8, 1, 32)
 }
 
-// generate a random nonce (makes encryption stronger)
-nonce := make([]byte, gcm.NonceSize())
-if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
-    return nil, err
+func aesGcmEncrypt(unencrypted []byte, password string) ([]byte, error) {
+	key, err := aesKeyFromPassword(password)
+	if err != nil {
+		return nil, err
+	}
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, err
+	}
+
+	// generate a random nonce (makes encryption stronger)
+	nonce := make([]byte, gcm.NonceSize())
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		return nil, err
+	}
+
+	encrypted := gcm.Seal(nil, nonce, unencrypted, nil)
+	// we need nonce for decryption so we put it at the beginning
+	// of encrypted text
+	return append(nonce, encrypted...), nil
 }
 
-encrypted := gcm.Seal(nil, nonce, unencrypted, nil)
-// we need nonce for decryption so we put it at the beginning
-// of encrypted text
-return append(nonce, encrypted...), nil
-</code></pre>
-<p>}</p>
-<p>func aesGcmDecrypt(encrypted []byte, password string) ([]byte, error) {
-key, err := aesKeyFromPassword(password)
-if err != nil {
-return nil, err
-}</p>
-<pre><code>block, err := aes.NewCipher(key)
-if err != nil {
-    return nil, err
+func aesGcmDecrypt(encrypted []byte, password string) ([]byte, error) {
+	key, err := aesKeyFromPassword(password)
+	if err != nil {
+		return nil, err
+	}
+
+	block, err := aes.NewCipher(key)
+	if err != nil {
+		return nil, err
+	}
+
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(encrypted) &lt; gcm.NonceSize() {
+		return nil, errors.New(&quot;Invalid data&quot;)
+	}
+
+	// extract random nonce we added to the beginning of the file
+	nonce := encrypted[:gcm.NonceSize()]
+	encrypted = encrypted[gcm.NonceSize():]
+
+	return gcm.Open(nil, nonce, encrypted, nil)
 }
 
-gcm, err := cipher.NewGCM(block)
-if err != nil {
-    return nil, err
+func main() {
+	password := &quot;my password&quot;
+	d, err := ioutil.ReadFile(&quot;main.go&quot;)
+	if err != nil {
+		log.Fatalf(&quot;ioutil.ReadFile() failed with %s\n&quot;, err)
+	}
+	encrypted, err := aesGcmEncrypt(d, password)
+	if err != nil {
+		log.Fatalf(&quot;aesGcmEncrypt() failed with %s\n&quot;, err)
+	}
+	decrypted, err := aesGcmDecrypt(encrypted, password)
+	if err != nil {
+		log.Fatalf(&quot;aesGcmDecrypt() failed with %s\n&quot;, err)
+	}
+	if !bytes.Equal(d, decrypted) {
+		log.Fatalf(&quot;decryption created data different than original\n&quot;)
+	} else {
+		fmt.Printf(&quot;Encryption in decryption worked!\n&quot;)
+	}
 }
-
-if len(encrypted) &lt; gcm.NonceSize() {
-    return nil, errors.New(&quot;Invalid data&quot;)
-}
-
-// extract random nonce we added to the beginning of the file
-nonce := encrypted[:gcm.NonceSize()]
-encrypted = encrypted[gcm.NonceSize():]
-
-return gcm.Open(nil, nonce, encrypted, nil)
-</code></pre>
-<p>}</p>
-<p>func main() {
-password := &ldquo;my password&rdquo;
-d, err := ioutil.ReadFile(&ldquo;main.go&rdquo;)
-if err != nil {
-log.Fatalf(&ldquo;ioutil.ReadFile() failed with %s\n&rdquo;, err)
-}
-encrypted, err := aesGcmEncrypt(d, password)
-if err != nil {
-log.Fatalf(&ldquo;aesGcmEncrypt() failed with %s\n&rdquo;, err)
-}
-decrypted, err := aesGcmDecrypt(encrypted, password)
-if err != nil {
-log.Fatalf(&ldquo;aesGcmDecrypt() failed with %s\n&rdquo;, err)
-}
-if !bytes.Equal(d, decrypted) {
-log.Fatalf(&ldquo;decryption created data different than original\n&rdquo;)
-} else {
-fmt.Printf(&ldquo;Encryption in decryption worked!\n&rdquo;)
-}
-}
-Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would make it easy for the attacker to break encryption and decrypt the file.</p>
-<p>It&rsquo;s really important to convert a human-readable password to a random encryption key.</p>
-<p>Humans tend to use only a subset of possible bytes for passwords which makes them much easier to break.</p>
-<p>Scrypt is considered a good algorithm for generating encryption key from a human password. As you can see it also uses a salt value which you should keep secret.</p>
-<p>There are several variants of AES algorithms. We chose GCM because it combines authentication with encryption. Authentication detects modification of encrypted data.</p>
-<p>To make encryption stronger GCM modes requires additional random bytes. We chose to generate unique nonce for each file and store it at the beginning of encrypted data (the nonce doesn&rsquo;t have to be secret).</p>
-<p>An alternative would be to generate only one nonce and use it for all files.</p>
+</code></pre><p>加密是一个棘手的主题，犯一个错误就会使攻击者破坏加密并解密文件。</p>
+<p>将人可读的密码转换为随机加密密钥非常重要。</p>
+<p>人倾向于只使用可能的字节子集作为密码，这使得它们更容易破解。</p>
+<p>Scrypt被认为是一种通过人工密码生成加密密钥的好算法。 如您所见，它还使用了一个盐值，您应该对其保密。</p>
+<p>AES算法有多种变体。 我们之所以选择GCM，是因为它结合了身份验证和加密功能。 身份验证检测加密数据的修改。</p>
+<p>为了使加密更强，GCM模式需要额外的随机字节。 我们选择为每个文件生成唯一的随机数，并将其存储在加密数据的开头（随机数不必是秘密的）。</p>
+<p>一种替代方法是仅生成一个随机数并将其用于所有文件。</p>
 
                                             
                                         </div>
@@ -278,18 +280,17 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Cryptography/">https://luangeng.space/post/go/basic/Cryptography/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -351,17 +352,6 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -372,7 +362,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -383,18 +373,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -405,7 +384,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -416,7 +395,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -427,8 +406,30 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
                 <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Executing-commands/" rel="bookmark" class="leancloud-count">Go Executing commands
+                <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -808,7 +809,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -826,7 +827,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -856,7 +857,7 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -871,13 +872,13 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1063,14 +1064,13 @@ Encryption is a tricky subject and it&rsquo;s easy to make a mistake that would 
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

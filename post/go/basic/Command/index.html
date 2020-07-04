@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 命令 - Computer and Software Technology Open Course</title>
+  <title>Go 命令 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 命令 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 命令 - 计算机与软件技术公开课">
   <meta name="description" content="Go 命令">
-  <meta itemprop="name" content="Go 命令 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 命令 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 命令">
-  <meta property="og:title" content="Go 命令 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 命令 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Command/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="The Go Command The go command is a command-line program that allows for the management of Go development. It enables building, running, and testing code, as well as a variety of other Go-related tasks. go fmt Search: gofmt Id: 323 SOId: 17008 To keep code consistent and eliminate arguments over code formatting, Go includes go fmt tool. To format a file: go fmt main.go Or all files in a directory:">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="go命令是一个命令行程序，用于管理Go开发。 它支持构建，运行和测试代码，以及各种其他与Go相关的任务。 go fmt 为了保持代码的一致性并消除代码格式">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Command/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Command/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 命令</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 777 Words
+                                        Posted @ 2019-09-09 · 1326 Words
                                         
                                         · Tags: Go
                                         
@@ -148,116 +149,113 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>The Go Command
-The go command is a command-line program that allows for the management of Go development.</p>
-<p>It enables building, running, and testing code, as well as a variety of other Go-related tasks.</p>
-<p>go fmt
-Search: gofmt</p>
-<p>Id: 323</p>
-<p>SOId: 17008</p>
-<p>To keep code consistent and eliminate arguments over code formatting, Go includes go fmt tool.</p>
-<p>To format a file: go fmt main.go</p>
-<p>Or all files in a directory: go fmt myProject</p>
-<p>You can also use gofmt -s (not go fmt) to attempt to simplify code whenever possible.</p>
-<p>gofmt (not go fmt) can also be used to refactor code. It understands Go syntax so it is more powerful than a search and replace. For example, given this program (main.go):</p>
-<p>package main</p>
-<p>type Example struct {
-Name string
-}</p>
-<p>func (e *Example) Original(name string) {
-e.Name = name
-}</p>
-<p>func main() {
-e := &amp;Example{&ldquo;Hello&rdquo;}
-e.Original(&ldquo;Goodbye&rdquo;)
+                                            <p>go命令是一个命令行程序，用于管理Go开发。</p>
+<p>它支持构建，运行和测试代码，以及各种其他与Go相关的任务。</p>
+<h2 id="go-fmt">go fmt</h2>
+<p>为了保持代码的一致性并消除代码格式化方面的争论，Go提供了go fmt工具。</p>
+<p>格式化文件：<code>go fmt main.go</code></p>
+<p>或目录中的所有文件：<code>fmt myProject</code></p>
+<p>您也可以使用<code>gofmt -s</code>（而不是fmt）来尝试简化代码。</p>
+<p>gofmt（不是go fmt）也可以用于重构代码。 它了解Go语法，因此它比搜索和替换功能更强大。 例如，给定该程序（main.go):</p>
+<pre><code>package main
+
+type Example struct {
+    Name string
 }
-You can replace the method Original with Refactor with gofmt:</p>
-<p>$ gofmt -r &lsquo;Original -&gt; Refactor&rsquo; -d main.go
-Which will produce the diff:</p>
-<p>-func (e *Example) Original(name string) {
-+func (e *Example) Refactor(name string) {
-e.Name = name
-}</p>
-<pre><code>func main() {
+
+func (e *Example) Original(name string) {
+    e.Name = name
+}
+
+func main() {
     e := &amp;Example{&quot;Hello&quot;}
-</code></pre>
-<ul>
-<li>e.Original(&ldquo;Goodbye&rdquo;)</li>
-</ul>
-<ul>
-<li>e.Refactor(&ldquo;Goodbye&rdquo;)
-}</li>
-</ul>
-<h2 id="go-run">go run</h2>
-<p>go run will run a program without creating an executable file. Mostly useful for development. run will only execute packages whose package name is main.</p>
-<p>To demonstrate, we will use a simple Hello World example main.go:</p>
-<p>package main</p>
-<p>import fmt</p>
-<p>func main() {
-fmt.Println(&ldquo;Hello, World!&quot;)
+    e.Original(&quot;Goodbye&quot;)
 }
-Execute without compiling to a file: go run main.go</p>
-<p>Run multiple files in package
-If program is split into multiple files, you must provide all files:</p>
-<p>$ go run main.go assets.go</p>
+</code></pre><p>您可以使用gofmt将方法Original替换为Refactor：
+<code>$ gofmt -r 'Original -&gt; Refactor' -d main.go</code></p>
+<p>这将产生差异：</p>
+<pre><code>-func (e *Example) Original(name string) {
++func (e *Example) Refactor(name string) {
+        e.Name = name
+    }
+
+    func main() {
+        e := &amp;Example{&quot;Hello&quot;}
+-    e.Original(&quot;Goodbye&quot;)
++    e.Refactor(&quot;Goodbye&quot;)
+    }
+</code></pre><h2 id="go-run">go run</h2>
+<p>go run会在不创建可执行文件的情况下运行程序。 对开发最有用。 run将仅执行软件包名称为main的软件包。</p>
+<p>为了演示，我们将使用一个简单的Hello World示例main.go：</p>
+<pre><code>package main
+
+import fmt
+
+func main() {
+    fmt.Println(&quot;Hello, World!&quot;)
+}
+</code></pre><p>无需编译即可执行：<code>go run main.go</code></p>
+<p>包中运行多个文件</p>
+<p>如果程序分为多个文件，则必须提供所有文件：
+<code>$ go run main.go assets.go</code></p>
 <h2 id="go-build">go build</h2>
-<p>go build will compile a program into an executable file.</p>
-<p>To demonstrate, we will use a simple Hello World example main.go:</p>
-<p>package main</p>
-<p>import fmt</p>
-<p>func main() {
-fmt.Println(&ldquo;Hello, World!&quot;)
+<p>go build会将程序编译为可执行文件。</p>
+<p>为了演示，我们将使用一个简单的Hello World示例main.go：</p>
+<pre><code>package main
+
+import fmt
+
+func main() {
+    fmt.Println(&quot;Hello, World!&quot;)
 }
-To compile the program run: go build main.go</p>
-<p>build creates an executable program, in this case: main or main.exe. You can then run this file to see the output Hello, World!. You can also copy it to a similar system that doesn’t have Go installed, make it executable, and run it there.</p>
-<p>Specify OS or Architecture in build:
-You can specify what system or architecture to build by modifying the env before build:</p>
-<p>$ env GOOS=linux go build main.go # builds for Linux
+</code></pre><p>编译程序运行: <code>go build main.go</code></p>
+<p>build将创建一个可执行程序，在这种情况下：main或main.exe。 然后，您可以运行此文件以查看输出Hello，World!。 您还可以将其复制到未安装Go的类似系统上，使其可执行并在其中运行。</p>
+<p>在构建中指定操作系统或体系结构：
+您可以通过在构建之前修改环境来指定要构建的系统或体系结构：</p>
+<pre><code>$ env GOOS=linux go build main.go # builds for Linux
 $ env GOARCH=arm go build main.go # builds for ARM architecture
-Build multiple files
-If your package is split into multiple files and the package name is main (that is, it is not an importable package), you must specify all the files to build:</p>
-<p>$ go build main.go assets.go # outputs an executable: main
-Building a package
-To build a package called main, you can simply use:</p>
-<p>$ go build . # outputs an executable with name as the name of enclosing folder</p>
-<h2 id="go-clean">go clean</h2>
-<p>go clean will delete temporary files created when running go build.</p>
-<p>It will also clean files left over from Makefiles.</p>
+</code></pre><p>构建多个文件</p>
+<p>如果将软件包拆分为多个文件，并且软件包名称为main（即，它不是可导入的软件包），则必须指定要构建的所有文件：</p>
+<pre><code>$ go build main.go assets.go # outputs an executable: main
+</code></pre><p>build一个包</p>
+<p>要构建一个名为main的软件包，您可以简单地使用：</p>
+<pre><code>$ go build . # outputs an executable with name as the name of enclosing folder
+</code></pre><h2 id="go-clean">go clean</h2>
+<p>go clean将删除运行go build时创建的临时文件。</p>
+<p>它还将清除Makefiles中剩余的文件。</p>
 <h2 id="go-get">go get</h2>
-<p>go get downloads the packages named by the import paths, along with their dependencies. It then installs the named packages, like ‘go install’. Get also accepts build flags to control the installation.</p>
-<p>go get github.com/maknahar/phonecountry
-When checking out a new package, get creates the target directory $GOPATH/src/<!-- raw HTML omitted -->. If the GOPATH contains multiple entries, get uses the first one. Similarly, it will install compiled binaries in $GOPATH/bin.</p>
-<p>When checking out or updating a package, get looks for a branch or tag that matches the locally installed version of Go. The most important rule is that if the local installation is running version “go1”, get searches for a branch or tag named “go1”. If no such version exists it retrieves the most recent version of the package.</p>
-<p>When using go get, the -d flag causes it to download but not install the given package. The -u flag will allow it to update the package and its dependencies.</p>
-<p>Get never checks out or updates code stored in vendor directories.</p>
+<p>go get下载由导入路径命名的软件包及其依赖项。然后，它会安装命名的软件包，例如“ go install”。 Get还接受构建标志来控制安装。</p>
+<p>去获取github.com/maknahar/phonecountry
+签出新软件包时，get将创建目标目录$ GOPATH / src / <!-- raw HTML omitted -->。如果GOPATH包含多个条目，则get使用第一个条目。同样，它将在$ GOPATH / bin中安装编译的二进制文件。</p>
+<p>在签出或更新软件包时，get查找与本地安装的Go版本匹配的分支或标记。最重要的规则是，如果本地安装正在运行版本“ go1”，请获取搜索名为“ go1”的分支或标记的方法。如果不存在这样的版本，它将获取软件包的最新版本。</p>
+<p>使用go get时，-d标志使它下载但不安装给定的软件包。 -u标志将允许它更新程序包及其依赖项。</p>
+<p>永远不要检出或更新存储在供应商目录中的代码。</p>
 <h2 id="go-env">go env</h2>
-<p>Title: go env</p>
-<p>$Id: 328</p>
-<p>$SOId: 28737</p>
-<p>go env [var &hellip;] prints information about environment variables that affect the behavior of Go tools.</p>
-<p>$ go env
-GOARCH=&quot;amd64&rdquo;
-GOBIN=&rdquo;&rdquo;
-GOEXE=&rdquo;&rdquo;
-GOHOSTARCH=&quot;amd64&rdquo;
-GOHOSTOS=&quot;darwin&rdquo;
-GOOS=&quot;darwin&rdquo;
-GOPATH=&rdquo;/Users/vikashkv/work&rdquo;
-GORACE=&rdquo;&rdquo;
-GOROOT=&rdquo;/usr/local/Cellar/go/1.7.4_1/libexec&rdquo;
-GOTOOLDIR=&rdquo;/usr/local/Cellar/go/1.7.4_1/libexec/pkg/tool/darwin_amd64&rdquo;
-CC=&quot;clang&rdquo;
-GOGCCFLAGS=&rdquo;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/xf/t3j24fjd2b7bv8c9gdr_0mj80000gn/T/go-build785167995=/tmp/go-build -gno-record-gcc-switches -fno-common&rdquo;
-CXX=&quot;clang++&rdquo;
+<p>go env [var &hellip;]打印有关影响Go工具行为的环境变量的信息。</p>
+<p><code>$ go env</code></p>
+<blockquote>
+<p>GOARCH=&quot;amd64&rdquo;<br>
+GOBIN=&rdquo;&rdquo;<br>
+GOEXE=&rdquo;&rdquo;<br>
+GOHOSTARCH=&quot;amd64&rdquo;<br>
+GOHOSTOS=&quot;darwin&rdquo;<br>
+GOOS=&quot;darwin&rdquo;<br>
+GOPATH=&rdquo;/Users/vikashkv/work&rdquo;<br>
+GORACE=&rdquo;&rdquo;<br>
+GOROOT=&rdquo;/usr/local/Cellar/go/1.7.4_1/libexec&rdquo;<br>
+GOTOOLDIR=&rdquo;/usr/local/Cellar/go/1.7.4_1/libexec/pkg/tool/darwin_amd64&rdquo;<br>
+CC=&quot;clang&rdquo;<br>
+GOGCCFLAGS=&rdquo;-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/xf/&gt; t3j24fjd2b7bv8c9gdr_0mj80000gn/T/go-build785167995=/tmp/go-build -gno-record-gcc-switches -fno-common&rdquo;<br>
+CXX=&quot;clang++&rdquo;<br>
 CGO_ENABLED=&quot;1&rdquo;
-If one or more variable names is given as arguments, it prints the value of each named variable on its own line.</p>
-<p>$ go env GOOS GOPATH
-darwin
+如果给定一个或多个变量名作为参数，它将在每个行上打印每个命名变量的值。</p>
+</blockquote>
+<pre><code>$ go env GOOS GOPATH
+</code></pre><blockquote>
+<p>darwin<br>
 /Users/vikashkv/work</p>
+</blockquote>
 <h2 id="go-test">go test</h2>
-<p>Title: go test</p>
-<p>$Id: 329</p>
-<p>$SOId: 80100046</p>
 
                                             
                                         </div>
@@ -274,18 +272,17 @@ darwin
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Command/">https://luangeng.space/post/go/basic/Command/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -347,17 +344,6 @@ darwin
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -368,7 +354,7 @@ darwin
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -379,18 +365,7 @@ darwin
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -401,7 +376,7 @@ darwin
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -412,7 +387,7 @@ darwin
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -423,8 +398,30 @@ darwin
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -804,7 +801,7 @@ darwin
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -822,7 +819,7 @@ darwin
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -852,7 +849,7 @@ darwin
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -867,13 +864,13 @@ darwin
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1059,14 +1056,13 @@ darwin
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

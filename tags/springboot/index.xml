@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>springboot on Computer and Software Technology Open Course</title>
+    <title>springboot on 计算机与软件技术公开课</title>
     <link>https://luangeng.space/tags/springboot/</link>
-    <description>Recent content in springboot on Computer and Software Technology Open Course</description>
+    <description>Recent content in springboot on 计算机与软件技术公开课</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Mon, 19 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://luangeng.space/tags/springboot/index.xml" rel="self" type="application/rss+xml" />

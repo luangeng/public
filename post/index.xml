@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Computer and Software Technology Open Course</title>
+    <title>Posts on 计算机与软件技术公开课</title>
     <link>https://luangeng.space/post/</link>
-    <description>Recent content in Posts on Computer and Software Technology Open Course</description>
+    <description>Recent content in Posts on 计算机与软件技术公开课</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Mon, 09 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://luangeng.space/post/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/info/</guid>
-      <description>Go是具有以下特征的通用编程语言： 熟悉的类似C的语法 静态类型 语言级别的并发支持 垃圾收集 快速 跨平台（支持Windows，Mac，Linux等，</description>
+      <description>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫（Robert Gr</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Variables/</guid>
-      <description>Go中声明变量有以下几种方式: // declaration of a single top-level variable var topLevel int64 = 5 // grouping of multiple top-level declarations var ( intVal int // value is initialized with zero-value str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of type func(a int) string //</description>
+      <description>Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // value is initialized with zero-value str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of</description>
     </item>
     
     <item>
@@ -72,7 +72,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Pointers/</guid>
-      <description>A pointer to a variable is an address in memory of that variable. Go doesn’t allow pointer arithmetic. You can’t add to or subtract from pointers. Zero value of a pointer is nil. Basics of pointers: v := 5 // pv is a pointer to v pv := &amp;amp;v fmt.Printf(&amp;ldquo;v: %d, pv: %p\n&amp;rdquo;, v, pv) // we change the value</description>
+      <description>指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上增加或减少。 指针的零值为nil。 指针基础： v := 5 // pv is a pointer to v pv :=</description>
     </item>
     
     <item>
@@ -99,7 +99,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/maps/</guid>
-      <description>Map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C++). map</description>
+      <description>map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C++). map</description>
     </item>
     
     <item>
@@ -117,7 +117,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Interfaces/</guid>
-      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定给定对象的行为。 例如：一个标准库定义了io.Re</description>
+      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea</description>
     </item>
     
     <item>
@@ -144,7 +144,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/range-statement/</guid>
-      <description>迭代字符串 s := &amp;quot;Hey 世界&amp;quot; for i, r := range s { fmt.Printf(&amp;quot;idx: %d, rune: %d\n&amp;quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 Notice that range assumes that string is UTF-8 encoded and iterates over Unicode characters (runes), not</description>
+      <description>遍历字符串 s := &amp;quot;Hey 世界&amp;quot; for i, r := range s { fmt.Printf(&amp;quot;idx: %d, rune: %d\n&amp;quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 请注意，范围假定字符串是UTF-</description>
     </item>
     
     <item>
@@ -192,7 +192,7 @@ func foo() { f, err := os.Open(&amp;ldquo;myfile.txt&amp;rdquo;) if err != nil {
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Panic-and-recover/</guid>
-      <description>Panic and recover This chapter assumes knowledge of defer.
+      <description>This chapter assumes knowledge of defer.
 In Go panic and recover are technically similar to exception handling in languages like C#, Java or Python.
 panic is equivalent of throw or raise and recover fills the role of catch.
 However, while those other languages often use exceptions as a way to propagate errors up the call chain, using panic in Go is highly discouraged.
@@ -214,17 +214,12 @@ var wg sync.</description>
     </item>
     
     <item>
-      <title>Go Channels and select</title>
+      <title>Go channel和select</title>
       <link>https://luangeng.space/post/go/basic/Channels-and-select/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Channels-and-select/</guid>
-      <description>Channels and select A channel is a thread-safe queue of values of a given type.
-A primary use for channels is to communicate between goroutines.
-For that reason we talk about sending values to a channel (ch &amp;lt;- value) and receiving values from a channel (value &amp;lt;- ch).
-Basic of channels:
-func genInts(chInts chan int) { chInts &amp;lt;- rand.Intn(1000) }
-func main() { chInts := make(chan int) for i := 0; i &amp;lt; 2; i++ { go genInts(chInts) } n := &amp;lt;-chInts fmt.</description>
+      <description>Channels and select A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &amp;lt;- value) and receiving values from a channel (value &amp;lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &amp;lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i :=</description>
     </item>
     
     <item>
@@ -264,7 +259,7 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes.<
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Time-and-date/</guid>
-      <description>The Go time package provides functionality for handling time and date. Major types in the package: structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds Get current time and date now := time.Now() Construct a time and date at a given moment in time t := time.Date(year int, month</description>
+      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型： structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds 获取当前日期和时间: now := time.Now()</description>
     </item>
     
     <item>
@@ -273,12 +268,7 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes.<
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Command-line-arguments/</guid>
-      <description>Command line arguments Package flag in standard library is for parsing cmd-line arguments:
-var ( flgHelp bool flgEcho string )
-func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;ldquo;help&amp;rdquo;, false, &amp;ldquo;if true, show help&amp;rdquo;) flag.StringVar(&amp;amp;flgEcho, &amp;ldquo;echo&amp;rdquo;, &amp;ldquo;&amp;quot;, &amp;ldquo;&amp;quot;) flag.Parse() }
-func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;ldquo;flag -echo: &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, flgEcho)
-remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;, arg) }  }
-flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: &#39;arg&#39; Output above is a result of calling go run $file -echo echo-arg additional arg.</description>
+      <description>标准库中的软件包标志用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
     </item>
     
     <item>
@@ -287,18 +277,16 @@ flag -echo: &#39;echo-arg&#39; Remainig arg: &#39;additional&#39; Remainig arg: 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Logging/</guid>
-      <description>Logging is a very deep subject because different programs have different logging requirements. 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方式是打印在标准输出中(stdout): fmt.Printf(&amp;quot;Logging to</description>
+      <description>日志记录是一个非常深入的主题，因为不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方</description>
     </item>
     
     <item>
-      <title>Go Executing commands</title>
+      <title>Go 执行命令</title>
       <link>https://luangeng.space/post/go/basic/Executing-commands/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Executing-commands/</guid>
-      <description>Executing commands Package exec in standard library is a cross-platform way to launch processes, capture their output and more.
-Basic command execution The simplest usage is: * create exec.Cmd struct using exec.Command(exe string, args &amp;hellip;string) * call cmd.CombinedOutput() to execute the cmd and get combined stdout and stderr * to get only stdout, call cmd.Output()
-cmd := exec.Command(&amp;ldquo;go&amp;rdquo;, &amp;ldquo;version&amp;rdquo;) out, err := cmd.CombinedOutput() if err != nil { log.Fatalf(&amp;ldquo;cmd.CombinedOutput() failed with &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, err) } fmt.</description>
+      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command（</description>
     </item>
     
     <item>
@@ -316,10 +304,7 @@ cmd := exec.Command(&amp;ldquo;go&amp;rdquo;, &amp;ldquo;version&amp;rdquo;) out
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/JSON/</guid>
-      <description>JSON Package encoding/json in standard library provides functionality for serializing data as JSON and parsing JSON into data.
-Serialize a struct as JSON type Person struct { fullName string Name string Age int json:&amp;quot;age&amp;quot; City string json:&amp;quot;city&amp;quot; }
-p := Person{ Name: &amp;ldquo;John&amp;rdquo;, Age: 37, City: &amp;ldquo;SF&amp;rdquo;, } d, err := json.Marshal(&amp;amp;p) if err != nil { log.Fatalf(&amp;ldquo;json.MarshalIndent failed with &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, err) } fmt.Printf(&amp;ldquo;Person in compact JSON: %s\n&amp;rdquo;, string(d))
-d, err = json.</description>
+      <description>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;`</description>
     </item>
     
     <item>
@@ -341,10 +326,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/CSV/</guid>
-      <description>CSV Package encoding/csv in standard library provides functionality for reading and writing CSV files.
-Reading records from CSV file Let’s read stock quotes from a CSV file:
-date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf := bytes.NewBufferString(csvData)
-r := csv.NewReader(buf) var record []string nRecords := 0 var err error for { record, err = r.Read() if err != nil { if err == io.EOF { err = nil } break } nRecords++ if nRecords &amp;lt; 5 { fmt.</description>
+      <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价： date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
     </item>
     
     <item>
@@ -353,11 +335,7 @@ r := csv.NewReader(buf) var record []string nRecords := 0 var err error for { re
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/YAML/</guid>
-      <description>YAML is a popular format for serializing data in a human friendly format. Think JSON but easier to read.
-Thanks to its expressivness and readability, YAML is popular as a format for configuration files.
-It’s also used in more complex scenarios like driving Ansible server automation.
-There is no package in standard library for hanlding YAML format but there are community libraries including gopkg.in/yaml.v2.
-Reading YAML file into a Go struct dependencies:</description>
+      <description>YAML是一种流行的格式，用于以人类友好的格式序列化数据, 类似JSON但更易于阅读。 由于其表达能力和可读性，YAML作为配置文件的格式很受欢</description>
     </item>
     
     <item>
@@ -366,7 +344,7 @@ Reading YAML file into a Go struct dependencies:</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/SQL/</guid>
-      <description>Remarks For a list of SQL database drivers see the official Go wiki article SQLDrivers. The SQL drivers are imported and prefixed by _, so that they are only available to driver. MySQL To enable MySQL, a database driver is needed. For example github.com/go-sql-driver/mysql. import ( “database/sql” _ “github.c</description>
+      <description>备注 有关SQL数据库驱动程序的列表，请参见Go Wiki官方文章SQLDrivers。 SQL驱动程序被导入并以_作为前缀，因此它们仅可用于驱动</description>
     </item>
     
     <item>
@@ -407,14 +385,12 @@ Normal Handler Function func loginHandler(w http.ResponseWriter, r *http.</descr
     </item>
     
     <item>
-      <title>Go Text and HTML templates</title>
+      <title>Go Text和HTML模板</title>
       <link>https://luangeng.space/post/go/basic/Text-and-HTML-templates/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Text-and-HTML-templates/</guid>
-      <description>Text and HTML templates Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information.
-Building that HTML string by building smaller strings and concatenating them with + would be tedious.
-Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual output:</description>
+      <description>Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information. Building that HTML string by building smaller strings and concatenating them with + would be tedious. Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual</description>
     </item>
     
     <item>
@@ -432,7 +408,7 @@ Packages text/template and html/template in Go standard library make implement d
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Context/</guid>
-      <description>Context Package context in standard library provides type Context which is hard to explain because it has multiple uses.
+      <description>Package context in standard library provides type Context which is hard to explain because it has multiple uses.
 Here are the most common uses of context.Context:
 context with timeout (deadline) is a generic way to implement timeouts for functions that can possibly take a long time where we want an option to abort them if they exceed the timeout context with cancellation is a generic way to cancel a goroutine context with value is a way to associate arbitrary value with a context Creating a context In most cases you’ll be calling existing API that requires context.</description>
     </item>
@@ -456,14 +432,12 @@ context with timeout (deadline) is a generic way to implement timeouts for funct
     </item>
     
     <item>
-      <title>Go Profiling using go tool pprof</title>
+      <title>Go 使用Go工具pprof进行性能分析</title>
       <link>https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/</guid>
-      <description>Basic cpu and memory profiling Add the following code in you main program.
-var cpuprofile = flag.String(&amp;ldquo;cpuprofile&amp;rdquo;, &amp;ldquo;&amp;quot;, &amp;ldquo;write cpu profile file&amp;rdquo;) var memprofile = flag.String(&amp;ldquo;memprofile&amp;rdquo;, &amp;ldquo;&amp;quot;, &amp;ldquo;write memory profile to file&amp;rdquo;)
-func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;rdquo; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&amp;ldquo;could not create CPU profile: &amp;ldquo;, err) } if err := pprof.StartCPUProfile(f); err != nil { log.Fatal(&amp;ldquo;could not start CPU profile: &amp;ldquo;, err) } defer pprof.</description>
+      <description>基本的cpu和内存分析 在主程序中添加以下代码。 var cpuprofile = flag.String(&amp;quot;cpuprofile&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;write cpu profile `file`&amp;quot;) var memprofile = flag.String(&amp;quot;memprofile&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;write memory profile to `file`&amp;quot;) func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;quot; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&amp;quot;could not create CPU profile: &amp;quot;, err) } if err</description>
     </item>
     
     <item>
@@ -476,15 +450,12 @@ func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;rdquo; { f, err := o
     </item>
     
     <item>
-      <title>Go Conditional compilation with build tags</title>
+      <title>Go 使用构建标签进行条件编译</title>
       <link>https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/</guid>
-      <description>Conditional compilation with build tags Build tags allow for limited conditional compilation i.e. compiling different versions of code based on some criteria.
-Tags are specified per file, at the top of the file, followed by an empty line and the code.
-A typical use case for tags is to provide to implementation of the same functionality and pick the one that is compiled with tags.
-For example, if you have 3 files in the directory:</description>
+      <description>Conditional compilation with build tags Build tags allow for limited conditional compilation i.e. compiling different versions of code based on some criteria. Tags are specified per file, at the top of the file, followed by an empty line and the code. A typical use case for tags is to provide to implementation of the same functionality and pick the one that is compiled with tags. For example, if you have</description>
     </item>
     
     <item>
@@ -535,7 +506,7 @@ Encode data to file and decode from file type User struct { Username string Pass
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Plugin/</guid>
-      <description>介绍 Go provides a plugin mechanism that can be used to dynamically link other Go code at runtime. As of Go 1.8, it is only usable on Linux. Defining and using a plugin package main import &amp;ldquo;fmt&amp;rdquo; var V int func F() { fmt.Printf(&amp;ldquo;Hello, number %d\n&amp;rdquo;, V) } This can be built with: $ go build -buildmode=plugin And then loaded and used from your application: p, err := plugin.Open(&amp;ldquo;plugin_name.so&amp;rdquo;)</description>
+      <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。 在Go1.8中，仅在Linux上可用。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V)</description>
     </item>
     
     <item>
@@ -544,7 +515,7 @@ Encode data to file and decode from file type User struct { Username string Pass
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Package-fmt/</guid>
-      <description>Package fmt in standard library can format strings and parse data out of strings. Basic fmt Package fmt implements formatted I/O using format verbs: Verb Meaning %v default format %T type of the value %s uninterpreted bytes of the string or slice Formatting functions There are 4 main function types in fmt and several variations within. Print, Println, Printf fmt.Print(&amp;ldquo;Hello World&amp;rdquo;) // prints: Hello World fmt.Println(&amp;ldquo;Hello World&amp;rdquo;) // prints: Hello</description>
+      <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片</description>
     </item>
     
     <item>
@@ -553,7 +524,7 @@ Encode data to file and decode from file type User struct { Username string Pass
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Protobuf-in-Go/</guid>
-      <description>Introduction Protobuf or Protocol Buffer encodes and decodes data so that different applications or modules written in unlike languages can exchange large numbers of messages quickly and reliably without overloading the communication channel. With protobuf, the performance is directly proportional to the number of message you tend to send. It compresses the message to to be sent into a serialized binary format by providing you with the tools to encode the message at the source and decode it at the destination.</description>
+      <description>介绍 Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道</description>
     </item>
     
     <item>
@@ -574,10 +545,7 @@ fmt.Print(&amp;ldquo;What is your name?\n&amp;rdquo;) var name string if n, err 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Cryptography/</guid>
-      <description>Cryptography Introduction Find out how to encrypt and decrypt data with Go. Keep in mind that this is not a course about cryptography but rather how to achieve it with Go.
-Encryption and decryption with AES GCM You have a file and a password and you want to encrypt the file with a password.
-There are many encryption algorithms.
-This chapter describes how to use symmetric algorithm AES (Advanced Encryption Standard) in GCM mode.</description>
+      <description>介绍 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 您有一个</description>
     </item>
     
     <item>
@@ -598,7 +566,7 @@ GIF decoder and encoder PNG decoder and encoder JPEG decoder and encoder The are
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Command/</guid>
-      <description>The Go Command The go command is a command-line program that allows for the management of Go development. It enables building, running, and testing code, as well as a variety of other Go-related tasks. go fmt Search: gofmt Id: 323 SOId: 17008 To keep code consistent and eliminate arguments over code formatting, Go includes go fmt tool. To format a file: go fmt main.go Or all files in a directory:</description>
+      <description>go命令是一个命令行程序，用于管理Go开发。 它支持构建，运行和测试代码，以及各种其他与Go相关的任务。 go fmt 为了保持代码的一致性并消除代码格式</description>
     </item>
     
     <item>

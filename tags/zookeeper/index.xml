@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zookeeper on Computer and Software Technology Open Course</title>
+    <title>zookeeper on 计算机与软件技术公开课</title>
     <link>https://luangeng.space/tags/zookeeper/</link>
-    <description>Recent content in zookeeper on Computer and Software Technology Open Course</description>
+    <description>Recent content in zookeeper on 计算机与软件技术公开课</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>Copyright (c) 2017. All rights reserved.</copyright>
+    <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Sat, 09 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://luangeng.space/tags/zookeeper/index.xml" rel="self" type="application/rss+xml" />

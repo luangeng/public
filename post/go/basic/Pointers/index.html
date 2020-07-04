@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 指针 - Computer and Software Technology Open Course</title>
+  <title>Go 指针 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 指针 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 指针 - 计算机与软件技术公开课">
   <meta name="description" content="Go 指针">
-  <meta itemprop="name" content="Go 指针 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 指针 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 指针">
-  <meta property="og:title" content="Go 指针 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 指针 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Pointers/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="A pointer to a variable is an address in memory of that variable. Go doesn’t allow pointer arithmetic. You can’t add to or subtract from pointers. Zero value of a pointer is nil. Basics of pointers: v := 5 // pv is a pointer to v pv := &amp;v fmt.Printf(&ldquo;v: %d, pv: %p\n&rdquo;, v, pv) // we change the value">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上增加或减少。 指针的零值为nil。 指针基础： v := 5 // pv is a pointer to v pv :=">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Pointers/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Pointers/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 指针</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 827 Words
+                                        Posted @ 2019-09-09 · 892 Words
                                         
                                         · Tags: Go
                                         
@@ -148,32 +149,29 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>A pointer to a variable is an address in memory of that variable.</p>
-<p>Go doesn’t allow pointer arithmetic. You can’t add to or subtract from pointers.</p>
-<p>Zero value of a pointer is nil.</p>
-<p>Basics of pointers:</p>
-<p>v := 5</p>
-<p>// pv is a pointer to v
+                                            <p>指向变量的指针是该变量在内存中的地址。</p>
+<p>Go不允许进行指针运算,不能在指针上增加或减少。</p>
+<p>指针的零值为nil。</p>
+<p>指针基础：</p>
+<pre><code>v := 5
+
+// pv is a pointer to v
 pv := &amp;v
-fmt.Printf(&ldquo;v: %d, pv: %p\n&rdquo;, v, pv)</p>
-<p>// we change the value of v via pv
+fmt.Printf(&quot;v: %d, pv: %p\n&quot;, v, pv)
+
+// we change the value of v via pv
 *pv = 4
-fmt.Printf(&ldquo;v: %d\n&rdquo;, v)</p>
-<p>// two pointers to the same value have the same address
+fmt.Printf(&quot;v: %d\n&quot;, v)
+
+// two pointers to the same value have the same address
 pv2 := &amp;v
-fmt.Printf(&ldquo;pv: %p, pv2: %p\n&rdquo;, pv, pv2)</p>
-<pre><code>v: 5, pv: 0xc000016048
-v: 4
-pv: 0xc000016048, pv2: 0xc000016048
-
-Basics of pointers
-A pointer to a variable is the address of that variable in memory.
-
-Unlike C++, Go doesn’t allow pointer arithmetic i.e. you can’t add or substract from pointers.
-
-Zero value of a pointer is nil.
-
-// We'll show how pointers work in contrast to values with
+fmt.Printf(&quot;pv: %p, pv2: %p\n&quot;, pv, pv2)
+</code></pre><blockquote>
+<p>v: 5, pv: 0xc000016048<br>
+v: 4<br>
+pv: 0xc000016048, pv2: 0xc000016048</p>
+</blockquote>
+<pre><code>// We'll show how pointers work in contrast to values with
 // 2 functions: `zeroval` and `zeroptr`. `zeroval` has an
 // `int` parameter, so arguments will be passed to it by
 // value. `zeroval` will get a copy of `ival` distinct
@@ -191,29 +189,32 @@ func zeroval(ival int) {
 func zeroptr(iptr *int) {
 	*iptr = 0
 }
-</code></pre><p>Once these functions are defined, you can do the following:</p>
-<p>i := 1
-fmt.Println(&ldquo;initial:&quot;, i)</p>
-<p>zeroval(i)
-fmt.Println(&ldquo;zeroval:&quot;, i)
-// <code>i</code> is still equal to 1 because <code>zeroval</code> edited
-// a &ldquo;copy&rdquo; of <code>i</code>, not the original.</p>
-<p>// The <code>&amp;i</code> syntax gives the memory address of <code>i</code>,
-// i.e. a pointer to <code>i</code>. When calling <code>zeroptr</code>,
-// it will edit the &ldquo;original&rdquo; <code>i</code>.
+</code></pre><p>定义这些功能后，您可以执行以下操作：</p>
+<pre><code>i := 1
+fmt.Println(&quot;initial:&quot;, i)
+
+zeroval(i)
+fmt.Println(&quot;zeroval:&quot;, i)
+// `i` is still equal to 1 because `zeroval` edited
+// a &quot;copy&quot; of `i`, not the original.
+
+// The `&amp;i` syntax gives the memory address of `i`,
+// i.e. a pointer to `i`. When calling `zeroptr`,
+// it will edit the &quot;original&quot; `i`.
 zeroptr(&amp;i)
-fmt.Println(&ldquo;zeroptr:&quot;, i)</p>
-<p>// Pointers can be printed too.
-fmt.Println(&ldquo;pointer:&quot;, &amp;i)</p>
-<pre><code>initial: 1
-zeroval: 1
-zeroptr: 0
-pointer: 0xc00007e000
+fmt.Println(&quot;zeroptr:&quot;, i)
 
-## Dereferencing pointers
-Pointers can be dereferenced by adding an asterisk * before a pointer.
-
-type Person struct {
+// Pointers can be printed too.
+fmt.Println(&quot;pointer:&quot;, &amp;i)
+</code></pre><blockquote>
+<p>initial: 1<br>
+zeroval: 1<br>
+zeroptr: 0<br>
+pointer: 0xc00007e000</p>
+</blockquote>
+<h2 id="取消引用指针">取消引用指针</h2>
+<p>可以通过在指针之前添加星号*来取消对指针的引用。</p>
+<pre><code>type Person struct {
 	Name string
 }
 
@@ -230,51 +231,52 @@ func main() {
 	fmt.Println(c.Name) // prints: Daniel
 	fmt.Println(d.Name) // prints: Daniel
 	fmt.Println(i.Name) // prints: Ines
-</code></pre><p>Catherine
-Daniel
-Daniel
-Daniel
+</code></pre><blockquote>
+<p>Catherine<br>
+Daniel<br>
+Daniel<br>
+Daniel<br>
 Ines</p>
-<h2 id="pointer-vs-value-methods">Pointer vs. value methods</h2>
-<p>Pointer Methods
-Pointer methods can be called even if the variable is itself not a pointer.</p>
-<p>According to the Go Spec,</p>
-<p>. . . a reference to a non-interface method with a pointer receiver using an addressable value will automatically take the address of that value: t.Mp is equivalent to (&amp;t).Mp.
-You can see this in this example:</p>
-<p>type Foo struct {
-Bar int
-}</p>
-<p>func (f *Foo) Increment() {
-f.Bar++
-}</p>
-<p>func main() {
-var f Foo</p>
-<pre><code>// Calling `f.Increment` is automatically changed to `(&amp;f).Increment` by the compiler.
-f = Foo{}
-fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
-f.Increment()
-fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+</blockquote>
+<h2 id="指针与值方法">指针与值方法</h2>
+<p>指针</p>
+<p>即使变量本身不是指针，也可以调用指针方法。</p>
+<p>根据Go Spec，使用指针指针接收器使用可寻址值对非接口方法的引用将自动获取该值的地址：t.Mp等效于（＆t）.Mp。
+可以在此示例中看到：</p>
+<pre><code>type Foo struct {
+	Bar int
+}
 
-// As you can see, calling `(&amp;f).Increment` directly does the same thing.
-f = Foo{}
-fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
-(&amp;f).Increment()
-fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
-</code></pre>
-<p>}</p>
-<pre><code>f.Bar is 0
+func (f *Foo) Increment() {
+	f.Bar++
+}
+
+func main() {
+	var f Foo
+
+	// Calling `f.Increment` is automatically changed to `(&amp;f).Increment` by the compiler.
+	f = Foo{}
+	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+	f.Increment()
+	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+
+	// As you can see, calling `(&amp;f).Increment` directly does the same thing.
+	f = Foo{}
+	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+	(&amp;f).Increment()
+	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+}
+</code></pre><blockquote>
+<p>f.Bar is 0
 f.Bar is 1
 f.Bar is 0
-f.Bar is 1
-Value Methods
-Similarly to pointer methods, value methods can be called even if the variable is itself not a value.
-
-According to the Go Spec,
-
-. . . a reference to a non-interface method with a value receiver using a pointer will automatically dereference that pointer: pt.Mv is equivalent to (*pt).Mv.
-You can see this in this example:
-
-type Foo struct {
+f.Bar is 1</p>
+</blockquote>
+<p>值方法
+与指针方法类似，即使变量本身不是值，也可以调用值方法。</p>
+<p>根据Go Spec，使用指针使用值接收器对非接口方法的引用将自动取消引用该指针：pt.Mv等效于（* pt）.Mv。
+您可以在此示例中看到以下内容：</p>
+<pre><code>type Foo struct {
 	Bar int
 }
 
@@ -298,13 +300,14 @@ func main() {
 	(*p).Increment()
 	fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
 }
-</code></pre><p>(*p).Bar is 0
-(*p).Bar is 0
-(*p).Bar is 0
-(*p).Bar is 0
-To learn more about pointer and value methods, visit the Go Spec section on Method Values, or see the Effective Go section about Pointers v. Values.</p>
-<p>Note 1: The parenthesis (()) around *p and &amp;f before selectors like .Bar are there for grouping purposes, and must be kept.</p>
-<p>Note 2: Although pointers can be converted to values (and vice-versa) when they are the receivers for a method, they are not automatically converted to each other when they are arguments inside of a function.</p>
+</code></pre><blockquote>
+<p>(*p).Bar is 0<br>
+(*p).Bar is 0<br>
+(*p).Bar is 0<br>
+(*p).Bar is 0</p>
+</blockquote>
+<p>注1：* p和＆f之前的括号用于分组目的，必须保留。</p>
+<p>注2：尽管当指针是方法的接收者时，它们可以转换为值（反之亦然），但当它们是函数内部的参数时，它们不会自动相互转换。</p>
 
                                             
                                         </div>
@@ -321,18 +324,17 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Pointers/">https://luangeng.space/post/go/basic/Pointers/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -394,17 +396,6 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -415,7 +406,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -426,18 +417,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -448,7 +428,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -459,7 +439,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -470,8 +450,30 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -849,7 +851,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -867,7 +869,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -897,7 +899,7 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -912,13 +914,13 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1106,14 +1108,13 @@ To learn more about pointer and value methods, visit the Go Spec section on Meth
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>

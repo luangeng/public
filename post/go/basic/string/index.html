@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="https://luangeng.space">
-  <title>Go 字符串 - Computer and Software Technology Open Course</title>
+  <title>Go 字符串 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 字符串 - Computer and Software Technology Open Course">
+  <meta name="keywords" content="Go 字符串 - 计算机与软件技术公开课">
   <meta name="description" content="Go 字符串">
-  <meta itemprop="name" content="Go 字符串 - Computer and Software Technology Open Course">
+  <meta itemprop="name" content="Go 字符串 - 计算机与软件技术公开课">
   <meta itemprop="description" content="Go 字符串">
-  <meta property="og:title" content="Go 字符串 - Computer and Software Technology Open Course" />
+  <meta property="og:title" content="Go 字符串 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/string/" />
-  <meta property="og:site_name" content="luangeng"/>
-  <meta property="og:description" content="go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt">
- 
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description"
+    content="go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt">
+
   <link rel="canonical" href="https://luangeng.space/post/go/basic/string/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/string/">
-  <link rel="shortcut icon" href="img/favicon.ico"/>
+  <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css"/>
-  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css"/>
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
   <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="css/github.css">
@@ -32,7 +34,6 @@
   
 
 </head>
-
 <body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
 <div id="wrapper">
     <header id="header">
@@ -89,7 +90,7 @@
           <h1 class="site-title">
             <a rel="nofollow" href="https://luangeng.space" rel="home">
               
-              Computer and Software Technology Open Course
+              计算机与软件技术公开课
             </a>
           </h1>
           <span class="site-description">  </span>
@@ -129,7 +130,7 @@
                                     <h1 class="post-title">Go 字符串</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 3363 Words
+                                        Posted @ 2019-09-09 · 3840 Words
                                         
                                         · Tags: Go
                                         
@@ -217,17 +218,16 @@ fmt.Printf(&quot;Index of non-existent substring is: %d\n&quot;, idx)
 <p>&lsquo;hello&rsquo; is in s starting at position 6 <br>
 Index of non-existent substring is: -1</p>
 </blockquote>
-<p>Find the position of string within another string starting from the end
-Above we searched from the beginning of the string. We can also search from the end using strings.LastIndex:</p>
-<p>s := &ldquo;hello and second hello&rdquo;
-toFind := &ldquo;hello&rdquo;
+<p>从末尾开始查找字符串在另一个字符串中的位置
+在上面，我们从字符串的开头搜索。 我们也可以使用string.LastIndex从头开始搜索：</p>
+<pre><code>s := &quot;hello and second hello&quot;
+toFind := &quot;hello&quot;
 idx := strings.LastIndex(s, toFind)
-fmt.Printf(&ldquo;when searching from end, &lsquo;%s&rsquo; is in s at position %d\n&rdquo;, toFind, idx)</p>
-<pre><code>when searching from end, 'hello' is in s at position 17
-Find all occurrences of a substring
-Above, we only found the first occurrence of the substring. Here’s how to find all occurrences:
-
-s := &quot;first is, second is, third is&quot;
+fmt.Printf(&quot;when searching from end, '%s' is in s at position %d\n&quot;, toFind, idx)
+</code></pre><p>从末尾搜索时，“ hello”在位置17处
+查找所有出现的子串
+上面，我们只发现了子字符串的第一次出现。 查找所有事件的方法如下：</p>
+<pre><code>s := &quot;first is, second is, third is&quot;
 toFind := &quot;is&quot;
 currStart := 0
 for {
@@ -297,7 +297,7 @@ if strings.EqualFold(s1, s2) {
 </code></pre><blockquote>
 <p>&lsquo;gone&rsquo; is equal &lsquo;GoNe&rsquo; when ignoring case</p>
 </blockquote>
-<p>The exact rule is: both string are considered UTF-8-encoded strings and characters are compared using Unicode case-folding.</p>
+<p>确切的规则是：将两个字符串都视为UTF-8编码的字符串，并使用Unicode大小写折叠比较字符。</p>
 <pre><code>s1 := &quot;string one&quot;
 s2 := &quot;string two&quot;
 
@@ -379,7 +379,7 @@ strconv.ParseInt(&lsquo;234&rsquo;, 64): 234<br>
 strconv.ParseFloat('-3.234&rsquo;, 64): -3.234<br>
 fmt.Sscanf(): -3.234</p>
 </blockquote>
-<h2 id="trim-strings-remove-chars-or-substrings">Trim strings (remove chars or substrings)</h2>
+<h2 id="修剪string-移除char或string">修剪string (移除char或string)</h2>
 <p>strings.TrimSpace   strings.TrimSpace(s string) 删除字符串开头和结尾的空格:</p>
 <pre><code>s := &quot;  str\n &quot;
 fmt.Printf(&quot;TrimSpace: %#v =&gt; %#v\n&quot;, s, strings.TrimSpace(s))
@@ -441,9 +441,9 @@ fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
 </code></pre><blockquote>
 <p>s2: &lsquo;replaced string replaced&rsquo;</p>
 </blockquote>
-<p>This shows how to do strings replacements with regular expressions. (?U)or.*al is a non-greedy ((?U) flag) regular expression that matches original string.</p>
-<p>We replace all parts of the string matching the regex with a string replaced.</p>
-<p>Regular expression is non-greedy, meaning it matches the shortest possible string as opposed to default greedy match which looks for longest possible match.</p>
+<p>这显示了如何用正则表达式替换字符串。 （？U）or。* al是与原始字符串匹配的非贪婪（（？U）标志）正则表达式。</p>
+<p>我们用替换的字符串替换匹配正则表达式的字符串的所有部分。</p>
+<p>正则表达式是非贪婪的，这意味着它与可能的最短字符串匹配，而不是与寻找可能的最长匹配的默认贪婪匹配相对。</p>
 <h2 id="拆分和合并">拆分和合并</h2>
 <p>您可以将字符串分割为[] string片段，或者将其重新连接为字符串:</p>
 <pre><code>s := &quot;this is a string&quot;
@@ -467,96 +467,108 @@ fmt.Println(s)
 <p>s: &lsquo;Hello World&rsquo; <br>
 2 + 3.000000 = 5</p>
 </blockquote>
-<p>The first argument to fmt.Sprintf is a formatting string which defines how to format subsequent arguments. Subsequent arguments are the values that will be formatted.</p>
-<p>fmt.Sprintf creates a formatted string.</p>
-<p>For convenience, there’s also:</p>
-<p>fmt.Fprintf(w io.Writer, string format, args&hellip; interface{}), which will write a formatted string to a given writer
-fmt.Printf(format string, args.. interface{}) which writes a formatted string to os.Stdout.
-The function Sprintf formats the string in the first parameter, replacing the verbs with the values of the subsequent parameters and returns the result. Like Sprintf, the function Printf also formats but instead of returning the result it prints the string.</p>
-<p>List of string formatting verbs
-%v    // the value in a default format
-// when printing structs, the plus flag (%+v) adds field names
-%#v   // a Go-syntax representation of the value
-%T    // a Go-syntax representation of the type of the value
-%%    // a literal percent sign; consumes no value
-Boolean:</p>
-<p>%t    // the word true or false
-Integer:</p>
-<p>%b    // base 2
-%c    // the character represented by the corresponding Unicode code point
-%d    // base 10
-%o    // base 8
-%q    // a single-quoted character literal safely escaped with Go syntax.
-%x    // base 16, with lower-case letters for a-f
-%X    // base 16, with upper-case letters for A-F
-%U    // Unicode format: U+1234; same as &ldquo;U+%04X&rdquo;
-Floating-point and complex constituents:</p>
-<p>%b    // decimalless scientific notation with exponent a power of two,
-// in the manner of strconv.FormatFloat with the &lsquo;b&rsquo; format,
-// e.g. -123456p-78
-%e    // scientific notation, e.g. -1.234456e+78
-%E    // scientific notation, e.g. -1.234456E+78
-%f    // decimal point but no exponent, e.g. 123.456
-%F    // synonym for %f
-%g    // %e for large exponents, %f otherwise
-%G    // %E for large exponents, %F otherwise
-String and slice of bytes (treated equivalently with these verbs):</p>
-<p>%s    // the uninterpreted bytes of the string or slice
-%q    // a double-quoted string safely escaped with Go syntax
-%x    // base 16, lower-case, two characters per byte
-%X    // base 16, upper-case, two characters per byte
-Pointer:</p>
-<p>%p    // base 16 notation, with leading 0x</p>
-<h2 id="parse-text">Parse text</h2>
-<p>Using fmt.Sscanf
+<p>fmt.Sprintf的第一个参数是格式字符串，它定义了如何格式化后续参数。 后续参数是将被格式化的值。</p>
+<p>fmt.Sprintf创建一个格式化的字符串。</p>
+<p>为了方便起见，还有：</p>
+<ul>
+<li>fmt.Fprintf(w io.Writer, string format, args&hellip; interface{}), which will write a formatted string to a given writer</li>
+<li>fmt.Printf(format string, args.. interface{}) which writes a formatted string to os.Stdout.
+函数Sprintf格式化第一个参数中的字符串，将动词替换为后续参数的值，并返回结果。 像Sprintf一样，函数Printf也会格式化，但不会返回结果，而是打印字符串。</li>
+</ul>
+<p>字符串格式动词列表:</p>
+<ul>
+<li>%v    // the value in a default format     // when printing structs, the plus flag (%+v) adds field names</li>
+<li>%#v   // a Go-syntax representation of the value</li>
+<li>%T    // a Go-syntax representation of the type of the value</li>
+<li>%%    // a literal percent sign; consumes no value</li>
+</ul>
+<p>Boolean:</p>
+<ul>
+<li>%t    // the word true or false</li>
+</ul>
+<p>Integer:</p>
+<ul>
+<li>%b    // base 2</li>
+<li>%c    // the character represented by the corresponding Unicode code point</li>
+<li>%d    // base 10</li>
+<li>%o    // base 8</li>
+<li>%q    // a single-quoted character literal safely escaped with Go syntax.</li>
+<li>%x    // base 16, with lower-case letters for a-f</li>
+<li>%X    // base 16, with upper-case letters for A-F</li>
+<li>%U    // Unicode format: U+1234; same as &ldquo;U+%04X&rdquo;</li>
+</ul>
+<p>浮点型和复数:</p>
+<ul>
+<li>%b    // decimalless scientific notation with exponent a power of two,        // in the manner of strconv.FormatFloat with the &lsquo;b&rsquo; format, e.g. -123456p-78</li>
+<li>%e    // scientific notation, e.g. -1.234456e+78</li>
+<li>%E    // scientific notation, e.g. -1.234456E+78</li>
+<li>%f    // decimal point but no exponent, e.g. 123.456</li>
+<li>%F    // synonym for %f</li>
+<li>%g    // %e for large exponents, %f otherwise</li>
+<li>%G    // %E for large exponents, %F otherwise</li>
+</ul>
+<p>字符串和字节片（与这些动词等效地对待）：</p>
+<ul>
+<li>%s    // the uninterpreted bytes of the string or slice</li>
+<li>%q    // a double-quoted string safely escaped with Go syntax</li>
+<li>%x    // base 16, lower-case, two characters per byte</li>
+<li>%X    // base 16, upper-case, two characters per byte</li>
+</ul>
+<p>指针:</p>
+<ul>
+<li>%p    // base 16 notation, with leading 0x</li>
+</ul>
+<h2 id="解析文本">解析文本</h2>
+<p>使用fmt.Sscanf
 fmt.Sscanf is the reverse of fmt.Sprintf. Given a string and formatting directive you can parse string into components.</p>
-<p>// extract int and float from a string
-s := &ldquo;48 123.45&rdquo;
+<pre><code>// extract int and float from a string
+s := &quot;48 123.45&quot;
 var f float64
 var i int
-nParsed, err := fmt.Sscanf(s, &ldquo;%d %f&rdquo;, &amp;i, &amp;f)
+nParsed, err := fmt.Sscanf(s, &quot;%d %f&quot;, &amp;i, &amp;f)
 if err != nil {
-log.Fatalf(&ldquo;first fmt.Sscanf failed with %s\n&rdquo;, err)
+	log.Fatalf(&quot;first fmt.Sscanf failed with %s\n&quot;, err)
 }
-fmt.Printf(&ldquo;i: %d, f: %f, extracted %d values\n&rdquo;, i, f, nParsed)</p>
-<p>var i2 int
-_, err = fmt.Sscanf(s, &ldquo;%d %f %d&rdquo;, &amp;i, &amp;f, &amp;i2)
+fmt.Printf(&quot;i: %d, f: %f, extracted %d values\n&quot;, i, f, nParsed)
+
+var i2 int
+_, err = fmt.Sscanf(s, &quot;%d %f %d&quot;, &amp;i, &amp;f, &amp;i2)
 if err != nil {
-fmt.Printf(&ldquo;second fmt.Sscanf failed with %s\n&rdquo;, err)
-}</p>
-<pre><code>i: 48, f: 123.450000, extracted 2 values
-second fmt.Sscanf failed with EOF
-fmt.Sscanf supports the same formatting directives as fmt.Sprintf.
-
-If formatting string doesn't match parsed string, fmt.Sscanf returns an error. In our examples the error is EOF because we wanted to extract more values than were in the string.
-
-Using strings.Split
-string.Split allows to split a string by a separator.
-
-s := &quot;this,. is,. a,. string&quot;
+	fmt.Printf(&quot;second fmt.Sscanf failed with %s\n&quot;, err)
+}
+</code></pre><blockquote>
+<p>i: 48, f: 123.450000, extracted 2 values<br>
+second fmt.Sscanf failed with EOF</p>
+</blockquote>
+<p>fmt.Sscanf supports the same formatting directives as fmt.Sprintf.</p>
+<p>If formatting string doesn&rsquo;t match parsed string, fmt.Sscanf returns an error. In our examples the error is EOF because we wanted to extract more values than were in the string.</p>
+<p>Using strings.Split
+string.Split allows to split a string by a separator.</p>
+<pre><code>s := &quot;this,. is,. a,. string&quot;
 a := strings.Split(s, &quot;,.&quot;)
 fmt.Printf(&quot;a: %#v\n&quot;, a)
-</code></pre><p>a: []string{&ldquo;this&rdquo;, &quot; is&rdquo;, &quot; a&rdquo;, &quot; string&rdquo;}</p>
-<h2 id="read-file-line-by-line">Read file line by line</h2>
-<p>Often we need to read a file line by line.</p>
-<p>Read file into memory and split into lines
-// ReadFileAsLines reads a file and splits it into lines
+</code></pre><blockquote>
+<p>a: []string{&ldquo;this&rdquo;, &quot; is&rdquo;, &quot; a&rdquo;, &quot; string&rdquo;}</p>
+</blockquote>
+<h2 id="逐行读取文件">逐行读取文件</h2>
+<p>把file读入内存并用行来拆分</p>
+<pre><code>// ReadFileAsLines reads a file and splits it into lines
 func ReadFileAsLines(path string) ([]string, error) {
-d, err := ioutil.ReadFile(path)
-if err != nil {
-return nil, err
+	d, err := ioutil.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+	s := string(d)
+	lines := strings.Split(s, &quot;\n&quot;)
+	return lines, nil
 }
-s := string(d)
-lines := strings.Split(s, &ldquo;\n&rdquo;)
-return lines, nil
-}</p>
-<pre><code>There are 32 lines in 'main.go'
-Iterate over lines in a file
-It’s more efficient to only process one line at a time, as opposed to reading the whole file into memory.
-
-We can do that using bufio.Scanner:
-
-func IterLinesInFile(filePath string, process func (s string) bool) error {
+</code></pre><blockquote>
+<p>There are 32 lines in &lsquo;main.go&rsquo;</p>
+</blockquote>
+<p>遍历文件中的行
+与将整个文件读入内存相比，一次只处理一行更有效。</p>
+<p>我们可以使用bufio.Scanner做到这一点：</p>
+<pre><code>func IterLinesInFile(filePath string, process func (s string) bool) error {
     file, err := os.Open(filePath)
     if err != nil {
         return err
@@ -574,28 +586,35 @@ func IterLinesInFile(filePath string, process func (s string) bool) error {
     // check if Scan() finished because of error or because it reached end of file
     return scanner.Err()
 }
-</code></pre><p>38 lines in &lsquo;main.go&rsquo;</p>
-<h2 id="normalize-newlines">Normalize newlines</h2>
-<p>3 types of newlines
-There are 3 ways to represent a newline.</p>
-<p>Unix: using single character LF, which is byte 10 (0x0a), represented as “” in Go string literal.</p>
-<p>Windows: using 2 characters: CR LF, which is bytes 13 10 (0x0d, 0x0a), represented as “” in Go string literal.</p>
-<p>Mac OS: using 1 character CR (byte 13 (0x0d)), represented as “” in Go string literal. This is the least popular.</p>
-<p>When splitting strings into lines you have to decide how you’ll handle this.</p>
-<p>You can assume that your code will only see e.g. Unix style line endings and only handle “”, but this won’t work at all on files with Mac line endings and files with Windows line endings will have a CR character in them.</p>
-<p>A simple way to handle multiple newline representations is to normalize the newlines and then operate on the normalized version.</p>
-<p>Finally you can write code that handles all newline endings. Inevitably, such code is a bit more complicated.</p>
-<p>Normalize newlines
-// NormalizeNewlines normalizes \r\n (windows) and \r (mac)
+</code></pre><blockquote>
+<p>38 lines in &lsquo;main.go&rsquo;</p>
+</blockquote>
+<h2 id="规范化换行">规范化换行</h2>
+<p>3种换行符</p>
+<p>表示换行符的方式有3种:</p>
+<ul>
+<li>Unix：使用单个字符LF，即字节10（0x0a），在Go字符串文字中表示为“”。</li>
+<li>Windows：使用2个字符：CR LF，它是字节13 10（0x0d，0x0a），在Go字符串文字中表示为“”。</li>
+<li>Mac OS：使用1个字符的CR（字节13（0x0d）），在Go字符串文字中表示为“”。 这是最不流行的。</li>
+</ul>
+<p>将字符串分成几行时，您必须决定如何处理。</p>
+<p>您可以假设您的代码只会显示例如 Unix样式的行尾，只能处理“”，但对于Mac尾行的文件根本不起作用，而Windows尾行的文件中将带有CR字符。</p>
+<p>处理多个换行符表示的一种简单方法是标准化换行符，然后对标准化版本进行操作。</p>
+<p>最后，您可以编写处理所有换行符结尾的代码。 不可避免地，这样的代码要复杂一些。</p>
+<p>换行规范化:</p>
+<pre><code>// NormalizeNewlines normalizes \r\n (windows) and \r (mac)
 // into \n (unix)
 func NormalizeNewlines(d []byte) []byte {
-// replace CR LF \r\n (windows) with LF \n (unix)
-d = bytes.Replace(d, []byte{13, 10}, []byte{10}, -1)
-// replace CF \r (mac) with LF \n (unix)
-d = bytes.Replace(d, []byte{13}, []byte{10}, -1)
-return d
-}</p>
-<pre><code>&quot;new\nline&quot;</code></pre>
+	// replace CR LF \r\n (windows) with LF \n (unix)
+	d = bytes.Replace(d, []byte{13, 10}, []byte{10}, -1)
+	// replace CF \r (mac) with LF \n (unix)
+	d = bytes.Replace(d, []byte{13}, []byte{10}, -1)
+	return d
+}
+</code></pre><blockquote>
+<p>&ldquo;new\nline&rdquo;</p>
+</blockquote>
+
                                             
                                         </div>
 
@@ -611,18 +630,17 @@ return d
             <li>作者：luangeng</li>
             <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
             
-                
-                
-                
+            
+            
+            
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/string/">https://luangeng.space/post/go/basic/string/</a></li>
-            <li>版权声明：自由转载-非商用-非衍生-保持署名（<a
+            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
             </li>
         </ul>
     </div>
 </div>
-
                                         <div class="clear"></div>
                                     </div>
                                     
@@ -684,17 +702,6 @@ return d
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Channels-and-select/" rel="bookmark" class="leancloud-count">Go Channels and select
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -705,7 +712,7 @@ return d
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -716,18 +723,7 @@ return d
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="bookmark" class="leancloud-count">Go Conditional compilation with build tags
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -738,7 +734,7 @@ return d
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -749,7 +745,7 @@ return d
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -760,8 +756,30 @@ return d
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1139,7 +1157,7 @@ return d
                 <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go Channels and select</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
@@ -1157,7 +1175,7 @@ return d
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go Executing commands</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Executing-commands/">Go 执行命令</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
@@ -1187,7 +1205,7 @@ return d
                 <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text and HTML templates</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">Go Text和HTML模板</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Reflection/">Go 反射</a></li>
@@ -1202,13 +1220,13 @@ return d
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go Profiling using go tool pprof</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">Go 使用Go工具pprof进行性能分析</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cross-compilation/">Go 交叉编译</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go Conditional compilation with build tags</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">Go 使用构建标签进行条件编译</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
@@ -1396,14 +1414,13 @@ return d
 <script type="text/javascript" src="js/picturefill.min.js"></script>
 <script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
 <script type="text/javascript" src="js/qrcode.min.js"></script>
-<script type="text/javascript" src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
 
 <script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
 <script type="text/javascript" src="js/my.js"></script>
-
 <script>
     init();
 </script>
 </body>
-</html>
 
+</html>
