@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 执行命令</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 914 Words
+                                        Posted @ 2019-09-09 · 901 Words
                                         
                                         · Tags: Go
                                         
@@ -151,7 +151,7 @@
                                             
                                             <p>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。</p>
 <h2 id="基本命令执行">基本命令执行</h2>
-<p>最简单的用法是：<em>使用exec.Command（exe字符串，args &hellip; string）创建exec.Cmd结构</em>调用cmd.CombinedOutput（）来执行cmd并获取stdout和stderr的组合*仅获取stdout并调用cmd .Output（）</p>
+<p>最简单的用法是：<em>使用exec.Command（exe字符串，args &hellip; string）创建exec.Cmd结构</em>调用cmd.CombinedOutput()来执行cmd并获取stdout和stderr的组合*仅获取stdout并调用cmd .Output()</p>
 <pre><code>cmd := exec.Command(&quot;go&quot;, &quot;version&quot;)
 out, err := cmd.CombinedOutput()
 if err != nil {
@@ -183,10 +183,10 @@ fmt.Printf(&quot;Output:\n%s\n&quot;, string(out))
 </blockquote>
 <p>这在功能上与上面的示例相同，但是我们使用了更细粒度的控件。</p>
 <p>我们通过将cmd.Stdout和cmd.Stderr设置为内存支持的io.Writer来捕获进程的stdout和stderr。</p>
-<p>cmd.Start（）将命令作为新的OS进程启动。 就像OS进程一样，它与我们的代码同时执行。</p>
-<p>我们需要调用cmd.Wait（）来等待该过程完成。 为避免无限等待，您可能需要添加超时。</p>
-<h2 id="超时命令执行">超时命令执行</h2>
-<p>无法保证进程将完成运行，因此您可能要添加超时。</p>
+<p>cmd.Start()将命令作为新的OS进程启动。 就像OS进程一样，它与我们的代码同时执行。</p>
+<p>我们需要调用cmd.Wait()来等待该过程完成。 为避免无限等待，可能需要添加超时。</p>
+<h2 id="超时">超时</h2>
+<p>如果无法保证进程能完成运行，则要添加超时限制。</p>
 <pre><code>cmd := exec.Command(&quot;go&quot;, &quot;version&quot;)
 
 err := cmd.Start()
@@ -208,12 +208,12 @@ fmt.Printf(&quot;didTimeout: %v, err: %v\n&quot;, didTimeout, err)
 </code></pre><blockquote>
 <p>didTimeout: true, err: signal: killed</p>
 </blockquote>
-<p>在调用cmd.Wait（）之前，我们使用time.AfterFunc（）在超时到期后终止进程。</p>
-<p>cmd.Process.Kill（）使cmd.Wait（）退出并出现错误（信号：在Unix上已终止）。</p>
-<p>如果cmd.Wait（）在超时之前完成，则取消计时器。</p>
+<p>在调用cmd.Wait()之前，我们使用time.AfterFunc()在超时到期后终止进程。</p>
+<p>cmd.Process.Kill()使cmd.Wait()退出并出现错误（信号：在Unix上已终止）。</p>
+<p>如果cmd.Wait()在超时之前完成，则取消计时器。</p>
 <p>变量timedOut是int32而不是bool。</p>
 <p>我们使用atomic.StoreInt32和atomic.LoadInt32，因为存在细微的计时问题。</p>
-<p>如果进程照常完成，则在cmd.Wait（）退出之后且在我们调用stopTimer.Stop（）之前，计时器可能会到期并仍然执行该函数。</p>
+<p>如果进程照常完成，则在cmd.Wait()退出之后且在我们调用stopTimer.Stop()之前，计时器可能会到期并仍然执行该函数。</p>
 <p>这是极不可能的，但要记住一点。</p>
 <h2 id="osexec-pitfalls">os.Exec pitfalls</h2>
 <p>exec.Cmd无法重用

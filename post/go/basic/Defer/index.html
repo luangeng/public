@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Defer/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="使用复杂的函数的时候很容易忘记释放资源（例如关闭文件句柄或解锁互斥锁）。 您可以使用defer语句将释放资源的代码放置在与获取该资源的代码接近">
+    content="使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁) Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Defer/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Defer/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go Defer</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1274 Words
+                                        Posted @ 2019-09-09 · 1270 Words
                                         
                                         · Tags: Go
                                         
@@ -149,8 +149,8 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>使用复杂的函数的时候很容易忘记释放资源（例如关闭文件句柄或解锁互斥锁）。</p>
-<p>您可以使用defer语句将释放资源的代码放置在与获取该资源的代码接近的位置：</p>
+                                            <p>使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁)</p>
+<p>Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面：</p>
 <pre><code>func foo() {
   f, err := os.Open(&quot;myfile.txt&quot;)
   if err != nil {
@@ -174,7 +174,7 @@
 
   // ... more code
 }
-</code></pre><p>您可以使用多个defer语句。 它们将以相反的顺序调用，即首先声明的defer将最后执行。</p>
+</code></pre><p>也可以使用多个defer语句。它们将以相反的顺序调用，即首先声明的defer最后执行。</p>
 <p>即使发生紧急情况，也会调用defer函数。</p>
 <h2 id="defer深度">defer深度</h2>
 <p>defer语句标记了要在当前函数结束时执行的函数。</p>
@@ -275,7 +275,7 @@ func main() {
 Ater if<br>
 inside if</p>
 </blockquote>
-<p>您可能希望该defer语句在我们退出if分支时执行，实际上是作为函数调用的最后一件事执行。</p>
+<p>你可能希望该defer语句在我们退出if分支时执行，实际上是作为函数调用的最后一件事执行。</p>
 <p>在defer函数中使用外部变量:</p>
 <pre><code>func main() {
 	for i := 0; i &lt; 2; i++ {

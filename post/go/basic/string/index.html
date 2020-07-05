@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 字符串</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 3840 Words
+                                        Posted @ 2019-09-09 · 3830 Words
                                         
                                         · Tags: Go
                                         
@@ -445,7 +445,7 @@ fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
 <p>我们用替换的字符串替换匹配正则表达式的字符串的所有部分。</p>
 <p>正则表达式是非贪婪的，这意味着它与可能的最短字符串匹配，而不是与寻找可能的最长匹配的默认贪婪匹配相对。</p>
 <h2 id="拆分和合并">拆分和合并</h2>
-<p>您可以将字符串分割为[] string片段，或者将其重新连接为字符串:</p>
+<p>将字符串分割为[] string，或者将其重新连接为字符串:</p>
 <pre><code>s := &quot;this is a string&quot;
 a := strings.Split(s, &quot; &quot;)
 fmt.Printf(&quot;a: %#v\n&quot;, a)
@@ -597,10 +597,10 @@ func ReadFileAsLines(path string) ([]string, error) {
 <li>Windows：使用2个字符：CR LF，它是字节13 10（0x0d，0x0a），在Go字符串文字中表示为“”。</li>
 <li>Mac OS：使用1个字符的CR（字节13（0x0d）），在Go字符串文字中表示为“”。 这是最不流行的。</li>
 </ul>
-<p>将字符串分成几行时，您必须决定如何处理。</p>
-<p>您可以假设您的代码只会显示例如 Unix样式的行尾，只能处理“”，但对于Mac尾行的文件根本不起作用，而Windows尾行的文件中将带有CR字符。</p>
+<p>将字符串分成几行时，你必须决定如何处理。</p>
+<p>假设你的代码只会显示例如 Unix样式的行尾，只能处理“”，但对于Mac尾行的文件根本不起作用，而Windows尾行的文件中将带有CR字符。</p>
 <p>处理多个换行符表示的一种简单方法是标准化换行符，然后对标准化版本进行操作。</p>
-<p>最后，您可以编写处理所有换行符结尾的代码。 不可避免地，这样的代码要复杂一些。</p>
+<p>最后，可以编写处理所有换行符结尾的代码。 不可避免地这样的代码要复杂一些。</p>
 <p>换行规范化:</p>
 <pre><code>// NormalizeNewlines normalizes \r\n (windows) and \r (mac)
 // into \n (unix)

@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 判断</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1000 Words
+                                        Posted @ 2019-09-09 · 992 Words
                                         
                                         · Tags: Go
                                         
@@ -217,8 +217,8 @@ default:
 </code></pre><blockquote>
 <p>stmt (&lsquo;if&rsquo;) is either &lsquo;if&rsquo; or &lsquo;for&rsquo;</p>
 </blockquote>
-<p>请注意，与C ++不同，case语句不会涉及到下一个case，因此您不必在每个case的末尾都放置break。
-switch也可以用来判断类型.</p>
+<p>注意，与C++不同，case语句不会涉及到下一个case，你不必在每个case的末尾都放置break。</p>
+<p>switch也可以用来判断类型.</p>
 <pre><code>a := 1
 switch a {
 case 1, 3:
@@ -233,9 +233,8 @@ default:
 注意一个case可以处理多个值（上例中为1和3）。</p>
 </blockquote>
 <h3 id="下通">下通</h3>
-<p>与大多数其他语言（例如C ++或Java）不同，您无需使用break即可停止继续执行以下case。
-这种默认行为是错误的常见来源。
-取而代之的是，您可以通过以下方式要求此类行为：</p>
+<p>与大多数其他语言(例如C ++或Java)不同，你无需使用break即可停止继续执行以下case。这种默认行为通常是错误的来源。</p>
+<p>Go中可以通过以下方式达到这种效果：</p>
 <pre><code>a := 1
 switch a {
 case 1:

@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 命令</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1326 Words
+                                        Posted @ 2019-09-09 · 1315 Words
                                         
                                         · Tags: Go
                                         
@@ -155,7 +155,7 @@
 <p>为了保持代码的一致性并消除代码格式化方面的争论，Go提供了go fmt工具。</p>
 <p>格式化文件：<code>go fmt main.go</code></p>
 <p>或目录中的所有文件：<code>fmt myProject</code></p>
-<p>您也可以使用<code>gofmt -s</code>（而不是fmt）来尝试简化代码。</p>
+<p>也可以使用<code>gofmt -s</code>（而不是fmt）来尝试简化代码。</p>
 <p>gofmt（不是go fmt）也可以用于重构代码。 它了解Go语法，因此它比搜索和替换功能更强大。 例如，给定该程序（main.go):</p>
 <pre><code>package main
 
@@ -171,7 +171,7 @@ func main() {
     e := &amp;Example{&quot;Hello&quot;}
     e.Original(&quot;Goodbye&quot;)
 }
-</code></pre><p>您可以使用gofmt将方法Original替换为Refactor：
+</code></pre><p>可以使用gofmt将方法Original替换为Refactor：
 <code>$ gofmt -r 'Original -&gt; Refactor' -d main.go</code></p>
 <p>这将产生差异：</p>
 <pre><code>-func (e *Example) Original(name string) {
@@ -209,16 +209,16 @@ func main() {
     fmt.Println(&quot;Hello, World!&quot;)
 }
 </code></pre><p>编译程序运行: <code>go build main.go</code></p>
-<p>build将创建一个可执行程序，在这种情况下：main或main.exe。 然后，您可以运行此文件以查看输出Hello，World!。 您还可以将其复制到未安装Go的类似系统上，使其可执行并在其中运行。</p>
+<p>build将创建一个可执行程序，在这种情况下：main或main.exe。 然后运行此文件以查看输出Hello，World!。 还可以将其复制到未安装Go的类似系统上，使其可执行并在其中运行。</p>
 <p>在构建中指定操作系统或体系结构：
-您可以通过在构建之前修改环境来指定要构建的系统或体系结构：</p>
+可以在构建之前修改环境来指定要构建的系统或体系结构：</p>
 <pre><code>$ env GOOS=linux go build main.go # builds for Linux
 $ env GOARCH=arm go build main.go # builds for ARM architecture
 </code></pre><p>构建多个文件</p>
 <p>如果将软件包拆分为多个文件，并且软件包名称为main（即，它不是可导入的软件包），则必须指定要构建的所有文件：</p>
 <pre><code>$ go build main.go assets.go # outputs an executable: main
 </code></pre><p>build一个包</p>
-<p>要构建一个名为main的软件包，您可以简单地使用：</p>
+<p>要构建一个名为main的软件包，可以简单地使用：</p>
 <pre><code>$ go build . # outputs an executable with name as the name of enclosing folder
 </code></pre><h2 id="go-clean">go clean</h2>
 <p>go clean将删除运行go build时创建的临时文件。</p>

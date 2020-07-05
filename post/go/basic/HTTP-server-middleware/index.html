@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/HTTP-server-middleware/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单一功能接口的功能。 可以随时引入而不会影响其他中间件。 对于Ex：身份验证日">
+    content="介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go HTTP server middleware</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 394 Words
+                                        Posted @ 2019-09-09 · 427 Words
                                         
                                         · Tags: Go
                                         
@@ -150,10 +150,9 @@
                                         <div class="entry-inner">
                                             
                                             <p>介绍
-在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单一功能接口的功能。 可以随时引入而不会影响其他中间件。 对于Ex：身份验证日志记录可以在开发的后期阶段添加，而不会干扰现有代码。</p>
-<p>备注
-中间件的签名应为（http.ResponseWriter，* http.Request），即为http.handlerFunc类型。</p>
-<p>正常处理程序功能</p>
+在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能可以在开发的后期阶段添加，而不会影响现有代码。</p>
+<p>中间件的签名应为（http.ResponseWriter，* http.Request），即为http.handlerFunc类型。</p>
+<p>普通的请求处理:</p>
 <pre><code>func loginHandler(w http.ResponseWriter, r *http.Request) {
       // Steps to login
 }
@@ -162,9 +161,8 @@ func main() {
     http.HandleFunc(&quot;/login&quot;, loginHandler)
     http.ListenAndServe(&quot;:8080&quot;, nil)
 }
-
-Middleware Calculate time required for handlerFunc to execute
-// logger middlerware that logs time taken to process each request
+</code></pre><p>添加计算时间中间件; 需要handlerFunc来执行</p>
+<pre><code>// logger中间件记录处理每个请求所花费的时间
 func Logger(h http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
         startTime := time.Now()
@@ -218,19 +216,18 @@ func main() {
         }
     })
 }
-
-## Recovery Handler to prevent server from crashing
-func Recovery(h http.Handler) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
-        defer func() {
-            if err := recover(); err != nil {
-                // respondInternalServerError
-            }
-        }()
-        h.ServeHTTP(w , r)
-    })
+</code></pre><h2 id="recovery防止服务器崩溃">Recovery防止服务器崩溃</h2>
+<p>func Recovery(h http.Handler) http.Handler {
+return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+defer func() {
+if err := recover(); err != nil {
+// respondInternalServerError
 }
-</code></pre>
+}()
+h.ServeHTTP(w , r)
+})
+}</p>
+<pre><code></code></pre>
                                             
                                         </div>
 

@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 接口</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2447 Words
+                                        Posted @ 2019-09-09 · 2440 Words
                                         
                                         · Tags: Go
                                         
@@ -200,7 +200,7 @@ main.MyInt: 5</p>
 </blockquote>
 <p>与大多数其他语言不同，Go的接口是隐式满足的。我们不必明确声明struct User实现了Stringer接口。</p>
 <p>接口只能包含方法，不能包含数据。 如果要重用方法和数据，则可以使用结构嵌入。</p>
-<p>您只能在同一包中定义的类型上定义方法。 上例中我们必须定义类型别名MyInt，因为我们无法将方法添加到Go内置的int类型。</p>
+<p>只能在同一包中定义的类型上定义方法。 上例中我们必须定义类型别名MyInt，因为我们无法将方法添加到Go内置的int类型。</p>
 <h2 id="简单接口">简单接口</h2>
 <pre><code>type Painter interface {
     Paint()
@@ -297,7 +297,7 @@ type Painter interface {
     }
 }
 </code></pre><h2 id="确保类型实现了接口">确保类型实现了接口</h2>
-<p>在Go中，接口是隐式满足的。 您不必声明类型是一定要实现某个接口的。
+<p>在Go中，接口是隐式满足的, 即不必声明类型是一定要实现某个接口的。
 这很方便，但也可能导致无法完全实现接口错误，并且编译器无法检测到这种情况。
 有一种方法可以进行编译期的类型检查：</p>
 <pre><code>type MyReadCloser struct {
@@ -325,8 +325,8 @@ exit status 2</p>
 <p>实际上, Go中的空接口就像Java和C++中的object类型,它结合了类型及其值。<br>
 空接口等效于静态语言中的动态类型<br>
 空接口也是Go中实现union类型的一种方法.<br>
-由于每种类型都符合interface {}，因此您可以将任何值分配给interface {}类型的变量。</p>
-<p>那时，您将无法在编译时知道它的真实类型。</p>
+由于每种类型都符合interface {}，因此可以将任何值分配给interface {}类型的变量。</p>
+<p>那时你将无法在编译时知道它的真实类型。</p>
 <p>空接口的零值为nil.</p>
 <p>使用示例:</p>
 <pre><code>func printVariableType(v interface{}) {
@@ -351,8 +351,8 @@ func main() {
 v is of type &lsquo;int&rsquo;<br>
 v is of type &lsquo;int32&rsquo;</p>
 </blockquote>
-<p>在编译时，如果变量的类型为interface（包括空接口），则您不知道什么是真正的基础类型。</p>
-<p>您可以在运行时使用类型断言来访问基础类型:</p>
+<p>编译时，如果变量的类型为interface(包括空接口)，则你不知道它的真正类型是什么。</p>
+<p>可以在运行时使用类型断言来访问基础类型:</p>
 <pre><code>func printTypeAndValue(iv interface{}) {
 	if v, ok := iv.(string); ok {
 		fmt.Printf(&quot;iv is of type string and has value '%s'\n&quot;, v)
@@ -399,8 +399,8 @@ in.main()<br>
 it status 2</p>
 </blockquote>
 <h2 id="类型断言">类型断言</h2>
-<p>类型断言允许您检查空接口的值是否为给定的类型。</p>
-<p>为了完整起见，您可以使用类型switch的简短版本：v:= iv.(int)（v, ok：= iv.(int)）。</p>
+<p>类型断言允许你检查空接口的值是否为给定的类型。</p>
+<p>为了完整起见，可以使用类型switch的简短版本：v:= iv.(int)（v, ok：= iv.(int)）。</p>
 <p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
 <pre><code>func panicOnInvalidConversion(iv interface{}) {
 	v := iv.(int)
@@ -420,7 +420,7 @@ main.main()
 exit status 2</p>
 </blockquote>
 <p>As a rule of thumb, you shouldn’t try to discover underlying value of interface type as it pierces through an abstraction.
-根据经验，您不应该尝试发现贯穿抽象的接口类型的底层值。</p>
+根据经验，你不应该尝试发现贯穿抽象的接口类型的底层值。</p>
 <h2 id="类型switch">类型switch</h2>
 <p>switch语句可以基于接口包装的类型进行分派。</p>
 <p>如果具有接口值，则可以根据底层类型进行切换：</p>

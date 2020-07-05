@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go range</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1369 Words
+                                        Posted @ 2019-09-09 · 1352 Words
                                         
                                         · Tags: Go
                                         
@@ -200,8 +200,8 @@ for key, value := range m {
 key: five, value: 5</p>
 </blockquote>
 <h2 id="对string使用range">对string使用range</h2>
-<p>遍历字节
-您可以遍历字符串中的字节：</p>
+<h4 id="遍历字节">遍历字节</h4>
+<p>可以遍历字符串中的字节：</p>
 <pre><code>s := &quot;a 世&quot;
 for i := range s {
 	b := s[i]
@@ -212,8 +212,8 @@ for i := range s {
 idx: 1, byte: 32<br>
 idx: 2, byte: 228</p>
 </blockquote>
-<p>遍历runes
-当您要遍历字符串中的逻辑字符时，事情变得更加复杂：</p>
+<h4 id="遍历runes">遍历runes</h4>
+<p>遍历字符串中的字符:</p>
 <pre><code>s := &quot;Hey 世界&quot;
 for i, rune := range s {
 	fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, rune)
@@ -234,10 +234,10 @@ idx: 7, rune: 30028</p>
 <p>Go源代码中的文字字符串是UTF-8编码的。</p>
 <p>每个Unicode代码点都可以使用1到4个字节进行编码。</p>
 <p>在这种迭代形式中，Go假定字符串是UTF-8编码的。 range将每个代码点解码为UTF-8，以字符串形式返回解码的rune及其字节索引。</p>
-<p>您会看到最后一个代码点的字节索引跳了3个，因为它之前的代码点代表一个汉字，并且需要3个字节的UTF-8编码。</p>
+<p>你会看到最后一个代码点的字节索引跳了3个，因为它之前的代码点代表一个汉字，并且需要3个字节的UTF-8编码。</p>
 <p>字符串和UTF-8
-Go中string是字节片。您可以将任意二进制数据放入其中。</p>
-<p>如何解释字节取决于您的代码。</p>
+Go中string是字节片。可以将任意二进制数据放入其中。</p>
+<p>如何解释字节取决于你的代码。</p>
 <p>大多数情况下，字符串以UTF-8编码表示Unicode字符串，但在Go源代码中的字符串文字之外，Go不会检查或确保字符串数据形成有效的UTF-8序列。</p>
 <p>话虽如此，Go提供了用于处理UTF-8编码数据的功能。</p>
 <p>range的行为就是一个例子。</p>

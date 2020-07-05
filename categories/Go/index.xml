@@ -27,7 +27,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/install/</guid>
-      <description>Windows系统下安装和设置 安装 从 https://golang.org/dl/ 下载.msi包并运行即可 设置 安装完成后，您需要配置GOPATH环境变量。从Go 1.8开始，GOPATH</description>
+      <description>Windows系统下安装和设置 安装 从 https://golang.org/dl/ 下载.msi包并运行即可 设置 安装完成后，你需要配置GOPATH环境变量。从Go 1.8开始，GOPATH</description>
     </item>
     
     <item>
@@ -180,7 +180,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Defer/</guid>
-      <description>使用复杂的函数的时候很容易忘记释放资源（例如关闭文件句柄或解锁互斥锁）。 您可以使用defer语句将释放资源的代码放置在与获取该资源的代码接近</description>
+      <description>使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁) Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面</description>
     </item>
     
     <item>
@@ -189,7 +189,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Panic-and-recover/</guid>
-      <description>本章假定您掌握defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic等同于</description>
+      <description>本章假定你已经掌握了defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic</description>
     </item>
     
     <item>
@@ -355,7 +355,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-Server/</guid>
-      <description>http.ServeMux提供了一个多路复用器，该多路复用器调用HTTP请求的处理程序。 标准库多路复用器的替代方法包括： Gorilla Mux Hello World 开始使用Go</description>
+      <description>Hello World 开始使用Go编写Web服务器的典型方法是使用标准库中的net/http模块。 如下代码是最简单的HTTP服务器实现,它对任何HTTP请求都</description>
     </item>
     
     <item>
@@ -364,7 +364,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/HTTP-server-middleware/</guid>
-      <description>介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单一功能接口的功能。 可以随时引入而不会影响其他中间件。 对于Ex：身份验证日</description>
+      <description>介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能</description>
     </item>
     
     <item>
@@ -528,7 +528,7 @@ fmt.Print(&amp;ldquo;What is your name?\n&amp;rdquo;) var name string if n, err 
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Cryptography/</guid>
-      <description>介绍 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 您有一个</description>
+      <description>介绍 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 你有一个</description>
     </item>
     
     <item>

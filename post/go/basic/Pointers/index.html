@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 指针</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 892 Words
+                                        Posted @ 2019-09-09 · 890 Words
                                         
                                         · Tags: Go
                                         
@@ -189,7 +189,7 @@ func zeroval(ival int) {
 func zeroptr(iptr *int) {
 	*iptr = 0
 }
-</code></pre><p>定义这些功能后，您可以执行以下操作：</p>
+</code></pre><p>定义这些功能后，可以执行以下操作：</p>
 <pre><code>i := 1
 fmt.Println(&quot;initial:&quot;, i)
 
@@ -275,7 +275,7 @@ f.Bar is 1</p>
 <p>值方法
 与指针方法类似，即使变量本身不是值，也可以调用值方法。</p>
 <p>根据Go Spec，使用指针使用值接收器对非接口方法的引用将自动取消引用该指针：pt.Mv等效于（* pt）.Mv。
-您可以在此示例中看到以下内容：</p>
+可以在此示例中看到以下内容：</p>
 <pre><code>type Foo struct {
 	Bar int
 }

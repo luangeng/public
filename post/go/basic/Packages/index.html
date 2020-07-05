@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 包管理</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1455 Words
+                                        Posted @ 2019-09-09 · 1450 Words
                                         
                                         · Tags: Go
                                         
@@ -171,7 +171,7 @@ import &quot;path/to/package2&quot;
     &quot;path/to/package1&quot;
     &quot;path/to/package2&quot;
 )
-</code></pre><p>这将在$ GOPATH中查找.go文件的相应导入路径，并允许您通过packagename.AnyExportedName访问导出的名称。</p>
+</code></pre><p>这将在$ GOPATH中查找.go文件的相应导入路径，并允许你通过packagename.AnyExportedName访问导出的名称。</p>
 <p>在下面的工程结构中,你还可以通过./前缀访问当前目录下的本地包</p>
 <pre><code>project
 ├── src
@@ -180,30 +180,30 @@ import &quot;path/to/package2&quot;
 │   └── package2
 │       └── file2.go
 └── main.go
-</code></pre><p>您可以在main.go中调用此命令，以将file1.go和file2.go导入代码中：</p>
+</code></pre><p>可以在main.go中调用此命令，以将file1.go和file2.go导入代码中：</p>
 <pre><code>import (
     &quot;./src/package1&quot;
     &quot;./src/package2&quot;
 )
-</code></pre><p>由于软件包名称可能会在不同的库中发生冲突，因此您可能希望将一个软件包别名为新名称。 您可以通过在导入语句前面加上要使用的名称来完成此操作:</p>
+</code></pre><p>由于软件包名称可能会在不同的库中发生冲突，因此你可能希望将一个软件包别名为新名称。 可以通过在导入语句前面加上要使用的名称来完成此操作:</p>
 <pre><code>import (
     &quot;fmt&quot; //fmt from the standardlibrary
     tfmt &quot;some/thirdparty/fmt&quot; //fmt from some other library
 )
-</code></pre><p>这使您可以使用fmt.访问前一个fmt软件包，并使用tfmt.*访问后一个fmt软件包。</p>
-<p>这是一种不好的样式，但是您可以将包导入全局名称空间，以避免使用包前缀：</p>
+</code></pre><p>这使可以使用fmt.访问前一个fmt软件包，并使用tfmt.*访问后一个fmt软件包。</p>
+<p>这是一种不好的样式，但是可以将包导入全局名称空间，以避免使用包前缀：</p>
 <pre><code>import (
     . &quot;fmt&quot;
 )
 </code></pre><p>上面的Printf与fmt.Printf相同。</p>
-<p>如果您导入软件包但不使用它，Go编译器将报告错误。 要解决此问题，可以将别名设置为下划线：</p>
+<p>如果你导入软件包但不使用它，Go编译器将报告错误。 要解决此问题，可以将别名设置为下划线：</p>
 <pre><code>import (
     _ &quot;fmt&quot;
 )
-</code></pre><p>如果您不直接使用软件包，但需要运行软件包的init函数的时候应该这么做。</p>
+</code></pre><p>如果你不直接使用软件包，但需要运行软件包的init函数的时候应该这么做。</p>
 <h2 id="新建包">新建包</h2>
-<p>如果您想创建一个Go包。</p>
-<p>您可以使用任何源代码托管服务。对于本教程，假设您使用的是https://github.com，您的帐户为kjk，要创建包foo。</p>
+<p>如果你想创建一个Go包。</p>
+<p>可以使用任何源代码托管服务。对于本教程，假设你使用的是https://github.com，你的帐户为kjk，要创建包foo。</p>
 <p>在GitHub创建仓库foo</p>
 <p>创建目录 $GOPATH/src/github.com/kjk 然后在这个目录checkout代码</p>
 <pre><code>$ mkdir -p $GOPATH/src/github.com/kjk
@@ -224,13 +224,13 @@ func Bar() string {
 func init() {
     // init code
 }
-</code></pre><p>如果您只想运行程序包初始化而不从中引用任何内容，请使用以下导入表达式。</p>
+</code></pre><p>如果你只想运行程序包初始化而不从中引用任何内容，请使用以下导入表达式。</p>
 <p>import _ &ldquo;foo&rdquo;</p>
 <p>包初始化功能用于创建包中代码所需的初始状态。</p>
 <p>不要在init函数中做太多事情。 这种隐式逻辑会对其他人理解代码产生负面影响。</p>
 <h2 id="包命名最佳实践">包命名最佳实践:</h2>
 <p>最好将程序包名称与导入路径的最后一个路径元素的名称相同。</p>
-<p>如果您的GitHub帐户为github.com/kjk，而您正在编写包markdown，则其导入路径应为github.com/kjk/markdown。</p>
+<p>如果你的GitHub帐户为github.com/kjk，而你正在编写包markdown，则其导入路径应为github.com/kjk/markdown。</p>
 <p>一个常见的错误是将go包含在导入路径中，例如 命名包markdown并给它导入路径github.com/kjk/go-markdown。</p>
 
                                             

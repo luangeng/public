@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 错误处理</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2510 Words
+                                        Posted @ 2019-09-09 · 2504 Words
                                         
                                         · Tags: Go
                                         
@@ -177,10 +177,10 @@ sqrt of -16.000000 returned error &lsquo;invalid argument &lsquo;-16.000000&rsqu
 <p>与C＃或Python等语言不同，Go通过返回错误值而不引发异常来处理故障。</p>
 <p>Go还提供了紧急和恢复异常，但很少使用。</p>
 <p>错误是值，就像整数或字符串一样。</p>
-<p>类型错误是实现Error（）字符串方法的内置接口。</p>
+<p>类型错误是实现Error()字符串方法的内置接口。</p>
 <p>为了表示成功，请返回nil。</p>
-<p>要创建错误，您可以使用标准库函数errors.New（msg字符串）或fmt.Errorf（格式字符串，args &hellip; interface {}）。</p>
-<p>您还可以通过定义实现Error（）字符串方法的结构来返回自定义错误类型。</p>
+<p>要创建错误，可以使用标准库函数errors.New(msg字符串)或fmt.Errorf(格式字符串，args &hellip; interface {})。</p>
+<p>你还可以通过定义实现Error()字符串方法的结构来返回自定义错误类型。</p>
 <p>如果函数返回错误，则应始终为最后返回的值。</p>
 <p>始终检查返回的错误。 编写功能强大的软件的关键是检查错误并进行适当处理。 初学者通常无法检查错误，然后面临调试神秘故障的麻烦。</p>
 <h2 id="返回错误">返回错误</h2>
@@ -202,7 +202,7 @@ func appendToFile(path string, s string) error {
 	return n*n, nil
 }
 </code></pre><h2 id="pitfalls">Pitfalls</h2>
-<p>如果您使用的是自定义错误类型，请不要返回底层类型，而请务必返回错误类型。</p>
+<p>如果你使用的是自定义错误类型，请不要返回底层类型，而请务必返回错误类型。</p>
 <pre><code>type CustomError struct {
 }
 
@@ -227,11 +227,11 @@ func caller() {
 		fmt.Printf(&quot;returnCustomError() failed with '%s'\n&quot;, err)
   }
 }
-</code></pre><p>出乎意料的是，即使返回null，它看起来也像returnCustomError（）返回了错误。</p>
+</code></pre><p>出乎意料的是，即使返回null，它看起来也像returnCustomError()返回了错误。</p>
 <p>这是nil接口陷阱的一种变体。</p>
 <p>#note链接到该章</p>
 <p>未初始化的err值为nil，因为它是接口类型的零值。</p>
-<p>returnCustomError（）返回CustomError结构的nil值。</p>
+<p>returnCustomError()返回CustomError结构的nil值。</p>
 <p>此nil值分配给err变量。 这等效于：</p>
 <pre><code>var err error
 err = (*CustomError)(nil)
@@ -263,11 +263,11 @@ if err3 != nil {
 var ErrGlobal = errors.New(&quot;global error variable&quot;)
 
 return ErrGlobal
-</code></pre><p>有时您希望错误具有标识，以便调用者可以测试返回的错误是否是此特定错误。 您可以通过在上面的示例中将全局变量声明为ErrGlobal来实现。</p>
+</code></pre><p>有时希望错误具有标识，以便调用者可以测试返回的错误是否是此特定错误。 则可以通过在上面的示例中将全局变量声明为ErrGlobal来实现。</p>
 <p>标准库中此类错误的一个示例是io.EOF，尽管通常此类错误的命名约定为Err *。</p>
-<p>您还可以创建自定义错误类型。</p>
+<p>你还可以创建自定义错误类型。</p>
 <h2 id="自定义错误">自定义错误</h2>
-<p>在Go中，错误类型是带有单个方法Error（）字符串的内置接口。</p>
+<p>在Go中，错误类型是带有单个方法Error()字符串的内置接口。</p>
 <p>所有管理接口的规则均适用于错误类型。</p>
 <p>其中，任何实现错误接口的类型都可以用作错误类型的值。</p>
 <pre><code>// MyError is a custom error type
@@ -298,7 +298,7 @@ fmt.Printf(&quot;err: %s\n&quot;, err)
     // The method succeeded.
     return &quot;Success!&quot;, nil
 }
-</code></pre><p>您使用多个变量分配来检查方法是否失败。</p>
+</code></pre><p>你使用多个变量分配来检查方法是否失败。</p>
 <pre><code>result, err := DoAndReturnSomething()
 if err != nil {
     panic(err)
@@ -306,11 +306,11 @@ if err != nil {
 
 // This is executed only if the method didn't return an error
 fmt.Println(result)
-</code></pre><p>如果您对该错误不感兴趣，则可以通过将其分配给_来忽略它。</p>
+</code></pre><p>如果你对该错误不感兴趣，则可以通过将其分配给_来忽略它。</p>
 <pre><code>result, _ := DoAndReturnSomething()
 fmt.Println(result)
 </code></pre><p>当然，忽略错误可能会带来严重的影响。 因此，通常不建议这样做。</p>
-<p>如果您有多个方法调用，并且链中的一个或多个方法可能返回错误，则应将错误传播到可以处理该错误的第一级。</p>
+<p>如果你有多个方法调用，并且链中的一个或多个方法可能返回错误，则应将错误传播到可以处理该错误的第一级。</p>
 <pre><code>func Foo() error {
     return errors.New(&quot;I failed!&quot;)
 }
@@ -338,9 +338,9 @@ func Baz() (string, string, error) {
 if err != nil {
     return err
 }
-</code></pre><p>这种错误处理的努力对于编写健壮的软件至关重要。</p>
-<p>有时，您编写了较短的cmd-line程序，而这些纪律是没有必要的。</p>
-<p>您可以使用辅助函数PanicIfErr（err error，args &hellip; interface {}）简化错误处理：</p>
+</code></pre><p>这种错误的处理对于编写健壮的软件至关重要。</p>
+<p>有时编写了较短的cmd-line程序，而这些检查是没有必要的。</p>
+<p>这时可以使用辅助函数PanicIfErr(err error，args &hellip; interface {})来简化错误处理：</p>
 <pre><code>r, err := os.Open(&quot;my file&quot;)
 PanicIfErr(err)
 </code></pre><p>此类助手的实现：</p>
@@ -399,9 +399,9 @@ main.main()<br>
 exit status 2</p>
 </blockquote>
 <h2 id="将调用堆栈添加到错误消息">将调用堆栈添加到错误消息</h2>
-<p>如果您来自Java，C＃或Python之类的语言，则您可能会习惯于这样的事实，即异常包括用于创建异常的位置的调用堆栈。</p>
+<p>如果你来自Java，C＃或Python之类的语言，则你可能会习惯于这样的事实，即异常包括用于创建异常的位置的调用堆栈。</p>
 <p>收集调用栈非常昂贵，并且Go不会将调用栈添加到错误中。</p>
-<p>调用堆栈在调试中很有用。 如果您可以接受额外费用，则可以使用github.com/pkg/errors包来增加callstack的错误。</p>
+<p>调用堆栈在调试中很有用。 如果你可以接受额外费用，则可以使用github.com/pkg/errors包来增加callstack的错误。</p>
 <pre><code>func wrappedError() error {
 	err := errors.New(&quot;Original error&quot;)
 	// create a new error value which wraps original err and
@@ -416,7 +416,7 @@ func main() {
 	// errors created with pkg/errors include callstack by default
 	fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
 }
-</code></pre><p>如您所见，调用栈的顶部包括Go运行时代码。</p>
+</code></pre><p>可见，调用栈的顶部包括Go运行时代码。</p>
 <h2 id="编写良好的错误消息">编写良好的错误消息</h2>
 <p>良好的错误消息有助于调试问题。</p>
 <p>在生产部署中，将记录错误消息。 当出现问题时，日志文件是调试线索的主要来源。</p>
@@ -437,7 +437,7 @@ func main() {
     }
     ...
 }
-</code></pre><p>错误消息的第二版包含更多调试线索：哪个函数生成了错误,我们正试图打开的文件的路径,来自os.Open（）的错误消息，以便我们可以判断是否是因为文件没有 存在，或者我们没有访问权限等。</p>
+</code></pre><p>错误消息的第二版包含更多调试线索：哪个函数生成了错误,我们正试图打开的文件的路径,来自os.Open()的错误消息，以便我们可以判断是否是因为文件没有 存在，或者我们没有访问权限等。</p>
 
                                             
                                         </div>

@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go基本数据类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2762 Words
+                                        Posted @ 2019-09-09 · 2739 Words
                                         
                                         · Tags: Go
                                         
@@ -381,9 +381,9 @@ key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
 <p>类型interface {}称为空接口。根据定义，它是一个没有定义方法的接口。
 这意味着每种类型都符合一个空接口。在Go接口{}中用作动态类型。
 它与C＃或Java中的对象相似，因为它将类型和值组合为一个值。
-空接口也是您在Go中实现联合类型的方式。空接口的零值为nil。</p>
+空接口也是Go中实现联合类型的方式。空接口的零值为nil。</p>
 <h2 id="指针">指针</h2>
-<p>指向类型的指针是该类型的值在内存中的地址。指针的零值为nil。与C不同，Go没有指针运算。 您可以输入变量的地址，但不能添加或减去指针。</p>
+<p>指向类型的指针是该类型的值在内存中的地址。指针的零值为nil。与C不同，Go没有指针运算, 可以输入变量的地址，但不能加减指针。</p>
 <p>指针基础</p>
 <pre><code>var a int = 4
 pa := &amp;a
@@ -485,8 +485,8 @@ struct:     main.struc{a:0, b:&quot;&quot;}<br>
 function:   <!-- raw HTML omitted --></p>
 </blockquote>
 <h1 id="类型转换">类型转换</h1>
-<p>与C语言不同，Go不会在类型之间进行隐式转换。您必须在兼容类型之间显式转换：</p>
-<pre><code>// 您可以在数字之间进行转换，即各种大小的整数和浮点数
+<p>与C语言不同，Go不会在类型之间进行隐式转换。你必须在兼容类型之间显式转换：</p>
+<pre><code>// 在数字之间进行转换，即各种大小的整数和浮点数
 var i1 int32 = 3
 var i2 int = int(i1) // we must explicitly cast from int32 to int
 var f float64 = float64(i1)
@@ -497,18 +497,18 @@ s := &quot;string&quot;
 var d []byte = []byte(s)
 </code></pre><h1 id="类型别名">类型别名</h1>
 <p>Go 1.9中引入了类型别名，以简化代码重构。</p>
-<p>假设您有一个导出为类型Bar的包foo。</p>
+<p>假设你有一个导出为类型Bar的包foo。</p>
 <p>你想把类型Bar重命名为NewBar</p>
 <p>如果没有类型别名，则必须在重命名类型的同时将所有使用foo.Bar的软件包更改为使用foo.NewBar。</p>
-<p>使用类型别名，您可以将其分为两个步骤。</p>
+<p>使用类型别名分为两个步骤。</p>
 <p>首先通过为foo.Bar引入别名并用别名替换foo.Bar的所有用法来更新依赖项。</p>
 <pre><code>import &quot;foo&quot;
 type Bar = foo.Bar // Bar is now an alias of foo.Bar
-</code></pre><p>现在，您可以将foo.Bar重命名为foo.NewBar并更新别名：</p>
+</code></pre><p>现在将foo.Bar重命名为foo.NewBar并更新别名：</p>
 <pre><code>import &quot;foo&quot;
 type Bar = foo.NewBar
 </code></pre><p>这是一个非常小的改动.</p>
-<p>现在，您可以逐渐摆脱别名并直接使用新的foo.NewBar类型。</p>
+<p>然后逐渐摆脱别名并直接使用新的foo.NewBar类型。</p>
 <p>这个过程听起来很麻烦，但是在大型代码库中，这比一次重命名所有内容更好。</p>
 <p>在其他情况下使用类型别名很诱人，但是应该尽量不使用。</p>
 <p>类型别名增加了一个间接层，这会损害代码的可读性。 应该有充分的理由使用它们。</p>

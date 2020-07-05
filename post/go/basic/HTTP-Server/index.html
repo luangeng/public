@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/HTTP-Server/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="http.ServeMux提供了一个多路复用器，该多路复用器调用HTTP请求的处理程序。 标准库多路复用器的替代方法包括： Gorilla Mux Hello World 开始使用Go">
+    content="Hello World 开始使用Go编写Web服务器的典型方法是使用标准库中的net/http模块。 如下代码是最简单的HTTP服务器实现,它对任何HTTP请求都">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/HTTP-Server/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/HTTP-Server/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go HTTP Server</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2135 Words
+                                        Posted @ 2019-09-09 · 2216 Words
                                         
                                         · Tags: Go
                                         
@@ -149,14 +149,10 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>http.ServeMux提供了一个多路复用器，该多路复用器调用HTTP请求的处理程序。
-标准库多路复用器的替代方法包括：</p>
-<p>Gorilla Mux</p>
-<h2 id="hello-world">Hello World</h2>
-<p>开始使用Go编写Web服务器的典型方法是使用标准库net / http模块。</p>
-<p>这里也有一个教程。</p>
-<p>以下代码也使用它。 这是最简单的HTTP服务器实现。 它对任何HTTP请求都响应“ Hello World”。</p>
-<p>将以下代码保存在工作区中的server.go文件中。</p>
+                                            <h2 id="hello-world">Hello World</h2>
+<p>开始使用Go编写Web服务器的典型方法是使用标准库中的net/http模块。</p>
+<p>如下代码是最简单的HTTP服务器实现,它对任何HTTP请求都响应“Hello World”。</p>
+<p>server.go:</p>
 <pre><code>package main
 
 import (
@@ -165,8 +161,8 @@ import (
 )
 
 func main() {
-    // All URLs will be handled by this function
-    // http.HandleFunc uses the DefaultServeMux
+    // 所有URLs都被这个函数处理
+    // http.HandleFunc使用了DefaultServeMux
     http.HandleFunc(&quot;/&quot;, func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte(&quot;Hello, world!&quot;))
     })
@@ -174,12 +170,12 @@ func main() {
     // Continue to process new requests until an error occurs
     log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
 }
-</code></pre><p>您可以使用以下命令运行服务器：</p>
+</code></pre><p>使用以下命令运行服务：</p>
 <pre><code>$ go run server.go
-</code></pre><p>或者，您可以编译并运行。</p>
+</code></pre><p>或者编译后再运行。</p>
 <pre><code>$ go build server.go
 $ ./server
-</code></pre><p>服务器将侦听指定的端口（：8080）。 您可以使用任何HTTP客户端对其进行测试。 这是cURL的示例：</p>
+</code></pre><p>服务将侦听指定的端口(8080)。 可以使用任何HTTP客户端对其进行测试。 这是cURL的示例：</p>
 <pre><code>curl -i http://localhost:8080/
 HTTP/1.1 200 OK
 Date: Wed, 20 Jul 2016 18:04:46 GMT
@@ -187,24 +183,26 @@ Content-Length: 13
 Content-Type: text/plain; charset=utf-8
 
 Hello, world!
-Press Ctrl+C to stop the process.
-</code></pre><h2 id="创建一个https服务器">创建一个HTTPS服务器</h2>
-<p>生成证书
-为了运行HTTPS服务器，需要一个证书。通过执行以下命令，可以使用openssl生成自签名证书：</p>
-<p>openssl req -x509 -newkey rsa：4096 -sha256 -nodes -keyout key.pem -out cert.pem -subj“ /CN=example.com” -3650天`
+</code></pre><p>按Ctrl+C结束进程.</p>
+<h2 id="创建一个https服务器">创建一个HTTPS服务器</h2>
+<h4 id="生成证书">生成证书</h4>
+<p>为了运行HTTPS服务器，需要一个证书。通过执行以下命令，可以使用openssl生成自签名证书：</p>
+<p><code>openssl req -x509 -newkey rsa：4096 -sha256 -nodes -keyout key.pem -out cert.pem -subj“ /CN=example.com” -3650天</code>
 参数为：</p>
-<p>req使用证书申请工具
-x509创建自签名证书
-newkey rsa：4096通过使用4096位密钥长度的RSA算法来创建新密钥和证书
-sha256强制使用SHA256哈希算法，这些算法被主流浏览器认为是安全的（截至2017年）
-node禁用私钥的密码保护。如果没有此参数，则服务器每次启动时都必须询问您密码。
-keyout命名要在其中写入密钥的文件
-out将文件写入证书的位置
-subj定义此证书对其有效的域名
-天该证书应有效多少天？约3650 10年。
-注意：可以使用自签名证书，例如用于内部项目，调试，测试等。那里的任何浏览器都会提到此证书不安全。为了避免这种情况，证书必须由证书颁发机构签名。通常，这不是免费提供的。一种例外是“让我们加密”运动：https://letsencrypt.org</p>
-<p>必要的Go代码
-您可以使用以下代码来处理服务器的配置TLS。 cert.pem和key.pem是您的SSL证书和密钥，是使用上述命令生成的。</p>
+<ul>
+<li>req   使用证书申请工具</li>
+<li>x509  创建自签名证书</li>
+<li>newkey rsa:4096  通过使用4096位密钥长度的RSA算法来创建新密钥和证书</li>
+<li>sha256    强制使用SHA256哈希算法，这些算法被主流浏览器认为是安全的（截至2017年）</li>
+<li>nodes  禁用私钥的密码保护。如果没有此参数，则服务器每次启动时都必须询问你密码</li>
+<li>keyout    命名要在其中写入密钥的文件</li>
+<li>out   将文件写入证书的位置</li>
+<li>subj  定义此证书对其有效的域名</li>
+<li>days  该证书应有效多少天, 约3650,10年</li>
+</ul>
+<p>注意：可以使用自签名证书，例如用于内部项目，调试，测试等。那里的任何浏览器都会提到此证书不安全。为了避免这种情况，证书必须由证书颁发机构签名。免费的证书颁发服务可以使用: <a href="https://letsencrypt.org">https://letsencrypt.org</a></p>
+<h4 id="编写go代码">编写Go代码</h4>
+<p>使用以下代码来处理服务器的TLS配置。 cert.pem和key.pem是SSL证书和密钥，是使用上述命令生成的。</p>
 <pre><code>package main
 
 import (
@@ -219,7 +217,7 @@ func main() {
 
     log.Fatal(http.ListenAndServeTLS(&quot;:443&quot;,&quot;cert.pem&quot;,&quot;key.pem&quot;, nil))
 }
-</code></pre><h2 id="http-hello-world-with-custom-server-and-mux">HTTP Hello World with custom server and mux</h2>
+</code></pre><h2 id="自定义server和mux">自定义server和mux</h2>
 <pre><code>package main
 
 import (
@@ -229,30 +227,28 @@ import (
 
 func main() {
 
-    // Create a mux for routing incoming requests
+    // 创建mux来路由请求
     m := http.NewServeMux()
 
-    // All URLs will be handled by this function
+    // 处理所有请求
     m.HandleFunc(&quot;/&quot;, func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte(&quot;Hello, world!&quot;))
     })
 
-    // Create a server listening on port 8000
+    // 启动服务监听8000端口
     s := &amp;http.Server{
         Addr:    &quot;:8000&quot;,
         Handler: m,
     }
 
-    // Continue to process new requests until an error occurs
+    // 持续处理请求直到错误发生
     log.Fatal(s.ListenAndServe())
 }
-</code></pre><blockquote>
-<p>Press Ctrl+C to stop the process.</p>
-</blockquote>
+</code></pre><p>按Ctrl+C结束进程</p>
 <h2 id="使用模板响应http请求">使用模板响应HTTP请求</h2>
-<p>可以使用Go中的模板将响应写入http.ResponseWriter。 如果您希望创建动态页面，这将证明是一种便捷的工具。</p>
+<p>可以使用Go中的模板将响应写入http.ResponseWriter。 如果你希望创建动态页面，这是一种便捷的工具。</p>
 <p>要了解模板，请参见文本和HTML模板章节。</p>
-<p>继续使用简单的示例来利用html / template来响应HTTP请求：</p>
+<p>继续使用简单的示例来利用html/template响应HTTP请求：</p>
 <pre><code>package main
 
 import(
@@ -292,8 +288,7 @@ func WelcomeHandler(w http.ResponseWriter, r *http.Request){
         t.Execute(w,myUser)
     }
 }
-</code></pre><p>Where, the contents of</p>
-<p>welcomeform.html are:</p>
+</code></pre><p>welcomeform.html:</p>
 <pre><code>&lt;head&gt;
     &lt;title&gt; Help us greet you &lt;/title&gt;
 &lt;/head&gt;
@@ -304,8 +299,8 @@ func WelcomeHandler(w http.ResponseWriter, r *http.Request){
         &lt;input type=&quot;submit&quot; value=&quot;Greet me!&quot;&gt;
     &lt;/form&gt;
 &lt;/body&gt;
-welcomeresponse.html are:
-&lt;head&gt;
+</code></pre><p>welcomeresponse.html:</p>
+<pre><code>&lt;head&gt;
     &lt;title&gt; Greetings, {{.Name}} &lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -313,9 +308,11 @@ welcomeresponse.html are:
     We know you are a {{.nationality}}!
 &lt;/body&gt;
 </code></pre><p>注意：</p>
-<p>确保.html文件位于正确的目录中。
-启动服务器后可以访问http：// localhost：8080 /。
-提交表单后可以看到，模板包无法按预期解析该结构的未导出国籍字段。</p>
+<ul>
+<li>确保.html文件位于正确的目录中。</li>
+<li>启动服务器后可以访问http://localhost:8080/</li>
+<li>提交表单后可以看到，模板包无法按预期解析struct中未导出的国籍字段。</li>
+</ul>
 <h2 id="使用servemux提供内容">使用ServeMux提供内容</h2>
 <p>一个简单的静态文件服务器如下所示：</p>
 <pre><code>package main
@@ -335,14 +332,14 @@ func main() {
     http.ListenAndServe(&quot;:8080&quot;, muxer)
 }
 </code></pre><h2 id="使用处理函数">使用处理函数</h2>
-<p>HandleFunc在服务器多路复用器（路由器）中注册给定模式的处理程序功能。</p>
-<p>您可以传递定义匿名函数的方法，如基本的Hello World示例所示：</p>
+<p>HandleFunc在server mux(router)中注册给定模式的处理程序功能。</p>
+<p>可以传递匿名函数，如之前Hello World示例：</p>
 <pre><code>http.HandleFunc(&quot;/&quot;, func(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, &quot;Hello, world!&quot;)
 }
-</code></pre><p>但是我们也可以传递HandlerFunc类型。 换句话说，我们可以传递任何尊重以下签名的函数：</p>
-<p>func FunctionName（w http.ResponseWriter，req * http.Request）
-我们可以重写前面的示例，将引用传递给先前定义的HandlerFunc。 这是完整的示例：</p>
+</code></pre><p>也我们也可以传递HandlerFunc类型。 换句话说，我们可以传递任何尊重以下签名的函数：
+<code>func FunctionName（w http.ResponseWriter，req * http.Request）</code></p>
+<p>我们重写前面的示例，将引用传递给先前定义的HandlerFunc。这是完整的示例：</p>
 <pre><code>package main
 
 import (
@@ -361,7 +358,7 @@ func main() {
     http.HandleFunc(&quot;/&quot;, RootHandler)
     panic(http.ListenAndServe(&quot;:8080&quot;, nil))
 }
-</code></pre><p>当然，您可以为不同的路径定义几个函数处理程序。</p>
+</code></pre><p>当然可以为不同的路径定义几个函数处理程序。</p>
 <pre><code>package main
 
 import (
@@ -384,7 +381,7 @@ func main() {
 
     log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
 }
-</code></pre><p>Here’s the output using cURL:</p>
+</code></pre><p>下面是使用cURL的测试结果:</p>
 <pre><code>$ curl -i localhost:8080/foo
 HTTP/1.1 200 OK
 Date: Wed, 20 Jul 2016 18:23:08 GMT
@@ -392,14 +389,16 @@ Content-Length: 16
 Content-Type: text/plain; charset=utf-8
 
 Hello from foo!
-</code></pre><pre><code>$ curl -i localhost:8080/bar
+
+$ curl -i localhost:8080/bar
 HTTP/1.1 200 OK
 Date: Wed, 20 Jul 2016 18:23:10 GMT
 Content-Length: 16
 Content-Type: text/plain; charset=utf-8
 
 Hello from bar!
-</code></pre><pre><code>$ curl -i localhost:8080/
+
+$ curl -i localhost:8080/
 HTTP/1.1 404 Not Found
 Content-Type: text/plain; charset=utf-8
 X-Content-Type-Options: nosniff
@@ -407,13 +406,8 @@ Date: Wed, 20 Jul 2016 18:23:13 GMT
 Content-Length: 19
 
 404 page not found
-</code></pre><h2 id="处理http方法访问查询字符串和请求正文">处理http方法，访问查询字符串和请求正文</h2>
-<p>这是一些与开发API相关的常见任务的简单示例，该API区分请求的HTTP方法，访问查询字符串值和访问请求正文。</p>
-<p>资源资源</p>
-<p>http.Handler interface
-http.ResponseWriter
-http.Request
-Available Method and Status constants</p>
+</code></pre><h2 id="获取请求参数和正文">获取请求参数和正文</h2>
+<p>下面是一个开发API时常见的简单示例，该API区分请求的HTTP方法，获取请求参数和正文:</p>
 <pre><code>package main
 
 import (
@@ -425,27 +419,26 @@ import (
 
 type customHandler struct{}
 
-// ServeHTTP implements the http.Handler interface in the net/http package
+// ServeHTTP实现了net/http包中的http.Handler接口
 func (h customHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
-    // ParseForm will parse query string values and make r.Form available
+    // ParseForm 方法解析请求参数并且让r.Form可用
     r.ParseForm()
 
-    // r.Form is map of query string parameters
-    // its' type is url.Values, which in turn is a map[string][]string
+    // r.Form是map结构的请求参数, 它的类型是url.Values, 即map[string][]string
     queryMap := r.Form
 
     switch r.Method {
     case http.MethodGet:
-        // Handle GET requests
+        // 处理GET请求
         w.WriteHeader(http.StatusOK)
         w.Write([]byte(fmt.Sprintf(&quot;Query string values: %s&quot;, queryMap)))
         return
     case http.MethodPost:
-        // Handle POST requests
+        // 处理POST请求
         body, err := ioutil.ReadAll(r.Body)
         if err != nil {
-            // Error occurred while parsing request body
+            // 解析request body时出错
             w.WriteHeader(http.StatusBadRequest)
             return
         }
@@ -454,21 +447,18 @@ func (h customHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    // Other HTTP methods (eg PUT, PATCH, etc) are not handled by the above
-    // so inform the client with appropriate status code
+    // 其他的HTTP methods(PUT,PATCH等)不被以上代码处理,所有返回405错误
     w.WriteHeader(http.StatusMethodNotAllowed)
 }
 
 func main() {
-    // All URLs will be handled by this function
-    // http.Handle, similarly to http.HandleFunc
-    // uses the DefaultServeMux
+    // http.Handle类似于http.HandleFunc,使用了DefaultServeMux
     http.Handle(&quot;/&quot;, customHandler{})
 
     // Continue to process new requests until an error occurs
     log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
 }
-</code></pre><p>Sample curl output:</p>
+</code></pre><p>curl测试输出:</p>
 <pre><code>$ curl -i 'localhost:8080?city=Seattle&amp;state=WA' -H 'Content-Type: text/plain' -X GET
 HTTP/1.1 200 OK
 Date: Fri, 02 Sep 2016 16:36:24 GMT
@@ -491,7 +481,17 @@ HTTP/1.1 405 Method Not Allowed
 Date: Fri, 02 Sep 2016 16:36:41 GMT
 Content-Length: 0
 Content-Type: text/plain; charset=utf-8
-</code></pre>
+</code></pre><h2 id="其他资源">其他资源:</h2>
+<ul>
+<li>http.Handler接口</li>
+<li>http.ResponseWriter</li>
+<li>http.Request</li>
+<li>可以使用的方法和状态常量</li>
+</ul>
+<p>http.ServeMux提供了一个多路复用器，该多路复用器调用HTTP请求的处理程序。
+标准库多路复用器的替代方法包括：</p>
+<p>Gorilla Mux</p>
+
                                             
                                         </div>
 

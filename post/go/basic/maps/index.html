@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go map类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2783 Words
+                                        Posted @ 2019-09-09 · 2780 Words
                                         
                                         · Tags: Go
                                         
@@ -259,7 +259,7 @@ mapStringString := map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar
 var mapIntString = map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
 var mapStringInt = map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
 var mapStringString = map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
-</code></pre><p>您还可以在map中包含自己的结构,即使用自定义类型作为值：</p>
+</code></pre><p>还可以在map中包含自己的结构,即使用自定义类型作为值：</p>
 <pre><code>// Custom struct types
 type Person struct {
   FirstName, LastName string
@@ -289,7 +289,7 @@ mapIntString := map[int]string{}
 mapStringInt := map[string]int{}
 mapStringString := map[string]string{}
 mapStringPerson := map[string]Person{}
-</code></pre><p>您可以直接创建和使用map，而无需将其分配给变量。 但是，你必须同时指定声明和内容。</p>
+</code></pre><p>可以直接创建和使用map，而无需将其分配给变量。 但是，你必须同时指定声明和内容。</p>
 <pre><code>// map最为 fmt.Println()的参数
 fmt.Println(map[string]string{
   &quot;FirstName&quot;: &quot;John&quot;,
@@ -523,7 +523,7 @@ func main() {
 <p>Final value is: 2</p>
 </blockquote>
 <p>sync.RWMutex can be faster because it allows multiple readers. On the downside you have to be more careful to ensure you&rsquo;re not writing under RLock. The performance difference with sync.Mutex will be negligible unless there&rsquo;s a high-contention on the lock or the locks are held for a long time.
-sync.RWMutex可以更快，因为它允许多个读取器。 不利的一面是，您必须更加小心以确保您不在RLock下书写。 sync.Mutex的性能差异可以忽略不计，除非锁上存在高争用或锁被长时间持有。</p>
+sync.RWMutex可以更快，因为它允许多个读取器。 不利的一面是，你必须更加小心以确保不在RLock下书写。 sync.Mutex的性能差异可以忽略不计，除非锁上存在高争用或锁被长时间持有。</p>
 <h2 id="map的零值">map的零值</h2>
 <p>map的零值是nil. 它的长度为0:</p>
 <pre><code>var m map[string]string

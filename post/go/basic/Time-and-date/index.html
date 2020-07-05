@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 日期和时间</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2200 Words
+                                        Posted @ 2019-09-09 · 2186 Words
                                         
                                         · Tags: Go
                                         
@@ -179,7 +179,7 @@ For interoperability with existing code you often need to use Unix time, which i
 <pre><code>year, month, day := t.Day()
 </code></pre><h2 id="格式化日期时间">格式化日期时间</h2>
 <p>大多数语言都从strftime函数C库继承了时间格式化方法，该函数使用了一些神秘的格式字符串，例如％Y-％m-％d。</p>
-<p>Go设计人员提出了可以说是更直观的时间解析和格式设置方法，在其中您可以显示一个模板，以显示所需的结果：</p>
+<p>Go设计人员提出了更直观的时间解析和格式设置的方法，即在其中传入一个模板：</p>
 <pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
 fmt.Println(t.Format(&quot;2006-02-01 15:04:05.000 MST&quot;))
 fmt.Println(t.Format(&quot;2006-02-1 15pm&quot;))
@@ -227,7 +227,7 @@ Month: Sep &lsquo;9&rsquo;, &lsquo;09&rsquo;,  4</p>
         StampMicro = &quot;Jan _2 15:04:05.000000&quot;
         StampNano  = &quot;Jan _2 15:04:05.000000000&quot;
 )
-</code></pre><p>如果您喜欢格式化时间的strftime样式怎么办？ 也可以。</p>
+</code></pre><p>如果你喜欢格式化时间的strftime样式怎么办？ 也可以。</p>
 <h2 id="解析时间">解析时间</h2>
 <p>解析时间和格式化相反</p>
 <pre><code>s := &quot;2017-04-09 03:38:45.000 UTC&quot;
@@ -240,9 +240,9 @@ fmt.Printf(&quot;year: %d, month: %d, day: %d\n&quot;, t.Year(), t.Month(), t.Da
 <p>year: 2017, month: 9, day: 4</p>
 </blockquote>
 <p>解析模板使用与格式化相同的样式。</p>
-<p>如果您更喜欢strftime样式的解析时间怎么办？ 也可以。</p>
+<p>如果你更喜欢strftime样式的解析时间怎么办？ 也可以。</p>
 <h2 id="像strftime一样格式化时间">像strftime一样格式化时间</h2>
-<p>如果您喜欢格式化时间值的strftime样式（如在Python或Ruby中使用的）或使用该样式的移植代码，则可以使用以下几种库之一。</p>
+<p>如果你喜欢格式化时间值的strftime样式（如在Python或Ruby中使用的）或使用该样式的移植代码，则可以使用以下几种库之一。</p>
 <p>这是使用github.com/jehiah/go-strftime软件包的示例：</p>
 <pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
 fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
@@ -281,9 +281,9 @@ fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
 <li>%c	The preferred local date and time representation</li>
 <li>%%	Literal &ldquo;%&rdquo; character</li>
 </ul>
-<p>您还可以使用http://www.strfti.me/服务来帮助您构建strftime格式字符串。</p>
+<p>你还可以使用http://www.strfti.me/服务来帮助你构建strftime格式字符串。</p>
 <h2 id="比较时间和日期">比较时间和日期</h2>
-<p>有时您将需要使用2个日期对象来知道是否存在与同一日期相对应的日期，或者找到哪个日期在另一个日期之后。</p>
+<p>有时你将需要使用2个日期对象来知道是否存在与同一日期相对应的日期，或者找到哪个日期在另一个日期之后。</p>
 <p>在Go中，有4种比较日期的方式：</p>
 <ul>
 <li>date1 == date2, returns true when the 2 are the same moment</li>
@@ -292,7 +292,7 @@ fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
 <li>date1.After(date2), returns true when the first is strictly after the second</li>
 </ul>
 <p>警告：当两个比较时间相同（或对应于完全相同的日期）时，After和Before函数将返回false，因为日期既不早于其本身也不在其后-date1 == date1，则返回true-date1！= date1，返回false-date1。After（date1），返回false-date1.Before（date1），返回false
-提示：如果您需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After（date2），当date1在date2之后或等于date2或使用！返回true。 （date1.Before（date2））-date1 == date2 || date1.Before（date2），如果date1在date2之前或等于date2或使用！（date1.After（date2）），则返回true。</p>
+提示：如果你需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After（date2），当date1在date2之后或等于date2或使用！返回true。 （date1.Before（date2））-date1 == date2 || date1.Before（date2），如果date1在date2之前或等于date2或使用！（date1.After（date2）），则返回true。</p>
 <p>使用示例:</p>
 <pre><code>//初始化时间
 var date1 = time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)

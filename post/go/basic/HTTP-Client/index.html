@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go HTTP Client</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2798 Words
+                                        Posted @ 2019-09-09 · 2795 Words
                                         
                                         · Tags: Go
                                         
@@ -152,7 +152,7 @@
                                             <p>标准库中的net / http软件包提供了发出HTTP网络请求的功能。</p>
 <p>在示例中，我们使用httpbin.org这是一个聪明的服务，可以返回特定的HTTP响应，这对于演示HTTP协议的各个方面很有用。</p>
 <p>基本HTTP GET
-为简单起见，此示例使用http.Get()。 在实际程序中，您应该使用具有超时的自定义客户端，如下所述。</p>
+为简单起见，此示例使用http.Get()。 在实际程序中应该使用具有超时的自定义客户端，如下所述。</p>
 <pre><code>uri := &quot;https://httpbin.org/html&quot;
 resp, err := http.Get(uri)
 if err != nil {
@@ -292,7 +292,7 @@ if err != nil {
 
 fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, string(d))
 </code></pre><h2 id="带有上下文的超时请求">带有上下文的超时请求</h2>
-<p>从Go 1.7开始，您可以使用context.Context超时单个HTTP请求。</p>
+<p>从Go 1.7开始，可以使用context.Context超时单个HTTP请求。</p>
 <pre><code>// httpbin.org is a service for testing HTTP client
 // this URL waits 3 seconds before returning a response
 uri := &quot;https://httpbin.org/delay/3&quot;
@@ -363,7 +363,7 @@ for _, post := range p.Items {
 }
 </code></pre><h2 id="设置user-agent">设置User-Agent</h2>
 <p>HTTP请求包括User-Agent标头。</p>
-<p>最好使用对您的程序有意义的用户代理。</p>
+<p>最好使用对你的程序有意义的用户代理。</p>
 <p>另外，某些服务器对它们接受的内容很挑剔。</p>
 <p>这是设置自定义用户代理的方法：</p>
 <pre><code>userAgent := &quot;Special Agent v 1.0.16&quot;

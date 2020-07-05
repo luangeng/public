@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Cryptography/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="介绍 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 您有一个">
+    content="介绍 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 你有一个">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Cryptography/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Cryptography/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go Cryptography</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 942 Words
+                                        Posted @ 2019-09-09 · 939 Words
                                         
                                         · Tags: Go
                                         
@@ -152,14 +152,14 @@
                                             <p>介绍
 了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。</p>
 <h2 id="使用aes-gcm进行加密和解密">使用AES GCM进行加密和解密</h2>
-<p>您有一个文件和一个密码，并且想要使用密码对文件进行加密。</p>
+<p>你有一个文件和一个密码，并且想要使用密码对文件进行加密。</p>
 <p>有很多加密算法。</p>
 <p>本章介绍如何在GCM模式下使用对称算法AES（高级加密标准）。</p>
 <p>GCM模式同时提供加密和身份验证。</p>
 <p>未经身份验证，攻击者可能会更改加密字节，这将导致解密成功但数据损坏。 通过添加身份验证，GCM模式可以检测到加密数据已损坏。</p>
 <p>对称意味着我们可以使用相同的密码来加密和解密数据。</p>
 <p>AES使用16个字节的密钥作为密码。 人类喜欢任意长度的密码。</p>
-<p>为了支持人类，我们需要从人类密码派生AES密钥。 这比看起来要难，因此您应该使用经过充分研究并被认为是加密安全的方法之一。 这些方法之一是scrypt密钥派生功能。</p>
+<p>为了支持人类，我们需要从人类密码派生AES密钥。 这比看起来要难，因此应该使用经过充分研究并被认为是加密安全的方法之一。 这些方法之一是scrypt密钥派生功能。</p>
 <pre><code>package main
 
 import (
@@ -260,7 +260,7 @@ func main() {
 </code></pre><p>加密是一个棘手的主题，犯一个错误就会使攻击者破坏加密并解密文件。</p>
 <p>将人可读的密码转换为随机加密密钥非常重要。</p>
 <p>人倾向于只使用可能的字节子集作为密码，这使得它们更容易破解。</p>
-<p>Scrypt被认为是一种通过人工密码生成加密密钥的好算法。 如您所见，它还使用了一个盐值，您应该对其保密。</p>
+<p>Scrypt被认为是一种通过人工密码生成加密密钥的好算法。 可见，它还使用了一个盐值，你应该对其保密。</p>
 <p>AES算法有多种变体。 我们之所以选择GCM，是因为它结合了身份验证和加密功能。 身份验证检测加密数据的修改。</p>
 <p>为了使加密更强，GCM模式需要额外的随机字节。 我们选择为每个文件生成唯一的随机数，并将其存储在加密数据的开头（随机数不必是秘密的）。</p>
 <p>一种替代方法是仅生成一个随机数并将其用于所有文件。</p>

@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go YAML</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 888 Words
+                                        Posted @ 2019-09-09 · 887 Words
                                         
                                         · Tags: Go
                                         
@@ -189,7 +189,7 @@ if err != nil {
 
 fmt.Printf(&quot;Decoded YAML dependencies: %#v\n&quot;, yamlFile.Dependencies)
 </code></pre><p>YAML解码与JSON解码非常相似。</p>
-<p>如果您知道YAML文件的结构，则可以定义映射该结构的结构，并将指向顶级结构的结构的指针传递给yaml.Decoder.Decode（）函数（或从[]进行解码的yaml.Unmarshal（））。 字节片）。</p>
+<p>如果你知道YAML文件的结构，则可以定义映射该结构的结构，并将指向顶级结构的结构的指针传递给yaml.Decoder.Decode（）函数（或从[]进行解码的yaml.Unmarshal（））。 字节片）。</p>
 <p>YAML解码器在结构字段名称和YAML文件中的名称之间进行智能映射，以便 YAML中的名称值被解码为结构中的字段名称。</p>
 <p>最好使用yaml struct标签创建显式映射。 我仅在示例中省略了它们，以说明未指定它们时的行为。</p>
 <p>将struct写入YAML文件:</p>
@@ -210,7 +210,7 @@ if err != nil {
 	log.Fatalf(&quot;yaml.Marshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person in YAML:\n%s\n&quot;, string(d))
-</code></pre><p>yaml.Marshal将interface {}作为参数。 您可以传递任何Go值，并将其类型包装到interface {}中。</p>
+</code></pre><p>yaml.Marshal将interface {}作为参数。 可以传递任何Go值，并将其类型包装到interface {}中。</p>
 <p>Marshaller将使用反射检查传递的值并将其编码为YAML字符串。</p>
 <p>在序列化结构时，仅对导出的字段（其名称以大写字母开头）进行序列化/反序列化。</p>
 <p>在我们的示例中，未对fullName进行序列化。</p>
