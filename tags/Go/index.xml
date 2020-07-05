@@ -153,7 +153,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/function/</guid>
-      <description>基本函数示例: // addCheckOverflow adds two int16 numbers and additionally // returns true if the result overflowed func addCheckOverflow(a, b uint16) (uint16, bool) { res := a + b overflowed := res &amp;lt; a || res &amp;lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&amp;quot;%5d + %5d = %5d, overflowed: %v\n\n&amp;quot;, 1, 3, res, overflowed) res, overflowed = addCheckOverflow(65520,</description>
+      <description>基本函数示例: // addCheckOverflow 完成2个int16相加,并且额外返回是否溢出 func addCheckOverflow(a, b uint16) (uint16, bool) { res := a + b overflowed := res &amp;lt; a || res &amp;lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&amp;quot;%5d + %5d = %5d, overflowed:</description>
     </item>
     
     <item>
@@ -193,17 +193,12 @@
     </item>
     
     <item>
-      <title>Go Concurrency</title>
+      <title>Go 并发</title>
       <link>https://luangeng.space/post/go/basic/Concurrency/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Concurrency/</guid>
-      <description>Concurrency Go uses goroutines for concurrency. Simplifying, they are like threads.
-Gorutines execute independently and share memory space.
-Since they can write to the same memory, care needs to be taken when writing to the same global variables from multiple goroutines.
-To coordinate work between goroutines Go provides channels, which are thread-safe queues.
-Here’s an example of using worker pool of goroutines and coordinating their work with channels:
-var wg sync.</description>
+      <description>Go使用goroutines实现并发. 简单来说goroutines就像线程. Gorutines独立执行并且共享内存. 由于goroutines</description>
     </item>
     
     <item>
@@ -212,7 +207,7 @@ var wg sync.</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Channels-and-select/</guid>
-      <description>Channels and select A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &amp;lt;- value) and receiving values from a channel (value &amp;lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &amp;lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i :=</description>
+      <description>A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &amp;lt;- value) and receiving values from a channel (value &amp;lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &amp;lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i := 0; i &amp;lt;</description>
     </item>
     
     <item>
@@ -256,12 +251,12 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes.<
     </item>
     
     <item>
-      <title>Go Command line arguments</title>
+      <title>Go 解析命令行参数</title>
       <link>https://luangeng.space/post/go/basic/Command-line-arguments/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Command-line-arguments/</guid>
-      <description>标准库中的软件包标志用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
+      <description>标准库中的flag包用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
     </item>
     
     <item>
@@ -391,9 +386,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Context/</guid>
-      <description>Package context in standard library provides type Context which is hard to explain because it has multiple uses.
-Here are the most common uses of context.Context:
-context with timeout (deadline) is a generic way to implement timeouts for functions that can possibly take a long time where we want an option to abort them if they exceed the timeout context with cancellation is a generic way to cancel a goroutine context with value is a way to associate arbitrary value with a context Creating a context In most cases you’ll be calling existing API that requires context.</description>
+      <description>标准库中的context包提供了Context类型，它有多种用途。 下面是context.Context几个典型用法: context with timeout (deadline) is a generic way to implement timeouts for</description>
     </item>
     
     <item>
@@ -429,7 +422,7 @@ context with timeout (deadline) is a generic way to implement timeouts for funct
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Cross-compilation/</guid>
-      <description>Cross compilation Introduction Go compiler can create native executable binaries for many operating system: Windows, Mac OS X, Linux, Android, iOS and a few lesser known like plan9, solaris, freebsd, openbsd, netbsd, dragonfly. It also supports multiple architectures (CPUs) for the same operating system e.g. it can generate both 32-bit and 64-bit Windows binaries or intel, arm, ppc, mips Linux binaries. Better yet, the toolchain supports cross-compilation i.e. you can</description>
+      <description>Introduction Go compiler can create native executable binaries for many operating system: Windows, Mac OS X, Linux, Android, iOS and a few lesser known like plan9, solaris, freebsd, openbsd, netbsd, dragonfly. It also supports multiple architectures (CPUs) for the same operating system e.g. it can generate both 32-bit and 64-bit Windows binaries or intel, arm, ppc, mips Linux binaries. Better yet, the toolchain supports cross-compilation i.e. you can create a</description>
     </item>
     
     <item>
@@ -438,7 +431,7 @@ context with timeout (deadline) is a generic way to implement timeouts for funct
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/</guid>
-      <description>Conditional compilation with build tags Build tags allow for limited conditional compilation i.e. compiling different versions of code based on some criteria. Tags are specified per file, at the top of the file, followed by an empty line and the code. A typical use case for tags is to provide to implementation of the same functionality and pick the one that is compiled with tags. For example, if you have</description>
+      <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 Tags are specified per file, at the top of the file, followed by an empty line and the code. A typical use case for tags is to provide to implementation of the same functionality and pick the</description>
     </item>
     
     <item>
@@ -516,14 +509,14 @@ Encode data to file and decode from file type User struct { Username string Pass
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Console-IO/</guid>
-      <description>Console I/O When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.
+      <description>When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.
 fmt.Scanf to read from stdio Most convenient way is to use fmt.Scanf which is a mirror image of fmt.Printf.
 Here&amp;rsquo;s how to read a string and an integer from the console (standard input)
 fmt.Print(&amp;ldquo;What is your name?\n&amp;rdquo;) var name string if n, err := fmt.Scanf(&amp;quot;%s&amp;rdquo;, &amp;amp;name); err != nil { fmt.Printf(&amp;ldquo;fmt.Scanf failed with &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, err) } else { fmt.</description>
     </item>
     
     <item>
-      <title>Go Cryptography</title>
+      <title>Go 加解密</title>
       <link>https://luangeng.space/post/go/basic/Cryptography/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       

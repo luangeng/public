@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Channels-and-select/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Channels and select A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &lt;- value) and receiving values from a channel (value &lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i :=">
+    content="A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &lt;- value) and receiving values from a channel (value &lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i := 0; i &lt;">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Channels-and-select/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Channels-and-select/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go channel和select</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2200 Words
+                                        Posted @ 2019-09-09 · 2197 Words
                                         
                                         · Tags: Go
                                         
@@ -149,8 +149,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Channels and select
-A channel is a thread-safe queue of values of a given type.</p>
+                                            <p>A channel is a thread-safe queue of values of a given type.</p>
 <p>A primary use for channels is to communicate between goroutines.</p>
 <p>For that reason we talk about sending values to a channel (ch &lt;- value) and receiving values from a channel (value &lt;- ch).</p>
 <p>Basic of channels:</p>
@@ -655,7 +654,7 @@ This technique is used in context.Done() channel.</code></pre>
                                     <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="next">
                                         <i class="fa fa-chevron-right"></i>
                                         <strong>Next</strong>
-                                        <span>Go Concurrency</span>
+                                        <span>Go 并发</span>
                                     </a>
                                     
                                 </li>
@@ -701,28 +700,6 @@ This technique is used in context.Done() channel.</code></pre>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -733,7 +710,7 @@ This technique is used in context.Done() channel.</code></pre>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -744,18 +721,7 @@ This technique is used in context.Done() channel.</code></pre>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -766,7 +732,7 @@ This technique is used in context.Done() channel.</code></pre>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -777,8 +743,41 @@ This technique is used in context.Done() channel.</code></pre>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" rel="bookmark" class="leancloud-count">Go Images
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -832,7 +831,7 @@ This technique is used in context.Done() channel.</code></pre>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1155,7 +1154,7 @@ This technique is used in context.Done() channel.</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic和recover</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go 并发</a></li>
                   
                   
                 
@@ -1168,7 +1167,7 @@ This technique is used in context.Done() channel.</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go 解析命令行参数</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
@@ -1249,7 +1248,7 @@ This technique is used in context.Done() channel.</code></pre>
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
@@ -1269,7 +1268,7 @@ This technique is used in context.Done() channel.</code></pre>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                 

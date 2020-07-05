@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Console-IO/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Console I/O When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.
+    content="When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.
 fmt.Scanf to read from stdio Most convenient way is to use fmt.Scanf which is a mirror image of fmt.Printf.
 Here&rsquo;s how to read a string and an integer from the console (standard input)
 fmt.Print(&ldquo;What is your name?\n&rdquo;) var name string if n, err := fmt.Scanf(&quot;%s&rdquo;, &amp;name); err != nil { fmt.Printf(&ldquo;fmt.Scanf failed with &lsquo;%s&rsquo;\n&rdquo;, err) } else { fmt.">
@@ -133,7 +133,7 @@ fmt.Print(&ldquo;What is your name?\n&rdquo;) var name string if n, err := fmt.S
                                     <h1 class="post-title">Go Console I/O</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 366 Words
+                                        Posted @ 2019-09-09 · 364 Words
                                         
                                         · Tags: Go
                                         
@@ -152,8 +152,7 @@ fmt.Print(&ldquo;What is your name?\n&rdquo;) var name string if n, err := fmt.S
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Console I/O
-When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.</p>
+                                            <p>When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.</p>
 <p>fmt.Scanf to read from stdio
 Most convenient way is to use fmt.Scanf which is a mirror image of fmt.Printf.</p>
 <p>Here&rsquo;s how to read a string and an integer from the console (standard input)</p>
@@ -259,7 +258,7 @@ for scanner.Scan() {
                                     <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="prev">
                                         <i class="fa fa-chevron-left"></i>
                                         <strong>Previous</strong>
-                                        <span>Go Cryptography</span>
+                                        <span>Go 加解密</span>
                                     </a>
                                     
                                 </li>
@@ -296,28 +295,6 @@ for scanner.Scan() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -328,18 +305,7 @@ for scanner.Scan() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -350,7 +316,7 @@ for scanner.Scan() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -361,7 +327,7 @@ for scanner.Scan() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -372,8 +338,41 @@ for scanner.Scan() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" rel="bookmark" class="leancloud-count">Go Images
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -427,7 +426,7 @@ for scanner.Scan() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -750,7 +749,7 @@ for scanner.Scan() {
                 <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic和recover</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go 并发</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
@@ -765,7 +764,7 @@ for scanner.Scan() {
                 <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go 解析命令行参数</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
@@ -844,7 +843,7 @@ for scanner.Scan() {
                   
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
@@ -864,7 +863,7 @@ for scanner.Scan() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                 

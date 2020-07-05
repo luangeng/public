@@ -3,25 +3,20 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go Concurrency - 计算机与软件技术公开课</title>
+  <title>Go 并发 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Concurrency - 计算机与软件技术公开课">
-  <meta name="description" content="Go Concurrency">
-  <meta itemprop="name" content="Go Concurrency - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go Concurrency">
-  <meta property="og:title" content="Go Concurrency - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go 并发 - 计算机与软件技术公开课">
+  <meta name="description" content="Go 并发">
+  <meta itemprop="name" content="Go 并发 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go 并发">
+  <meta property="og:title" content="Go 并发 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Concurrency/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Concurrency Go uses goroutines for concurrency. Simplifying, they are like threads.
-Gorutines execute independently and share memory space.
-Since they can write to the same memory, care needs to be taken when writing to the same global variables from multiple goroutines.
-To coordinate work between goroutines Go provides channels, which are thread-safe queues.
-Here’s an example of using worker pool of goroutines and coordinating their work with channels:
-var wg sync.">
+    content="Go使用goroutines实现并发. 简单来说goroutines就像线程. Gorutines独立执行并且共享内存. 由于goroutines">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Concurrency/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Concurrency/">
@@ -132,10 +127,10 @@ var wg sync.">
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                 <div class="post-inner group">
 
-                                    <h1 class="post-title">Go Concurrency</h1>
+                                    <h1 class="post-title">Go 并发</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1265 Words
+                                        Posted @ 2019-09-09 · 2275 Words
                                         
                                         · Tags: Go
                                         
@@ -143,7 +138,7 @@ var wg sync.">
                                         
                                         
                                         · Hits:
-                                        <span id="https://luangeng.space/post/go/basic/Concurrency/" class="leancloud_visitors" data-flag-title="Go Concurrency">
+                                        <span id="https://luangeng.space/post/go/basic/Concurrency/" class="leancloud_visitors" data-flag-title="Go 并发">
                                             <span class="leancloud-visitors-count">0</span>
                                         </span>
                                     </p>
@@ -154,133 +149,49 @@ var wg sync.">
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Concurrency
-Go uses goroutines for concurrency. Simplifying, they are like threads.</p>
-<p>Gorutines execute independently and share memory space.</p>
-<p>Since they can write to the same memory, care needs to be taken when writing to the same global variables from multiple goroutines.</p>
-<p>To coordinate work between goroutines Go provides channels, which are thread-safe queues.</p>
-<p>Here’s an example of using worker pool of goroutines and coordinating their work with channels:</p>
-<p>var wg sync.WaitGroup</p>
-<p>func sqrtWorker(chIn chan int, chOut chan int) {
-fmt.Printf(&ldquo;sqrtWorker started\n&rdquo;)
-for i := range chIn {
-sqrt := i * i
-chOut &lt;- sqrt
-}
-fmt.Printf(&ldquo;sqrtWorker finished\n&rdquo;)
-wg.Done()
-}</p>
-<p>func main() {
-chIn := make(chan int)
-chOut := make(chan int)
-for i := 0; i &lt; 2; i++ {
-wg.Add(1)
-go sqrtWorker(chIn, chOut)
-}</p>
-<pre><code>go func() {
-    chIn &lt;- 2
-    chIn &lt;- 4
-    close(chIn)
-}()
-
-go func() {
-    wg.Wait()
-    close(chOut)
-}()
-
-for sqrt := range chOut {
-    fmt.Printf(&quot;Got sqrt: %d\n&quot;, sqrt)
-}
-</code></pre>
-<p>}</p>
-<pre><code>sqrtWorker started
-Got sqrt: 4
-sqrtWorker started
-sqrtWorker finished
-sqrtWorker finished
-Got sqrt: 16
-There’s a lot to unpack here.
-
-We launch 2 workers with go sqrtWorker(chIn, chOut).
-
-Each sqrtWorker function is running independently and concurrently with all other code.
-
-We use a single channel of int values to queue work items to be processed by worker goroutines using &lt;- send operation on a channel.
-
-Most of the time it’s not safe to access the same variable from multiple goroutines. Channels and sync.WaitGroup are exceptions.
-
-Worker goroutines sqrtWorker pick up values from the channel using range.
-
-We don’t know which worker will pick any given value.
-
-Worker’s for loop terminates when chIn is closed with close(chIn) and worker goroutine terminates.
-
-To pass results of worker goroutines back to the caller we use another channel.
-
-In this example we use unbuffered channels which only have capacity for one item at a time. For that reason we launch another goroutine to fill chIn. Otherwise we would risk dead-lock.
-
-To shutdown workers we close the chIn.
-
-We then wait for results created by workers by iterating on chOut.
-
-There’s one more complication. Unless we close chOut, the for sqrt := range chOut loop will wait forever.
-
-To stop the loop, we need to close(chOut) but when to do it?
-
-We can’t do it in sqrtWorker because there are many of them and calling close on an already closed channel will panic.
-
-sync.WaitGroup is a thread-safe counter that can be incremented / decremented and allows for waiting until the counter reaches 0.
-
-Before we launch the worker, we increment wg counter.
-
-Just before terminating, the worker decrements wg counter.
-
-We then wg.Wait() for the counter to reach 0, which indicates that all workers have finished and it’s now safe to close the output channel.
-
-It has to happen in its own goroutine to avoid blocking.
-
-Why go to all this trouble to calculate a simple value?
-
-This is just an example. In a real programs worker goroutine would perform longer jobs like downloading a file from the internet or resizing a large image.
-
-## Hello World goroutine
-Single channel, single goroutine, one write, one read.
-
-func main() {
-	// create new channel of type string
+                                            <p>Go使用goroutines实现并发. 简单来说goroutines就像线程.</p>
+<p>Gorutines独立执行并且共享内存.</p>
+<p>由于goroutines可以写入相同的内存，因此多个goroutine写入相同的全局变量时需要格外小心。</p>
+<p>为了协调goroutine之间的工作，Go提供了channel,即线程安全队列。</p>
+<h2 id="goroutine示例">goroutine示例</h2>
+<p>单channel，单goroutine，一次写入，一次读取。</p>
+<pre><code>func main() {
+	// 创建string型channel
 	ch := make(chan string)
 
-	// start new anonymous goroutine
+	// 启动一个匿名goroutine
 	go func() {
 		time.Sleep(time.Second)
-		// send &quot;Hello World&quot; to channel
+		// 发送&quot;Hello World&quot;到channel
 		ch &lt;- &quot;Hello World&quot;
 	}()
-	// read from channel
+	// 从channel读取
 	msg, ok := &lt;-ch
 	fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
 }
-</code></pre><p>msg='Hello World&rsquo;, ok='true&rsquo;
-The channel ch is an unbuffered or synchronous channel.</p>
-<p>The time.Sleep is here to illustrate main() function will wait on the ch channel, which means the function literal executed as a goroutine has the time to send a value through that channel: the receive operator &lt;-ch will block the execution of main().</p>
-<p>If it didn’t, the goroutine would be killed when main() exits, and would not have time to send its value.</p>
-<h2 id="create-goroutines">Create goroutines</h2>
-<p>Any function can be invoked as a goroutine by prefixing its invocation with the keyword go:</p>
-<p>func mult(x, y int) {
-fmt.Printf(&quot;%d * %d = %d\n&rdquo;, x, y, x*y)
-}</p>
-<p>go mult(1, 2) // first execution, non-blocking
-go mult(3, 4) // second execution, also non-blocking</p>
-<pre><code>1 * 2 = 2
-3 * 4 = 12
-Note that the return value of the function is ignored.
+</code></pre><blockquote>
+<p>msg='Hello World&rsquo;, ok='true&rsquo;</p>
+</blockquote>
+<p>这个channel ch是无缓冲的或者说是同步的。</p>
+<p>time.Sleep在这里说明main()方法将在channel上等待，这意味着goroutine执行的函数需要一定的时间才能通过channel发送值,接收操作符&lt;-ch将阻止main()方法执行。</p>
+<p>如果不是，则goroutine将在main()退出时被杀死，并且没有时间发送其值。</p>
+<h2 id="创建goroutines">创建goroutines</h2>
+<p>任何函数都可以通过使用关键字go来作为goroutine调用：</p>
+<pre><code>func mult(x, y int) {
+	fmt.Printf(&quot;%d * %d = %d\n&quot;, x, y, x*y)
+}
 
-## Wait for goroutines to finish
-Go programs end when the main function ends, therefore it is common practice to wait for all goroutines to finish.
-
-A common solution for this is to use a sync.WaitGroup object.
-
-var wg sync.WaitGroup // 1
+go mult(1, 2) // 第一次执行,非阻塞
+go mult(3, 4) // 第二次执行,非阻塞
+</code></pre><blockquote>
+<p>1 * 2 = 2<br>
+3 * 4 = 12</p>
+</blockquote>
+<p>请注意，该函数的返回值被忽略。</p>
+<h2 id="等待goroutine完成">等待goroutine完成</h2>
+<p>Go程序在主函数结束时结束，因此通常的做法是等待所有goroutine完成。</p>
+<p>常见的解决方案是使用sync.WaitGroup对象。</p>
+<pre><code>var wg sync.WaitGroup // 1
 
 func routine(i int) {
 	defer wg.Done() // 3
@@ -295,83 +206,155 @@ func main() {
 	wg.Wait() // 4
 	fmt.Println(&quot;main finished&quot;)
 }
-</code></pre><p>routine 3 finished
-routine 9 finished
-routine 0 finished
-routine 4 finished
-routine 5 finished
-routine 6 finished
-routine 7 finished
-routine 8 finished
-routine 1 finished
-routine 2 finished
-main finished
-WaitGroup usage in order of execution:</p>
-<p>Declaration of global variable. Making it global is the easiest way to make it visible to all functions and methods.
-Increasing the counter. This must be done in the main goroutine because there is no guarantee that a newly started goroutine will execute before 4 due to memory model guarantees.
-Decreasing the counter. This must be done at the exit of a goroutine. By using a deferred call, we make sure that it will be called whenever function ends, no matter how it ends.
-Waiting for the counter to reach 0. This must be done in the main goroutine to prevent the program from exiting before all goroutines have finished.
-Parameters are evaluated before starting a new goroutine.</p>
-<p>Thus it is necessary to define their values explicitly before wg.Add(10) so that possibly-panicking code will not increase the counter. Adding 10 items to the WaitGroup, so it will wait for 10 items before wg.Wait returns the control back to main() goroutine. Here, the value of i is defined in the for loop.</p>
-<h2 id="limiting-concurrency-with-a-semaphore">Limiting concurrency with a semaphore</h2>
-<p>When doing CPU intensive tasks like image resizing it doesn’t make sense to create more goroutines than available CPUs.</p>
-<p>Things will not go any faster and you might even loose performance due to additional book keeping and switching between goroutines.</p>
-<p>One way to limit concurrency (i.e. number of gorutines you launch at the same time) is to use a semaphore.</p>
-<p>You can enter (acquire) semaphore and leave (release) a semaphore.</p>
-<p>A semaphore has a fixed capacity. If you exceed semaphore’s capacity, acquire blocks until a release operation frees it.</p>
-<p>A buffered channel is a natural semaphore.</p>
-<p>Here’s an example of using a channel acting as a semaphore to limit number of goroutines active at any given time:</p>
-<p>var (
-semaphoreSize = 4</p>
-<pre><code>mu                 sync.Mutex
-totalTasks         int
-curConcurrentTasks int
-maxConcurrentTasks int
-</code></pre>
-<p>)</p>
-<p>func timeConsumingTask() {
-mu.Lock()
-totalTasks++
-curConcurrentTasks++
-if curConcurrentTasks &gt; maxConcurrentTasks {
-maxConcurrentTasks = curConcurrentTasks
-}
-mu.Unlock()</p>
-<pre><code>// in real system this would be a CPU intensive operation
-time.Sleep(10 * time.Millisecond)
+</code></pre><blockquote>
+<p>routine 3 finished<br>
+routine 9 finished<br>
+routine 0 finished<br>
+routine 4 finished<br>
+routine 5 finished<br>
+routine 6 finished<br>
+routine 7 finished<br>
+routine 8 finished<br>
+routine 1 finished<br>
+routine 2 finished<br>
+main finished</p>
+</blockquote>
+<p>执行顺序中的WaitGroup用法：</p>
+<p>声明全局变量。 使它全局化是使其对所有功能和方法可见的最简单方法。
+增加柜台。 这必须在主goroutine中完成，因为由于内存模型的保证，不能保证新启动的goroutine将在4之前执行。
+减少计数器。 这必须在goroutine的出口处完成。 通过使用延迟调用，我们确保无论函数如何结束，只要函数结束，都将调用它。
+等待计数器达到0。必须在主goroutine中执行此操作，以防止程序在所有goroutine完成之前退出。
+在开始新的goroutine之前先评估参数。</p>
+<p>因此，有必要在wg.Add（10）之前显式定义其值，以免出现恐慌的代码不会增加计数器。 向WaitGroup添加10个项目，因此它将在wg.Wait之前将等待10个项目。Wait将控件返回给main()goroutine。 在这里，i的值在for循环中定义。</p>
+<h2 id="用semaphore限制并发">用semaphore限制并发</h2>
+<p>当执行CPU密集型任务（如调整图像大小）时，创建比可用CPU多的goroutine毫无意义。</p>
+<p>事情不会进展得更快，由于额外的簿记和在goroutine之间进行切换，您甚至可能会失去性能。</p>
+<p>限制并发性（即同时启动的gorutine的数量）的一种方法是使用semaphore。</p>
+<p>您可以进入(获取)semaphore并离开(释放)semaphore。</p>
+<p>semaphore具有固定的容量。如果超出了信号量的容量，获取semaphore将阻塞，直到有gorutine释放semaphore。</p>
+<p>缓冲channel是自然的semaphore。</p>
+<p>这是一个使用channel作为semaphore来限制在任何给定时间激活的goroutine数量的示例：</p>
+<pre><code>var (
+	semaphoreSize = 4
 
-mu.Lock()
-curConcurrentTasks--
-mu.Unlock()
-</code></pre>
-<p>}</p>
-<p>func main() {
-sem := make(chan struct{}, semaphoreSize)
-var wg sync.WaitGroup
-for i := 0; i &lt; 32; i++ {
-// acquire semaphore
-sem &lt;- struct{}{}
-wg.Add(1)</p>
-<pre><code>    go func() {
-        timeConsumingTask()
-        // release semaphore
-        &lt;-sem
-        wg.Done()
-    }()
+	mu                 sync.Mutex
+	totalTasks         int
+	curConcurrentTasks int
+	maxConcurrentTasks int
+)
+
+func timeConsumingTask() {
+	mu.Lock()
+	totalTasks++
+	curConcurrentTasks++
+	if curConcurrentTasks &gt; maxConcurrentTasks {
+		maxConcurrentTasks = curConcurrentTasks
+	}
+	mu.Unlock()
+
+	// in real system this would be a CPU intensive operation
+	time.Sleep(10 * time.Millisecond)
+
+	mu.Lock()
+	curConcurrentTasks--
+	mu.Unlock()
 }
 
-// wait for all task to finish
-wg.Wait()
+func main() {
+	sem := make(chan struct{}, semaphoreSize)
+	var wg sync.WaitGroup
+	for i := 0; i &lt; 32; i++ {
+		// acquire semaphore
+		sem &lt;- struct{}{}
+		wg.Add(1)
 
-fmt.Printf(&quot;total tasks         : %d\n&quot;, totalTasks)
-fmt.Printf(&quot;max concurrent tasks: %d\n&quot;, maxConcurrentTasks)
-</code></pre>
-<p>}</p>
-<pre><code>total tasks         : 32
-max concurrent tasks: 4
-We use technique described in waiting for goroutines to finish to wait for all tasks to finish.
+		go func() {
+			timeConsumingTask()
+			// release semaphore
+			&lt;-sem
+			wg.Done()
+		}()
+	}
 
-Often the right amount of concurrent tasks is equal to number of CPUs, which can be obtained with runtime.NumCPU().</code></pre>
+	// wait for all task to finish
+	wg.Wait()
+
+	fmt.Printf(&quot;total tasks         : %d\n&quot;, totalTasks)
+	fmt.Printf(&quot;max concurrent tasks: %d\n&quot;, maxConcurrentTasks)
+}
+</code></pre><blockquote>
+<p>total tasks         : 32<br>
+max concurrent tasks: 4</p>
+</blockquote>
+<p>我们使用等待goroutine完成时描述的技术来等待所有任务完成。</p>
+<p>通常，正确的并发任务数量等于可以通过runtime.NumCPU()获得的CPU数量。</p>
+<h2 id="下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例">下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例：</h2>
+<pre><code>var wg sync.WaitGroup
+
+func sqrtWorker(chIn chan int, chOut chan int) {
+	fmt.Printf(&quot;sqrtWorker started\n&quot;)
+	for i := range chIn {
+		sqrt := i * i
+		chOut &lt;- sqrt
+	}
+	fmt.Printf(&quot;sqrtWorker finished\n&quot;)
+	wg.Done()
+}
+
+func main() {
+	chIn := make(chan int)
+	chOut := make(chan int)
+	for i := 0; i &lt; 2; i++ {
+		wg.Add(1)
+		go sqrtWorker(chIn, chOut)
+	}
+
+	go func() {
+		chIn &lt;- 2
+		chIn &lt;- 4
+		close(chIn)
+	}()
+
+	go func() {
+		wg.Wait()
+		close(chOut)
+	}()
+
+	for sqrt := range chOut {
+		fmt.Printf(&quot;Got sqrt: %d\n&quot;, sqrt)
+	}
+}
+</code></pre><blockquote>
+<p>sqrtWorker started<br>
+Got sqrt: 4<br>
+sqrtWorker started<br>
+sqrtWorker finished<br>
+sqrtWorker finished<br>
+Got sqrt: 16</p>
+</blockquote>
+<p>这里有很多东西要解释。</p>
+<p>我们使用go sqrtWorker(chIn，chOut)启动2个工作程序。</p>
+<p>每个sqrtWorker函数均独立运行，并与所有其他代码并行运行。</p>
+<p>我们使用int值的单个channel来对工作项进行排队，这些工作项将由工作程序goroutine在channel上使用&lt;-send操作来处理。</p>
+<p>在大多数情况下，从多个goroutine访问同一变量并不安全, channel和sync.WaitGroup例外。</p>
+<p>Worker goroutines sqrtWorker使用range从channel中获取值。</p>
+<p>We don’t know which worker will pick any given value.</p>
+<p>Worker’s for loop terminates when chIn is closed with close(chIn) and worker goroutine terminates.</p>
+<p>To pass results of worker goroutines back to the caller we use another channel.</p>
+<p>In this example we use unbuffered channels which only have capacity for one item at a time. For that reason we launch another goroutine to fill chIn. Otherwise we would risk dead-lock.</p>
+<p>To shutdown workers we close the chIn.</p>
+<p>We then wait for results created by workers by iterating on chOut.</p>
+<p>There’s one more complication. Unless we close chOut, the for sqrt := range chOut loop will wait forever.</p>
+<p>To stop the loop, we need to close(chOut) but when to do it?</p>
+<p>We can’t do it in sqrtWorker because there are many of them and calling close on an already closed channel will panic.</p>
+<p>sync.WaitGroup is a thread-safe counter that can be incremented / decremented and allows for waiting until the counter reaches 0.</p>
+<p>Before we launch the worker, we increment wg counter.</p>
+<p>Just before terminating, the worker decrements wg counter.</p>
+<p>We then wg.Wait() for the counter to reach 0, which indicates that all workers have finished and it’s now safe to close the output channel.</p>
+<p>It has to happen in its own goroutine to avoid blocking.</p>
+<p>Why go to all this trouble to calculate a simple value?</p>
+<p>This is just an example. In a real programs worker goroutine would perform longer jobs like downloading a file from the internet or resizing a large image.</p>
+
                                             
                                         </div>
 
@@ -459,17 +442,6 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -480,7 +452,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -491,18 +463,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -513,7 +474,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -524,7 +485,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -535,8 +496,30 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" rel="bookmark" class="leancloud-count">Go Images
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -590,7 +573,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -926,7 +909,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
                 <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go 解析命令行参数</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
@@ -1007,7 +990,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
@@ -1027,7 +1010,7 @@ Often the right amount of concurrent tasks is equal to number of CPUs, which can
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                 

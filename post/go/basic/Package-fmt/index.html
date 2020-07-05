@@ -233,7 +233,7 @@ u2: type:  main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
 u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a></p>
 </blockquote>
 <p>类型User1没有实现Stringer接口，因此％s使用结构的标准格式显示它。</p>
-<p>类型User2实现了Stringer接口，因此％s使用String（）方法获取值。</p>
+<p>类型User2实现了Stringer接口，因此％s使用String()方法获取值。</p>
 <p>类型User2和* User2不同。</p>
 <p>但是，为方便起见，在User2上定义的方法也可以在* User2上使用（但反之则不行）。</p>
 <p>因此，最好在struct上定义String()方法，而不是struct的指针。</p>
@@ -325,28 +325,6 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Command-line-arguments/" rel="bookmark" class="leancloud-count">Go Command line arguments
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="bookmark" class="leancloud-count">Go Concurrency
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -357,7 +335,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -368,18 +346,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" class="leancloud-count">Go Cryptography
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -390,7 +357,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -401,8 +368,41 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" rel="bookmark" class="leancloud-count">Go Images
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -456,7 +456,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go Cryptography
+                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -779,7 +779,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 <li><a href="https://luangeng.space/post/go/basic/Panic-and-recover/">Go Panic和recover</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go Concurrency</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Concurrency/">Go 并发</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Channels-and-select/">Go channel和select</a></li>
@@ -794,7 +794,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 <li><a href="https://luangeng.space/post/go/basic/Time-and-date/">Go 日期和时间</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go Command line arguments</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Command-line-arguments/">Go 解析命令行参数</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Logging/">Go 日志</a></li>
@@ -873,7 +873,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                   
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                   
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
@@ -893,7 +893,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 
                 <li><a href="https://luangeng.space/post/go/basic/Images/">Go Images</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go Cryptography</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
                 
