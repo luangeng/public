@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/basetype/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Booleans bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) b = false fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) var b2 bool fmt.Printf(&quot;zero value of bool is: &#39;%v&#39;\n&quot;, b2) b is: &lsquo;true&rsquo; b is: &lsquo;false&rsquo; bool变量的">
+    content="bool bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) b = false fmt.Printf(&quot;b is: &#39;%v&#39;\n&quot;, b) var b2 bool fmt.Printf(&quot;zero value of bool is: &#39;%v&#39;\n&quot;, b2) b is: &lsquo;true&rsquo; b is: &lsquo;false&rsquo; zero value of bool is: &lsquo;false&rsquo; b">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/basetype/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/basetype/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go基本数据类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2739 Words
+                                        Posted @ 2019-09-09 · 2769 Words
                                         
                                         · Tags: Go
                                         
@@ -149,7 +149,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <h2 id="booleans">Booleans</h2>
+                                            <h2 id="bool">bool</h2>
 <p>bool类型的值可以是true或false，初始为false</p>
 <pre><code>var b bool = true
 fmt.Printf(&quot;b is: '%v'\n&quot;, b)
@@ -159,16 +159,17 @@ var b2 bool
 fmt.Printf(&quot;zero value of bool is: '%v'\n&quot;, b2)
 </code></pre><blockquote>
 <p>b is: &lsquo;true&rsquo;<br>
-b is: &lsquo;false&rsquo;</p>
+b is: &lsquo;false&rsquo;<br>
+zero value of bool is: &lsquo;false&rsquo;</p>
 </blockquote>
-<p>bool变量的大小（例如 为struct的一部分时）为1个byte。</p>
+<p>bool变量的大小(例如为struct的一部分时)为1个byte。</p>
 <pre><code>b := true
 fmt.Printf(&quot;size of bool is: %d\n&quot;, unsafe.Sizeof(b))
 </code></pre><blockquote>
 <p>size of bool is: 1</p>
 </blockquote>
-<h2 id="integers">Integers</h2>
-<p>Go有固定大小的无符号和有符号整数类型：</p>
+<h2 id="int">int</h2>
+<p>Go有固定大小的无符号和有符号int类型：</p>
 <ul>
 <li>int8, uint8</li>
 <li>byte 是 uint8的别名</li>
@@ -314,10 +315,9 @@ UTF-8是一种可变长度编码，可将rune编码为1、2、3或4个byte。
 	i2     = 33       // untyped number constant
 )
 var (
-	// values that are not read-only (like slices or maps or structs) cannot be
-	// constants
-	// we can declare them as top-level variables
-	b = []byte{3, 4} // this could not be a constant
+	// 值不是只读的类型(如slices, maps, structs)不能声明为常量
+	// 可以把它们声明为顶层变量
+	b = []byte{3, 4} // 不可以是常量
 )
 </code></pre><h2 id="数组">数组</h2>
 <p>Go中的数组具有固定大小。 因此，它们很少使用。在大多数情况下，我们使用可以扩大和缩小其大小的slice。数组基础使用方法:</p>

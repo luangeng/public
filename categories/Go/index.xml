@@ -36,7 +36,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/basetype/</guid>
-      <description>Booleans bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) b = false fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) var b2 bool fmt.Printf(&amp;quot;zero value of bool is: &#39;%v&#39;\n&amp;quot;, b2) b is: &amp;lsquo;true&amp;rsquo; b is: &amp;lsquo;false&amp;rsquo; bool变量的</description>
+      <description>bool bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) b = false fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) var b2 bool fmt.Printf(&amp;quot;zero value of bool is: &#39;%v&#39;\n&amp;quot;, b2) b is: &amp;lsquo;true&amp;rsquo; b is: &amp;lsquo;false&amp;rsquo; zero value of bool is: &amp;lsquo;false&amp;rsquo; b</description>
     </item>
     
     <item>
@@ -45,7 +45,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Variables/</guid>
-      <description>Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // value is initialized with zero-value str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of</description>
+      <description>Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // 初始化为其零值 str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is</description>
     </item>
     
     <item>
@@ -54,7 +54,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Constants/</guid>
-      <description>Go支持character, string,boolean和数字型的常量. 常量基本使用: // Greeting 是public的string常量 const Greeting string = &amp;quot;Hello World&amp;quot; // 可以</description>
+      <description>Go支持character, string,boolean和数字型的常量. 常量基本使用: // Greeting是public的string常量 const Greeting</description>
     </item>
     
     <item>
@@ -72,7 +72,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Pointers/</guid>
-      <description>指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上增加或减少。 指针的零值为nil。 指针基础： v := 5 // pv is a pointer to v pv :=</description>
+      <description>指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上加减。 指针的零值为nil。 指针使用示例： v := 5 // pv是指向v的指针</description>
     </item>
     
     <item>

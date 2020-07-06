@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Pointers/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上增加或减少。 指针的零值为nil。 指针基础： v := 5 // pv is a pointer to v pv :=">
+    content="指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上加减。 指针的零值为nil。 指针使用示例： v := 5 // pv是指向v的指针">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Pointers/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Pointers/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 指针</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 890 Words
+                                        Posted @ 2019-09-09 · 897 Words
                                         
                                         · Tags: Go
                                         
@@ -150,20 +150,20 @@
                                         <div class="entry-inner">
                                             
                                             <p>指向变量的指针是该变量在内存中的地址。</p>
-<p>Go不允许进行指针运算,不能在指针上增加或减少。</p>
+<p>Go不允许进行指针运算,不能在指针上加减。</p>
 <p>指针的零值为nil。</p>
-<p>指针基础：</p>
+<p>指针使用示例：</p>
 <pre><code>v := 5
 
-// pv is a pointer to v
+// pv是指向v的指针
 pv := &amp;v
 fmt.Printf(&quot;v: %d, pv: %p\n&quot;, v, pv)
 
-// we change the value of v via pv
+// 通过pv改变v的值
 *pv = 4
 fmt.Printf(&quot;v: %d\n&quot;, v)
 
-// two pointers to the same value have the same address
+// 指向同一变量的指针其地址相同
 pv2 := &amp;v
 fmt.Printf(&quot;pv: %p, pv2: %p\n&quot;, pv, pv2)
 </code></pre><blockquote>
@@ -189,7 +189,7 @@ func zeroval(ival int) {
 func zeroptr(iptr *int) {
 	*iptr = 0
 }
-</code></pre><p>定义这些功能后，可以执行以下操作：</p>
+</code></pre><p>定义这些函数后，查看以下操作：</p>
 <pre><code>i := 1
 fmt.Println(&quot;initial:&quot;, i)
 
@@ -239,9 +239,9 @@ Daniel<br>
 Ines</p>
 </blockquote>
 <h2 id="指针与值方法">指针与值方法</h2>
-<p>指针</p>
+<h5 id="指针方法">指针方法</h5>
 <p>即使变量本身不是指针，也可以调用指针方法。</p>
-<p>根据Go Spec，使用指针指针接收器使用可寻址值对非接口方法的引用将自动获取该值的地址：t.Mp等效于（＆t）.Mp。
+<p>根据Go Spec，使用指针指针接收器使用可寻址值对非接口方法的引用将自动获取该值的地址：t.Mp等效于(＆t).Mp。
 可以在此示例中看到：</p>
 <pre><code>type Foo struct {
 	Bar int
@@ -272,8 +272,8 @@ f.Bar is 1
 f.Bar is 0
 f.Bar is 1</p>
 </blockquote>
-<p>值方法
-与指针方法类似，即使变量本身不是值，也可以调用值方法。</p>
+<h5 id="值方法">值方法</h5>
+<p>与指针方法类似，即使变量本身不是值，也可以调用值方法。</p>
 <p>根据Go Spec，使用指针使用值接收器对非接口方法的引用将自动取消引用该指针：pt.Mv等效于（* pt）.Mv。
 可以在此示例中看到以下内容：</p>
 <pre><code>type Foo struct {

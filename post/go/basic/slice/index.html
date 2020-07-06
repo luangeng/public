@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go slice类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 3194 Words
+                                        Posted @ 2019-09-09 · 3247 Words
                                         
                                         · Tags: Go
                                         
@@ -153,9 +153,9 @@
 <p>其他语言称它们为数组或向量。</p>
 <p>slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。</p>
 <p>切片具有长度和容量。</p>
-<p>容量表示一个切片可以包含的元素总数。 这就是基础数组的大小。</p>
-<p>长度是切片中当前元素的数量。</p>
-<p>容量和长度之间的区别在于，在必须重新分配基础数组之前，可以在一个切片上附加多少个元素。</p>
+<p>容量表示一个切片可以包含的元素总数,也就是底层数组的大小。</p>
+<p>长度是切片中已有元素的数量。</p>
+<p>容量和长度的差别在于，在必须重新分配底层数组之前，可以在一个切片上附加多少个元素。</p>
 <p>切片的零值为nil。</p>
 <pre><code>slice := make([]int, 0, 5)
 // append element to end of slice
@@ -169,7 +169,7 @@ fmt.Printf(&quot;capacity of slice is: %d\n&quot;, cap(slice))
 capacity of slice is: 5</p>
 </blockquote>
 <h2 id="创建-slice">创建 slice</h2>
-<p>大多数时候，不必显式创建切片。 切片的零值为nil，append的值为零：</p>
+<p>大多数时候，不必显式创建切片。切片的零值为nil，append的值为零：</p>
 <pre><code>var a []int
 fmt.Printf(&quot;a is %#v\n&quot;, a)
 a = append(a, 3)
@@ -183,15 +183,15 @@ a is []int{3}</p>
 empty1 := []bool{}
 empty2 := make([]bool, 0)
 fmt.Printf(&quot;nilSlice is %#v\n&quot;, nilSlice)
-// empty slice is different than nil slice
+// 空slice和nil slice不同
 fmt.Printf(&quot;empty1 is %#v\n&quot;, empty1)
 fmt.Printf(&quot;empty2 is %#v\n&quot;, empty2)
 </code></pre><blockquote>
 <p>nilSlice is []bool(nil)<br>
 empty1 is []bool{}<br>
-empty2 is []bool{}<br>
-Empty slice is different than nil slice.</p>
+empty2 is []bool{}</p>
 </blockquote>
+<p>空slice和nil slice不同</p>
 <p>创建静态预分配的切片：</p>
 <pre><code>a := []int{3, 1, 4, 1}
 fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
@@ -217,8 +217,8 @@ fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
 a has lenght 30 and capacity 30</p>
 </blockquote>
 <h2 id="长度和容量">长度和容量</h2>
-<p>Slices have both length and capacity. The length of a slice is the number of elements currently in the slice, while the capacity is the number of elements the slice can hold before needing to be reallocated.</p>
-<p>When creating a slice using the built-in make() function, you can specify its length, and optionally its capacity. You can check capacity and length with len() and cap():</p>
+<p>切片具有长度和容量, 容量表示一个切片可以包含的元素总数,也就是底层数组的大小,长度是切片中已有元素的数量。</p>
+<p>当使用make()函数创建slice时,可以指定其长度和容量:</p>
 <pre><code>var s = make([]int, 3, 5)
 fmt.Printf(&quot;Length:   %d\n&quot;, len(s))
 fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
@@ -234,7 +234,7 @@ fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
 <p>Length:   4<br>
 Capacity: 4</p>
 </blockquote>
-<p>对于切片的元素类型，由make()创建的元素设置为零值：</p>
+<p>由make()创建的slice,其元素设置为其零值：</p>
 <pre><code>var s = make([]int, 3)
 for idx, val := range s {
 	fmt.Println(idx, val)
@@ -244,7 +244,7 @@ for idx, val := range s {
 1 0<br>
 2 0</p>
 </blockquote>
-<p>即使索引在容量之内，也不能访问超出切片长度的元素：</p>
+<p>即使索引小于容量，也不能访问超出切片长度的元素：</p>
 <pre><code>s := make([]int, 3, 20)
 fmt.Println(s[5])
 </code></pre><blockquote>
@@ -255,8 +255,8 @@ main.main()<br>
 exit status 2</p>
 </blockquote>
 <h1 id="追加slace">追加slace</h1>
-<p>内置函数append（slice，elements &hellip;）将元素添加到切片中并返回新的切片。
-追加一个值</p>
+<p>内置函数append（slice，elements &hellip;）将元素添加到切片中并返回新的切片</p>
+<p>追加一个值</p>
 <pre><code>a := []string{&quot;hello&quot;}
 a = append(a, &quot;world&quot;)
 fmt.Printf(&quot;a: %#v\n&quot;, a)
@@ -278,10 +278,9 @@ fmt.Printf(&quot;a: %#v\n&quot;, a)
 </code></pre><blockquote>
 <p>a: []string{&quot;!&quot;, &ldquo;Hello&rdquo;, &ldquo;world&rdquo;}</p>
 </blockquote>
-<p>Append 会生成一个新的slice
-Maybe you noticed the pattern a = append(a, &hellip;.).</p>
-<p>切片使用固定大小的数组进行存储。 当切片元素的数量超过数组的大小时，append需要重新分配数组并创建一个新的切片。 为了提高效率，新分配的数组有一些备用元素，因此不会在每次将元素追加到切片时都重新分配内部数组。</p>
-<p>该程序显示重新分配新数组需要多少元素。</p>
+<p>append()会生成一个新的slice</p>
+<p>slice使用固定大小的数组进行存储。当slice的元素数量超过数组的大小时，append需要重新分配数组并创建一个新的slice。 为了提高效率，新分配的数组有一些备用元素，因此不会在每次将元素追加到slice时都重新分配底层数组。</p>
+<p>该程序显示重新分配新数组需要多少元素:</p>
 <pre><code>var a []int
 ptr := fmt.Sprintf(&quot;%p&quot;, a)
 n := 0
@@ -308,15 +307,17 @@ Appends needed to re-allocate slice: 2<br>
 Appends needed to re-allocate slice: 4<br>
 Appends needed to re-allocate slice: 8</p>
 </blockquote>
-<p>可见,重新创建数组所需的追加数量随切片的大小而增加。</p>
-<p>Go不允许比较切片，因此我们使用以下事实：在当前实现中，我们可以获取切片的地址（％p），并且该地址可以用作切片的标识。</p>
-<p>这是内部实现的详细信息，将来可能会更改。</p>
-<h2 id="filter-a-slice">Filter a slice</h2>
+<p>可见,重新创建数组所需的追加数量随slice的长度而增加。</p>
+<p>Go不允许比较切片，因此我们使用以下事实：在当前实现中，我们可以获取slice的地址(％p)，并且该地址可以用作slice的标识。</p>
+<p>这是Go的内部实现将来可能会更改。</p>
+<h2 id="过滤slice">过滤slice</h2>
 <p>Go没有用于过滤切片的通用功能，因此我们必须采用老式的方法：</p>
-<p>为结果创建一个新的切片
-遍历原始切片的所有元素
-检查是否应保留或拒绝元素
-如果应保留，则附加到结果</p>
+<ul>
+<li>为结果创建一个新的切片</li>
+<li>遍历原始切片的所有元素</li>
+<li>检查是否应保留或拒绝元素</li>
+<li>如果应保留，则附加到结果</li>
+</ul>
 <pre><code>func filterEvenValues(a []int) []int {
 	var res []int
 	for _, el := range a {
@@ -334,7 +335,7 @@ fmt.Printf(&quot;%#v\n&quot;, res)
 </code></pre><blockquote>
 <p>[]int{1, 3}</p>
 </blockquote>
-<p>我们可以通过重新使用切片的内部数组来更有效地执行此操作，因为我们知道结果将始终小于原始切片：</p>
+<p>我们可以通过重新使用切片的底层数组来更有效地执行此操作，因为我们知道结果将始终小于原始切片：</p>
 <pre><code>a := []int{1, 2, 3, 4}
 res := filterEvenValuesInPlace(a)
 fmt.Printf(&quot;%#v\n&quot;, res)

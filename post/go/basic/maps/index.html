@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go map类型</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2780 Words
+                                        Posted @ 2019-09-09 · 2733 Words
                                         
                                         · Tags: Go
                                         
@@ -151,8 +151,8 @@
                                             
                                             <p>map是无序的key-value对的集合.</p>
 <p>map的零值为nil</p>
-<p>map在其他语言中称为字典(C#, Python)或hash表(C++).
-map上的迭代具有随机顺序。 在这方面，许多语言是不同的。</p>
+<p>map在其他语言中称为字典(C#, Python)或hash表(C++).</p>
+<p>map上的迭代具有随机顺序,在这方面许多语言是不同的。</p>
 <p>map基本用法:</p>
 <pre><code>m := make(map[string]int)
 
@@ -160,7 +160,7 @@ map上的迭代具有随机顺序。 在这方面，许多语言是不同的。<
 m[&quot;three&quot;] = 3
 m[&quot;four&quot;] = 4
 
-// get the value and see if the value exists
+// 获取值并查看值是否存在
 key := &quot;four&quot;
 if value, ok := m[key]; ok {
     fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
@@ -309,14 +309,14 @@ fmt.Println(data)
 k  := m[&quot;foo&quot;]  // returns &quot;foo_value&quot; since that is the value stored in the map
 k2 := m[&quot;bar&quot;]  // returns &quot;&quot; since that is the value stored in the map
 k3 := m[&quot;nop&quot;]  // returns &quot;&quot; since the key does not exist, and &quot;&quot; is the string type's zero value
-</code></pre><p>那么要区分零值和不存在的键，可以使用get的第二个返回值（例如<code>value, hasKey：= map [“ key”]</code>）。</p>
-<p>第二个值是布尔型，将是：</p>
+</code></pre><p>那么要区分零值和不存在的键，可以使用get的第二个返回值(例如<code>value, hasKey：= map [“ key”]</code>)</p>
+<p>第二个值是布尔型</p>
 <ul>
 <li>true 当map中包含这个key</li>
-<li>false map中不包含这个key
-请看一下示例:</li>
+<li>false map中不包含这个key</li>
 </ul>
-<pre><code>value, hasKey = m[ key ]
+<p>示例:</p>
+<pre><code>value, hasKey = m[key]
 if hasKey {
     // the map contains the given key, so we can safely use the value
     // If value is zero-value, it's because the zero-value was pushed to the map
@@ -328,14 +328,14 @@ if hasKey {
 <p>内部函数len返回了map中元素的数量:</p>
 <pre><code>m := map[string]int{}
 size := len(m)
-fmt.Printf(&quot;Size of empty map: %d\n\n&quot;, size)
+fmt.Printf(&quot;Size of empty map: %d\n&quot;, size)
 
 m[&quot;foo&quot;] = 1
 size = len(m)
 fmt.Printf(&quot;Size of map: %d\n\n&quot;, size)
 </code></pre><blockquote>
-<p>Size of empty map: 0</p>
-<p>Size of map: 1</p>
+<p>Size of empty map: 0
+Size of map: 1</p>
 </blockquote>
 <p>nil map的大小是0:</p>
 <pre><code>var m map[string]int
@@ -358,7 +358,6 @@ for key, value := range src {
     dst[key] = value
 }
 </code></pre><h2 id="使用range遍历map">使用range遍历map</h2>
-<p>Iteration order is not specified. Go randomizes the order of iteration on purpose so that code doesn’t incorrectly rely on specific order.</p>
 <p>未指定迭代顺序。 故意随机化迭代顺序，以使代码不会错误地依赖于特定顺序。</p>
 <p>同时迭代key和value:</p>
 <pre><code>people := map[string]int{
@@ -432,8 +431,8 @@ delete(something, &quot;notfound&quot;)
 map[jane:29 john:30]</p>
 </blockquote>
 <h2 id="把map作为set使用">把map作为set使用</h2>
-<p>一些语言提供了内置的set类型
-在Go中，最佳实践是使用值类型为struct {}的map，因为值为空struct的map进行了特别优化。</p>
+<p>一些语言提供了内置的set类型</p>
+<p>在Go中，最佳实践是使用值类型为struct{}的map，因为值为空struct的map进行了特别优化。</p>
 <p>例如一个string类型的set:</p>
 <pre><code>set := NewStringSet(&quot;hi&quot;, &quot;hello&quot;)
 fmt.Printf(&quot;Original set: %#v\n&quot;, set.Strings())
@@ -533,16 +532,15 @@ fmt.Printf(&quot;len(m) = %d\n&quot;, len(m))
 <p>m == nil ? true<br>
 len(m) = 0</p>
 </blockquote>
-<p>Reading from a nil map behaves like reading from an empty map. Writing to a nil map crashes.
-从nil map读取的行为就像从空map读取一样。 而写入nil map则会崩溃。</p>
+<p>从nil map读取和从空map读取一样。 而写入nil map则会报错。</p>
 <pre><code>var m map[string]string
 
-// you can read read from un-initialized map
+// 可以从未初始化的map中读
 fmt.Printf(`m[&quot;foo&quot;] = %s`+&quot;\n&quot;, m[&quot;foo&quot;])
 _, ok := m[&quot;foo&quot;]
 fmt.Printf(&quot;ok: %v\n&quot;, ok)
 
-// writing to uninitialized map panics
+// 不能写入未初始化的map
 m[&quot;foo&quot;] = &quot;bar&quot;
 </code></pre><blockquote>
 <p>m[&ldquo;foo&rdquo;] =<br>

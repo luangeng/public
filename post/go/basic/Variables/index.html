@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Variables/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // value is initialized with zero-value str string = &quot;str&quot; // assigning // functions are first-class values so can be assigned to variables // fn is variable of">
+    content="Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // 初始化为其零值 str string = &quot;str&quot; // assigning // functions are first-class values so can be assigned to variables // fn is">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Variables/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Variables/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 变量</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 681 Words
+                                        Posted @ 2019-09-09 · 668 Words
                                         
                                         · Tags: Go
                                         
@@ -155,7 +155,7 @@ var topLevel int64 = 5
 
 // 组合声明多个变量
 var (
-    intVal int         // value is initialized with zero-value
+    intVal int         // 初始化为其零值
     str string = &quot;str&quot; // assigning
 
     // functions are first-class values so can be assigned to variables
@@ -193,8 +193,7 @@ s: <br>
 err: <!-- raw HTML omitted --></p>
 </blockquote>
 <h2 id="基本变量声明">基本变量声明</h2>
-<p>Go is a statically typed language. We know the type of a variable at compilation time.
-Go是一种静态类型的语言。 我们在编译时就知道变量的类型。</p>
+<p>Go是一种静态类型的语言, 我们在编译时就知道变量的类型。</p>
 <pre><code>// 声明变量的时候,变量的类型写在右边:
 var x int
 var s string
@@ -234,6 +233,7 @@ func main() {
     x, y := multipleReturn()  // x = 1, y = 2
     w, z := multipleReturn2() // w = 3, z = 4
     fmt.Printf(&quot;x: %d, y: %d\nw: %d, z: %d\n&quot;, x, y, w, z)
+}
 </code></pre><blockquote>
 <p>x: 1, y: 2<br>
 w: 3, z: 4</p>
