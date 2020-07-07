@@ -177,7 +177,7 @@ pv: 0xc000016048, pv2: 0xc000016048</p>
 // value. `zeroval` will get a copy of `ival` distinct
 // from the one in the calling function.
 func zeroval(ival int) {
-	ival = 0
+    ival = 0
 }
 
 // `zeroptr` in contrast has an `*int` parameter, meaning
@@ -187,7 +187,7 @@ func zeroval(ival int) {
 // Assigning a value to a dereferenced pointer changes the
 // value at the referenced address.
 func zeroptr(iptr *int) {
-	*iptr = 0
+    *iptr = 0
 }
 </code></pre><p>定义这些函数后，查看以下操作：</p>
 <pre><code>i := 1
@@ -215,22 +215,22 @@ pointer: 0xc00007e000</p>
 <h2 id="取消引用指针">取消引用指针</h2>
 <p>可以通过在指针之前添加星号*来取消对指针的引用。</p>
 <pre><code>type Person struct {
-	Name string
+    Name string
 }
 
 func main() {
-	c := new(Person) // returns pointer
-	c.Name = &quot;Catherine&quot;
-	fmt.Println(c.Name) // prints: Catherine
-	d := c
-	d.Name = &quot;Daniel&quot;
-	fmt.Println(c.Name) // prints: Daniel
-	// Adding an Asterix before a pointer dereferences the pointer
-	i := *d
-	i.Name = &quot;Ines&quot;
-	fmt.Println(c.Name) // prints: Daniel
-	fmt.Println(d.Name) // prints: Daniel
-	fmt.Println(i.Name) // prints: Ines
+    c := new(Person) // returns pointer
+    c.Name = &quot;Catherine&quot;
+    fmt.Println(c.Name) // prints: Catherine
+    d := c
+    d.Name = &quot;Daniel&quot;
+    fmt.Println(c.Name) // prints: Daniel
+    // Adding an Asterix before a pointer dereferences the pointer
+    i := *d
+    i.Name = &quot;Ines&quot;
+    fmt.Println(c.Name) // prints: Daniel
+    fmt.Println(d.Name) // prints: Daniel
+    fmt.Println(i.Name) // prints: Ines
 </code></pre><blockquote>
 <p>Catherine<br>
 Daniel<br>
@@ -244,27 +244,27 @@ Ines</p>
 <p>根据Go Spec，使用指针指针接收器使用可寻址值对非接口方法的引用将自动获取该值的地址：t.Mp等效于(＆t).Mp。
 可以在此示例中看到：</p>
 <pre><code>type Foo struct {
-	Bar int
+    Bar int
 }
 
 func (f *Foo) Increment() {
-	f.Bar++
+    f.Bar++
 }
 
 func main() {
-	var f Foo
+    var f Foo
 
-	// Calling `f.Increment` is automatically changed to `(&amp;f).Increment` by the compiler.
-	f = Foo{}
-	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
-	f.Increment()
-	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+    // Calling `f.Increment` is automatically changed to `(&amp;f).Increment` by the compiler.
+    f = Foo{}
+    fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+    f.Increment()
+    fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
 
-	// As you can see, calling `(&amp;f).Increment` directly does the same thing.
-	f = Foo{}
-	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
-	(&amp;f).Increment()
-	fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+    // As you can see, calling `(&amp;f).Increment` directly does the same thing.
+    f = Foo{}
+    fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
+    (&amp;f).Increment()
+    fmt.Printf(&quot;f.Bar is %d\n&quot;, f.Bar)
 }
 </code></pre><blockquote>
 <p>f.Bar is 0
@@ -277,28 +277,28 @@ f.Bar is 1</p>
 <p>根据Go Spec，使用指针使用值接收器对非接口方法的引用将自动取消引用该指针：pt.Mv等效于（* pt）.Mv。
 可以在此示例中看到以下内容：</p>
 <pre><code>type Foo struct {
-	Bar int
+    Bar int
 }
 
 func (f Foo) Increment() {
-	f.Bar++
+    f.Bar++
 }
 
 func main() {
-	var p *Foo
+    var p *Foo
 
-	// Calling `p.Increment` is automatically changed to `(*p).Increment` by the compiler.
-	// (Note that `*p` is going to remain at 0 because a copy of `*p`, and not the original `*p` are being edited)
-	p = &amp;Foo{}
-	fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
-	p.Increment()
-	fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
+    // Calling `p.Increment` is automatically changed to `(*p).Increment` by the compiler.
+    // (Note that `*p` is going to remain at 0 because a copy of `*p`, and not the original `*p` are being edited)
+    p = &amp;Foo{}
+    fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
+    p.Increment()
+    fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
 
-	// As you can see, calling `(*p).Increment` directly does the same thing.
-	p = &amp;Foo{}
-	fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
-	(*p).Increment()
-	fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
+    // As you can see, calling `(*p).Increment` directly does the same thing.
+    p = &amp;Foo{}
+    fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
+    (*p).Increment()
+    fmt.Printf(&quot;(*p).Bar is %d\n&quot;, (*p).Bar)
 }
 </code></pre><blockquote>
 <p>(*p).Bar is 0<br>

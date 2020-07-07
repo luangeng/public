@@ -152,16 +152,16 @@
                                             <p>基本函数示例:</p>
 <pre><code>// addCheckOverflow 完成2个int16相加,并且额外返回是否溢出
 func addCheckOverflow(a, b uint16) (uint16, bool) {
-	res := a + b
-	overflowed := res &lt; a || res &lt; b
-	return res, overflowed
+    res := a + b
+    overflowed := res &lt; a || res &lt; b
+    return res, overflowed
 }
 
 func main() {
-	res, overflowed := addCheckOverflow(1, 3)
-	fmt.Printf(&quot;%5d + %5d = %5d, overflowed: %v\n\n&quot;, 1, 3, res, overflowed)
-	res, overflowed = addCheckOverflow(65520, 10000)
-	fmt.Printf(&quot;%5d + %5d = %5d, overflowed: %v\n&quot;, 65550, 10000, res, overflowed)
+    res, overflowed := addCheckOverflow(1, 3)
+    fmt.Printf(&quot;%5d + %5d = %5d, overflowed: %v\n\n&quot;, 1, 3, res, overflowed)
+    res, overflowed = addCheckOverflow(65520, 10000)
+    fmt.Printf(&quot;%5d + %5d = %5d, overflowed: %v\n&quot;, 65550, 10000, res, overflowed)
 }
 </code></pre><blockquote>
 <pre><code>1 +     3 =     4, overflowed: false
@@ -171,12 +171,12 @@ func main() {
 <h2 id="参数">参数</h2>
 <p>函数可以声明一些参数:</p>
 <pre><code>func SayHelloToMe(firstName, lastName string, age int) {
-	fmt.Printf(&quot;Hello, %s %s!\n&quot;, firstName, lastName)
-	fmt.Printf(&quot;You are %d\n&quot;, age)
+    fmt.Printf(&quot;Hello, %s %s!\n&quot;, firstName, lastName)
+    fmt.Printf(&quot;You are %d\n&quot;, age)
 }
 
 func main() {
-	SayHelloToMe(&quot;John&quot;, &quot;Doe&quot;, 35)
+    SayHelloToMe(&quot;John&quot;, &quot;Doe&quot;, 35)
 }
 </code></pre><blockquote>
 <p>Hello, John Doe!
@@ -186,18 +186,18 @@ You are 35</p>
 <h2 id="返回值">返回值</h2>
 <p>函数可以返回一个或多个值给调用者:</p>
 <pre><code>func Add(a, b int) int {
-	return a + b
+    return a + b
 }
 
 func AddAndMultiply(a, b int) (int, int) {
-	return a + b, a * b
+    return a + b, a * b
 }
 
 func main() {
-	sum, mult := AddAndMultiply(5, 8)
-	fmt.Printf(&quot;5+8=%d, 5*8=%d\n&quot;, sum, mult)
-	sum = Add(6, 12)
-	fmt.Printf(&quot;6+12=%d\n&quot;, sum)
+    sum, mult := AddAndMultiply(5, 8)
+    fmt.Printf(&quot;5+8=%d, 5*8=%d\n&quot;, sum, mult)
+    sum = Add(6, 12)
+    fmt.Printf(&quot;6+12=%d\n&quot;, sum)
 }
 </code></pre><blockquote>
 <p>5+8=13, 5*8=40
@@ -207,22 +207,22 @@ func main() {
 <p>可以给返回值命名，然后它们就像隐式局部变量一样。</p>
 <p>之后可以使用空的return语句来返回它的值。 这就是所谓的“裸”返回。</p>
 <pre><code>func inverse(v float32) (reciprocal float32) {
-	if v == 0 {
-		return
-	}
-	reciprocal = 1 / v
-	return
+    if v == 0 {
+        return
+    }
+    reciprocal = 1 / v
+    return
 }
 
 // 返回多个值
 func split(sum int) (x, y int) {
-	x = sum * 4 / 9
-	y = sum - x
-	return
+    x = sum * 4 / 9
+    y = sum - x
+    return
 }
 
 func main() {
-	fmt.Printf(&quot;inverse(5)=%.2f\n&quot;, inverse(5))
+    fmt.Printf(&quot;inverse(5)=%.2f\n&quot;, inverse(5))
 }
 </code></pre><blockquote>
 <p>inverse(5)=0.20</p>
@@ -236,20 +236,20 @@ func main() {
 <h2 id="可变参数函数">可变参数函数</h2>
 <p>可变参数函数可以使用任意数量的参数。这些参数存储在slice中。</p>
 <pre><code>func variadic(strs ...string) {
-	// strs is a slice of string
-	for i, str := range strs {
-		fmt.Printf(&quot;%d: %s\n&quot;, i, str)
-	}
-	fmt.Print(&quot;\n&quot;)
+    // strs is a slice of string
+    for i, str := range strs {
+        fmt.Printf(&quot;%d: %s\n&quot;, i, str)
+    }
+    fmt.Print(&quot;\n&quot;)
 }
 
 func main() {
-	variadic(&quot;Hello&quot;, &quot;Goodbye&quot;)
-	variadic(&quot;Str1&quot;, &quot;Str2&quot;, &quot;Str3&quot;)
+    variadic(&quot;Hello&quot;, &quot;Goodbye&quot;)
+    variadic(&quot;Str1&quot;, &quot;Str2&quot;, &quot;Str3&quot;)
 
-	// you can also give a slice to a variadic function, with `...`:
-	strs := []string{&quot;a&quot;, &quot;b&quot;}
-	variadic(strs...)
+    // you can also give a slice to a variadic function, with `...`:
+    strs := []string{&quot;a&quot;, &quot;b&quot;}
+    variadic(strs...)
 }
 </code></pre><blockquote>
 <p>0: Hello<br>
@@ -263,28 +263,28 @@ func main() {
 <h2 id="函数表达式function-literal">函数表达式function literal</h2>
 <p>函数表达式是没有名字的函数</p>
 <pre><code>func main() {
-	func() {
-		fmt.Println(&quot;Hello!&quot;)
-	}()
+    func() {
+        fmt.Println(&quot;Hello!&quot;)
+    }()
 }
 </code></pre><blockquote>
 <p>Hello!</p>
 </blockquote>
 <p>带参数的函数表达式:</p>
 <pre><code>func main() {
-	func(str string) {
-		fmt.Println(str)
-	}(&quot;Hello!&quot;)
+    func(str string) {
+        fmt.Println(str)
+    }(&quot;Hello!&quot;)
 }
 </code></pre><blockquote>
 <p>Hello!</p>
 </blockquote>
 <p>使用外部变量:</p>
 <pre><code>func main() {
-	str := &quot;Hello!&quot;
-	func() {
-		fmt.Println(str)
-	}()
+    str := &quot;Hello!&quot;
+    func() {
+        fmt.Println(str)
+    }()
 }
 </code></pre><blockquote>
 <p>Hello!</p>
@@ -302,18 +302,18 @@ func main() {
 var intOp func(int, int) int
 
 func intAdd(a, b int) int {
-	return a + b
+    return a + b
 }
 
 func main() {
-	intOp = intAdd
-	fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
+    intOp = intAdd
+    fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
 
-	// we can assign literal functions as well
-	intOp = func(a, b int) int {
-		return a * b
-	}
-	fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
+    // we can assign literal functions as well
+    intOp = func(a, b int) int {
+        return a * b
+    }
+    fmt.Printf(&quot;intOp(2, 3) = %d\n&quot;, intOp(2, 3))
 }
 </code></pre><blockquote>
 <p>intOp(2, 3) = 5<br>
@@ -321,20 +321,20 @@ intOp(2, 3) = 6</p>
 </blockquote>
 <h3 id="函数作为参数传递">函数作为参数传递</h3>
 <pre><code>func funcAdd(a, b int) int {
-	return a + b
+    return a + b
 }
 
 func runFunc(a, b int, intOp func(int, int) int) {
-	fmt.Printf(&quot;intOp(%d, %d) = %d\n&quot;, a, b, intOp(a, b))
+    fmt.Printf(&quot;intOp(%d, %d) = %d\n&quot;, a, b, intOp(a, b))
 }
 
 func main() {
-	runFunc(2, 3, funcAdd)
+    runFunc(2, 3, funcAdd)
 
-	// 也可以传递函数表达式
-	runFunc(2, 3, func(a, b int) int {
-		return a * b
-	})
+    // 也可以传递函数表达式
+    runFunc(2, 3, func(a, b int) int {
+        return a * b
+    })
 }
 </code></pre><blockquote>
 <p>intOp(2, 3) = 5<br>

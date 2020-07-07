@@ -208,7 +208,7 @@ i2: 148</p>
 <pre><code>s := &quot;-48&quot;
 i1, err := strconv.Atoi(s)
 if err != nil {
-	log.Fatalf(&quot;strconv.Atoi() failed with %s\n&quot;, err)
+    log.Fatalf(&quot;strconv.Atoi() failed with %s\n&quot;, err)
 }
 fmt.Printf(&quot;i1: %d\n&quot;, i1)
 </code></pre><blockquote>
@@ -219,7 +219,7 @@ fmt.Printf(&quot;i1: %d\n&quot;, i1)
 var i int
 _, err := fmt.Sscanf(s, &quot;%d&quot;, &amp;i)
 if err != nil {
-	log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;i1: %d\n&quot;, i)
 </code></pre><blockquote>
@@ -258,7 +258,7 @@ fmt.Printf(&quot;f is: '%s'\n&quot;, s)
 <pre><code>s := &quot;1.2341&quot;
 f64, err := strconv.ParseFloat(s, 64)
 if err != nil {
-	log.Fatalf(&quot;strconv.ParseFloat() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;strconv.ParseFloat() failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;f64: %f\n&quot;, f64)
 </code></pre><blockquote>
@@ -269,7 +269,7 @@ fmt.Printf(&quot;f64: %f\n&quot;, f64)
 var f float64
 _, err := fmt.Sscanf(s, &quot;%f&quot;, &amp;f)
 if err != nil {
-	log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;f: %f\n&quot;, f)
 </code></pre><blockquote>
@@ -285,8 +285,8 @@ byte and rune的初始值为0</li>
 <h4 id="用byte遍历string">用byte遍历string</h4>
 <pre><code>s := &quot;str&quot;
 for i := 0; i &lt; len(s); i++ {
-	c := s[i]
-	fmt.Printf(&quot;Byte at index %d is '%c' (0x%x)\n&quot;, i, c, c)
+    c := s[i]
+    fmt.Printf(&quot;Byte at index %d is '%c' (0x%x)\n&quot;, i, c, c)
 }
 </code></pre><blockquote>
 <p>Byte at index 0 is &lsquo;s&rsquo; (0x73)<br>
@@ -296,7 +296,7 @@ Byte at index 2 is &lsquo;r&rsquo; (0x72)</p>
 <h4 id="用rune遍历string">用rune遍历string</h4>
 <pre><code>s := &quot;日本語&quot;
 for i, runeChar := range s {
-	fmt.Printf(&quot;Rune at byte position %d is %#U\n&quot;, i, runeChar)
+    fmt.Printf(&quot;Rune at byte position %d is %#U\n&quot;, i, runeChar)
 }
 </code></pre><blockquote>
 <p>Rune at byte position 0 is U+65E5 &lsquo;日&rsquo;<br>
@@ -310,14 +310,14 @@ UTF-8是一种可变长度编码，可将rune编码为1、2、3或4个byte。
 <h2 id="常量">常量</h2>
 <p>Go支持字符，字符串，布尔值和数字值的常量,</p>
 <pre><code>const (
-	i  int = 32       // int constant
-	s      = &quot;string&quot; // string constant
-	i2     = 33       // untyped number constant
+    i  int = 32       // int constant
+    s      = &quot;string&quot; // string constant
+    i2     = 33       // untyped number constant
 )
 var (
-	// 值不是只读的类型(如slices, maps, structs)不能声明为常量
-	// 可以把它们声明为顶层变量
-	b = []byte{3, 4} // 不可以是常量
+    // 值不是只读的类型(如slices, maps, structs)不能声明为常量
+    // 可以把它们声明为顶层变量
+    b = []byte{3, 4} // 不可以是常量
 )
 </code></pre><h2 id="数组">数组</h2>
 <p>Go中的数组具有固定大小。 因此，它们很少使用。在大多数情况下，我们使用可以扩大和缩小其大小的slice。数组基础使用方法:</p>
@@ -341,11 +341,11 @@ map基本使用方法:</p>
 m[&quot;number3&quot;] = 3
 
 checkKey := func(k string) {
-	if n, ok := m[k]; ok {
-		fmt.Printf(&quot;value for key '%s' is %d\n&quot;, k, n)
-	} else {
-		fmt.Printf(&quot;key '%s' doesn't exist in map\n&quot;, k)
-	}
+    if n, ok := m[k]; ok {
+        fmt.Printf(&quot;value for key '%s' is %d\n&quot;, k, n)
+    } else {
+        fmt.Printf(&quot;key '%s' doesn't exist in map\n&quot;, k)
+    }
 }
 
 // get value for a key that exists
@@ -367,9 +367,9 @@ key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
 <h2 id="struct">struct</h2>
 <p>结构将多个值分组为一个实体。零值结构是一个结构，其字段设置为各自的零值。</p>
 <pre><code>type MyStruct struct {
-	IntVal           int
-	StringVal        string
-	unexportedIntVal int
+    IntVal           int
+    StringVal        string
+    unexportedIntVal int
 }
 </code></pre><h2 id="interface">Interface</h2>
 <p>接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义：</p>
@@ -409,19 +409,19 @@ fmt.Printf(&quot;n: %d\n&quot;, n)
 <p>如果未显式分配Go中的变量，则使用已知值对其进行初始化,这个值称为零值.
 这与C/C ++不同，在C/C ++中，未明确分配的变量具有未定义的值。</p>
 <ul>
-<li>type	zero value</li>
-<li>bool	false</li>
-<li>integers	0</li>
-<li>floating point numbers	0.0</li>
-<li>string	&quot;&rdquo;</li>
-<li>pointer	nil</li>
-<li>slice	nil</li>
-<li>map	nil</li>
-<li>interface	nil</li>
-<li>channel	nil</li>
-<li>array	all elements have zero value</li>
-<li>struct	all members set to zero value</li>
-<li>function	nil</li>
+<li>type    zero value</li>
+<li>bool    false</li>
+<li>integers    0</li>
+<li>floating point numbers    0.0</li>
+<li>string    &quot;&rdquo;</li>
+<li>pointer    nil</li>
+<li>slice    nil</li>
+<li>map    nil</li>
+<li>interface    nil</li>
+<li>channel    nil</li>
+<li>array    all elements have zero value</li>
+<li>struct    all members set to zero value</li>
+<li>function    nil</li>
 </ul>
 <p>通过代码查看:</p>
 <pre><code>fmt.Println(&quot;zero values for basic types:&quot;)
@@ -460,8 +460,8 @@ var zeroArray [5]int
 fmt.Printf(&quot;array:      %v\n&quot;, zeroArray)
 
 type struc struct {
-	a int
-	b string
+    a int
+    b string
 }
 var zeroStruct struc
 fmt.Printf(&quot;struct:     %#v\n&quot;, zeroStruct)

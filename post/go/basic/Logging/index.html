@@ -175,7 +175,7 @@ if err != nil {
 <p>log包可以改变日志输出到哪里,比如文件:</p>
 <pre><code>logfile, err := os.OpenFile(&quot;test.log&quot;, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 if err != nil {
-	log.Fatalf(&quot;os.OpenFile() failed with '%s\n&quot;, err)
+    log.Fatalf(&quot;os.OpenFile() failed with '%s\n&quot;, err)
 }
 defer logfile.Close()
 
@@ -185,7 +185,7 @@ log.Println(&quot;Log entry&quot;)
 <p>当程序运行在Unix时, 日志可以记录到syslog:</p>
 <pre><code>syslogger, err := syslog.New(syslog.LOG_INFO, &quot;syslog_example&quot;)
 if err != nil {
-	log.Fatalln(err)
+    log.Fatalln(err)
 }
 
 log.SetOutput(syslogger)

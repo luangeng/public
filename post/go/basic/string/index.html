@@ -172,9 +172,9 @@ fmt.Printf(&quot;sum of string: %s\n&quot;, s+s1+s2)
 
 // 使用==来比较字符串
 if s1 == s2 {
-	fmt.Printf(&quot;s1 is equal to s2\n&quot;)
+    fmt.Printf(&quot;s1 is equal to s2\n&quot;)
 } else {
-	fmt.Printf(&quot;s1 is not equal to s2\n&quot;)
+    fmt.Printf(&quot;s1 is not equal to s2\n&quot;)
 }
 
 fmt.Printf(&quot;substring of s1: %s\n&quot;, s1[3:5])
@@ -186,7 +186,7 @@ fmt.Printf(&quot;s: %s\n&quot;, s)
 </code></pre><blockquote>
 <p>sum of string: string<br>
 literal<br>
-with	escape charactersraw string literal<br>
+with    escape charactersraw string literal<br>
 which doesn&rsquo;t recognize escape characters like \n</p>
 <p>s1 is not equal to s2<br>
 substring of s1: in<br>
@@ -231,13 +231,13 @@ fmt.Printf(&quot;when searching from end, '%s' is in s at position %d\n&quot;, t
 toFind := &quot;is&quot;
 currStart := 0
 for {
-	idx := strings.Index(s, toFind)
-	if idx == -1 {
-		break
-	}
-	fmt.Printf(&quot;found '%s' at position %d\n&quot;, toFind, currStart+idx)
-	currStart += idx + len(toFind)
-	s = s[idx+len(toFind):]
+    idx := strings.Index(s, toFind)
+    if idx == -1 {
+        break
+    }
+    fmt.Printf(&quot;found '%s' at position %d\n&quot;, toFind, currStart+idx)
+    currStart += idx + len(toFind)
+    s = s[idx+len(toFind):]
 }
 </code></pre><blockquote>
 <p>found &lsquo;is&rsquo; at position 6 <br>
@@ -249,9 +249,9 @@ found &lsquo;is&rsquo; at position 27</p>
 <pre><code>s := &quot;is hello there?&quot;
 toFind := &quot;hello&quot;
 if strings.Contains(s, toFind) {
-	fmt.Printf(&quot;'%s' contains '%s'\n&quot;, s, toFind)
+    fmt.Printf(&quot;'%s' contains '%s'\n&quot;, s, toFind)
 } else {
-	fmt.Printf(&quot;'%s' doesn't contain '%s'\n&quot;, s, toFind)
+    fmt.Printf(&quot;'%s' doesn't contain '%s'\n&quot;, s, toFind)
 }
 </code></pre><blockquote>
 <p>&lsquo;is hello there?&rsquo; contains &lsquo;hello&rsquo;</p>
@@ -261,9 +261,9 @@ if strings.Contains(s, toFind) {
 <pre><code>s := &quot;this is string&quot;
 toFind := &quot;this&quot;
 if strings.HasPrefix(s, toFind) {
-	fmt.Printf(&quot;'%s' starts with '%s'\n&quot;, s, toFind)
+    fmt.Printf(&quot;'%s' starts with '%s'\n&quot;, s, toFind)
 } else {
-	fmt.Printf(&quot;'%s' doesn't start with '%s'\n&quot;, s, toFind)
+    fmt.Printf(&quot;'%s' doesn't start with '%s'\n&quot;, s, toFind)
 }
 </code></pre><blockquote>
 <p>&lsquo;this is string&rsquo; starts with &lsquo;this&rsquo;</p>
@@ -273,9 +273,9 @@ if strings.HasPrefix(s, toFind) {
 <pre><code>s := &quot;this is string&quot;
 toFind := &quot;string&quot;
 if strings.HasSuffix(s, toFind) {
-	fmt.Printf(&quot;'%s' ends with '%s'\n&quot;, s, toFind)
+    fmt.Printf(&quot;'%s' ends with '%s'\n&quot;, s, toFind)
 } else {
-	fmt.Printf(&quot;'%s' doesn't end with '%s'\n&quot;, s, toFind)
+    fmt.Printf(&quot;'%s' doesn't end with '%s'\n&quot;, s, toFind)
 }
 </code></pre><blockquote>
 <p>&lsquo;this is string&rsquo; ends with &lsquo;string&rsquo;</p>
@@ -290,9 +290,9 @@ if strings.HasSuffix(s, toFind) {
 <pre><code>s1 := &quot;gone&quot;
 s2 := &quot;GoNe&quot;
 if strings.EqualFold(s1, s2) {
-	fmt.Printf(&quot;'%s' is equal '%s' when ignoring case\n&quot;, s1, s2)
+    fmt.Printf(&quot;'%s' is equal '%s' when ignoring case\n&quot;, s1, s2)
 } else {
-	fmt.Printf(&quot;'%s' is not equal '%s' when ignoring case\n&quot;, s1, s2)
+    fmt.Printf(&quot;'%s' is not equal '%s' when ignoring case\n&quot;, s1, s2)
 }
 </code></pre><blockquote>
 <p>&lsquo;gone&rsquo; is equal &lsquo;GoNe&rsquo; when ignoring case</p>
@@ -302,27 +302,27 @@ if strings.EqualFold(s1, s2) {
 s2 := &quot;string two&quot;
 
 if s1 == s2 {
-	fmt.Printf(&quot;s1 is equal to s2\n&quot;)
+    fmt.Printf(&quot;s1 is equal to s2\n&quot;)
 } else {
-	fmt.Printf(&quot;s1 is not equal to s2\n&quot;)
+    fmt.Printf(&quot;s1 is not equal to s2\n&quot;)
 }
 
 if s1 == s1 {
-	fmt.Printf(&quot;s1 is equal to s1\n&quot;)
+    fmt.Printf(&quot;s1 is equal to s1\n&quot;)
 } else {
-	fmt.Printf(&quot;inconcivable! s1 is not equal to itself\n&quot;)
+    fmt.Printf(&quot;inconcivable! s1 is not equal to itself\n&quot;)
 }
 
 if s1 &gt; s2 {
-	fmt.Printf(&quot;s1 is &gt; than s2\n&quot;)
+    fmt.Printf(&quot;s1 is &gt; than s2\n&quot;)
 } else {
-	fmt.Printf(&quot;s1 is not &gt; than s2\n&quot;)
+    fmt.Printf(&quot;s1 is not &gt; than s2\n&quot;)
 }
 
 if s1 &lt; s2 {
-	fmt.Printf(&quot;s1 is &lt; than s2\n&quot;)
+    fmt.Printf(&quot;s1 is &lt; than s2\n&quot;)
 } else {
-	fmt.Printf(&quot;s1 is not &lt; than s2\n&quot;)
+    fmt.Printf(&quot;s1 is not &lt; than s2\n&quot;)
 }
 </code></pre><blockquote>
 <p>s1 is not equal to s2<br>
@@ -344,32 +344,32 @@ ToTitle(s): &lsquo;MIXED CASE&rsquo;</p>
 <pre><code>s := &quot;234&quot;
 i, err := strconv.Atoi(s)
 if err != nil {
-	fmt.Printf(&quot;strconv.Atoi() failed with: '%s'\n&quot;, err)
+    fmt.Printf(&quot;strconv.Atoi() failed with: '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;strconv.Atoi('%s'): %d\n&quot;, s, i)
 
 i, err = strconv.Atoi(&quot;not a number&quot;)
 if err != nil {
-	fmt.Printf(&quot;strconv.Atoi('not a number') failed with: '%s'\n&quot;, err)
+    fmt.Printf(&quot;strconv.Atoi('not a number') failed with: '%s'\n&quot;, err)
 }
 
 i64, err := strconv.ParseInt(s, 10, 64)
 if err != nil {
-	fmt.Printf(&quot;strconv.ParseInt() failed with: '%s'\n&quot;, err)
+    fmt.Printf(&quot;strconv.ParseInt() failed with: '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;strconv.ParseInt('%s', 64): %d\n&quot;, s, i64)
 
 s = &quot;-3.234&quot;
 f64, err := strconv.ParseFloat(s, 64)
 if err != nil {
-	fmt.Printf(&quot;strconv.ParseFloat() failed with: '%s'\n&quot;, err)
+    fmt.Printf(&quot;strconv.ParseFloat() failed with: '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;strconv.ParseFloat('%s', 64): %g\n&quot;, s, f64)
 
 var f2 float64
 _, err = fmt.Sscanf(s, &quot;%f&quot;, &amp;f2)
 if err != nil {
-	fmt.Printf(&quot;fmt.Sscanf() failed with: '%s'\n&quot;, err)
+    fmt.Printf(&quot;fmt.Sscanf() failed with: '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;fmt.Sscanf(): %g\n&quot;, f2)
 </code></pre><blockquote>
@@ -527,14 +527,14 @@ var f float64
 var i int
 nParsed, err := fmt.Sscanf(s, &quot;%d %f&quot;, &amp;i, &amp;f)
 if err != nil {
-	log.Fatalf(&quot;first fmt.Sscanf failed with %s\n&quot;, err)
+    log.Fatalf(&quot;first fmt.Sscanf failed with %s\n&quot;, err)
 }
 fmt.Printf(&quot;i: %d, f: %f, extracted %d values\n&quot;, i, f, nParsed)
 
 var i2 int
 _, err = fmt.Sscanf(s, &quot;%d %f %d&quot;, &amp;i, &amp;f, &amp;i2)
 if err != nil {
-	fmt.Printf(&quot;second fmt.Sscanf failed with %s\n&quot;, err)
+    fmt.Printf(&quot;second fmt.Sscanf failed with %s\n&quot;, err)
 }
 </code></pre><blockquote>
 <p>i: 48, f: 123.450000, extracted 2 values<br>
@@ -554,13 +554,13 @@ fmt.Printf(&quot;a: %#v\n&quot;, a)
 <p>把file读入内存并用行来拆分</p>
 <pre><code>// ReadFileAsLines reads a file and splits it into lines
 func ReadFileAsLines(path string) ([]string, error) {
-	d, err := ioutil.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-	s := string(d)
-	lines := strings.Split(s, &quot;\n&quot;)
-	return lines, nil
+    d, err := ioutil.ReadFile(path)
+    if err != nil {
+        return nil, err
+    }
+    s := string(d)
+    lines := strings.Split(s, &quot;\n&quot;)
+    return lines, nil
 }
 </code></pre><blockquote>
 <p>There are 32 lines in &lsquo;main.go&rsquo;</p>
@@ -605,11 +605,11 @@ func ReadFileAsLines(path string) ([]string, error) {
 <pre><code>// NormalizeNewlines normalizes \r\n (windows) and \r (mac)
 // into \n (unix)
 func NormalizeNewlines(d []byte) []byte {
-	// replace CR LF \r\n (windows) with LF \n (unix)
-	d = bytes.Replace(d, []byte{13, 10}, []byte{10}, -1)
-	// replace CF \r (mac) with LF \n (unix)
-	d = bytes.Replace(d, []byte{13}, []byte{10}, -1)
-	return d
+    // replace CR LF \r\n (windows) with LF \n (unix)
+    d = bytes.Replace(d, []byte{13, 10}, []byte{10}, -1)
+    // replace CF \r (mac) with LF \n (unix)
+    d = bytes.Replace(d, []byte{13}, []byte{10}, -1)
+    return d
 }
 </code></pre><blockquote>
 <p>&ldquo;new\nline&rdquo;</p>

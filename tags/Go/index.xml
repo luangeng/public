@@ -207,7 +207,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Channels-and-select/</guid>
-      <description>A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &amp;lt;- value) and receiving values from a channel (value &amp;lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &amp;lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i := 0; i &amp;lt;</description>
+      <description>channel是给定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。 goroutines通信时使用ch&amp;</description>
     </item>
     
     <item>
@@ -216,11 +216,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Mutex/</guid>
-      <description>Mutex In Go goroutines share memory.
-It’s good for performance but modifying the same memory from multiple goroutines is not safe. It can lead to data races and crashes.
-One way to avoid that is by using channels to transfer exclusive ownership of data.
-This is Go’s motto: do not communicate by sharing memory; instead, share memory by communicating.
-Another way to ensure exclusive access to data by goroutines is to use mutexes.</description>
+      <description>Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。 避免这种</description>
     </item>
     
     <item>
@@ -377,7 +373,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Reflection/</guid>
-      <description>Reflection Go is a statically typed language. In most cases the type of a variable is known at compilation time. One exception is interface type, especially empty interface interface{}. Empty interface is a dynamic type, similar to Object in Java or C#. At compilation time we can’t tell if the underlying value of interface type is an int or a string. Package reflect in standard library</description>
+      <description>Go is a statically typed language. In most cases the type of a variable is known at compilation time. One exception is interface type, especially empty interface interface{}. Empty interface is a dynamic type, similar to Object in Java or C#. At compilation time we can’t tell if the underlying value of interface type is an int or a string. Package reflect in standard library allows</description>
     </item>
     
     <item>

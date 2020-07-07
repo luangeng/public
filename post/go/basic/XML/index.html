@@ -209,41 +209,41 @@ By using a pointer to a string we know that nil means there was no value.
 
 Serialize a struct as XML
 type People struct {
-	XMLName        xml.Name `xml:&quot;people&quot;`
-	Person         []Person `xml:&quot;person&quot;`
-	noteSerialized int
+    XMLName        xml.Name `xml:&quot;people&quot;`
+    Person         []Person `xml:&quot;person&quot;`
+    noteSerialized int
 }
 
 type Person struct {
-	Age       int     `xml:&quot;age,attr&quot;`
-	FirstName string  `xml:&quot;first-name&quot;`
-	Address   Address `xml:&quot;address&quot;`
+    Age       int     `xml:&quot;age,attr&quot;`
+    FirstName string  `xml:&quot;first-name&quot;`
+    Address   Address `xml:&quot;address&quot;`
 }
 
 type Address struct {
-	City  string `xml:&quot;city&quot;`
-	State string `xml:&quot;state&quot;`
+    City  string `xml:&quot;city&quot;`
+    State string `xml:&quot;state&quot;`
 }
 
 people := People{
-	Person: []Person{
-		Person{
-			Age:       34,
-			FirstName: &quot;John&quot;,
-			Address:   Address{City: &quot;San Francisco&quot;, State: &quot;CA&quot;},
-		},
-	},
-	noteSerialized: 8,
+    Person: []Person{
+        Person{
+            Age:       34,
+            FirstName: &quot;John&quot;,
+            Address:   Address{City: &quot;San Francisco&quot;, State: &quot;CA&quot;},
+        },
+    },
+    noteSerialized: 8,
 }
 d, err := xml.Marshal(&amp;people)
 if err != nil {
-	log.Fatalf(&quot;xml.Marshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;xml.Marshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Compact XML: %s\n\n&quot;, string(d))
 
 d, err = xml.MarshalIndent(&amp;people, &quot;&quot;, &quot;  &quot;)
 if err != nil {
-	log.Fatalf(&quot;xml.MarshalIndent failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;xml.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Pretty printed XML:\n%s\n&quot;, string(d))
 </code></pre><p>Compact XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted --><!-- raw HTML omitted -->CA<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
@@ -328,27 +328,27 @@ main.Address{City:&quot;Austin&quot;, State:&quot;TX&quot;}
 We can decode XML data from a file on disk.
 
 func decodeFromReader(r io.Reader) (*People, error) {
-	var people People
-	decoder := xml.NewDecoder(r)
-	err := decoder.Decode(&amp;people)
-	if err != nil {
-		return nil, err
-	}
-	return &amp;people, nil
+    var people People
+    decoder := xml.NewDecoder(r)
+    err := decoder.Decode(&amp;people)
+    if err != nil {
+        return nil, err
+    }
+    return &amp;people, nil
 }
 
 func decodeFromString(s string) (*People, error) {
-	r := bytes.NewBufferString(s)
-	return decodeFromReader(r)
+    r := bytes.NewBufferString(s)
+    return decodeFromReader(r)
 }
 
 func decodeFromFile(path string) (*People, error) {
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	return decodeFromReader(f)
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, err
+    }
+    defer f.Close()
+    return decodeFromReader(f)
 }
 </code></pre><p>&amp;main.People{Person:[]main.Person{main.Person{Age:34, FirstName:&ldquo;John&rdquo;, Address:main.Address{City:(*string)(0xc000010430), State:&ldquo;CA&rdquo;}}, main.Person{Age:23, FirstName:&ldquo;Julia&rdquo;, Address:main.Address{City:(*string)(nil), State:&quot;&quot;}}}}</p>
 <p>By writing a helper function decodeFromReader, we can easily write wrappers that will work on files, strings or network connections.</p>
@@ -368,13 +368,13 @@ printXML(v)</p>
 Fields marked with xml:&quot;-&quot; are not serialized.
 
 type ShowOmit struct {
-	Name          string `xml:&quot;name&quot;`
-	NotSerialized string `xml:&quot;-&quot;`
+    Name          string `xml:&quot;name&quot;`
+    NotSerialized string `xml:&quot;-&quot;`
 }
 
 v := &amp;ShowOmit{
-	Name:          &quot;John&quot;,
-	NotSerialized: &quot;Connor&quot;,
+    Name:          &quot;John&quot;,
+    NotSerialized: &quot;Connor&quot;,
 }
 printXML(v)
 </code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
@@ -393,11 +393,11 @@ printXML(v)</p>
 To change serialization from XML element to XML attribute use xml:&quot;,attr&quot;.
 
 type ShowAttr struct {
-	B bool `xml:&quot;n,attr&quot;`
+    B bool `xml:&quot;n,attr&quot;`
 }
 
 v := &amp;ShowAttr{
-	B: true,
+    B: true,
 }
 printXML(v)
 </code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
@@ -414,11 +414,11 @@ printXML(v)</p>
 To change serialization from XML element to CDATA use xml:&quot;,cdata&quot;.
 
 type ShowCData struct {
-	S string `xml:&quot;,cdata&quot;`
+    S string `xml:&quot;,cdata&quot;`
 }
 
 v := &amp;ShowCData{
-	S: &quot;cdata&quot;,
+    S: &quot;cdata&quot;,
 }
 printXML(v)
 </code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
@@ -437,11 +437,11 @@ printXML(v)</p>
 To serialize field as XML comment, use xml:&quot;,comment&quot;. Value can’t contain --.
 
 type ShowComment struct {
-	Str string `xml:&quot;,comment&quot;`
+    Str string `xml:&quot;,comment&quot;`
 }
 
 v := &amp;ShowComment{
-	Str: &quot;comment&quot;,
+    Str: &quot;comment&quot;,
 }
 printXML(v)
 </code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
@@ -468,16 +468,16 @@ For existing types we can define a new (but compatible) type.
 Here’s a custom marshalling and unmarshalling for time.Time that only serializes year/month/date part:
 
 type Event struct {
-	What string
-	When time.Time
+    What string
+    When time.Time
 }
 e := Event{
-	What: &quot;earthquake&quot;,
-	When: time.Now(),
+    What: &quot;earthquake&quot;,
+    When: time.Now(),
 }
 d, err := xml.Marshal(&amp;e)
 if err != nil {
-	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Standard time JSON: %s\n&quot;, string(d))
 
@@ -486,43 +486,43 @@ type customTime time.Time
 const customTimeFormat = `2006-02-01`
 
 func (ct customTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-	t := time.Time(ct)
-	v := t.Format(customTimeFormat)
-	return e.EncodeElement(v, start)
+    t := time.Time(ct)
+    v := t.Format(customTimeFormat)
+    return e.EncodeElement(v, start)
 }
 
 func (ct *customTime) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	var s string
-	err := d.DecodeElement(&amp;s, &amp;start)
-	if err != nil {
-		return err
-	}
-	t, err := time.Parse(customTimeFormat, s)
-	if err != nil {
-		return err
-	}
-	*ct = customTime(t)
-	return nil
+    var s string
+    err := d.DecodeElement(&amp;s, &amp;start)
+    if err != nil {
+        return err
+    }
+    t, err := time.Parse(customTimeFormat, s)
+    if err != nil {
+        return err
+    }
+    *ct = customTime(t)
+    return nil
 }
 
 type Event2 struct {
-	What string
-	When customTime
+    What string
+    When customTime
 }
 
 e := Event2{
-	What: &quot;earthquake&quot;,
-	When: customTime(time.Now()),
+    What: &quot;earthquake&quot;,
+    When: customTime(time.Now()),
 }
 d, err := xml.Marshal(&amp;e)
 if err != nil {
-	log.Fatalf(&quot;xml.Marshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;xml.Marshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;\nCustom time XML: %s\n&quot;, string(d))
 var decoded Event2
 err = xml.Unmarshal(d, &amp;decoded)
 if err != nil {
-	log.Fatalf(&quot;xml.Unmarshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;xml.Unmarshal failed with '%s'\n&quot;, err)
 }
 t := time.Time(decoded.When)
 fmt.Printf(&quot;Decoded custom time: %s\n&quot;, t.Format(customTimeFormat))

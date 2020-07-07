@@ -164,20 +164,20 @@ var record []string
 nRecords := 0
 var err error
 for {
-	record, err = r.Read()
-	if err != nil {
-		if err == io.EOF {
-			err = nil
-		}
-		break
-	}
-	nRecords++
-	if nRecords &lt; 5 {
-		fmt.Printf(&quot;Record: %#v\n&quot;, record)
-	}
+    record, err = r.Read()
+    if err != nil {
+        if err == io.EOF {
+            err = nil
+        }
+        break
+    }
+    nRecords++
+    if nRecords &lt; 5 {
+        fmt.Printf(&quot;Record: %#v\n&quot;, record)
+    }
 }
 if err != nil {
-	log.Fatalf(&quot;r.Read() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;r.Read() failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Read %d records\n&quot;, nRecords)
 </code></pre><blockquote>
@@ -204,39 +204,39 @@ fmt.Printf(&quot;Read %d records\n&quot;, len(records))
 <p>将记录写入CSV文件
 现在，让我们将简化的股票报价写入CSV文件：</p>
 <pre><code>func writeCSV() error {
-	f, err := os.Create(&quot;stocks_tmp.csv&quot;)
-	if err != nil {
-		return err
-	}
+    f, err := os.Create(&quot;stocks_tmp.csv&quot;)
+    if err != nil {
+        return err
+    }
 
-	w := csv.NewWriter(f)
-	records := [][]string{
-		{&quot;date&quot;, &quot;price&quot;, &quot;name&quot;},
-		{&quot;2013-02-08&quot;, &quot;15,07&quot;, &quot;GOOG&quot;},
-		{&quot;2013-02-09&quot;, &quot;15,09&quot;, &quot;GOOG&quot;},
-	}
-	for _, rec := range records {
-		err = w.Write(rec)
-		if err != nil {
-			f.Close()
-			return err
-		}
-	}
+    w := csv.NewWriter(f)
+    records := [][]string{
+        {&quot;date&quot;, &quot;price&quot;, &quot;name&quot;},
+        {&quot;2013-02-08&quot;, &quot;15,07&quot;, &quot;GOOG&quot;},
+        {&quot;2013-02-09&quot;, &quot;15,09&quot;, &quot;GOOG&quot;},
+    }
+    for _, rec := range records {
+        err = w.Write(rec)
+        if err != nil {
+            f.Close()
+            return err
+        }
+    }
 
-	// csv.Writer might buffer writes for performance so we must
-	// Flush to ensure all data has been written to underlying
-	// writer
-	w.Flush()
+    // csv.Writer might buffer writes for performance so we must
+    // Flush to ensure all data has been written to underlying
+    // writer
+    w.Flush()
 
-	// Flush doesn't return an error. If it failed to write, we
-	// can get the error with Error()
-	err = w.Error()
-	if err != nil {
-		return err
-	}
-	// Close might also fail due to flushing out buffered writes
-	err = f.Close()
-	return err
+    // Flush doesn't return an error. If it failed to write, we
+    // can get the error with Error()
+    err = w.Error()
+    if err != nil {
+        return err
+    }
+    // Close might also fail due to flushing out buffered writes
+    err = f.Close()
+    return err
 }
 </code></pre><blockquote>
 <p>date,price,name<br>

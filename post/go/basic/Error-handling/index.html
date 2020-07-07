@@ -151,24 +151,24 @@
                                             
                                             <p>基本错误处理:</p>
 <pre><code>func sqrt(n float64) (float64, error) {
-	if n &lt; 0 {
-		return 0, fmt.Errorf(&quot;invalid argument '%f', must be &gt;= 0&quot;, n)
-	}
-	return math.Sqrt(n), nil
+    if n &lt; 0 {
+        return 0, fmt.Errorf(&quot;invalid argument '%f', must be &gt;= 0&quot;, n)
+    }
+    return math.Sqrt(n), nil
 }
 
 func printSqrt(n float64) {
-	if res, err := sqrt(n); err == nil {
-		fmt.Printf(&quot;sqrt of %f is %f\n&quot;, n, res)
-	} else {
-		fmt.Printf(&quot;sqrt of %f returned error '%s'\n&quot;, n, err)
-	}
+    if res, err := sqrt(n); err == nil {
+        fmt.Printf(&quot;sqrt of %f is %f\n&quot;, n, res)
+    } else {
+        fmt.Printf(&quot;sqrt of %f returned error '%s'\n&quot;, n, err)
+    }
 
 }
 
 func main() {
-	printSqrt(16)
-	printSqrt(-16)
+    printSqrt(16)
+    printSqrt(-16)
 }
 </code></pre><blockquote>
 <p>sqrt of 16.000000 is 4.000000<br>
@@ -187,19 +187,19 @@ sqrt of -16.000000 returned error &lsquo;invalid argument &lsquo;-16.000000&rsqu
 <p>为了指示一个错误,函数应该返回一个错误值.函数没有错误时,返回nil.</p>
 <pre><code>// somewhat inefficient way of appending a string at the end of a file
 func appendToFile(path string, s string) error {
-	d, err := ioutil.ReadFile(path)
+    d, err := ioutil.ReadFile(path)
   if err != nil {
-		return err
+        return err
   }
-	d = append(d, []byte(s)...)
+    d = append(d, []byte(s)...)
   return ioutil.WriteFile(path, d, 0644)
 }
 </code></pre><p>如果函数有多个返回值时,error始终应该是最后一个:</p>
 <pre><code>func sqrt(n int) (int, error) {
-	if n &lt; 0 {
-		return 0, fmt.Errorf(&quot;n should be &gt;= 0, is %d&quot;, n)
-	}
-	return n*n, nil
+    if n &lt; 0 {
+        return 0, fmt.Errorf(&quot;n should be &gt;= 0, is %d&quot;, n)
+    }
+    return n*n, nil
 }
 </code></pre><h2 id="pitfalls">Pitfalls</h2>
 <p>如果你使用的是自定义错误类型，请不要返回底层类型，而请务必返回错误类型。</p>
@@ -207,24 +207,24 @@ func appendToFile(path string, s string) error {
 }
 
 func (e *CustomError) Error() string {
-	return &quot;this is a custom error&quot;
+    return &quot;this is a custom error&quot;
 }
 
 func returnsCustomError(pleaseFail bool) *CustomError {
-	if pleaseFail {
-		return &amp;CustomError{}
-	}
-	return nil
+    if pleaseFail {
+        return &amp;CustomError{}
+    }
+    return nil
 }
 
 func caller() {
-	var err error
-	if err == nil {
-		fmt.Printf(&quot;err is nil, as expected\n&quot;);
+    var err error
+    if err == nil {
+        fmt.Printf(&quot;err is nil, as expected\n&quot;);
   }
-	err = returnsCustomError(false))
-	if err != nil {
-		fmt.Printf(&quot;returnCustomError() failed with '%s'\n&quot;, err)
+    err = returnsCustomError(false))
+    if err != nil {
+        fmt.Printf(&quot;returnCustomError() failed with '%s'\n&quot;, err)
   }
 }
 </code></pre><p>出乎意料的是，即使返回null，它看起来也像returnCustomError()返回了错误。</p>
@@ -242,10 +242,10 @@ err = (*CustomError)(nil)
 var err2 error = nil
 var err3 error = (*CustomError)(nil)
 if err1 == nil &amp;&amp; err2 == nil {
-	fmt.Printf(&quot;unitialized interface value and inteface value assigned nil are both zero values of interface type and therefore equal to 'nil'\n&quot;)
+    fmt.Printf(&quot;unitialized interface value and inteface value assigned nil are both zero values of interface type and therefore equal to 'nil'\n&quot;)
 }
 if err3 != nil {
-	fmt.Printf(&quot;interface value assigned to a struct type whose value is nil is not zero value of interface type and therefore not equal to 'nil'\n&quot;)
+    fmt.Printf(&quot;interface value assigned to a struct type whose value is nil is not zero value of interface type and therefore not equal to 'nil'\n&quot;)
 }
 </code></pre><h2 id="创建标准错误值">创建标准错误值</h2>
 <p>有几种创建错误值的方法:</p>
@@ -272,11 +272,11 @@ return ErrGlobal
 <p>其中，任何实现错误接口的类型都可以用作错误类型的值。</p>
 <pre><code>// MyError is a custom error type
 type MyError struct {
-	msg string
+    msg string
 }
 
 func (e *MyError) Error() string {
-	return e.msg
+    return e.msg
 }
 
 var err error = &amp;MyError{msg: &quot;This is custom error type&quot;}
@@ -347,44 +347,44 @@ PanicIfErr(err)
 <pre><code>// FmtArgs formats args as a string. First argument should be format string
 // and the rest are arguments to the format
 func FmtArgs(args ...interface{}) string {
-	if len(args) == 0 {
-		return &quot;&quot;
-	}
-	format := args[0].(string)
-	if len(args) == 1 {
-		return format
-	}
-	return fmt.Sprintf(format, args[1:]...)
+    if len(args) == 0 {
+        return &quot;&quot;
+    }
+    format := args[0].(string)
+    if len(args) == 1 {
+        return format
+    }
+    return fmt.Sprintf(format, args[1:]...)
 }
 
 func panicWithMsg(defaultMsg string, args ...interface{}) {
-	s := FmtArgs(args...)
-	if s == &quot;&quot; {
-		s = defaultMsg
-	}
-	fmt.Printf(&quot;%s\n&quot;, s)
-	panic(s)
+    s := FmtArgs(args...)
+    if s == &quot;&quot; {
+        s = defaultMsg
+    }
+    fmt.Printf(&quot;%s\n&quot;, s)
+    panic(s)
 }
 
 // PanicIf panics if cond is true
 func PanicIf(cond bool, args ...interface{}) {
-	if !cond {
-		return
-	}
-	panicWithMsg(&quot;PanicIf: condition failed&quot;, args...)
+    if !cond {
+        return
+    }
+    panicWithMsg(&quot;PanicIf: condition failed&quot;, args...)
 }
 
 // PanicIfErr panics if err is not nil
 func PanicIfErr(err error, args ...interface{}) {
-	if err == nil {
-		return
-	}
-	panicWithMsg(err.Error(), args...)
+    if err == nil {
+        return
+    }
+    panicWithMsg(err.Error(), args...)
 }
 
 func main() {
-	PanicIfErr(nil)                              // nothing happens
-	PanicIfErr(errors.New(&quot;there was an error&quot;)) // will panic
+    PanicIfErr(nil)                              // nothing happens
+    PanicIfErr(errors.New(&quot;there was an error&quot;)) // will panic
 }
 </code></pre><blockquote>
 <p>there was an error<br>
@@ -403,18 +403,18 @@ exit status 2</p>
 <p>收集调用栈非常昂贵，并且Go不会将调用栈添加到错误中。</p>
 <p>调用堆栈在调试中很有用。 如果你可以接受额外费用，则可以使用github.com/pkg/errors包来增加callstack的错误。</p>
 <pre><code>func wrappedError() error {
-	err := errors.New(&quot;Original error&quot;)
-	// create a new error value which wraps original err and
-	// adds calls tack
-	return pkgerrors.WithStack(err)
+    err := errors.New(&quot;Original error&quot;)
+    // create a new error value which wraps original err and
+    // adds calls tack
+    return pkgerrors.WithStack(err)
 }
 
 func main() {
-	// %+v prints original error add callstack
-	fmt.Printf(&quot;err: %+v\n\n&quot;, wrappedError())
+    // %+v prints original error add callstack
+    fmt.Printf(&quot;err: %+v\n\n&quot;, wrappedError())
 
-	// errors created with pkg/errors include callstack by default
-	fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
+    // errors created with pkg/errors include callstack by default
+    fmt.Printf(&quot;err: %+v\n&quot;, pkgerrors.New(&quot;error created with pkg/errors&quot;))
 }
 </code></pre><p>可见，调用栈的顶部包括Go运行时代码。</p>
 <h2 id="编写良好的错误消息">编写良好的错误消息</h2>

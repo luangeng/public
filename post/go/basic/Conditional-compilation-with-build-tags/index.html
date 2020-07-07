@@ -159,7 +159,7 @@
 package main
 
 func foo() {
-	fmt.Printf(&quot;This is alternative foo\n&quot;)
+    fmt.Printf(&quot;This is alternative foo\n&quot;)
 }
 </code></pre><p>foo.go</p>
 <pre><code>// You can have other comments before build tags
@@ -167,13 +167,13 @@ func foo() {
 package main
 
 func foo() {
-	fmt.Printf(&quot;This is regular foo\n&quot;)
+    fmt.Printf(&quot;This is regular foo\n&quot;)
 }
 </code></pre><p>main.go</p>
 <pre><code>package main
 
 func main() {
-	foo()
+    foo()
 }
 </code></pre><p>不使用build tag来编译:</p>
 <blockquote>

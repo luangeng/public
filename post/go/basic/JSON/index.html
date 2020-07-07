@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go JSON</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1895 Words
+                                        Posted @ 2019-09-09 · 1886 Words
                                         
                                         · Tags: Go
                                         
@@ -152,26 +152,26 @@
                                             <p>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能.</p>
 <h3 id="序列化struct为json">序列化struct为JSON</h3>
 <pre><code>type Person struct {
-	fullName string
-	Name     string
-	Age      int    `json:&quot;age&quot;`
-	City     string `json:&quot;city&quot;`
+    fullName string
+    Name     string
+    Age      int    `json:&quot;age&quot;`
+    City     string `json:&quot;city&quot;`
 }
 
 p := Person{
-	Name: &quot;John&quot;,
-	Age:  37,
-	City: &quot;SF&quot;,
+    Name: &quot;John&quot;,
+    Age:  37,
+    City: &quot;SF&quot;,
 }
 d, err := json.Marshal(&amp;p)
 if err != nil {
-	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person in compact JSON: %s\n&quot;, string(d))
 
 d, err = json.MarshalIndent(p, &quot;&quot;, &quot;  &quot;)
 if err != nil {
-	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person in pretty-printed JSON:\n%s\n&quot;, string(d))
 </code></pre><blockquote>
@@ -197,22 +197,22 @@ Person in pretty-printed JSON:<br>
 <p>json.MarshallIndent allows for pretty-printing of nested structures. The result takes up more space but is easier to read.</p>
 <h3 id="把json转为struct">把JSON转为struct</h3>
 <pre><code>type Person struct {
-	Name       *string `json:&quot;name&quot;`
-	Age        int     `json:&quot;age&quot;`
-	City       string
-	Occupation string
+    Name       *string `json:&quot;name&quot;`
+    Age        int     `json:&quot;age&quot;`
+    City       string
+    Occupation string
 }
 
 var jsonStr = `{
-	&quot;name&quot;: &quot;Jane&quot;,
-	&quot;age&quot;: 24,
-	&quot;city&quot;: &quot;ny&quot;
+    &quot;name&quot;: &quot;Jane&quot;,
+    &quot;age&quot;: 24,
+    &quot;city&quot;: &quot;ny&quot;
 }`
 
 var p Person
 err := json.Unmarshal([]byte(jsonStr), &amp;p)
 if err != nil {
-	log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person struct parsed from JSON: %#v\n&quot;, p)
 fmt.Printf(&quot;Name: %#v\n&quot;, *p.Name)
@@ -229,32 +229,32 @@ Name: &ldquo;Jane&rdquo;</p>
 <p>This is useful when you need to know if a value was present in JSON or not. If we used string for Name, we wouldn’t know if value of empty string means that JSON had name key with empty string as a value or is it because the value wasn’t there at all.</p>
 <p>By using a pointer to a string we know that nil means there was no value.</p>
 <p>Go to JSON type mapping
-JSON Type	Go Concrete Type
-boolean	bool
-number	float64 or int
-string	string
-array	slice
-dictionary	map[struct]interface{} or struct
-null	nil
+JSON Type    Go Concrete Type
+boolean    bool
+number    float64 or int
+string    string
+array    slice
+dictionary    map[struct]interface{} or struct
+null    nil
 See more in type mappings.</p>
 <h2 id="parsing-arbitrary-json-documents">Parsing arbitrary JSON documents</h2>
 <p>Parsing into a struct is very convenient but sometimes you don’t know the structure of JSON document upfront.</p>
 <p>For arbitrary JSON documents we can decode into a map[string]interface{}, which can represent all valid JSON documents.</p>
 <pre><code>var jsonStr = `{
-	&quot;name&quot;: &quot;Jane&quot;,
-	&quot;age&quot;: 24,
-	&quot;city&quot;: &quot;ny&quot;
+    &quot;name&quot;: &quot;Jane&quot;,
+    &quot;age&quot;: 24,
+    &quot;city&quot;: &quot;ny&quot;
 }`
 
 var doc map[string]interface{}
 err := json.Unmarshal([]byte(jsonStr), &amp;doc)
 if err != nil {
-	log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;doc: %#v\n&quot;, doc)
 name, ok := doc[&quot;name&quot;].(string)
 if !ok {
-	log.Fatalf(&quot;doc has no key 'name' or its value is not string\n&quot;)
+    log.Fatalf(&quot;doc has no key 'name' or its value is not string\n&quot;)
 }
 fmt.Printf(&quot;name: %#v\n&quot;, name)
 </code></pre><blockquote>
@@ -271,48 +271,48 @@ name: &ldquo;Jane&rdquo;</p>
 {
   &quot;_total&quot;: 1,
   &quot;_links&quot;: {
-	&quot;self&quot;: &quot;https://api.twitch.tv/kraken/channels/foo/subscriptions?direction=ASC&amp;limit=25&amp;offset=0&quot;,
-	&quot;next&quot;: &quot;https://api.twitch.tv/kraken/channels/foo/subscriptions?direction=ASC&amp;limit=25&amp;offset=25&quot;
+    &quot;self&quot;: &quot;https://api.twitch.tv/kraken/channels/foo/subscriptions?direction=ASC&amp;limit=25&amp;offset=0&quot;,
+    &quot;next&quot;: &quot;https://api.twitch.tv/kraken/channels/foo/subscriptions?direction=ASC&amp;limit=25&amp;offset=25&quot;
   },
   &quot;subscriptions&quot;: [
-	{
-	  &quot;created_at&quot;: &quot;2011-11-23T02:53:17Z&quot;,
-	  &quot;_id&quot;: &quot;abcdef0000000000000000000000000000000000&quot;,
-	  &quot;_links&quot;: {
-		&quot;self&quot;: &quot;https://api.twitch.tv/kraken/channels/foo/subscriptions/bar&quot;
-	  },
-	  &quot;user&quot;: {
-		&quot;display_name&quot;: &quot;bar&quot;,
-		&quot;_id&quot;: 123456,
-		&quot;name&quot;: &quot;bar&quot;,
-		&quot;created_at&quot;: &quot;2011-06-16T18:23:11Z&quot;,
-		&quot;updated_at&quot;: &quot;2014-10-23T02:20:51Z&quot;,
-		&quot;_links&quot;: {
-		  &quot;self&quot;: &quot;https://api.twitch.tv/kraken/users/bar&quot;
-		}
-	  }
-	}
+    {
+      &quot;created_at&quot;: &quot;2011-11-23T02:53:17Z&quot;,
+      &quot;_id&quot;: &quot;abcdef0000000000000000000000000000000000&quot;,
+      &quot;_links&quot;: {
+        &quot;self&quot;: &quot;https://api.twitch.tv/kraken/channels/foo/subscriptions/bar&quot;
+      },
+      &quot;user&quot;: {
+        &quot;display_name&quot;: &quot;bar&quot;,
+        &quot;_id&quot;: 123456,
+        &quot;name&quot;: &quot;bar&quot;,
+        &quot;created_at&quot;: &quot;2011-06-16T18:23:11Z&quot;,
+        &quot;updated_at&quot;: &quot;2014-10-23T02:20:51Z&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: &quot;https://api.twitch.tv/kraken/users/bar&quot;
+        }
+      }
+    }
   ]
 }
 `)
 
 var js struct {
-	Total int `json:&quot;_total&quot;`
-	Links struct {
-		Next string `json:&quot;next&quot;`
-	} `json:&quot;_links&quot;`
-	Subs []struct {
-		Created string `json:&quot;created_at&quot;`
-		User    struct {
-			Name string `json:&quot;name&quot;`
-			ID   int    `json:&quot;_id&quot;`
-		} `json:&quot;user&quot;`
-	} `json:&quot;subscriptions&quot;`
+    Total int `json:&quot;_total&quot;`
+    Links struct {
+        Next string `json:&quot;next&quot;`
+    } `json:&quot;_links&quot;`
+    Subs []struct {
+        Created string `json:&quot;created_at&quot;`
+        User    struct {
+            Name string `json:&quot;name&quot;`
+            ID   int    `json:&quot;_id&quot;`
+        } `json:&quot;user&quot;`
+    } `json:&quot;subscriptions&quot;`
 }
 
 err := json.Unmarshal(jsonBlob, &amp;js)
 if err != nil {
-	fmt.Println(&quot;error:&quot;, err)
+    fmt.Println(&quot;error:&quot;, err)
 }
 fmt.Printf(&quot;%+v&quot;, js)
 </code></pre><blockquote>
@@ -322,33 +322,33 @@ fmt.Printf(&quot;%+v&quot;, js)
 <p>我们可以从磁盘上的文件,或者任何io.Reader,比如网络连接来反序列化JSON.
 下面的例子从文件读取JSON并反序列化:</p>
 <pre><code>type Student struct {
-	Name     string
-	Standard int `json:&quot;Standard&quot;`
+    Name     string
+    Standard int `json:&quot;Standard&quot;`
 }
 
 func decodeFromReader(r io.Reader) ([]*Student, error) {
-	var res []*Student
+    var res []*Student
 
-	dec := json.NewDecoder(r)
-	err := dec.Decode(&amp;res)
-	if err != nil {
-		return nil, err
-	}
-	return res, nil
+    dec := json.NewDecoder(r)
+    err := dec.Decode(&amp;res)
+    if err != nil {
+        return nil, err
+    }
+    return res, nil
 }
 
 func decodeFromString(s string) ([]*Student, error) {
-	r := bytes.NewBufferString(s)
-	return decodeFromReader(r)
+    r := bytes.NewBufferString(s)
+    return decodeFromReader(r)
 }
 
 func decodeFromFile(path string) ([]*Student, error) {
-	f, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	return decodeFromReader(f)
+    f, err := os.Open(path)
+    if err != nil {
+        return nil, err
+    }
+    defer f.Close()
+    return decodeFromReader(f)
 }
 </code></pre><blockquote>
 <p>Student: John Doe, standard: 4
@@ -379,16 +379,16 @@ Sometimes a type doesn’t have an obvious mapping to JSON.</p>
 <p>For existing types we can define a new (but compatible) type.</p>
 <p>Here’s a custom marshalling and unmarshaling for time.Time that only serializes year/month/date part:</p>
 <pre><code>type Event struct {
-	What string
-	When time.Time
+    What string
+    When time.Time
 }
 e := Event{
-	What: &quot;earthquake&quot;,
-	When: time.Now(),
+    What: &quot;earthquake&quot;,
+    When: time.Now(),
 }
 d, err := json.Marshal(&amp;e)
 if err != nil {
-	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Standard time JSON: %s\n&quot;, string(d))
 
@@ -397,38 +397,38 @@ type customTime time.Time
 const customTimeFormat = `&quot;2006-02-01&quot;`
 
 func (ct customTime) MarshalJSON() ([]byte, error) {
-	t := time.Time(ct)
-	s := t.Format(customTimeFormat)
-	return []byte(s), nil
+    t := time.Time(ct)
+    s := t.Format(customTimeFormat)
+    return []byte(s), nil
 }
 
 func (ct *customTime) UnmarshalJSON(d []byte) error {
-	t, err := time.Parse(customTimeFormat, string(d))
-	if err != nil {
-		return err
-	}
-	*ct = customTime(t)
-	return nil
+    t, err := time.Parse(customTimeFormat, string(d))
+    if err != nil {
+        return err
+    }
+    *ct = customTime(t)
+    return nil
 }
 
 type Event2 struct {
-	What string
-	When customTime
+    What string
+    When customTime
 }
 
 e := Event2{
-	What: &quot;earthquake&quot;,
-	When: customTime(time.Now()),
+    What: &quot;earthquake&quot;,
+    When: customTime(time.Now()),
 }
 d, err := json.Marshal(&amp;e)
 if err != nil {
-	log.Fatalf(&quot;json.Marshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.Marshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;\nCustom time JSON: %s\n&quot;, string(d))
 var decoded Event2
 err = json.Unmarshal(d, &amp;decoded)
 if err != nil {
-	log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.Unmarshal failed with '%s'\n&quot;, err)
 }
 t := time.Time(decoded.When)
 fmt.Printf(&quot;Decoded custom time: %s\n&quot;, t.Format(customTimeFormat))
@@ -450,31 +450,31 @@ Consider a struct with both exported and unexported fields:</p>
 <p>However, since uuid in not exported, the json.Marshal() skips it.</p>
 <p>To marshal private fields without making them public we can use a custom marshaller:</p>
 <pre><code>type MyStruct struct {
-	uuid string
-	Name string
+    uuid string
+    Name string
 }
 
 func (m MyStruct) MarshalJSON() ([]byte, error) {
-	j, err := json.Marshal(struct {
-		Uuid string
-		Name string
-	}{
-		Uuid: m.uuid,
-		Name: m.Name,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return j, nil
+    j, err := json.Marshal(struct {
+        Uuid string
+        Name string
+    }{
+        Uuid: m.uuid,
+        Name: m.Name,
+    })
+    if err != nil {
+        return nil, err
+    }
+    return j, nil
 }
 
 s := MyStruct{
-	uuid: &quot;uid-john&quot;,
-	Name: &quot;John&quot;,
+    uuid: &quot;uid-john&quot;,
+    Name: &quot;John&quot;,
 }
 d, err := json.Marshal(&amp;s)
 if err != nil {
-	log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person in compact JSON: %s\n&quot;, string(d))
 </code></pre><p>Person in compact JSON: {&ldquo;Uuid&rdquo;:&ldquo;uid-john&rdquo;,&ldquo;Name&rdquo;:&ldquo;John&rdquo;}
@@ -489,68 +489,68 @@ UnmarshalJSON([]byte) error
 }
 By implementing those functions we make our type conform to Marshaler or Unmarshaler interface.</p>
 <p>JSON encoder / decoder checks if the value being encoded conforms to those interfaces and will call those functions instead of executing default logic.</p>
-<h2 id="go-to-json-type-mappings">Go to JSON type mappings</h2>
-<p>Mapping between Go types and JSON types:</p>
-<p>JSON type	Go type
-null	nil
-boolean	bool
-number	float64 or int
-string	string
-array	slice
-dictionary	map[struct]interface{} or struct
-Here’s how they look in practice:</p>
-<p>func printSerialized(v interface{}, w io.Writer) {
-d, err := json.Marshal(v)
-if err != nil {
-log.Fatalf(&ldquo;json.Marshal failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+<h2 id="go和json类型映射">Go和JSON类型映射</h2>
+<blockquote>
+<p>JSON type    Go type<br>
+null    nil<br>
+boolean    bool<br>
+number    float64 or int<br>
+string    string<br>
+array    slice<br>
+dictionary    map[struct]interface{} or struct</p>
+</blockquote>
+<p>使用示例:</p>
+<pre><code>func printSerialized(v interface{}, w io.Writer) {
+    d, err := json.Marshal(v)
+    if err != nil {
+        log.Fatalf(&quot;json.Marshal failed with '%s'\n&quot;, err)
+    }
+    fmt.Fprintf(w, &quot;%T\t%s\n&quot;, v, string(d))
 }
-fmt.Fprintf(w, &ldquo;%T\t%s\n&rdquo;, v, string(d))
-}</p>
-<p>w := new(tabwriter.Writer)
-w.Init(os.Stdout, 5, 0, 1, ' &lsquo;, 0)
-fmt.Fprint(w, &ldquo;Go type:\tJSON value:\n&rdquo;)
-fmt.Fprint(w, &ldquo;\t\n&rdquo;)
+
+w := new(tabwriter.Writer)
+w.Init(os.Stdout, 5, 0, 1, ' ', 0)
+fmt.Fprint(w, &quot;Go type:\tJSON value:\n&quot;)
+fmt.Fprint(w, &quot;\t\n&quot;)
 printSerialized(nil, w)
 printSerialized(5, w)
 printSerialized(8.23, w)
-printSerialized(&ldquo;john&rdquo;, w)
+printSerialized(&quot;john&quot;, w)
 ai := []int{5, 4, 18}
 printSerialized(ai, w)
-a := []interface{}{4, &ldquo;string&rdquo;}
+a := []interface{}{4, &quot;string&quot;}
 printSerialized(a, w)
 d := map[string]interface{}{
-&ldquo;i&rdquo;: 5,
-&ldquo;s&rdquo;: &ldquo;foo&rdquo;,
+    &quot;i&quot;: 5,
+    &quot;s&quot;: &quot;foo&quot;,
 }
 printSerialized(d, w)
 s := struct {
-Name string
-Age  int
+    Name string
+    Age  int
 }{
-Name: &ldquo;John&rdquo;,
-Age:  37,
+    Name: &quot;John&quot;,
+    Age:  37,
 }
 printSerialized(s, w)
-w.Flush()</p>
-<pre><code>Go type:                        JSON value:
-                                
-&lt;nil&gt;                           null
-int                             5
-float64                         8.23
-string                          &quot;john&quot;
-[]int                           [5,4,18]
-[]interface {}                  [4,&quot;string&quot;]
-map[string]interface {}         {&quot;i&quot;:5,&quot;s&quot;:&quot;foo&quot;}
-struct { Name string; Age int } {&quot;Name&quot;:&quot;John&quot;,&quot;Age&quot;:37}
+w.Flush()
+</code></pre><blockquote>
+<p>Go type:                        JSON value:</p>
+<p><!-- raw HTML omitted -->                           null<br>
+int                             5<br>
+float64                         8.23<br>
+string                          &ldquo;john&rdquo;<br>
+[]int                           [5,4,18]<br>
+[]interface {}                  [4,&ldquo;string&rdquo;]<br>
+map[string]interface {}         {&ldquo;i&rdquo;:5,&ldquo;s&rdquo;:&ldquo;foo&rdquo;}<br>
+struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Age&rdquo;:37}</p>
+</blockquote>
+<h2 id="easy-generation-of-json-struct-definition">Easy generation of JSON struct definition</h2>
+<p>Writing struct definitions that map structure of JSON file is tedious.</p>
+<p>If you have a sample JSON file, you can auto-generate Go definitions using online tools:</p>
+<p><a href="https://app.quicktype.io/">https://app.quicktype.io/</a>
+<a href="https://mholt.github.io/json-to-go/">https://mholt.github.io/json-to-go/</a></p>
 
-## Easy generation of JSON struct definition
-Writing struct definitions that map structure of JSON file is tedious.
-
-If you have a sample JSON file, you can auto-generate Go definitions using online tools:
-
-https://app.quicktype.io/
-https://mholt.github.io/json-to-go/
-</code></pre>
                                             
                                         </div>
 

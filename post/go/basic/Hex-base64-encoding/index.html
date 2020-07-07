@@ -159,10 +159,10 @@ fmt.Printf(&quot;Hex: %s\n&quot;, s)
 
 d2, err := hex.DecodeString(s)
 if err != nil {
-	log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
 }
 if !bytes.Equal(d, d2) {
-	log.Fatalf(&quot;decoded version is different than original&quot;)
+    log.Fatalf(&quot;decoded version is different than original&quot;)
 }
 </code></pre><blockquote>
 <p>Hex: 01ff3acd</p>
@@ -177,10 +177,10 @@ fmt.Printf(&quot;Hex: %s\n&quot;, s)
 var decoded []byte
 _, err := fmt.Sscanf(s, &quot;%x&quot;, &amp;decoded)
 if err != nil {
-	log.Fatalf(&quot;fmt.Sscanf() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;fmt.Sscanf() failed with '%s'\n&quot;, err)
 }
 if !bytes.Equal(d, decoded) {
-	log.Fatalf(&quot;decoded version is different than original&quot;)
+    log.Fatalf(&quot;decoded version is different than original&quot;)
 }
 
 n := 3824
@@ -198,7 +198,7 @@ hexWriter := hex.NewEncoder(writer)
 
 _, err := hexWriter.Write(d)
 if err != nil {
-	log.Fatalf(&quot;hexWriter.Write() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;hexWriter.Write() failed with '%s'\n&quot;, err)
 }
 
 encoded := writer.Bytes()
@@ -209,11 +209,11 @@ hexReader := hex.NewDecoder(reader)
 
 decoded, err := ioutil.ReadAll(hexReader)
 if err != nil {
-	fmt.Printf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    fmt.Printf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 if !bytes.Equal(d, decoded) {
-	log.Fatalf(&quot;decoded version is different than original&quot;)
+    log.Fatalf(&quot;decoded version is different than original&quot;)
 }
 </code></pre><blockquote>
 <p>Hex: 01ff3acd</p>
@@ -226,10 +226,10 @@ fmt.Printf(&quot;base64: %s\n&quot;, s)
 
 d2, err := base64.StdEncoding.DecodeString(s)
 if err != nil {
-	log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
 }
 if !bytes.Equal(d, d2) {
-	log.Fatalf(&quot;decoded version is different than original&quot;)
+    log.Fatalf(&quot;decoded version is different than original&quot;)
 }
 </code></pre><blockquote>
 <p>base64: Af86zQ==</p>
@@ -243,10 +243,10 @@ fmt.Printf(&quot;base64: %s\n&quot;, s)
 
 d2, err := base64.URLEncoding.DecodeString(s)
 if err != nil {
-	log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;hex.DecodeString() failed with '%s'\n&quot;, err)
 }
 if !bytes.Equal(d, d2) {
-	log.Fatalf(&quot;decoded version is different than original&quot;)
+    log.Fatalf(&quot;decoded version is different than original&quot;)
 }
 </code></pre><blockquote>
 <p>base64: Af86zQ==</p>
@@ -260,11 +260,11 @@ base64Writer := base64.NewEncoder(base64.StdEncoding, writer)
 
 _, err := base64Writer.Write(d)
 if err != nil {
-	log.Fatalf(&quot;base64Writer.Write() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;base64Writer.Write() failed with '%s'\n&quot;, err)
 }
 err = base64Writer.Close()
 if err != nil {
-	log.Fatalf(&quot;base64Writer.Close() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;base64Writer.Close() failed with '%s'\n&quot;, err)
 }
 
 encoded := writer.Bytes()
@@ -275,11 +275,11 @@ base64Reader := base64.NewDecoder(base64.StdEncoding, reader)
 
 decoded, err := ioutil.ReadAll(base64Reader)
 if err != nil {
-	fmt.Printf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    fmt.Printf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 if !bytes.Equal(d, decoded) {
-	log.Fatalf(&quot;decoded version is different than original&quot;)
+    log.Fatalf(&quot;decoded version is different than original&quot;)
 }
 </code></pre><blockquote>
 <p>Base64: Af86zQ==</p>

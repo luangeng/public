@@ -153,9 +153,9 @@
 <h3 id="基本的fmt">基本的fmt</h3>
 <p>包fmt使用格式动词实现格式化的I/O：</p>
 <ul>
-<li>%v	    默认格式</li>
-<li>%T	    值的类型</li>
-<li>%s	    字符串或片的未解释字节</li>
+<li>%v        默认格式</li>
+<li>%T        值的类型</li>
+<li>%s        字符串或片的未解释字节</li>
 </ul>
 <p>格式化函数</p>
 <p>fmt中有4个主要的函数类型，和它们的几个变体。</p>
@@ -182,7 +182,7 @@ fmt.Println(s) // whatever was inputted
 fmt.Stringer interface consists of a single String() string function:
 
 type Stringer interface {
-	String() string
+    String() string
 }
 The intent is to provide a string representation of the value.
 
@@ -219,7 +219,7 @@ func main() {
 
     fmt.Printf(&quot;u2: type:  %T, value: %s\n\n&quot;, u2, u2)
 
-		// method define on type User2 is also available on type *User2
+        // method define on type User2 is also available on type *User2
     u3 := &amp;User2{
         Name:  &quot;John Doe&quot;,
         Email: &quot;johndoe@example.com&quot;,

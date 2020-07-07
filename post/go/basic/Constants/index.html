@@ -156,35 +156,35 @@ const Greeting string = &quot;Hello World&quot;
 
 // 可以组合常量声明
 const (
-	// years是private的int常量
-	years int  = 10
-	truth bool = true
+    // years是private的int常量
+    years int  = 10
+    truth bool = true
 )
 </code></pre><p>常量也可当做变量来使用只不过他们的值不能改变:</p>
 <pre><code>package main
 
 import (
-	&quot;fmt&quot;
-	&quot;math&quot;
+    &quot;fmt&quot;
+    &quot;math&quot;
 )
 
 const s string = &quot;constant&quot;
 
 func main() {
-	fmt.Println(s) // constant
+    fmt.Println(s) // constant
 
-	// A `const` statement can appear anywhere a `var` statement can.
-	const n = 10
-	fmt.Println(n)                           // 10
-	fmt.Printf(&quot;n=%d is of type %T\n&quot;, n, n) // n=10 is of type int
+    // A `const` statement can appear anywhere a `var` statement can.
+    const n = 10
+    fmt.Println(n)                           // 10
+    fmt.Printf(&quot;n=%d is of type %T\n&quot;, n, n) // n=10 is of type int
 
-	const m float64 = 4.3
-	fmt.Println(m) // 4.3
+    const m float64 = 4.3
+    fmt.Println(m) // 4.3
 
-	// An untyped constant takes the type needed by its context.
-	// For example, here `math.Sin` expects a `float64`.
-	const x = 10
-	fmt.Println(math.Sin(x)) // -0.5440211108893699
+    // An untyped constant takes the type needed by its context.
+    // For example, here `math.Sin` expects a `float64`.
+    const x = 10
+    fmt.Println(math.Sin(x)) // -0.5440211108893699
 }
 </code></pre><blockquote>
 <p>constant<br>
@@ -215,9 +215,9 @@ exit status 2</p>
 <h2 id="iota">iota</h2>
 <p>iota makes it easy to declare sequentially growing numeric constants:</p>
 <pre><code>const (
-	Low = iota
-	Medium
-	High
+    Low = iota
+    Medium
+    High
 )
 fmt.Printf(&quot;Low: %d\nMedium: %d\nHigh: %d\n&quot;, Low, Medium, High)
 </code></pre><blockquote>
@@ -229,9 +229,9 @@ iota sets the value of Low to 0 and instructs the compiler that the following co
 <p>Creating bitmask values with iota
 Iota can be very useful when creating a bitmask. For instance, to represent the state of a network connection which may be secure, authenticated, and/or ready, we might create a bitmask like the following:</p>
 <pre><code>const (
-	Secure = 1 &lt;&lt; iota // 0b001
-	Authn              // 0b010
-	Ready              // 0b100
+    Secure = 1 &lt;&lt; iota // 0b001
+    Authn              // 0b010
+    Ready              // 0b100
 )
 
 ConnState := Secure | Authn // 0b011: Connection is secure and authenticated, but not yet Ready
@@ -248,10 +248,10 @@ ConnState: 0x3 (0b011)</p>
 <h3 id="skipping-values">Skipping values</h3>
 <p>The value of iota is still incremented for every entry in a constant list even if iota is not used:</p>
 <pre><code>const ( // iota is reset to 0
-	a = 1 &lt;&lt; iota // a == 1
-	b = 1 &lt;&lt; iota // b == 2
-	c = 3         // c == 3  (iota is not used but still incremented)
-	d = 1 &lt;&lt; iota // d == 8
+    a = 1 &lt;&lt; iota // a == 1
+    b = 1 &lt;&lt; iota // b == 2
+    c = 3         // c == 3  (iota is not used but still incremented)
+    d = 1 &lt;&lt; iota // d == 8
 )
 fmt.Printf(&quot;a: %d, b: %d, c: %d, d: %d\n&quot;, a, b, c, d)
 </code></pre><blockquote>
@@ -259,9 +259,9 @@ fmt.Printf(&quot;a: %d, b: %d, c: %d, d: %d\n&quot;, a, b, c, d)
 </blockquote>
 <p>It will also be incremented even if no constant is created at all, meaning the empty identifier can be used to skip values entirely:</p>
 <pre><code>const (
-	a = iota // a = 0
-	_        // iota is incremented  to 1
-	b        // b = 2
+    a = iota // a = 0
+    _        // iota is incremented  to 1
+    b        // b = 2
 )
 fmt.Printf(&quot;a: %d, b: %d\n&quot;, a, b)
 </code></pre><blockquote>
@@ -270,10 +270,10 @@ fmt.Printf(&quot;a: %d, b: %d\n&quot;, a, b)
 <p>Using iota in an expression list
 Because iota is incremented after each ConstSpec, values within the same expression list will have the same value for iota:</p>
 <pre><code>const (
-	bit0, mask0 = 1 &lt;&lt; iota, 1&lt;&lt;iota - 1 // bit0 == 1, mask0 == 0
-	bit1, mask1                          // bit1 == 2, mask1 == 1
-	_, _                                 // skips iota == 2
-	bit3, mask3                          // bit3 == 8, mask3 == 7
+    bit0, mask0 = 1 &lt;&lt; iota, 1&lt;&lt;iota - 1 // bit0 == 1, mask0 == 0
+    bit1, mask1                          // bit1 == 2, mask1 == 1
+    _, _                                 // skips iota == 2
+    bit3, mask3                          // bit3 == 8, mask3 == 7
 )
 fmt.Printf(&quot;bit0: %d, mask0: 0x%x\n&quot;, bit0, mask0)
 fmt.Printf(&quot;bit3: %d, mask3: 0x%x\n&quot;, bit3, mask3)
@@ -286,12 +286,12 @@ iota can be used in expressions, so it can also be used to assign values other t
 <pre><code>type ByteSize int
 
 const (
-	_           = iota // ignore first value by assigning to blank identifier
-	KB ByteSize = 1 &lt;&lt; (10 * iota)
-	MB
-	GB
-	TB
-	PB
+    _           = iota // ignore first value by assigning to blank identifier
+    KB ByteSize = 1 &lt;&lt; (10 * iota)
+    MB
+    GB
+    TB
+    PB
 )
 fmt.Printf(&quot;KB: %d\n&quot;, KB)
 </code></pre><blockquote>
@@ -314,9 +314,9 @@ fmt.Printf(&quot;KB: %d\n&quot;, KB)
 </code></pre><p>This declares 3 untyped, numeric constants. iota starts numbering of constants. tagBody has value of 0, tagDiv a value of 1 etc. This is convenient way to assign unique numeric values.</p>
 <p>If the values matter, you can assign them explicitly:</p>
 <pre><code>const (
-	one   = 1
-	five  = 5
-	seven = 7
+    one   = 1
+    five  = 5
+    seven = 7
 )
 </code></pre><p>Adding type safety
 In the above example tagBody etc. is an untyped constant so it can be assigned to any numeric type.</p>

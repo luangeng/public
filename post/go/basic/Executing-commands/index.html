@@ -155,7 +155,7 @@
 <pre><code>cmd := exec.Command(&quot;go&quot;, &quot;version&quot;)
 out, err := cmd.CombinedOutput()
 if err != nil {
-	log.Fatalf(&quot;cmd.CombinedOutput() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;cmd.CombinedOutput() failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Output:\n%s\n&quot;, string(out))
 </code></pre><blockquote>
@@ -169,12 +169,12 @@ cmd.Stderr = &amp;stderr
 
 err := cmd.Start()
 if err != nil {
-	log.Fatalf(&quot;cmd.Start() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;cmd.Start() failed with '%s'\n&quot;, err)
 }
 
 err = cmd.Wait()
 if err != nil {
-	log.Fatalf(&quot;cmd.Wait() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;cmd.Wait() failed with '%s'\n&quot;, err)
 }
 out := append(stdout.Bytes(), stderr.Bytes()...)
 fmt.Printf(&quot;Output:\n%s\n&quot;, string(out))
@@ -191,14 +191,14 @@ fmt.Printf(&quot;Output:\n%s\n&quot;, string(out))
 
 err := cmd.Start()
 if err != nil {
-	log.Fatalf(&quot;cmd.Start() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;cmd.Start() failed with '%s'\n&quot;, err)
 }
 
 var timedOut int32
 timeout := 1 * time.Millisecond
 stopTimer := time.AfterFunc(timeout, func() {
-	cmd.Process.Kill()
-	atomic.StoreInt32(&amp;timedOut, 1)
+    cmd.Process.Kill()
+    atomic.StoreInt32(&amp;timedOut, 1)
 })
 
 err = cmd.Wait()
@@ -221,12 +221,12 @@ fmt.Printf(&quot;didTimeout: %v, err: %v\n&quot;, didTimeout, err)
 <pre><code>cmd := exec.Command(&quot;go&quot;, &quot;version&quot;)
 _, err := cmd.CombinedOutput()
 if err != nil {
-	log.Fatalf(&quot;first cmd.CombintedOutput() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;first cmd.CombintedOutput() failed with '%s'\n&quot;, err)
 }
 
 _, err = cmd.CombinedOutput()
 if err != nil {
-	log.Fatalf(&quot;second cmd.CombintedOutput() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;second cmd.CombintedOutput() failed with '%s'\n&quot;, err)
 }
 </code></pre><blockquote>
 <p>2019/11/06 04:50:26 second cmd.CombintedOutput() failed with &lsquo;exec: Stdout already set&rsquo;<br>

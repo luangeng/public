@@ -16,11 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Mutex/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Mutex In Go goroutines share memory.
-It’s good for performance but modifying the same memory from multiple goroutines is not safe. It can lead to data races and crashes.
-One way to avoid that is by using channels to transfer exclusive ownership of data.
-This is Go’s motto: do not communicate by sharing memory; instead, share memory by communicating.
-Another way to ensure exclusive access to data by goroutines is to use mutexes.">
+    content="Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。 避免这种">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Mutex/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Mutex/">
@@ -134,7 +130,7 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes."
                                     <h1 class="post-title">Go Mutex</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 846 Words
+                                        Posted @ 2019-09-09 · 1627 Words
                                         
                                         · Tags: Go
                                         
@@ -153,165 +149,172 @@ Another way to ensure exclusive access to data by goroutines is to use mutexes."
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Mutex
-In Go goroutines share memory.</p>
-<p>It’s good for performance but modifying the same memory from multiple goroutines is not safe. It can lead to data races and crashes.</p>
-<p>One way to avoid that is by using channels to transfer exclusive ownership of data.</p>
-<p>This is Go’s motto: do not communicate by sharing memory; instead, share memory by communicating.</p>
-<p>Another way to ensure exclusive access to data by goroutines is to use mutexes.</p>
-<p>Here’s a basic pattern that uses a map for a cache and ensures exclusive access with mutex locking:</p>
-<p>var cache map[int]int
-var mu sync.Mutex</p>
-<p>func expensiveOperation(n int) int {
-// in real code this operation would be very expensive
-return n * n
-}</p>
-<p>func getCached(n int) int {
-mu.Lock()
-v, isCached := cache[n]
-mu.Unlock()
-if isCached {
-return v
-}</p>
-<pre><code>v = expensiveOperation(n)
-
-mu.Lock()
-cache[n] = v
-mu.Unlock()
-return v
-</code></pre>
-<p>}</p>
-<p>func accessCache() {
-total := 0
-for i := 0; i &lt; 5; i++ {
-n := getCached(i)
-total += n
-}
-fmt.Printf(&ldquo;total: %d\n&rdquo;, total)
-}</p>
-<p>cache = make(map[int]int)
-go accessCache()
-accessCache()</p>
-<pre><code>total: 30
-total: 30
-Zero value of sync.Mutex is a valid mutex so you don’t need to explicitly initialize it.
-
-For performance we want to minimize the time spent holding a lock.
-
-Function getCached would be simpler if we kept the mutex locked for the duration of the function but we don’t want to keep cache locked when we’re executing expensiveOperation().
-
-Unlike many other languages, Go mutexes are non-recursive.
-
-If the same goroutines tries to Lock() a mutex twice, the second Lock() will block forever.
-
-## Read-Write mutes (RWMutex)
-In a sync.Mutex Lock() always takes an exclusive lock.
-
-In read-heavy scenarios we can improve performance if we allow multiple readers but only one writer.
-
-A sync.RWMutex has 2 types of lock function: lock for reading and lock for writing.
-
-It follows the following rules: * a writer lock takes exclusive lock * a reader lock will allow another readers but not writer
-
-Here’s a cache variant that uses read-write lock:
-
-var cache map[int]int
-var mu sync.RWMutex
+                                            <p>Go语言中goroutines共享内存.</p>
+<p>这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。</p>
+<p>避免这种情况的一种方法是使用channel转移数据的专有所有权。</p>
+<p>这是Go的座右铭：不要通过共享内存进行通信；而是通过通信共享内存。</p>
+<p>确保goroutine独占访问数据的另一种方法是使用互斥体。</p>
+<p>这是一种将映射用于缓存并通过互斥锁确保独占访问的基本模式：</p>
+<pre><code>var cache map[int]int
+var mu sync.Mutex
 
 func expensiveOperation(n int) int {
-	// in real code this operation would be very expensive
-	return n * n
+    // in real code this operation would be very expensive
+    return n * n
 }
 
 func getCached(n int) int {
-	mu.RLock()
-	v, isCached := cache[n]
-	mu.RUnlock()
-	if isCached {
-		return v
-	}
+    mu.Lock()
+    v, isCached := cache[n]
+    mu.Unlock()
+    if isCached {
+        return v
+    }
 
-	v = expensiveOperation(n)
+    v = expensiveOperation(n)
 
-	mu.Lock()
-	cache[n] = v
-	mu.Unlock()
-	return v
+    mu.Lock()
+    cache[n] = v
+    mu.Unlock()
+    return v
 }
 
 func accessCache() {
-	total := 0
-	for i := 0; i &lt; 5; i++ {
-		n := getCached(i)
-		total += n
-	}
-	fmt.Printf(&quot;total: %d\n&quot;, total)
+    total := 0
+    for i := 0; i &lt; 5; i++ {
+        n := getCached(i)
+        total += n
+    }
+    fmt.Printf(&quot;total: %d\n&quot;, total)
 }
 
 cache = make(map[int]int)
 go accessCache()
 accessCache()
-</code></pre><p>total: 30
+</code></pre><blockquote>
+<p>total: 30<br>
 total: 30</p>
-<h2 id="mutex-gotchas">Mutex gotchas</h2>
-<p>Don’t copy mutexes
-A copy of sync.Mutex variable starts with the same state as original mutex but it is not the same mutex.</p>
-<p>It’s almost always a mistake to copy a sync.Mutex e.g. by passing it to another function or embedding it in a struct and making a copy of that struct.</p>
-<p>If you want to share a mutex variable, pass it as a pointer *sync.Mutex.</p>
-<p>Mutex is not recursive (aka re-entrant)
-In some languages mutexes are recursive i.e. the same thread can Lock the same mutex multiple times.</p>
-<p>In Go sync.Mutex is non-recursive. Calling Lock twice in the same goroutine will deadlock.</p>
-<p>go vet will warn you about copying mutexes. Here&rsquo;s an example warning:</p>
-<blockquote>
-<p>go vet</p>
 </blockquote>
-<h1 id="githubcomravendbravendb-go-client">github.com/ravendb/ravendb-go-client</h1>
-<p>.\document_conventions.go:151: assignment copies lock value to res: ravendb.DocumentConventions contains sync.Mutex</p>
-<h2 id="detecting-races">Detecting races</h2>
-<p>When you don’t use sync.Mutex to ensure exclusive access to data between goroutines or forget to lock in parts of the program, you’ll get data races.</p>
-<p>Data races might lead to memory corruption or crashes.</p>
-<p>Go makes it easy to instrument the code with additional checks that are very likely to catch data races.</p>
-<p>Use -race flag to go build or go run.</p>
-<p>Here’s a program with intentional data races.</p>
-<p>When you run it with go run -race data_race.go the runtime will notice memory corruption.</p>
-<p>var (
-n int
-)</p>
-<p>func main() {
-var wg sync.WaitGroup
-nCPU := runtime.NumCPU()
-nIter := 10
-for i := 0; i &lt; nCPU; i++ {
-wg.Add(1)
-go func() {
-defer wg.Done()
-for j := 0; j &lt; nIter; j++ {
-n++
-time.Sleep(time.Microsecond * 10)
+<p>sync.Mutex的初始值是有效的mutex,所以不必初始化.</p>
+<p>为了提高性能，我们希望最小化持有锁的时间。</p>
+<p>如果我们在功能持续时间内将互斥锁保持锁定状态，则函数getCached会更简单，但是当我们执行expensiveOperation()时，不要让缓存处于锁定状态。</p>
+<p>与许多其他语言不同，Go互斥锁是非递归的。</p>
+<p>如果相同的goroutine尝试两次对互斥量进行Lock()，则第二个Lock()将永远阻塞。</p>
+<h2 id="read-write-mutes-rwmutex">Read-Write mutes (RWMutex)</h2>
+<p>在sync.Mutex Lock()中始终采用排他锁。</p>
+<p>在重读场景中，如果我们允许多个读者但只允许一个写者，则可以提高性能。</p>
+<p>sync.RWMutex具有两种锁定功能：用于读取的锁定和用于写入的锁定。</p>
+<p>它遵循以下规则：</p>
+<ul>
+<li>写锁采用排他锁</li>
+<li>读锁将允许其他读但不允许写</li>
+</ul>
+<p>这是使用读写锁的示例：</p>
+<pre><code>var cache map[int]int
+var mu sync.RWMutex
+
+func expensiveOperation(n int) int {
+    // in real code this operation would be very expensive
+    return n * n
 }
-}()
+
+func getCached(n int) int {
+    mu.RLock()
+    v, isCached := cache[n]
+    mu.RUnlock()
+    if isCached {
+        return v
+    }
+
+    v = expensiveOperation(n)
+
+    mu.Lock()
+    cache[n] = v
+    mu.Unlock()
+    return v
 }
-wg.Wait()
-fmt.Printf(&ldquo;n is: %d, expected: %d\n&rdquo;, n, nCPU*nIter)
-}</p>
-<pre><code># runtime/cgo
-exec: &quot;gcc&quot;: executable file not found in $PATH
-exit status 2
-This examples shows that memory for variable n is corrupted because the final value of n is not what we expect.
 
-It also shows that instrumentation added with -race can catch memory corruption and points out which part of program caused the corruption.
+func accessCache() {
+    total := 0
+    for i := 0; i &lt; 5; i++ {
+        n := getCached(i)
+        total += n
+    }
+    fmt.Printf(&quot;total: %d\n&quot;, total)
+}
 
-When to use -race
-Additional instrumentation added by -race flag makes the program slower so it’s not usually used when compiling shipping binaries.
+cache = make(map[int]int)
+go accessCache()
+accessCache()
+</code></pre><blockquote>
+<p>total: 30<br>
+total: 30</p>
+</blockquote>
+<h2 id="mutex-陷阱">Mutex 陷阱</h2>
+<p>不要拷贝互斥锁</p>
+<p>sync.Mutex变量的副本以与原始互斥锁相同的状态开始，但不是同一个Mutex。</p>
+<p>拷贝互斥锁几乎总是错误的, 比如通过将其传递给另一个函数或将其嵌入结构中并复制该结构。</p>
+<p>如果要共享互斥变量，请将其作为指针* sync.Mutex传递。</p>
+<p>互斥体不是递归的（又名可重入）</p>
+<p>在某些语言中，互斥锁是递归的，即同一线程可以多次锁定同一互斥锁。</p>
+<p>在Go中sync.Mutex是非递归的。在同一goroutine中两次调用Lock将导致死锁。</p>
+<p>go vet会警告您有关复制互斥锁的信息。 这是一个示例警告：</p>
+<blockquote>
+<p>go vet<br>
+github.com/ravendb/ravendb-go-client<br>
+.\document_conventions.go:151: assignment copies lock value to res: ravendb.DocumentConventions contains sync.Mutex</p>
+</blockquote>
+<h2 id="检测争夺">检测争夺</h2>
+<p>如果不使用sync.Mutex来确保goroutine之间的数据独占访问，或者忘记锁定程序的某些部分，则会引起数据争夺。</p>
+<p>数据争用可能导致内存损坏或崩溃。</p>
+<p>使用Go可以很容易地通过附加检查来对代码进行检测.</p>
+<p>使用-race进行go build或go run。</p>
+<p>这是一个有数据竞争的程序,当使用go run -race data_race.go运行它时，运行时将检测到内存损坏:</p>
+<pre><code>var (
+    n int
+)
 
-It’s a good idea to use on your CI (continous integration) servers when running your test suite.
+func main() {
+    var wg sync.WaitGroup
+    nCPU := runtime.NumCPU()
+    nIter := 10
+    for i := 0; i &lt; nCPU; i++ {
+        wg.Add(1)
+        go func() {
+            defer wg.Done()
+            for j := 0; j &lt; nIter; j++ {
+                n++
+                time.Sleep(time.Microsecond * 10)
+            }
+        }()
+    }
+    wg.Wait()
+    fmt.Printf(&quot;n is: %d, expected: %d\n&quot;, n, nCPU*nIter)
+}
+</code></pre><blockquote>
+<p>runtime/cgo<br>
+exec: &ldquo;gcc&rdquo;: executable file not found in $PATH<br>
+exit status 2</p>
+</blockquote>
+<p>This examples shows that memory for variable n is corrupted because the final value of n is not what we expect.</p>
+<p>It also shows that instrumentation added with -race can catch memory corruption and points out which part of program caused the corruption.</p>
+<p>When to use -race
+Additional instrumentation added by -race flag makes the program slower so it’s not usually used when compiling shipping binaries.</p>
+<p>It’s a good idea to use on your CI (continous integration) servers when running your test suite.</p>
+<p>Race detector and Windows
+Race detector requires gcc to be installed on your machine.</p>
+<p>gcc is typically installed on Mac OS and Linux but usually not on Windows.</p>
+<p>To install gcc on Windows, you can use a window-specific distribution of gcc, like MinGW. Make sure gcc is in PATH.</p>
+<p>此示例表明变量n的内存已损坏，因为n的最终值不是我们期望的值。</p>
+<p>它还显示，添加了-race的工具可以捕获内存损坏并指出程序的哪个部分导致了损坏。</p>
+<p>何时使用-race
+-race标志添加的其他工具会使程序变慢，因此在编译运输二进制文件时通常不使用它。</p>
+<p>在运行测试套件时，最好在CI（连续集成）服务器上使用。</p>
+<p>种族探测器和Windows
+竞赛探测器需要在您的计算机上安装gcc。</p>
+<p>gcc通常安装在Mac OS和Linux上，但通常不安装在Windows上。</p>
+<p>要在Windows上安装gcc，您可以使用特定于窗口的gcc发行版，例如MinGW。 确保gcc在PATH中。</p>
 
-Race detector and Windows
-Race detector requires gcc to be installed on your machine.
-
-gcc is typically installed on Mac OS and Linux but usually not on Windows.
-
-To install gcc on Windows, you can use a window-specific distribution of gcc, like MinGW. Make sure gcc is in PATH.</code></pre>
                                             
                                         </div>
 

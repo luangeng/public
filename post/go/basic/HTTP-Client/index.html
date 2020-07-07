@@ -156,7 +156,7 @@
 <pre><code>uri := &quot;https://httpbin.org/html&quot;
 resp, err := http.Get(uri)
 if err != nil {
-	log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
 
 // it's important to close resp.Body or else we'll leak network connection
@@ -165,7 +165,7 @@ if err != nil {
 defer resp.Body.Close()
 d, err := ioutil.ReadAll(resp.Body)
 if err != nil {
-	log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 contentType := resp.Header.Get(&quot;Content-Type&quot;)
@@ -175,7 +175,7 @@ fmt.Printf(&quot;http.Get() returned content of type '%s' and size %d bytes.\nSt
 uri = &quot;https://httpbin.org/page-doesnt-exist&quot;
 resp, err = http.Get(uri)
 if err != nil {
-	log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
 
 contentType = resp.Header.Get(&quot;Content-Type&quot;)
@@ -185,7 +185,7 @@ fmt.Printf(&quot;\nhttp.Get() returned content of type '%s' and size %d bytes.\n
 uri = &quot;http://website.not-exists.as/index.html&quot;
 resp, err = http.Get(uri)
 if err != nil {
-	fmt.Printf(&quot;\nhttp.Get() failed with: '%s'\nresp: %v\n&quot;, err, resp)
+    fmt.Printf(&quot;\nhttp.Get() failed with: '%s'\nresp: %v\n&quot;, err, resp)
 }
 </code></pre><p>这显示了如何对URL发出HTTP GET请求（在这种情况下为HTML页面）。</p>
 <p>我使用uri作为变量名，因为有net / url包，这意味着在同一文件中导入net / url时使用更自然的url会导致命名冲突。</p>
@@ -205,7 +205,7 @@ client.Timeout = time.Millisecond * 100
 uri := &quot;https://httpbin.org/delay/3&quot;
 resp, err := client.Get(uri)
 if err != nil {
-	log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>如图所示，创建和使用自定义http.Client很容易。</p>
 <p>在此示例中，我们设置了非常短的超时，以证明超过该超时将取消连接。</p>
@@ -218,12 +218,12 @@ uri := &quot;https://httpbin.org/post&quot;
 body := bytes.NewBufferString(&quot;text we send&quot;)
 resp, err := client.Post(uri, &quot;text/plain&quot;, body)
 if err != nil {
-	log.Fatalf(&quot;client.Post() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;client.Post() failed with '%s'\n&quot;, err)
 }
 defer resp.Body.Close()
 d, err := ioutil.ReadAll(resp.Body)
 if err != nil {
-	log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>fmt.Printf（“ http.Post()返回状态代码％d，截断的文本：\ n％s &hellip; \ n”，分别为StatusCode，字符串（d）[：93]）
 进行POST的最简单方法是使用http.Client.Post（URL字符串，contentType字符串，body io.Reader）。</p>
@@ -242,30 +242,30 @@ client.Timeout = time.Second * 15
 
 uri := &quot;https://httpbin.org/post&quot;
 data := url.Values{
-	&quot;name&quot;:  []string{&quot;John&quot;},
-	&quot;email&quot;: []string{&quot;john@gmail.com&quot;},
+    &quot;name&quot;:  []string{&quot;John&quot;},
+    &quot;email&quot;: []string{&quot;john@gmail.com&quot;},
 }
 resp, err := client.PostForm(uri, data)
 if err != nil {
-	log.Fatalf(&quot;client.PosFormt() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;client.PosFormt() failed with '%s'\n&quot;, err)
 }
 defer resp.Body.Close()
 _, err = ioutil.ReadAll(resp.Body)
 if err != nil {
-	log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 fmt.Printf(&quot;PostForm() sent '%s'. Response status code: %d\n&quot;, data.Encode(), resp.StatusCode)
 </code></pre><h2 id="json对象的put请求">JSON对象的PUT请求</h2>
 <p>http.Client没有方便的方法来执行PUT请求，因此我们构造了一个http.Request对象，并使用http.Client.Do（req * http.Request）来执行该请求。</p>
 <pre><code>user := User{
-	Name:  &quot;John Doe&quot;,
-	Email: &quot;johndoe@example.com&quot;,
+    Name:  &quot;John Doe&quot;,
+    Email: &quot;johndoe@example.com&quot;,
 }
 
 d, err := json.Marshal(user)
 if err != nil {
-	log.Fatalf(&quot;json.Marshal() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;json.Marshal() failed with '%s'\n&quot;, err)
 }
 
 client := &amp;http.Client{}
@@ -275,19 +275,19 @@ uri := &quot;https://httpbin.org/put&quot;
 body := bytes.NewBuffer(d)
 req, err := http.NewRequest(http.MethodPut, uri, body)
 if err != nil {
-	log.Fatalf(&quot;http.NewRequest() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.NewRequest() failed with '%s'\n&quot;, err)
 }
 
 req.Header.Set(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
 resp, err := client.Do(req)
 if err != nil {
-	log.Fatalf(&quot;client.Do() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;client.Do() failed with '%s'\n&quot;, err)
 }
 
 defer resp.Body.Close()
 d, err = ioutil.ReadAll(resp.Body)
 if err != nil {
-	log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, string(d))
@@ -298,7 +298,7 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
 uri := &quot;https://httpbin.org/delay/3&quot;
 req, err := http.NewRequest(&quot;GET&quot;, uri, nil)
 if err != nil {
-	log.Fatalf(&quot;http.NewRequest() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.NewRequest() failed with '%s'\n&quot;, err)
 }
 
 // create a context indicating 100 ms timeout
@@ -308,26 +308,26 @@ req = req.WithContext(ctx)
 
 resp, err := http.DefaultClient.Do(req)
 if err != nil {
-	// the request should timeout because we want to wait max 100 ms
-	// but the server doesn't return response for 3 seconds
-	log.Fatalf(&quot;http.DefaultClient.Do() failed with:\n'%s'\n&quot;, err)
+    // the request should timeout because we want to wait max 100 ms
+    // but the server doesn't return response for 3 seconds
+    log.Fatalf(&quot;http.DefaultClient.Do() failed with:\n'%s'\n&quot;, err)
 }
 defer resp.Body.Close()
 </code></pre><h2 id="带有url参数和json响应的get">带有URL参数和JSON响应的GET</h2>
 <p>本示例说明如何为GET请求正确编码URL参数，以及如何解析由Stack Exchange API返回的有关Stack Overflow帖子信息的JSON输出。</p>
 <pre><code>type postItem struct {
-	Score int    `json:&quot;score&quot;`
-	Link  string `json:&quot;link&quot;`
+    Score int    `json:&quot;score&quot;`
+    Link  string `json:&quot;link&quot;`
 }
 
 type postsType struct {
-	Items []postItem `json:&quot;items&quot;`
+    Items []postItem `json:&quot;items&quot;`
 }
 
 values := url.Values{
-	&quot;order&quot;: []string{&quot;desc&quot;},
-	&quot;sort&quot;:  []string{&quot;activity&quot;},
-	&quot;site&quot;:  []string{&quot;stackoverflow&quot;},
+    &quot;order&quot;: []string{&quot;desc&quot;},
+    &quot;sort&quot;:  []string{&quot;activity&quot;},
+    &quot;site&quot;:  []string{&quot;stackoverflow&quot;},
 }
 
 // URL parameters can also be programmatically set
@@ -336,30 +336,30 @@ values.Set(&quot;pagesize&quot;, &quot;10&quot;)
 
 uri := &quot;https://api.stackexchange.com/2.2/posts?&quot;
 client := &amp;http.Client{
-	Timeout: 15 * time.Second,
+    Timeout: 15 * time.Second,
 }
 resp, err := client.Get(uri + values.Encode())
 if err != nil {
-	log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
 defer resp.Body.Close()
 
 if resp.StatusCode != http.StatusOK {
-	d, _ := ioutil.ReadAll(resp.Body)
-	log.Fatalf(&quot;Request was '%s' (%d) and not OK (200). Body:\n%s\n&quot;, resp.Status, resp.StatusCode, string(d))
+    d, _ := ioutil.ReadAll(resp.Body)
+    log.Fatalf(&quot;Request was '%s' (%d) and not OK (200). Body:\n%s\n&quot;, resp.Status, resp.StatusCode, string(d))
 }
 
 dec := json.NewDecoder(resp.Body)
 var p postsType
 err = dec.Decode(&amp;p)
 if err != nil {
-	log.Fatalf(&quot;dec.Decode() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;dec.Decode() failed with '%s'\n&quot;, err)
 }
 
 fmt.Println(&quot;Top 10 most recently active StackOverflow posts:&quot;)
 fmt.Println(&quot;Score&quot;, &quot;Link&quot;)
 for _, post := range p.Items {
-	fmt.Println(post.Score, post.Link)
+    fmt.Println(post.Score, post.Link)
 }
 </code></pre><h2 id="设置user-agent">设置User-Agent</h2>
 <p>HTTP请求包括User-Agent标头。</p>
@@ -374,18 +374,18 @@ client.Timeout = time.Second * 15
 uri := &quot;https://httpbin.org/user-agent&quot;
 req, err := http.NewRequest(http.MethodGet, uri, nil)
 if err != nil {
-	log.Fatalf(&quot;http.NewRequest() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;http.NewRequest() failed with '%s'\n&quot;, err)
 }
 req.Header.Set(&quot;User-Agent&quot;, userAgent)
 resp, err := client.Do(req)
 if err != nil {
-	log.Fatalf(&quot;client.Do() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;client.Do() failed with '%s'\n&quot;, err)
 }
 
 defer resp.Body.Close()
 d, err := ioutil.ReadAll(resp.Body)
 if err != nil {
-	log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, string(d))

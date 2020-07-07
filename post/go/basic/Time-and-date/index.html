@@ -195,15 +195,15 @@ Month: Sep &lsquo;9&rsquo;, &lsquo;09&rsquo;,  4</p>
 </blockquote>
 <p>格式化字符串是将一个任意字符串中某些部分被time.Time值中的数据替换：</p>
 <ul>
-<li>2006, 06	4或2位年</li>
-<li>2	月, 1-12</li>
-<li>1	d天, 1-31</li>
-<li>15	小时</li>
-<li>5	秒</li>
-<li>MST	时区字符串</li>
-<li>-0700	        时区数字偏移</li>
-<li>Jan, January	月的单词</li>
-<li>Mon, Monday	星期单词</li>
+<li>2006, 06    4或2位年</li>
+<li>2    月, 1-12</li>
+<li>1    d天, 1-31</li>
+<li>15    小时</li>
+<li>5    秒</li>
+<li>MST    时区字符串</li>
+<li>-0700            时区数字偏移</li>
+<li>Jan, January    月的单词</li>
+<li>Mon, Monday    星期单词</li>
 </ul>
 <p>通过将格式编号加0，可以将天，月，年，小时，分钟和秒补零。 仅显示数字&lt;10。02表示零填充月份，即04或11。</p>
 <p>某些值可以用空格填充。 _2将是4或11。</p>
@@ -233,7 +233,7 @@ Month: Sep &lsquo;9&rsquo;, &lsquo;09&rsquo;,  4</p>
 <pre><code>s := &quot;2017-04-09 03:38:45.000 UTC&quot;
 t, err := time.Parse(&quot;2006-02-01 15:04:05.000 MST&quot;, s)
 if err != nil {
-	log.Fatalf(&quot;time.Parse() failed wiht '%s'\n&quot;, err)
+    log.Fatalf(&quot;time.Parse() failed wiht '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;year: %d, month: %d, day: %d\n&quot;, t.Year(), t.Month(), t.Day())
 </code></pre><blockquote>
@@ -255,31 +255,31 @@ fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
 </ul>
 <p>strftime指令列表:</p>
 <ul>
-<li>%a	Weekday as locale’s abbreviated name.	Mon</li>
-<li>%A	Weekday as locale’s full name.	Monday</li>
-<li>%b	The abbreviated month name	Jan</li>
-<li>%B	The full month name	January</li>
-<li>%d	Day of the month	01..31</li>
-<li>%e	Day of the month without a leading zero	1..31</li>
-<li>%j	Day of the year	001..366</li>
-<li>%m	Month of the year	01..12</li>
-<li>%U	Week number of the current year, starting with the first Sunday as the first day of the first week	00..53</li>
-<li>%W	Week number of the current year, starting with the first Monday as the first day of the first week	00..53</li>
-<li>%w	Day of the week (Sunday is 0)	0..6</li>
-<li>%x	Preferred representation for the date alone, no time</li>
-<li>%y	Year without a century	00..99</li>
-<li>%Y	Year with century</li>
-<li>%H	Hour of the day, 24-hour clock	00..23</li>
-<li>%I	Hour of the day, 12-hour clock	01..12</li>
-<li>%l	Hour of the day, 12-hour clock without a leading zero	1..12</li>
-<li>%M	Minute of the hour	00..59</li>
-<li>%P	Meridian indicator (&ldquo;am&rdquo; or &ldquo;pm&rdquo;)	am</li>
-<li>%p	Meridian indicator (&ldquo;AM&rdquo; or &ldquo;PM&rdquo;)	PM</li>
-<li>%S	Second of the minute	00..60</li>
-<li>%X	Preferred representation for the time alone, no date</li>
-<li>%Z	Time zone name</li>
-<li>%c	The preferred local date and time representation</li>
-<li>%%	Literal &ldquo;%&rdquo; character</li>
+<li>%a    Weekday as locale’s abbreviated name.    Mon</li>
+<li>%A    Weekday as locale’s full name.    Monday</li>
+<li>%b    The abbreviated month name    Jan</li>
+<li>%B    The full month name    January</li>
+<li>%d    Day of the month    01..31</li>
+<li>%e    Day of the month without a leading zero    1..31</li>
+<li>%j    Day of the year    001..366</li>
+<li>%m    Month of the year    01..12</li>
+<li>%U    Week number of the current year, starting with the first Sunday as the first day of the first week    00..53</li>
+<li>%W    Week number of the current year, starting with the first Monday as the first day of the first week    00..53</li>
+<li>%w    Day of the week (Sunday is 0)    0..6</li>
+<li>%x    Preferred representation for the date alone, no time</li>
+<li>%y    Year without a century    00..99</li>
+<li>%Y    Year with century</li>
+<li>%H    Hour of the day, 24-hour clock    00..23</li>
+<li>%I    Hour of the day, 12-hour clock    01..12</li>
+<li>%l    Hour of the day, 12-hour clock without a leading zero    1..12</li>
+<li>%M    Minute of the hour    00..59</li>
+<li>%P    Meridian indicator (&ldquo;am&rdquo; or &ldquo;pm&rdquo;)    am</li>
+<li>%p    Meridian indicator (&ldquo;AM&rdquo; or &ldquo;PM&rdquo;)    PM</li>
+<li>%S    Second of the minute    00..60</li>
+<li>%X    Preferred representation for the time alone, no date</li>
+<li>%Z    Time zone name</li>
+<li>%c    The preferred local date and time representation</li>
+<li>%%    Literal &ldquo;%&rdquo; character</li>
 </ul>
 <p>你还可以使用http://www.strfti.me/服务来帮助你构建strftime格式字符串。</p>
 <h2 id="比较时间和日期">比较时间和日期</h2>

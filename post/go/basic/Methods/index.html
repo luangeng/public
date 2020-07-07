@@ -152,20 +152,20 @@
                                             <p>方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C++中的类相似</p>
 <p>方法基本例子:</p>
 <pre><code>type Person struct {
-	FirstName string
-	LastName  string
+    FirstName string
+    LastName  string
 }
 
 func (p *Person) PrintFullName() {
-	fmt.Printf(&quot;%s %s\n&quot;, p.FirstName, p.LastName)
+    fmt.Printf(&quot;%s %s\n&quot;, p.FirstName, p.LastName)
 }
 
 func main() {
-	p := &amp;Person{
-		&quot;John&quot;,
-		&quot;Doe&quot;,
-	}
-	p.PrintFullName()
+    p := &amp;Person{
+        &quot;John&quot;,
+        &quot;Doe&quot;,
+    }
+    p.PrintFullName()
 }
 </code></pre><blockquote>
 <p>John Doe</p>
@@ -182,26 +182,26 @@ func main() {
 <p>方法接收者可以是值或指针。</p>
 <p>为方便起见，Go允许在值上调用指针接收器，并在指针上调用值接收器：</p>
 <pre><code>type Person struct {
-	FirstName string
-	LastName  string
+    FirstName string
+    LastName  string
 }
 
 func (p Person) PrintFullNameValue() {
-	fmt.Printf(&quot;PrintFullNameValue:   address of p is %p\n&quot;, &amp;p)
+    fmt.Printf(&quot;PrintFullNameValue:   address of p is %p\n&quot;, &amp;p)
 }
 
 func (p *Person) PrintFullNamePointer() {
-	fmt.Printf(&quot;PrintFullNamePointer: p is            %p\n&quot;, p)
+    fmt.Printf(&quot;PrintFullNamePointer: p is            %p\n&quot;, p)
 }
 
 func main() {
-	p := Person{
-		&quot;John&quot;,
-		&quot;Doe&quot;,
-	}
-	fmt.Printf(&quot;address of p:                         %p\n&quot;, &amp;p)
-	p.PrintFullNamePointer()
-	p.PrintFullNameValue()
+    p := Person{
+        &quot;John&quot;,
+        &quot;Doe&quot;,
+    }
+    fmt.Printf(&quot;address of p:                         %p\n&quot;, &amp;p)
+    p.PrintFullNamePointer()
+    p.PrintFullNameValue()
 }
 </code></pre><blockquote>
 <p>address of p:                         0xc00000c060<br>
@@ -210,22 +210,22 @@ PrintFullNameValue:   address of p is 0xc00000c080</p>
 </blockquote>
 <p>在值的副本上调用值接收者：</p>
 <pre><code>type Foo struct {
-	Str string
+    Str string
 }
 
 func (f Foo) Print() {
-	fmt.Printf(&quot;Value of Str inside Print: '%s'\n&quot;, f.Str)
-	fmt.Printf(&quot;Address of &amp;f  inside Print: 0x%p\n&quot;, &amp;f)
-	f.Str = &quot;changed&quot;
+    fmt.Printf(&quot;Value of Str inside Print: '%s'\n&quot;, f.Str)
+    fmt.Printf(&quot;Address of &amp;f  inside Print: 0x%p\n&quot;, &amp;f)
+    f.Str = &quot;changed&quot;
 }
 
 func main() {
-	fv := Foo{
-		Str: &quot;Foo&quot;,
-	}
-	fv.Print()
-	fmt.Printf(&quot;Address of &amp;fv before Print: 0x%p\n&quot;, &amp;fv);
-	fmt.Printf(&quot;Value of Str after Print: '%s'\n&quot;, fv.Str)
+    fv := Foo{
+        Str: &quot;Foo&quot;,
+    }
+    fv.Print()
+    fmt.Printf(&quot;Address of &amp;fv before Print: 0x%p\n&quot;, &amp;fv);
+    fmt.Printf(&quot;Value of Str after Print: '%s'\n&quot;, fv.Str)
 }
 </code></pre><blockquote>
 <p>Value of Str inside Print: &lsquo;Foo&rsquo;<br>

@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Channels-and-select/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="A channel is a thread-safe queue of values of a given type. A primary use for channels is to communicate between goroutines. For that reason we talk about sending values to a channel (ch &lt;- value) and receiving values from a channel (value &lt;- ch). Basic of channels: func genInts(chInts chan int) { chInts &lt;- rand.Intn(1000) } func main() { chInts := make(chan int) for i := 0; i &lt;">
+    content="channel是给定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。 goroutines通信时使用ch&">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Channels-and-select/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Channels-and-select/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go channel和select</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2197 Words
+                                        Posted @ 2019-09-09 · 2829 Words
                                         
                                         · Tags: Go
                                         
@@ -149,190 +149,180 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>A channel is a thread-safe queue of values of a given type.</p>
-<p>A primary use for channels is to communicate between goroutines.</p>
-<p>For that reason we talk about sending values to a channel (ch &lt;- value) and receiving values from a channel (value &lt;- ch).</p>
-<p>Basic of channels:</p>
-<p>func genInts(chInts chan int) {
-chInts &lt;- rand.Intn(1000)
-}</p>
-<p>func main() {
-chInts := make(chan int)
-for i := 0; i &lt; 2; i++ {
-go genInts(chInts)
-}
-n := &lt;-chInts
-fmt.Printf(&ldquo;n: %d\n&rdquo;, n)</p>
-<pre><code>select {
-case n := &lt;-chInts:
-    fmt.Printf(&quot;n: %d\n&quot;, n)
-}
-</code></pre>
-<p>}</p>
-<pre><code>n: 81
-n: 887
-Zero value of a channel is nil. Sending to nil channel blocks forever so the first thing to do is to create a channel with make(chan &lt;type&gt;, &lt;queue size&gt;). Queue size is optional and defaults to unbuffered channel (you can think of it as size 0).
-
-Send operator chan &lt;- value puts the value at the end of the queue.
-
-If channel is full, &lt;- will block.
-
-Send on a nil channel blocks forever.
-
-Retrieve statement value = &lt;- chan picks up the value from the front of the queue.
-
-If channel is empty, retrieve will block.
-
-Another way to retrieve a value form channel is to use select statement.
-
-Using select allows to:
-
-wait on multiple channels
-do a non-blocking wait
-implement timeouts by waiting on a timer channel
-Yet another is to use range.
-
-Channels have a fixed capacity.
-
-Channel created without explicit size (e.g. make(chan int)) has size 0 and is called unbuffered channel. Send on unbuffered channel blocks until a corresponding receive completes.
-
-Channel created with explicit size (e.g. make(chan int, 3)) is called buffered channel with capacity of 3.
-
-The first 3 sends will finish immediately, the 4th send will block until a value is received from the channel.
-
-You can close a channel with close(chan).
-
-Closing channel twice panics.
-
-Sending to closed channel panics.
-
-A receive from closed channels:
-
-returns buffered values
-return zero value immediately if there are no more buffered values
-Closing a channel also ends range loop over a channel.
-
-## Using range to read from a channel
-When reading multiple values from a channel, using range is a common pattern:
-
-func foo(ch chan int) {
-	ch &lt;- 1
-	ch &lt;- 2
-	close(ch)
+                                            <p>channel是给定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。</p>
+<p>goroutines通信时使用ch&lt;-value将值写入channel,使用value&lt;-ch从channel中接收值.</p>
+<p>channel基本使用方法:</p>
+<pre><code>func genInts(chInts chan int) {
+    chInts &lt;- rand.Intn(1000)
 }
 
 func main() {
-	ch := make(chan int)
-	go foo(ch)
-	for n := range ch {
-		fmt.Println(n)
-	}
-	fmt.Println(&quot;channel is now closed&quot;)
-}
-</code></pre><p>1
-2
-channel is now closed
-Using a for range loop is one of three ways to read values from a channel.</p>
-<p>The loop ends when the channel is closed.</p>
-<p>This is a common pattern when using worker pool: * create a single channel for all workers * launch workers * workers use for v := range chan to pick up jobs to process * after enquing all jobs, close the channel so that worker goroutines end when they process all jobs from a channel</p>
-<h2 id="timeout-reading-from-a-channel-with-select">Timeout reading from a channel with select</h2>
-<p>Receiving from a channel with &lt;- chan or for range loop blocks.</p>
-<p>Sometimes you want to limit time waiting for a value on a channel.</p>
-<p>It’s possible with select:</p>
-<p>func main() {
-chResult := make(chan int, 1)</p>
-<pre><code>go func() {
-    time.Sleep(1 * time.Second)
-    chResult &lt;- 5
-    fmt.Printf(&quot;Worker finished&quot;)
-}()
+    chInts := make(chan int)
+    for i := 0; i &lt; 2; i++ {
+        go genInts(chInts)
+    }
+    n := &lt;-chInts
+    fmt.Printf(&quot;n: %d\n&quot;, n)
 
-select {
-case res := &lt;-chResult:
-    fmt.Printf(&quot;Got %d from worker\n&quot;, res)
-case &lt;-time.After(100 * time.Millisecond):
-    fmt.Printf(&quot;Timed out before worker finished\n&quot;)
+    select {
+    case n := &lt;-chInts:
+        fmt.Printf(&quot;n: %d\n&quot;, n)
+    }
 }
-</code></pre>
-<p>}</p>
-<pre><code>Timed out before worker finished
-Let's dig into how this works:
+</code></pre><blockquote>
+<p>n: 81<br>
+n: 887</p>
+</blockquote>
+<p>channel的零值是nil. 写入nil channel会阻塞,所以在使用channel前的第一件事是使用<code>make(chan &lt;type&gt;, &lt;queue size&gt;)</code>初始化它.Queue size是可选的,默认是0,代表没有缓冲的channel.</p>
+<p>使用chan&lt;-value发送数据会将值添加到队列的最后.</p>
+<p>如果channel满了, &lt;- 会阻塞</p>
+<p>发送数据到nil channel会永久阻塞.</p>
+<p>使用value=&lt;-chan读取数据是从队列的头开始.</p>
+<p>如果channel是空的,读取操作会阻塞.</p>
+<p>从channel读取数据的另一种方法是使用select语句。</p>
+<p>使用select语句可以:</p>
+<ul>
+<li>等待多个channel</li>
+<li>完成非阻塞等待</li>
+<li>实现有延时的等待(timer channel)</li>
+</ul>
+<p>channel是有固定的大小.</p>
+<p>初始化channel时如果不指定大小(make(chan int)),则它的大小为0,称为无缓冲channel. 发送到无缓冲channel会阻塞,直到有相应的接收完成.</p>
+<p>初始化channel时如果指定大小(make(chan int, 3))称为缓冲channel,缓冲大小为3.</p>
+<p>前2个发送回立即结束, 第4个发送会阻塞,直到有值从channel中取出.</p>
+<p>使用close(chan)关闭channel.</p>
+<p>关闭两次会引发panic.</p>
+<p>发送数据到关闭的channel会引发panic.</p>
+<p>从关闭的channel中读取值会:</p>
+<ul>
+<li>返回缓冲的值</li>
+<li>如果没有更多的缓冲值，则立即返回零值</li>
+</ul>
+<h2 id="使用range从channel中读取数据">使用range从channel中读取数据</h2>
+<p>当从channel中读取多个值时,通常会使用range:</p>
+<pre><code>func foo(ch chan int) {
+    ch &lt;- 1
+    ch &lt;- 2
+    close(ch)
+}
 
-select {
-	case res := &lt;-chResult:
-		fmt.Printf(&quot;Got %d from worker\n&quot;, res)
-	case &lt;-time.After(100 * time.Millisecond):
-		fmt.Printf(&quot;Timed out before worker finished\n&quot;)
+func main() {
+    ch := make(chan int)
+    go foo(ch)
+    for n := range ch {
+        fmt.Println(n)
+    }
+    fmt.Println(&quot;channel is now closed&quot;)
 }
-time.After returns a channel on which a value will be enqueued after a given time (100 milliseconds in our example). It's worth nothing that it's at least 100 ms and can be more. Let's call it a timeout channel.
-we don't care about the value read from timeout channel. We only care that value was sent on the channel
+</code></pre><blockquote>
+<p>1<br>
+2<br>
+channel is now closed</p>
+</blockquote>
+<p>channel关闭,循环就会结束</p>
+<p>使用工作池时，这是常见的模式：</p>
+<ul>
+<li>为所有工作创建一个channel</li>
+<li>启动工作</li>
+<li>工作使用<code>v:=range chan</code>来提取要处理的任务</li>
+<li>在对所有作业进行排队之后，关闭channel，以便goroutine处理channel中的所有作业</li>
+</ul>
+<h2 id="使用select从channel中超时读取">使用select从channel中超时读取</h2>
+<p>从channel中读取数据时,有时候希望限制等待的时间</p>
+<p>使用select可以达到目的:</p>
+<pre><code>func main() {
+    chResult := make(chan int, 1)
+
+    go func() {
+        time.Sleep(1 * time.Second)
+        chResult &lt;- 5
+        fmt.Printf(&quot;Worker finished&quot;)
+    }()
+
+    select {
+    case res := &lt;-chResult:
+        fmt.Printf(&quot;Got %d from worker\n&quot;, res)
+    case &lt;-time.After(100 * time.Millisecond):
+        fmt.Printf(&quot;Timed out before worker finished\n&quot;)
+    }
+}
+</code></pre><blockquote>
+<p>Timed out before worker finished</p>
+</blockquote>
+<p>让我们看看这是如何工作的:</p>
+<pre><code>select {
+    case res := &lt;-chResult:
+        fmt.Printf(&quot;Got %d from worker\n&quot;, res)
+    case &lt;-time.After(100 * time.Millisecond):
+        fmt.Printf(&quot;Timed out before worker finished\n&quot;)
+}
+</code></pre><p>time.After returns a channel on which a value will be enqueued after a given time (100 milliseconds in our example). It&rsquo;s worth nothing that it&rsquo;s at least 100 ms and can be more. Let&rsquo;s call it a timeout channel.
+we don&rsquo;t care about the value read from timeout channel. We only care that value was sent on the channel
 we use select to wait on 2 channels: chResult and a timeout channel
 select finishes when receive on one of the 2 channels completes
-we either get the value on chResult before timeout expires or we receive the value from timeout channel
-
-## Closing channels
-You can close a channel with close(chan).
-
-Main purpose of closing a channel is to notify worker goroutines that their work is done and they can finish.
-
-This ensures you don’t leak goroutines.
-
-Closing a channel ends range loop over it:
-
-ch := make(chan string)
+we either get the value on chResult before timeout expires or we receive the value from timeout channel</p>
+<h2 id="关闭channel">关闭channel</h2>
+<p>使用close(chan)关闭channel.</p>
+<p>关闭channel的主要目的是通知worker goroutine他们的工作已经完成并且可以结束。保证了goroutines不会泄露</p>
+<pre><code>ch := make(chan string)
 
 go func() {
-	for s := range ch {
-		fmt.Printf(&quot;received from channel: %s\n&quot;, s)
-	}
-	fmt.Print(&quot;range loop finished because ch was closed\n&quot;)
+    for s := range ch {
+        fmt.Printf(&quot;received from channel: %s\n&quot;, s)
+    }
+    fmt.Print(&quot;range loop finished because ch was closed\n&quot;)
 }()
 
 ch &lt;- &quot;foo&quot;
 close(ch)
-</code></pre><p>received from channel: foo
-range loop finished because ch was closed
-A receive from closed channels returns zero value immediately:</p>
-<p>ch := make(chan string)
+</code></pre><blockquote>
+<p>received from channel: foo</p>
+</blockquote>
+<p>从已关闭的channel中读取数据会立即返回零值.</p>
+<pre><code>ch := make(chan string)
 close(ch)
 v := &lt;-ch
-fmt.Printf(&ldquo;Receive from closed channel immediately returns zero value of the type: %#v\n&rdquo;, v)</p>
-<pre><code>Receive from closed channel immediately returns zero value of the type: &quot;&quot;
-When receiving, you can optionally test if channel is closed:
-
-ch := make(chan int)
+fmt.Printf(&quot;Receive from closed channel immediately returns zero value of the type: %#v\n&quot;, v)
+</code></pre><blockquote>
+<p>Receive from closed channel immediately returns zero value of the type: &quot;&rdquo;
+也可以这样判断channel是否关闭:</p>
+</blockquote>
+<pre><code>ch := make(chan int)
 go func() {
-	ch &lt;- 1
-	close(ch)
+    ch &lt;- 1
+    close(ch)
 }()
 v, isClosed := &lt;-ch
 fmt.Printf(&quot;received %d, is channel closed: %v\n&quot;, v, isClosed)
 v, isClosed = &lt;-ch
 fmt.Printf(&quot;received %d, is channel closed: %v\n&quot;, v, isClosed)
-</code></pre><p>received 1, is channel closed: true
-received 0, is channel closed: false
-Closing channel twice panics:</p>
-<p>ch := make(chan string)
+</code></pre><blockquote>
+<p>received 1, is channel closed: true<br>
+received 0, is channel closed: false</p>
+</blockquote>
+<p>重复关闭channel会引发panic:</p>
+<pre><code>ch := make(chan string)
 close(ch)
-close(ch)</p>
-<pre><code>panic: close of closed channel
-
-goroutine 1 [running]:
-main.main()
-	/tmp/src438901704/main.go:9 +0x57
-exit status 2
-Sending to closed channel panics:
-
-ch := make(chan int)
+close(ch)
+</code></pre><blockquote>
+<p>panic: close of closed channel</p>
+<p>goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src438901704/main.go:9 +0x57<br>
+exit status 2</p>
+</blockquote>
+<p>发送数据到关闭的channel引发panic:</p>
+<pre><code>ch := make(chan int)
 close(ch)
 ch &lt;- 5 // panics
-</code></pre><p>panic: send on closed channel</p>
-<p>goroutine 1 [running]:
-main.main()
-/tmp/src194641031/main.go:9 +0x63
+</code></pre><blockquote>
+<p>panic: send on closed channel</p>
+<p>goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src194641031/main.go:9 +0x63<br>
 exit status 2</p>
-<h2 id="buffered-vs-unbuffered-channels">Buffered vs. unbuffered channels</h2>
-<p>By default channels are unbuffered.</p>
+</blockquote>
+<h2 id="是否缓冲">是否缓冲</h2>
 <p>Sending and receiving goroutines block unless sending goroutine has a value to send and receiving goroutine is ready to receive.</p>
 <p>Insisting on synchronization for every receive/send operation might introduce unnecessary slowdowns.</p>
 <p>Imagine a scenario where one worker produces values and another worker consumes it.</p>
@@ -340,132 +330,133 @@ exit status 2</p>
 <p>If producer can queue up multiple values in the channel, producer doesn’t have to wait for consumer to be ready for each value.</p>
 <p>This is a job for buffered channels.</p>
 <p>By allowing producer to proceed independently of the consumer we can speed up some scenarios.</p>
-<p>func producer(ch chan int) {
-for i := 0; i &lt; 5; i++ {
-if i%2 == 0 {
-time.Sleep(10 * time.Millisecond)
-} else {
-time.Sleep(1 * time.Millisecond)
+<pre><code>func producer(ch chan int) {
+    for i := 0; i &lt; 5; i++ {
+        if i%2 == 0 {
+            time.Sleep(10 * time.Millisecond)
+        } else {
+            time.Sleep(1 * time.Millisecond)
+        }
+        ch &lt;- i
+    }
 }
-ch &lt;- i
-}
-}</p>
-<p>func consumer(ch chan int) {
-total := 0
-for i := 0; i &lt; 5; i++ {
-if i%2 == 1 {
-time.Sleep(10 * time.Millisecond)
-} else {
-time.Sleep(1 * time.Millisecond)
-}
-total += &lt;-ch
-}
-}</p>
-<p>func unbuffered() {
-timeStart := time.Now()
-ch := make(chan int)
-go producer(ch)
-consumer(ch)
-fmt.Printf(&ldquo;Unbuffered version took %s\n&rdquo;, time.Since(timeStart))
-}</p>
-<p>func buffered() {
-timeStart := time.Now()
-ch := make(chan int, 5)
-go producer(ch)
-consumer(ch)
-fmt.Printf(&ldquo;Buffered version took %s\n&rdquo;, time.Since(timeStart))
-}</p>
-<p>func main() {
-unbuffered()
-buffered()
-}</p>
-<pre><code>Unbuffered version took 50.854313ms
-Buffered version took 32.800727ms
 
-## Non-blocking receive with select
-You can use default part of select statement to do a non-blocking wait.
+func consumer(ch chan int) {
+    total := 0
+    for i := 0; i &lt; 5; i++ {
+        if i%2 == 1 {
+            time.Sleep(10 * time.Millisecond)
+        } else {
+            time.Sleep(1 * time.Millisecond)
+        }
+        total += &lt;-ch
+    }
+}
+
+func unbuffered() {
+    timeStart := time.Now()
+    ch := make(chan int)
+    go producer(ch)
+    consumer(ch)
+    fmt.Printf(&quot;Unbuffered version took %s\n&quot;, time.Since(timeStart))
+}
+
+func buffered() {
+    timeStart := time.Now()
+    ch := make(chan int, 5)
+    go producer(ch)
+    consumer(ch)
+    fmt.Printf(&quot;Buffered version took %s\n&quot;, time.Since(timeStart))
+}
 
 func main() {
-	ch := make(chan int, 1)
+    unbuffered()
+    buffered()
+}
+</code></pre><blockquote>
+<p>Unbuffered version took 50.854313ms
+Buffered version took 32.800727ms</p>
+</blockquote>
+<h2 id="non-blocking-receive-with-select">Non-blocking receive with select</h2>
+<p>You can use default part of select statement to do a non-blocking wait.</p>
+<pre><code>func main() {
+    ch := make(chan int, 1)
 
 end:
-	for {
-		select {
-		case n := &lt;-ch:
-			fmt.Printf(&quot;Received %d from a channel\n&quot;, n)
-			break end
-		default:
-			fmt.Print(&quot;Channel is empty\n&quot;)
-			ch &lt;- 8
-		}
-		// wait for channel to be filled with values
-		// don't use time.Sleep() like that in production code
-		time.Sleep(20 * time.Millisecond)
-	}
+    for {
+        select {
+        case n := &lt;-ch:
+            fmt.Printf(&quot;Received %d from a channel\n&quot;, n)
+            break end
+        default:
+            fmt.Print(&quot;Channel is empty\n&quot;)
+            ch &lt;- 8
+        }
+        // wait for channel to be filled with values
+        // don't use time.Sleep() like that in production code
+        time.Sleep(20 * time.Millisecond)
+    }
 }
-</code></pre><p>Channel is empty
-Received 8 from a channel
-During first iteration of for loop select immediately ends up in default clause because channel is empty.</p>
+</code></pre><blockquote>
+<p>Channel is empty<br>
+Received 8 from a channel</p>
+</blockquote>
+<p>During first iteration of for loop select immediately ends up in default clause because channel is empty.</p>
 <p>We send a value to the channel there so the next select will pick up the value from the channel.</p>
 <h2 id="signaling-channel-with-chan-struct">Signaling channel with chan struct</h2>
 <p>Sometimes you don’t want to send a value over a channel but use it only as a way to signal an event.</p>
 <p>In those cases use chan struct{} to document the fact that the value sent over a channel has no meaning.</p>
 <p>Signaling channel is often used as a way to tell goroutines to finish.</p>
-<p>func worker(ch chan int, chQuit chan struct{}) {
-for {
-select {
-case v := &lt;-ch:
-fmt.Printf(&ldquo;Got value %d\n&rdquo;, v)
-case &lt;-chQuit:
-fmt.Printf(&ldquo;Signalled on quit channel. Finishing\n&rdquo;)
-chQuit &lt;- struct{}{}
-return
-}
-}
+<pre><code>func worker(ch chan int, chQuit chan struct{}) {
+    for {
+        select {
+        case v := &lt;-ch:
+            fmt.Printf(&quot;Got value %d\n&quot;, v)
+        case &lt;-chQuit:
+            fmt.Printf(&quot;Signalled on quit channel. Finishing\n&quot;)
+            chQuit &lt;- struct{}{}
+            return
+        }
+    }
 }
 func main() {
-ch, chQuit := make(chan int), make(chan struct{})
-go worker(ch, chQuit)
-ch &lt;- 3
-chQuit &lt;- struct{}{}</p>
-<pre><code>// wait to be signalled back by the worker
-&lt;-chQuit
-</code></pre>
-<p>}</p>
-<pre><code>Got value 3
-Signalled on quit channel. Finishing
+    ch, chQuit := make(chan int), make(chan struct{})
+    go worker(ch, chQuit)
+    ch &lt;- 3
+    chQuit &lt;- struct{}{}
 
-## Checking if channel has data available
-Receiving on a channel blocks if there is no data in the channel.
-
-What if you don’t want to block?
-
-You might be tempted to check if channel has data before doing a receive.
-
-You can’t do that in Go as it couldn’t possibly work correctly. Between the time you check for availability and the time you do a receive, some other goroutine could have picked up the value.
-
-If you want to avoid infinite waiting, you can add a timeout or do a non-blocking wait by using select.
-
-## Channel idioms
-Channels exhibit the following properties:
-
-send to a nil channel blocks forever
-receive from a nil channel blocks forever
-send to a closed channel panics
-receive from a closed channel returns the zero value immediately
-Send to a nil channel blocks forever
-package main
+    // wait to be signalled back by the worker
+    &lt;-chQuit
+}
+</code></pre><blockquote>
+<p>Got value 3
+Signalled on quit channel. Finishing</p>
+</blockquote>
+<h2 id="checking-if-channel-has-data-available">Checking if channel has data available</h2>
+<p>Receiving on a channel blocks if there is no data in the channel.</p>
+<p>What if you don’t want to block?</p>
+<p>You might be tempted to check if channel has data before doing a receive.</p>
+<p>You can’t do that in Go as it couldn’t possibly work correctly. Between the time you check for availability and the time you do a receive, some other goroutine could have picked up the value.</p>
+<p>If you want to avoid infinite waiting, you can add a timeout or do a non-blocking wait by using select.</p>
+<h2 id="channel-idioms">Channel idioms</h2>
+<p>channel具有以下属性：</p>
+<blockquote>
+<p>send to a nil channel blocks forever<br>
+receive from a nil channel blocks forever<br>
+send to a closed channel panics<br>
+receive from a closed channel returns the zero value immediately<br>
+Send to a nil channel blocks forever</p>
+</blockquote>
+<pre><code>package main
 
 func main() {
         var ch chan bool
         ch &lt;- true // deadlocks because ch is nil
 }
-Uninitialized value of a channel is nil so the above program blocks forever.
-
-There's no valid use case for that so it's always a bug. Don't do it.
-
-Receive from a nil channel blocks forever
-package main
+</code></pre><p>Uninitialized value of a channel is nil so the above program blocks forever.</p>
+<p>There&rsquo;s no valid use case for that so it&rsquo;s always a bug. Don&rsquo;t do it.</p>
+<p>Receive from a nil channel blocks forever</p>
+<pre><code>package main
 
 import &quot;fmt&quot;
 
@@ -473,146 +464,132 @@ func main() {
         var ch chan bool
         fmt.Printf(&quot;Value received from ch is: %v\n&quot;, &lt;-ch) // deadlock because c is nil
 }
-Similarly, receive from nil channel blocks forever and it's always a bug. Don't do it.
-
-Send to a closed channel panics
-package main
+</code></pre><p>Similarly, receive from nil channel blocks forever and it&rsquo;s always a bug. Don&rsquo;t do it.</p>
+<p>Send to a closed channel panics</p>
+<pre><code>package main
 
 import (
-	&quot;fmt&quot;
-	&quot;time&quot;
+    &quot;fmt&quot;
+    &quot;time&quot;
 )
 
 func main() {
-	var ch = make(chan int, 100)
-	go func() {
-		ch &lt;- 1
-		time.Sleep(time.Second)
-		close(ch)
-		ch &lt;- 1
-	}()
-	for i := range ch {
-		fmt.Printf(&quot;i: %d\n&quot;, i)
-	}
+    var ch = make(chan int, 100)
+    go func() {
+        ch &lt;- 1
+        time.Sleep(time.Second)
+        close(ch)
+        ch &lt;- 1
+    }()
+    for i := range ch {
+        fmt.Printf(&quot;i: %d\n&quot;, i)
+    }
 }
-Output:
-
-i: 1
-panic: send on closed channel
-
-goroutine 5 [running]:
-main.main.func1(0x452000, 0xc99)
-	/tmp/sandbox307976305/main.go:14 +0xa0
-created by main.main
-	/tmp/sandbox307976305/main.go:10 +0x60
-You should architecture your programs so that one sender controls the lifetime of a channel.
-
-This rule emphasizes that: if there's only one channel sender then there's no problem making sure that you never write to a closed channel.
-
-If you have multiple senders then it becomes hard: if one sender closes a channel, how other senders are supposed to not crash?
-
-Instead of trying to find solution to the above problem, re-architect your code so that there's only one sender that controls the lifetime of a channel.
-
-Receive from a closed channel returns the zero value immediately
-package main
+</code></pre><blockquote>
+<p>i: 1<br>
+panic: send on closed channel</p>
+<p>goroutine 5 [running]:<br>
+main.main.func1(0x452000, 0xc99)<br>
+/tmp/sandbox307976305/main.go:14 +0xa0<br>
+created by main.main<br>
+/tmp/sandbox307976305/main.go:10 +0x60</p>
+</blockquote>
+<p>You should architecture your programs so that one sender controls the lifetime of a channel.</p>
+<p>This rule emphasizes that: if there&rsquo;s only one channel sender then there&rsquo;s no problem making sure that you never write to a closed channel.</p>
+<p>If you have multiple senders then it becomes hard: if one sender closes a channel, how other senders are supposed to not crash?</p>
+<p>Instead of trying to find solution to the above problem, re-architect your code so that there&rsquo;s only one sender that controls the lifetime of a channel.</p>
+<p>Receive from a closed channel returns the zero value immediately</p>
+<pre><code>package main
 
 import &quot;fmt&quot;
 
 func main() {
-	// show
-	ch := make(chan int, 2)
-	ch &lt;- 1
-	ch &lt;- 2
-	close(ch)
-	for i := 0; i &lt; 3; i++ {
-		fmt.Printf(&quot;%d &quot;, &lt;-ch) // -&gt; 1 2 0
-	}
-	// show end
+    // show
+    ch := make(chan int, 2)
+    ch &lt;- 1
+    ch &lt;- 2
+    close(ch)
+    for i := 0; i &lt; 3; i++ {
+        fmt.Printf(&quot;%d &quot;, &lt;-ch) // -&gt; 1 2 0
+    }
+    // show end
 }
-This is not ideal: we've read a value from a channel that was never sent.
-
-It's easy to remedy:
-
-package main
+</code></pre><p>This is not ideal: we&rsquo;ve read a value from a channel that was never sent.</p>
+<p>It&rsquo;s easy to remedy:</p>
+<pre><code>package main
 
 import &quot;fmt&quot;
 
 func main() {
-	ch := make(chan int, 2)
-	ch &lt;- 1
-	ch &lt;- 2
-	close(ch)
-	// show
-	for {
-		v, ok := &lt;-ch
-		if !ok {
-			break
-		}
-		fmt.Printf(&quot;%d &quot;, v) // -&gt; 1 2
-	}
-	// show end
+    ch := make(chan int, 2)
+    ch &lt;- 1
+    ch &lt;- 2
+    close(ch)
+    // show
+    for {
+        v, ok := &lt;-ch
+        if !ok {
+            break
+        }
+        fmt.Printf(&quot;%d &quot;, v) // -&gt; 1 2
+    }
+    // show end
 }
-And even better and more idiomatically:
-
-package main
+</code></pre><p>And even better and more idiomatically:</p>
+<pre><code>package main
 
 import &quot;fmt&quot;
 
 func main() {
-	ch := make(chan int, 2)
-	ch &lt;- 1
-	ch &lt;- 2
-	close(ch)
-	// show
-	for v := range ch {
-		fmt.Printf(&quot;%d &quot;, v) // -&gt; 1 2
-	}
-	// show end
+    ch := make(chan int, 2)
+    ch &lt;- 1
+    ch &lt;- 2
+    close(ch)
+    // show
+    for v := range ch {
+        fmt.Printf(&quot;%d &quot;, v) // -&gt; 1 2
+    }
+    // show end
 }
-Closing channel to signal a goroutine has finished
-Sometimes you need to wait until a goroutine has finished.
-
-The fact that a receive from a closed channel returns immediately but otherwise blocks can be used to coordinate between goroutines by a shared &quot;done&quot; channel.
-
-One goroutine closes the channel at the end.
-
-The other goroutine can either wait indefinitely until that happens with a receive: chDone &lt;-
-
-In more complex scenarios it can receive from multiple channels with select statement. For example, to limit a waiting time:
-
-select {
-	case &lt;- chDone:
-		// goroutine has finished
-	case &lt;- time.After(time.Second *5):
-		// goroutine didn't finish but we don't want to wait
-		// more than 5 seconds
+</code></pre><p>Closing channel to signal a goroutine has finished
+Sometimes you need to wait until a goroutine has finished.</p>
+<p>The fact that a receive from a closed channel returns immediately but otherwise blocks can be used to coordinate between goroutines by a shared &ldquo;done&rdquo; channel.</p>
+<p>One goroutine closes the channel at the end.</p>
+<p>The other goroutine can either wait indefinitely until that happens with a receive: chDone &lt;-</p>
+<p>In more complex scenarios it can receive from multiple channels with select statement. For example, to limit a waiting time:</p>
+<pre><code>select {
+    case &lt;- chDone:
+        // goroutine has finished
+    case &lt;- time.After(time.Second *5):
+        // goroutine didn't finish but we don't want to wait
+        // more than 5 seconds
 }
-To check if channel is closed (i.e. goroutine has finished) without waiting:
-
-package main
+</code></pre><p>To check if channel is closed (i.e. goroutine has finished) without waiting:</p>
+<pre><code>package main
 
 import &quot;fmt&quot;
 
 // show
 func checkState(ch chan struct{}) {
-	select {
-	case &lt;-ch:
-		fmt.Printf(&quot;channel is closed\n&quot;)
-	default:
-		fmt.Printf(&quot;channel is not closed\n&quot;)
-	}
+    select {
+    case &lt;-ch:
+        fmt.Printf(&quot;channel is closed\n&quot;)
+    default:
+        fmt.Printf(&quot;channel is not closed\n&quot;)
+    }
 }
 // show end
 
 func main() {
-	// show
-	ch := make(chan struct{})
-	checkState(ch)
-	close(ch)
-	checkState(ch)
-	// show end
+    // show
+    ch := make(chan struct{})
+    checkState(ch)
+    close(ch)
+    checkState(ch)
+    // show end
 }
-This technique is used in context.Done() channel.</code></pre>
+</code></pre><p>This technique is used in context.Done() channel.</p>
+
                                             
                                         </div>
 

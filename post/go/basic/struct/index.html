@@ -155,42 +155,42 @@
 <p>结构的零值中其字段全为各自零值。</p>
 <p>struct基本使用方法:</p>
 <pre><code>type MyStruct struct {
-	IntVal           int
-	StringVal        string
-	unexportedIntVal int
+    IntVal           int
+    StringVal        string
+    unexportedIntVal int
 }
 </code></pre><h2 id="struct声明">struct声明</h2>
 <p>一个基本的struct声明如下:</p>
 <pre><code>// User describes a user
 type User struct {
-	FirstName, LastName string
-	Email               string
-	Age                 int
-	userID              int
+    FirstName, LastName string
+    Email               string
+    Age                 int
+    userID              int
 }
 
 // FullName returns full name of a user
 func (u *User) FullName() string {
-	return fmt.Sprintf(&quot;%s %s&quot;, u.FirstName, u.LastName)
+    return fmt.Sprintf(&quot;%s %s&quot;, u.FirstName, u.LastName)
 }
 
 func main() {
-	// zero value of struct
-	var u User
-	fmt.Printf(&quot;u: %#v\n\n&quot;, u)
+    // zero value of struct
+    var u User
+    fmt.Printf(&quot;u: %#v\n\n&quot;, u)
 
-	// pu is *User i.e. a pointer to User struct
-	pu := new(User)
-	pu.Age = 33
-	fmt.Printf(&quot;*pu: %#v\n&quot;, *pu)
+    // pu is *User i.e. a pointer to User struct
+    pu := new(User)
+    pu.Age = 33
+    fmt.Printf(&quot;*pu: %#v\n&quot;, *pu)
 
-	// &amp;User{} is the same as new(User)
-	pu = &amp;User{}
-	pu.Age = 18
-	fmt.Printf(&quot;*pu: %#v\n&quot;, *pu)
+    // &amp;User{} is the same as new(User)
+    pu = &amp;User{}
+    pu.Age = 18
+    fmt.Printf(&quot;*pu: %#v\n&quot;, *pu)
 
-	pu.FirstName, pu.LastName = &quot;Jane&quot;, &quot;Doe&quot;
-	fmt.Printf(&quot;pu.FullName(): %s\n&quot;, pu.FullName())
+    pu.FirstName, pu.LastName = &quot;Jane&quot;, &quot;Doe&quot;
+    fmt.Printf(&quot;pu.FullName(): %s\n&quot;, pu.FullName())
 }
 </code></pre><blockquote>
 <p>u: main.User{FirstName:&quot;&quot;, LastName:&quot;&quot;, Email:&quot;&quot;, Age:0, userID:0}</p>
@@ -215,11 +215,11 @@ Omitted fields are set to the zero value for its type.</p>
 <h2 id="匿名struct">匿名struct</h2>
 <p>struct可以是匿名的:</p>
 <pre><code>data := struct {
-	Number int
-	Text   string
+    Number int
+    Text   string
 }{
-	42,
-	&quot;Hello world!&quot;,
+    42,
+    &quot;Hello world!&quot;,
 }
 
 fmt.Printf(&quot;data: %+v\n&quot;, data)
@@ -300,13 +300,13 @@ func main() {
 <pre><code>package bank
 
 type Account struct {
-	UserID int
+    UserID int
   accessToken string
 }
 
 func ProcessUser(u *Account) {
-	// ProcessUser() can access u.accessToken because
-	// it's defined in the same package
+    // ProcessUser() can access u.accessToken because
+    // it's defined in the same package
   u.accessToken = doSomething(u) 
 }
 </code></pre><h2 id="struct标签">struct标签</h2>
@@ -399,22 +399,22 @@ func main() {
 </code></pre><h2 id="方法">方法</h2>
 <p>struct的方法是附加到struct的函数:</p>
 <pre><code>type User struct {
-	name string
+    name string
 }
 
 func (u User) Name() string {
-	return u.name
+    return u.name
 }
 
 func (u *User) SetName(newName string) {
-	u.name = newName
+    u.name = newName
 }
 
 func main() {
-	var me User
+    var me User
 
-	me.SetName(&quot;Slim Shady&quot;)
-	fmt.Println(&quot;My name is&quot;, me.Name())
+    me.SetName(&quot;Slim Shady&quot;)
+    fmt.Println(&quot;My name is&quot;, me.Name())
 }
 </code></pre><blockquote>
 <p>My name is Slim Shady</p>

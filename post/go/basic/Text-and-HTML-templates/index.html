@@ -195,20 +195,20 @@ Initial . refers to top-level scope:
 tmplStr := &quot;Data: {{.}}\n&quot;
 t := template.Must(template.New(&quot;simple&quot;).Parse(tmplStr))
 execWithData := func(data interface{}) {
-	err := t.Execute(os.Stdout, data)
-	if err != nil {
-		log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-	}
+    err := t.Execute(os.Stdout, data)
+    if err != nil {
+        log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    }
 }
 
 execWithData(5)
 execWithData(&quot;foo&quot;)
 st := struct {
-	Number int
-	Str    string
+    Number int
+    Str    string
 }{
-	Number: 3,
-	Str:    &quot;hello&quot;,
+    Number: 3,
+    Str:    &quot;hello&quot;,
 }
 execWithData(st)
 </code></pre><p>Data: 5
@@ -249,16 +249,16 @@ const tmplStr = `{{range . -}}
 t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
 
 data := []struct {
-	Name  string
-	IsNew bool
+    Name  string
+    IsNew bool
 }{
-	{&quot;Bridge&quot;, false},
-	{&quot;Electric battery&quot;, true},
+    {&quot;Bridge&quot;, false},
+    {&quot;Electric battery&quot;, true},
 }
 
 err := t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>&lsquo;Bridge&rsquo; is not new
 &lsquo;Electric battery&rsquo; is new
@@ -306,8 +306,8 @@ Avoid printing empty slices
 Truthy logic is useful when we want to show different text if a list of items is empty:
 
 type UserTweets struct {
-	User   string
-	Tweets []string
+    User   string
+    Tweets []string
 }
 
 const tmplStr = `
@@ -323,20 +323,20 @@ User '{{.User}}' has {{ len .Tweets }} tweets:
 t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
 
 data := UserTweets{
-	User: &quot;kjk&quot;,
+    User: &quot;kjk&quot;,
 }
 err := t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 
 data = UserTweets{
-	User:   &quot;masa&quot;,
-	Tweets: []string{&quot;tweet one&quot;, &quot;tweet two&quot;},
+    User:   &quot;masa&quot;,
+    Tweets: []string{&quot;tweet one&quot;, &quot;tweet two&quot;},
 }
 err = t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>User &lsquo;kjk&rsquo; has no tweets.
 User &lsquo;masa&rsquo; has 2 tweets:
@@ -367,12 +367,12 @@ const tmplStr = `Elements of map:
 t := template.Must(template.New(&quot;range&quot;).Parse(tmplStr))
 
 data := map[string]int{
-	&quot;one&quot;:  1,
-	&quot;five&quot;: 5,
+    &quot;one&quot;:  1,
+    &quot;five&quot;: 5,
 }
 err := t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>Elements of map:
 five: 5
@@ -410,7 +410,7 @@ data := Data{True: true, False: false}
 
 err := t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>Or:  true
 And: false
@@ -452,19 +452,19 @@ len(map)       : {{ len .Map }}
 t := template.Must(template.New(&quot;len&quot;).Parse(tmplStr))
 
 data := struct {
-	SliceNil   []int
-	SliceEmpty []string
-	Slice      []bool
-	Map        map[int]bool
+    SliceNil   []int
+    SliceEmpty []string
+    Slice      []bool
+    Map        map[int]bool
 }{
-	SliceNil:   nil,
-	SliceEmpty: []string{},
-	Slice:      []bool{true, true, false},
-	Map:        map[int]bool{5: true, 3: false},
+    SliceNil:   nil,
+    SliceEmpty: []string{},
+    Slice:      []bool{true, true, false},
+    Map:        map[int]bool{5: true, 3: false},
 }
 err := t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>len(nil)       : 0
 len(emptySlice): 0
@@ -502,17 +502,17 @@ url escape : {{ urlquery .URL }}
 t := template.Must(template.New(&quot;print&quot;).Parse(tmplStr))
 
 data := struct {
-	JS   string
-	HTML string
-	URL  string
+    JS   string
+    HTML string
+    URL  string
 }{
-	JS:   `function me(s) { return &quot;foo&quot;; }`,
-	HTML: `&lt;div&gt;text&lt;/div&gt;`,
-	URL:  `http://www.programming-books.io`,
+    JS:   `function me(s) { return &quot;foo&quot;; }`,
+    HTML: `&lt;div&gt;text&lt;/div&gt;`,
+    URL:  `http://www.programming-books.io`,
 }
 err := t.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><p>js escape  : function me(s) { return &quot;foo&quot;; }
 html escape: &lt;div&gt;text&lt;/div&gt;
@@ -550,25 +550,25 @@ txt := text_template.Must(text_template.New(&quot;text&quot;).Parse(tmplStr))
 html := html_template.Must(html_template.New(&quot;html&quot;).Parse(tmplStr))
 
 data := struct {
-	JS   string
-	HTML string
-	URL  string
+    JS   string
+    HTML string
+    URL  string
 }{
-	JS:   `foo`,
-	HTML: `&lt;span&gt;text&lt;/span&gt;`,
-	URL:  `http://www.programming-books.io`,
+    JS:   `foo`,
+    HTML: `&lt;span&gt;text&lt;/span&gt;`,
+    URL:  `http://www.programming-books.io`,
 }
 
 err := txt.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 
 fmt.Println()
 
 err = html.Execute(os.Stdout, data)
 if err != nil {
-	log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
 </code></pre><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->

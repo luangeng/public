@@ -160,16 +160,16 @@
 <p>下面是定义和实现一个简单的接口:</p>
 <pre><code>// Stringer是只有一个方法的接口
 type Stringer interface {
-	String() string
+    String() string
 }
 
 // User struct实现了Stringer接口
 type User struct {
-	Name string
+    Name string
 }
 
 func (u *User) String() string {
-	return u.Name
+    return u.Name
 }
 
 // 任何类型都可以实现接口 Here we create
@@ -178,21 +178,21 @@ func (u *User) String() string {
 type MyInt int
 
 func (mi MyInt) String() string {
-	return strconv.Itoa(int(mi))
+    return strconv.Itoa(int(mi))
 }
 
 // printTypeAndString 接收一个接口作为参数, 's'可以是实现了Stringer接口的任意值
 
 func printTypeAndString(s Stringer) {
-	fmt.Printf(&quot;%T: %s\n&quot;, s, s)
+    fmt.Printf(&quot;%T: %s\n&quot;, s, s)
 }
 
 func main() {
-	u := &amp;User{Name: &quot;John&quot;}
-	printTypeAndString(u)
+    u := &amp;User{Name: &quot;John&quot;}
+    printTypeAndString(u)
 
-	n := MyInt(5)
-	printTypeAndString(n)
+    n := MyInt(5)
+    printTypeAndString(n)
 }
 </code></pre><blockquote>
 <p>*main.User: John<br>
@@ -304,7 +304,7 @@ type Painter interface {
 }
 
 func (rc *MyReadCloser) Read(d []byte) (int, error) {
-	return 0, nil
+    return 0, nil
 }
 
 var _ io.ReadCloser = &amp;MyReadCloser{}
@@ -330,21 +330,21 @@ exit status 2</p>
 <p>空接口的零值为nil.</p>
 <p>使用示例:</p>
 <pre><code>func printVariableType(v interface{}) {
-	switch v.(type) {
-	case string:
-		fmt.Printf(&quot;v is of type 'string'\n&quot;)
-	case int:
-		fmt.Printf(&quot;v is of type 'int'\n&quot;)
-	default:
-		// generic fallback
-		fmt.Printf(&quot;v is of type '%T'\n&quot;, v)
-	}
+    switch v.(type) {
+    case string:
+        fmt.Printf(&quot;v is of type 'string'\n&quot;)
+    case int:
+        fmt.Printf(&quot;v is of type 'int'\n&quot;)
+    default:
+        // generic fallback
+        fmt.Printf(&quot;v is of type '%T'\n&quot;, v)
+    }
 }
 
 func main() {
-	printVariableType(&quot;string&quot;) // string
-	printVariableType(5)        // int
-	printVariableType(int32(5)) // int32
+    printVariableType(&quot;string&quot;) // string
+    printVariableType(5)        // int
+    printVariableType(int32(5)) // int32
 }
 </code></pre><blockquote>
 <p>v is of type &lsquo;string&rsquo;<br>
@@ -354,37 +354,37 @@ v is of type &lsquo;int32&rsquo;</p>
 <p>编译时，如果变量的类型为interface(包括空接口)，则你不知道它的真正类型是什么。</p>
 <p>可以在运行时使用类型断言来访问基础类型:</p>
 <pre><code>func printTypeAndValue(iv interface{}) {
-	if v, ok := iv.(string); ok {
-		fmt.Printf(&quot;iv is of type string and has value '%s'\n&quot;, v)
-		return
-	}
-	if v, ok := iv.(int); ok {
-		fmt.Printf(&quot;iv is of type int and has value '%d'\n&quot;, v)
-		return
-	}
-	if v, ok := iv.(*int); ok {
-		fmt.Printf(&quot;iv is of type *int and has value '%s'\n&quot;, v)
-		return
-	}
+    if v, ok := iv.(string); ok {
+        fmt.Printf(&quot;iv is of type string and has value '%s'\n&quot;, v)
+        return
+    }
+    if v, ok := iv.(int); ok {
+        fmt.Printf(&quot;iv is of type int and has value '%d'\n&quot;, v)
+        return
+    }
+    if v, ok := iv.(*int); ok {
+        fmt.Printf(&quot;iv is of type *int and has value '%s'\n&quot;, v)
+        return
+    }
 }
 
 func panicOnInvalidConversion() {
-	var iv interface{} = &quot;string&quot;
+    var iv interface{} = &quot;string&quot;
 
-	v := iv.(int)
-	fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
+    v := iv.(int)
+    fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
 }
 
 func main() {
-	// pass a string
-	printTypeAndValue(&quot;string&quot;)
-	i := 5
-	// pass an int
-	printTypeAndValue(i)
-	// pass a pointer to int i.e. *int
-	printTypeAndValue(&amp;i)
+    // pass a string
+    printTypeAndValue(&quot;string&quot;)
+    i := 5
+    // pass an int
+    printTypeAndValue(i)
+    // pass a pointer to int i.e. *int
+    printTypeAndValue(&amp;i)
 
-	panicOnInvalidConversion()
+    panicOnInvalidConversion()
 }
 </code></pre><blockquote>
 <p>iv is of type string and has value &lsquo;string&rsquo;<br>
@@ -403,12 +403,12 @@ it status 2</p>
 <p>为了完整起见，可以使用类型switch的简短版本：v:= iv.(int)（v, ok：= iv.(int)）。</p>
 <p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
 <pre><code>func panicOnInvalidConversion(iv interface{}) {
-	v := iv.(int)
-	fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
+    v := iv.(int)
+    fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
 }
 
 func main() {
-	panicOnInvalidConversion(&quot;string&quot;)
+    panicOnInvalidConversion(&quot;string&quot;)
 }
 </code></pre><blockquote>
 <p>panic: interface conversion: interface {} is string, not int</p>
@@ -425,33 +425,33 @@ exit status 2</p>
 <p>switch语句可以基于接口包装的类型进行分派。</p>
 <p>如果具有接口值，则可以根据底层类型进行切换：</p>
 <pre><code>func smartConvertToInt(iv interface{}) (int, error) {
-	// inside case statements, v is of type matching case type
-	switch v := iv.(type) {
-	case int:
-		return v, nil
-	case string:
-		return strconv.Atoi(v)
-	case float64:
-		return int(v), nil
-	default:
-		return 0, fmt.Errorf(&quot;unsupported type: %T&quot;, iv)
-	}
+    // inside case statements, v is of type matching case type
+    switch v := iv.(type) {
+    case int:
+        return v, nil
+    case string:
+        return strconv.Atoi(v)
+    case float64:
+        return int(v), nil
+    default:
+        return 0, fmt.Errorf(&quot;unsupported type: %T&quot;, iv)
+    }
 }
 
 func printSmartConvertToInt(iv interface{}) {
-	i, err := smartConvertToInt(iv)
-	if err != nil {
-		fmt.Printf(&quot;Failed to convert %#v to int\n&quot;, iv)
-		return
-	}
-	fmt.Printf(&quot;%#v of type %T converted to %d\n&quot;, iv, iv, i)
+    i, err := smartConvertToInt(iv)
+    if err != nil {
+        fmt.Printf(&quot;Failed to convert %#v to int\n&quot;, iv)
+        return
+    }
+    fmt.Printf(&quot;%#v of type %T converted to %d\n&quot;, iv, iv, i)
 }
 
 func main() {
-	printSmartConvertToInt(&quot;5&quot;)
-	printSmartConvertToInt(4)
-	printSmartConvertToInt(int32(8))
-	printSmartConvertToInt(&quot;not valid int&quot;)
+    printSmartConvertToInt(&quot;5&quot;)
+    printSmartConvertToInt(4)
+    printSmartConvertToInt(int32(8))
+    printSmartConvertToInt(&quot;not valid int&quot;)
 }
 </code></pre><blockquote>
 <p>&ldquo;5&rdquo; of type string converted to 5<br>

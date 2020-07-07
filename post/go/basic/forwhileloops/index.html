@@ -151,7 +151,7 @@
                                             
                                             <p>Go中只有for循环,for循环的完整形式如下:</p>
 <pre><code>for i := 0; i &lt; 5; i += 2 {
-	fmt.Printf(&quot;i: %d\n&quot;, i)
+    fmt.Printf(&quot;i: %d\n&quot;, i)
 }
 </code></pre><blockquote>
 <p>i: 0<br>
@@ -162,7 +162,7 @@ i: 4</p>
 <p>比如没有初始化:</p>
 <pre><code>i := 0
 for ; i &lt; 5; i += 2 {
-	fmt.Printf(&quot;i: %d\n&quot;, i)
+    fmt.Printf(&quot;i: %d\n&quot;, i)
 }
 </code></pre><blockquote>
 <p>i: 0<br>
@@ -172,10 +172,10 @@ i: 4</p>
 <p>没有判断部分, 循环内部使用break来结束循环</p>
 <pre><code>i := 0
 for ; ; i += 2 {
-	fmt.Printf(&quot;i: %d\n&quot;, i)
-	if i &gt;= 5 {
-		break
-	}
+    fmt.Printf(&quot;i: %d\n&quot;, i)
+    if i &gt;= 5 {
+        break
+    }
 }
 </code></pre><blockquote>
 <p>i: 0<br>
@@ -185,8 +185,8 @@ i: 6</p>
 </blockquote>
 <p>没有自增语句</p>
 <pre><code>for i := 0; i &lt; 5; {
-	fmt.Printf(&quot;i: %d\n&quot;, i)
-	i += 2
+    fmt.Printf(&quot;i: %d\n&quot;, i)
+    i += 2
 }
 </code></pre><blockquote>
 <p>i: 0<br>
@@ -196,11 +196,11 @@ i: 4</p>
 <p>无限循环</p>
 <pre><code>i := 0
 for {
-	fmt.Printf(&quot;i: %d\n&quot;, i)
-	i += 2
-	if i &gt;= 5 {
-		break
-	}
+    fmt.Printf(&quot;i: %d\n&quot;, i)
+    i += 2
+    if i &gt;= 5 {
+        break
+    }
 }
 </code></pre><blockquote>
 <p>i: 0<br>
@@ -210,7 +210,7 @@ i: 4</p>
 <h3 id="使用range在slice上循环">使用range在slice上循环</h3>
 <pre><code>a := []int{1, 3, 5}
 for idx, value := range a {
-	fmt.Printf(&quot;idx: %d, value: %d\n&quot;, idx, value)
+    fmt.Printf(&quot;idx: %d, value: %d\n&quot;, idx, value)
 }
 </code></pre><blockquote>
 <p>idx: 0, value: 1<br>
@@ -308,11 +308,11 @@ fmt.Println(len(utf8str)) //7
 <h4 id="break用于提前跳出for循环">break用于提前跳出for循环</h4>
 <pre><code>i := 0
 for {
-	i++
-	if i &gt; 2 {
-		break
-	}
-	fmt.Printf(&quot;i: %d\n&quot;, i)
+    i++
+    if i &gt; 2 {
+        break
+    }
+    fmt.Printf(&quot;i: %d\n&quot;, i)
 }
 </code></pre><blockquote>
 <p>i: 1<br>
@@ -320,10 +320,10 @@ i: 2</p>
 </blockquote>
 <h4 id="continue用于进行下次循环">continue用于进行下次循环</h4>
 <pre><code>for i := 0; i &lt; 3; i++ {
-	if i == 1 {
-		continue
-	}
-	fmt.Printf(&quot;i: %d\n&quot;, i)
+    if i == 1 {
+        continue
+    }
+    fmt.Printf(&quot;i: %d\n&quot;, i)
 }
 </code></pre><blockquote>
 <p>i: 0<br>
@@ -335,21 +335,21 @@ i: 2</p>
 import &quot;fmt&quot;
 
 func main() {
-	j := 100
+    j := 100
 
 loop:
-	for j &lt; 110 {
-		j++
+    for j &lt; 110 {
+        j++
 
-		switch j % 3 {
-		case 0:
-			continue loop
-		case 1:
-			break loop
-		}
+        switch j % 3 {
+        case 0:
+            continue loop
+        case 1:
+            break loop
+        }
 
-		fmt.Println(&quot;Var : &quot;, j)
-	}
+        fmt.Println(&quot;Var : &quot;, j)
+    }
 }
 </code></pre><blockquote>
 <p>Var :  101</p>
@@ -364,8 +364,8 @@ while (n &lt; 3) {
 </code></pre><p>可以写为for循环:</p>
 <pre><code>n := 0
 for n &lt; 3 {
-	fmt.Printf(&quot;n: %d\n&quot;, n)
-	n++
+    fmt.Printf(&quot;n: %d\n&quot;, n)
+    n++
 }
 </code></pre><blockquote>
 <p>n: 0<br>
@@ -374,7 +374,7 @@ n: 2</p>
 </blockquote>
 <p>更简洁的版本：</p>
 <pre><code>for n := 0; n &lt; 3; n++ {
-	fmt.Printf(&quot;n: %d\n&quot;, n)
+    fmt.Printf(&quot;n: %d\n&quot;, n)
 }
 </code></pre><blockquote>
 <p>n: 0<br>

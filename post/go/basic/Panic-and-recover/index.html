@@ -161,13 +161,13 @@
 <p>堆栈上的每个函数都将退出并运行defer，直到使用defer的restore()处理panic，或者直到panic到达main()并终止程序为止。</p>
 <p>如果发生这种情况，提供给panic的参数和堆栈跟踪信息将输出到stderr。</p>
 <pre><code>func foo() {
-	defer fmt.Println(&quot;Exiting foo&quot;)
-	panic(&quot;bar&quot;)
+    defer fmt.Println(&quot;Exiting foo&quot;)
+    panic(&quot;bar&quot;)
 }
 
 func main() {
-	defer fmt.Println(&quot;Exiting main&quot;)
-	foo()
+    defer fmt.Println(&quot;Exiting main&quot;)
+    foo()
 }
 </code></pre><blockquote>
 <p>Exiting foo<br>
@@ -189,23 +189,23 @@ exit status 2</p>
 <p>如果程序当前处于panic状态，则recover()调用将返回提供给初始紧急状态的参数。</p>
 <p>如果该程序当前未出现紧急情况，则recover()将返回nil。</p>
 <pre><code>func foo() {
-	panic(&quot;bar&quot;)
+    panic(&quot;bar&quot;)
 }
 
 func bar() {
-	defer func() {
-		if msg := recover(); msg != nil {
-			fmt.Printf(&quot;Recovered with message %s\n&quot;, msg)
-		}
-	}()
-	foo()
-	fmt.Println(&quot;Never gets executed&quot;)
+    defer func() {
+        if msg := recover(); msg != nil {
+            fmt.Printf(&quot;Recovered with message %s\n&quot;, msg)
+        }
+    }()
+    foo()
+    fmt.Println(&quot;Never gets executed&quot;)
 }
 
 func main() {
-	fmt.Println(&quot;Entering main&quot;)
-	bar()
-	fmt.Println(&quot;Exiting main the normal way&quot;)
+    fmt.Println(&quot;Entering main&quot;)
+    bar()
+    fmt.Println(&quot;Exiting main the normal way&quot;)
 }
 </code></pre><blockquote>
 <p>Entering main
@@ -217,34 +217,34 @@ Exiting main the normal way</p>
 <p>以下代码说明了如何在不退出程序的情况下从panic中恢复，这是处理panic的正确方法。</p>
 <p>在大多数情况下，以这种方式返回错误而不是紧急退出程序仅对开发或测试有用。</p>
 <pre><code>type Foo struct {
-	Is []int
+    Is []int
 }
 
 func (fp *Foo) Panic() (err error) {
-	defer PanicRecovery(&amp;err)
-	fp.Is[0] = 5
-	return nil
+    defer PanicRecovery(&amp;err)
+    fp.Is[0] = 5
+    return nil
 }
 
 func PanicRecovery(err *error) {
 
-	if r := recover(); r != nil {
-		if _, ok := r.(runtime.Error); ok {
-			//fmt.Println(&quot;Panicing&quot;)
-			//panic(r)
-			*err = r.(error)
-		} else {
-			*err = r.(error)
-		}
-	}
+    if r := recover(); r != nil {
+        if _, ok := r.(runtime.Error); ok {
+            //fmt.Println(&quot;Panicing&quot;)
+            //panic(r)
+            *err = r.(error)
+        } else {
+            *err = r.(error)
+        }
+    }
 }
 
 func main() {
-	fp := &amp;Foo{}
-	if err := fp.Panic(); err != nil {
-		fmt.Printf(&quot;Error: %v\n&quot;, err)
-	}
-	fmt.Println(&quot;ok&quot;)
+    fp := &amp;Foo{}
+    if err := fp.Panic(); err != nil {
+        fmt.Printf(&quot;Error: %v\n&quot;, err)
+    }
+    fmt.Println(&quot;ok&quot;)
 }
 </code></pre><blockquote>
 <p>Error: runtime error: index out of range [0] with length 0<br>
@@ -268,16 +268,16 @@ ok</p>
 <p>强制崩溃会增加开发人员查看问题并解决问题的机会。</p>
 <p>如果你经常这样做，此辅助功能将非常有用：</p>
 <pre><code>func panicIf(cond bool, args ...interface{}) {
-	if !cond {
-		return
-	}
-	if len(args) == 0 {
-		panic(errors.New(&quot;cond failed&quot;))
-	}
-	format := args[0].(string)
-	args = args[1:]
-	err := fmt.Errorf(format, args)
-	panic(err)
+    if !cond {
+        return
+    }
+    if len(args) == 0 {
+        panic(errors.New(&quot;cond failed&quot;))
+    }
+    format := args[0].(string)
+    args = args[1:]
+    err := fmt.Errorf(format, args)
+    panic(err)
 }
 </code></pre><p>现在可以将其写成一行：</p>
 <pre><code>func httpGet(uri string) ([]byte, error) {

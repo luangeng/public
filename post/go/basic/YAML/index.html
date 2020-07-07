@@ -164,18 +164,18 @@
     repository: http://another.example.com/charts
 </code></pre><pre><code>// Dependency describes a dependency
 type Dependency struct {
-	Name          string
-	Version       string
-	RepositoryURL string `yaml:&quot;repository&quot;`
+    Name          string
+    Version       string
+    RepositoryURL string `yaml:&quot;repository&quot;`
 }
 
 type YAMLFile struct {
-	Dependencies []Dependency `yaml:&quot;dependencies&quot;`
+    Dependencies []Dependency `yaml:&quot;dependencies&quot;`
 }
 
 f, err := os.Open(&quot;data.yml&quot;)
 if err != nil {
-	log.Fatalf(&quot;os.Open() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;os.Open() failed with '%s'\n&quot;, err)
 }
 defer f.Close()
 
@@ -184,7 +184,7 @@ dec := yaml.NewDecoder(f)
 var yamlFile YAMLFile
 err = dec.Decode(&amp;yamlFile)
 if err != nil {
-	log.Fatalf(&quot;dec.Decode() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;dec.Decode() failed with '%s'\n&quot;, err)
 }
 
 fmt.Printf(&quot;Decoded YAML dependencies: %#v\n&quot;, yamlFile.Dependencies)
@@ -194,20 +194,20 @@ fmt.Printf(&quot;Decoded YAML dependencies: %#v\n&quot;, yamlFile.Dependencies)
 <p>最好使用yaml struct标签创建显式映射。 我仅在示例中省略了它们，以说明未指定它们时的行为。</p>
 <p>将struct写入YAML文件:</p>
 <pre><code>type Person struct {
-	fullName string
-	Name     string
-	Age      int    `yaml:&quot;age&quot;`
-	City     string `yaml:&quot;city&quot;`
+    fullName string
+    Name     string
+    Age      int    `yaml:&quot;age&quot;`
+    City     string `yaml:&quot;city&quot;`
 }
 
 p := Person{
-	Name: &quot;John&quot;,
-	Age:  37,
-	City: &quot;SF&quot;,
+    Name: &quot;John&quot;,
+    Age:  37,
+    City: &quot;SF&quot;,
 }
 d, err := yaml.Marshal(&amp;p)
 if err != nil {
-	log.Fatalf(&quot;yaml.Marshal failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;yaml.Marshal failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person in YAML:\n%s\n&quot;, string(d))
 </code></pre><p>yaml.Marshal将interface {}作为参数。 可以传递任何Go值，并将其类型包装到interface {}中。</p>

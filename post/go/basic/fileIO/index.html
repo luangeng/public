@@ -154,13 +154,13 @@
 <pre><code>path := &quot;main.go&quot;
 f, err := os.Open(path)
 if err != nil {
-	log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err)
+    log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err)
 }
 defer f.Close()
 
 d, err := ioutil.ReadAll(f)
 if err != nil {
-	log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
+    log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err)
 }
 
 lines := bytes.Split(d, []byte{'\n'})
@@ -186,30 +186,30 @@ defer f.Close()
 <p>You should always close files to avoid leaking file descriptors. defer is perfect for ensuring Close will be called on exit of the function.</p>
 <h4 id="逐行读取文件">逐行读取文件</h4>
 <pre><code>func ReadLines(filePath string) ([]string, error) {
-	file, err := os.OpenFile(filePath, os.O_RDONLY, 0666)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
-	res := make([]string, 0)
-	for scanner.Scan() {
-		line := scanner.Text()
-		res = append(res, line)
-	}
-	if err = scanner.Err(); err != nil {
-		return nil, err
-	}
-	return res, nil
+    file, err := os.OpenFile(filePath, os.O_RDONLY, 0666)
+    if err != nil {
+        return nil, err
+    }
+    defer file.Close()
+    scanner := bufio.NewScanner(file)
+    res := make([]string, 0)
+    for scanner.Scan() {
+        line := scanner.Text()
+        res = append(res, line)
+    }
+    if err = scanner.Err(); err != nil {
+        return nil, err
+    }
+    return res, nil
 }
 
 func main() {
-	path := &quot;main.go&quot;
-	lines, err := ReadLines(path)
-	if err != nil {
-		log.Fatalf(&quot;ReadLines failed with '%s'\n&quot;, err)
-	}
-	fmt.Printf(&quot;File %s has %d lines\n&quot;, path, len(lines))
+    path := &quot;main.go&quot;
+    lines, err := ReadLines(path)
+    if err != nil {
+        log.Fatalf(&quot;ReadLines failed with '%s'\n&quot;, err)
+    }
+    fmt.Printf(&quot;File %s has %d lines\n&quot;, path, len(lines))
 }
 </code></pre><blockquote>
 <p>File main.go has 41 lines</p>
@@ -260,20 +260,20 @@ Those permissions are native to Unix and Mac OS but they map loosely on Windows.
 <p>获取文件大小:</p>
 <pre><code>// GetFileSize returns file size or error if e.g. file doesn't exist
 func GetFileSize(path string) (int64, error) {
-	st, err := os.Lstat(path)
-	if err != nil {
-		return -1, err
-	}
-	return st.Size(), nil
+    st, err := os.Lstat(path)
+    if err != nil {
+        return -1, err
+    }
+    return st.Size(), nil
 }
 
 func main() {
-	path := &quot;main.go&quot;
-	size, err := GetFileSize(path)
-	if err != nil {
-		log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
-	}
-	fmt.Printf(&quot;File %s is %d bytes in size\n&quot;, path, size)
+    path := &quot;main.go&quot;
+    size, err := GetFileSize(path)
+    if err != nil {
+        log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
+    }
+    fmt.Printf(&quot;File %s is %d bytes in size\n&quot;, path, size)
 }
 </code></pre><blockquote>
 <p>ile main.go is 501 bytes in size</p>
@@ -282,11 +282,11 @@ func main() {
 <p>In other words: for a symbolic link os.Lstat returns information about link and os.Stat about the file that it links to.</p>
 <p>获取文件信息:</p>
 <pre><code>func main() {
-	st, err := os.Stat(&quot;main.go&quot;)
-	if err != nil {
-		log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
-	}
-	fmt.Printf(`Name: %s
+    st, err := os.Stat(&quot;main.go&quot;)
+    if err != nil {
+        log.Fatalf(&quot;GetFileSize failed with '%s'\n&quot;, err)
+    }
+    fmt.Printf(`Name: %s
 Size: %d
 IsDir: %v
 Mode: %x
@@ -307,28 +307,28 @@ OS info: &amp;syscall.Stat_t{Dev:0x5, Ino:0xba8, Nlink:0x1, Mode:0x81a4, Uid:0x0
 // It might return an error if e.g. file exists but you don't have
 // access
 func IsPathExists(path string) (bool, error) {
-	_, err := os.Lstat(path)
-	if err == nil {
-		return true, nil
-	}
-	if os.IsNotExist(err) {
-		return false, nil
-	}
-	// error other than not existing e.g. permission denied
-	return false, err
+    _, err := os.Lstat(path)
+    if err == nil {
+        return true, nil
+    }
+    if os.IsNotExist(err) {
+        return false, nil
+    }
+    // error other than not existing e.g. permission denied
+    return false, err
 }
 
 func printExists(path string) {
-	exists, err := IsPathExists(path)
-	if err == nil {
-		fmt.Printf(&quot;File '%s' exists: %v\n&quot;, path, exists)
-	} else {
-		fmt.Printf(&quot;IsFileExists('%s') failed with '%s'\n&quot;, path, err)
-	}
+    exists, err := IsPathExists(path)
+    if err == nil {
+        fmt.Printf(&quot;File '%s' exists: %v\n&quot;, path, exists)
+    } else {
+        fmt.Printf(&quot;IsFileExists('%s') failed with '%s'\n&quot;, path, err)
+    }
 }
 func main() {
-	printExists(&quot;main.go&quot;)
-	printExists(&quot;non-existent-file.txt&quot;)
+    printExists(&quot;main.go&quot;)
+    printExists(&quot;non-existent-file.txt&quot;)
 }
 </code></pre><blockquote>
 <p>File &lsquo;main.go&rsquo; exists: true<br>
@@ -361,26 +361,26 @@ if err != nil {
 </code></pre><h3 id="拷贝文件">拷贝文件</h3>
 <pre><code>// CopyFile copies a src file to dst
 func CopyFile(dst, src string) error {
-	srcFile, err := os.Open(src)
-	if err != nil {
-		return err
-	}
-	defer srcFile.Close()
+    srcFile, err := os.Open(src)
+    if err != nil {
+        return err
+    }
+    defer srcFile.Close()
 
-	dstFile, err := os.Create(dst)
-	if err != nil {
-		return err
-	}
-	_, err = io.Copy(dstFile, srcFile)
-	err2 := dstFile.Close()
-	if err == nil &amp;&amp; err2 != nil {
-		err = err2
-	}
-	if err != nil {
-		// delete the destination if copy failed
-		os.Remove(dst)
-	}
-	return err
+    dstFile, err := os.Create(dst)
+    if err != nil {
+        return err
+    }
+    _, err = io.Copy(dstFile, srcFile)
+    err2 := dstFile.Close()
+    if err == nil &amp;&amp; err2 != nil {
+        err = err2
+    }
+    if err != nil {
+        // delete the destination if copy failed
+        os.Remove(dst)
+    }
+    return err
 }
 </code></pre><p>Writing a generic function for copying files is tricky and it’s impossible to write a function that serves all use cases.</p>
 <p>Here are policy decisions we made:</p>
@@ -421,16 +421,16 @@ if err != nil {
 <h4 id="列出目录中的文件">列出目录中的文件</h4>
 <p>To list files and directories in a given directory we can use ioutil.ReadDir:</p>
 <pre><code>func main() {
-	dir := &quot;.&quot;
-	fileInfos, err := ioutil.ReadDir(dir)
-	if err != nil {
-		log.Fatalf(&quot;ioutil.ReadDir('%s') failed with '%s'\n&quot;, dir, err)
-	}
-	for i, fi := range fileInfos {
-		if i &lt; 4 {
-			fmt.Printf(&quot;Path: %s, is dir: %v, size: %d bytes\n&quot;, fi.Name(), fi.IsDir(), fi.Size())
-		}
-	}
+    dir := &quot;.&quot;
+    fileInfos, err := ioutil.ReadDir(dir)
+    if err != nil {
+        log.Fatalf(&quot;ioutil.ReadDir('%s') failed with '%s'\n&quot;, dir, err)
+    }
+    for i, fi := range fileInfos {
+        if i &lt; 4 {
+            fmt.Printf(&quot;Path: %s, is dir: %v, size: %d bytes\n&quot;, fi.Name(), fi.IsDir(), fi.Size())
+        }
+    }
 }
 </code></pre><blockquote>
 <p>Path: app, is dir: false, size: 2202180 bytes
@@ -439,22 +439,22 @@ Path: main.go, is dir: false, size: 400 bytes</p>
 </blockquote>
 <h4 id="递归列出文件">递归列出文件</h4>
 <pre><code>func main() {
-	nShown := 0
-	err := filepath.Walk(&quot;.&quot;, func(path string, fi os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if nShown &gt; 4 {
-			return nil
-		}
-		nShown++
-		fmt.Printf(&quot;Path: %s, is dir: %v, size: %d bytes\n&quot;, fi.Name(), fi.IsDir(), fi.Size())
-		return nil
-	})
+    nShown := 0
+    err := filepath.Walk(&quot;.&quot;, func(path string, fi os.FileInfo, err error) error {
+        if err != nil {
+            return err
+        }
+        if nShown &gt; 4 {
+            return nil
+        }
+        nShown++
+        fmt.Printf(&quot;Path: %s, is dir: %v, size: %d bytes\n&quot;, fi.Name(), fi.IsDir(), fi.Size())
+        return nil
+    })
 
-	if err != nil {
-		fmt.Printf(&quot;filepath.Walk failed with '%s'\n&quot;, err)
-	}
+    if err != nil {
+        fmt.Printf(&quot;filepath.Walk failed with '%s'\n&quot;, err)
+    }
 }
 </code></pre><blockquote>
 <p>Path: ., is dir: true, size: 0 bytes<br>

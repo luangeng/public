@@ -209,7 +209,7 @@ fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
 a := make([]int, 0, n)
 fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
 for i := 0; i &lt; n; i++ {
-	a = append(a, i)
+    a = append(a, i)
 }
 fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
 </code></pre><blockquote>
@@ -237,7 +237,7 @@ Capacity: 4</p>
 <p>由make()创建的slice,其元素设置为其零值：</p>
 <pre><code>var s = make([]int, 3)
 for idx, val := range s {
-	fmt.Println(idx, val)
+    fmt.Println(idx, val)
 }
 </code></pre><blockquote>
 <p>0 0<br>
@@ -286,18 +286,18 @@ ptr := fmt.Sprintf(&quot;%p&quot;, a)
 n := 0
 nAppends := 0
 for {
-	a = append(a, 1)
-	nAppends++
-	currPtr := fmt.Sprintf(&quot;%p&quot;, a)
-	if currPtr != ptr {
-		fmt.Printf(&quot;Appends needed to re-allocate slice: %d\n&quot;, nAppends)
-		nAppends = 0
-		ptr = currPtr
-		n++
-		if n == 6 {
-			break
-		}
-	}
+    a = append(a, 1)
+    nAppends++
+    currPtr := fmt.Sprintf(&quot;%p&quot;, a)
+    if currPtr != ptr {
+        fmt.Printf(&quot;Appends needed to re-allocate slice: %d\n&quot;, nAppends)
+        nAppends = 0
+        ptr = currPtr
+        n++
+        if n == 6 {
+            break
+        }
+    }
 }
 </code></pre><blockquote>
 <p>Appends needed to re-allocate slice: 1<br>
@@ -319,14 +319,14 @@ Appends needed to re-allocate slice: 8</p>
 <li>如果应保留，则附加到结果</li>
 </ul>
 <pre><code>func filterEvenValues(a []int) []int {
-	var res []int
-	for _, el := range a {
-		if el%2 == 0 {
-			continue
-		}
-		res = append(res, el)
-	}
-	return res
+    var res []int
+    for _, el := range a {
+        if el%2 == 0 {
+            continue
+        }
+        res = append(res, el)
+    }
+    return res
 }
 
 a := []int{1, 2, 3, 4}
@@ -443,17 +443,17 @@ fmt.Printf(&quot;s: %#v\n&quot;, s)
 </code></pre><p>测试切片是否为空，请检查len是否为0：</p>
 <pre><code>s := []int(nil)
 if len(s) == 0 {
-	fmt.Printf(&quot;s  is empty: %#v\n&quot;, s)
+    fmt.Printf(&quot;s  is empty: %#v\n&quot;, s)
 }
 
 var s2 []int
 if len(s2) == 0 {
-	fmt.Printf(&quot;s2 is empty: %#v\n&quot;, s2)
+    fmt.Printf(&quot;s2 is empty: %#v\n&quot;, s2)
 }
 
 s3 := make([]int, 0)
 if len(s2) == 0 {
-	fmt.Printf(&quot;s3 is empty: %#v\n&quot;, s3)
+    fmt.Printf(&quot;s3 is empty: %#v\n&quot;, s3)
 }
 </code></pre><h2 id="slice技巧">Slice技巧</h2>
 <p>Here are the vector methods and their slice-manipulation analogues:

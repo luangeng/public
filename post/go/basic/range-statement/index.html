@@ -152,7 +152,7 @@
                                             <h2 id="遍历字符串">遍历字符串</h2>
 <pre><code>s := &quot;Hey 世界&quot;
 for i, r := range s {
-	fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, r)
+    fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, r)
 }
 </code></pre><blockquote>
 <p>idx: 0, rune: 72<br>
@@ -167,8 +167,8 @@ idx: 7, rune: 30028</p>
 <p>要遍历字符，请使用字节索引：</p>
 <pre><code>s := &quot;a 世&quot;
 for i := 0; i &lt; len(s); i++ {
-	c := s[i]
-	fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, c)
+    c := s[i]
+    fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, c)
 }
 </code></pre><blockquote>
 <p>idx: 0, byte: 97<br>
@@ -180,7 +180,7 @@ idx: 4, byte: 150</p>
 <h2 id="迭代slice">迭代slice</h2>
 <pre><code>a := []int{3, 15, 8}
 for i, el := range a {
-	fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
+    fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
 }
 </code></pre><blockquote>
 <p>idx: 0, element: 3<br>
@@ -189,11 +189,11 @@ idx: 2, element: 8</p>
 </blockquote>
 <h2 id="迭代map">迭代map</h2>
 <pre><code>m := map[string]int{
-	&quot;three&quot;: 3,
-	&quot;five&quot;:  5,
+    &quot;three&quot;: 3,
+    &quot;five&quot;:  5,
 }
 for key, value := range m {
-	fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
+    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
 }
 </code></pre><blockquote>
 <p>key: three, value: 3<br>
@@ -204,8 +204,8 @@ key: five, value: 5</p>
 <p>可以遍历字符串中的字节：</p>
 <pre><code>s := &quot;a 世&quot;
 for i := range s {
-	b := s[i]
-	fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, b)
+    b := s[i]
+    fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, b)
 }
 </code></pre><blockquote>
 <p>idx: 0, byte: 97<br>
@@ -216,7 +216,7 @@ idx: 2, byte: 228</p>
 <p>遍历字符串中的字符:</p>
 <pre><code>s := &quot;Hey 世界&quot;
 for i, rune := range s {
-	fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, rune)
+    fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, rune)
 }
 </code></pre><blockquote>
 <p>idx: 0, rune: 72<br>
@@ -246,7 +246,7 @@ Go中string是字节片。可以将任意二进制数据放入其中。</p>
 <p>同时获取索引和元素:</p>
 <pre><code>a := []int{3, 15, 8}
 for i, el := range a {
-	fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
+    fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
 }
 </code></pre><blockquote>
 <p>idx: 0, element: 3<br>
@@ -256,7 +256,7 @@ idx: 2, element: 8</p>
 <p>仅获取索引:</p>
 <pre><code>a := []int{3, 15, 8}
 for i := range a {
-	fmt.Printf(&quot;idx: %d\n&quot;, i)
+    fmt.Printf(&quot;idx: %d\n&quot;, i)
 }
 </code></pre><blockquote>
 <p>idx: 0<br>
@@ -266,7 +266,7 @@ idx: 2
 </blockquote>
 <pre><code>a := []int{3, 15, 8}
 for _, el := range a {
-	fmt.Printf(&quot;element: %d\n&quot;, el)
+    fmt.Printf(&quot;element: %d\n&quot;, el)
 }
 </code></pre><blockquote>
 <p>element: 3<br>
@@ -278,11 +278,11 @@ element: 8</p>
 <p>在map上使用range迭代有3种变体。</p>
 <p>同时获取key和value:</p>
 <pre><code>m := map[string]int{
-	&quot;three&quot;: 3,
-	&quot;five&quot;:  5,
+    &quot;three&quot;: 3,
+    &quot;five&quot;:  5,
 }
 for key, value := range m {
-	fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
+    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
 }
 </code></pre><blockquote>
 <p>key: five, value: 5<br>
@@ -290,11 +290,11 @@ key: three, value: 3</p>
 </blockquote>
 <p>仅获取key:</p>
 <pre><code>m := map[string]int{
-	&quot;three&quot;: 3,
-	&quot;five&quot;:  5,
+    &quot;three&quot;: 3,
+    &quot;five&quot;:  5,
 }
 for key := range m {
-	fmt.Printf(&quot;key: %s\n&quot;, key)
+    fmt.Printf(&quot;key: %s\n&quot;, key)
 }
 </code></pre><blockquote>
 <p>key: three<br>
@@ -302,11 +302,11 @@ key: five</p>
 </blockquote>
 <p>仅获取value:</p>
 <pre><code>m := map[string]int{
-	&quot;three&quot;: 3,
-	&quot;five&quot;:  5,
+    &quot;three&quot;: 3,
+    &quot;five&quot;:  5,
 }
 for _, value := range m {
-	fmt.Printf(&quot;value: %d\n&quot;, value)
+    fmt.Printf(&quot;value: %d\n&quot;, value)
 }
 </code></pre><blockquote>
 <p>value: 3<br>
@@ -314,17 +314,17 @@ value: 5</p>
 </blockquote>
 <h2 id="对channel使用range">对channel使用range</h2>
 <pre><code>func fillAndCloseChannel(ch chan int) {
-	for i := 0; i &lt; 3; i++ {
-		ch &lt;- i + 3
-	}
-	close(ch)
+    for i := 0; i &lt; 3; i++ {
+        ch &lt;- i + 3
+    }
+    close(ch)
 }
 
 ch := make(chan int)
 go fillAndCloseChannel(ch)
 
 for v := range ch {
-	fmt.Printf(&quot;v: %d\n&quot;, v)
+    fmt.Printf(&quot;v: %d\n&quot;, v)
 }
 </code></pre><blockquote>
 <p>v: 3<br>
@@ -338,11 +338,11 @@ v: 5</p>
 go fillAndCloseChannel(ch)
 
 for {
-	v, ok := &lt;-ch
-	if !ok {
-		break
-	}
-	fmt.Printf(&quot;v: %d\n&quot;, v)
+    v, ok := &lt;-ch
+    if !ok {
+        break
+    }
+    fmt.Printf(&quot;v: %d\n&quot;, v)
 }
 </code></pre>
                                             

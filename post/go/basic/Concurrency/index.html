@@ -156,18 +156,18 @@
 <h2 id="goroutine示例">goroutine示例</h2>
 <p>单channel，单goroutine，一次写入，一次读取。</p>
 <pre><code>func main() {
-	// 创建string型channel
-	ch := make(chan string)
+    // 创建string型channel
+    ch := make(chan string)
 
-	// 启动一个匿名goroutine
-	go func() {
-		time.Sleep(time.Second)
-		// 发送&quot;Hello World&quot;到channel
-		ch &lt;- &quot;Hello World&quot;
-	}()
-	// 从channel读取
-	msg, ok := &lt;-ch
-	fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
+    // 启动一个匿名goroutine
+    go func() {
+        time.Sleep(time.Second)
+        // 发送&quot;Hello World&quot;到channel
+        ch &lt;- &quot;Hello World&quot;
+    }()
+    // 从channel读取
+    msg, ok := &lt;-ch
+    fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
 }
 </code></pre><blockquote>
 <p>msg='Hello World&rsquo;, ok='true&rsquo;</p>
@@ -178,7 +178,7 @@
 <h2 id="创建goroutines">创建goroutines</h2>
 <p>任何函数都可以通过使用关键字go来作为goroutine调用：</p>
 <pre><code>func mult(x, y int) {
-	fmt.Printf(&quot;%d * %d = %d\n&quot;, x, y, x*y)
+    fmt.Printf(&quot;%d * %d = %d\n&quot;, x, y, x*y)
 }
 
 go mult(1, 2) // 第一次执行,非阻塞
@@ -194,17 +194,17 @@ go mult(3, 4) // 第二次执行,非阻塞
 <pre><code>var wg sync.WaitGroup // 1
 
 func routine(i int) {
-	defer wg.Done() // 3
-	fmt.Printf(&quot;routine %v finished\n&quot;, i)
+    defer wg.Done() // 3
+    fmt.Printf(&quot;routine %v finished\n&quot;, i)
 }
 
 func main() {
-	wg.Add(10) // 2
-	for i := 0; i &lt; 10; i++ {
-		go routine(i) // *
-	}
-	wg.Wait() // 4
-	fmt.Println(&quot;main finished&quot;)
+    wg.Add(10) // 2
+    for i := 0; i &lt; 10; i++ {
+        go routine(i) // *
+    }
+    wg.Wait() // 4
+    fmt.Println(&quot;main finished&quot;)
 }
 </code></pre><blockquote>
 <p>routine 3 finished<br>
@@ -235,52 +235,52 @@ main finished</p>
 <p>缓冲channel是自然的semaphore。</p>
 <p>这是一个使用channel作为semaphore来限制在任何给定时间激活的goroutine数量的示例：</p>
 <pre><code>var (
-	semaphoreSize = 4
+    semaphoreSize = 4
 
-	mu                 sync.Mutex
-	totalTasks         int
-	curConcurrentTasks int
-	maxConcurrentTasks int
+    mu                 sync.Mutex
+    totalTasks         int
+    curConcurrentTasks int
+    maxConcurrentTasks int
 )
 
 func timeConsumingTask() {
-	mu.Lock()
-	totalTasks++
-	curConcurrentTasks++
-	if curConcurrentTasks &gt; maxConcurrentTasks {
-		maxConcurrentTasks = curConcurrentTasks
-	}
-	mu.Unlock()
+    mu.Lock()
+    totalTasks++
+    curConcurrentTasks++
+    if curConcurrentTasks &gt; maxConcurrentTasks {
+        maxConcurrentTasks = curConcurrentTasks
+    }
+    mu.Unlock()
 
-	// in real system this would be a CPU intensive operation
-	time.Sleep(10 * time.Millisecond)
+    // in real system this would be a CPU intensive operation
+    time.Sleep(10 * time.Millisecond)
 
-	mu.Lock()
-	curConcurrentTasks--
-	mu.Unlock()
+    mu.Lock()
+    curConcurrentTasks--
+    mu.Unlock()
 }
 
 func main() {
-	sem := make(chan struct{}, semaphoreSize)
-	var wg sync.WaitGroup
-	for i := 0; i &lt; 32; i++ {
-		// acquire semaphore
-		sem &lt;- struct{}{}
-		wg.Add(1)
+    sem := make(chan struct{}, semaphoreSize)
+    var wg sync.WaitGroup
+    for i := 0; i &lt; 32; i++ {
+        // acquire semaphore
+        sem &lt;- struct{}{}
+        wg.Add(1)
 
-		go func() {
-			timeConsumingTask()
-			// release semaphore
-			&lt;-sem
-			wg.Done()
-		}()
-	}
+        go func() {
+            timeConsumingTask()
+            // release semaphore
+            &lt;-sem
+            wg.Done()
+        }()
+    }
 
-	// wait for all task to finish
-	wg.Wait()
+    // wait for all task to finish
+    wg.Wait()
 
-	fmt.Printf(&quot;total tasks         : %d\n&quot;, totalTasks)
-	fmt.Printf(&quot;max concurrent tasks: %d\n&quot;, maxConcurrentTasks)
+    fmt.Printf(&quot;total tasks         : %d\n&quot;, totalTasks)
+    fmt.Printf(&quot;max concurrent tasks: %d\n&quot;, maxConcurrentTasks)
 }
 </code></pre><blockquote>
 <p>total tasks         : 32<br>
@@ -292,37 +292,37 @@ max concurrent tasks: 4</p>
 <pre><code>var wg sync.WaitGroup
 
 func sqrtWorker(chIn chan int, chOut chan int) {
-	fmt.Printf(&quot;sqrtWorker started\n&quot;)
-	for i := range chIn {
-		sqrt := i * i
-		chOut &lt;- sqrt
-	}
-	fmt.Printf(&quot;sqrtWorker finished\n&quot;)
-	wg.Done()
+    fmt.Printf(&quot;sqrtWorker started\n&quot;)
+    for i := range chIn {
+        sqrt := i * i
+        chOut &lt;- sqrt
+    }
+    fmt.Printf(&quot;sqrtWorker finished\n&quot;)
+    wg.Done()
 }
 
 func main() {
-	chIn := make(chan int)
-	chOut := make(chan int)
-	for i := 0; i &lt; 2; i++ {
-		wg.Add(1)
-		go sqrtWorker(chIn, chOut)
-	}
+    chIn := make(chan int)
+    chOut := make(chan int)
+    for i := 0; i &lt; 2; i++ {
+        wg.Add(1)
+        go sqrtWorker(chIn, chOut)
+    }
 
-	go func() {
-		chIn &lt;- 2
-		chIn &lt;- 4
-		close(chIn)
-	}()
+    go func() {
+        chIn &lt;- 2
+        chIn &lt;- 4
+        close(chIn)
+    }()
 
-	go func() {
-		wg.Wait()
-		close(chOut)
-	}()
+    go func() {
+        wg.Wait()
+        close(chOut)
+    }()
 
-	for sqrt := range chOut {
-		fmt.Printf(&quot;Got sqrt: %d\n&quot;, sqrt)
-	}
+    for sqrt := range chOut {
+        fmt.Printf(&quot;Got sqrt: %d\n&quot;, sqrt)
+    }
 }
 </code></pre><blockquote>
 <p>sqrtWorker started<br>

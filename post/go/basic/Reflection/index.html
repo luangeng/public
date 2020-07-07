@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Reflection/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Reflection Go is a statically typed language. In most cases the type of a variable is known at compilation time. One exception is interface type, especially empty interface interface{}. Empty interface is a dynamic type, similar to Object in Java or C#. At compilation time we can’t tell if the underlying value of interface type is an int or a string. Package reflect in standard library">
+    content="Go is a statically typed language. In most cases the type of a variable is known at compilation time. One exception is interface type, especially empty interface interface{}. Empty interface is a dynamic type, similar to Object in Java or C#. At compilation time we can’t tell if the underlying value of interface type is an int or a string. Package reflect in standard library allows">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Reflection/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Reflection/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 反射</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1713 Words
+                                        Posted @ 2019-09-09 · 1707 Words
                                         
                                         · Tags: Go
                                         
@@ -149,8 +149,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Reflection
-Go is a statically typed language. In most cases the type of a variable is known at compilation time.</p>
+                                            <p>Go is a statically typed language. In most cases the type of a variable is known at compilation time.</p>
 <p>One exception is interface type, especially empty interface interface{}.</p>
 <p>Empty interface is a dynamic type, similar to Object in Java or C#.</p>
 <p>At compilation time we can’t tell if the underlying value of interface type is an int or a string.</p>
@@ -160,86 +159,85 @@ enumerate fields of a struct
 set the value
 create new values at runtime
 Related language-level functionality for inspecting type of an interface value at runtime is a type switch and a type assertion.</p>
-<p>var v interface{} = 4
-var reflectVal reflect.Value = reflect.ValueOf(v)</p>
-<p>var typ reflect.Type = reflectVal.Type()
-fmt.Printf(&ldquo;Type &lsquo;%s&rsquo; of size: %d bytes\n&rdquo;, typ.Name(), typ.Size())
-if typ.Kind() == reflect.Int {
-fmt.Printf(&ldquo;v contains value of type int\n&rdquo;)
-}</p>
-<pre><code>Type 'int' of size: 8 bytes
-v contains value of type int
-Basics of reflections are:
+<pre><code>var v interface{} = 4
+var reflectVal reflect.Value = reflect.ValueOf(v)
 
-start with value of empty interface interface{} type
+var typ reflect.Type = reflectVal.Type()
+fmt.Printf(&quot;Type '%s' of size: %d bytes\n&quot;, typ.Name(), typ.Size())
+if typ.Kind() == reflect.Int {
+    fmt.Printf(&quot;v contains value of type int\n&quot;)
+}
+</code></pre><blockquote>
+<p>Type &lsquo;int&rsquo; of size: 8 bytes
+v contains value of type int</p>
+</blockquote>
+<p>Basics of reflections are:</p>
+<p>start with value of empty interface interface{} type
 use reflect.ValueOf(v interface{}) to get reflect.Value which represents information about the value
 use reflect.Value to check the type of value, test if the value is nil, set the value
-Reflection has several practical uses.
-
-## Primitive types
-Let’s see what kind of operations we can do on primitive types like int or string.
-
-Get the type
-func printType(v interface{}) {
-	rv := reflect.ValueOf(v)
-	typ := rv.Type()
-	typeName := &quot;&quot;
-	switch rv.Kind() {
-	case reflect.Ptr:
-		typeName = &quot;pointer&quot;
-	case reflect.Int:
-		typeName = &quot;int&quot;
-	case reflect.Int32:
-		typeName = &quot;int32&quot;
-	case reflect.String:
-		typeName = &quot;string&quot;
-	// ... handle more cases
-	default:
-		typeName = &quot;unrecognized type&quot;
-	}
-	fmt.Printf(&quot;v is of type '%s'. Size: %d bytes\n&quot;, typeName, typ.Size())
+Reflection has several practical uses.</p>
+<h2 id="primitive-types">Primitive types</h2>
+<p>Let’s see what kind of operations we can do on primitive types like int or string.</p>
+<p>Get the type</p>
+<pre><code>func printType(v interface{}) {
+    rv := reflect.ValueOf(v)
+    typ := rv.Type()
+    typeName := &quot;&quot;
+    switch rv.Kind() {
+    case reflect.Ptr:
+        typeName = &quot;pointer&quot;
+    case reflect.Int:
+        typeName = &quot;int&quot;
+    case reflect.Int32:
+        typeName = &quot;int32&quot;
+    case reflect.String:
+        typeName = &quot;string&quot;
+    // ... handle more cases
+    default:
+        typeName = &quot;unrecognized type&quot;
+    }
+    fmt.Printf(&quot;v is of type '%s'. Size: %d bytes\n&quot;, typeName, typ.Size())
 }
 
 printType(int32(3))
 printType(&quot;&quot;)
 i := 3
 printType(&amp;i) // *int i.e. pointer to int
-</code></pre><p>v is of type &lsquo;int32&rsquo;. Size: 4 bytes
-v is of type &lsquo;string&rsquo;. Size: 16 bytes
-v is of type &lsquo;pointer&rsquo;. Size: 8 bytes
-In real code you would handle all the types you care about.</p>
-<p>Get the value
-func getIntValue(v interface{}) {
-var reflectValue = reflect.ValueOf(v)
-n := reflectValue.Int()
-fmt.Printf(&ldquo;Int value is: %d\n&rdquo;, n)
-}</p>
-<p>getIntValue(3)
+</code></pre><blockquote>
+<p>v is of type &lsquo;int32&rsquo;. Size: 4 bytes<br>
+v is of type &lsquo;string&rsquo;. Size: 16 bytes<br>
+v is of type &lsquo;pointer&rsquo;. Size: 8 bytes</p>
+</blockquote>
+<p>In real code you would handle all the types you care about.</p>
+<p>Get the value</p>
+<pre><code>func getIntValue(v interface{}) {
+    var reflectValue = reflect.ValueOf(v)
+    n := reflectValue.Int()
+    fmt.Printf(&quot;Int value is: %d\n&quot;, n)
+}
+
+getIntValue(3)
 getIntValue(int8(4))
-getIntValue(&quot;&quot;)</p>
-<pre><code>Int value is: 3
-Int value is: 4
-panic: reflect: call of reflect.Value.Int on string Value
-
-goroutine 1 [running]:
-reflect.Value.Int(...)
-	/usr/local/go/src/reflect/value.go:986
-main.getIntValue(0x4a0120, 0x4db0d0)
-	/tmp/src282322283/main.go:14 +0x204
-main.main()
-	/tmp/src282322283/main.go:24 +0x7b
-exit status 2
-To minimize API surface, Int() returns int64 and works on all signed integer values (int8, int16, int32, int64).
-
-UInt() methods returns uint64 and works on every unsigned integer values (uint8, uint16, uint32, uint64).
-
-Trying to get integer value from value of incompatible type (like string) will panic.
-
-To avoid panic you can first check the type with Kind().
-
-All methods for retrieving the value:
-
-Bool() bool
+getIntValue(&quot;&quot;)
+</code></pre><blockquote>
+<p>Int value is: 3<br>
+Int value is: 4<br>
+panic: reflect: call of reflect.Value.Int on string Value</p>
+<p>goroutine 1 [running]:<br>
+reflect.Value.Int(&hellip;)<br>
+/usr/local/go/src/reflect/value.go:986<br>
+main.getIntValue(0x4a0120, 0x4db0d0)<br>
+/tmp/src282322283/main.go:14 +0x204<br>
+main.main()<br>
+/tmp/src282322283/main.go:24 +0x7b<br>
+exit status 2</p>
+</blockquote>
+<p>To minimize API surface, Int() returns int64 and works on all signed integer values (int8, int16, int32, int64).</p>
+<p>UInt() methods returns uint64 and works on every unsigned integer values (uint8, uint16, uint32, uint64).</p>
+<p>Trying to get integer value from value of incompatible type (like string) will panic.</p>
+<p>To avoid panic you can first check the type with Kind().</p>
+<p>All methods for retrieving the value:</p>
+<pre><code>Bool() bool
 Int() int64
 UInt() uint64
 Float() float64
@@ -247,217 +245,226 @@ String() string
 Bytes() []byte
 Set the value
 type S struct {
-	N int
+    N int
 }
 
 func setIntPtr() {
-	var n int = 2
-	reflect.ValueOf(&amp;n).Elem().SetInt(4)
-	fmt.Printf(&quot;setIntPtr: n=%d\n&quot;, n)
+    var n int = 2
+    reflect.ValueOf(&amp;n).Elem().SetInt(4)
+    fmt.Printf(&quot;setIntPtr: n=%d\n&quot;, n)
 }
 
 func setStructFieldDirect() {
-	var s S
-	reflect.ValueOf(&amp;s.N).Elem().SetInt(5)
-	fmt.Printf(&quot;setStructFieldDirect: n=%d\n&quot;, s.N)
+    var s S
+    reflect.ValueOf(&amp;s.N).Elem().SetInt(5)
+    fmt.Printf(&quot;setStructFieldDirect: n=%d\n&quot;, s.N)
 }
 
 func setStructPtrField() {
-	var s S
-	reflect.ValueOf(&amp;s).Elem().Field(0).SetInt(6)
-	fmt.Printf(&quot;setStructPtrField: s.N: %d\n&quot;, s.N)
+    var s S
+    reflect.ValueOf(&amp;s).Elem().Field(0).SetInt(6)
+    fmt.Printf(&quot;setStructPtrField: s.N: %d\n&quot;, s.N)
 }
 
 func handlePanic(funcName string) {
-	if msg := recover(); msg != nil {
-		fmt.Printf(&quot;%s panicked with '%s'\n&quot;, funcName, msg)
-	}
+    if msg := recover(); msg != nil {
+        fmt.Printf(&quot;%s panicked with '%s'\n&quot;, funcName, msg)
+    }
 }
 
 func setStructField() {
-	defer handlePanic(&quot;setStructField&quot;)
-	var s S
-	reflect.ValueOf(s).Elem().Field(0).SetInt(4)
-	fmt.Printf(&quot;s.N: %d\n&quot;, s.N)
+    defer handlePanic(&quot;setStructField&quot;)
+    var s S
+    reflect.ValueOf(s).Elem().Field(0).SetInt(4)
+    fmt.Printf(&quot;s.N: %d\n&quot;, s.N)
 }
 
 func setInt() {
-	defer handlePanic(&quot;setInt&quot;)
-	var n int = 2
-	rv := reflect.ValueOf(n)
-	rv.Elem().SetInt(4)
+    defer handlePanic(&quot;setInt&quot;)
+    var n int = 2
+    rv := reflect.ValueOf(n)
+    rv.Elem().SetInt(4)
 }
 
 func setIntPtrWithString() {
-	defer handlePanic(&quot;setIntPtrWithString&quot;)
-	var n int = 2
-	reflect.ValueOf(&amp;n).Elem().SetString(&quot;8&quot;)
+    defer handlePanic(&quot;setIntPtrWithString&quot;)
+    var n int = 2
+    reflect.ValueOf(&amp;n).Elem().SetString(&quot;8&quot;)
 }
-</code></pre><p>setIntPtr: n=4
-setStructFieldDirect: n=5
-setStructPtrField: s.N: 6
-setInt panicked with &lsquo;reflect: call of reflect.Value.Elem on int Value&rsquo;
-setStructField panicked with &lsquo;reflect: call of reflect.Value.Elem on struct Value&rsquo;
-setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetString on int Value&rsquo;
-As setInt and setStructField show, you can only change values if you start with a pointer to the value.</p>
+</code></pre><blockquote>
+<p>setIntPtr: n=4<br>
+setStructFieldDirect: n=5<br>
+setStructPtrField: s.N: 6<br>
+setInt panicked with &lsquo;reflect: call of reflect.Value.Elem on int Value&rsquo;<br>
+setStructField panicked with &lsquo;reflect: call of reflect.Value.Elem on struct Value&rsquo;<br>
+setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetString on int Value&rsquo;</p>
+</blockquote>
+<p>As setInt and setStructField show, you can only change values if you start with a pointer to the value.</p>
 <p>Since reflect.ValueOf() creates a reflect.Value that represents a pointer to a value, you need to use Elem() to get reflect.Value that represents the value itself. You can then call SetInt() to set the value.</p>
 <p>setStructPtrField shows how we can grab a reference to field value by it’s position in the struct.</p>
 <p>Trying to set value of incompatible type will panic.</p>
 <p>Methods that set values mirror those that read the values:</p>
-<p>SetBool(v bool)
-SetInt(v int64)
-SetUInt(v uint64)
-SetFloat(v float64)
-SetString(v string)
-SetBytes(v []byte)</p>
+<ul>
+<li>SetBool(v bool)</li>
+<li>SetInt(v int64)</li>
+<li>SetUInt(v uint64)</li>
+<li>SetFloat(v float64)</li>
+<li>SetString(v string)</li>
+<li>SetBytes(v []byte)</li>
+</ul>
 <h2 id="pointers">Pointers</h2>
 <p>A pointer to X is a distinct type from X.</p>
 <p>If reflect.Value references a pointer to a value, you can get a reference to the value by calling Elem().</p>
-<p>func printIntResolvingPointers(v interface{}) {
-rv := reflect.ValueOf(v)
-typeName := rv.Type().String()
-name := &quot;&rdquo;
-for rv.Kind() == reflect.Ptr {
-name = &ldquo;pointer to &quot; + name
-rv = rv.Elem()
-}
-name += rv.Type().String()
-fmt.Printf(&ldquo;Value: %d. Type: &lsquo;%s&rsquo; i.e. &lsquo;%s&rsquo;.\n\n&rdquo;, rv.Int(), name, typeName)
-}</p>
-<p>func main() {
-n := 3
-printIntResolvingPointers(n)</p>
-<pre><code>n = 4
-printIntResolvingPointers(&amp;n)
-
-n = 5
-np := &amp;n
-printIntResolvingPointers(&amp;np)
-</code></pre>
-<p>}</p>
-<pre><code>Value: 3. Type: 'int' i.e. 'int'.
-
-Value: 4. Type: 'pointer to int' i.e. '*int'.
-
-Value: 5. Type: 'pointer to pointer to int' i.e. '**int'.
-
-Under the hood an interface is also a pointer to its underlying value so Elem() also works on reflect.Value representing interface.
-
-
-## Structs
-List fields of a struct
-Using reflection we can list all fields of a struct.
-
-type S struct {
-	FirstName string `my_tag:&quot;first-name&quot;`
-	lastName  string
-	Age       int `json:&quot;age&quot;,xml:&quot;AgeXml`
-}
-
-func describeStructSimple(rv reflect.Value) {
-	structType := rv.Type()
-	for i := 0; i &lt; rv.NumField(); i++ {
-		v := rv.Field(i)
-		structField := structType.Field(i)
-		name := structField.Name
-		typ := structField.Type
-		tag := structField.Tag
-		jsonTag := tag.Get(&quot;json&quot;)
-		isExported := structField.PkgPath == &quot;&quot;
-		if isExported {
-			fmt.Printf(&quot;name: '%s',\ttype: '%s', value: %v,\ttag: '%s',\tjson tag: '%s'\n&quot;, name, typ, v.Interface(), tag, jsonTag)
-		} else {
-			fmt.Printf(&quot;name: '%s',\ttype: '%s',\tvalue: not accessible\n&quot;, name, v.Type().Name())
-		}
-	}
+<pre><code>func printIntResolvingPointers(v interface{}) {
+    rv := reflect.ValueOf(v)
+    typeName := rv.Type().String()
+    name := &quot;&quot;
+    for rv.Kind() == reflect.Ptr {
+        name = &quot;pointer to &quot; + name
+        rv = rv.Elem()
+    }
+    name += rv.Type().String()
+    fmt.Printf(&quot;Value: %d. Type: '%s' i.e. '%s'.\n\n&quot;, rv.Int(), name, typeName)
 }
 
 func main() {
-	s := S{
-		FirstName: &quot;John&quot;,
-		lastName:  &quot;Doe&quot;,
-		Age:       27,
-	}
-	describeStructSimple(reflect.ValueOf(s))
+    n := 3
+    printIntResolvingPointers(n)
+
+    n = 4
+    printIntResolvingPointers(&amp;n)
+
+    n = 5
+    np := &amp;n
+    printIntResolvingPointers(&amp;np)
 }
-</code></pre><p>name: &lsquo;FirstName&rsquo;,	type: &lsquo;string&rsquo;, value: John,	tag: &lsquo;my_tag:&ldquo;first-name&rdquo;',	json tag: '&rsquo;
-name: &lsquo;lastName&rsquo;,	type: &lsquo;string&rsquo;,	value: not accessible
-name: &lsquo;Age&rsquo;,	type: &lsquo;int&rsquo;, value: 27,	tag: &lsquo;json:&ldquo;age&rdquo;,xml:&ldquo;AgeXml&rsquo;,	json tag: &lsquo;age&rsquo;
-Using reflection we can only access values (v.Interface{}) of exported fields.</p>
+</code></pre><blockquote>
+<p>Value: 3. Type: &lsquo;int&rsquo; i.e. &lsquo;int&rsquo;.</p>
+<p>Value: 4. Type: &lsquo;pointer to int&rsquo; i.e. &lsquo;*int&rsquo;.</p>
+<p>Value: 5. Type: &lsquo;pointer to pointer to int&rsquo; i.e. &lsquo;**int&rsquo;.</p>
+</blockquote>
+<p>Under the hood an interface is also a pointer to its underlying value so Elem() also works on reflect.Value representing interface.</p>
+<h2 id="structs">Structs</h2>
+<p>List fields of a struct
+Using reflection we can list all fields of a struct.</p>
+<pre><code>type S struct {
+    FirstName string `my_tag:&quot;first-name&quot;`
+    lastName  string
+    Age       int `json:&quot;age&quot;,xml:&quot;AgeXml`
+}
+
+func describeStructSimple(rv reflect.Value) {
+    structType := rv.Type()
+    for i := 0; i &lt; rv.NumField(); i++ {
+        v := rv.Field(i)
+        structField := structType.Field(i)
+        name := structField.Name
+        typ := structField.Type
+        tag := structField.Tag
+        jsonTag := tag.Get(&quot;json&quot;)
+        isExported := structField.PkgPath == &quot;&quot;
+        if isExported {
+            fmt.Printf(&quot;name: '%s',\ttype: '%s', value: %v,\ttag: '%s',\tjson tag: '%s'\n&quot;, name, typ, v.Interface(), tag, jsonTag)
+        } else {
+            fmt.Printf(&quot;name: '%s',\ttype: '%s',\tvalue: not accessible\n&quot;, name, v.Type().Name())
+        }
+    }
+}
+
+func main() {
+    s := S{
+        FirstName: &quot;John&quot;,
+        lastName:  &quot;Doe&quot;,
+        Age:       27,
+    }
+    describeStructSimple(reflect.ValueOf(s))
+}
+</code></pre><blockquote>
+<p>name: &lsquo;FirstName&rsquo;,    type: &lsquo;string&rsquo;, value: John,    tag: &lsquo;my_tag:&ldquo;first-name&rdquo;',    json tag: '&rsquo;<br>
+name: &lsquo;lastName&rsquo;,    type: &lsquo;string&rsquo;,    value: not accessible<br>
+name: &lsquo;Age&rsquo;,    type: &lsquo;int&rsquo;, value: 27,    tag: &lsquo;json:&ldquo;age&rdquo;,xml:&ldquo;AgeXml&rsquo;,    json tag: &lsquo;age&rsquo;</p>
+</blockquote>
+<p>Using reflection we can only access values (v.Interface{}) of exported fields.</p>
 <p>Exported fields are fields with names starting with upper case (FirstName and Age are exported, lastName is not).</p>
 <p>Field is exported if reflect.StructField.PkgPath == &ldquo;&quot;.</p>
 <p>List fields of a struct recursively
 Inspecting a struct is inherently recursive process.</p>
 <p>You have to chase pointers and recurse into embedded structures.</p>
 <p>In real programs inspecting structures using reflections would be recursive.</p>
-<p>type Inner struct {
-N int
-}</p>
-<p>type S struct {
-Inner
-NamedInner Inner
-PtrInner   *Inner
-unexported int
-N          int8
-}</p>
-<p>func indentStr(level int) string {
-return strings.Repeat(&rdquo;  &ldquo;, level)
-}</p>
-<p>// if sf is not nil, this is a field of a struct
-func describeStruct(level int, rv reflect.Value, sf *reflect.StructField) {
-structType := rv.Type()
-nFields := rv.NumField()
-typ := rv.Type()
-if sf == nil {
-fmt.Printf(&quot;%sstruct %s, %d field(s), size: %d bytes\n&rdquo;, indentStr(level), structType.Name(), nFields, typ.Size())
-} else {
-fmt.Printf(&quot;%sname: &lsquo;%s&rsquo; type: &lsquo;struct %s&rsquo;, offset: %d, %d field(s), size: %d bytes, embedded: %v\n&rdquo;, indentStr(level), sf.Name, structType.Name(), sf.Offset, nFields, typ.Size(), sf.Anonymous)
-}</p>
-<pre><code>for i := 0; i &lt; nFields; i++ {
-    fv := rv.Field(i)
-    sf := structType.Field(i)
-    describeType(level+1, fv, &amp;sf)
+<pre><code>type Inner struct {
+    N int
 }
-</code></pre>
-<p>}</p>
-<p>// if sf is not nil, this is a field of a struct
-func describeType(level int, rv reflect.Value, sf *reflect.StructField) {
-switch rv.Kind() {</p>
-<pre><code>case reflect.Int, reflect.Int8:
-    // in real code we would handle more primitive types
-    i := rv.Int()
+
+type S struct {
+    Inner
+    NamedInner Inner
+    PtrInner   *Inner
+    unexported int
+    N          int8
+}
+
+func indentStr(level int) string {
+    return strings.Repeat(&quot;  &quot;, level)
+}
+
+// if sf is not nil, this is a field of a struct
+func describeStruct(level int, rv reflect.Value, sf *reflect.StructField) {
+    structType := rv.Type()
+    nFields := rv.NumField()
     typ := rv.Type()
     if sf == nil {
-        fmt.Printf(&quot;%stype: '%s', value: '%d'\n&quot;, indentStr(level), typ.Name(), i)
+        fmt.Printf(&quot;%sstruct %s, %d field(s), size: %d bytes\n&quot;, indentStr(level), structType.Name(), nFields, typ.Size())
     } else {
-        fmt.Printf(&quot;%s name: '%s' type: '%s', value: '%d', offset: %d, size: %d\n&quot;, indentStr(level), sf.Name, typ.Name(), i, sf.Offset, typ.Size())
+        fmt.Printf(&quot;%sname: '%s' type: 'struct %s', offset: %d, %d field(s), size: %d bytes, embedded: %v\n&quot;, indentStr(level), sf.Name, structType.Name(), sf.Offset, nFields, typ.Size(), sf.Anonymous)
     }
 
-case reflect.Ptr:
-    fmt.Printf(&quot;%spointer\n&quot;, indentStr(level))
-    describeType(level+1, rv.Elem(), nil)
-
-case reflect.Struct:
-    describeStruct(level, rv, sf)
+    for i := 0; i &lt; nFields; i++ {
+        fv := rv.Field(i)
+        sf := structType.Field(i)
+        describeType(level+1, fv, &amp;sf)
+    }
 }
-</code></pre>
-<p>}</p>
-<p>func main() {
-var s S
-describeType(0, reflect.ValueOf(s), nil)
-}</p>
-<pre><code>struct S, 5 field(s), size: 40 bytes
-  name: 'Inner' type: 'struct Inner', offset: 0, 1 field(s), size: 8 bytes, embedded: true
-     name: 'N' type: 'int', value: '0', offset: 0, size: 8
-  name: 'NamedInner' type: 'struct Inner', offset: 8, 1 field(s), size: 8 bytes, embedded: false
-     name: 'N' type: 'int', value: '0', offset: 0, size: 8
-  pointer
-   name: 'unexported' type: 'int', value: '0', offset: 24, size: 8
-   name: 'N' type: 'int8', value: '0', offset: 32, size: 1
 
-## Slice
-Read a slice using reflection
-a := []int{3, 1, 8}
+// if sf is not nil, this is a field of a struct
+func describeType(level int, rv reflect.Value, sf *reflect.StructField) {
+    switch rv.Kind() {
+
+    case reflect.Int, reflect.Int8:
+        // in real code we would handle more primitive types
+        i := rv.Int()
+        typ := rv.Type()
+        if sf == nil {
+            fmt.Printf(&quot;%stype: '%s', value: '%d'\n&quot;, indentStr(level), typ.Name(), i)
+        } else {
+            fmt.Printf(&quot;%s name: '%s' type: '%s', value: '%d', offset: %d, size: %d\n&quot;, indentStr(level), sf.Name, typ.Name(), i, sf.Offset, typ.Size())
+        }
+
+    case reflect.Ptr:
+        fmt.Printf(&quot;%spointer\n&quot;, indentStr(level))
+        describeType(level+1, rv.Elem(), nil)
+
+    case reflect.Struct:
+        describeStruct(level, rv, sf)
+    }
+}
+
+func main() {
+    var s S
+    describeType(0, reflect.ValueOf(s), nil)
+}
+</code></pre><blockquote>
+<p>struct S, 5 field(s), size: 40 bytes<br>
+name: &lsquo;Inner&rsquo; type: &lsquo;struct Inner&rsquo;, offset: 0, 1 field(s), size: 8 bytes, embedded: true<br>
+name: &lsquo;N&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 0, size: 8<br>
+name: &lsquo;NamedInner&rsquo; type: &lsquo;struct Inner&rsquo;, offset: 8, 1 field(s), size: 8 bytes, embedded: false<br>
+name: &lsquo;N&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 0, size: 8<br>
+pointer<br>
+name: &lsquo;unexported&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 24, size: 8<br>
+name: &lsquo;N&rsquo; type: &lsquo;int8&rsquo;, value: &lsquo;0&rsquo;, offset: 32, size: 1</p>
+</blockquote>
+<h2 id="slice">Slice</h2>
+<p>Read a slice using reflection</p>
+<pre><code>a := []int{3, 1, 8}
 rv := reflect.ValueOf(a)
 
 fmt.Printf(&quot;len(a): %d\n&quot;, rv.Len())
@@ -476,29 +483,31 @@ fmt.Printf(&quot;elRef.CanSet(): %v\n&quot;, elRef.CanSet())
 
 elRef.SetInt(5)
 fmt.Printf(&quot;a: %v\n&quot;, a)
-</code></pre><p>len(a): 3
-cap(a): 3
-slice kind: &lsquo;slice&rsquo;
-element type: &lsquo;int&rsquo;
-a[0]: 3
-elRef.CanAddr(): true
-elRef.CanSet(): true
-a: [3 5 8]
-Creating a new slice using reflection
-typ := reflect.SliceOf(reflect.TypeOf(&ldquo;example&rdquo;))
+</code></pre><blockquote>
+<p>len(a): 3<br>
+cap(a): 3<br>
+slice kind: &lsquo;slice&rsquo;<br>
+element type: &lsquo;int&rsquo;<br>
+a[0]: 3<br>
+elRef.CanAddr(): true<br>
+elRef.CanSet(): true<br>
+a: [3 5 8]</p>
+</blockquote>
+<p>Creating a new slice using reflection</p>
+<pre><code>typ := reflect.SliceOf(reflect.TypeOf(&quot;example&quot;))
 // create slice with capacity 10 and length 1
 rv := reflect.MakeSlice(typ, 1, 10)
-rv.Index(0).SetString(&ldquo;foo&rdquo;)</p>
-<p>a := rv.Interface().([]string)
-fmt.Printf(&ldquo;a: %#v\n&rdquo;, a)</p>
-<pre><code>a: []string{&quot;foo&quot;}
+rv.Index(0).SetString(&quot;foo&quot;)
 
-## reflect.Kind
-Function Kind() on reflect.Value returns reflect.Kind type describing type of the value.
-
-Here are all possible values:
-
-type Kind uint
+a := rv.Interface().([]string)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;foo&rdquo;}</p>
+</blockquote>
+<h2 id="reflectkind">reflect.Kind</h2>
+<p>Function Kind() on reflect.Value returns reflect.Kind type describing type of the value.</p>
+<p>Here are all possible values:</p>
+<pre><code>type Kind uint
 
 const (
     Invalid Kind = iota
@@ -529,28 +538,19 @@ const (
     Struct
     UnsafePointer
 )
+</code></pre><h2 id="uses-for-reflection">Uses for reflection</h2>
+<p>Serialization to JSON, XML, SQL, protobufs etc.
+Reflection makes it possible to implement generic JSON serialization/deserialization.</p>
+<p>For generic JSON serialization we can enumerate fields of arbitrary structures, read their fields and create corresponding JSON string.</p>
+<p>For generic JSON deserialization, we can enumerate fields of arbitrary structures and set them based on parsed JSON data.</p>
+<p>The same applies for other serialization formats like XML, YAML or Protocol Buffers.</p>
+<p>Reflection makes it possible to define a generic API for SQL databases because we can convert arbitrary structures to a format that SQL database understands and put data recieved from SQL database into arbitrary structures.</p>
+<p>Extending templating language with Go functions
+Thanks to ability to call arbitrary functions at runtime we can define custom function for templates in text/template. We register Go functions with templating engine.</p>
+<p>The engine can then call those functions at runtime, when executing a template.</p>
+<p>Writing interpreters tightly integrated with Go
+Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaScript interpreter can be easily extended with additional functions written in Go.</p>
 
-## Uses for reflection
-Serialization to JSON, XML, SQL, protobufs etc.
-Reflection makes it possible to implement generic JSON serialization/deserialization.
-
-For generic JSON serialization we can enumerate fields of arbitrary structures, read their fields and create corresponding JSON string.
-
-For generic JSON deserialization, we can enumerate fields of arbitrary structures and set them based on parsed JSON data.
-
-The same applies for other serialization formats like XML, YAML or Protocol Buffers.
-
-Reflection makes it possible to define a generic API for SQL databases because we can convert arbitrary structures to a format that SQL database understands and put data recieved from SQL database into arbitrary structures.
-
-Extending templating language with Go functions
-Thanks to ability to call arbitrary functions at runtime we can define custom function for templates in text/template. We register Go functions with templating engine.
-
-The engine can then call those functions at runtime, when executing a template.
-
-Writing interpreters tightly integrated with Go
-Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaScript interpreter can be easily extended with additional functions written in Go.
-
-</code></pre>
                                             
                                         </div>
 

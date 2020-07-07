@@ -151,28 +151,28 @@
                                             
                                             <p>标准库中的flag包用于解析命令行参数：</p>
 <pre><code>var (
-	flgHelp bool
-	flgEcho string
+    flgHelp bool
+    flgEcho string
 )
 
 func parseCmdLineFlags() {
-	flag.BoolVar(&amp;flgHelp, &quot;help&quot;, false, &quot;if true, show help&quot;)
-	flag.StringVar(&amp;flgEcho, &quot;echo&quot;, &quot;&quot;, &quot;&quot;)
-	flag.Parse()
+    flag.BoolVar(&amp;flgHelp, &quot;help&quot;, false, &quot;if true, show help&quot;)
+    flag.StringVar(&amp;flgEcho, &quot;echo&quot;, &quot;&quot;, &quot;&quot;)
+    flag.Parse()
 }
 
 func main() {
-	parseCmdLineFlags()
-	if flgHelp {
-		flag.Usage()
-		os.Exit(0)
-	}
-	fmt.Printf(&quot;flag -echo: '%s'\n&quot;, flgEcho)
+    parseCmdLineFlags()
+    if flgHelp {
+        flag.Usage()
+        os.Exit(0)
+    }
+    fmt.Printf(&quot;flag -echo: '%s'\n&quot;, flgEcho)
 
-	remainingArgs := flag.Args()
-	for _, arg := range remainingArgs {
-		fmt.Printf(&quot;Remainig arg: '%s'\n&quot;, arg)
-	}
+    remainingArgs := flag.Args()
+    for _, arg := range remainingArgs {
+        fmt.Printf(&quot;Remainig arg: '%s'\n&quot;, arg)
+    }
 }
 </code></pre><blockquote>
 <p>flag -echo: &lsquo;echo-arg&rsquo;<br>
