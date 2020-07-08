@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Time-and-date/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Go时间包提供了处理时间和日期的功能。 包中的主要类型： structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds 获取当前日期和时间: now := time.Now()">
+    content="Go时间包提供了处理时间和日期的功能。 包中的主要类型： 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Time-and-date/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Time-and-date/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 日期和时间</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 2186 Words
+                                        Posted @ 2019-09-09 · 2237 Words
                                         
                                         · Tags: Go
                                         
@@ -151,9 +151,11 @@
                                             
                                             <p>Go时间包提供了处理时间和日期的功能。</p>
 <p>包中的主要类型：</p>
-<p>structure time.Time represents time and date values
-time.Duration represents difference between two time.Time values in nanoseconds
-time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds</p>
+<ul>
+<li>结构time.Time表示了时间和日期的值</li>
+<li>time.Duration 代表了时间差,单位为nanoseconds</li>
+<li>time.Second, time.Millisecond 等是time.Duration中的常量,比nanoseconds方便使用</li>
+</ul>
 <p>获取当前日期和时间:</p>
 <pre><code>now := time.Now()
 </code></pre><p>用给定的时间点构造时间和日期</p>

@@ -243,7 +243,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Time-and-date/</guid>
-      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型： structure time.Time represents time and date values time.Duration represents difference between two time.Time values in nanoseconds time.Second, time.Millisecond etc. are constants of time.Duration that are easier to use than nanoseconds 获取当前日期和时间: now := time.Now()</description>
+      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型： 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
     </item>
     
     <item>
@@ -391,7 +391,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Testing/</guid>
-      <description>Go comes with its own testing facilities that has everything needed to run tests and benchmarks. Unlike in most other programming languages, there is often no need for a separate testing framework, although some exist. 基本使用 main.go: package main import ( &amp;quot;fmt&amp;quot; ) func main() { fmt.Println(Sum(4,5)) } func Sum(a, b int) int { return a + b } main_test.go: package main import ( &amp;quot;testing&amp;quot; ) //</description>
+      <description>Go带有自己的测试功能，具有运行测试和基准所需的一切。 与大多数其他编程语言不同，尽管存在一些测试框架，但通常不需要单独的测试框架。 基本使用 main.go:</description>
     </item>
     
     <item>
@@ -450,12 +450,7 @@ functions are variadic (eg.</description>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/</guid>
-      <description>Allocating and freeing objects with high frequency can be relatively expensive.
-A common technique for improving performance is re-using memory.
-sync.Pool is a thread-safe cache for re-using allocations.
-package main
-import ( &amp;ldquo;bytes&amp;rdquo; &amp;ldquo;fmt&amp;rdquo; &amp;ldquo;sync&amp;rdquo; )
-var pool = sync.Pool{ // New creates an object when the pool has nothing available to return. // New must return an interface{} to make it flexible. You have to cast // your type after getting it.</description>
+      <description>高频分配和释放对象可能相对昂贵。 提高性能的常用技术是重复使用内存。 sync.Pool是用于复用分配的线程安全缓存。 package main import ( &amp;quot;bytes&amp;quot; &amp;quot;fmt&amp;quot; &amp;quot;sync&amp;quot; ) var pool = sync.Pool{ //</description>
     </item>
     
     <item>
@@ -505,10 +500,7 @@ Encode data to file and decode from file type User struct { Username string Pass
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Console-IO/</guid>
-      <description>When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.
-fmt.Scanf to read from stdio Most convenient way is to use fmt.Scanf which is a mirror image of fmt.Printf.
-Here&amp;rsquo;s how to read a string and an integer from the console (standard input)
-fmt.Print(&amp;ldquo;What is your name?\n&amp;rdquo;) var name string if n, err := fmt.Scanf(&amp;quot;%s&amp;rdquo;, &amp;amp;name); err != nil { fmt.Printf(&amp;ldquo;fmt.Scanf failed with &amp;lsquo;%s&amp;rsquo;\n&amp;rdquo;, err) } else { fmt.</description>
+      <description>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。 fmt.Scanf从stdio读取 最方便的方法是</description>
     </item>
     
     <item>

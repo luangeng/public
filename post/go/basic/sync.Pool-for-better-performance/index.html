@@ -16,12 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Allocating and freeing objects with high frequency can be relatively expensive.
-A common technique for improving performance is re-using memory.
-sync.Pool is a thread-safe cache for re-using allocations.
-package main
-import ( &ldquo;bytes&rdquo; &ldquo;fmt&rdquo; &ldquo;sync&rdquo; )
-var pool = sync.Pool{ // New creates an object when the pool has nothing available to return. // New must return an interface{} to make it flexible. You have to cast // your type after getting it.">
+    content="高频分配和释放对象可能相对昂贵。 提高性能的常用技术是重复使用内存。 sync.Pool是用于复用分配的线程安全缓存。 package main import ( &quot;bytes&quot; &quot;fmt&quot; &quot;sync&quot; ) var pool = sync.Pool{ //">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">
@@ -135,7 +130,7 @@ var pool = sync.Pool{ // New creates an object when the pool has nothing availab
                                     <h1 class="post-title">Go sync.Pool for better performance</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 227 Words
+                                        Posted @ 2019-09-09 · 273 Words
                                         
                                         · Tags: Go
                                         
@@ -154,57 +149,63 @@ var pool = sync.Pool{ // New creates an object when the pool has nothing availab
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Allocating and freeing objects with high frequency can be relatively expensive.</p>
-<p>A common technique for improving performance is re-using memory.</p>
-<p>sync.Pool is a thread-safe cache for re-using allocations.</p>
-<p>package main</p>
-<p>import (
-&ldquo;bytes&rdquo;
-&ldquo;fmt&rdquo;
-&ldquo;sync&rdquo;
-)</p>
-<p>var pool = sync.Pool{
-// New creates an object when the pool has nothing available to return.
-// New must return an interface{} to make it flexible. You have to cast
-// your type after getting it.
-New: func() interface{} {
-// Pools often contain things like *bytes.Buffer, which are
-// temporary and re-usable.
-return &amp;bytes.Buffer{}
-},
-}</p>
-<p>func main() {
-// When getting from a Pool, you need to cast
-s := pool.Get().(*bytes.Buffer)
-// We write to the object
-s.Write([]byte(&ldquo;dirty&rdquo;))
-// Then put it back
-pool.Put(s)</p>
-<pre><code>// Pools can return dirty results
+                                            <p>高频分配和释放对象可能相对昂贵。</p>
+<p>提高性能的常用技术是重复使用内存。</p>
+<p>sync.Pool是用于复用分配的线程安全缓存。</p>
+<pre><code>package main
 
-// Get 'another' buffer
-s = pool.Get().(*bytes.Buffer)
-// Write to it
-s.Write([]byte(&quot;append&quot;))
-// At this point, if GC ran, this buffer *might* exist already, in
-// which case it will contain the bytes of the string &quot;dirtyappend&quot;
-fmt.Println(s)
-// So use pools wisely, and clean up after yourself
-s.Reset()
-pool.Put(s)
+import (
+    &quot;bytes&quot;
+    &quot;fmt&quot;
+    &quot;sync&quot;
+)
 
-// When you clean up, your buffer should be empty
-s = pool.Get().(*bytes.Buffer)
-// Defer your Puts to make sure you don't leak!
-defer pool.Put(s)
-s.Write([]byte(&quot;reset!&quot;))
-// This prints &quot;reset!&quot;, and not &quot;dirtyappendreset!&quot;
-fmt.Println(s)
-</code></pre>
-<p>}</p>
-<pre><code>dirtyappend
-reset!
-As with all performance optimization techniques you should not over-use sync.Pool.</code></pre>
+var pool = sync.Pool{
+    // New creates an object when the pool has nothing available to return.
+    // New must return an interface{} to make it flexible. You have to cast
+    // your type after getting it.
+    New: func() interface{} {
+        // Pools often contain things like *bytes.Buffer, which are
+        // temporary and re-usable.
+        return &amp;bytes.Buffer{}
+    },
+}
+
+func main() {
+    // When getting from a Pool, you need to cast
+    s := pool.Get().(*bytes.Buffer)
+    // We write to the object
+    s.Write([]byte(&quot;dirty&quot;))
+    // Then put it back
+    pool.Put(s)
+
+    // Pools can return dirty results
+
+    // Get 'another' buffer
+    s = pool.Get().(*bytes.Buffer)
+    // Write to it
+    s.Write([]byte(&quot;append&quot;))
+    // At this point, if GC ran, this buffer *might* exist already, in
+    // which case it will contain the bytes of the string &quot;dirtyappend&quot;
+    fmt.Println(s)
+    // So use pools wisely, and clean up after yourself
+    s.Reset()
+    pool.Put(s)
+
+    // When you clean up, your buffer should be empty
+    s = pool.Get().(*bytes.Buffer)
+    // Defer your Puts to make sure you don't leak!
+    defer pool.Put(s)
+    s.Write([]byte(&quot;reset!&quot;))
+    // This prints &quot;reset!&quot;, and not &quot;dirtyappendreset!&quot;
+    fmt.Println(s)
+}
+</code></pre><blockquote>
+<p>dirtyappend<br>
+reset!</p>
+</blockquote>
+<p>与所有性能优化技术一样，不应过度使用sync.Pool。</p>
+
                                             
                                         </div>
 

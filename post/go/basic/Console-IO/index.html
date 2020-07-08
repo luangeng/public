@@ -16,10 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Console-IO/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.
-fmt.Scanf to read from stdio Most convenient way is to use fmt.Scanf which is a mirror image of fmt.Printf.
-Here&rsquo;s how to read a string and an integer from the console (standard input)
-fmt.Print(&ldquo;What is your name?\n&rdquo;) var name string if n, err := fmt.Scanf(&quot;%s&rdquo;, &amp;name); err != nil { fmt.Printf(&ldquo;fmt.Scanf failed with &lsquo;%s&rsquo;\n&rdquo;, err) } else { fmt.">
+    content="编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。 fmt.Scanf从stdio读取 最方便的方法是">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Console-IO/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Console-IO/">
@@ -133,7 +130,7 @@ fmt.Print(&ldquo;What is your name?\n&rdquo;) var name string if n, err := fmt.S
                                     <h1 class="post-title">Go Console I/O</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 364 Words
+                                        Posted @ 2019-09-09 · 737 Words
                                         
                                         · Tags: Go
                                         
@@ -152,61 +149,52 @@ fmt.Print(&ldquo;What is your name?\n&rdquo;) var name string if n, err := fmt.S
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>When writing command-line programs, you can read user input from os.Stdin using any function that accepts io.Reader.</p>
-<p>fmt.Scanf to read from stdio
-Most convenient way is to use fmt.Scanf which is a mirror image of fmt.Printf.</p>
-<p>Here&rsquo;s how to read a string and an integer from the console (standard input)</p>
-<p>fmt.Print(&ldquo;What is your name?\n&rdquo;)
+                                            <p>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。</p>
+<h3 id="fmtscanf从stdio读取">fmt.Scanf从stdio读取</h3>
+<p>最方便的方法是使用fmt.Scanf，它是fmt.Printf的镜像。</p>
+<p>这是从控制台（标准输入）读取字符串和整数的方法</p>
+<pre><code>fmt.Print(&quot;What is your name?\n&quot;)
 var name string
-if n, err := fmt.Scanf(&quot;%s&rdquo;, &amp;name); err != nil {
-fmt.Printf(&ldquo;fmt.Scanf failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+if n, err := fmt.Scanf(&quot;%s&quot;, &amp;name); err != nil {
+    fmt.Printf(&quot;fmt.Scanf failed with '%s'\n&quot;, err)
 } else {
-fmt.Printf(&ldquo;fmt.Scanf scanned %d item(s) and set name to &lsquo;%s&rsquo;\n&rdquo;, n, name)
+    fmt.Printf(&quot;fmt.Scanf scanned %d item(s) and set name to '%s'\n&quot;, n, name)
 }
-fmt.Print(&ldquo;What is your age?\n&rdquo;)
+fmt.Print(&quot;What is your age?\n&quot;)
 var age int
-if n, err :=  fmt.Scanf(&quot;%d&rdquo;, &amp;age); err != nil {
-fmt.Printf(&ldquo;fmt.Scanf failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+if n, err :=  fmt.Scanf(&quot;%d&quot;, &amp;age); err != nil {
+    fmt.Printf(&quot;fmt.Scanf failed with '%s'\n&quot;, err)
 } else {
-fmt.Printf(&ldquo;fmt.Scanf scanned %d item(s) and set age to &lsquo;%d&rsquo;\n&rdquo;, n, age)
-}</p>
-<pre><code>fmt.Scanf reads input from os.Stdin and tries to set passed variables based on provided format.
-
-A space and newline are considered value separators.
-
-It returns number of successfully parsed items (in case it only matched first few variables).
-
-To read from arbitrary io.Reader use fmt.Fscanf.
-
-fmt.Scanln to read a line from stdin
-To read a full line (until newline or io.EOF, use fmt.Scanln:
-
-var line string
+    fmt.Printf(&quot;fmt.Scanf scanned %d item(s) and set age to '%d'\n&quot;, n, age)
+}
+</code></pre><p>fmt.Scanf从os.Stdin读取输入，并尝试根据提供的格式设置传递的变量。</p>
+<p>空格和换行符被视为值分隔符。</p>
+<p>它返回成功解析的数量(防止仅匹配前几个变量)</p>
+<p>要从任意io.Reader中读取，请使用fmt.Fscanf。</p>
+<h3 id="fmtscanln从stdin读取一行">fmt.Scanln从stdin读取一行</h3>
+<p>要读取整行（直到换行符或io.EOF，请使用fmt.Scanln：</p>
+<pre><code>var line string
 fmt.Scanln(&amp;line)
 fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
-</code></pre><p>bufio.Reader to read a line from stdin
-You can also use bufio.Reader:</p>
-<p>reader := bufio.NewReader(os.Stdin)
-if line, err := reader.ReadString('\n&rsquo;); err != nil {
-fmt.Printf(&ldquo;ReadString failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+</code></pre><h3 id="bufioreader从stdin读取一行">bufio.Reader从stdin读取一行</h3>
+<p>您也可以使用bufio.Reader：</p>
+<pre><code>reader := bufio.NewReader(os.Stdin)
+if line, err := reader.ReadString('\n'); err != nil {
+    fmt.Printf(&quot;ReadString failed with '%s'\n&quot;, err)
 } else {
-fmt.Printf(&ldquo;Entered line: &lsquo;%s&rsquo;\n&rdquo;, line)
-}</p>
-<pre><code>ReadString reads from the reader until it reads a given character. We specified newline \n character so it'll read a full line.
-
-The value returned by ReadString includes the terminating character (\n) so often you'll want to strip it with e.g. strings.TrimSpace.
-
-Character \n is a line terminator on Unix. On Windows it's more common to see \r\n as a line terminator. If you expect to be run on Windows, make sure to handle this (e.g. by trimming \r character from returned string).
-
-bufio.Scanner to read a line from stdin
-You can also use bufio.Scanner to read lines from stdin
-
-scanner := bufio.NewScanner(os.Stdin)
+    fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
+}
+</code></pre><p>ReadString从读取器读取，直到读取给定字符。 我们指定了换行符\n，因此它将读取整行。</p>
+<p>ReadString返回的值包含终止字符（\n），因此通常您希望使用例如。 strings.TrimSpace。</p>
+<p>字符\n是Unix上的行终止符。 在Windows上更常见的是将\r\n视为行终止符。 如果希望在Windows上运行，请确保进行处理（例如，通过从返回的字符串中修剪\r字符）。</p>
+<h4 id="bufioscanner从stdin读取一行">bufio.Scanner从stdin读取一行</h4>
+<p>也可以使用bufio.Scanner从stdin读取行</p>
+<pre><code>scanner := bufio.NewScanner(os.Stdin)
 for scanner.Scan() {
     line := scanner.Text()
     fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
 }
-</code></pre><p>bufio.Scanner allows for more complicated use where you specify a function to split input in chunks with Scanner.Split.</p>
+</code></pre><p>bufio.Scanner允许使用更复杂的用法，您可以指定使用Scanner.Split将输入拆分成块的函数。</p>
 
                                             
                                         </div>

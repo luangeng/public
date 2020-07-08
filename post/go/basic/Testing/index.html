@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Testing/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description"
-    content="Go comes with its own testing facilities that has everything needed to run tests and benchmarks. Unlike in most other programming languages, there is often no need for a separate testing framework, although some exist. 基本使用 main.go: package main import ( &quot;fmt&quot; ) func main() { fmt.Println(Sum(4,5)) } func Sum(a, b int) int { return a &#43; b } main_test.go: package main import ( &quot;testing&quot; ) //">
+    content="Go带有自己的测试功能，具有运行测试和基准所需的一切。 与大多数其他编程语言不同，尽管存在一些测试框架，但通常不需要单独的测试框架。 基本使用 main.go:">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Testing/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Testing/">
@@ -130,7 +130,7 @@
                                     <h1 class="post-title">Go 测试</h1>
 
                                     <p class="post-byline">
-                                        Posted @ 2019-09-09 · 1498 Words
+                                        Posted @ 2019-09-09 · 1928 Words
                                         
                                         · Tags: Go
                                         
@@ -149,7 +149,7 @@
                                     <div class="entry">
                                         <div class="entry-inner">
                                             
-                                            <p>Go comes with its own testing facilities that has everything needed to run tests and benchmarks. Unlike in most other programming languages, there is often no need for a separate testing framework, although some exist.</p>
+                                            <p>Go带有自己的测试功能，具有运行测试和基准所需的一切。 与大多数其他编程语言不同，尽管存在一些测试框架，但通常不需要单独的测试框架。</p>
 <h2 id="基本使用">基本使用</h2>
 <p>main.go:</p>
 <pre><code>package main
@@ -172,7 +172,7 @@ import (
     &quot;testing&quot;
 )
 
-// Test methods start with `Test`
+// 测试方法需以`Test`开头
 func TestSum(t *testing.T) {
     got := Sum(1, 2)
     want := 3
@@ -189,7 +189,7 @@ ok      test_app    0.005s
 --- PASS: TestSum (0.00s)
 PASS
 ok      _/tmp    0.000s
-</code></pre><p>Use the path ./&hellip; to test subdirectories recursively:</p>
+</code></pre><p>使用./&hellip;来测试子目录</p>
 <pre><code>$ go test -v ./...
 ok      github.com/me/project/dir1    0.008s
 === RUN   TestSum
@@ -199,13 +199,13 @@ ok      github.com/me/project/dir2    0.008s
 === RUN   TestDiff
 --- PASS: TestDiff (0.00s)
 PASS
-</code></pre><p>Run a Particular Test: If there are multiple tests and you want to run a specific test, it can be done like this:</p>
-<p><code>go test -v -run=&lt;TestName&gt; // will execute only test with this name</code>
-Example:</p>
+</code></pre><p>运行特定测试：如果有多个测试，并且您想运行特定测试，则可以这样进行：</p>
+<p><code>go test -v -run=&lt;TestName&gt; // will execute only test with this name</code></p>
+<p>如:</p>
 <pre><code>go test -v run=TestSum
-</code></pre><h2 id="table-driven-unit-tests">Table-driven unit tests</h2>
-<p>This type of testing is popular technique for testing with predefined input and output values.</p>
-<p>Create a file called main.go with content:</p>
+</code></pre><h2 id="表驱动的单元测试">表驱动的单元测试</h2>
+<p>此类测试是用于使用预定义的输入和输出值进行测试的流行技术。</p>
+<p>创建一个名为main.go的文件，其内容如下：</p>
 <pre><code>package main
 
 import (
@@ -219,15 +219,14 @@ func main() {
 func Sum(a, b int) int {
     return a + b
 }
-After you run it with, you will see that the output is 9. Although the Sum function looks pretty simple, it is a good idea to test your code. In order to do this, we create another file named main_test.go in the same folder as main.go, containing the following code:
-
-package main
+</code></pre><p>运行之后将看到输出为9,尽管Sum函数看起来非常简单，但是测试代码是一个好主意。 为此，我们在与main.go相同的文件夹中创建另一个名为main_test.go的文件，其中包含以下代码：</p>
+<pre><code>package main
 
 import (
     &quot;testing&quot;
 )
 
-// Test methods start with Test
+// Test开头
 func TestSum(t *testing.T) {
     // Note that the data variable is of type array of anonymous struct,
     // which is very handy for writing table-driven unit tests.
@@ -247,18 +246,14 @@ func TestSum(t *testing.T) {
         }
     }
 }
-As you can see, a slice of anonymous structs is created, each with a set of inputs and the expected result. This allows a large number of test cases to be created all together in one place, then executed in a loop, reducing code repetition and improving clarity.
-
-## Testing using setUp and tearDown function
-You can set a setUp and tearDown function.
-
-A setUp function prepares your environment to tests.
-A tearDown function does a rollback.
-This is a good option when you can’t modify your database and you need to create an object that simulate an object brought of database or need to init a configuration in each test.
-
-A stupid example would be:
-
-// Standard numbers map
+</code></pre><p>如您所见，将创建一些匿名结构，每个匿名结构都有一组输入和预期结果。 这样一来，就可以在一起创建大量测试用例，然后循环执行，从而减少了代码重复并提高了清晰度。</p>
+<h2 id="使用setup和teardown功能进行测试">使用setUp和tearDown功能进行测试</h2>
+<p>您可以设置setUp和tearDown函数。</p>
+<p>setUp函数可为您的环境做好测试准备。
+tearDown函数执行回滚。
+当您无法修改数据库并且需要创建一个对象来模拟数据库带来的对象或需要在每次测试中初始化配置时，这是一个不错的选择。</p>
+<p>一个愚蠢的例子是：</p>
+<pre><code>// Standard numbers map
 var numbers map[string]int = map[string]int{&quot;zero&quot;: 0, &quot;three&quot;: 3}
 
 // TestMain will exec each test, one by one
@@ -301,9 +296,8 @@ func TestOnePlusTwo(t *testing.T) {
         t.Error(&quot;1 plus 2 = 3, not %v&quot;, value)
     }
 }
-Other example would be to prepare database to test and to do rollback
-
-// ID of Person will be saved in database
+</code></pre><p>下一个示例将是准备数据库进行测试并进行回滚</p>
+<pre><code>// ID of Person will be saved in database
 personID := 12345
 // Name of Person will be saved in database
 personName := &quot;Toni&quot;
@@ -340,21 +334,17 @@ func getPerson(t *testing.T) {
         t.Error(&quot;P.Name is %s and it must be Toni&quot;, P.Name)
     }
 }
-
-## Benchmarks
-If you want to measure benchmarks add a testing method like this:
-
-sum.go:
-
-package sum
+</code></pre><h2 id="基准测试">基准测试</h2>
+<p>如果要衡量基准，请添加如下测试方法：</p>
+<p>sum.go:</p>
+<pre><code>package sum
 
 // Sum calculates the sum of two integers
 func Sum(a, b int) int {
     return a + b
 }
-sum_test.go:
-
-package sum
+</code></pre><p>sum_test.go:</p>
+<pre><code>package sum
 
 import &quot;testing&quot;
 
@@ -363,26 +353,20 @@ func BenchmarkSum(b *testing.B) {
         _ = Sum(2, 3)
     }
 }
-Then in order to run a simple benchmark:
-
-$ go test -bench=.
+</code></pre><p>运行基准测试:</p>
+<pre><code>$ go test -bench=.
 BenchmarkSum-8    2000000000             0.49 ns/op
 ok      so/sum    1.027s
+</code></pre><h2 id="示例测试自我记录测试">示例测试（自我记录测试）</h2>
+<p>这种类型的测试可确保您的代码正确编译，并将出现在项目的生成文档中。 除此之外，示例测试还可以断言您的测试产生了正确的输出。</p>
+<p>sum.go:</p>
+<pre><code>package sum
 
-## Example tests (self documenting tests)
-This type of tests make sure that your code compiles properly and will appear in the generated documentation for your project. In addition to that, the example tests can assert that your test produces proper output.
-
-sum.go:
-
-package sum
-
-// Sum calculates the sum of two integers
 func Sum(a, b int) int {
     return a + b
 }
-sum_test.go:
-
-package sum
+</code></pre><p>sum_test.go:</p>
+<pre><code>package sum
 
 import &quot;fmt&quot;
 
@@ -397,21 +381,18 @@ func ExampleSum() {
     // -2
     // 0
 }
-To execute your test, run go test in the folder containing those files OR put those two files in a sub-folder named sum and then from the parent folder execute go test ./sum. In both cases you will get an output similar to this:
-
-ok      so/sum    0.005s
-If you are wondering how this is testing your code, here is another example function, which actually fails the test:
-
-func ExampleSum_fail() {
+</code></pre><p>要执行测试，请在包含这些文件的文件夹中运行go test或将这两个文件放在名为sum的子文件夹中，然后从父文件夹中执行go test ./sum。 将获得类似于以下的输出：</p>
+<pre><code>ok      so/sum    0.005s
+</code></pre><p>如果您想知道这如何测试您的代码，这是另一个示例函数，该函数实际上未通过测试：</p>
+<pre><code>func ExampleSum_fail() {
     x := Sum(1, 2)
     fmt.Println(x)
 
     // Output:
     // 5
 }
-When you run go test, you get the following output:
-
-$ go test
+</code></pre><p>运行go test时，将获得以下输出：</p>
+<pre><code>$ go test
 --- FAIL: ExampleSum_fail (0.00s)
 got:
 3
@@ -420,13 +401,11 @@ want:
 FAIL
 exit status 1
 FAIL    so/sum    0.006s
-If you want to see the documentation for your sum package – just run:
-
-go doc -http=:6060
-and navigate to http://localhost:6060/pkg/FOLDER/sum/, where FOLDER is the folder containing the sum package (in this example so). The documentation for the sum method looks like this:
-
-## Testing HTTP requests
-main.go:
+</code></pre><p>如果要查看sum软件包的文档，请运行：</p>
+<pre><code>go doc -http=:6060
+</code></pre><p>打开链接: http://localhost:6060/pkg/FOLDER/sum/, 其中FOLDER是包含sum软件包的文件夹（在本示例中为）。 sum方法的文档如下所示：</p>
+<h2 id="测试http请求">测试HTTP请求</h2>
+<pre><code>main.go:
 
 package main
 
@@ -459,9 +438,8 @@ func main() {
     }
     fmt.Println(&quot;Content:&quot;, content)
 }
-main_test.go:
-
-package main
+</code></pre><p>main_test.go:</p>
+<pre><code>package main
 
 import (
     &quot;fmt&quot;
@@ -486,12 +464,9 @@ func Test_fetchContent(t *testing.T) {
         t.Errorf(&quot;Got %q, want %q&quot;, content, want)
     }
 }
-
-
-## Set/Reset mock function in tests
-This example shows how to mock out a function call that is irrelevant to our unit test, and then use the defer statement to re-assign the mocked function call back to its original function.
-
-var validate = validateDTD
+</code></pre><h2 id="在测试中设置重置模拟功能">在测试中设置/重置模拟功能</h2>
+<p>本示例说明如何模拟与单元测试无关的函数调用，然后使用defer语句将模拟的函数调用重新分配回其原始函数。</p>
+<pre><code>var validate = validateDTD
 
 // ParseXML parses b for XML elements and values, and returns them as a map of
 // string key/value pairs.
@@ -507,9 +482,8 @@ func ParseXML(b []byte) (map[string]string, error) {
 func validateDTD(b []byte) error {
     // get the DTD from some external storage, use it to validate b etc.
 }
-In our unit test,
-
-func TestParseXML(t *testing.T) {
+</code></pre><p>In our unit test,</p>
+<pre><code>func TestParseXML(t *testing.T) {
     // assign the original validate function to a variable.
     originalValidate = validate
     // use the mockValidate function in this test.
@@ -527,12 +501,11 @@ func TestParseXML(t *testing.T) {
 func mockValidate(b []byte) error {
     return nil // always return nil since we don't care
 }
-
-## View code coverage in HTML format
-Run go test as normal, yet with the coverprofile flag. Then use go tool to view the results as HTML.
-
-go test -coverprofile=c.out
-go tool cover -html=c.out</code></pre>
+</code></pre><h2 id="查看html格式的代码覆盖率">查看HTML格式的代码覆盖率</h2>
+<p>正常运行go测试，但带有coverprofile标志。 然后使用go工具以HTML格式查看结果。</p>
+<pre><code>go test -coverprofile=c.out
+go tool cover -html=c.out
+</code></pre>
                                             
                                         </div>
 

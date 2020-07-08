@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,141 +11,143 @@
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <link href="/css/tools.css" rel="stylesheet">
 </head>
+
 <body>
-<div id="loading" class="loading">
-    <img src="https://luangeng2008.gitee.io/cdn/img/loading.gif">
-</div>
-<div class="blog-masthead">
-    <div class="container">
-        <nav class="blog-nav blog-nav">
-            <a id="nav1" class="blog-nav-item active" href="#1">Base64编/解码</a>
-            <a id="nav2" class="blog-nav-item" href="#2">MD5加密</a>
-            <a id="nav3" class="blog-nav-item" href="#3">JWT解码</a>
-            <a id="nav4" class="blog-nav-item" href="#4">JSON格式化</a>
-            <a id="nav5" class="blog-nav-item" href="#5">Unicode编码</a>
-            <a id="nav6" class="blog-nav-item" href="#6">UTF-8编码</a>
-            <a id="nav7" class="blog-nav-item" href="#7">URL编/解码</a>
-            <a id="nav8" class="blog-nav-item" href="#8">二维码</a>
-            <a id="nav9" class="blog-nav-item" href="#9">关于</a>
-        </nav>
+    <div id="loading" class="loading">
+        <img src="https://luangeng2008.gitee.io/cdn/img/loading.gif">
     </div>
-</div>
-
-<div class="container wrapper">
-    <div class="blog-header">
-        <h1>在线加密解密工具</h1>
-    </div>
-
-    <div id="d_nav1" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>Base64编码把3个8位字节（3*8=24）转化为4个6位的字节（4*6=24），之后在6位的前面补两个0，形成8位一个字节的形式。
-                如果剩下的字符不足3个字节，则用0填充，输出字符使用'='，因此编码后输出的文本末尾可能会出现1或2个'='。</p>
-            <p>为了保证所输出的编码位可读字符，Base64制定了一个编码表，以便进行统一转换。编码表的大小为2^6=64，这也是Base64名称的由来。</p>
-        </div>
-        <textarea id="text1" class="form-control" rows="6"></textarea>
-        <button id="base64_en" type="button" class=" margin5 btn btn-lg btn-info">加密</button>
-        <button id="base64_d" type="button" class=" margin5 btn btn-lg btn-info">解密</button>
-        <textarea id="text2" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav2" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>MD5消息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值，用于确保信息传输完整一致。</p>
-        </div>
-        <textarea id="text3" class="form-control" rows="6"></textarea>
-        <button id="md5" type="button" class=" margin5 btn btn-lg btn-info">加密</button>
-        <textarea id="text4" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav3" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>JWT是json web token缩写。它将用户信息加密到token里，服务器不保存任何用户信息。服务器通过使用保存的密钥验证token的正确性，只要正确即通过验证。</p>
-        </div>
-        <textarea id="text5" class="form-control" rows="6"></textarea>
-        <button id="jwt" type="button" class=" margin5 btn btn-lg btn-info">解析</button>
-        <textarea id="text6" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav4" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，
-                采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，
-                并有效地提升网络传输效率。</p>
-        </div>
-        <textarea id="text7" class="form-control" rows="6"></textarea>
-        <button id="json" type="button" class=" margin5 btn btn-lg btn-info">格式化</button>
-        <textarea id="text8" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav5" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>Unicode是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，
-                它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。1990年开始研发，1994年正式公布。</p>
-        </div>
-        <textarea id="text9" class="form-control" rows="6"></textarea>
-        <button id="uni" type="button" class=" margin5 btn btn-lg btn-info">编码</button>
-        <button id="uni_d" type="button" class=" margin5 btn btn-lg btn-info">解码</button>
-        <textarea id="text10" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav6" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，又称万国码，由Ken Thompson于1992年创建。
-                现在已经标准化为RFC 3629。UTF-8用1到6个字节编码Unicode字符。用在网页上可以统一页面显示中文简体繁体及其它语言（如英文，日文，韩文）。</p>
-        </div>
-        <textarea id="text11" class="form-control" rows="6"></textarea>
-        <button id="utf" type="button" class=" margin5 btn btn-lg btn-info">编码</button>
-        <button id="utf_d" type="button" class=" margin5 btn btn-lg btn-info">解码</button>
-        <textarea id="text12" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav7" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>把字符串作为URI 组件进行编码。其返回值URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。</p>
-        </div>
-        <textarea id="text13" class="form-control" rows="6"></textarea>
-        <button id="url_en" type="button" class=" margin5 btn btn-lg btn-info">编码</button>
-        <button id="url_d" type="button" class=" margin5 btn btn-lg btn-info">解码</button>
-        <textarea id="text14" class="form-control" rows="6" readonly="readonly"></textarea>
-    </div>
-
-    <div id="d_nav8" class="allhide">
-        <div class="well">
-            <h4>算法说明</h4>
-            <p>生成二维码</p>
-        </div>
-        <textarea id="text15" class="form-control" rows="6"></textarea>
-        <button id="qr" type="button" class=" margin5 btn btn-lg btn-info">生成</button>
-        <div id="qrcode-img" ></div>
-    </div>
-
-    <div id="d_nav9" class="allhide">
-        <img src="/img/ya.jpg" class="img-rounded"/>
-        <div class="well">
-            <p>本网页收集包含了网络和开发中遇到的一些编码和解码算法</p>
-            <p>用以帮助大家提高开发效率</p>
+    <div class="blog-masthead">
+        <div class="container">
+            <nav class="blog-nav blog-nav">
+                <a id="nav1" class="blog-nav-item active" href="#1">Base64编/解码</a>
+                <a id="nav2" class="blog-nav-item" href="#2">MD5加密</a>
+                <a id="nav3" class="blog-nav-item" href="#3">JWT解码</a>
+                <a id="nav4" class="blog-nav-item" href="#4">JSON格式化</a>
+                <a id="nav5" class="blog-nav-item" href="#5">Unicode编码</a>
+                <a id="nav6" class="blog-nav-item" href="#6">UTF-8编码</a>
+                <a id="nav7" class="blog-nav-item" href="#7">URL编/解码</a>
+                <a id="nav8" class="blog-nav-item" href="#8">二维码</a>
+                <a id="nav9" class="blog-nav-item" href="#9">关于</a>
+            </nav>
         </div>
     </div>
 
-    <div class="push"></div>
-</div>
+    <div class="container wrapper">
+        <div class="blog-header">
+            <h1>在线加密解密工具</h1>
+        </div>
 
-<footer class="blog-footer">
-    <div align="center">
-        <a href="#"><img rel="icon" src="https://luangeng2008.gitee.io/cdn/img/name.gif"></a>
+        <div id="d_nav1" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>Base64编码把3个8位字节（3*8=24）转化为4个6位的字节（4*6=24），之后在6位的前面补两个0，形成8位一个字节的形式。
+                    如果剩下的字符不足3个字节，则用0填充，输出字符使用'='，因此编码后输出的文本末尾可能会出现1或2个'='。</p>
+                <p>为了保证所输出的编码位可读字符，Base64制定了一个编码表，以便进行统一转换。编码表的大小为2^6=64，这也是Base64名称的由来。</p>
+            </div>
+            <textarea id="text1" class="form-control" rows="6"></textarea>
+            <button id="base64_en" type="button" class=" margin5 btn btn-lg btn-info">加密</button>
+            <button id="base64_d" type="button" class=" margin5 btn btn-lg btn-info">解密</button>
+            <textarea id="text2" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav2" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>MD5消息摘要算法（英语：MD5 Message-Digest Algorithm），一种被广泛使用的密码散列函数，可以产生出一个128位（16字节）的散列值，用于确保信息传输完整一致。</p>
+            </div>
+            <textarea id="text3" class="form-control" rows="6"></textarea>
+            <button id="md5" type="button" class=" margin5 btn btn-lg btn-info">加密</button>
+            <textarea id="text4" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav3" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>JWT是json web token缩写。它将用户信息加密到token里，服务器不保存任何用户信息。服务器通过使用保存的密钥验证token的正确性，只要正确即通过验证。</p>
+            </div>
+            <textarea id="text5" class="form-control" rows="6"></textarea>
+            <button id="jwt" type="button" class=" margin5 btn btn-lg btn-info">解析</button>
+            <textarea id="text6" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav4" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，
+                    采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，
+                    并有效地提升网络传输效率。</p>
+            </div>
+            <textarea id="text7" class="form-control" rows="6"></textarea>
+            <button id="json" type="button" class=" margin5 btn btn-lg btn-info">格式化</button>
+            <textarea id="text8" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav5" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>Unicode是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，
+                    它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。1990年开始研发，1994年正式公布。</p>
+            </div>
+            <textarea id="text9" class="form-control" rows="6"></textarea>
+            <button id="uni" type="button" class=" margin5 btn btn-lg btn-info">编码</button>
+            <button id="uni_d" type="button" class=" margin5 btn btn-lg btn-info">解码</button>
+            <textarea id="text10" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav6" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，又称万国码，由Ken Thompson于1992年创建。
+                    现在已经标准化为RFC 3629。UTF-8用1到6个字节编码Unicode字符。用在网页上可以统一页面显示中文简体繁体及其它语言（如英文，日文，韩文）。</p>
+            </div>
+            <textarea id="text11" class="form-control" rows="6"></textarea>
+            <button id="utf" type="button" class=" margin5 btn btn-lg btn-info">编码</button>
+            <button id="utf_d" type="button" class=" margin5 btn btn-lg btn-info">解码</button>
+            <textarea id="text12" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav7" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>把字符串作为URI 组件进行编码。其返回值URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。</p>
+            </div>
+            <textarea id="text13" class="form-control" rows="6"></textarea>
+            <button id="url_en" type="button" class=" margin5 btn btn-lg btn-info">编码</button>
+            <button id="url_d" type="button" class=" margin5 btn btn-lg btn-info">解码</button>
+            <textarea id="text14" class="form-control" rows="6" readonly="readonly"></textarea>
+        </div>
+
+        <div id="d_nav8" class="allhide">
+            <div class="well">
+                <h4>算法说明</h4>
+                <p>生成二维码</p>
+            </div>
+            <textarea id="text15" class="form-control" rows="6"></textarea>
+            <button id="qr" type="button" class=" margin5 btn btn-lg btn-info">生成</button>
+            <div id="qrcode-img"></div>
+        </div>
+
+        <div id="d_nav9" class="allhide">
+            <img src="/img/ya.jpg" class="img-rounded" />
+            <div class="well">
+                <p>本网页收集包含了网络和开发中遇到的一些编码和解码算法</p>
+                <p>用以帮助大家提高开发效率</p>
+            </div>
+        </div>
+
+        <div class="push"></div>
     </div>
-</footer>
 
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/qrcode.min.js"></script>
-<script src="/js/tools.js"></script>
+    <footer class="blog-footer">
+        <div align="center">
+            <!-- <a href="#"><img rel="icon" src="https://luangeng2008.gitee.io/cdn/img/name.gif"></a> -->
+        </div>
+    </footer>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://luangeng2008.gitee.io/cdn/js/qrcode.min.js"></script>
+    <script src="/js/tools.js"></script>
 </body>
+
 </html>
