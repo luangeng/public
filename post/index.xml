@@ -513,15 +513,12 @@ Encode data to file and decode from file type User struct { Username string Pass
     </item>
     
     <item>
-      <title>Go Images</title>
+      <title>Go 图像</title>
       <link>https://luangeng.space/post/go/basic/Images/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Images/</guid>
-      <description>Images (PNG, JPEG, BMP, TIFF, WEBP, VP8, GIF) Standard library provides the foundation for working with images.
-Package image provides:
-an image.Image interface describing a bitmap image an implementation for most common ways of representing an image in memory, for example Image.RGBA a way to register image format decoders (e.g. PNG, JPEG etc. with image.RegisterFormat. Standard library provides:
-GIF decoder and encoder PNG decoder and encoder JPEG decoder and encoder The are libraries for:</description>
+      <description>图像标准库为处理图像提供了基础。 image包提供了: image.Image接口描述位图图像 一种最常见的表示内存中图像的方式的实现，例如Ima</description>
     </item>
     
     <item>
