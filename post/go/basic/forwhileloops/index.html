@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/forwhileloops/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Go中只有for循环,for循环的完整形式如下: for i := 0; i &lt; 5; i &#43;= 2 { fmt.Printf(&quot;i: %d\n&quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的 比如没有初始化:">
+  <meta property="og:description" content="Go 循环">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/forwhileloops/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/forwhileloops/">
@@ -235,7 +234,7 @@ idx: 2, value: 5</p>
     }
     i++
 }
-</code></pre><p>当仅使用测试表达式时（类似于典型的while循环）：</p>
+</code></pre><p>当仅使用测试表达式时(类似于典型的while循环)：</p>
 <pre><code>i := 0
 for i &lt; 10 {
     fmt.Print(i, &quot; &quot;)
@@ -289,7 +288,7 @@ close(ch)
 for i := range ch {
     fmt.Print(i, &quot; &quot;)
 }
-</code></pre><h2 id="迭代string提供unicode代码点">迭代string（提供Unicode代码点）：</h2>
+</code></pre><h2 id="迭代string提供unicode代码点">迭代string(提供Unicode代码点)：</h2>
 <p>Iterate over a range for string (gives Unicode code points):</p>
 <pre><code>utf8str := &quot;B = \u00b5H&quot; //B = µH
 for _, r := range utf8str {
@@ -300,7 +299,7 @@ for _, v := range []byte(utf8str) {
     fmt.Print(v, &quot; &quot;) //66 32 61 32 194 181 72
 }
 fmt.Println(len(utf8str)) //7
-</code></pre><p>可见，utf8str有6个字符(Unicode码）和7个字节。</p>
+</code></pre><p>可见，utf8str有6个字符(Unicode码)和7个字节。</p>
 <h2 id="break-和-continue">break 和 continue</h2>
 <h4 id="break用于提前跳出for循环">break用于提前跳出for循环</h4>
 <pre><code>i := 0
@@ -400,8 +399,8 @@ n: 2</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/forwhileloops/">https://luangeng.space/post/go/basic/forwhileloops/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

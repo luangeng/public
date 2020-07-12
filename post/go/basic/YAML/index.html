@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/YAML/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="YAML是一种流行的格式，用于以人类友好的格式序列化数据, 类似JSON但更易于阅读。 由于其表达能力和可读性，YAML作为配置文件的格式很受欢">
+  <meta property="og:description" content="Go YAML">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/YAML/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/YAML/">
@@ -190,7 +189,7 @@ if err != nil {
 
 fmt.Printf(&quot;Decoded YAML dependencies: %#v\n&quot;, yamlFile.Dependencies)
 </code></pre><p>YAML解码与JSON解码非常相似。</p>
-<p>如果你知道YAML文件的结构，则可以定义映射该结构的结构，并将指向顶级结构的结构的指针传递给yaml.Decoder.Decode()函数（或从[]进行解码的yaml.Unmarshal()）。 字节片）。</p>
+<p>如果你知道YAML文件的结构，则可以定义映射该结构的结构，并将指向顶级结构的结构的指针传递给yaml.Decoder.Decode()函数(或从[]进行解码的yaml.Unmarshal())。 字节片)。</p>
 <p>YAML解码器在结构字段名称和YAML文件中的名称之间进行智能映射，以便 YAML中的名称值被解码为结构中的字段名称。</p>
 <p>最好使用yaml struct标签创建显式映射。 我仅在示例中省略了它们，以说明未指定它们时的行为。</p>
 <p>将struct写入YAML文件:</p>
@@ -213,7 +212,7 @@ if err != nil {
 fmt.Printf(&quot;Person in YAML:\n%s\n&quot;, string(d))
 </code></pre><p>yaml.Marshal将interface {}作为参数。 可以传递任何Go值，并将其类型包装到interface {}中。</p>
 <p>Marshaller将使用反射检查传递的值并将其编码为YAML字符串。</p>
-<p>在序列化结构时，仅对导出的字段（其名称以大写字母开头）进行序列化/反序列化。</p>
+<p>在序列化结构时，仅对导出的字段(其名称以大写字母开头)进行序列化/反序列化。</p>
 <p>在我们的示例中，未对fullName进行序列化。</p>
 <p>结构被序列化为YAML字典。 默认情况下，字典键与结构字段名称相同。</p>
 <p>结构字段名称在字典键名称下序列化。</p>
@@ -244,8 +243,8 @@ fmt.Printf(&quot;Person in YAML:\n%s\n&quot;, string(d))
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/YAML/">https://luangeng.space/post/go/basic/YAML/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

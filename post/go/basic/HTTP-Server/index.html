@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/HTTP-Server/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Hello World 开始使用Go编写Web服务器的典型方法是使用标准库中的net/http模块。 如下代码是最简单的HTTP服务器实现,它对任何HTTP请求都">
+  <meta property="og:description" content="Go HTTP Server">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/HTTP-Server/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/HTTP-Server/">
@@ -131,7 +130,7 @@
                                         <h1 class="post-title">Go HTTP Server</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2216 Words
+                                            Posted @ 2019-09-09 · 2191 Words
                                             
                                             · Tags: Go
                                             
@@ -194,7 +193,7 @@ Hello, world!
 <li>req   使用证书申请工具</li>
 <li>x509  创建自签名证书</li>
 <li>newkey rsa:4096  通过使用4096位密钥长度的RSA算法来创建新密钥和证书</li>
-<li>sha256    强制使用SHA256哈希算法，这些算法被主流浏览器认为是安全的（截至2017年）</li>
+<li>sha256    强制使用SHA256哈希算法，这些算法被主流浏览器认为是安全的(截至2017年)</li>
 <li>nodes  禁用私钥的密码保护。如果没有此参数，则服务器每次启动时都必须询问你密码</li>
 <li>keyout    命名要在其中写入密钥的文件</li>
 <li>out   将文件写入证书的位置</li>
@@ -339,7 +338,7 @@ func main() {
     fmt.Fprintln(w, &quot;Hello, world!&quot;)
 }
 </code></pre><p>也我们也可以传递HandlerFunc类型。 换句话说，我们可以传递任何尊重以下签名的函数：
-<code>func FunctionName（w http.ResponseWriter，req * http.Request）</code></p>
+<code>func FunctionName(w http.ResponseWriter，req * http.Request)</code></p>
 <p>我们重写前面的示例，将引用传递给先前定义的HandlerFunc。这是完整的示例：</p>
 <pre><code>package main
 
@@ -514,8 +513,8 @@ Content-Type: text/plain; charset=utf-8
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/HTTP-Server/">https://luangeng.space/post/go/basic/HTTP-Server/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

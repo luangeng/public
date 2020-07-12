@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/basic/java-io/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Java读写文件需要注意异常的处理 写文件 public class WriteFile { public static void write(String file, String text){ try{ PrintWriter out = new PrintWriter(new File(file).getAbsoluteFile()); try{ out.print(text); }finally{ out.close(); } }catch(IOException e){ throw new RuntimeException(e); } } public static void main(String[] args) throws IOException{ String file = &quot;test.txt&quot;; //print current path System.out.println(new File(&quot;&quot;).getAbsolutePath()); String context = &quot;i">
+  <meta property="og:description" content="Java基础--读写文件">
 
   <link rel="canonical" href="https://luangeng.space/post/java/basic/java-io/">
   <link rel='shortlink' href="https://luangeng.space/post/java/basic/java-io/">
@@ -258,8 +257,8 @@
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/java-io/">https://luangeng.space/post/java/basic/java-io/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

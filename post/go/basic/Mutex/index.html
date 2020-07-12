@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Mutex/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。 避免这种">
+  <meta property="og:description" content="Go Mutex">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Mutex/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Mutex/">
@@ -256,7 +255,7 @@ total: 30</p>
 <p>sync.Mutex变量的副本以与原始互斥锁相同的状态开始，但不是同一个Mutex。</p>
 <p>拷贝互斥锁几乎总是错误的, 比如通过将其传递给另一个函数或将其嵌入结构中并复制该结构。</p>
 <p>如果要共享互斥变量，请将其作为指针* sync.Mutex传递。</p>
-<p>互斥体不是递归的（又名可重入）</p>
+<p>互斥体不是递归的(又名可重入)</p>
 <p>在某些语言中，互斥锁是递归的，即同一线程可以多次锁定同一互斥锁。</p>
 <p>在Go中sync.Mutex是非递归的。在同一goroutine中两次调用Lock将导致死锁。</p>
 <p>go vet会警告您有关复制互斥锁的信息。 这是一个示例警告：</p>
@@ -310,7 +309,7 @@ Race detector requires gcc to be installed on your machine.</p>
 <p>它还显示，添加了-race的工具可以捕获内存损坏并指出程序的哪个部分导致了损坏。</p>
 <p>何时使用-race
 -race标志添加的其他工具会使程序变慢，因此在编译运输二进制文件时通常不使用它。</p>
-<p>在运行测试套件时，最好在CI（连续集成）服务器上使用。</p>
+<p>在运行测试套件时，最好在CI(连续集成)服务器上使用。</p>
 <p>种族探测器和Windows
 竞赛探测器需要在您的计算机上安装gcc。</p>
 <p>gcc通常安装在Mac OS和Linux上，但通常不安装在Windows上。</p>
@@ -337,8 +336,8 @@ Race detector requires gcc to be installed on your machine.</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Mutex/">https://luangeng.space/post/go/basic/Mutex/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

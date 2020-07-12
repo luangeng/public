@@ -18,7 +18,7 @@
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/</guid>
-      <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM</description>
+      <description>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变(例如配置改变)或其他的管理指令。 目前唯一的实现是使用AM</description>
     </item>
     
     <item>

@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Protobuf-in-Go/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="介绍 Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道">
+  <meta property="og:description" content="Go Protobuf in Go">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">
@@ -157,7 +156,7 @@ Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言
 <p>首先，你必须编译协议缓冲区定义
 将以上定义以及支持库导入到你的程序中。
 gRPC支持</p>
-<p>如果proto文件指定了RPC服务，则可以指示protoc-gen-go生成与gRPC（http://www.grpc.io/）兼容的代码。 为此，请将plugins参数传递给protoc-gen-go; 通常的方法是将其插入到protoc的–go_out参数中：</p>
+<p>如果proto文件指定了RPC服务，则可以指示protoc-gen-go生成与gRPC(<a href="http://www.grpc.io/">http://www.grpc.io/</a>)兼容的代码。 为此，请将plugins参数传递给protoc-gen-go; 通常的方法是将其插入到protoc的–go_out参数中：</p>
 <p><code>$ protoc --go_out=plugins=grpc:. *.proto</code></p>
 <h2 id="在go中使用protobuf">在Go中使用Protobuf</h2>
 <p>你想要序列化并发送的消息可以包含在文件test.proto中，其中包含</p>
@@ -233,8 +232,8 @@ func main() {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">https://luangeng.space/post/go/basic/Protobuf-in-Go/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

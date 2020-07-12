@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/other/html5-ajax/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="AJAX全称为“Asynchronous JavaScript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用，改善用户体验，实现无刷">
+  <meta property="og:description" content="AJAX，jQuery Ajax和Deferred">
 
   <link rel="canonical" href="https://luangeng.space/post/other/html5-ajax/">
   <link rel='shortlink' href="https://luangeng.space/post/other/html5-ajax/">
@@ -150,7 +149,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>AJAX全称为“Asynchronous JavaScript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用，改善用户体验，实现无刷新效果的技术。</p>
+                                                <p>AJAX全称为“Asynchronous JavaScript And XML”(异步JavaScript和XML)，是指一种创建交互式网页应用，改善用户体验，实现无刷新效果的技术。</p>
 <p>使用AJAX的优点，提升网页体验，提升Web应用的性能，避免了没必要的请求，从而减轻了Web服务器的压力。</p>
 <p>jQuery对AJAX提供了良好的封装，通过 jQuery AJAX 方法，能够使用 HTTP Get 和 HTTP Post 从远程服务器上请求文本、HTML、XML 或 JSON ，</p>
 <p>同时可以把这些数据直接载入网页的被选元素中。下面是几个常用的函数：</p>
@@ -227,7 +226,7 @@ error: function(){}
 }).fail(function(a,b,c){
 　　//失败时执行
 });
-</code></pre><p>jQuery1.5.0版本后增加了延迟对象（Deferred），用来降低回调函数的复杂性，通过链式调用代替了嵌套调用，提升了代码可读性。</p>
+</code></pre><p>jQuery1.5.0版本后增加了延迟对象(Deferred)，用来降低回调函数的复杂性，通过链式调用代替了嵌套调用，提升了代码可读性。</p>
 <p>此后$.ajax()操作完成后返回的是Deferred对象，如上例中的done，always和fail方法的链式操作。</p>
 <p>代码中使用Deferred的一个例子：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -336,12 +335,12 @@ contentType
 
 默认值: &quot;application/x-www-form-urlencoded&quot;。发送信息至服务器时内容编码类型。
 
-默认值适合大多数情况。如果你明确地传递了一个 content-type 给 $.ajax() 那么它必定会发送给服务器（即使没有数据要发送）。
+默认值适合大多数情况。如果你明确地传递了一个 content-type 给 $.ajax() 那么它必定会发送给服务器(即使没有数据要发送)。
 
 context
 类型：Object
 
-这个对象用于设置 Ajax 相关回调函数的上下文。也就是说，让回调函数内 this 指向这个对象（如果不设定这个参数，那么 this 就指向调用本次 AJAX 请求时传递的 options 参数）。比如指定一个 DOM 元素作为 context 参数，这样就设置了 success 回调函数的上下文为这个 DOM 元素。
+这个对象用于设置 Ajax 相关回调函数的上下文。也就是说，让回调函数内 this 指向这个对象(如果不设定这个参数，那么 this 就指向调用本次 AJAX 请求时传递的 options 参数)。比如指定一个 DOM 元素作为 context 参数，这样就设置了 success 回调函数的上下文为这个 DOM 元素。
 
 就像这样：
 
@@ -365,7 +364,7 @@ dataType
 
 &quot;xml&quot;: 返回 XML 文档，可用 jQuery 处理。
 &quot;html&quot;: 返回纯文本 HTML 信息；包含的 script 标签会在插入 dom 时执行。
-&quot;script&quot;: 返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 &quot;cache&quot; 参数。注意：在远程请求时(不在同一个域下)，所有 POST 请求都将转为 GET 请求。（因为将使用 DOM 的 script标签来加载）
+&quot;script&quot;: 返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 &quot;cache&quot; 参数。注意：在远程请求时(不在同一个域下)，所有 POST 请求都将转为 GET 请求。(因为将使用 DOM 的 script标签来加载)
 &quot;json&quot;: 返回 JSON 数据 。
 &quot;jsonp&quot;: JSONP 格式。使用 JSONP 形式调用函数时，如 &quot;myurl?callback=?&quot; jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
 &quot;text&quot;: 返回纯文本字符串
@@ -374,9 +373,9 @@ error
 
 默认值: 自动判断 (xml 或 html)。请求失败时调用此函数。
 
-有以下三个参数：XMLHttpRequest 对象、错误信息、（可选）捕获的异常对象。
+有以下三个参数：XMLHttpRequest 对象、错误信息、(可选)捕获的异常对象。
 
-如果发生了错误，错误信息（第二个参数）除了得到 null 之外，还可能是 &quot;timeout&quot;, &quot;error&quot;, &quot;notmodified&quot; 和 &quot;parsererror&quot;。
+如果发生了错误，错误信息(第二个参数)除了得到 null 之外，还可能是 &quot;timeout&quot;, &quot;error&quot;, &quot;notmodified&quot; 和 &quot;parsererror&quot;。
 
 这是一个 Ajax 事件。
 
@@ -432,7 +431,7 @@ traditional
 timeout
 类型：Number
 
-设置请求超时时间（毫秒）。此设置将覆盖全局设置。
+设置请求超时时间(毫秒)。此设置将覆盖全局设置。
 
 type
 类型：String
@@ -462,10 +461,10 @@ beforeSend
 在发送请求之前调用，并且传入一个 XMLHttpRequest 作为参数。
 
 error
-在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象（如果有的话）
+在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象(如果有的话)
 
 dataFilter
-在请求成功之后调用。传入返回的数据以及 &quot;dataType&quot; 参数的值。并且必须返回新的数据（可能是处理过的）传递给 success 回调函数。
+在请求成功之后调用。传入返回的数据以及 &quot;dataType&quot; 参数的值。并且必须返回新的数据(可能是处理过的)传递给 success 回调函数。
 
 success
 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
@@ -487,7 +486,7 @@ $.ajax() 函数依赖服务器提供的信息来处理返回的数据。如果�
 
 如果指定为 json 类型，则会把获取到的数据作为一个 JavaScript 对象来解析，并且把构建好的对象作为结果返回。为了实现这个目的，它首先尝试使用 JSON.parse()。如果浏览器不支持，则使用一个函数来构建。
 
-JSON 数据是一种能很方便通过 JavaScript 解析的结构化数据。如果获取的数据文件存放在远程服务器上（域名不同，也就是跨域获取数据），则需要使用 jsonp 类型。使用这种类型的话，会创建一个查询字符串参数 callback=? ，这个参数会加在请求的 URL 后面。服务器端应当在 JSON 数据前加上回调函数名，以便完成一个有效的 JSONP 请求。如果要指定回调函数的参数名来取代默认的 callback，可以通过设置 $.ajax() 的 jsonp 参数。
+JSON 数据是一种能很方便通过 JavaScript 解析的结构化数据。如果获取的数据文件存放在远程服务器上(域名不同，也就是跨域获取数据)，则需要使用 jsonp 类型。使用这种类型的话，会创建一个查询字符串参数 callback=? ，这个参数会加在请求的 URL 后面。服务器端应当在 JSON 数据前加上回调函数名，以便完成一个有效的 JSONP 请求。如果要指定回调函数的参数名来取代默认的 callback，可以通过设置 $.ajax() 的 jsonp 参数。
 
 注意：JSONP 是 JSON 格式的扩展。它要求一些服务器端的代码来检测并处理查询字符串参数。
 
@@ -536,8 +535,8 @@ $.ajax 函数返回它创建的 XMLHttpRequest 对象。通常 jQuery 只在内�
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/html5-ajax/">https://luangeng.space/post/other/html5-ajax/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

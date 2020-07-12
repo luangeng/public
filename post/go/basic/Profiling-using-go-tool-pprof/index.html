@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="基本的cpu和内存分析 在主程序中添加以下代码。 var cpuprofile = flag.String(&quot;cpuprofile&quot;, &quot;&quot;, &quot;write cpu profile `file`&quot;) var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to `file`&quot;) func main() { flag.Parse() if *cpuprofile != &quot;&quot; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&quot;could not create CPU profile: &quot;, err) } if err">
+  <meta property="og:description" content="Go 使用Go工具pprof进行性能分析">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">
@@ -180,7 +179,7 @@ func main() {
         f.Close()
     }
 }
-</code></pre><p>之后构建go程序（如果添加到main go build main.go中）。 使用在代码main.exe -cpuprofile cpu.prof -memprof mem.prof中定义的标志运行主程序。 如果对测试用例进行了概要分析，请使用相同的标志运行测试，然后go test -cpuprofile cpu.prof -memprofile mem.prof</p>
+</code></pre><p>之后构建go程序(如果添加到main go build main.go中)。 使用在代码main.exe -cpuprofile cpu.prof -memprof mem.prof中定义的标志运行主程序。 如果对测试用例进行了概要分析，请使用相同的标志运行测试，然后go test -cpuprofile cpu.prof -memprofile mem.prof</p>
 <h2 id="使用基准创建配置文件">使用基准创建配置文件</h2>
 <p>对于非主要包和主要包，不要在代码内添加标志，而在测试包中编写基准，例如：</p>
 <pre><code>func BenchmarkHello(b *testing.B) {
@@ -267,8 +266,8 @@ Showing top 10 nodes out of 73 (cum &gt;= 12.03s)
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/">https://luangeng.space/post/go/basic/Profiling-using-go-tool-pprof/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

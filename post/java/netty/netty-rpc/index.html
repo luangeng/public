@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/netty/netty-rpc/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调">
+  <meta property="og:description" content="Netty--RPC的原理和实现">
 
   <link rel="canonical" href="https://luangeng.space/post/java/netty/netty-rpc/">
   <link rel='shortlink' href="https://luangeng.space/post/java/netty/netty-rpc/">
@@ -131,7 +130,7 @@
                                         <h1 class="post-title">Netty--RPC的原理和实现</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-18 · 2503 Words
+                                            Posted @ 2017-09-18 · 2494 Words
                                             
                                             · Tags: netty
                                             
@@ -150,7 +149,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>RPC（Remote Procedure Call）远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调用本地的方法一样。</p>
+                                                <p>RPC(Remote Procedure Call)远程过程调用，是通过网络调用远程计算机进程中的某个方法，从而达到获取和传递数据或状态的实现，调用风格就如同调用本地的方法一样。</p>
 <p>以下为一个简单的RPC框架实现，使用Netty作为通信底层实现，发送和接收Java对象；使用zookeeper做服务中心，本机调试时可不启用。</p>
 <p>工程结构如下：</p>
 <p>其中common为client端和server端共同需要的，定义RPC请求、应答结构</p>
@@ -789,8 +788,8 @@ public class DemoServiceImpl implements DemoService {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-rpc/">https://luangeng.space/post/java/netty/netty-rpc/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

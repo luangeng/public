@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Panic-and-recover/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="本章假定你已经掌握了defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic">
+  <meta property="og:description" content="Go Panic和recover">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Panic-and-recover/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Panic-and-recover/">
@@ -252,7 +251,7 @@ func main() {
 ok</p>
 </blockquote>
 <p>The use of a separate function (rather than closure) allows re-use of the same function in other functions prone to panic.</p>
-<p>使用单独的功能（而不是关闭功能）允许在其他容易出现恐慌的功能中重复使用同一功能。</p>
+<p>使用单独的功能(而不是关闭功能)允许在其他容易出现恐慌的功能中重复使用同一功能。</p>
 <h2 id="panic用例">panic用例</h2>
 <p>在Go中使用panic应该非常少见，但确实有有效的用例。</p>
 <p>因API使用不当而导致崩溃,这类似于在其他语言中使用assert。</p>
@@ -333,8 +332,8 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Panic-and-recover/">https://luangeng.space/post/go/basic/Panic-and-recover/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

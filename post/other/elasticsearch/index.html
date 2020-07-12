@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/other/elasticsearch/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="elasticsearch入门教程">
+  <meta property="og:description" content="elasticsearch入门教程">
 
   <link rel="canonical" href="https://luangeng.space/post/other/elasticsearch/">
   <link rel='shortlink' href="https://luangeng.space/post/other/elasticsearch/">
@@ -153,24 +152,24 @@
                                                 <p>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。</p>
 <h2 id="基本概念">基本概念:</h2>
 <h4 id="node-与-cluster">Node 与 Cluster</h4>
-<p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。单个 Elastic 实例称为一个节点（node）,一组节点构成一个集群（cluster）。</p>
+<p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。单个 Elastic 实例称为一个节点(node),一组节点构成一个集群(cluster)。</p>
 <h4 id="index">Index</h4>
-<p>Elastic 会索引所有字段，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。
-所以，Elastic 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</p>
+<p>Elastic 会索引所有字段，经过处理后写入一个反向索引(Inverted Index)。查找数据的时候，直接查找该索引。
+所以，Elastic 数据管理的顶层单位就叫做 Index(索引)。它是单个数据库的同义词。每个 Index (即数据库)的名字必须是小写。</p>
 <p>下面的命令可以查看当前节点的所有 Index。
 <code>curl -X GET 'http://localhost:9200/_cat/indices?v'</code></p>
 <h4 id="document">Document</h4>
-<p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。
+<p>Index 里面单条的记录称为 Document(文档)。许多条 Document 构成了一个 Index。
 Document 使用 JSON 格式表示，下面是一个例子:</p>
 <pre><code>{
   &quot;user&quot;: &quot;张三&quot;,
   &quot;title&quot;: &quot;工程师&quot;,
   &quot;desc&quot;: &quot;数据库管理&quot;
 }
-</code></pre><p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率。</p>
+</code></pre><p>同一个 Index 里面的 Document，不要求有相同的结构(scheme)，但是最好保持相同，这样有利于提高搜索效率。</p>
 <h4 id="type">Type</h4>
-<p>Document 可以分组，比如weather这个 Index 里面，可以按城市分组（北京和上海），也可以按气候分组（晴天和雨天）。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。
-不同的 Type 应该有相似的结构（schema），举例来说，id字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的一个区别。性质完全不同的数据（比如products和logs）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</p>
+<p>Document 可以分组，比如weather这个 Index 里面，可以按城市分组(北京和上海)，也可以按气候分组(晴天和雨天)。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。
+不同的 Type 应该有相似的结构(schema)，举例来说，id字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的一个区别。性质完全不同的数据(比如products和logs)应该存成两个 Index，而不是一个 Index 里面的两个 Type(虽然可以做到)。</p>
 <p>下面的命令可以列出每个 Index 所包含的 Type。</p>
 <p><code>$ curl 'localhost:9200/_mapping?pretty=true'</code>
 根据规划，Elastic 6.x 版只允许每个 Index 包含一个 Type，7.x 版将会彻底移除 Type。</p>
@@ -232,8 +231,8 @@ http.cors.allow-headers: Authorization,Content-Type
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/elasticsearch/">https://luangeng.space/post/other/elasticsearch/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

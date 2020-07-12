@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Concurrency/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Go使用goroutines实现并发. 简单来说goroutines就像线程. Gorutines独立执行并且共享内存. 由于goroutines">
+  <meta property="og:description" content="Go 并发">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Concurrency/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Concurrency/">
@@ -226,11 +225,11 @@ main finished</p>
 减少计数器。 这必须在goroutine的出口处完成。 通过使用延迟调用，我们确保无论函数如何结束，只要函数结束，都将调用它。
 等待计数器达到0。必须在主goroutine中执行此操作，以防止程序在所有goroutine完成之前退出。
 在开始新的goroutine之前先评估参数。</p>
-<p>因此，有必要在wg.Add（10）之前显式定义其值，以免出现恐慌的代码不会增加计数器。 向WaitGroup添加10个项目，因此它将在wg.Wait之前将等待10个项目。Wait将控件返回给main()goroutine。 在这里，i的值在for循环中定义。</p>
+<p>因此，有必要在wg.Add(10)之前显式定义其值，以免出现恐慌的代码不会增加计数器。 向WaitGroup添加10个项目，因此它将在wg.Wait之前将等待10个项目。Wait将控件返回给main()goroutine。 在这里，i的值在for循环中定义。</p>
 <h2 id="用semaphore限制并发">用semaphore限制并发</h2>
-<p>当执行CPU密集型任务（如调整图像大小）时，创建比可用CPU多的goroutine毫无意义。</p>
+<p>当执行CPU密集型任务(如调整图像大小)时，创建比可用CPU多的goroutine毫无意义。</p>
 <p>事情不会进展得更快，由于额外的簿记和在goroutine之间进行切换，您甚至可能会失去性能。</p>
-<p>限制并发性（即同时启动的gorutine的数量）的一种方法是使用semaphore。</p>
+<p>限制并发性(即同时启动的gorutine的数量)的一种方法是使用semaphore。</p>
 <p>您可以进入(获取)semaphore并离开(释放)semaphore。</p>
 <p>semaphore具有固定的容量。如果超出了信号量的容量，获取semaphore将阻塞，直到有gorutine释放semaphore。</p>
 <p>缓冲channel是自然的semaphore。</p>
@@ -377,8 +376,8 @@ Got sqrt: 16</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Concurrency/">https://luangeng.space/post/go/basic/Concurrency/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

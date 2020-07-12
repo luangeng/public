@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/other/jquery-event/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="blur() 触发或绑定blur事件。 $(&quot;input&quot;).blur(function(){ $(&quot;input&quot;).css(&quot;background-color&quot;,&quot;#D6D6FF&quot;); }); change() 触发或绑定change事件, 该事件仅适用于文本域（text field），以及 textarea 和 select 元素。 $(&quot;.field&quot;).change(function(){ $(this).css(&quot;background-color&quot;,&quot;#FFFFCC&quot;); }); click() 触发或绑定">
+  <meta property="og:description" content="jQuery事件">
 
   <link rel="canonical" href="https://luangeng.space/post/other/jquery-event/">
   <link rel='shortlink' href="https://luangeng.space/post/other/jquery-event/">
@@ -156,7 +155,7 @@
 　　$(&quot;input&quot;).css(&quot;background-color&quot;,&quot;#D6D6FF&quot;);
 });
 </code></pre><p><code>change()</code>
-触发或绑定change事件, 该事件仅适用于文本域（text field），以及 textarea 和 select 元素。</p>
+触发或绑定change事件, 该事件仅适用于文本域(text field)，以及 textarea 和 select 元素。</p>
 <pre><code>$(&quot;.field&quot;).change(function(){
 　　$(this).css(&quot;background-color&quot;,&quot;#FFFFCC&quot;);
 });
@@ -168,7 +167,7 @@
 </code></pre><p><code>dblclick()</code>
 触发或绑定dblclick事件。</p>
 <p><code>error()</code>
-触发或绑定error事件, 当元素遇到错误（没有正确载入）时，发生 error 事件。</p>
+触发或绑定error事件, 当元素遇到错误(没有正确载入)时，发生 error 事件。</p>
 <pre><code>$(&quot;img&quot;).error(function(){
 　　$(&quot;img&quot;).replaceWith(&quot;Missing image!&quot;);
 });
@@ -181,7 +180,7 @@
 触发或绑定resize事件，当调整浏览器窗口的大小时，发生 resize 事件。</p>
 <p><code>scroll()</code>
 触发或绑定scroll事件，当用户滚动指定的元素时，会发生 scroll 事件。
-scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。</p>
+scroll 事件适用于所有可滚动的元素和 window 对象(浏览器窗口)。</p>
 <p><code>select()</code>
 触发或绑定select事件，当 textarea 或文本类型的 input 元素中的文本被选择时，会发生 select 事件。</p>
 <pre><code>$(&quot;input&quot;).select(function(){
@@ -198,8 +197,8 @@ keyup()	触发或绑定指定元素的keyup事件
 　　$(&quot;input&quot;).css(&quot;background-color&quot;,&quot;#FFFFCC&quot;);
 });
 </code></pre><p><code>load()</code>
-当指定的元素（及子元素）已加载时，会发生load事件,适用于任何带有URL的元素（比如图像、脚本、框架、内联框架）。
-根据不同的浏览器（Firefox 和 IE），如果图像已被缓存，则也许不会触发load事件。</p>
+当指定的元素(及子元素)已加载时，会发生load事件,适用于任何带有URL的元素(比如图像、脚本、框架、内联框架)。
+根据不同的浏览器(Firefox 和 IE)，如果图像已被缓存，则也许不会触发load事件。</p>
 <pre><code>$(&quot;img&quot;).load(function(){
 　　$(&quot;div&quot;).text(&quot;Image loaded&quot;);
 });
@@ -226,7 +225,7 @@ $(&quot;p&quot;).click(function(e){
 });
 </code></pre><p><code>ready()</code>
 规定当 ready 事件发生时执行的代码。
-当 DOM（文档对象模型） 已经加载，并且页面（包括图像）已经完全呈现时，会发生 ready 事件。
+当 DOM(文档对象模型) 已经加载，并且页面(包括图像)已经完全呈现时，会发生 ready 事件。
 由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。
 ready() 函数仅能用于当前文档，因此无需选择器。
 允许使用以下三种语法：
@@ -250,9 +249,9 @@ ready() 函数仅能用于当前文档，因此无需选择器。
 });
 </code></pre><p><code>triggerHandler()</code></p>
 <p>触发被选元素的指定事件类型。但不会执行浏览器默认动作，也不会产生事件冒泡。
-triggerHandler() 方法与 trigger() 方法类似。不同的是它不会触发事件（比如表单提交）的默认行为，而且只影响第一个匹配元素。
+triggerHandler() 方法与 trigger() 方法类似。不同的是它不会触发事件(比如表单提交)的默认行为，而且只影响第一个匹配元素。
 与 trigger() 方法相比的不同之处:
-它不会引起事件（比如表单提交）的默认行为
+它不会引起事件(比如表单提交)的默认行为
 .trigger() 会操作 jQuery 对象匹配的所有元素，而 .triggerHandler() 只影响第一个匹配元素。
 由 .triggerHandler() 创建的事件不会在 DOM 树中冒泡；如果目标元素不直接处理它们，则不会发生任何事情。
 该方法的返回的是事件处理函数的返回值，而不是具有可链性的 jQuery 对象。此外，如果没有处理程序被触发，则这个方法返回 undefined。</p>
@@ -274,7 +273,7 @@ unbind()适用于任何通过jQuery附加的事件处理程序,取消绑定元�
 });
 </code></pre><p><code>live()</code>
 为被选元素附加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
-通过 live() 方法附加的事件处理程序适用于匹配选择器的当前及未来的元素（比如由脚本创建的新元素）。</p>
+通过 live() 方法附加的事件处理程序适用于匹配选择器的当前及未来的元素(比如由脚本创建的新元素)。</p>
 <pre><code>$(&quot;button&quot;).live(&quot;click&quot;,function(){
 　　$(&quot;p&quot;).slideToggle();
 });
@@ -288,7 +287,7 @@ unbind()适用于任何通过jQuery附加的事件处理程序,取消绑定元�
 　　$(this).animate({fontSize:&quot;+=6px&quot;});
 });
 </code></pre><p><code>preventDefault()</code>
-阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。</p>
+阻止元素发生默认的行为(例如，当点击提交按钮时阻止对表单的提交)。</p>
 <pre><code>$(&quot;a&quot;).click(function(event){
 event.preventDefault();
 });
@@ -348,8 +347,8 @@ $(document).mousemove(function(e){
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/jquery-event/">https://luangeng.space/post/other/jquery-event/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

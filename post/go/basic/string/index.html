@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/string/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt">
+  <meta property="og:description" content="Go 字符串">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/string/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/string/">
@@ -160,7 +159,7 @@ Additionally, functions in the standard library that involve converting characte
 <p>Note the distinction between string literals delimited by double quotes (aka interpreted literals) as in &ldquo;bar&rdquo;, and those delimited by backticks (aka raw literals) as in <code>foo</code>. Text between double quotes forms the value of the literal, with a backslash used to escape characters as in &ldquo;\n&rdquo; for newline. Text between backticks is treated as uninterpreted (implicitly UTF-8-encoded); in particular, backslashes have no special meaning and the string may contain newlines.</p>
 <p>Go源代码文件始终是UTF-8，因此源代码中定义的字符串也是有效的UTF-8字符串。
 此外，标准库中涉及将字符转换为大写或小写等的函数都假定原始字节代表UTF-8编码的Unicode字符串，并使用Unicode规则执行转换。</p>
-<p>请注意，如&quot;bar&quot;表示的双引号（又称解释文字）与如&rsquo;foo'表示的以反引号（即原始文字）界定的字符串文字之间的区别。 双引号之间的文本形成文字的值，并使用反斜杠将换行符转义为“ \ n”，以转义字符。 反引号之间的文本被视为未解释（隐式为UTF-8编码）； 特别是，反斜杠没有特殊含义，并且字符串可能包含换行符。</p>
+<p>请注意，如&quot;bar&quot;表示的双引号(又称解释文字)与如&rsquo;foo'表示的以反引号(即原始文字)界定的字符串文字之间的区别。 双引号之间的文本形成文字的值，并使用反斜杠将换行符转义为“ \ n”，以转义字符。 反引号之间的文本被视为未解释(隐式为UTF-8编码)； 特别是，反斜杠没有特殊含义，并且字符串可能包含换行符。</p>
 <p>string的基本使用:</p>
 <pre><code>var s string // empty string &quot;&quot;
 s1 := &quot;string\nliteral\nwith\tescape characters&quot;
@@ -442,7 +441,7 @@ fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
 </code></pre><blockquote>
 <p>s2: &lsquo;replaced string replaced&rsquo;</p>
 </blockquote>
-<p>这显示了如何用正则表达式替换字符串。 （？U）or。* al是与原始字符串匹配的非贪婪（（？U）标志）正则表达式。</p>
+<p>这显示了如何用正则表达式替换字符串。 (？U)or。* al是与原始字符串匹配的非贪婪((？U)标志)正则表达式。</p>
 <p>我们用替换的字符串替换匹配正则表达式的字符串的所有部分。</p>
 <p>正则表达式是非贪婪的，这意味着它与可能的最短字符串匹配，而不是与寻找可能的最长匹配的默认贪婪匹配相对。</p>
 <h2 id="拆分和合并">拆分和合并</h2>
@@ -508,7 +507,7 @@ fmt.Println(s)
 <li>%g    // %e for large exponents, %f otherwise</li>
 <li>%G    // %E for large exponents, %F otherwise</li>
 </ul>
-<p>字符串和字节片（与这些动词等效地对待）：</p>
+<p>字符串和字节片(与这些动词等效地对待)：</p>
 <ul>
 <li>%s    // the uninterpreted bytes of the string or slice</li>
 <li>%q    // a double-quoted string safely escaped with Go syntax</li>
@@ -594,9 +593,9 @@ func ReadFileAsLines(path string) ([]string, error) {
 <p>3种换行符</p>
 <p>表示换行符的方式有3种:</p>
 <ul>
-<li>Unix：使用单个字符LF，即字节10（0x0a），在Go字符串文字中表示为“”。</li>
-<li>Windows：使用2个字符：CR LF，它是字节13 10（0x0d，0x0a），在Go字符串文字中表示为“”。</li>
-<li>Mac OS：使用1个字符的CR（字节13（0x0d）），在Go字符串文字中表示为“”。 这是最不流行的。</li>
+<li>Unix：使用单个字符LF，即字节10(0x0a)，在Go字符串文字中表示为“”。</li>
+<li>Windows：使用2个字符：CR LF，它是字节13 10(0x0d，0x0a)，在Go字符串文字中表示为“”。</li>
+<li>Mac OS：使用1个字符的CR(字节13(0x0d))，在Go字符串文字中表示为“”。 这是最不流行的。</li>
 </ul>
 <p>将字符串分成几行时，你必须决定如何处理。</p>
 <p>假设你的代码只会显示例如 Unix样式的行尾，只能处理“”，但对于Mac尾行的文件根本不起作用，而Windows尾行的文件中将带有CR字符。</p>
@@ -637,8 +636,8 @@ func NormalizeNewlines(d []byte) []byte {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/string/">https://luangeng.space/post/go/basic/string/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

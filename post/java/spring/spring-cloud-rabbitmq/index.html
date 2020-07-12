@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AM">
+  <meta property="og:description" content="Spring Cloud Bus-RabbitMQ">
 
   <link rel="canonical" href="https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/">
   <link rel='shortlink' href="https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/">
@@ -150,7 +149,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变（例如配置改变）或其他的管理指令。 目前唯一的实现是使用AMQP代理作为传输对象。</p>
+                                                <p>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变(例如配置改变)或其他的管理指令。 目前唯一的实现是使用AMQP代理作为传输对象。</p>
 <p>Spring Cloud Bus又被称为消息总线，负责管理和传播所有分布式系统中的消息，通过集成MQ实现广播机制，目前常用的有Kafka和RabbitMQ。利用bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景。及利用消息总线，可以实现当配置中心的refresh命令触发后，通过广播发送到每一个配置使用端。</p>
 <p>Spring已经在Config包中完成了大部分的工作，我们只需要在之前的配置中心的基础上，做如下修改：</p>
 <p>1.给config-server和config-client增加依赖：</p>
@@ -257,8 +256,8 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/">https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

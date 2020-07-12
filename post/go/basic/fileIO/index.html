@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/fileIO/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Go对文件操作的支持很健壮. 下面的程序打开,读取并关闭了一个文件: path := &quot;main.go&quot; f, err := os.Open(path) if err != nil { log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&quot;ioutil.ReadAll() failed with &#39;%s&#39;\n&quot;, err) } lines :=">
+  <meta property="og:description" content="Go 文件和I/O">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/fileIO/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/fileIO/">
@@ -570,8 +569,8 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/fileIO/">https://luangeng.space/post/go/basic/fileIO/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

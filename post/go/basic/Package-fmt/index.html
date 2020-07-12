@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Package-fmt/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片">
+  <meta property="og:description" content="Go fmt包">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Package-fmt/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Package-fmt/">
@@ -236,7 +235,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
 <p>类型User1没有实现Stringer接口，因此％s使用结构的标准格式显示它。</p>
 <p>类型User2实现了Stringer接口，因此％s使用String()方法获取值。</p>
 <p>类型User2和* User2不同。</p>
-<p>但是，为方便起见，在User2上定义的方法也可以在* User2上使用（但反之则不行）。</p>
+<p>但是，为方便起见，在User2上定义的方法也可以在* User2上使用(但反之则不行)。</p>
 <p>因此，最好在struct上定义String()方法，而不是struct的指针。</p>
 
                                                 
@@ -260,8 +259,8 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Package-fmt/">https://luangeng.space/post/go/basic/Package-fmt/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

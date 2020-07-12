@@ -27,7 +27,7 @@
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-undo/</guid>
-      <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误（提交说明或者文件），该操作会撤回并删</description>
+      <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
     </item>
     
   </channel>

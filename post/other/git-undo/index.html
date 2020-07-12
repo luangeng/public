@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/other/git-undo/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="修改上一次错误的提交：(适用于未push的commit): git commit &ndash;amend 用于对最新一次提交进行撤回，以修补错误（提交说明或者文件），该操作会撤回并删">
+  <meta property="og:description" content="git撤销">
 
   <link rel="canonical" href="https://luangeng.space/post/other/git-undo/">
   <link rel='shortlink' href="https://luangeng.space/post/other/git-undo/">
@@ -151,21 +150,21 @@
                                             <div class="entry-inner">
                                                 
                                                 <h3 id="修改上一次错误的提交适用于未push的commit">修改上一次错误的提交：(适用于未push的commit):</h3>
-<p>git commit &ndash;amend 用于对最新一次提交进行撤回，以修补错误（提交说明或者文件），该操作会撤回并删除上一次commit，然后新生成一个commit。示例：</p>
+<p>git commit &ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删除上一次commit，然后新生成一个commit。示例：</p>
 <ol>
-<li>修改代码（包含了错误代码或漏提交文件）</li>
-<li>commit 错误代码（包含了错误的commit记录）</li>
-<li>修改错误代码 并且add该代码文件 和 漏提交的文件，，，（然后发现错误）</li>
+<li>修改代码(包含了错误代码或漏提交文件)</li>
+<li>commit 错误代码(包含了错误的commit记录)</li>
+<li>修改错误代码 并且add该代码文件 和 漏提交的文件，，，(然后发现错误)</li>
 <li>git commit &ndash;amend</li>
 <li>修改错误commit记录，退出编辑，完成</li>
 </ol>
-<p>注意：该操作会删除commit记录，故该commit必须（未公开）只在本地，否则会对别人造成影响</p>
+<p>注意：该操作会删除commit记录，故该commit必须(未公开)只在本地，否则会对别人造成影响</p>
 <h3 id="使用reset回退错误的commit适用于未push的commit">使用reset回退错误的commit，(适用于未push的commit)：</h3>
 <p>当commit了错误的代码，还未push，可以使用reset命令，将commit撤销，错误代码还保留着，示例：</p>
 <ol>
 <li>git commit -m &lsquo;正确的代码&rsquo;</li>
 <li>写了错误的代码</li>
-<li>git commit -m &lsquo;错误代码&rsquo; 没有push（然后发现错误）</li>
+<li>git commit -m &lsquo;错误代码&rsquo; 没有push(然后发现错误)</li>
 <li>git reset HEAD^</li>
 <li>上次commit被撤销，回到第2步时的状态</li>
 <li>修改错误代码，再次commit</li>
@@ -176,7 +175,7 @@
 <ol>
 <li>git commit -m &lsquo;add 1&rsquo;</li>
 <li>写了错误的代码</li>
-<li>git commit -am &lsquo;add error 1 code&rsquo; 并且 push，，（然后发现了错误）</li>
+<li>git commit -am &lsquo;add error 1 code&rsquo; 并且 push，，(然后发现了错误)</li>
 <li>git revert HEAD</li>
 <li>编辑revert的原因，退出编辑</li>
 <li>此时工作空间clear，错误代码不见了，回到了第1步提交后的状态</li>
@@ -184,7 +183,7 @@
 </ol>
 <p><img src="pic/2016/git2.png" alt="git"></p>
 <p>注意：revert会丢弃所有错误代码，而有时我们只是想再修改下，故需要先通过分支备份代码。</p>
-<h3 id="修改上一次错误的提交信息适用于push后的commit">修改上一次错误的提交信息：（适用于push后的commit）</h3>
+<h3 id="修改上一次错误的提交信息适用于push后的commit">修改上一次错误的提交信息：(适用于push后的commit)</h3>
 <ol>
 <li>git rebase -i HEAD^</li>
 <li>修改pick为reword, 退出编辑</li>
@@ -220,8 +219,8 @@
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/git-undo/">https://luangeng.space/post/other/git-undo/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

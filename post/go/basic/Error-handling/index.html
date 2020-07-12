@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Error-handling/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="基本错误处理: func sqrt(n float64) (float64, error) { if n &lt; 0 { return 0, fmt.Errorf(&quot;invalid argument &#39;%f&#39;, must be &gt;= 0&quot;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&quot;sqrt of %f is %f\n&quot;, n, res) } else { fmt.Printf(&quot;sqrt of %f returned error &#39;%s&#39;\n&quot;, n, err) } } func main() { printSqrt(16)">
+  <meta property="og:description" content="Go 错误处理">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Error-handling/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Error-handling/">
@@ -461,8 +460,8 @@ func main() {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Error-handling/">https://luangeng.space/post/go/basic/Error-handling/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

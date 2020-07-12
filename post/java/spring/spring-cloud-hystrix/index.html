@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/spring/spring-cloud-hystrix/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="断路器 断路器就像电路中的断路器一样，当短路发生时，它第一时刻熔断，切断了故障电路，保护其他用电单元。 在分布式架构中，断路器的作用类似，当某个">
+  <meta property="og:description" content="Spring Cloud 断路器 Hystrix">
 
   <link rel="canonical" href="https://luangeng.space/post/java/spring/spring-cloud-hystrix/">
   <link rel='shortlink' href="https://luangeng.space/post/java/spring/spring-cloud-hystrix/">
@@ -191,7 +190,7 @@ public class HystrixService {
     RestTemplate restTemplate;
 
     /**
-     * 拼接方式： http://服务名/接口名  （未指定ip和端口）
+     * 拼接方式： http://服务名/接口名  (未指定ip和端口)
      */
     @HystrixCommand(fallbackMethod = &quot;fallback&quot;)
     public String consumer() {
@@ -289,8 +288,8 @@ public class FeignController {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-hystrix/">https://luangeng.space/post/java/spring/spring-cloud-hystrix/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

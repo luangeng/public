@@ -18,7 +18,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/info/</guid>
-      <description>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫（Robert Gr</description>
+      <description>Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫(Robert Gr</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@
     </item>
     
     <item>
-      <title>Go slice类型</title>
+      <title>Go 切片</title>
       <link>https://luangeng.space/post/go/basic/slice/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
@@ -270,7 +270,7 @@
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Executing-commands/</guid>
-      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command（</description>
+      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command(</description>
     </item>
     
     <item>

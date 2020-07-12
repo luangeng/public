@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Command/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="go命令是一个命令行程序，用于管理Go开发。 它支持构建，运行和测试代码，以及各种其他与Go相关的任务。 go fmt 为了保持代码的一致性并消除代码格式">
+  <meta property="og:description" content="Go 命令">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Command/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Command/">
@@ -156,8 +155,8 @@
 <p>为了保持代码的一致性并消除代码格式化方面的争论，Go提供了go fmt工具。</p>
 <p>格式化文件：<code>go fmt main.go</code></p>
 <p>或目录中的所有文件：<code>fmt myProject</code></p>
-<p>也可以使用<code>gofmt -s</code>（而不是fmt）来尝试简化代码。</p>
-<p>gofmt（不是go fmt）也可以用于重构代码。 它了解Go语法，因此它比搜索和替换功能更强大。 例如，给定该程序（main.go):</p>
+<p>也可以使用<code>gofmt -s</code>(而不是fmt)来尝试简化代码。</p>
+<p>gofmt(不是go fmt)也可以用于重构代码。 它了解Go语法，因此它比搜索和替换功能更强大。 例如，给定该程序(main.go):</p>
 <pre><code>package main
 
 type Example struct {
@@ -216,7 +215,7 @@ func main() {
 <pre><code>$ env GOOS=linux go build main.go # builds for Linux
 $ env GOARCH=arm go build main.go # builds for ARM architecture
 </code></pre><p>构建多个文件</p>
-<p>如果将软件包拆分为多个文件，并且软件包名称为main（即，它不是可导入的软件包），则必须指定要构建的所有文件：</p>
+<p>如果将软件包拆分为多个文件，并且软件包名称为main(即，它不是可导入的软件包)，则必须指定要构建的所有文件：</p>
 <pre><code>$ go build main.go assets.go # outputs an executable: main
 </code></pre><p>build一个包</p>
 <p>要构建一个名为main的软件包，可以简单地使用：</p>
@@ -279,8 +278,8 @@ CGO_ENABLED=&quot;1&rdquo;
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Command/">https://luangeng.space/post/go/basic/Command/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

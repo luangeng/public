@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/spring/spring-jpa/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使">
+  <meta property="og:description" content="使用Spring Boot 和Spring Data JPA访问mysql数据库">
 
   <link rel="canonical" href="https://luangeng.space/post/java/spring/spring-jpa/">
   <link rel='shortlink' href="https://luangeng.space/post/java/spring/spring-jpa/">
@@ -244,7 +243,7 @@ spring.jpa.hibernate.ddl-auto值可以是none, update, create, create-drop，根
     void deleteByUserName(String name);
 
 }
-</code></pre><p>JpaRepository接口本身已经实现了创建（save）、更新（save）、删除（delete）、查询（findAll、findOne）等基本操作的函数，因此对于这些基础操作的数据访问就不需要开发者再自己定义。</p>
+</code></pre><p>JpaRepository接口本身已经实现了创建(save)、更新(save)、删除(delete)、查询(findAll、findOne)等基本操作的函数，因此对于这些基础操作的数据访问就不需要开发者再自己定义。</p>
 <p>6.创建一个controller做测试</p>
 <pre><code>@RestController
 @RequestMapping(&quot;/user&quot;)
@@ -380,8 +379,8 @@ private UserType type;</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-jpa/">https://luangeng.space/post/java/spring/spring-jpa/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

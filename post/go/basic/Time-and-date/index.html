@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Time-and-date/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Go时间包提供了处理时间和日期的功能。 包中的主要类型： 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds">
+  <meta property="og:description" content="Go 日期和时间">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Time-and-date/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Time-and-date/">
@@ -131,7 +130,7 @@
                                         <h1 class="post-title">Go 日期和时间</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2237 Words
+                                            Posted @ 2019-09-09 · 2211 Words
                                             
                                             · Tags: Go
                                             
@@ -245,7 +244,7 @@ fmt.Printf(&quot;year: %d, month: %d, day: %d\n&quot;, t.Year(), t.Month(), t.Da
 <p>解析模板使用与格式化相同的样式。</p>
 <p>如果你更喜欢strftime样式的解析时间怎么办？ 也可以。</p>
 <h2 id="像strftime一样格式化时间">像strftime一样格式化时间</h2>
-<p>如果你喜欢格式化时间值的strftime样式（如在Python或Ruby中使用的）或使用该样式的移植代码，则可以使用以下几种库之一。</p>
+<p>如果你喜欢格式化时间值的strftime样式(如在Python或Ruby中使用的)或使用该样式的移植代码，则可以使用以下几种库之一。</p>
 <p>这是使用github.com/jehiah/go-strftime软件包的示例：</p>
 <pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
 fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
@@ -294,8 +293,8 @@ fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
 <li>date1.Before(date2), returns true when the first is strictly before the second</li>
 <li>date1.After(date2), returns true when the first is strictly after the second</li>
 </ul>
-<p>警告：当两个比较时间相同（或对应于完全相同的日期）时，After和Before函数将返回false，因为日期既不早于其本身也不在其后-date1 == date1，则返回true-date1！= date1，返回false-date1。After（date1），返回false-date1.Before（date1），返回false
-提示：如果你需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After（date2），当date1在date2之后或等于date2或使用！返回true。 （date1.Before（date2））-date1 == date2 || date1.Before（date2），如果date1在date2之前或等于date2或使用！（date1.After（date2）），则返回true。</p>
+<p>警告：当两个比较时间相同(或对应于完全相同的日期)时，After和Before函数将返回false，因为日期既不早于其本身也不在其后-date1 == date1，则返回true-date1！= date1，返回false-date1。After(date1)，返回false-date1.Before(date1)，返回false
+提示：如果你需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After(date2)，当date1在date2之后或等于date2或使用！返回true。 (date1.Before(date2))-date1 == date2 || date1.Before(date2)，如果date1在date2之前或等于date2或使用！(date1.After(date2))，则返回true。</p>
 <p>使用示例:</p>
 <pre><code>//初始化时间
 var date1 = time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
@@ -341,8 +340,8 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Time-and-date/">https://luangeng.space/post/go/basic/Time-and-date/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

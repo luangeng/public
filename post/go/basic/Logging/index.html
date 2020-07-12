@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Logging/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="日志记录是一个非常深入的主题，因为不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方">
+  <meta property="og:description" content="Go 日志">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Logging/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Logging/">
@@ -164,7 +163,7 @@ log.Printf(&quot;Second line\n&quot;)
 <p>2019/11/06 02:17:58 Logging<br>
 2019/11/06 02:17:58 Second line</p>
 </blockquote>
-<p>与fmt.Printf相比，log.Printf默认情况下会将日志记录到stderr（os.Stderr）并将当前时间添加到每个日志行中&hellip;
+<p>与fmt.Printf相比，log.Printf默认情况下会将日志记录到stderr(os.Stderr)并将当前时间添加到每个日志行中&hellip;
 如果未明确指定，则通过添加\n来确保每个日志单独在一行</p>
 <h3 id="打印致命错误">打印致命错误:</h3>
 <pre><code>f, err := os.Open(&quot;file.txt&quot;)
@@ -213,8 +212,8 @@ log.Println(&quot;Log entry&quot;)
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Logging/">https://luangeng.space/post/go/basic/Logging/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

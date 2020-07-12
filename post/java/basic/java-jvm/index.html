@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/basic/java-jvm/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="JVM内存结构 Heap Space： 堆内存（Heap Space）是由Young Generation和Old Generation组成，而Young Ge">
+  <meta property="og:description" content="Java基础--虚拟机JVM">
 
   <link rel="canonical" href="https://luangeng.space/post/java/basic/java-jvm/">
   <link rel='shortlink' href="https://luangeng.space/post/java/basic/java-jvm/">
@@ -131,7 +130,7 @@
                                         <h1 class="post-title">Java基础--虚拟机JVM</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2016-05-13 · 1924 Words
+                                            Posted @ 2016-05-13 · 1915 Words
                                             
                                             · Tags: Java
                                             
@@ -153,7 +152,7 @@
                                                 <h2 id="jvm内存结构">JVM内存结构</h2>
 <p><img src="pic/2016/jvm1.png" alt=""></p>
 <h2 id="heap-space">Heap Space：</h2>
-<p>堆内存（Heap Space）是由Young Generation和Old Generation组成，而Young Generation又被分成三部分，Eden,From Survivor和To Survivor，默认比例为8:1:1</p>
+<p>堆内存(Heap Space)是由Young Generation和Old Generation组成，而Young Generation又被分成三部分，Eden,From Survivor和To Survivor，默认比例为8:1:1</p>
 <p>堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，大部分对象实例都在这里分配内存。</p>
 <p>堆是垃圾收集管理的主要区域，如果在堆内存耗尽，并且无法再扩展时，将会抛出OutOfMemoryError异常。</p>
 <h2 id="method-area">Method Area：</h2>
@@ -164,8 +163,8 @@
 <p>根据Java虚拟机规范的规定，当方法区耗尽时，将抛出OutOfMemoryError异常。</p>
 <h2 id="native-area">Native Area：</h2>
 <p>Native方法区，包含PC，栈及C/C++运行环境。</p>
-<p>PC（Program Counter Register）是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。在虚拟机的概念模型里（仅是概念模型，各种虚拟机可能会通过一些更高效的方式去实现），字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。</p>
-<p>JVM Stacks是线程私有的，它的生命周期与线程相同。虚拟机栈是Java方法执行的内存：每个方法被执行的同时都会创建一个栈帧（Stack Frame）用于存储局部变量表、操作栈、动态链接、方法出口等信息。</p>
+<p>PC(Program Counter Register)是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。在虚拟机的概念模型里(仅是概念模型，各种虚拟机可能会通过一些更高效的方式去实现)，字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。</p>
+<p>JVM Stacks是线程私有的，它的生命周期与线程相同。虚拟机栈是Java方法执行的内存：每个方法被执行的同时都会创建一个栈帧(Stack Frame)用于存储局部变量表、操作栈、动态链接、方法出口等信息。</p>
 <p>局部变量表存放了编译期可知的各种基本数据类型、对象引用和Return Address。栈帧所需的内存空间在编译期间完成分配，运行期间不会改变局部变量表的大小。</p>
 <p>JVM规范中规定了栈的两种异常状况：</p>
 <p>1.如果栈的深度大于所允许的深度，将抛出StackOverflowError异常，如死递归；</p>
@@ -225,7 +224,7 @@
 <p>gccapacity	　　　　统计堆内存不同代的heap容量信息</p>
 </blockquote>
 <blockquote>
-<p>gccause	　　统计gc的情况（同-gcutil）和引起gc的事件</p>
+<p>gccause	　　统计gc的情况(同-gcutil)和引起gc的事件</p>
 </blockquote>
 <blockquote>
 <p>gcnew	　　　　统计gc时新生代的信息(相比gcutil更详细)</p>
@@ -305,8 +304,8 @@ public class MemTest {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/java-jvm/">https://luangeng.space/post/java/basic/java-jvm/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

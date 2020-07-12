@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/HTTP-Client/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="标准库中的net / http软件包提供了发出HTTP网络请求的功能。 在示例中，我们使用httpbin.org这是一个聪明的服务，可以返回特定的">
+  <meta property="og:description" content="Go HTTP Client">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/HTTP-Client/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/HTTP-Client/">
@@ -131,7 +130,7 @@
                                         <h1 class="post-title">Go HTTP Client</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2795 Words
+                                            Posted @ 2019-09-09 · 2789 Words
                                             
                                             · Tags: Go
                                             
@@ -188,14 +187,14 @@ resp, err = http.Get(uri)
 if err != nil {
     fmt.Printf(&quot;\nhttp.Get() failed with: '%s'\nresp: %v\n&quot;, err, resp)
 }
-</code></pre><p>这显示了如何对URL发出HTTP GET请求（在这种情况下为HTML页面）。</p>
+</code></pre><p>这显示了如何对URL发出HTTP GET请求(在这种情况下为HTML页面)。</p>
 <p>我使用uri作为变量名，因为有net / url包，这意味着在同一文件中导入net / url时使用更自然的url会导致命名冲突。</p>
 <p>如果没有错误，则http.Get()返回* http.Response，其中包含以下重要字段：</p>
 <p>正文是包含响应内容的io.Reader。 如果URL是HTML页面，则为HTML数据。 如果网址是PNG图片，则为PNG数据
 StatusCode是描述HTTP状态代码的int。 200表示确定。 404表示未找到等。
 标头包含响应标头。 其类型为map [string] [] string，因为根据HTTP规范，可以使用多个具有相同名称的标头
 如果没有错误返回，请务必使用resp.Body.Close()，否则将浪费资源。</p>
-<p>尝试访问服务器上不存在的页面会返回状态码为404（未找到）的响应。</p>
+<p>尝试访问服务器上不存在的页面会返回状态码为404(未找到)的响应。</p>
 <p>尝试访问不存在的主机将失败，在这种情况下，响应为nil。</p>
 <p>HTTP GET using custom client
 http.Get()只是委派所有工作http.DefaultClient的包装，后者是* http.Client类型的包变量。</p>
@@ -210,7 +209,7 @@ if err != nil {
 }
 </code></pre><p>如图所示，创建和使用自定义http.Client很容易。</p>
 <p>在此示例中，我们设置了非常短的超时，以证明超过该超时将取消连接。</p>
-<p>在实际程序中，我们将使用更长的超时时间，例如15秒（确切的超时时间取决于代码的详细信息）。</p>
+<p>在实际程序中，我们将使用更长的超时时间，例如15秒(确切的超时时间取决于代码的详细信息)。</p>
 <p>基本的HTTP POST</p>
 <pre><code>client := &amp;http.Client{}
 client.Timeout = time.Second * 15
@@ -226,17 +225,17 @@ d, err := ioutil.ReadAll(resp.Body)
 if err != nil {
     log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
-</code></pre><p>fmt.Printf（“ http.Post()返回状态代码％d，截断的文本：\ n％s &hellip; \ n”，分别为StatusCode，字符串（d）[：93]）
-进行POST的最简单方法是使用http.Client.Post（URL字符串，contentType字符串，body io.Reader）。</p>
+</code></pre><p>fmt.Printf(“ http.Post()返回状态代码％d，截断的文本：\ n％s &hellip; \ n”，分别为StatusCode，字符串(d)[：93])
+进行POST的最简单方法是使用http.Client.Post(URL字符串，contentType字符串，body io.Reader)。</p>
 <p>在此示例中，我们发送原始文本。 在大多数情况下，服务器期望正文为url编码格式。</p>
 <p>基本HTTP HEAD
-类似于HTTP GET，但使用http.Client.Head（uri字符串）方法。</p>
+类似于HTTP GET，但使用http.Client.Head(uri字符串)方法。</p>
 <h2 id="http-post">HTTP POST</h2>
 <p>HTTP POST将二进制数据发送到服务器。</p>
 <p>服务器如何解释此数据取决于Content-Type标头的值。</p>
 <p>HTTP POST和url编码数据
 HTTP POST最常用于将HTML页面中的表单数据提交给服务器。</p>
-<p>表单数据是键/值对的字典，其中key是字符串，值是字符串数组（通常是带有单个元素的数组）。</p>
+<p>表单数据是键/值对的字典，其中key是字符串，值是字符串数组(通常是带有单个元素的数组)。</p>
 <p>表单键/值对最常作为URL编码的数据发送，其内容类型为application / x-www-form-urlencoded。</p>
 <pre><code>client := &amp;http.Client{}
 client.Timeout = time.Second * 15
@@ -258,7 +257,7 @@ if err != nil {
 
 fmt.Printf(&quot;PostForm() sent '%s'. Response status code: %d\n&quot;, data.Encode(), resp.StatusCode)
 </code></pre><h2 id="json对象的put请求">JSON对象的PUT请求</h2>
-<p>http.Client没有方便的方法来执行PUT请求，因此我们构造了一个http.Request对象，并使用http.Client.Do（req * http.Request）来执行该请求。</p>
+<p>http.Client没有方便的方法来执行PUT请求，因此我们构造了一个http.Request对象，并使用http.Client.Do(req * http.Request)来执行该请求。</p>
 <pre><code>user := User{
     Name:  &quot;John Doe&quot;,
     Email: &quot;johndoe@example.com&quot;,
@@ -405,11 +404,11 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
 <p>创建http.Client并设置适当的超时
 使用http.NewRequest创建* http.Request
 将其方法设置为“ GET”，“ POST”，“ HEAD”，“ PUT”或“ DELETE”
-设置自定义标头，例如User-Agentwith Header.Set（key，value string）
+设置自定义标头，例如User-Agentwith Header.Set(key，value string)
 通过设置io.ReadCloser类型的主体来设置要发送的主体
 设置TransferEncoding
-与client.Do（req * http.Request）发送请求
-通过使用上下文包含截止期限req = request.WithContext（ctx）的新请求来设置每个请求超时
+与client.Do(req * http.Request)发送请求
+通过使用上下文包含截止期限req = request.WithContext(ctx)的新请求来设置每个请求超时
 这是执行PUT或DELETE请求的唯一方法。</p>
 
                                                 
@@ -433,8 +432,8 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/HTTP-Client/">https://luangeng.space/post/go/basic/HTTP-Client/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

@@ -36,7 +36,7 @@
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/db/mysql/mysql-procedure/</guid>
-      <description>存储过程（Stored Procedure）是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数（如果带参数）来</description>
+      <description>存储过程(Stored Procedure)是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数(如果带参数)来</description>
     </item>
     
   </channel>

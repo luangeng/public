@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/java/zookeeper/zookeeper-base/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是">
+  <meta property="og:description" content="zookeeper-基本概念">
 
   <link rel="canonical" href="https://luangeng.space/post/java/zookeeper/zookeeper-base/">
   <link rel='shortlink' href="https://luangeng.space/post/java/zookeeper/zookeeper-base/">
@@ -168,16 +167,16 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
 <h2 id="数据模型">数据模型：</h2>
 <p>Zookeeper数据模型类似文件系统的目录树结构，特点如下：</p>
 <p><img src="pic/zookeeper/1.png" alt="zoo"></p>
-<p>1.每个节点（znode）被其所在的路径唯一标识，如/Apps/App1。</p>
+<p>1.每个节点(znode)被其所在的路径唯一标识，如/Apps/App1。</p>
 <p>2.znode可以存储数据，EPHEMERAL类型节点没有子节点。</p>
 <p>3.znode有版本，即znode中的数据有版本。</p>
 <p>4.znode名称可以自动编号，即如果App1存在，再创建的节点会自动命名为App2</p>
 <p>5.临时znode在失去连接的时候自动删除。</p>
 <p>6.客户端服务端保持长连接，一个连接状态称为session，session失效了，临时节点就会自动删除。</p>
-<p>7.任何znode的变化都可被监控，包括数据的变化和子节点的变化。当监控到变化，监控者（客户端）被通知，执行回调方法。</p>
+<p>7.任何znode的变化都可被监控，包括数据的变化和子节点的变化。当监控到变化，监控者(客户端)被通知，执行回调方法。</p>
 <h2 id="工作原理">工作原理：</h2>
 <p>Zookeeper核心机制是原子广播，它保证了个服务端之间的数据同步。Zab协议保证了这一点。</p>
-<p>Zookeeper有两种工作模式：恢复模式和广播模式。当服务启动时和Leader崩溃后进入恢复模式，恢复模式下Zookeeper进行leader选举，耗时在200ms内。当Leader被选举出来，且大多数服务器与Leader完成诗句同步后，ZK进入广播模式。为了保证事务的顺序一致性，ZK采用了递增的事务ID（zxid）来标识事务。</p>
+<p>Zookeeper有两种工作模式：恢复模式和广播模式。当服务启动时和Leader崩溃后进入恢复模式，恢复模式下Zookeeper进行leader选举，耗时在200ms内。当Leader被选举出来，且大多数服务器与Leader完成诗句同步后，ZK进入广播模式。为了保证事务的顺序一致性，ZK采用了递增的事务ID(zxid)来标识事务。</p>
 <p>所有的提议都会被加上zxid，zxid为64位的数字，高32位是epoch用来标识leader是否改变的每一次leader选举出来都有一个新的epoch。zxid低32位用来递增计数。</p>
 <p>每个服务器在工作中有3个状态：</p>
 <p>Looking：当前服务器不知道谁是leader，搜索中。</p>
@@ -192,7 +191,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
 <h2 id="leader工作流程">leader工作流程：</h2>
 <p>leader功能：恢复数据，保持心跳，相应消息</p>
 <p>leader可响应的消息有PING，REQUEST，ACK和REVALIDATE</p>
-<p>PING即心跳消息，REQUEST为follower发送的提议（写请求或同步请求），ACK是follower对提议的回复，超过半数的follower通过，则commit。REVALIDATE为延长session的请求。</p>
+<p>PING即心跳消息，REQUEST为follower发送的提议(写请求或同步请求)，ACK是follower对提议的回复，超过半数的follower通过，则commit。REVALIDATE为延长session的请求。</p>
 <h2 id="follower工作流程">follower工作流程：</h2>
 <p>向leader发送请求并响应。</p>
 <p>接受client请求并响应，接受写请求时发送给leader处理。</p>
@@ -225,8 +224,8 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-base/">https://luangeng.space/post/java/zookeeper/zookeeper-base/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

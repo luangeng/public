@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Defer/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁) Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面">
+  <meta property="og:description" content="Go Defer">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Defer/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Defer/">
@@ -197,7 +196,7 @@ func main() {
 Last main statement<br>
 Function main returned</p>
 </blockquote>
-<p>如果一个函数有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer（以下示例通过触发panic而返回）：</p>
+<p>如果一个函数有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer(以下示例通过触发panic而返回)：</p>
 <pre><code>func logNum(i int) {
     fmt.Printf(&quot;Num %d\n&quot;, i)
 }
@@ -335,8 +334,8 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Defer/">https://luangeng.space/post/go/basic/Defer/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

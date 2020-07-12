@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/HTTP-server-middleware/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能">
+  <meta property="og:description" content="Go HTTP server middleware">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">
@@ -152,7 +151,7 @@
                                                 
                                                 <p>介绍
 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能可以在开发的后期阶段添加，而不会影响现有代码。</p>
-<p>中间件的签名应为（http.ResponseWriter，* http.Request），即为http.handlerFunc类型。</p>
+<p>中间件的签名应为(http.ResponseWriter，* http.Request)，即为http.handlerFunc类型。</p>
 <p>普通的请求处理:</p>
 <pre><code>func loginHandler(w http.ResponseWriter, r *http.Request) {
       // Steps to login
@@ -250,8 +249,8 @@ h.ServeHTTP(w , r)
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">https://luangeng.space/post/go/basic/HTTP-server-middleware/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

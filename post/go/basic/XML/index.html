@@ -15,12 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/XML/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.
-Parse XML into a struct Parsing XML is similar to parsing JSON. You define structures that map to the structure of XML and unmarshal from []byte slice or io.Reader into a struct.
-var xmlStr = ` JohnSan FranciscoCA&lt;person age=&quot;23&quot;&gt; &lt;first-name&gt;Julia&lt;/first-name&gt; &lt;/person&gt;  `
-type People struct { Person []Person xml:&quot;person&quot; }
-type Person struct { Age int xml:&quot;age,attr&quot; FirstName string xml:&quot;first-name&quot; Address Address xml:&quot;address&quot; }">
+  <meta property="og:description" content="Go XML">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/XML/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/XML/">
@@ -568,8 +563,8 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/XML/">https://luangeng.space/post/go/basic/XML/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

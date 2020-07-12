@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Console-IO/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。 fmt.Scanf从stdio读取 最方便的方法是">
+  <meta property="og:description" content="Go Console I/O">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Console-IO/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Console-IO/">
@@ -153,7 +152,7 @@
                                                 <p>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。</p>
 <h3 id="fmtscanf从stdio读取">fmt.Scanf从stdio读取</h3>
 <p>最方便的方法是使用fmt.Scanf，它是fmt.Printf的镜像。</p>
-<p>这是从控制台（标准输入）读取字符串和整数的方法</p>
+<p>这是从控制台(标准输入)读取字符串和整数的方法</p>
 <pre><code>fmt.Print(&quot;What is your name?\n&quot;)
 var name string
 if n, err := fmt.Scanf(&quot;%s&quot;, &amp;name); err != nil {
@@ -173,7 +172,7 @@ if n, err :=  fmt.Scanf(&quot;%d&quot;, &amp;age); err != nil {
 <p>它返回成功解析的数量(防止仅匹配前几个变量)</p>
 <p>要从任意io.Reader中读取，请使用fmt.Fscanf。</p>
 <h3 id="fmtscanln从stdin读取一行">fmt.Scanln从stdin读取一行</h3>
-<p>要读取整行（直到换行符或io.EOF，请使用fmt.Scanln：</p>
+<p>要读取整行(直到换行符或io.EOF，请使用fmt.Scanln：</p>
 <pre><code>var line string
 fmt.Scanln(&amp;line)
 fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
@@ -186,8 +185,8 @@ if line, err := reader.ReadString('\n'); err != nil {
     fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
 }
 </code></pre><p>ReadString从读取器读取，直到读取给定字符。 我们指定了换行符\n，因此它将读取整行。</p>
-<p>ReadString返回的值包含终止字符（\n），因此通常您希望使用例如。 strings.TrimSpace。</p>
-<p>字符\n是Unix上的行终止符。 在Windows上更常见的是将\r\n视为行终止符。 如果希望在Windows上运行，请确保进行处理（例如，通过从返回的字符串中修剪\r字符）。</p>
+<p>ReadString返回的值包含终止字符(\n)，因此通常您希望使用例如。 strings.TrimSpace。</p>
+<p>字符\n是Unix上的行终止符。 在Windows上更常见的是将\r\n视为行终止符。 如果希望在Windows上运行，请确保进行处理(例如，通过从返回的字符串中修剪\r字符)。</p>
 <h4 id="bufioscanner从stdin读取一行">bufio.Scanner从stdin读取一行</h4>
 <p>也可以使用bufio.Scanner从stdin读取行</p>
 <pre><code>scanner := bufio.NewScanner(os.Stdin)
@@ -218,8 +217,8 @@ for scanner.Scan() {
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Console-IO/">https://luangeng.space/post/go/basic/Console-IO/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

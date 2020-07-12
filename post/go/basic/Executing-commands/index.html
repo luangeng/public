@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Executing-commands/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command（">
+  <meta property="og:description" content="Go 执行命令">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Executing-commands/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Executing-commands/">
@@ -152,7 +151,7 @@
                                                 
                                                 <p>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。</p>
 <h2 id="基本命令执行">基本命令执行</h2>
-<p>最简单的用法是：<em>使用exec.Command（exe字符串，args &hellip; string）创建exec.Cmd结构</em>调用cmd.CombinedOutput()来执行cmd并获取stdout和stderr的组合*仅获取stdout并调用cmd .Output()</p>
+<p>最简单的用法是：<em>使用exec.Command(exe字符串，args &hellip; string)创建exec.Cmd结构</em>调用cmd.CombinedOutput()来执行cmd并获取stdout和stderr的组合*仅获取stdout并调用cmd .Output()</p>
 <pre><code>cmd := exec.Command(&quot;go&quot;, &quot;version&quot;)
 out, err := cmd.CombinedOutput()
 if err != nil {
@@ -210,7 +209,7 @@ fmt.Printf(&quot;didTimeout: %v, err: %v\n&quot;, didTimeout, err)
 <p>didTimeout: true, err: signal: killed</p>
 </blockquote>
 <p>在调用cmd.Wait()之前，我们使用time.AfterFunc()在超时到期后终止进程。</p>
-<p>cmd.Process.Kill()使cmd.Wait()退出并出现错误（信号：在Unix上已终止）。</p>
+<p>cmd.Process.Kill()使cmd.Wait()退出并出现错误(信号：在Unix上已终止)。</p>
 <p>如果cmd.Wait()在超时之前完成，则取消计时器。</p>
 <p>变量timedOut是int32而不是bool。</p>
 <p>我们使用atomic.StoreInt32和atomic.LoadInt32，因为存在细微的计时问题。</p>
@@ -255,8 +254,8 @@ exit status 1</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Executing-commands/">https://luangeng.space/post/go/basic/Executing-commands/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

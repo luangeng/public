@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/other/maven/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life">
+  <meta property="og:description" content="Maven安装配置使用">
 
   <link rel="canonical" href="https://luangeng.space/post/other/maven/">
   <link rel='shortlink' href="https://luangeng.space/post/other/maven/">
@@ -151,7 +150,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>Maven介绍</p>
-<p>Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。
+<p>Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的(或者自定义的)插件。
 Maven 有一个生命周期，当你运行 mvn install 的时候被调用。这条命令告诉 Maven 执行一系列的有序的步骤，直到到达你指定的生命周期。遍历生命周期旅途中的一个影响就是，Maven 运行了许多默认的插件目标，这些目标完成了像编译和创建一个 JAR 文件这样的工作。此外，Maven能够很方便的帮你管理项目报告，生成站点，管理JAR文件。</p>
 <p>安装</p>
 <p>1.下载: <a href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a></p>
@@ -239,14 +238,14 @@ maven整合了各种插件, 如Jar，Compiler，Surefire等。Jar 用来建立Ja
       –java java源代码文件
       –resources 资源库，会自动复制到classes目录里
       –filters 资源过滤文件
-      –assembly 组件的描述配置（如何打包）
+      –assembly 组件的描述配置(如何打包)
       –config 配置文件
       –webapp web应用的目录。WEB-INF、css、js等
   -test
       –java 单元测试java源代码文件
       –resources 测试需要用的资源库
       –filters 测试资源过滤库
-  -site Site（一些文档）
+  -site Site(一些文档)
 target
 LICENSE.txt
 README.txt
@@ -311,8 +310,8 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/maven/">https://luangeng.space/post/other/maven/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

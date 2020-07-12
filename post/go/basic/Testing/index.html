@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Testing/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="Go带有自己的测试功能，具有运行测试和基准所需的一切。 与大多数其他编程语言不同，尽管存在一些测试框架，但通常不需要单独的测试框架。 基本使用 main.go:">
+  <meta property="og:description" content="Go 测试">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Testing/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Testing/">
@@ -358,7 +357,7 @@ func BenchmarkSum(b *testing.B) {
 <pre><code>$ go test -bench=.
 BenchmarkSum-8    2000000000             0.49 ns/op
 ok      so/sum    1.027s
-</code></pre><h2 id="示例测试自我记录测试">示例测试（自我记录测试）</h2>
+</code></pre><h2 id="示例测试自我记录测试">示例测试(自我记录测试)</h2>
 <p>这种类型的测试可确保您的代码正确编译，并将出现在项目的生成文档中。 除此之外，示例测试还可以断言您的测试产生了正确的输出。</p>
 <p>sum.go:</p>
 <pre><code>package sum
@@ -404,7 +403,7 @@ exit status 1
 FAIL    so/sum    0.006s
 </code></pre><p>如果要查看sum软件包的文档，请运行：</p>
 <pre><code>go doc -http=:6060
-</code></pre><p>打开链接: http://localhost:6060/pkg/FOLDER/sum/, 其中FOLDER是包含sum软件包的文件夹（在本示例中为）。 sum方法的文档如下所示：</p>
+</code></pre><p>打开链接: http://localhost:6060/pkg/FOLDER/sum/, 其中FOLDER是包含sum软件包的文件夹(在本示例中为)。 sum方法的文档如下所示：</p>
 <h2 id="测试http请求">测试HTTP请求</h2>
 <pre><code>main.go:
 
@@ -528,8 +527,8 @@ go tool cover -html=c.out
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Testing/">https://luangeng.space/post/go/basic/Testing/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>

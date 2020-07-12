@@ -15,8 +15,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://luangeng.space/post/go/basic/Interfaces/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description"
-    content="接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea">
+  <meta property="og:description" content="Go 接口">
 
   <link rel="canonical" href="https://luangeng.space/post/go/basic/Interfaces/">
   <link rel='shortlink' href="https://luangeng.space/post/go/basic/Interfaces/">
@@ -131,7 +130,7 @@
                                         <h1 class="post-title">Go 接口</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2440 Words
+                                            Posted @ 2019-09-09 · 2430 Words
                                             
                                             · Tags: Go
                                             
@@ -157,7 +156,7 @@
 <pre><code>type Reader interface {
     Read(d []byte) (int, error)
 }
-</code></pre><p>对二进制数据流进行操作的大多数函数（例如json解码器）都将io.Reader用作数据源。 这样，我们可以为物理文件，内存中的字节，网络连接实现Reader接口，并在所有这些源上使用json.Decode。</p>
+</code></pre><p>对二进制数据流进行操作的大多数函数(例如json解码器)都将io.Reader用作数据源。 这样，我们可以为物理文件，内存中的字节，网络连接实现Reader接口，并在所有这些源上使用json.Decode。</p>
 <p>下面是定义和实现一个简单的接口:</p>
 <pre><code>// Stringer是只有一个方法的接口
 type Stringer interface {
@@ -401,7 +400,7 @@ it status 2</p>
 </blockquote>
 <h2 id="类型断言">类型断言</h2>
 <p>类型断言允许你检查空接口的值是否为给定的类型。</p>
-<p>为了完整起见，可以使用类型switch的简短版本：v:= iv.(int)（v, ok：= iv.(int)）。</p>
+<p>为了完整起见，可以使用类型switch的简短版本：v:= iv.(int)(v, ok：= iv.(int))。</p>
 <p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
 <pre><code>func panicOnInvalidConversion(iv interface{}) {
     v := iv.(int)
@@ -482,8 +481,8 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             
             
             <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Interfaces/">https://luangeng.space/post/go/basic/Interfaces/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接（<a
-                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）
+            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
     </div>
