@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go Protobuf in Go - 计算机与软件技术公开课</title>
+  <title>Go map类型 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Protobuf in Go - 计算机与软件技术公开课">
-  <meta name="description" content="Go Protobuf in Go">
-  <meta itemprop="name" content="Go Protobuf in Go - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go Protobuf in Go">
-  <meta property="og:title" content="Go Protobuf in Go - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go map类型 - 计算机与软件技术公开课">
+  <meta name="description" content="Go map类型">
+  <meta itemprop="name" content="Go map类型 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go map类型">
+  <meta property="og:title" content="Go map类型 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/Protobuf-in-Go/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Map/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go Protobuf in Go">
+  <meta property="og:description" content="Go map类型">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Map/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Map/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go Protobuf in Go</h1>
+                                        <h1 class="post-title">Go map类型</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 640 Words
+                                            Posted @ 2019-09-09 · 2830 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go Protobuf in Go">
+                                            <span class="leancloud_visitors" data-flag-title="Go map类型">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,67 +149,405 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>介绍
-Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道过载。 使用protobuf，其性能与你倾向于发送的消息数量成正比。 通过为你提供工具以在源处对消息进行编码并在目标处对消息进行解码，它将压缩要发送的消息为序列化的二进制格式。</p>
-<p>备注
-使用protobuf有两个步骤。</p>
-<p>首先，你必须编译协议缓冲区定义
-将以上定义以及支持库导入到你的程序中。
-gRPC支持</p>
-<p>如果proto文件指定了RPC服务，则可以指示protoc-gen-go生成与gRPC(<a href="http://www.grpc.io/">http://www.grpc.io/</a>)兼容的代码。 为此，请将plugins参数传递给protoc-gen-go; 通常的方法是将其插入到protoc的–go_out参数中：</p>
-<p><code>$ protoc --go_out=plugins=grpc:. *.proto</code></p>
-<h2 id="在go中使用protobuf">在Go中使用Protobuf</h2>
-<p>你想要序列化并发送的消息可以包含在文件test.proto中，其中包含</p>
-<pre><code>package example;
+                                                <p>map是无序的key-value对的集合.</p>
+<p>map的零值为nil</p>
+<p>map在其他语言中称为字典(C#, Python)或hash表(C++).</p>
+<p>map上的迭代具有随机顺序,在这方面许多语言是不同的。</p>
+<p>map基本用法:</p>
+<pre><code>m := make(map[string]int)
 
-enum FOO { X = 17; };
+// set the value
+m[&quot;three&quot;] = 3
+m[&quot;four&quot;] = 4
 
-message Test {
-    required string label = 1;
-    optional int32 type = 2 [default=77];
-    repeated int64 reps = 3;
-    optional group OptionalGroup = 4 {
-    required string RequiredField = 5;
-    }
+// 获取值并查看值是否存在
+key := &quot;four&quot;
+if value, ok := m[key]; ok {
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+} else {
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
 }
-</code></pre><p>要编译协议缓冲区定义，请在将–go_out参数设置为要将Go代码输出到的目录下运行protoc。</p>
-<p><code>$ protoc --go_out=. *.proto</code></p>
-<p>要从示例包创建并使用Test对象:</p>
+
+key = &quot;five&quot;
+if value, ok := m[key]; ok {
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+} else {
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+}
+
+// if value doesn't exist, the result of lookup is zero value. In this case zero value of int is 0
+fmt.Printf(&quot;\nValue for non-existing key: %d\n\n&quot;, m[&quot;not-exists&quot;])
+
+// iterating over keys and values
+fmt.Printf(&quot;All keys and their values:\n&quot;)
+for key, value := range m {
+    fmt.Printf(&quot;%s =&gt; %d\n&quot;, key, value)
+}
+
+fmt.Printf(&quot;\nBefore deletion: len(m)=%d\n&quot;, len(m))
+delete(m, &quot;four&quot;)
+fmt.Printf(&quot;After deletion : len(m)=%d\n&quot;, len(m))
+</code></pre><blockquote>
+<p>Key &lsquo;four&rsquo; exists and maps to 4<br>
+Key &lsquo;five&rsquo; doesn&rsquo;t exists</p>
+<p>Value for non-existing key: 0</p>
+<p>All keys and their values:<br>
+three =&gt; 3<br>
+four =&gt; 4</p>
+<p>Before deletion: len(m)=2<br>
+After deletion : len(m)=1</p>
+</blockquote>
+<h2 id="map的声明和初始化">map的声明和初始化</h2>
+<p>使用map关键字声明map, 后面是key和value的类型:</p>
+<pre><code>// Keys are ints, values are ints.
+var m1 map[int]int // initialized to nil
+
+// Keys are strings, values are ints.
+var m2 map[string]int // initialized to nil
+</code></pre><p>map是引用类型，一旦定义，它们的零值为nil。 写入nil map将导致panic，而读取将始终返回其零值。</p>
+<p>使用make方法初始化map</p>
+<pre><code>m := make(map[string]int)
+</code></pre><p>使用make的两参数形式，可以为map指定初始输入容量，而不是默认容量：</p>
+<pre><code>m := make(map[string]int, 30)
+</code></pre><p>另外，可以声明一个映射，将其初始化为零值，然后再为它分配一个文字值，如果将该结构序列化为json，从而在返回时生成一个空映射，则将有帮助。</p>
+<pre><code>m := make(map[string]int, 0)
+</code></pre><p>也可以使用{}初始化map的值</p>
+<pre><code>var m map[string]int = map[string]int{&quot;Foo&quot;: 20, &quot;Bar&quot;: 30}
+
+fmt.Println(m[&quot;Foo&quot;]) // outputs 20
+</code></pre><p>以下所有语句导致该变量绑定到相同的值。</p>
+<pre><code>// Declare, initializing to zero value, then assign a literal value.
+var m map[string]int
+m = map[string]int{}
+
+// Declare and initialize via literal value.
+var m = map[string]int{}
+
+// Declare via short variable declaration and initialize with a literal value.
+m := map[string]int{}
+</code></pre><p>我们还可以使用map文字来创建带有一些初始键/值对的新map。</p>
+<p>key类型可以是任何可比较的类型。值得注意的是，这不包括函数，映射和切片。 值类型可以是任何类型，包括自定义类型或接口{}。</p>
+<pre><code>type Person struct {
+    FirstName string
+    LastName  string
+}
+
+// Declare via short variable declaration and initialize with make.
+m := make(map[string]Person)
+
+// Declare, initializing to zero value, then assign a literal value.
+var m map[string]Person
+m = map[string]Person{}
+
+// Declare and initialize via literal value.
+var m = map[string]Person{}
+
+// Declare via short variable declaration and initialize with a literal value.
+m := map[string]Person{}
+</code></pre><h2 id="创建map">创建map</h2>
+<p>可以使用复合语法在单个语句中声明和初始化map。</p>
+<p>使用自动类型短变量声明：</p>
+<pre><code>mapIntInt := map[int]int{10: 100, 20: 100, 30: 1000}
+mapIntString := map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
+mapStringInt := map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
+mapStringString := map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
+</code></pre><p>或者</p>
+<pre><code>var mapIntInt = map[int]int{10: 100, 20: 100, 30: 1000}
+var mapIntString = map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
+var mapStringInt = map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
+var mapStringString = map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
+</code></pre><p>还可以在map中包含自己的结构,即使用自定义类型作为值：</p>
+<pre><code>// Custom struct types
+type Person struct {
+  FirstName, LastName string
+}
+
+var mapStringPerson = map[string]Person{
+  &quot;john&quot;: Person{&quot;John&quot;, &quot;Doe&quot;},
+  &quot;jane&quot;: Person{&quot;Jane&quot;, &quot;Doe&quot;}}
+mapStringPerson := map[string]Person{
+  &quot;john&quot;: Person{&quot;John&quot;, &quot;Doe&quot;},
+  &quot;jane&quot;: Person{&quot;Jane&quot;, &quot;Doe&quot;}}
+</code></pre><p>struct也可以作为map的key:</p>
+<pre><code>type RouteHit struct {
+    Domain string
+    Route  string
+}
+
+var hitMap = map[RouteHit]int{
+    RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
+    RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
+hitMap := map[RouteHit]int{
+    RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
+    RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
+</code></pre><p>只需在方括号{}中不输入任何值即可创建一个空的map。</p>
+<pre><code>mapIntInt := map[int]int{}
+mapIntString := map[int]string{}
+mapStringInt := map[string]int{}
+mapStringString := map[string]string{}
+mapStringPerson := map[string]Person{}
+</code></pre><p>可以直接创建和使用map，而无需将其分配给变量。 但是，你必须同时指定声明和内容。</p>
+<pre><code>// map最为 fmt.Println()的参数
+fmt.Println(map[string]string{
+  &quot;FirstName&quot;: &quot;John&quot;,
+  &quot;LastName&quot;: &quot;Doe&quot;,
+  &quot;Age&quot;: &quot;30&quot;})
+
+// 等效于
+data := map[string]string{
+    &quot;FirstName&quot;: &quot;John&quot;,
+    &quot;LastName&quot;: &quot;Doe&quot;,
+    &quot;Age&quot;: &quot;30&quot;}
+fmt.Println(data)
+</code></pre><h2 id="通过key获取value">通过key获取value</h2>
+<p>要获取map中的value,只需要<code>value := mapName[ key ]</code></p>
+<p>如果map中包含这个key, 则会返回对应的value;如果不包含这个key,则会返回value的类型的零值(int的话是0,string的话是&rdquo;&quot;)</p>
+<pre><code>m  := map[string]string{&quot;foo&quot;: &quot;foo_value&quot;, &quot;bar&quot;: &quot;&quot;}
+k  := m[&quot;foo&quot;]  // returns &quot;foo_value&quot; since that is the value stored in the map
+k2 := m[&quot;bar&quot;]  // returns &quot;&quot; since that is the value stored in the map
+k3 := m[&quot;nop&quot;]  // returns &quot;&quot; since the key does not exist, and &quot;&quot; is the string type's zero value
+</code></pre><p>那么要区分零值和不存在的键，可以使用get的第二个返回值(例如<code>value, hasKey：= map [“ key”]</code>)</p>
+<p>第二个值是布尔型</p>
+<ul>
+<li>true 当map中包含这个key</li>
+<li>false map中不包含这个key</li>
+</ul>
+<p>示例:</p>
+<pre><code>value, hasKey = m[key]
+if hasKey {
+    // the map contains the given key, so we can safely use the value
+    // If value is zero-value, it's because the zero-value was pushed to the map
+} else {
+    // The map does not have the given key
+    // the value will be the zero-value of the map's type
+}
+</code></pre><h2 id="获取map的大小-map中元素的数量">获取map的大小 (map中元素的数量)</h2>
+<p>内部函数len返回了map中元素的数量:</p>
+<pre><code>m := map[string]int{}
+size := len(m)
+fmt.Printf(&quot;Size of empty map: %d\n&quot;, size)
+
+m[&quot;foo&quot;] = 1
+size = len(m)
+fmt.Printf(&quot;Size of map: %d\n\n&quot;, size)
+</code></pre><blockquote>
+<p>Size of empty map: 0
+Size of map: 1</p>
+</blockquote>
+<p>nil map的大小是0:</p>
+<pre><code>var m map[string]int
+size := len(m)
+fmt.Printf(&quot;Size of nil map: %d\n\n&quot;, size)
+</code></pre><blockquote>
+<p>Size of nil map: 0</p>
+</blockquote>
+<h2 id="拷贝map">拷贝map</h2>
+<p>在Go中，所有值都通过拷贝传递。</p>
+<p>然而,和slice类似,映射的值仅是对底层数据的引用。当将map分配给另一个变量或传递给另一个函数时，仅复制引用。</p>
+<p>要想拷贝值,需要写下面一段代码:</p>
+<pre><code>src := make(map[string]int)
+src[&quot;one&quot;] = 1
+src[&quot;two&quot;] = 2
+
+dst := make(map[string]int)
+
+for key, value := range src {
+    dst[key] = value
+}
+</code></pre><h2 id="使用range遍历map">使用range遍历map</h2>
+<p>未指定迭代顺序。 故意随机化迭代顺序，以使代码不会错误地依赖于特定顺序。</p>
+<p>同时迭代key和value:</p>
+<pre><code>people := map[string]int{
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
+}
+
+for key, value := range people {
+    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
+}
+</code></pre><blockquote>
+<p>key: john, value: 30<br>
+key: jane, value: 29<br>
+key: mark, value: 11</p>
+</blockquote>
+<p>仅迭代key</p>
+<pre><code>people := map[string]int{
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
+}
+
+for key := range people {
+    fmt.Printf(&quot;key: %s\n&quot;, key)
+}
+</code></pre><blockquote>
+<p>key: mark<br>
+key: john<br>
+key: jane</p>
+</blockquote>
+<p>仅迭代value</p>
+<pre><code>people := map[string]int{
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
+}
+
+for _, value := range people {
+    fmt.Printf(&quot;value: %d\n&quot;, value)
+}
+</code></pre><blockquote>
+<p>value: 30<br>
+value: 29<br>
+value: 11</p>
+</blockquote>
+<h2 id="从map中删除元素">从map中删除元素</h2>
+<p>使用内部函数delete从map中删除指定key的元素:</p>
+<pre><code>people := map[string]int{&quot;john&quot;: 30, &quot;jane&quot;: 29}
+fmt.Printf(&quot;%v\n&quot;, people)
+
+delete(people, &quot;john&quot;)
+fmt.Printf(&quot;%v\n&quot;, people)
+</code></pre><blockquote>
+<p>map[jane:29 john:30]<br>
+map[jane:29]</p>
+</blockquote>
+<p>如果map 是nil或者map中没有这个key, 则删除操作无效:</p>
+<pre><code>people := map[string]int{&quot;john&quot;: 30, &quot;jane&quot;: 29}
+fmt.Printf(&quot;%v\n&quot;, people)
+
+// deleting a key that doesn't exist is a no-op
+delete(people, &quot;notfound&quot;)
+fmt.Printf(&quot;%v\n&quot;, people)
+
+// deleting a key in nil map is a no-op
+var something map[string]int
+delete(something, &quot;notfound&quot;)
+</code></pre><blockquote>
+<p>map[jane:29 john:30]<br>
+map[jane:29 john:30]</p>
+</blockquote>
+<h2 id="把map作为set使用">把map作为set使用</h2>
+<p>一些语言提供了内置的set类型</p>
+<p>在Go中，最佳实践是使用值类型为struct{}的map，因为值为空struct的map进行了特别优化。</p>
+<p>例如一个string类型的set:</p>
+<pre><code>set := NewStringSet(&quot;hi&quot;, &quot;hello&quot;)
+fmt.Printf(&quot;Original set: %#v\n&quot;, set.Strings())
+
+set.Delete(&quot;hi&quot;)
+fmt.Printf(&quot;After delete: %#v\n&quot;, set.Strings())
+
+set.Add(&quot;hey&quot;)
+fmt.Printf(&quot;After add   : %#v\n&quot;, set.Strings())
+
+printExists(set, &quot;hello&quot;)
+printExists(set, &quot;ola&quot;)
+</code></pre><blockquote>
+<p>Original set: []string{&ldquo;hi&rdquo;, &ldquo;hello&rdquo;}<br>
+After delete: []string{&ldquo;hello&rdquo;}<br>
+After add   : []string{&ldquo;hey&rdquo;, &ldquo;hello&rdquo;}<br>
+&lsquo;hello&rsquo; exists in set<br>
+&lsquo;ola&rsquo; doesn&rsquo;t exist in set</p>
+</blockquote>
+<h2 id="slice作为map的value">slice作为map的value</h2>
+<pre><code>m := make(map[string][]int)
+fmt.Printf(&quot;Non-existing key returns zero value of []int, i.e. nil: %#v\n&quot;, m[&quot;key1&quot;])
+
+m[&quot;key1&quot;] = append(m[&quot;key1&quot;], 8)
+m[&quot;key1&quot;] = append(m[&quot;key1&quot;], 3)
+fmt.Printf(&quot;\nAfter appending to slice: %#v\n&quot;, m[&quot;key1&quot;])
+
+delete(m, &quot;key1&quot;)
+fmt.Printf(&quot;\ndelete() sets back to nil slice: %#v\n&quot;, m[&quot;key1&quot;])
+</code></pre><blockquote>
+<p>Non-existing key returns zero value of []int, i.e. nil: []int(nil)<br>
+After appending to slice: []int{8, 3}<br>
+delete() sets back to nil slice: []int(nil)</p>
+</blockquote>
+<p>注意到在m[&ldquo;key1&rdquo;] = append(m[&ldquo;key1&rdquo;], 8)时我们没有检查m[&ldquo;key1&rdquo;]是否存在. 这是三个规则相互影响的结果：</p>
+<ol>
+<li>m[&ldquo;foo&rdquo;] 如果不存在foo键，则返回零值</li>
+<li>slice的零值是nil</li>
+<li>a = append(nil, 3)语句合法并且创建了一个单元素的slice[]int{3}</li>
+</ol>
+<h2 id="并发访问map">并发访问map</h2>
+<p>Go中的map不是并发安全的</p>
+<p>确保并发安全的一种访问方法是使用sync.Mutex或sync.RWMutex锁定所有映射进行读取和写入。</p>
+<p>例如，一个简单的map包装器，只要通过Get，Set和Add方法完成，即可安全地并发使用：</p>
 <pre><code>package main
 
 import (
-    &quot;log&quot;
-
-    &quot;github.com/golang/protobuf/proto&quot;
-    &quot;path/to/example&quot;
+    &quot;fmt&quot;
+    &quot;sync&quot;
 )
 
-func main() {
-    test := &amp;example.Test {
-        Label: proto.String(&quot;hello&quot;),
-        Type:  proto.Int32(17),
-        Reps:  []int64{1, 2, 3},
-        Optionalgroup: &amp;example.Test_OptionalGroup {
-            RequiredField: proto.String(&quot;good bye&quot;),
-        },
-    }
-    data, err := proto.Marshal(test)
-    if err != nil {
-        log.Fatal(&quot;marshaling error: &quot;, err)
-    }
-    newTest := &amp;example.Test{}
-    err = proto.Unmarshal(data, newTest)
-    if err != nil {
-        log.Fatal(&quot;unmarshaling error: &quot;, err)
-    }
-    // Now test and newTest contain the same data.
-    if test.GetLabel() != newTest.GetLabel() {
-        log.Fatalf(&quot;data mismatch %q != %q&quot;, test.GetLabel(), newTest.GetLabel())
-    }
-    // etc.
+// ConcurrentMap is a wrapper around map that is safe for concurrent use
+type ConcurrentMap struct {
+    sync.RWMutex
+    m map[string]int
 }
-</code></pre><p>要将额外的参数传递给插件，请使用逗号分隔的参数列表，该列表与输出目录之间用冒号分隔：</p>
-<p><code>$ protoc --go_out=plugins=grpc,import_path=mypackage:. *.proto</code></p>
+
+// Get gets a value for a key
+func (r *ConcurrentMap) Get(key string) int {
+    r.RLock()
+    defer r.RUnlock()
+    return r.m[key]
+}
+
+// Set sets a key to a given value
+func (r *ConcurrentMap) Set(key string, val int) {
+    r.Lock()
+    defer r.Unlock()
+    r.m[key] = val
+}
+
+// Add increases the value under a key by n
+func (r *ConcurrentMap) Add(key string, n int) int {
+    r.Lock()
+    defer r.Unlock()
+    r.m[key] += n
+    return r.m[key]
+}
+
+func main() {
+    counter := ConcurrentMap{m: make(map[string]int)}
+
+    n := counter.Add(&quot;some_key&quot;, 2)
+    fmt.Printf(&quot;Final value is: %d\n&quot;, n)
+}
+</code></pre><blockquote>
+<p>Final value is: 2</p>
+</blockquote>
+<p>sync.RWMutex can be faster because it allows multiple readers. On the downside you have to be more careful to ensure you&rsquo;re not writing under RLock. The performance difference with sync.Mutex will be negligible unless there&rsquo;s a high-contention on the lock or the locks are held for a long time.</p>
+<p>sync.RWMutex可以更快，因为它允许多个读取器。 不利的一面是，你必须更加小心以确保不在RLock下书写。 sync.Mutex的性能差异可以忽略不计，除非锁上存在高争用或锁被长时间持有。</p>
+<h2 id="map的零值">map的零值</h2>
+<p>map的零值是nil. 它的长度为0:</p>
+<pre><code>var m map[string]string
+fmt.Printf(&quot;m == nil ? %v\n&quot;, m == nil)
+fmt.Printf(&quot;len(m) = %d\n&quot;, len(m))
+</code></pre><blockquote>
+<p>m == nil ? true<br>
+len(m) = 0</p>
+</blockquote>
+<p>从nil map读取和从空map读取一样。 而写入nil map则会报错。</p>
+<pre><code>var m map[string]string
+
+// 可以从未初始化的map中读
+fmt.Printf(`m[&quot;foo&quot;] = %s`+&quot;\n&quot;, m[&quot;foo&quot;])
+_, ok := m[&quot;foo&quot;]
+fmt.Printf(&quot;ok: %v\n&quot;, ok)
+
+// 不能写入未初始化的map
+m[&quot;foo&quot;] = &quot;bar&quot;
+</code></pre><blockquote>
+<p>m[&ldquo;foo&rdquo;] =<br>
+ok: false<br>
+panic: assignment to entry in nil map</p>
+<p>goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src249866572/main.go:16 +0x1a5<br>
+exit status 2</p>
+</blockquote>
 
                                                 
                                             </div>
@@ -231,7 +569,7 @@ func main() {
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">https://luangeng.space/post/go/basic/Protobuf-in-Go/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Map/">https://luangeng.space/post/go/basic/Map/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -250,19 +588,19 @@ func main() {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Package-fmt/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Slice/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go fmt包</span>
+                                            <span>Go 切片</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Struct/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go Console I/O</span>
+                                            <span>Go struct类型</span>
                                         </a>
                                         
                                     </li>
@@ -299,7 +637,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -441,7 +779,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -452,7 +790,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -463,7 +801,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -545,7 +883,7 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -575,9 +913,9 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

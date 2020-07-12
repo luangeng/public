@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go Text和HTML模板 - 计算机与软件技术公开课</title>
+  <title>Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Text和HTML模板 - 计算机与软件技术公开课">
-  <meta name="description" content="Go Text和HTML模板">
-  <meta itemprop="name" content="Go Text和HTML模板 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go Text和HTML模板">
-  <meta property="og:title" content="Go Text和HTML模板 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课">
+  <meta name="description" content="Go 使用Go工具pprof进行性能分析">
+  <meta itemprop="name" content="Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go 使用Go工具pprof进行性能分析">
+  <meta property="og:title" content="Go 使用Go工具pprof进行性能分析 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/Text-and-HTML-templates/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Pprof/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go Text和HTML模板">
+  <meta property="og:description" content="Go 使用Go工具pprof进行性能分析">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Pprof/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Pprof/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go Text和HTML模板</h1>
+                                        <h1 class="post-title">Go 使用Go工具pprof进行性能分析</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 1881 Words
+                                            Posted @ 2019-09-09 · 652 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go Text和HTML模板">
+                                            <span class="leancloud_visitors" data-flag-title="Go 使用Go工具pprof进行性能分析">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,463 +149,102 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information.</p>
-<p>Building that HTML string by building smaller strings and concatenating them with + would be tedious.</p>
-<p>Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual output:</p>
-<p>var tmplStr = <code>User {{.User}} has {{.TotalTweets}} tweets. {{- $tweetCount := len .RecentTweets }} Recent tweets: {{range $idx, $tweet := .RecentTweets}}Tweet {{$idx}} of {{$tweetCount}}: '{{.}}' {{end -}} Most recent tweet: '{{index .RecentTweets 0}}'</code></p>
-<p>t := template.New(&ldquo;tweets&rdquo;)
-t, err := t.Parse(tmplStr)
-if err != nil {
-log.Fatalf(&ldquo;template.Parse() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}
-data := struct {
-User         string
-TotalTweets  int
-RecentTweets []string
-}{
-User:         &ldquo;kjk&rdquo;,
-TotalTweets:  124,
-RecentTweets: []string{&ldquo;hello&rdquo;, &ldquo;there&rdquo;},
-}
-err = t.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>User kjk has 124 tweets.
-Recent tweets:
-Tweet 0 of 2: 'hello'
-Tweet 1 of 2: 'there'
-Most recent tweet: 'hello'
-Each template has a name. template.New(&quot;tweets&quot;) creates an empty template with name tweets.
+                                                <p>基本的cpu和内存分析</p>
+<p>在主程序中添加以下代码。</p>
+<pre><code>var cpuprofile = flag.String(&quot;cpuprofile&quot;, &quot;&quot;, &quot;write cpu profile `file`&quot;)
+var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to `file`&quot;)
 
-t.Parse(s string) parses the template.
-
-t.Execute(w io.Writer, v interface{}) executes the template with a given value and writing the result to an io.Writer.
-
-{{ ... }} is an action are instructions for templating engine.
-
-{{.TweetCount}} means printing the value of TweetCount in current context.
-
-Data passed to a template can be hierarchical (i.e. a struct withing a struct within a struct…).
-
-Current context . refers to current scope within the data.
-
-Initial . refers to top-level scope:
-
-tmplStr := &quot;Data: {{.}}\n&quot;
-t := template.Must(template.New(&quot;simple&quot;).Parse(tmplStr))
-execWithData := func(data interface{}) {
-    err := t.Execute(os.Stdout, data)
-    if err != nil {
-        log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+func main() {
+    flag.Parse()
+    if *cpuprofile != &quot;&quot; {
+        f, err := os.Create(*cpuprofile)
+        if err != nil {
+            log.Fatal(&quot;could not create CPU profile: &quot;, err)
+        }
+        if err := pprof.StartCPUProfile(f); err != nil {
+            log.Fatal(&quot;could not start CPU profile: &quot;, err)
+        }
+        defer pprof.StopCPUProfile()
+    }
+    ...
+    if *memprofile != &quot;&quot; {
+        f, err := os.Create(*memprofile)
+        if err != nil {
+            log.Fatal(&quot;could not create memory profile: &quot;, err)
+        }
+        runtime.GC() // get up-to-date statistics
+        if err := pprof.WriteHeapProfile(f); err != nil {
+            log.Fatal(&quot;could not write memory profile: &quot;, err)
+        }
+        f.Close()
     }
 }
-
-execWithData(5)
-execWithData(&quot;foo&quot;)
-st := struct {
-    Number int
-    Str    string
-}{
-    Number: 3,
-    Str:    &quot;hello&quot;,
+</code></pre><p>之后构建go程序(如果添加到main go build main.go中)。 使用在代码main.exe -cpuprofile cpu.prof -memprof mem.prof中定义的标志运行主程序。 如果对测试用例进行了概要分析，请使用相同的标志运行测试，然后go test -cpuprofile cpu.prof -memprofile mem.prof</p>
+<h2 id="使用基准创建配置文件">使用基准创建配置文件</h2>
+<p>对于非主要包和主要包，不要在代码内添加标志，而在测试包中编写基准，例如：</p>
+<pre><code>func BenchmarkHello(b *testing.B) {
+    for i := 0; i &lt; b.N; i++ {
+        fmt.Sprintf(&quot;hello&quot;)
+    }
 }
-execWithData(st)
-</code></pre><p>Data: 5
-Data: foo
-Data: {3 hello}
-Values that don’t have pre-defined formatting are printed using Stringer interface. For custom formatting of your type in a template implement String() string method.</p>
-<p>{{range .Tweets}}{{end}} evaluates inner part for every element of []string slice Tweets and sets current context . within the inner part to elements of Tweets slice.</p>
-<p>{{index .RecentTweets 0}} is equivalent to RecentTweets[0] in Go code.</p>
-<p>Text in a template is copied verbatim. Having to preserve whitespace can lead to ugly templates.</p>
-<p>To help write more readable templates We can add - at the beginning or end of action as seen in {{end -}}.</p>
-<p>This remove whitespace before or after the action.</p>
-<p>{{range .RecentTweets}} changes variable scope and we don’t have access to data outside. If we need to access data from upper scope, we can define variables like {{ $tweetCount := len .RecentTweets }}.</p>
-<h2 id="methods-as-data">Methods as data</h2>
-<p>In a template {{ .Foo }} will either access struct field Foo or call a function Foo():</p>
-<p>var tmplStr = <code>Data from a field: '{{ .Field }}' Data from a method: '{{ .Method }}'</code></p>
-<p>t := template.New(&ldquo;method&rdquo;)
-t, err := t.Parse(tmplStr)
-if err != nil {
-log.Fatalf(&ldquo;template.Parse() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<p>data := Data{
-Field: 5,
-}</p>
-<p>err = t.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>Data from a field: '5'
-Data from a method: 'data from a method'
+</code></pre><p>然后使用配置文件标志运行测试</p>
+<p><code>go test -cpuprofile cpu.prof -bench=.</code></p>
+<p>And the benchmarks will be run and create a prof file with filename cpu.prof (in the above example).</p>
+<h2 id="基本内存配置">基本内存配置</h2>
+<pre><code>var memprofile = flag.String(&quot;memprofile&quot;, &quot;&quot;, &quot;write memory profile to `file`&quot;)
 
-## if action
-To conditionally render parts of the template, use if action:
-
-const tmplStr = `{{range . -}}
-{{if .IsNew}}'{{.Name}}' is new{{else}}'{{.Name}}' is not new{{end}}
-{{end}}`
-
-t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
-
-data := []struct {
-    Name  string
-    IsNew bool
-}{
-    {&quot;Bridge&quot;, false},
-    {&quot;Electric battery&quot;, true},
+func main() {
+    flag.Parse()
+    if *memprofile != &quot;&quot; {
+        f, err := os.Create(*memprofile)
+        if err != nil {
+            log.Fatal(&quot;could not create memory profile: &quot;, err)
+        }
+        runtime.GC() // get up-to-date statistics
+        if err := pprof.WriteHeapProfile(f); err != nil {
+            log.Fatal(&quot;could not write memory profile: &quot;, err)
+        }
+        f.Close()
+    }
 }
+</code></pre><pre><code>$ go build main.go
+$ main.exe -memprofile mem.prof
+$ go tool pprof main.exe mem.prof
+</code></pre><h2 id="设置cpu块配置文件速率">设置CPU/块配置文件速率</h2>
+<pre><code>// Sets the CPU profiling rate to hz samples per second
+// If hz &lt;= 0, SetCPUProfileRate turns off profiling
+runtime.SetCPUProfileRate(hz)
 
-err := t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><p>&lsquo;Bridge&rsquo; is not new
-&lsquo;Electric battery&rsquo; is new
-false values
-Templating uses “truthy” logic for deciding what values are true or false in the context of if action:</p>
-<p>const tmplStr = <code>{{range . -}} {{printf &quot;%- 16s&quot; .Name}} is: {{if .Value}}true{{else}}false{{end}} {{end}}</code></p>
-<p>t := template.Must(template.New(&ldquo;if&rdquo;).Parse(tmplStr))</p>
-<p>var nilPtr *string = nil
-var nilSlice []float32
-emptySlice := []int{}</p>
-<p>data := []struct {
-Name  string
-Value interface{}
-}{
-{&ldquo;bool false&rdquo;, false},
-{&ldquo;bool true&rdquo;, true},
-{&ldquo;integer 0&rdquo;, 0},
-{&ldquo;integer 1&rdquo;, 1},
-{&ldquo;float32 0&rdquo;, float32(0)},
-{&ldquo;float64 NaN&rdquo;, math.NaN},
-{&ldquo;empty string&rdquo;, &ldquo;&quot;},
-{&ldquo;non-empty string&rdquo;, &ldquo;haha&rdquo;},
-{&ldquo;nil slice&rdquo;, nilSlice},
-{&ldquo;empty slice&rdquo;, emptySlice},
-{&ldquo;non-empty slice&rdquo;, []int{3}},
-{&ldquo;nil pointer&rdquo;, nilPtr},
-}</p>
-<p>err := t.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>bool false       is: false
-bool true        is: true
-integer 0        is: false
-integer 1        is: true
-float32 0        is: false
-float64 NaN      is: true
-empty string     is: false
-non-empty string is: true
-nil slice        is: false
-empty slice      is: false
-non-empty slice  is: true
-nil pointer      is: false
-Avoid printing empty slices
-Truthy logic is useful when we want to show different text if a list of items is empty:
-
-type UserTweets struct {
-    User   string
-    Tweets []string
-}
-
-const tmplStr = `
-{{- if not .Tweets -}}
-User '{{.User}}' has no tweets.
-{{ else -}}
-User '{{.User}}' has {{ len .Tweets }} tweets:
-{{ range .Tweets -}}
-  '{{ . }}'
-{{ end }}
-{{- end}}`
-
-t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
-
-data := UserTweets{
-    User: &quot;kjk&quot;,
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-
-data = UserTweets{
-    User:   &quot;masa&quot;,
-    Tweets: []string{&quot;tweet one&quot;, &quot;tweet two&quot;},
-}
-err = t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><p>User &lsquo;kjk&rsquo; has no tweets.
-User &lsquo;masa&rsquo; has 2 tweets:
-&lsquo;tweet one&rsquo;
-&lsquo;tweet two&rsquo;</p>
-<h2 id="range-action">range action</h2>
-<p>Just as in Go, range can iterate over arrays, slices, maps and channels.</p>
-<p>Range over arrays and slices
-const tmplStr = <code>Elements of arrays or slice: {{ range . }}{{ . }} {{end}}</code></p>
-<p>t := template.Must(template.New(&ldquo;range&rdquo;).Parse(tmplStr))</p>
-<p>array := [&hellip;]int{3, 8}
-err := t.Execute(os.Stdout, array)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<p>slice := []int{12, 5}
-err = t.Execute(os.Stdout, slice)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>Elements of arrays or slice: 3 8 
-Elements of arrays or slice: 12 5 
-Range over maps
-const tmplStr = `Elements of map:
-{{ range $k, $v := . }}{{ $k }}: {{ $v }}
-{{end}}`
-
-t := template.Must(template.New(&quot;range&quot;).Parse(tmplStr))
-
-data := map[string]int{
-    &quot;one&quot;:  1,
-    &quot;five&quot;: 5,
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><p>Elements of map:
-five: 5
-one: 1
-Range over channels
-const tmplStr = <code>Elements of a channel: {{ range . }}{{ . }} {{end}}</code></p>
-<p>t := template.Must(template.New(&ldquo;range&rdquo;).Parse(tmplStr))</p>
-<p>ch := make(chan int)
-go func() {
-for i := 0; i &lt; 3; i++ {
-ch &lt;- i
-}
-close(ch)
-}()
-err := t.Execute(os.Stdout, ch)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>Elements of a channel: 0 1 2 
-
-## Built-in functions
-Templating engine supports calling functions like {{ len .Tweet }} where len is a function that returns length of an array or slice.
-
-and, or, not
-and, or, not are for logical operations:
-
-const tmplStr = `Or:  {{ if or .True .False }}true{{ else }}false{{ end }}
-And: {{ if and .True .False }}true{{ else }}false{{ end }}
-Not: {{ if not .False }}true{{ else }}false{{ end }}
-`
-
-t := template.Must(template.New(&quot;and_or_not&quot;).Parse(tmplStr))
-
-data := Data{True: true, False: false}
-
-err := t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><p>Or:  true
-And: false
-Not: true
-index
-index is for accessing elements of a slice by index or values in a map by key.</p>
-<p>const tmplStr = <code>Slice[0]: {{ index .Slice 0 }} SliceNested[1][0]: {{ index .SliceNested 1 0 }} Map[&quot;key&quot;]: {{ index .Map &quot;key&quot; }}</code></p>
-<p>t := template.Must(template.New(&ldquo;index&rdquo;).Parse(tmplStr))</p>
-<p>data := struct {
-Slice       []string
-SliceNested [][]int
-Map         map[string]int
-}{
-Slice: []string{&ldquo;first&rdquo;, &ldquo;second&rdquo;},
-SliceNested: [][]int{
-{3, 1},
-{2, 3},
-},
-Map: map[string]int{
-&ldquo;key&rdquo;: 5,
-},
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>Slice[0]: first
-SliceNested[1][0]: 2
-Map[&quot;key&quot;]: 5
-len
-len returns length of an array of map.
-
-const tmplStr = `len(nil)       : {{ len .SliceNil }}
-len(emptySlice): {{ len .SliceEmpty }}
-len(slice)     : {{ len .Slice }}
-len(map)       : {{ len .Map }}
-`
-
-t := template.Must(template.New(&quot;len&quot;).Parse(tmplStr))
-
-data := struct {
-    SliceNil   []int
-    SliceEmpty []string
-    Slice      []bool
-    Map        map[int]bool
-}{
-    SliceNil:   nil,
-    SliceEmpty: []string{},
-    Slice:      []bool{true, true, false},
-    Map:        map[int]bool{5: true, 3: false},
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><p>len(nil)       : 0
-len(emptySlice): 0
-len(slice)     : 3
-len(map)       : 2
-print, printf, println
-print is like fmt.Sprint.</p>
-<p>printf is like fmt.Sprintf.</p>
-<p>println is like fmt.Sprintln.</p>
-<p>const tmplStr = <code>print:   {{ print .Str .Num }} println: {{ println .Str .Num }} printf:  {{ printf &quot;%s %#v %d&quot; .Str .Str .Num }}</code></p>
-<p>t := template.Must(template.New(&ldquo;print&rdquo;).Parse(tmplStr))</p>
-<p>data := struct {
-Str string
-Num int
-}{
-Str: &ldquo;str&rdquo;,
-Num: 8,
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>print:   str8
-println: str 8
-
-printf:  str &quot;str&quot; 8
-js, html, urlquery
-js, html and urlquery is for escaping text so that it can be safely inserted in a JavaScript, HTML and URL context:
-
-const tmplStr = `js escape  : {{ js .JS }}
-html escape: {{ html .HTML }}
-url escape : {{ urlquery .URL }}
-`
-
-t := template.Must(template.New(&quot;print&quot;).Parse(tmplStr))
-
-data := struct {
-    JS   string
-    HTML string
-    URL  string
-}{
-    JS:   `function me(s) { return &quot;foo&quot;; }`,
-    HTML: `&lt;div&gt;text&lt;/div&gt;`,
-    URL:  `http://www.programming-books.io`,
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><p>js escape  : function me(s) { return &quot;foo&quot;; }
-html escape: &lt;div&gt;text&lt;/div&gt;
-url escape : http%3A%2F%2Fwww.programming-books.io</p>
-<h2 id="custom-functions">Custom functions</h2>
-<p>You can define custom functions and make them available in templates:</p>
-<p>const tmplStr = <code>5 + 5 = {{ sum 5 .Arg }}</code></p>
-<p>customFunctions := template.FuncMap{
-&ldquo;sum&rdquo;: sum,
-}</p>
-<p>t := template.Must(template.New(&ldquo;func&rdquo;).Funcs(customFunctions).Parse(tmplStr))</p>
-<p>data := struct {
-Arg int
-}{
-Arg: 5,
-}
-err := t.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>5 + 5 = 10
-
-## HTML templates
-Package html/template has the same base functionality as text/template.
-
-The difference is that html/template understands structure of HTML and JavaScript code inside HTML.
-
-Inserted text is escaped based on its surrounding context which eliminates cross-site scripting bugs.
-
-const tmplStr = `&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;
-`
-
-txt := text_template.Must(text_template.New(&quot;text&quot;).Parse(tmplStr))
-
-html := html_template.Must(html_template.New(&quot;html&quot;).Parse(tmplStr))
-
-data := struct {
-    JS   string
-    HTML string
-    URL  string
-}{
-    JS:   `foo`,
-    HTML: `&lt;span&gt;text&lt;/span&gt;`,
-    URL:  `http://www.programming-books.io`,
-}
-
-err := txt.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-
-fmt.Println()
-
-err = html.Execute(os.Stdout, data)
-if err != nil {
-    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
-}
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>const tmplStr = <code>&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;</code></p>
-<p>html := template.Must(template.New(&ldquo;html&rdquo;).Parse(tmplStr))</p>
-<p>data := struct {
-JS   string
-HTML string
-}{
-JS:   <code>foo</code>,
-HTML: <code>&lt;span&gt;text&lt;/span&gt;</code>,
-}</p>
-<p>fmt.Printf(&ldquo;Escaped:\n&rdquo;)
-err := html.Execute(os.Stdout, data)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<p>fmt.Printf(&quot;\nUnescaped:\n&rdquo;)
-data2 := struct {
-JS   template.JS
-HTML template.HTML
-}{
-JS:   <code>foo</code>,
-HTML: <code>&lt;span&gt;text&lt;/span&gt;</code>,
-}
-err = html.Execute(os.Stdout, data2)
-if err != nil {
-log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}</p>
-<pre><code>Escaped:
-&lt;div onlick=&quot;&amp;#34;foo&amp;#34;&quot;&gt;&amp;lt;span&amp;gt;text&amp;lt;/span&amp;gt;&lt;/div&gt;
-
-Unescaped:
-&lt;div onlick=&quot;foo&quot;&gt;&lt;span&gt;text&lt;/span&gt;&lt;/div&gt;
-template.HTML and template.JS are type alises for string so you can assign string values to them.
-
-Templating engine recognizes those types and disables escaping for them.</code></pre>
+// Controls the fraction of goroutine blocking events that are reported in the blocking profile
+// Rate = 1 includes every blocking event in the profile
+// Rate &lt;= 0 turns off profiling
+runtime.SetBlockProfileRate(rate)
+</code></pre><h2 id="访问配置文件">访问配置文件</h2>
+<p>Once a prof file has been generated, one can access the prof file using go tools:</p>
+<p><code>go tool pprof cpu.prof</code>
+This will enter into a command line interface for exploring the profile</p>
+<p>常用命令包括：</p>
+<ul>
+<li>(pprof) top    Lists top processes in memory</li>
+<li>(pprof) peek   Lists all processes, use regex to narrow search.</li>
+<li>(pprof) web    Opens an graph (in svg format) of the process.</li>
+</ul>
+<p>top命令的示例：</p>
+<pre><code>69.29s of 100.84s total (68.71%)
+Dropped 176 nodes (cum &lt;= 0.50s)
+Showing top 10 nodes out of 73 (cum &gt;= 12.03s)
+        flat  flat%   sum%        cum   cum%
+    12.44s 12.34% 12.34%     27.87s 27.64%  runtime.mapaccess1
+    10.94s 10.85% 23.19%     10.94s 10.85%  runtime.duffcopy
+        9.45s  9.37% 32.56%     54.61s 54.16%  github.com/tester/test.(*Circle).Draw
+        8.88s  8.81% 41.36%      8.88s  8.81%  runtime.aeshashbody
+        7.90s  7.83% 49.20%     11.04s 10.95%  runtime.mapaccess1_fast64
+        5.86s  5.81% 55.01%      9.59s  9.51%  github.com/tester/test.(*Circle).isCircle
+        5.03s  4.99% 60.00%      8.89s  8.82%  github.com/tester/test.(*Circle).openCircle
+        3.14s  3.11% 63.11%      3.14s  3.11%  runtime.aeshash64
+        3.08s  3.05% 66.16%      7.85s  7.78%  runtime.mallocgc
+        2.57s  2.55% 68.71%     12.03s 11.93%  runtime.memhash
+</code></pre>
                                                 
                                             </div>
 
@@ -626,7 +265,7 @@ Templating engine recognizes those types and disables escaping for them.</code><
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/">https://luangeng.space/post/go/basic/Text-and-HTML-templates/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Pprof/">https://luangeng.space/post/go/basic/Pprof/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -645,19 +284,19 @@ Templating engine recognizes those types and disables escaping for them.</code><
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go HTTP server middleware</span>
+                                            <span>Go Calling C from GO with cgo</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Reflection/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Cross-compilation/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go 反射</span>
+                                            <span>Go 交叉编译</span>
                                         </a>
                                         
                                     </li>
@@ -694,7 +333,7 @@ Templating engine recognizes those types and disables escaping for them.</code><
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -836,7 +475,7 @@ Templating engine recognizes those types and disables escaping for them.</code><
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -847,7 +486,7 @@ Templating engine recognizes those types and disables escaping for them.</code><
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -858,7 +497,7 @@ Templating engine recognizes those types and disables escaping for them.</code><
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -940,7 +579,7 @@ Templating engine recognizes those types and disables escaping for them.</code><
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -970,9 +609,9 @@ Templating engine recognizes those types and disables escaping for them.</code><
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

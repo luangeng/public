@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go Context</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 1469 Words
+                                            Posted @ 2019-09-09 · 2546 Words
                                             
                                             · Tags: Go
                                             
@@ -152,20 +152,20 @@
                                                 <p>标准库中的context包提供了Context类型，它有多种用途。</p>
 <p>下面是context.Context几个典型用法:</p>
 <ul>
-<li>context with timeout (deadline) is a generic way to implement timeouts for functions that can possibly take a long time where we want an * option to abort them if they exceed the timeout</li>
-<li>context with cancellation is a generic way to cancel a goroutine</li>
-<li>context with value is a way to associate arbitrary value with a context</li>
+<li>带超时（截止时间）的上下文是对可能会花费很长时间的函数实施超时的一种通用方法，在这种情况下，如果它们超过超时，我们希望可以选择中止它们</li>
+<li>取消上下文是取消goroutine的通用方法</li>
+<li>带值的上下文是将任意值与上下文关联的一种方式</li>
 </ul>
-<p>创建context
-In most cases you’ll be calling existing API that requires context.Context.</p>
-<p>If you don’t have one, use context.TODO() or context.Background() functions to create it. Read about the difference.</p>
-<p>context.Context is an immutable (read-only) value so you can’t modify it.</p>
-<p>To create e.g. a context with value, you call context.WithValue() which returns a new context that wraps existing context and adds additional information.</p>
-<p>context.Context is an interface so you could pass nil but it’s not recommended.</p>
-<p>Many APIs expect non-nil value and will crash if passed nil so it’s best to always pass one created with context.Background() or context.TODO().</p>
-<p>There is no performance issue because those functions return shared, global variables (yay immutability!).</p>
-<p>Using context with timeout to set timeout for HTTP requests
-Repeating an example from HTTP client article here’s a way to create a context with timeout to ensure HTTP GET request doesn’t hang forever:</p>
+<h2 id="创建context">创建context</h2>
+<p>在大多数情况下，您将调用需要context.Context的现有API。</p>
+<p>如果您没有，请使用context.TODO（）或context.Background（）函数创建它。 了解差异。</p>
+<p>context.Context是一个不可变的（只读）值，因此您无法对其进行修改。</p>
+<p>创建例如 带有值的上下文，您调用context.WithValue（）会返回一个新的上下文，该上下文将包装现有上下文并添加其他信息。</p>
+<p>context.Context是一个接口，因此您可以传递nil，但不建议这样做。</p>
+<p>许多API期望使用非null值，如果传递nil将会崩溃，因此最好始终传递使用context.Background（）或context.TODO（）创建的API。</p>
+<p>没有性能问题，因为这些函数返回共享的全局变量（是不变的！）。</p>
+<p>使用带超时的上下文设置HTTP请求的超时
+重复执行HTTP客户端文章中的示例，这是一种创建超时的上下文的方法，以确保HTTP GET请求不会永远挂起：</p>
 <pre><code>// httpbin.org is a service for testing HTTP client
 // this URL waits 3 seconds before returning a response
 uri := &quot;https://httpbin.org/delay/3&quot;
@@ -186,12 +186,12 @@ if err != nil {
     log.Fatalf(&quot;http.DefaultClient.Do() failed with:\n'%s'\n&quot;, err)
 }
 defer resp.Body.Close()
-</code></pre><p>HTTP client knows how to interpret context with a timeout. You just need to create and provide it.</p>
-<h2 id="context-with-value">Context with value</h2>
-<p>In HTTP server each request is served by a handler function running in its own goroutine.</p>
-<p>We often want to have common per-requested information available in a convenient way.</p>
-<p>For example, at the beginning of handling a request we might check a cookie to see if a request is made by a logged in user and we want to have user info available everywhere.</p>
-<p>We can do that by using context with value:</p>
+</code></pre><p>HTTP客户端知道如何使用超时来解释上下文。 您只需要创建并提供它。</p>
+<h2 id="有值的环境">有值的环境</h2>
+<p>在HTTP服务器中，每个请求都由在其自己的goroutine中运行的处理函数提供服务。</p>
+<p>我们通常希望以方便的方式提供按要求提供的通用信息。</p>
+<p>例如，在开始处理请求时，我们可能会检查Cookie以查看登录用户是否提出了请求，并且我们希望在任何地方都可以使用用户信息。</p>
+<p>我们可以通过使用带有值的上下文来做到这一点:</p>
 <pre><code>type User struct {
     Name       string
     IsLoggedIn bool
@@ -237,23 +237,23 @@ func main() {
 </code></pre><blockquote>
 <p>User: &amp;main.User{Name:&ldquo;John&rdquo;, IsLoggedIn:false}</p>
 </blockquote>
-<p>For clarity of the example we only show creating a context with value and retrieving value from context.</p>
-<p>Because context value is an interface{}, it’s a good practice to write type-safe wrapper functions for setting and retrieving values.</p>
-<p>The key used to set / get value is also an interface{}. Because context can be passed to functions in code you didn’t write, you want to ensure that the value used for key is unique.</p>
-<p>That’s why we defined a non-exported type userKeyType and used a non-exported global variable userKey of that type.</p>
-<p>This ensures that code outside of our package can’t possibly use this key.</p>
-<p>This wouldn’t be true if the key was e.g. a string (or any type available to multiple packages).</p>
-<p>We wrote two functions for retrieving the value.</p>
-<p>One panics when value is not set, another one returns nil.</p>
-<p>Which one to use is a policy decision for your code.</p>
-<p>Sometimes missing a variable on context means a bug in your program and you should use mustGetUserFromContext variant which panics in that case.</p>
-<p>Sometimes missing a variable is expected and you can use getUserFromContext variant.</p>
-<h2 id="writing-cancellable-functions">Writing cancellable functions</h2>
-<p>Using existing functions that accept cancellable context is easy.</p>
-<p>Writing a function that can be cancelled via context is much harder.</p>
-<p>When a time experies or you call cancel function returned by context.WithCancel() or context.WithTimeout(), a channel in the context is signalled.</p>
-<p>When writing a cancellable function, you have to periodically check channel returned by context.Done() and return immediately if it has been signalled.</p>
-<p>It does make for an awkward code:</p>
+<p>为了使示例清晰起见，我们仅显示使用值创建上下文并从上下文中检索值。</p>
+<p>由于上下文值是接口{}，因此最好编写类型安全的包装函数来设置和检索值。</p>
+<p>用来设置/获取值的键也是一个接口{}。 由于可以将上下文传递给您未编写的代码中的函数，因此您要确保用于键的值是唯一的。</p>
+<p>这就是为什么我们定义非导出类型的userKeyType并使用该类型的非导出全局变量userKey的原因。</p>
+<p>这样可以确保我们程序包外部的代码无法使用此密钥。</p>
+<p>如果密钥是例如，这不是真的。 字符串（或可用于多个软件包的任何类型）。</p>
+<p>我们编写了两个函数来检索值。</p>
+<p>如果未设置值，则一个恐慌，另一个则返回nil。</p>
+<p>使用哪个是您代码的政策决定。</p>
+<p>有时在上下文上缺少变量意味着您的程序存在错误，您应该使用mustGetUserFromContext变体，在这种情况下会出现恐慌。</p>
+<p>有时会缺少变量，可以使用getUserFromContext变体。</p>
+<h2 id="编写可取消的函数">编写可取消的函数</h2>
+<p>使用接受可取消上下文的现有功能很容易。</p>
+<p>编写可以通过上下文取消的函数要困难得多。</p>
+<p>当时间到期或调用context.WithCancel（）或context.WithTimeout（）返回的cancel函数时，会在上下文中发出一个通道信号。</p>
+<p>编写可取消函数时，您必须定期检查context.Done（）返回的通道，并在收到信号后立即返回。</p>
+<p>它确实使代码笨拙：</p>
 <pre><code>func longMathOp(ctx context.Context, n int) (int, error) {
     res := n
     for i := 0; i &lt; 100; i++ {
@@ -282,16 +282,16 @@ func main() {
 <p>Called longMathOp() with 200ms timeout. res; 4955, err: <!-- raw HTML omitted --><br>
 Called longMathOp() with 10ms timeout. res: 0, err: context deadline exceeded</p>
 </blockquote>
-<p>For clarity, this is an artificial task.</p>
-<p>Our longMathOp function performs simple operation 100 times and simulates slowness by sleeping for 1 ms on every iteration.</p>
-<p>We can expect it to take ~100 ms.</p>
-<p>A select with default clause is non-blocking. If there’s nothing in the ctx.Done() channel, we don’t wait for values and immediately execute default part, which is where the logic of the program lives.</p>
-<p>We can see in our test that if timeout is greater than 100 ms, the function finishes.</p>
-<p>If timeout is smaller than 100 ms, ctx.Done() channel is signalled, we detect it in longMathOp and return ctx.Err().</p>
-<h2 id="context-is-a-tree-of-values">Context is a tree of values</h2>
-<p>Context is created by wrapping existing immutable context and adding additional information.</p>
-<p>Since you can “branch” the same context multiple times, context value can be thought of as tree of values.</p>
-<p>The following tree:</p>
+<p>为了清楚起见，这是人为的任务。</p>
+<p>我们的longMathOp函数执行100次简单操作，并通过在每次迭代中休眠1 ms来模拟慢度。</p>
+<p>我们可以预期大约需要100毫秒。</p>
+<p>具有默认子句的select是非阻塞的。 如果ctx.Done（）通道中没有任何内容，我们就不必等待值，而是立即执行默认部分，这就是程序逻辑所在的地方。</p>
+<p>我们可以在测试中看到，如果超时大于100 ms，则函数结束。</p>
+<p>如果超时小于100毫秒，则发出ctx.Done（）通道信号，我们在longMathOp中检测到它并返回ctx.Err（）。</p>
+<h2 id="上下文是价值树">上下文是价值树</h2>
+<p>通过包装现有的不可变上下文并添加其他信息来创建上下文。</p>
+<p>由于您可以多次“分支”同一上下文，因此可以将上下文值视为值树。</p>
+<p>下面的树：</p>
 <pre><code>ctx := context.WithValue(
     context.WithDeadline(
         context.WithValue(context.Background(), sidKey, sid),
@@ -301,24 +301,24 @@ Called longMathOp() with 10ms timeout. res: 0, err: context deadline exceeded</p
 )
 trCtx := trace.NewContext(ctx, tr)
 logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
-</code></pre><p>can be visualized as:</p>
-<p>Context represented as a directed graph</p>
-<p>Each child context has access to values of its parent contexts.</p>
-<p>Data access flows upwards in the tree (represented by black edges).</p>
-<p>Cancelation signals travel down the tree. If a context is canceled, all of its children are also canceled.</p>
-<p>The cancelation signal flow is represented by the grey edges.</p>
+</code></pre><p>可以形象化为：</p>
+<p>上下文表示为有向图</p>
+<p>每个子上下文都可以访问其父上下文的值。</p>
+<p>数据访问在树中向上流动（由黑色边缘表示）。</p>
+<p>取消信号沿着树传播。 如果取消了上下文，则其所有子级也将被取消。</p>
+<p>抵消信号流由灰色边缘表示。</p>
 <h2 id="contexttodo-vs-contextbackground">context.TODO() vs. context.Background()</h2>
-<p>You can create new, empty context using context.TODO() and context.Background().</p>
-<p>What’s the difference?</p>
-<p>In terms of functionality: none. They are exactly the same value, bit-by-bit.</p>
-<p>The difference is in intent.</p>
-<p>Official documentation describes context.TODO() as:</p>
-<p>TODO returns a non-nil, empty Context. Code should use context.TODO when it’s unclear which Context to use or it is not yet available (because the surrounding function has not yet been extended to accept a Context parameter). TODO is recognized by static analysis tools that determine whether Contexts are propagated correctly in a program.
-And context.Background() as:</p>
-<p>Background returns a non-nil, empty Context. It is never canceled, has no values, and has no deadline. It is typically used by the main function, initialization, and tests, and as the top-level Context for incoming requests.
-Frankly, I’m not sure what they are trying to say.</p>
-<p>I guess context.TODO() is meant to be used if you expect that at some point in the future you’ll no longer need to create context there, either because it’ll be passed from the outside or that there will be a more specific way to create it.</p>
-<p>If you can’t decide, don’t sweat it. In practice they behave the same way so pick whichever.</p>
+<p>您可以使用context.TODO（）和context.Background（）创建新的空上下文。</p>
+<p>有什么不同？</p>
+<p>在功能方面：无。它们是逐位完全相同的值。</p>
+<p>区别在于目的。</p>
+<p>官方文档将context.TODO（）描述为：</p>
+<p>TODO返回一个非空的Context。当不清楚要使用哪个上下文或尚不可用时（因为尚未扩展周围的功能以接受Context参数），代码应使用context.TODO。静态分析工具可识别TODO，该工具可确定上下文是否在程序中正确传播。
+和context.Background（）为：</p>
+<p>Background返回一个非空的Context。它永远不会被取消，没有价值，也没有期限。它通常由主要功能，初始化和测试使用，并用作传入请求的顶级上下文。
+坦白说，我不确定他们想说什么。</p>
+<p>我猜context.TODO（）是用于如果您希望将来不再需要在此处创建上下文的情况，因为它将从外部传递，或者会有更多创建它的特定方法。</p>
+<p>如果您不能决定，请不要大汗淋漓。实际上，它们的行为方式相同，因此请选择其中一个。</p>
 
                                                 
                                             </div>
@@ -408,7 +408,7 @@ Frankly, I’m not sure what they are trying to say.</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -550,7 +550,7 @@ Frankly, I’m not sure what they are trying to say.</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -561,7 +561,7 @@ Frankly, I’m not sure what they are trying to say.</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -572,7 +572,7 @@ Frankly, I’m not sure what they are trying to say.</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -654,7 +654,7 @@ Frankly, I’m not sure what they are trying to say.</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
                 
@@ -684,9 +684,9 @@ Frankly, I’m not sure what they are trying to say.</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go 反射</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 1707 Words
+                                            Posted @ 2019-09-09 · 2580 Words
                                             
                                             · Tags: Go
                                             
@@ -149,16 +149,17 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>Go is a statically typed language. In most cases the type of a variable is known at compilation time.</p>
-<p>One exception is interface type, especially empty interface interface{}.</p>
-<p>Empty interface is a dynamic type, similar to Object in Java or C#.</p>
-<p>At compilation time we can’t tell if the underlying value of interface type is an int or a string.</p>
-<p>Package reflect in standard library allows us to work with such dynamic values at runtime. We can:</p>
-<p>inspect the type of dynamic value
-enumerate fields of a struct
-set the value
-create new values at runtime
-Related language-level functionality for inspecting type of an interface value at runtime is a type switch and a type assertion.</p>
+                                                <p>Go是一种静态类型的语言。 在大多数情况下，变量的类型在编译时是已知的。接口类型是一种例外，尤其是空接口interface {}。</p>
+<p>空接口是一种动态类型，类似于Java或C#中的Object。</p>
+<p>在编译时，我们无法确定接口类型的基础值是整数还是字符串。</p>
+<p>标准库中的reflect包，使我们可以在运行时使用此类动态值。 我们可以：</p>
+<ul>
+<li>检查动态值的类型</li>
+<li>枚举结构的字段</li>
+<li>设定值</li>
+<li>在运行时创建新值
+用于在运行时检查接口值的类型的相关语言级功能是类型switch和类型断言:</li>
+</ul>
 <pre><code>var v interface{} = 4
 var reflectVal reflect.Value = reflect.ValueOf(v)
 
@@ -171,14 +172,16 @@ if typ.Kind() == reflect.Int {
 <p>Type &lsquo;int&rsquo; of size: 8 bytes
 v contains value of type int</p>
 </blockquote>
-<p>Basics of reflections are:</p>
-<p>start with value of empty interface interface{} type
-use reflect.ValueOf(v interface{}) to get reflect.Value which represents information about the value
-use reflect.Value to check the type of value, test if the value is nil, set the value
-Reflection has several practical uses.</p>
-<h2 id="primitive-types">Primitive types</h2>
-<p>Let’s see what kind of operations we can do on primitive types like int or string.</p>
-<p>Get the type</p>
+<p>反射的基础是：</p>
+<ul>
+<li>以空接口interface{}类型的值开头</li>
+<li>使用reflect.ValueOf(v interface {})来获取reflect.Value，它代表有关该值的信息</li>
+<li>使用reflect.Value检查值的类型，测试值是否为nil，设置值</li>
+</ul>
+<p>反射有几种实际用途。</p>
+<h2 id="原始类型">原始类型</h2>
+<p>让我们看看可以对基本类型（例如int或string）执行哪种操作。</p>
+<h4 id="获取类型">获取类型</h4>
 <pre><code>func printType(v interface{}) {
     rv := reflect.ValueOf(v)
     typ := rv.Type()
@@ -208,8 +211,8 @@ printType(&amp;i) // *int i.e. pointer to int
 v is of type &lsquo;string&rsquo;. Size: 16 bytes<br>
 v is of type &lsquo;pointer&rsquo;. Size: 8 bytes</p>
 </blockquote>
-<p>In real code you would handle all the types you care about.</p>
-<p>Get the value</p>
+<p>在真实代码中，你需要处理关心的所有类型。</p>
+<h4 id="获取值">获取值</h4>
 <pre><code>func getIntValue(v interface{}) {
     var reflectValue = reflect.ValueOf(v)
     n := reflectValue.Int()
@@ -232,19 +235,21 @@ main.main()<br>
 /tmp/src282322283/main.go:24 +0x7b<br>
 exit status 2</p>
 </blockquote>
-<p>To minimize API surface, Int() returns int64 and works on all signed integer values (int8, int16, int32, int64).</p>
-<p>UInt() methods returns uint64 and works on every unsigned integer values (uint8, uint16, uint32, uint64).</p>
-<p>Trying to get integer value from value of incompatible type (like string) will panic.</p>
-<p>To avoid panic you can first check the type with Kind().</p>
-<p>All methods for retrieving the value:</p>
-<pre><code>Bool() bool
-Int() int64
-UInt() uint64
-Float() float64
-String() string
-Bytes() []byte
-Set the value
-type S struct {
+<p>为了最大程度地减少API表面，Int（）返回int64并对所有带符号的整数值（int8，int16，int32，int64）有效。</p>
+<p>UInt（）方法返回uint64并对每个无符号整数值（uint8，uint16，uint32，uint64）有效。</p>
+<p>试图从不兼容类型（如字符串）的值中获取整数值会引发panic。</p>
+<p>为了避免出现panic，您可以先使用Kind（）检查类型。</p>
+<p>检索值的所有方法：</p>
+<ul>
+<li>Bool() bool</li>
+<li>Int() int64</li>
+<li>UInt() uint64</li>
+<li>Float() float64</li>
+<li>String() string</li>
+<li>Bytes() []byte</li>
+</ul>
+<h4 id="设置值">设置值</h4>
+<pre><code>type S struct {
     N int
 }
 
@@ -299,11 +304,11 @@ setInt panicked with &lsquo;reflect: call of reflect.Value.Elem on int Value&rsq
 setStructField panicked with &lsquo;reflect: call of reflect.Value.Elem on struct Value&rsquo;<br>
 setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetString on int Value&rsquo;</p>
 </blockquote>
-<p>As setInt and setStructField show, you can only change values if you start with a pointer to the value.</p>
-<p>Since reflect.ValueOf() creates a reflect.Value that represents a pointer to a value, you need to use Elem() to get reflect.Value that represents the value itself. You can then call SetInt() to set the value.</p>
-<p>setStructPtrField shows how we can grab a reference to field value by it’s position in the struct.</p>
-<p>Trying to set value of incompatible type will panic.</p>
-<p>Methods that set values mirror those that read the values:</p>
+<p>如setInt和setStructField所示，只有从指向值的指针开始，才可以更改值。</p>
+<p>如setInt和setStructField所示，只有从指向值的指针开始，才可以更改值。</p>
+<p>setStructPtrField显示如何通过字段值在结构中的位置来获取对字段值的引用。</p>
+<p>尝试设置不兼容类型的值会引发panic。</p>
+<p>设置值的方法反映了读取值的方法：</p>
 <ul>
 <li>SetBool(v bool)</li>
 <li>SetInt(v int64)</li>
@@ -312,9 +317,9 @@ setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetStrin
 <li>SetString(v string)</li>
 <li>SetBytes(v []byte)</li>
 </ul>
-<h2 id="pointers">Pointers</h2>
-<p>A pointer to X is a distinct type from X.</p>
-<p>If reflect.Value references a pointer to a value, you can get a reference to the value by calling Elem().</p>
+<h2 id="指针">指针</h2>
+<p>指向X的指针与X是不同的类型。</p>
+<p>如果reflect.Value引用了指向值的指针，则可以通过调用Elem（）获得对该值的引用。</p>
 <pre><code>func printIntResolvingPointers(v interface{}) {
     rv := reflect.ValueOf(v)
     typeName := rv.Type().String()
@@ -343,10 +348,10 @@ func main() {
 <p>Value: 4. Type: &lsquo;pointer to int&rsquo; i.e. &lsquo;*int&rsquo;.</p>
 <p>Value: 5. Type: &lsquo;pointer to pointer to int&rsquo; i.e. &lsquo;**int&rsquo;.</p>
 </blockquote>
-<p>Under the hood an interface is also a pointer to its underlying value so Elem() also works on reflect.Value representing interface.</p>
-<h2 id="structs">Structs</h2>
-<p>List fields of a struct
-Using reflection we can list all fields of a struct.</p>
+<p>在底层，接口也是指向其基础值的指针，因此Elem（）也可以在代表接口的reflect.Value上工作。</p>
+<h2 id="struct">struct</h2>
+<h4 id="列出struct的字段">列出struct的字段</h4>
+<p>使用反射，我们可以列出struct的所有字段。</p>
 <pre><code>type S struct {
     FirstName string `my_tag:&quot;first-name&quot;`
     lastName  string
@@ -384,13 +389,13 @@ func main() {
 name: &lsquo;lastName&rsquo;,    type: &lsquo;string&rsquo;,    value: not accessible<br>
 name: &lsquo;Age&rsquo;,    type: &lsquo;int&rsquo;, value: 27,    tag: &lsquo;json:&ldquo;age&rdquo;,xml:&ldquo;AgeXml&rsquo;,    json tag: &lsquo;age&rsquo;</p>
 </blockquote>
-<p>Using reflection we can only access values (v.Interface{}) of exported fields.</p>
-<p>Exported fields are fields with names starting with upper case (FirstName and Age are exported, lastName is not).</p>
-<p>Field is exported if reflect.StructField.PkgPath == &ldquo;&quot;.</p>
-<p>List fields of a struct recursively
-Inspecting a struct is inherently recursive process.</p>
-<p>You have to chase pointers and recurse into embedded structures.</p>
-<p>In real programs inspecting structures using reflections would be recursive.</p>
+<p>使用反射，我们只能访问导出的字段的值（v.Interface {}）。</p>
+<p>导出的字段是名称以大写字母开头的字段（导出的是“姓氏”和“年龄”，而不是“ lastName”）。</p>
+<p>如果reflect.StructField.PkgPath ==“”，则导出字段。</p>
+<h4 id="递归列出结构的字段">递归列出结构的字段</h4>
+<p>检查struct本质上是递归过程。</p>
+<p>您必须追逐指针并递归到嵌入式struct中。</p>
+<p>在实际程序中，使用反射检查struct是递归的。</p>
 <pre><code>type Inner struct {
     N int
 }
@@ -462,8 +467,8 @@ pointer<br>
 name: &lsquo;unexported&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 24, size: 8<br>
 name: &lsquo;N&rsquo; type: &lsquo;int8&rsquo;, value: &lsquo;0&rsquo;, offset: 32, size: 1</p>
 </blockquote>
-<h2 id="slice">Slice</h2>
-<p>Read a slice using reflection</p>
+<h2 id="slice">slice</h2>
+<h4 id="使用反射读取切片">使用反射读取切片</h4>
 <pre><code>a := []int{3, 1, 8}
 rv := reflect.ValueOf(a)
 
@@ -493,7 +498,7 @@ elRef.CanAddr(): true<br>
 elRef.CanSet(): true<br>
 a: [3 5 8]</p>
 </blockquote>
-<p>Creating a new slice using reflection</p>
+<h4 id="使用反射创建新切片">使用反射创建新切片</h4>
 <pre><code>typ := reflect.SliceOf(reflect.TypeOf(&quot;example&quot;))
 // create slice with capacity 10 and length 1
 rv := reflect.MakeSlice(typ, 1, 10)
@@ -505,8 +510,8 @@ fmt.Printf(&quot;a: %#v\n&quot;, a)
 <p>a: []string{&ldquo;foo&rdquo;}</p>
 </blockquote>
 <h2 id="reflectkind">reflect.Kind</h2>
-<p>Function Kind() on reflect.Value returns reflect.Kind type describing type of the value.</p>
-<p>Here are all possible values:</p>
+<p>Reflection.Value上的函数Kind（）返回描述值类型的reflect.Kind类型。</p>
+<p>这是所有可能的值：</p>
 <pre><code>type Kind uint
 
 const (
@@ -538,18 +543,18 @@ const (
     Struct
     UnsafePointer
 )
-</code></pre><h2 id="uses-for-reflection">Uses for reflection</h2>
-<p>Serialization to JSON, XML, SQL, protobufs etc.
-Reflection makes it possible to implement generic JSON serialization/deserialization.</p>
-<p>For generic JSON serialization we can enumerate fields of arbitrary structures, read their fields and create corresponding JSON string.</p>
-<p>For generic JSON deserialization, we can enumerate fields of arbitrary structures and set them based on parsed JSON data.</p>
-<p>The same applies for other serialization formats like XML, YAML or Protocol Buffers.</p>
-<p>Reflection makes it possible to define a generic API for SQL databases because we can convert arbitrary structures to a format that SQL database understands and put data recieved from SQL database into arbitrary structures.</p>
-<p>Extending templating language with Go functions
-Thanks to ability to call arbitrary functions at runtime we can define custom function for templates in text/template. We register Go functions with templating engine.</p>
-<p>The engine can then call those functions at runtime, when executing a template.</p>
-<p>Writing interpreters tightly integrated with Go
-Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaScript interpreter can be easily extended with additional functions written in Go.</p>
+</code></pre><h2 id="反射用途">反射用途</h2>
+<h4 id="序列化为jsonxmlsqlprotobufs">序列化为JSON，XML，SQL，protobufs</h4>
+<p>反射使实现通用JSON序列化/反序列化成为可能。</p>
+<p>对于通用JSON序列化，我们可以枚举任意结构的字段，读取它们的字段并创建相应的JSON字符串。</p>
+<p>对于一般的JSON反序列化，我们可以枚举任意结构的字段并根据已解析的JSON数据进行设置。</p>
+<p>其他序列化格式（例如XML，YAML或协议缓冲区）也是如此。</p>
+<p>反射使为SQL数据库定义通用API成为可能，因为我们可以将任意结构转换为SQL数据库可以理解的格式，并将从SQL数据库接收的数据放入任意结构。</p>
+<h4 id="使用go函数扩展模板语言">使用Go函数扩展模板语言</h4>
+<p>由于能够在运行时调用任意函数，因此我们可以在文本/模板中为模板定义自定义函数。 我们向模板引擎注册Go函数。</p>
+<p>然后，引擎可以在执行模板时在运行时调用这些函数。</p>
+<h4 id="编写与go紧密集成的口译员">编写与Go紧密集成的口译员</h4>
+<p>由于反射功能可以在运行时调用任意函数，因此JavaScript解释器可以轻松地扩展为用Go编写的其他函数。</p>
 
                                                 
                                             </div>
@@ -590,7 +595,7 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Text-and-HTML-templates/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Text-HTML-templates/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>Go Text和HTML模板</span>
@@ -639,7 +644,7 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -781,7 +786,7 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -792,7 +797,7 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -803,7 +808,7 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -885,7 +890,7 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -915,9 +920,9 @@ Thanks to reflection’s ability to call arbitrary functions at runtime, a JavaS
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

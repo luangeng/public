@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go Inlining functions</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 684 Words
+                                            Posted @ 2019-09-09 · 890 Words
                                             
                                             · Tags: Go
                                             
@@ -149,144 +149,153 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>Inlining functions
-Function inlining is a common compiler optimization for improving performance of the code.</p>
-<p>Small, frequently called functions can be directly included (inlined) in the body of the calling function. This eliminate function calling overhead.</p>
-<p>Go compiler doesn&rsquo;t provide a way to force inlining of functions.</p>
-<p>Go compiler makes inlining decisions based on a number of heuristics.</p>
-<p>Here&rsquo;s an incomplete list of attributes that disable inlining:</p>
-<p>functions are variadic (eg. they have &hellip; args)
-functions are too big
-functions contain panic, recover, or defer
-Checking if a function was inlined
-We can find out which functions were inlined with -gcflags -m compiler flags. For example:</p>
-<p>$ go build -gcflags -m .</p>
-<h1 id="githubcomkjknotionapi">github.com/kjk/notionapi</h1>
-<p>./dbg.go:15:6: can inline log
+                                                <p>函数内联是用于提高代码性能的常见编译器优化。</p>
+<p>经常调用的小函数可以直接包含（内联）在调用函数的主体中。 这消除了函数调用开销。</p>
+<p>Go编译器没有提供强制内联函数的方法。</p>
+<p>Go编译器根据多种启发式方法做出内联决策。</p>
+<p>这是禁用内联的属性的不完整列表：</p>
+<ul>
+<li>functions are variadic (eg. they have &hellip; args)</li>
+<li>functions are too big</li>
+<li>functions contain panic, recover, or defer</li>
+</ul>
+<p>检查函数是否内联
+我们可以找到使用-gcflags -m编译器标志内联的函数。 例如：</p>
+<pre><code>$ go build -gcflags -m .
+# github.com/kjk/notionapi
+./dbg.go:15:6: can inline log
 ./dbg.go:38:5: inlining call to log
 ./client.go:61:25: inlining call to bytes.NewBuffer
 ./client.go:62:5: inlining call to lo
-&hellip;
-Rewriting functions to improve inlining
-Go only inlines very small functions. Some functions that are too big to be inlined can be split into 2 functions:</p>
-<p>a small, fast path that can be inlined
-a big, non-inlineable function
-Here&rsquo;s an example from Go standard library. A function sync.Do():</p>
-<p>func (o *Once) Do(f func()) {
-if atomic.LoadUint32(&amp;o.done) == 1 {
-return
+...
+</code></pre><p>重写函数以改善内联
+Go仅内联非常小的函数。某些太大而无法内联的函数可以分为2个函数：</p>
+<ul>
+<li>a small, fast path that can be inlined</li>
+<li>a big, non-inlineable function</li>
+</ul>
+<p>这是Go标准库中的示例。 函数sync.Do（）：</p>
+<pre><code>func (o *Once) Do(f func()) {
+    if atomic.LoadUint32(&amp;o.done) == 1 {
+        return
+    }
+    // Slow-path.
+    o.m.Lock()
+    defer o.m.Unlock()
+    if o.done == 0 {
+        defer atomic.StoreUint32(&amp;o.done, 1)
+        f()
+    }
 }
-// Slow-path.
-o.m.Lock()
-defer o.m.Unlock()
-if o.done == 0 {
-defer atomic.StoreUint32(&amp;o.done, 1)
-f()
+</code></pre><p>改写为：</p>
+<pre><code>func (o *Once) Do(f func()) {
+    if atomic.LoadUint32(&amp;o.done) == 0 {
+        // Outlined slow-path to allow inlining of the fast-path.
+        o.doSlow(f)
+    }
 }
+
+func (o *Once) doSlow(f func()) {
+    o.m.Lock()
+    defer o.m.Unlock()
+    if o.done == 0 {
+        defer atomic.StoreUint32(&amp;o.done, 1)
+        f()
+    }
 }
-was rewritten as:</p>
-<p>func (o *Once) Do(f func()) {
-if atomic.LoadUint32(&amp;o.done) == 0 {
-// Outlined slow-path to allow inlining of the fast-path.
-o.doSlow(f)
+</code></pre><p>仅在多次调用函数且大多数情况下不调用慢路径的情况下，这种优化才有所不同。</p>
+<h2 id="禁用内联扩展">禁用内联扩展</h2>
+<p>可以使用go：noinline编译指示禁用行内扩展。 例如，如果我们构建以下简单程序：</p>
+<pre><code>package main
+
+func printhello() {
+    println(&quot;Hello&quot;)
 }
-}</p>
-<p>func (o *Once) doSlow(f func()) {
-o.m.Lock()
-defer o.m.Unlock()
-if o.done == 0 {
-defer atomic.StoreUint32(&amp;o.done, 1)
-f()
+
+func main() {
+    printhello()
 }
-}
-This optimization only makes a difference if a function is called a lot and most of the time the slow path is not called.</p>
-<p>Disabling inline expansion
-Inline expansion can be disabled with the go:noinline pragma. For example, if we build the following simple program:</p>
-<p>package main</p>
-<p>func printhello() {
-println(&ldquo;Hello&rdquo;)
-}</p>
-<p>func main() {
-printhello()
-}
-we get output that looks like this (trimmed for readability):</p>
-<p>$ go version
+</code></pre><p>我们得到的输出看起来像这样（为便于阅读而修剪）：</p>
+<pre><code>$ go version
 go version go1.6.2 linux/amd64
 $ go build main.go
 $ ./main
 Hello
 $ go tool objdump main
 TEXT main.main(SB) /home/sam/main.go
-main.go:7       0x401000        64488b0c25f8ffffff      FS MOVQ FS:0xfffffff8, CX
-main.go:7       0x401009        483b6110                CMPQ 0x10(CX), SP
-main.go:7       0x40100d        7631                    JBE 0x401040
-main.go:7       0x40100f        4883ec10                SUBQ $0x10, SP
-main.go:8       0x401013        e8281f0200              CALL runtime.printlock(SB)
-main.go:8       0x401018        488d1d01130700          LEAQ 0x71301(IP), BX
-main.go:8       0x40101f        48891c24                MOVQ BX, 0(SP)
-main.go:8       0x401023        48c744240805000000      MOVQ $0x5, 0x8(SP)
-main.go:8       0x40102c        e81f290200              CALL runtime.printstring(SB)
-main.go:8       0x401031        e89a210200              CALL runtime.printnl(SB)
-main.go:8       0x401036        e8851f0200              CALL runtime.printunlock(SB)
-main.go:9       0x40103b        4883c410                ADDQ $0x10, SP
-main.go:9       0x40103f        c3                      RET
-main.go:7       0x401040        e87b9f0400              CALL runtime.morestack_noctxt(SB)
-main.go:7       0x401045        ebb9                    JMP main.main(SB)
-main.go:7       0x401047        cc                      INT $0x3
-Note that there is no CALL to printhello. However, if we then build the program with the pragma in place:</p>
-<p>package main</p>
-<p>//go:noinline
+        main.go:7       0x401000        64488b0c25f8ffffff      FS MOVQ FS:0xfffffff8, CX
+        main.go:7       0x401009        483b6110                CMPQ 0x10(CX), SP
+        main.go:7       0x40100d        7631                    JBE 0x401040
+        main.go:7       0x40100f        4883ec10                SUBQ $0x10, SP
+        main.go:8       0x401013        e8281f0200              CALL runtime.printlock(SB)
+        main.go:8       0x401018        488d1d01130700          LEAQ 0x71301(IP), BX
+        main.go:8       0x40101f        48891c24                MOVQ BX, 0(SP)
+        main.go:8       0x401023        48c744240805000000      MOVQ $0x5, 0x8(SP)
+        main.go:8       0x40102c        e81f290200              CALL runtime.printstring(SB)
+        main.go:8       0x401031        e89a210200              CALL runtime.printnl(SB)
+        main.go:8       0x401036        e8851f0200              CALL runtime.printunlock(SB)
+        main.go:9       0x40103b        4883c410                ADDQ $0x10, SP
+        main.go:9       0x40103f        c3                      RET
+        main.go:7       0x401040        e87b9f0400              CALL runtime.morestack_noctxt(SB)
+        main.go:7       0x401045        ebb9                    JMP main.main(SB)
+        main.go:7       0x401047        cc                      INT $0x3
+</code></pre><p>请注意，printhello没有呼叫。 但是，如果我们随后使用该编译指示来构建程序，则：</p>
+<pre><code>package main
+
+//go:noinline
 func printhello() {
-println(&ldquo;Hello&rdquo;)
-}</p>
-<p>func main() {
-printhello()
+    println(&quot;Hello&quot;)
 }
-The output contains the printhello function and a CALL main.printhello:</p>
-<p>$ go version
+
+func main() {
+    printhello()
+}
+</code></pre><p>输出包含printhello函数和一个CALL main.printhello：</p>
+<pre><code>$ go version
 go version go1.6.2 linux/amd64
 $ go build main.go
 $ ./main
 Hello
 $ go tool objdump main
 TEXT main.printhello(SB) /home/sam/main.go
-main.go:4       0x401000        64488b0c25f8ffffff      FS MOVQ FS:0xfffffff8, CX
-main.go:4       0x401009        483b6110                CMPQ 0x10(CX), SP
-main.go:4       0x40100d        7631                    JBE 0x401040
-main.go:4       0x40100f        4883ec10                SUBQ $0x10, SP
-main.go:5       0x401013        e8481f0200              CALL runtime.printlock(SB)
-main.go:5       0x401018        488d1d01130700          LEAQ 0x71301(IP), BX
-main.go:5       0x40101f        48891c24                MOVQ BX, 0(SP)
-main.go:5       0x401023        48c744240805000000      MOVQ $0x5, 0x8(SP)
-main.go:5       0x40102c        e83f290200              CALL runtime.printstring(SB)
-main.go:5       0x401031        e8ba210200              CALL runtime.printnl(SB)
-main.go:5       0x401036        e8a51f0200              CALL runtime.printunlock(SB)
-main.go:6       0x40103b        4883c410                ADDQ $0x10, SP
-main.go:6       0x40103f        c3                      RET
-main.go:4       0x401040        e89b9f0400              CALL runtime.morestack_noctxt(SB)
-main.go:4       0x401045        ebb9                    JMP main.printhello(SB)
-main.go:4       0x401047        cc                      INT $0x3
-main.go:4       0x401048        cc                      INT $0x3
-main.go:4       0x401049        cc                      INT $0x3
-main.go:4       0x40104a        cc                      INT $0x3
-main.go:4       0x40104b        cc                      INT $0x3
-main.go:4       0x40104c        cc                      INT $0x3
-main.go:4       0x40104d        cc                      INT $0x3
-main.go:4       0x40104e        cc                      INT $0x3
-main.go:4       0x40104f        cc                      INT $0x3</p>
-<p>TEXT main.main(SB) /home/sam/main.go
-main.go:8       0x401050        64488b0c25f8ffffff      FS MOVQ FS:0xfffffff8, CX
-main.go:8       0x401059        483b6110                CMPQ 0x10(CX), SP
-main.go:8       0x40105d        7606                    JBE 0x401065
-main.go:9       0x40105f        e89cffffff              CALL main.printhello(SB)
-main.go:10      0x401064        c3                      RET
-main.go:8       0x401065        e8769f0400              CALL runtime.morestack_noctxt(SB)
-main.go:8       0x40106a        ebe4                    JMP main.main(SB)
-main.go:8       0x40106c        cc                      INT $0x3
-main.go:8       0x40106d        cc                      INT $0x3
-main.go:8       0x40106e        cc                      INT $0x3
-main.go:8       0x40106f        cc                      INT $0x3</p>
+        main.go:4       0x401000        64488b0c25f8ffffff      FS MOVQ FS:0xfffffff8, CX
+        main.go:4       0x401009        483b6110                CMPQ 0x10(CX), SP
+        main.go:4       0x40100d        7631                    JBE 0x401040
+        main.go:4       0x40100f        4883ec10                SUBQ $0x10, SP
+        main.go:5       0x401013        e8481f0200              CALL runtime.printlock(SB)
+        main.go:5       0x401018        488d1d01130700          LEAQ 0x71301(IP), BX
+        main.go:5       0x40101f        48891c24                MOVQ BX, 0(SP)
+        main.go:5       0x401023        48c744240805000000      MOVQ $0x5, 0x8(SP)
+        main.go:5       0x40102c        e83f290200              CALL runtime.printstring(SB)
+        main.go:5       0x401031        e8ba210200              CALL runtime.printnl(SB)
+        main.go:5       0x401036        e8a51f0200              CALL runtime.printunlock(SB)
+        main.go:6       0x40103b        4883c410                ADDQ $0x10, SP
+        main.go:6       0x40103f        c3                      RET
+        main.go:4       0x401040        e89b9f0400              CALL runtime.morestack_noctxt(SB)
+        main.go:4       0x401045        ebb9                    JMP main.printhello(SB)
+        main.go:4       0x401047        cc                      INT $0x3
+        main.go:4       0x401048        cc                      INT $0x3
+        main.go:4       0x401049        cc                      INT $0x3
+        main.go:4       0x40104a        cc                      INT $0x3
+        main.go:4       0x40104b        cc                      INT $0x3
+        main.go:4       0x40104c        cc                      INT $0x3
+        main.go:4       0x40104d        cc                      INT $0x3
+        main.go:4       0x40104e        cc                      INT $0x3
+        main.go:4       0x40104f        cc                      INT $0x3
 
+TEXT main.main(SB) /home/sam/main.go
+        main.go:8       0x401050        64488b0c25f8ffffff      FS MOVQ FS:0xfffffff8, CX
+        main.go:8       0x401059        483b6110                CMPQ 0x10(CX), SP
+        main.go:8       0x40105d        7606                    JBE 0x401065
+        main.go:9       0x40105f        e89cffffff              CALL main.printhello(SB)
+        main.go:10      0x401064        c3                      RET
+        main.go:8       0x401065        e8769f0400              CALL runtime.morestack_noctxt(SB)
+        main.go:8       0x40106a        ebe4                    JMP main.main(SB)
+        main.go:8       0x40106c        cc                      INT $0x3
+        main.go:8       0x40106d        cc                      INT $0x3
+        main.go:8       0x40106e        cc                      INT $0x3
+        main.go:8       0x40106f        cc                      INT $0x3
+</code></pre>
                                                 
                                             </div>
 
@@ -326,7 +335,7 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Conditional-compilation/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>Go 使用构建标签进行条件编译</span>
@@ -335,10 +344,10 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Sync.Pool/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go sync.Pool for better performance</span>
+                                            <span>Go 使用sync.Pool提高性能</span>
                                         </a>
                                         
                                     </li>
@@ -375,7 +384,7 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -517,7 +526,7 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -528,7 +537,7 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -539,7 +548,7 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -621,7 +630,7 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -651,9 +660,9 @@ main.go:8       0x40106f        cc                      INT $0x3</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

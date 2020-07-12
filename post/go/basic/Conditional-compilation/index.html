@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go range - 计算机与软件技术公开课</title>
+  <title>Go 使用构建标签进行条件编译 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go range - 计算机与软件技术公开课">
-  <meta name="description" content="Go range">
-  <meta itemprop="name" content="Go range - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go range">
-  <meta property="og:title" content="Go range - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go 使用构建标签进行条件编译 - 计算机与软件技术公开课">
+  <meta name="description" content="Go 使用构建标签进行条件编译">
+  <meta itemprop="name" content="Go 使用构建标签进行条件编译 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go 使用构建标签进行条件编译">
+  <meta property="og:title" content="Go 使用构建标签进行条件编译 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/range-statement/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Conditional-compilation/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go range">
+  <meta property="og:description" content="Go 使用构建标签进行条件编译">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/range-statement/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/range-statement/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Conditional-compilation/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Conditional-compilation/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go range</h1>
+                                        <h1 class="post-title">Go 使用构建标签进行条件编译</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 1352 Words
+                                            Posted @ 2019-09-09 · 718 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go range">
+                                            <span class="leancloud_visitors" data-flag-title="Go 使用构建标签进行条件编译">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,202 +149,127 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <h2 id="遍历字符串">遍历字符串</h2>
-<pre><code>s := &quot;Hey 世界&quot;
-for i, r := range s {
-    fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, r)
-}
-</code></pre><blockquote>
-<p>idx: 0, rune: 72<br>
-idx: 1, rune: 101<br>
-idx: 2, rune: 121<br>
-idx: 3, rune: 32<br>
-idx: 4, rune: 19990<br>
-idx: 7, rune: 30028</p>
-</blockquote>
-<p>请注意，范围假定字符串是UTF-8编码的，并且遍历Unicode字符(rune)而不是字符串的字节。</p>
-<p>返回的第一个值i是字符串中符文的字节索引，而不是Unicode字符索引。</p>
-<p>要遍历字符，请使用字节索引：</p>
-<pre><code>s := &quot;a 世&quot;
-for i := 0; i &lt; len(s); i++ {
-    c := s[i]
-    fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, c)
-}
-</code></pre><blockquote>
-<p>idx: 0, byte: 97<br>
-idx: 1, byte: 32<br>
-idx: 2, byte: 228<br>
-idx: 3, byte: 184<br>
-idx: 4, byte: 150</p>
-</blockquote>
-<h2 id="迭代slice">迭代slice</h2>
-<pre><code>a := []int{3, 15, 8}
-for i, el := range a {
-    fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
-}
-</code></pre><blockquote>
-<p>idx: 0, element: 3<br>
-idx: 1, element: 15<br>
-idx: 2, element: 8</p>
-</blockquote>
-<h2 id="迭代map">迭代map</h2>
-<pre><code>m := map[string]int{
-    &quot;three&quot;: 3,
-    &quot;five&quot;:  5,
-}
-for key, value := range m {
-    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
-}
-</code></pre><blockquote>
-<p>key: three, value: 3<br>
-key: five, value: 5</p>
-</blockquote>
-<h2 id="对string使用range">对string使用range</h2>
-<h4 id="遍历字节">遍历字节</h4>
-<p>可以遍历字符串中的字节：</p>
-<pre><code>s := &quot;a 世&quot;
-for i := range s {
-    b := s[i]
-    fmt.Printf(&quot;idx: %d, byte: %d\n&quot;, i, b)
-}
-</code></pre><blockquote>
-<p>idx: 0, byte: 97<br>
-idx: 1, byte: 32<br>
-idx: 2, byte: 228</p>
-</blockquote>
-<h4 id="遍历runes">遍历runes</h4>
-<p>遍历字符串中的字符:</p>
-<pre><code>s := &quot;Hey 世界&quot;
-for i, rune := range s {
-    fmt.Printf(&quot;idx: %d, rune: %d\n&quot;, i, rune)
-}
-</code></pre><blockquote>
-<p>idx: 0, rune: 72<br>
-idx: 1, rune: 101<br>
-idx: 2, rune: 121<br>
-idx: 3, rune: 32<br>
-idx: 4, rune: 19990<br>
-idx: 7, rune: 30028</p>
-</blockquote>
-<p>在Go语言中，字符串是不可变的字节序列, 参考只读的[]byte切片。</p>
-<p>每个字节的范围是0到255。</p>
-<p>世界上有非常多的文字.</p>
-<p>Unicode标准为每个已知字符定义唯一值。 Unicode称它们为代码点，它们是可以容纳32位的整数。</p>
-<p>为了表示Unicode代码点，Go具有rune类型。它是int32的别名。</p>
-<p>Go源代码中的文字字符串是UTF-8编码的。</p>
-<p>每个Unicode代码点都可以使用1到4个字节进行编码。</p>
-<p>在这种迭代形式中，Go假定字符串是UTF-8编码的。 range将每个代码点解码为UTF-8，以字符串形式返回解码的rune及其字节索引。</p>
-<p>你会看到最后一个代码点的字节索引跳了3个，因为它之前的代码点代表一个汉字，并且需要3个字节的UTF-8编码。</p>
-<p>字符串和UTF-8
-Go中string是字节片。可以将任意二进制数据放入其中。</p>
-<p>如何解释字节取决于你的代码。</p>
-<p>大多数情况下，字符串以UTF-8编码表示Unicode字符串，但在Go源代码中的字符串文字之外，Go不会检查或确保字符串数据形成有效的UTF-8序列。</p>
-<p>话虽如此，Go提供了用于处理UTF-8编码数据的功能。</p>
-<p>range的行为就是一个例子。</p>
-<h2 id="对slice使用range">对slice使用range</h2>
-<p>在slice上使用range有3种变体:</p>
-<p>同时获取索引和元素:</p>
-<pre><code>a := []int{3, 15, 8}
-for i, el := range a {
-    fmt.Printf(&quot;idx: %d, element: %d\n&quot;, i, el)
-}
-</code></pre><blockquote>
-<p>idx: 0, element: 3<br>
-idx: 1, element: 15<br>
-idx: 2, element: 8</p>
-</blockquote>
-<p>仅获取索引:</p>
-<pre><code>a := []int{3, 15, 8}
-for i := range a {
-    fmt.Printf(&quot;idx: %d\n&quot;, i)
-}
-</code></pre><blockquote>
-<p>idx: 0<br>
-idx: 1<br>
-idx: 2
-仅获取元素</p>
-</blockquote>
-<pre><code>a := []int{3, 15, 8}
-for _, el := range a {
-    fmt.Printf(&quot;element: %d\n&quot;, el)
-}
-</code></pre><blockquote>
-<p>element: 3<br>
-element: 15<br>
-element: 8</p>
-</blockquote>
-<h2 id="对map使用range">对map使用range</h2>
-<p>map上的迭代具有不确定的顺序。 实际上，Go编译器会麻烦地将顺序随机化，这样程序员就不必依赖偶然的顺序了。</p>
-<p>在map上使用range迭代有3种变体。</p>
-<p>同时获取key和value:</p>
-<pre><code>m := map[string]int{
-    &quot;three&quot;: 3,
-    &quot;five&quot;:  5,
-}
-for key, value := range m {
-    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
-}
-</code></pre><blockquote>
-<p>key: five, value: 5<br>
-key: three, value: 3</p>
-</blockquote>
-<p>仅获取key:</p>
-<pre><code>m := map[string]int{
-    &quot;three&quot;: 3,
-    &quot;five&quot;:  5,
-}
-for key := range m {
-    fmt.Printf(&quot;key: %s\n&quot;, key)
-}
-</code></pre><blockquote>
-<p>key: three<br>
-key: five</p>
-</blockquote>
-<p>仅获取value:</p>
-<pre><code>m := map[string]int{
-    &quot;three&quot;: 3,
-    &quot;five&quot;:  5,
-}
-for _, value := range m {
-    fmt.Printf(&quot;value: %d\n&quot;, value)
-}
-</code></pre><blockquote>
-<p>value: 3<br>
-value: 5</p>
-</blockquote>
-<h2 id="对channel使用range">对channel使用range</h2>
-<pre><code>func fillAndCloseChannel(ch chan int) {
-    for i := 0; i &lt; 3; i++ {
-        ch &lt;- i + 3
-    }
-    close(ch)
-}
+                                                <p>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。</p>
+<p>Tags are specified per file, at the top of the file, followed by an empty line and the code.</p>
+<p>A typical use case for tags is to provide to implementation of the same functionality and pick the one that is compiled with tags.</p>
+<p>比如,在一个目录中有三个文件:</p>
+<p>foo_alt.go</p>
+<pre><code>// +build alt
 
-ch := make(chan int)
-go fillAndCloseChannel(ch)
+package main
 
-for v := range ch {
-    fmt.Printf(&quot;v: %d\n&quot;, v)
+func foo() {
+    fmt.Printf(&quot;This is alternative foo\n&quot;)
 }
-</code></pre><blockquote>
-<p>v: 3<br>
-v: 4<br>
-v: 5</p>
+</code></pre><p>foo.go</p>
+<pre><code>// You can have other comments before build tags
+// +build !alt
+package main
+
+func foo() {
+    fmt.Printf(&quot;This is regular foo\n&quot;)
+}
+</code></pre><p>main.go</p>
+<pre><code>package main
+
+func main() {
+    foo()
+}
+</code></pre><p>不使用build tag来编译:</p>
+<blockquote>
+<p>go build -o main .
+./main
+This is non-alt foo</p>
 </blockquote>
-<p>channel上的range接收通过channel发送的元素。</p>
-<p>channel关闭时，迭代结束。</p>
-<p>以下是更方便的方法：</p>
-<pre><code>ch := make(chan int)
-go fillAndCloseChannel(ch)
-
-for {
-    v, ok := &lt;-ch
-    if !ok {
-        break
-    }
-    fmt.Printf(&quot;v: %d\n&quot;, v)
+<p>Compiling with alt build tag:</p>
+<blockquote>
+<p>go build -tags alt -o main_alt .
+./main_alt
+This is alternative foo</p>
+</blockquote>
+<p>When we specified -tags alt, we compiled foo_alt.go file, because it contains // +build alt directive which tells the build tool to compile the file if build tag alt is provided with -tags option.</p>
+<p>We didn&rsquo;t compile foo.go file because it contains // build !alt directive which tells the build to not compile the if build alt is provided.</p>
+<p>Similarly, if we didn&rsquo;t specify any build tags for go build command, file foo.go was compiled (because it only says to not compile if alt tag is provided) and foo_alt.go was not compiled.</p>
+<p>Argument -tags applies to many commands e..g. go run, go install, go test etc.</p>
+<p>Specifying multiple tags
+You can specify multiple build constraints (tags):</p>
+<p>// +build tag1,tag2 tag3,!tag4
+// +build tag5</p>
+<p>package foo
+This encodes a condition (tag1 AND tag2) OR (tag3 AND (NOT tag4)) AND tag5.</p>
+<p>Similarly, for the go command: go build -tags &ldquo;tag1 tag2&rdquo;.</p>
+<p>Ignoring files (excluding from compilation)
+// +build ignore</p>
+<p>package foo
+Predefined build tags
+Go toolchain uses several build tags:</p>
+<p>arm, arm64, 386, amd64, s390x : for different processor architectures
+windows, darwin, linux, dragonfly, freebsd, netbsd, openbsd, plan9, solaris, android : for operating systems
+cgo : when cgo is enabled
+gc or gccgo : for gc and gccgo toolchains
+go1.11 for Go version 1.11+, go1.12 for Go version 1.12+ etc.
+Using file name in place of a build tag
+An alternative to providing build tag directive in the file is using a file name suffix e.g. foo_windows.go is equivalent of including // +build windows in the file.</p>
+<p>Pitfalls
+The following doesn&rsquo;t work as expected:</p>
+<p>// +build alt
+package main</p>
+<p>func foo() {
+fmt.Printf(&ldquo;This is alternative foo\n&rdquo;)
 }
-</code></pre>
+You need an empty line after build tag line:</p>
+<p>// +build alt</p>
+<p>package main</p>
+<h2 id="separate-integration-tests">Separate integration tests</h2>
+<p>A common use case for build tags is separating regular unit tests from integration tests that require external resources, like a database or network access.</p>
+<p>To do this, add a custom build constraint to the top of the test file:</p>
+<p>// +build integration</p>
+<p>package main</p>
+<p>import (
+&ldquo;testing&rdquo;
+)</p>
+<p>func TestThatRequiresNetworkAccess(t *testing.T) {
+t.Fatal(&ldquo;It failed!&quot;)
+}
+Those tests will not be compiles unless you run tests with go test -tags &ldquo;integration&rdquo;.</p>
+<p>Results:</p>
+<p>$ go test
+?       bitbucket.org/yourname/yourproject    [no test files]
+$ go test -tags &ldquo;integration&rdquo;
+&mdash; FAIL: TestThatRequiresNetworkAccess (0.00s)
+main_test.go:10: It failed!
+FAIL
+exit status 1
+FAIL    bitbucket.org/yourname/yourproject    0.003s</p>
+<h2 id="optimized-implementations-for-specific-architectures">Optimized implementations for specific architectures</h2>
+<p>Another use case for build tags is writing an optimized implementation of a function that takes advantage of a specific architecture.</p>
+<p>For example a Go standard library uses this technique for implementing optimized xor functionality.</p>
+<p>xor_generic.go</p>
+<p>// +build !amd64,!ppc64,!ppc64le</p>
+<p>package cipher</p>
+<p>func xorBytes(dst, a, b []byte) int {
+// generic implementation if more specific is not available
+}
+xor_ppc64x.go</p>
+<p>// +build ppc64 ppc64le</p>
+<p>package cipher</p>
+<p>func xorBytes(dst, a, b []byte) int {
+// implementation specific to ppc64 processor
+}</p>
+<h2 id="dev-vs-production-builds">Dev vs. production builds</h2>
+<p>For backend servers it&rsquo;s common to need dev vs. production configurations where you e.g. point to a different database server etc.</p>
+<p>// !build dev</p>
+<p>package config</p>
+<p>const (
+MONGODB_HOST = &ldquo;mongodb://127.0.0.1:27017&rdquo;
+)
+// !build prod</p>
+<p>package config</p>
+<p>const (
+MONGODB_HOST = &ldquo;mongodb://mongo.myserver.com:27017&rdquo;
+)
+We then build go build -tags dev for development build and go build -tags prod for production build.</p>
+
                                                 
                                             </div>
 
@@ -365,7 +290,7 @@ for {
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/range-statement/">https://luangeng.space/post/go/basic/range-statement/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Conditional-compilation/">https://luangeng.space/post/go/basic/Conditional-compilation/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -384,19 +309,19 @@ for {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/forwhileloops/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Cross-compilation/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go 循环</span>
+                                            <span>Go 交叉编译</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/function/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go 函数</span>
+                                            <span>Go Inlining functions</span>
                                         </a>
                                         
                                     </li>
@@ -433,7 +358,7 @@ for {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -575,7 +500,7 @@ for {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -586,7 +511,7 @@ for {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -597,7 +522,7 @@ for {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -679,7 +604,7 @@ for {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -709,9 +634,9 @@ for {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

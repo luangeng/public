@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go 使用构建标签进行条件编译 - 计算机与软件技术公开课</title>
+  <title>Go fmt包 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 使用构建标签进行条件编译 - 计算机与软件技术公开课">
-  <meta name="description" content="Go 使用构建标签进行条件编译">
-  <meta itemprop="name" content="Go 使用构建标签进行条件编译 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go 使用构建标签进行条件编译">
-  <meta property="og:title" content="Go 使用构建标签进行条件编译 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go fmt包 - 计算机与软件技术公开课">
+  <meta name="description" content="Go fmt包">
+  <meta itemprop="name" content="Go fmt包 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go fmt包">
+  <meta property="og:title" content="Go fmt包 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Fmt/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go 使用构建标签进行条件编译">
+  <meta property="og:description" content="Go fmt包">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Fmt/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Fmt/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go 使用构建标签进行条件编译</h1>
+                                        <h1 class="post-title">Go fmt包</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 718 Words
+                                            Posted @ 2019-09-09 · 598 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go 使用构建标签进行条件编译">
+                                            <span class="leancloud_visitors" data-flag-title="Go fmt包">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,126 +149,94 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。</p>
-<p>Tags are specified per file, at the top of the file, followed by an empty line and the code.</p>
-<p>A typical use case for tags is to provide to implementation of the same functionality and pick the one that is compiled with tags.</p>
-<p>比如,在一个目录中有三个文件:</p>
-<p>foo_alt.go</p>
-<pre><code>// +build alt
+                                                <p>标准库中的fmt包可以格式化字符串和从字符串中解析数据.</p>
+<h3 id="基本的fmt">基本的fmt</h3>
+<p>包fmt使用格式动词实现格式化的I/O：</p>
+<ul>
+<li>%v        默认格式</li>
+<li>%T        值的类型</li>
+<li>%s        字符串或片的未解释字节</li>
+</ul>
+<p>格式化函数</p>
+<p>fmt中有4个主要的函数类型，和它们的几个变体。</p>
+<p>Print, Println, Printf</p>
+<pre><code>fmt.Print(&quot;Hello World&quot;)        // prints: Hello World
+fmt.Println(&quot;Hello World&quot;)      // prints: Hello World\n
+fmt.Printf(&quot;Hello %s&quot;, &quot;World&quot;) // prints: Hello World
+</code></pre><p>Sprintf</p>
+<pre><code>formattedString := fmt.Sprintf(&quot;%v %s&quot;, 2, &quot;words&quot;) // returns string &quot;2 words&quot;
+</code></pre><p>Fprint</p>
+<pre><code>byteCount, err := fmt.Fprint(w, &quot;Hello World&quot;) // writes to io.Writer w
+</code></pre><p>Fprint可以在http handlers中使用:</p>
+<pre><code>func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, &quot;Hello %s!&quot;, &quot;Browser&quot;)
+}   // Writes: &quot;Hello Browser!&quot; to HTTP response
+</code></pre><h3 id="scan">Scan</h3>
+<p>Scan从标准输入中扫描文本</p>
+<pre><code>var s string
+fmt.Scanln(&amp;s) // pass pointer to buffer
+// Scanln is similar to fmt.Scan(), but it stops scanning at new line.
+fmt.Println(s) // whatever was inputted
 
-package main
+## Stringer interface
+fmt.Stringer interface consists of a single String() string function:
 
-func foo() {
-    fmt.Printf(&quot;This is alternative foo\n&quot;)
+type Stringer interface {
+    String() string
 }
-</code></pre><p>foo.go</p>
-<pre><code>// You can have other comments before build tags
-// +build !alt
-package main
+The intent is to provide a string representation of the value.
 
-func foo() {
-    fmt.Printf(&quot;This is regular foo\n&quot;)
+If String() method is defined on a type, string formatting methods like fmt.Printf use it for %s formatting directive:
+
+type User1 struct {
+    Name  string
+    Email string
 }
-</code></pre><p>main.go</p>
-<pre><code>package main
+
+type User2 struct {
+    Name  string
+    Email string
+}
+
+// String satisfies the fmt.Stringer interface
+// Defining it on type User2 makes it available on *User2 as well
+func (u User2) String() string {
+    return fmt.Sprintf(&quot;%s &lt;%s&gt;&quot;, u.Name, u.Email)
+}
 
 func main() {
-    foo()
+    u1 := &amp;User1{
+        Name:  &quot;John Doe&quot;,
+        Email: &quot;johndoe@example.com&quot;,
+    }
+
+    fmt.Printf(&quot;u1: type: %T, value: %s\n\n&quot;, u1, u1)
+
+    u2 := User2{
+        Name:  &quot;John Doe&quot;,
+        Email: &quot;johndoe@example.com&quot;,
+    }
+
+    fmt.Printf(&quot;u2: type:  %T, value: %s\n\n&quot;, u2, u2)
+
+        // method define on type User2 is also available on type *User2
+    u3 := &amp;User2{
+        Name:  &quot;John Doe&quot;,
+        Email: &quot;johndoe@example.com&quot;,
+    }
+
+    fmt.Printf(&quot;u3: type: %T, value: %s\n&quot;, u3, u3)
 }
-</code></pre><p>不使用build tag来编译:</p>
-<blockquote>
-<p>go build -o main .
-./main
-This is non-alt foo</p>
+</code></pre><blockquote>
+<p>u1: type: *main.User1, value: &amp;{John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a>}<br>
+u2: type:  main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a><br>
+u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a></p>
 </blockquote>
-<p>Compiling with alt build tag:</p>
-<blockquote>
-<p>go build -tags alt -o main_alt .
-./main_alt
-This is alternative foo</p>
-</blockquote>
-<p>When we specified -tags alt, we compiled foo_alt.go file, because it contains // +build alt directive which tells the build tool to compile the file if build tag alt is provided with -tags option.</p>
-<p>We didn&rsquo;t compile foo.go file because it contains // build !alt directive which tells the build to not compile the if build alt is provided.</p>
-<p>Similarly, if we didn&rsquo;t specify any build tags for go build command, file foo.go was compiled (because it only says to not compile if alt tag is provided) and foo_alt.go was not compiled.</p>
-<p>Argument -tags applies to many commands e..g. go run, go install, go test etc.</p>
-<p>Specifying multiple tags
-You can specify multiple build constraints (tags):</p>
-<p>// +build tag1,tag2 tag3,!tag4
-// +build tag5</p>
-<p>package foo
-This encodes a condition (tag1 AND tag2) OR (tag3 AND (NOT tag4)) AND tag5.</p>
-<p>Similarly, for the go command: go build -tags &ldquo;tag1 tag2&rdquo;.</p>
-<p>Ignoring files (excluding from compilation)
-// +build ignore</p>
-<p>package foo
-Predefined build tags
-Go toolchain uses several build tags:</p>
-<p>arm, arm64, 386, amd64, s390x : for different processor architectures
-windows, darwin, linux, dragonfly, freebsd, netbsd, openbsd, plan9, solaris, android : for operating systems
-cgo : when cgo is enabled
-gc or gccgo : for gc and gccgo toolchains
-go1.11 for Go version 1.11+, go1.12 for Go version 1.12+ etc.
-Using file name in place of a build tag
-An alternative to providing build tag directive in the file is using a file name suffix e.g. foo_windows.go is equivalent of including // +build windows in the file.</p>
-<p>Pitfalls
-The following doesn&rsquo;t work as expected:</p>
-<p>// +build alt
-package main</p>
-<p>func foo() {
-fmt.Printf(&ldquo;This is alternative foo\n&rdquo;)
-}
-You need an empty line after build tag line:</p>
-<p>// +build alt</p>
-<p>package main</p>
-<h2 id="separate-integration-tests">Separate integration tests</h2>
-<p>A common use case for build tags is separating regular unit tests from integration tests that require external resources, like a database or network access.</p>
-<p>To do this, add a custom build constraint to the top of the test file:</p>
-<p>// +build integration</p>
-<p>package main</p>
-<p>import (
-&ldquo;testing&rdquo;
-)</p>
-<p>func TestThatRequiresNetworkAccess(t *testing.T) {
-t.Fatal(&ldquo;It failed!&quot;)
-}
-Those tests will not be compiles unless you run tests with go test -tags &ldquo;integration&rdquo;.</p>
-<p>Results:</p>
-<p>$ go test
-?       bitbucket.org/yourname/yourproject    [no test files]
-$ go test -tags &ldquo;integration&rdquo;
-&mdash; FAIL: TestThatRequiresNetworkAccess (0.00s)
-main_test.go:10: It failed!
-FAIL
-exit status 1
-FAIL    bitbucket.org/yourname/yourproject    0.003s</p>
-<h2 id="optimized-implementations-for-specific-architectures">Optimized implementations for specific architectures</h2>
-<p>Another use case for build tags is writing an optimized implementation of a function that takes advantage of a specific architecture.</p>
-<p>For example a Go standard library uses this technique for implementing optimized xor functionality.</p>
-<p>xor_generic.go</p>
-<p>// +build !amd64,!ppc64,!ppc64le</p>
-<p>package cipher</p>
-<p>func xorBytes(dst, a, b []byte) int {
-// generic implementation if more specific is not available
-}
-xor_ppc64x.go</p>
-<p>// +build ppc64 ppc64le</p>
-<p>package cipher</p>
-<p>func xorBytes(dst, a, b []byte) int {
-// implementation specific to ppc64 processor
-}</p>
-<h2 id="dev-vs-production-builds">Dev vs. production builds</h2>
-<p>For backend servers it&rsquo;s common to need dev vs. production configurations where you e.g. point to a different database server etc.</p>
-<p>// !build dev</p>
-<p>package config</p>
-<p>const (
-MONGODB_HOST = &ldquo;mongodb://127.0.0.1:27017&rdquo;
-)
-// !build prod</p>
-<p>package config</p>
-<p>const (
-MONGODB_HOST = &ldquo;mongodb://mongo.myserver.com:27017&rdquo;
-)
-We then build go build -tags dev for development build and go build -tags prod for production build.</p>
+<p>类型User1没有实现Stringer接口，因此％s使用结构的标准格式显示它。</p>
+<p>类型User2实现了Stringer接口，因此％s使用String()方法获取值。</p>
+<p>类型User2和* User2不同。</p>
+<p>但是，为方便起见，在User2上定义的方法也可以在* User2上使用(但反之则不行)。</p>
+<p>因此，最好在struct上定义String()方法，而不是struct的指针。</p>
 
                                                 
                                             </div>
@@ -290,7 +258,7 @@ We then build go build -tags dev for development build and go build -tags prod f
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/">https://luangeng.space/post/go/basic/Conditional-compilation-with-build-tags/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Fmt/">https://luangeng.space/post/go/basic/Fmt/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -309,19 +277,19 @@ We then build go build -tags dev for development build and go build -tags prod f
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Cross-compilation/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Plugin/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go 交叉编译</span>
+                                            <span>Go 插件</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Protobuf/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go Inlining functions</span>
+                                            <span>Go Protobuf</span>
                                         </a>
                                         
                                     </li>
@@ -358,7 +326,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -500,7 +468,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -511,7 +479,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -522,7 +490,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -604,7 +572,7 @@ We then build go build -tags dev for development build and go build -tags prod f
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -634,9 +602,9 @@ We then build go build -tags dev for development build and go build -tags prod f
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

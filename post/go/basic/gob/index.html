@@ -13,12 +13,12 @@
   <meta itemprop="description" content="Go gob">
   <meta property="og:title" content="Go gob - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/gob/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Gob/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description" content="Go gob">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/gob/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/gob/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Gob/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Gob/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go gob</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 509 Words
+                                            Posted @ 2019-09-09 · 582 Words
                                             
                                             · Tags: Go
                                             
@@ -149,74 +149,78 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>gob
-Gob is a Go specific serialization method created mostly for RPC (Remote Procedure Call).</p>
-<p>It supports all Go data types except for channels and functions.</p>
-<p>Gob writes type information in serialized data.</p>
-<p>It&rsquo;s a binary format so it&rsquo;s more efficient than JSON or XML.</p>
-<p>The inclusion of type information makes encoding and decoding robust to differences between encoder and decoder.</p>
-<p>Encode data to file and decode from file
-type User struct {
-Username string
-Password string
-}</p>
-<p>func writeToGob(path string, user *User) error {
-file, err := os.Create(path)
-if err != nil {
-return err
-}</p>
-<pre><code>encoder := gob.NewEncoder(file)
-
-err = encoder.Encode(user)
-if err != nil {
-    file.Close()
-    return err
+                                                <p>Gob是Go特定的序列化方法，主要为RPC（远程过程调用）创建。</p>
+<p>它支持除通道和函数之外的所有Go数据类型。</p>
+<p>Gob将类型信息写入序列化数据中。</p>
+<p>它是一种二进制格式，因此比JSON或XML更有效。</p>
+<p>包含类型信息使编码和解码对编码器和解码器之间的差异具有鲁棒性。</p>
+<h2 id="将数据编码到文件并从文件解码">将数据编码到文件并从文件解码</h2>
+<pre><code>type User struct {
+    Username string
+    Password string
 }
 
-return file.Close()
-</code></pre>
-<p>}</p>
-<p>func write(path string, user *User) {
-err := writeToGob(path, user)
-if err != nil {
-log.Fatalf(&ldquo;writeToGob() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}
-st, err := os.Stat(path)
-if err != nil {
-log.Fatalf(&ldquo;os.Stat() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-}
-fmt.Printf(&ldquo;Wrote user struct to file &lsquo;%s&rsquo; of size %d.\n&rdquo;, path, st.Size())
-}</p>
-<p>func read(path string) {
-user := User{}
-file, err := os.Open(path)
-if err != nil {
-log.Fatalf(&ldquo;os.Open('%s&rsquo;) failed with &lsquo;%s&rsquo;\n&rdquo;, path, err)
-}
-defer file.Close()</p>
-<pre><code>decoder := gob.NewDecoder(file)
-err = decoder.Decode(&amp;user)
-if err != nil {
-    log.Fatalf(&quot;decoder.Decode() failed with '%s'\n&quot;, err)
-}
-fmt.Printf(&quot;\nRead from '%s' user:\n%#v\n&quot;, path, user)    
-</code></pre>
-<p>}</p>
-<p>func main() {
-user := User{
-Username: &ldquo;Angus&rdquo;,
-Password: &ldquo;1234&rdquo;,
-}
-path := &ldquo;user.gob&rdquo;
-write(path, &amp;user)
-read(path)
-}</p>
-<pre><code>Wrote user struct to file 'user.gob' of size 62.
+func writeToGob(path string, user *User) error {
+    file, err := os.Create(path)
+    if err != nil {
+        return err
+    }
 
-Read from 'user.gob' user:
-main.User{Username:&quot;Angus&quot;, Password:&quot;1234&quot;}
-Encode an interface
-package main
+    encoder := gob.NewEncoder(file)
+
+    err = encoder.Encode(user)
+    if err != nil {
+        file.Close()
+        return err
+    }
+
+    return file.Close()
+}
+
+func write(path string, user *User) {
+    err := writeToGob(path, user)
+    if err != nil {
+        log.Fatalf(&quot;writeToGob() failed with '%s'\n&quot;, err)
+    }
+    st, err := os.Stat(path)
+    if err != nil {
+        log.Fatalf(&quot;os.Stat() failed with '%s'\n&quot;, err)
+    }
+    fmt.Printf(&quot;Wrote user struct to file '%s' of size %d.\n&quot;, path, st.Size())
+}
+
+func read(path string) {
+    user := User{}
+    file, err := os.Open(path)
+    if err != nil {
+        log.Fatalf(&quot;os.Open('%s') failed with '%s'\n&quot;, path, err)
+    }
+    defer file.Close()
+
+    decoder := gob.NewDecoder(file)
+    err = decoder.Decode(&amp;user)
+    if err != nil {
+        log.Fatalf(&quot;decoder.Decode() failed with '%s'\n&quot;, err)
+    }
+    fmt.Printf(&quot;\nRead from '%s' user:\n%#v\n&quot;, path, user)    
+}
+
+func main() {
+     user := User{
+        Username: &quot;Angus&quot;,
+        Password: &quot;1234&quot;,
+    }
+    path := &quot;user.gob&quot;
+    write(path, &amp;user)
+    read(path)
+}
+</code></pre><blockquote>
+<p>Wrote user struct to file &lsquo;user.gob&rsquo; of size 62.</p>
+<p>Read from &lsquo;user.gob&rsquo; user:<br>
+main.User{Username:&ldquo;Angus&rdquo;, Password:&ldquo;1234&rdquo;}</p>
+</blockquote>
+<h2 id="编码接口">编码接口</h2>
+<pre><code>package main
 
 import (
     &quot;encoding/gob&quot;
@@ -288,8 +292,8 @@ func InterfaceEncode(encoder *gob.Encoder, d Deleter) {
         fmt.Println(err)
     }
 }
-Decode an interface
-package main
+</code></pre><h2 id="解码接口">解码接口</h2>
+<pre><code>package main
 
 import (
     &quot;encoding/gob&quot;
@@ -362,7 +366,8 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
     }
 
     return d
-}</code></pre>
+}
+</code></pre>
                                                 
                                             </div>
 
@@ -383,7 +388,7 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/gob/">https://luangeng.space/post/go/basic/gob/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Gob/">https://luangeng.space/post/go/basic/Gob/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -402,10 +407,10 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Sync.Pool/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go sync.Pool for better performance</span>
+                                            <span>Go 使用sync.Pool提高性能</span>
                                         </a>
                                         
                                     </li>
@@ -451,7 +456,7 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -593,7 +598,7 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -604,7 +609,7 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -615,7 +620,7 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -697,7 +702,7 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -727,9 +732,9 @@ func InterfaceDecode(decoder *gob.Decoder) Deleter {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go sync.Pool for better performance - 计算机与软件技术公开课</title>
+  <title>Go Panic和recover - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go sync.Pool for better performance - 计算机与软件技术公开课">
-  <meta name="description" content="Go sync.Pool for better performance">
-  <meta itemprop="name" content="Go sync.Pool for better performance - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go sync.Pool for better performance">
-  <meta property="og:title" content="Go sync.Pool for better performance - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go Panic和recover - 计算机与软件技术公开课">
+  <meta name="description" content="Go Panic和recover">
+  <meta itemprop="name" content="Go Panic和recover - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go Panic和recover">
+  <meta property="og:title" content="Go Panic和recover - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Panic-recover/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go sync.Pool for better performance">
+  <meta property="og:description" content="Go Panic和recover">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Panic-recover/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Panic-recover/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go sync.Pool for better performance</h1>
+                                        <h1 class="post-title">Go Panic和recover</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 273 Words
+                                            Posted @ 2019-09-09 · 1853 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go sync.Pool for better performance">
+                                            <span class="leancloud_visitors" data-flag-title="Go Panic和recover">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,62 +149,167 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>高频分配和释放对象可能相对昂贵。</p>
-<p>提高性能的常用技术是重复使用内存。</p>
-<p>sync.Pool是用于复用分配的线程安全缓存。</p>
-<pre><code>package main
-
-import (
-    &quot;bytes&quot;
-    &quot;fmt&quot;
-    &quot;sync&quot;
-)
-
-var pool = sync.Pool{
-    // New creates an object when the pool has nothing available to return.
-    // New must return an interface{} to make it flexible. You have to cast
-    // your type after getting it.
-    New: func() interface{} {
-        // Pools often contain things like *bytes.Buffer, which are
-        // temporary and re-usable.
-        return &amp;bytes.Buffer{}
-    },
+                                                <p>本章假定你已经掌握了defer。</p>
+<p>在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。</p>
+<p>panic等同于引发或引发和恢复填充捕捉的作用。</p>
+<p>但是，尽管其他语言经常使用异常作为在呼叫链上传播错误的方式，但强烈建议不要在Go中使用panic。</p>
+<p>仅应在真正特别的情况下使用。</p>
+<p>对于普通的错误处理，请阅读有关错误处理的章节。</p>
+<h2 id="panic">panic</h2>
+<p>panic用来停止正常执行流程并退出当前函数。</p>
+<p>然后，在将控制权传递到堆栈上的下一个函数之前，将执行所有defer。</p>
+<p>堆栈上的每个函数都将退出并运行defer，直到使用defer的restore()处理panic，或者直到panic到达main()并终止程序为止。</p>
+<p>如果发生这种情况，提供给panic的参数和堆栈跟踪信息将输出到stderr。</p>
+<pre><code>func foo() {
+    defer fmt.Println(&quot;Exiting foo&quot;)
+    panic(&quot;bar&quot;)
 }
 
 func main() {
-    // When getting from a Pool, you need to cast
-    s := pool.Get().(*bytes.Buffer)
-    // We write to the object
-    s.Write([]byte(&quot;dirty&quot;))
-    // Then put it back
-    pool.Put(s)
-
-    // Pools can return dirty results
-
-    // Get 'another' buffer
-    s = pool.Get().(*bytes.Buffer)
-    // Write to it
-    s.Write([]byte(&quot;append&quot;))
-    // At this point, if GC ran, this buffer *might* exist already, in
-    // which case it will contain the bytes of the string &quot;dirtyappend&quot;
-    fmt.Println(s)
-    // So use pools wisely, and clean up after yourself
-    s.Reset()
-    pool.Put(s)
-
-    // When you clean up, your buffer should be empty
-    s = pool.Get().(*bytes.Buffer)
-    // Defer your Puts to make sure you don't leak!
-    defer pool.Put(s)
-    s.Write([]byte(&quot;reset!&quot;))
-    // This prints &quot;reset!&quot;, and not &quot;dirtyappendreset!&quot;
-    fmt.Println(s)
+    defer fmt.Println(&quot;Exiting main&quot;)
+    foo()
 }
 </code></pre><blockquote>
-<p>dirtyappend<br>
-reset!</p>
+<p>Exiting foo<br>
+Exiting main<br>
+panic: bar<br>
+goroutine 1 [running]:<br>
+main.foo()<br>
+/tmp/src315791376/main.go:10 +0xb9<br>
+main.main()<br>
+/tmp/src315791376/main.go:15 +0xa2<br>
+exit status 2</p>
 </blockquote>
-<p>与所有性能优化技术一样，不应过度使用sync.Pool。</p>
+<p>panic可以接受任何类型的参数。</p>
+<h2 id="恢复">恢复</h2>
+<p>recover用来从panic中恢复。</p>
+<p>由于正常的执行流程已暂停，因此必须在defer语句中尝试进行恢复。</p>
+<p>恢复语句必须直接出现在defer函数中。</p>
+<p>由defer函数调用的函数中的恢复语句将不被接受。</p>
+<p>如果程序当前处于panic状态，则recover()调用将返回提供给初始紧急状态的参数。</p>
+<p>如果该程序当前未出现紧急情况，则recover()将返回nil。</p>
+<pre><code>func foo() {
+    panic(&quot;bar&quot;)
+}
+
+func bar() {
+    defer func() {
+        if msg := recover(); msg != nil {
+            fmt.Printf(&quot;Recovered with message %s\n&quot;, msg)
+        }
+    }()
+    foo()
+    fmt.Println(&quot;Never gets executed&quot;)
+}
+
+func main() {
+    fmt.Println(&quot;Entering main&quot;)
+    bar()
+    fmt.Println(&quot;Exiting main the normal way&quot;)
+}
+</code></pre><blockquote>
+<p>Entering main
+Recovered with message bar
+Exiting main the normal way</p>
+</blockquote>
+<h2 id="从panic中恢复">从panic中恢复</h2>
+<p>一个常见的错误是声明一个slice并开始使用索引访问数据而不进行初始化，这会引发“index out of range”的panic。</p>
+<p>以下代码说明了如何在不退出程序的情况下从panic中恢复，这是处理panic的正确方法。</p>
+<p>在大多数情况下，以这种方式返回错误而不是紧急退出程序仅对开发或测试有用。</p>
+<pre><code>type Foo struct {
+    Is []int
+}
+
+func (fp *Foo) Panic() (err error) {
+    defer PanicRecovery(&amp;err)
+    fp.Is[0] = 5
+    return nil
+}
+
+func PanicRecovery(err *error) {
+
+    if r := recover(); r != nil {
+        if _, ok := r.(runtime.Error); ok {
+            //fmt.Println(&quot;Panicing&quot;)
+            //panic(r)
+            *err = r.(error)
+        } else {
+            *err = r.(error)
+        }
+    }
+}
+
+func main() {
+    fp := &amp;Foo{}
+    if err := fp.Panic(); err != nil {
+        fmt.Printf(&quot;Error: %v\n&quot;, err)
+    }
+    fmt.Println(&quot;ok&quot;)
+}
+</code></pre><blockquote>
+<p>Error: runtime error: index out of range [0] with length 0<br>
+ok</p>
+</blockquote>
+<p>The use of a separate function (rather than closure) allows re-use of the same function in other functions prone to panic.</p>
+<p>使用单独的功能(而不是关闭功能)允许在其他容易出现恐慌的功能中重复使用同一功能。</p>
+<h2 id="panic用例">panic用例</h2>
+<p>在Go中使用panic应该非常少见，但确实有有效的用例。</p>
+<p>因API使用不当而导致崩溃,这类似于在其他语言中使用assert。</p>
+<p>假设你正在编写一个httpGet函数来下载URL的内容。</p>
+<p>URL为空字符串应该怎么办？ 调用侧显然是错误的。</p>
+<p>可以返回错误，但也可以因panic而崩溃：</p>
+<pre><code>func httpGet(uri string) ([]byte, error) {
+    if uri == &quot;&quot; {
+        panic(&quot;uri cannot be empty&quot;)
+    }
+    // ... download the url
+}
+</code></pre><p>有时会更好，因为可以忽略错误，或者程序可能认为这是有效的错误情况，例如网站关闭。</p>
+<p>强制崩溃会增加开发人员查看问题并解决问题的机会。</p>
+<p>如果你经常这样做，此辅助功能将非常有用：</p>
+<pre><code>func panicIf(cond bool, args ...interface{}) {
+    if !cond {
+        return
+    }
+    if len(args) == 0 {
+        panic(errors.New(&quot;cond failed&quot;))
+    }
+    format := args[0].(string)
+    args = args[1:]
+    err := fmt.Errorf(format, args)
+    panic(err)
+}
+</code></pre><p>现在可以将其写成一行：</p>
+<pre><code>func httpGet(uri string) ([]byte, error) {
+    panicIf(uri == &quot;&quot;, &quot;uri cannot be empty&quot;)
+    // ... download the url
+}
+</code></pre><p>函数panicIf是灵活的, 也可以这样调用：</p>
+<ul>
+<li>panicIf(n &lt; 0) and it&rsquo;ll panic with generic error message</li>
+<li>panicIf(n &lt; 0, &ldquo;n must be &gt;= 0&rdquo;) to provide more descriptive message</li>
+<li>panicIf(n &lt; 0, &ldquo;n is %d and must be &gt;= 0&rdquo;, n) to provide even more descriptive message</li>
+</ul>
+<p>Simplifying flow control in isolated piece of code
+Sometimes it’s easier to propagate an error by panicking and recovering rather than returning errors.</p>
+<p>This might be true e.g. in a parser.</p>
+<p>When you use that technique, you should observe one rule: panic should not cross public API boundary.</p>
+<p>In other words, if you implement a parser library, you should always recover all panics your code creates. Panic used for easier flow control should never reach the caller of your package API.</p>
+<p>Protect a program from a crash in a goroutine
+Unhandled panic in a goroutine crashes a program.</p>
+<p>This is the right behavior most of the time (panic indicates a serious bug and you should fix bugs, not cover them up).</p>
+<p>In rare occasions we don&rsquo;t want a single goroutine to bring down the whole program so we can wrap the code with a function that does recover at the top.</p>
+<p>This technique is used in Go’s http server package which handles each connection in a separate goroutine. In a web server we don&rsquo;t want a rare bug in request handling code to crash the program.</p>
+<p>在孤立的代码段中简化流控制
+有时候，通过恐慌和恢复而不是返回错误，更容易传播错误。</p>
+<p>这可能是正确的，例如在解析器中。</p>
+<p>使用该技术时，应遵守一条规则：恐慌症不应越过公共API边界。</p>
+<p>换句话说，如果实现解析器库，则应始终恢复代码创建的所有恐慌。用于更轻松地进行流控制的紧急情况永远不会到达包API的调用者。</p>
+<p>保护程序免受goroutine崩溃的影响
+goroutine中未处理的恐慌导致程序崩溃。</p>
+<p>在大多数情况下，这是正确的行为(恐慌表示严重的错误，应该修复错误，而不是掩盖错误)。</p>
+<p>在极少数情况下，我们不希望使用单个goroutine破坏整个程序，因此我们可以使用在顶部恢复的函数包装代码。</p>
+<p>Go的http服务器程序包中使用了此技术，该程序包在单独的goroutine中处理每个连接。在Web服务器中，我们不希望请求处理代码中出现罕见的bug会使程序崩溃。</p>
 
                                                 
                                             </div>
@@ -226,7 +331,7 @@ reset!</p>
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/">https://luangeng.space/post/go/basic/sync.Pool-for-better-performance/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Panic-recover/">https://luangeng.space/post/go/basic/Panic-recover/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -245,19 +350,19 @@ reset!</p>
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Defer/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go Inlining functions</span>
+                                            <span>Go Defer</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/gob/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go gob</span>
+                                            <span>Go 并发</span>
                                         </a>
                                         
                                     </li>
@@ -294,7 +399,7 @@ reset!</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -436,7 +541,7 @@ reset!</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -447,7 +552,7 @@ reset!</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -458,7 +563,7 @@ reset!</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -540,7 +645,7 @@ reset!</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -570,9 +675,9 @@ reset!</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

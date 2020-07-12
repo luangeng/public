@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go 介绍 - 计算机与软件技术公开课</title>
+  <title>Go基本数据类型 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 介绍 - 计算机与软件技术公开课">
-  <meta name="description" content="Go 介绍">
-  <meta itemprop="name" content="Go 介绍 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go 介绍">
-  <meta property="og:title" content="Go 介绍 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go基本数据类型 - 计算机与软件技术公开课">
+  <meta name="description" content="Go基本数据类型">
+  <meta itemprop="name" content="Go基本数据类型 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go基本数据类型">
+  <meta property="og:title" content="Go基本数据类型 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/info/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Types/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go 介绍">
+  <meta property="og:description" content="Go基本数据类型">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/info/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/info/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Types/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Types/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go 介绍</h1>
+                                        <h1 class="post-title">Go基本数据类型</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 744 Words
+                                            Posted @ 2019-09-09 · 2769 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go 介绍">
+                                            <span class="leancloud_visitors" data-flag-title="Go基本数据类型">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,23 +149,369 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p><img src="https://golang.google.cn/lib/godoc/images/home-gopher.png" alt=""><br>
-Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。
-罗伯特·格瑞史莫(Robert Griesemer)，罗勃·派克(Rob Pike)及肯·汤普逊(Ken Thompson)于2007年9月开始设计Go，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。Go于2009年11月正式宣布推出，成为开放源代码项目，并在Linux及Mac OS X平台上进行了实现，后来追加了Windows系统下的实现。在2016年，Go被软件评价公司TIOBE 选为“TIOBE 2016 年最佳语言”。 目前，Go每半年发布一个二级版本(即从a.x升级到a.y)</p>
-<p>Go的语法接近C语言，但对于变量的声明有所不同。Go支持垃圾回收功能。Go的并行模型是以东尼·霍尔的通信顺序进程(CSP)为基础，采取类似模型的其他语言包括Occam和Limbo，但它也具有Pi运算的特征，比如通道传输。在1.8版本中开放插件(Plugin)的支持，这意味着现在能从Go中动态加载部分函数。
-与C++相比，Go并不包括如枚举、异常处理、继承、泛型、断言、虚函数等功能，但增加了 切片(Slice) 型、并发、管道、垃圾回收、接口(Interface)等特性的语言级支持。Go 2.0版本将支持泛型，对于断言的存在，则持负面态度，同时也为自己不提供类型继承来辩护。
-不同于Java，Go内嵌了关联数组(也称为哈希表(Hashes)或字典(Dictionaries))，就像字符串类型一样。</p>
-<p>Go是具有以下特征的通用编程语言：</p>
+                                                <h2 id="bool">bool</h2>
+<p>bool类型的值可以是true或false，初始为false</p>
+<pre><code>var b bool = true
+fmt.Printf(&quot;b is: '%v'\n&quot;, b)
+b = false
+fmt.Printf(&quot;b is: '%v'\n&quot;, b)
+var b2 bool
+fmt.Printf(&quot;zero value of bool is: '%v'\n&quot;, b2)
+</code></pre><blockquote>
+<p>b is: &lsquo;true&rsquo;<br>
+b is: &lsquo;false&rsquo;<br>
+zero value of bool is: &lsquo;false&rsquo;</p>
+</blockquote>
+<p>bool变量的大小(例如为struct的一部分时)为1个byte。</p>
+<pre><code>b := true
+fmt.Printf(&quot;size of bool is: %d\n&quot;, unsafe.Sizeof(b))
+</code></pre><blockquote>
+<p>size of bool is: 1</p>
+</blockquote>
+<h2 id="int">int</h2>
+<p>Go有固定大小的无符号和有符号int类型：</p>
 <ul>
-<li>熟悉的类似C的语法</li>
-<li>静态类型</li>
-<li>语言级别的并发支持</li>
-<li>垃圾收集</li>
-<li>快速</li>
-<li>跨平台(支持Windows，Mac，Linux等，支持多个CPU架构)</li>
-<li>开源的</li>
+<li>int8, uint8</li>
+<li>byte 是 uint8的别名</li>
+<li>int16, uint16</li>
+<li>int32, uint32</li>
+<li>rune 是 int32的别名</li>
+<li>int64, uint64</li>
 </ul>
-<p>本文翻译自:     <a href="https://www.programming-books.io/essential/go/">https://www.programming-books.io/essential/go/</a></p>
+<p>go中还有与体系结构相关的整数：</p>
+<p>int在32位处理器上为int32，在64位处理器上为int64
+uint在32位处理器上是uint32，在64位处理器上是uint64</p>
+<p>int的初始值为0。</p>
+<h4 id="用-strconvitoa-将int转化为string">用 strconv.Itoa 将int转化为string</h4>
+<pre><code>var i1 int = -38
+fmt.Printf(&quot;i1: %s\n&quot;, strconv.Itoa(i1))
+
+var i2 int32 = 148
+fmt.Printf(&quot;i2: %s\n&quot;, strconv.Itoa(int(i2)))
+</code></pre><blockquote>
+<p>i1: -38<br>
+i2: 148</p>
+</blockquote>
+<h4 id="用-fmtsprintf将int转化为string">用 fmt.Sprintf将int转化为string</h4>
+<pre><code>var i1 int = -38
+s1 := fmt.Sprintf(&quot;%d&quot;, i1)
+fmt.Printf(&quot;i1: %s\n&quot;, s1)
+
+var i2 int32 = 148
+s2 := fmt.Sprintf(&quot;%d&quot;, i2)
+fmt.Printf(&quot;i2: %s\n&quot;, s2)
+</code></pre><blockquote>
+<p>i1: -38<br>
+i2: 148</p>
+</blockquote>
+<h4 id="用-strconvatoi将string转为int">用 strconv.Atoi将string转为int</h4>
+<pre><code>s := &quot;-48&quot;
+i1, err := strconv.Atoi(s)
+if err != nil {
+    log.Fatalf(&quot;strconv.Atoi() failed with %s\n&quot;, err)
+}
+fmt.Printf(&quot;i1: %d\n&quot;, i1)
+</code></pre><blockquote>
+<p>i1: -48</p>
+</blockquote>
+<h4 id="用-fmtsscanf将string转为int">用 fmt.Sscanf将string转为int</h4>
+<pre><code>s := &quot;348&quot;
+var i int
+_, err := fmt.Sscanf(s, &quot;%d&quot;, &amp;i)
+if err != nil {
+    log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;i1: %d\n&quot;, i)
+</code></pre><blockquote>
+<p>i1: 348</p>
+</blockquote>
+<h2 id="浮点类型">浮点类型</h2>
+<p>Go具有与IEEE 754标准相对应的浮点数类型：</p>
+<ul>
+<li>float32 为 4 byte 长的浮点型数字 (即C语言中的float)</li>
+<li>float64 为 8 byte 长的浮点型数字 (即C语言中的double)</li>
+<li>float32 和 float64 的初始值为 0.0.</li>
+</ul>
+<h4 id="使用-formatfloat-将float转为string">使用 FormatFloat 将float转为string</h4>
+<pre><code>var f32 float32 = 1.3
+bitSize := 32
+s1 := strconv.FormatFloat(float64(f32), 'E', -1, bitSize)
+fmt.Printf(&quot;f32: %s\n&quot;, s1)
+
+var f64 float64 = 8.1234
+bitSize = 64
+s2 := strconv.FormatFloat(f64, 'e', -1, bitSize)
+fmt.Printf(&quot;f64: %s\n&quot;, s2)
+</code></pre><blockquote>
+<p>f32: 1.3E+00<br>
+f64: 8.1234e+00</p>
+</blockquote>
+<h4 id="用-sprintf-将float转为字符串">用 Sprintf 将float转为字符串</h4>
+<pre><code>var f64 float64 = 1.54
+s := fmt.Sprintf(&quot;%f&quot;, f64)
+fmt.Printf(&quot;f is: '%s'\n&quot;, s)
+</code></pre><blockquote>
+<p>f is: &lsquo;1.540000&rsquo;</p>
+</blockquote>
+<p>使用 strconv.FormatFloat 比 fmt.Sprintf 快</p>
+<h4 id="用-parsefloat将string转为float">用 ParseFloat将string转为float</h4>
+<pre><code>s := &quot;1.2341&quot;
+f64, err := strconv.ParseFloat(s, 64)
+if err != nil {
+    log.Fatalf(&quot;strconv.ParseFloat() failed with '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;f64: %f\n&quot;, f64)
+</code></pre><blockquote>
+<p>f64: 1.234100</p>
+</blockquote>
+<h4 id="使用-sscanf将string转为float">使用 Sscanf将string转为float</h4>
+<pre><code>s := &quot;1.2341&quot;
+var f float64
+_, err := fmt.Sscanf(s, &quot;%f&quot;, &amp;f)
+if err != nil {
+    log.Fatalf(&quot;fmt.Sscanf failed with '%s'\n&quot;, err)
+}
+fmt.Printf(&quot;f: %f\n&quot;, f)
+</code></pre><blockquote>
+<p>f: 1.234100</p>
+</blockquote>
+<h2 id="字符型">字符型</h2>
+<p>Go 有两种字符类型</p>
+<ul>
+<li>byte是1个byte的值，是uint8类型的别名</li>
+<li>rune是4个byte的Unicode值，是int32类型的别名
+byte and rune的初始值为0</li>
+</ul>
+<h4 id="用byte遍历string">用byte遍历string</h4>
+<pre><code>s := &quot;str&quot;
+for i := 0; i &lt; len(s); i++ {
+    c := s[i]
+    fmt.Printf(&quot;Byte at index %d is '%c' (0x%x)\n&quot;, i, c, c)
+}
+</code></pre><blockquote>
+<p>Byte at index 0 is &lsquo;s&rsquo; (0x73)<br>
+Byte at index 1 is &lsquo;t&rsquo; (0x74)<br>
+Byte at index 2 is &lsquo;r&rsquo; (0x72)</p>
+</blockquote>
+<h4 id="用rune遍历string">用rune遍历string</h4>
+<pre><code>s := &quot;日本語&quot;
+for i, runeChar := range s {
+    fmt.Printf(&quot;Rune at byte position %d is %#U\n&quot;, i, runeChar)
+}
+</code></pre><blockquote>
+<p>Rune at byte position 0 is U+65E5 &lsquo;日&rsquo;<br>
+Rune at byte position 3 is U+672C &lsquo;本&rsquo;<br>
+Rune at byte position 6 is U+8A9E &lsquo;語&rsquo;</p>
+</blockquote>
+<p>string是byte组成的数组
+当使用rune遍历string的使用go假定string是UTF-8编码的Unicode字符串
+UTF-8是一种可变长度编码，可将rune编码为1、2、3或4个byte。
+返回的索引i是tune开始的字符串中的字节位置。 而不是tune数量。</p>
+<h2 id="常量">常量</h2>
+<p>Go支持字符，字符串，布尔值和数字值的常量,</p>
+<pre><code>const (
+    i  int = 32       // int constant
+    s      = &quot;string&quot; // string constant
+    i2     = 33       // untyped number constant
+)
+var (
+    // 值不是只读的类型(如slices, maps, structs)不能声明为常量
+    // 可以把它们声明为顶层变量
+    b = []byte{3, 4} // 不可以是常量
+)
+</code></pre><h2 id="数组">数组</h2>
+<p>Go中的数组具有固定大小。 因此，它们很少使用。在大多数情况下，我们使用可以扩大和缩小其大小的slice。数组基础使用方法:</p>
+<pre><code>var a1 = [2]byte{3, 8} // array of 2 bytes
+// when using [...] size will be deduced from { ... }
+a2 := [...]int{1, 2, 3} // array of 3 integers
+
+fmt.Printf(&quot;Size of a1: %d.\nSize of a2: %d\n&quot;, len(a1), len(a2))
+</code></pre><blockquote>
+<p>Size of a1: 2.<br>
+Size of a2: 3</p>
+</blockquote>
+<h2 id="切片">切片</h2>
+<p>Go中的slice用于在大多数其他语言(如Ruby，Python或C＃)中使用数组，或在C ++中使用std :: vector。
+切片的大小可以增长和缩小。 它被实现为对基础固定大小数组的视图。
+切片的初始值值为nil。</p>
+<h2 id="map">map</h2>
+<p>map是从键到值的无序映射。其他语言称它们为字典(Python)或哈希表(C ++)。map的初始值为nil。
+map基本使用方法:</p>
+<pre><code>m := make(map[string]int)
+m[&quot;number3&quot;] = 3
+
+checkKey := func(k string) {
+    if n, ok := m[k]; ok {
+        fmt.Printf(&quot;value for key '%s' is %d\n&quot;, k, n)
+    } else {
+        fmt.Printf(&quot;key '%s' doesn't exist in map\n&quot;, k)
+    }
+}
+
+// get value for a key that exists
+checkKey(&quot;number3&quot;)
+
+// get value for a key that doesn't exist
+checkKey(&quot;number4&quot;)
+
+// remove a key
+delete(m, &quot;number3&quot;)
+fmt.Printf(&quot;deleted key 'number3\n&quot;)
+checkKey(&quot;number3&quot;) // and now it doesn't exist
+</code></pre><blockquote>
+<p>value for key &lsquo;number3&rsquo; is 3<br>
+key &lsquo;number4&rsquo; doesn&rsquo;t exist in map<br>
+deleted key &lsquo;number3<br>
+key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
+</blockquote>
+<h2 id="struct">struct</h2>
+<p>结构将多个值分组为一个实体。零值结构是一个结构，其字段设置为各自的零值。</p>
+<pre><code>type MyStruct struct {
+    IntVal           int
+    StringVal        string
+    unexportedIntVal int
+}
+</code></pre><h2 id="interface">Interface</h2>
+<p>接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义：</p>
+<pre><code>type Reader interface {
+    Read(p []byte) (n int, err error)
+}
+</code></pre><p>接口越小越好.</p>
+<h2 id="empty-interface">Empty interface</h2>
+<p>类型interface {}称为空接口。根据定义，它是一个没有定义方法的接口。
+这意味着每种类型都符合一个空接口。在Go接口{}中用作动态类型。
+它与C＃或Java中的对象相似，因为它将类型和值组合为一个值。
+空接口也是Go中实现联合类型的方式。空接口的零值为nil。</p>
+<h2 id="指针">指针</h2>
+<p>指向类型的指针是该类型的值在内存中的地址。指针的零值为nil。与C不同，Go没有指针运算, 可以输入变量的地址，但不能加减指针。</p>
+<p>指针基础</p>
+<pre><code>var a int = 4
+pa := &amp;a
+fmt.Printf(&quot;Address of a variable in memory is %p. Its value is: %d\n&quot;, pa, *pa)
+</code></pre><blockquote>
+<p>Address of a variable in memory is 0xc00007c010. Its value is: 4</p>
+</blockquote>
+<h2 id="channel">Channel</h2>
+<p>通道是类型化队列，用于goroutine以线程安全的方式相互通信。通道的零值为零。
+Channel使用示例</p>
+<pre><code>// create unbuffered channel of int values with capacity of 1
+ch := make(chan int)
+// start a new goroutine that sends value 3 over a channel
+go func() { ch &lt;- 3 }()
+// read the value from a channel
+// it waits until goroutine above sends a value
+n := &lt;-ch
+fmt.Printf(&quot;n: %d\n&quot;, n)
+</code></pre><blockquote>
+<p>n: 3</p>
+</blockquote>
+<h2 id="初始值">初始值</h2>
+<p>如果未显式分配Go中的变量，则使用已知值对其进行初始化,这个值称为零值.
+这与C/C ++不同，在C/C ++中，未明确分配的变量具有未定义的值。</p>
+<ul>
+<li>type    zero value</li>
+<li>bool    false</li>
+<li>integers    0</li>
+<li>floating point numbers    0.0</li>
+<li>string    &quot;&rdquo;</li>
+<li>pointer    nil</li>
+<li>slice    nil</li>
+<li>map    nil</li>
+<li>interface    nil</li>
+<li>channel    nil</li>
+<li>array    all elements have zero value</li>
+<li>struct    all members set to zero value</li>
+<li>function    nil</li>
+</ul>
+<p>通过代码查看:</p>
+<pre><code>fmt.Println(&quot;zero values for basic types:&quot;)
+
+var zeroBool bool
+fmt.Printf(&quot;bool:       %v\n&quot;, zeroBool)
+
+var zeroInt int
+fmt.Printf(&quot;int:        %v\n&quot;, zeroInt)
+
+var zeroF32 float32
+fmt.Printf(&quot;float32:    %v\n&quot;, zeroF32)
+
+var zeroF64 float64
+fmt.Printf(&quot;float64:    %v\n&quot;, zeroF64)
+
+var zeroStr string
+fmt.Printf(&quot;string:     %#v\n&quot;, zeroStr)
+
+var zeroPtr *int
+fmt.Printf(&quot;pointer:    %v\n&quot;, zeroPtr)
+
+var zeroSlice []uint32
+fmt.Printf(&quot;slice:      %v\n&quot;, zeroSlice)
+
+var zeroMap map[string]int
+fmt.Printf(&quot;map:        %#v\n&quot;, zeroMap)
+
+var zeroInterface interface{}
+fmt.Printf(&quot;interface:  %v\n&quot;, zeroInterface)
+
+var zeroChan chan bool
+fmt.Printf(&quot;channel:    %v\n&quot;, zeroChan)
+
+var zeroArray [5]int
+fmt.Printf(&quot;array:      %v\n&quot;, zeroArray)
+
+type struc struct {
+    a int
+    b string
+}
+var zeroStruct struc
+fmt.Printf(&quot;struct:     %#v\n&quot;, zeroStruct)
+
+var zeroFunc func(bool)
+fmt.Printf(&quot;function:   %v\n&quot;, zeroFunc)
+</code></pre><blockquote>
+<p>zero values for basic types:<br>
+bool:       false<br>
+int:        0<br>
+float32:    0<br>
+float64:    0<br>
+string:     &quot;&rdquo;<br>
+pointer:    <!-- raw HTML omitted --><br>
+slice:      []<br>
+map:        map[string]int(nil)<br>
+interface:  <!-- raw HTML omitted --><br>
+channel:    <!-- raw HTML omitted --><br>
+array:      [0 0 0 0 0]<br>
+struct:     main.struc{a:0, b:&quot;&quot;}<br>
+function:   <!-- raw HTML omitted --></p>
+</blockquote>
+<h1 id="类型转换">类型转换</h1>
+<p>与C语言不同，Go不会在类型之间进行隐式转换。你必须在兼容类型之间显式转换：</p>
+<pre><code>// 在数字之间进行转换，即各种大小的整数和浮点数
+var i1 int32 = 3
+var i2 int = int(i1) // we must explicitly cast from int32 to int
+var f float64 = float64(i1)
+
+s := &quot;string&quot;
+// we can cast between string and []byte and vice-versa
+// note that unless optimizted by the compiler, this involves allocation
+var d []byte = []byte(s)
+</code></pre><h1 id="类型别名">类型别名</h1>
+<p>Go 1.9中引入了类型别名，以简化代码重构。</p>
+<p>假设你有一个导出为类型Bar的包foo。</p>
+<p>你想把类型Bar重命名为NewBar</p>
+<p>如果没有类型别名，则必须在重命名类型的同时将所有使用foo.Bar的软件包更改为使用foo.NewBar。</p>
+<p>使用类型别名分为两个步骤。</p>
+<p>首先通过为foo.Bar引入别名并用别名替换foo.Bar的所有用法来更新依赖项。</p>
+<pre><code>import &quot;foo&quot;
+type Bar = foo.Bar // Bar is now an alias of foo.Bar
+</code></pre><p>现在将foo.Bar重命名为foo.NewBar并更新别名：</p>
+<pre><code>import &quot;foo&quot;
+type Bar = foo.NewBar
+</code></pre><p>这是一个非常小的改动.</p>
+<p>然后逐渐摆脱别名并直接使用新的foo.NewBar类型。</p>
+<p>这个过程听起来很麻烦，但是在大型代码库中，这比一次重命名所有内容更好。</p>
+<p>在其他情况下使用类型别名很诱人，但是应该尽量不使用。</p>
+<p>类型别名增加了一个间接层，这会损害代码的可读性。 应该有充分的理由使用它们。</p>
 
                                                 
                                             </div>
@@ -187,7 +533,7 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/info/">https://luangeng.space/post/go/basic/info/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Types/">https://luangeng.space/post/go/basic/Types/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -206,13 +552,19 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
+                                        <a href="https://luangeng.space/post/go/basic/Install/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>Go 安装</span>
+                                        </a>
+                                        
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/install/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Variables/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go 安装</span>
+                                            <span>Go 变量</span>
                                         </a>
                                         
                                     </li>
@@ -249,7 +601,7 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -391,7 +743,7 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -402,7 +754,7 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -413,7 +765,7 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -495,7 +847,7 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -525,9 +877,9 @@ Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型�
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

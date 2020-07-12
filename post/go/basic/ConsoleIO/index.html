@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go fmt包 - 计算机与软件技术公开课</title>
+  <title>Go Console I/O - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go fmt包 - 计算机与软件技术公开课">
-  <meta name="description" content="Go fmt包">
-  <meta itemprop="name" content="Go fmt包 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go fmt包">
-  <meta property="og:title" content="Go fmt包 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go Console I/O - 计算机与软件技术公开课">
+  <meta name="description" content="Go Console I/O">
+  <meta itemprop="name" content="Go Console I/O - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go Console I/O">
+  <meta property="og:title" content="Go Console I/O - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/Package-fmt/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/ConsoleIO/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go fmt包">
+  <meta property="og:description" content="Go Console I/O">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/Package-fmt/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Package-fmt/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/ConsoleIO/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/ConsoleIO/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go fmt包</h1>
+                                        <h1 class="post-title">Go Console I/O</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 598 Words
+                                            Posted @ 2019-09-09 · 737 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go fmt包">
+                                            <span class="leancloud_visitors" data-flag-title="Go Console I/O">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,94 +149,52 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>标准库中的fmt包可以格式化字符串和从字符串中解析数据.</p>
-<h3 id="基本的fmt">基本的fmt</h3>
-<p>包fmt使用格式动词实现格式化的I/O：</p>
-<ul>
-<li>%v        默认格式</li>
-<li>%T        值的类型</li>
-<li>%s        字符串或片的未解释字节</li>
-</ul>
-<p>格式化函数</p>
-<p>fmt中有4个主要的函数类型，和它们的几个变体。</p>
-<p>Print, Println, Printf</p>
-<pre><code>fmt.Print(&quot;Hello World&quot;)        // prints: Hello World
-fmt.Println(&quot;Hello World&quot;)      // prints: Hello World\n
-fmt.Printf(&quot;Hello %s&quot;, &quot;World&quot;) // prints: Hello World
-</code></pre><p>Sprintf</p>
-<pre><code>formattedString := fmt.Sprintf(&quot;%v %s&quot;, 2, &quot;words&quot;) // returns string &quot;2 words&quot;
-</code></pre><p>Fprint</p>
-<pre><code>byteCount, err := fmt.Fprint(w, &quot;Hello World&quot;) // writes to io.Writer w
-</code></pre><p>Fprint可以在http handlers中使用:</p>
-<pre><code>func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprint(w, &quot;Hello %s!&quot;, &quot;Browser&quot;)
-}   // Writes: &quot;Hello Browser!&quot; to HTTP response
-</code></pre><h3 id="scan">Scan</h3>
-<p>Scan从标准输入中扫描文本</p>
-<pre><code>var s string
-fmt.Scanln(&amp;s) // pass pointer to buffer
-// Scanln is similar to fmt.Scan(), but it stops scanning at new line.
-fmt.Println(s) // whatever was inputted
-
-## Stringer interface
-fmt.Stringer interface consists of a single String() string function:
-
-type Stringer interface {
-    String() string
+                                                <p>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。</p>
+<h3 id="fmtscanf从stdio读取">fmt.Scanf从stdio读取</h3>
+<p>最方便的方法是使用fmt.Scanf，它是fmt.Printf的镜像。</p>
+<p>这是从控制台(标准输入)读取字符串和整数的方法</p>
+<pre><code>fmt.Print(&quot;What is your name?\n&quot;)
+var name string
+if n, err := fmt.Scanf(&quot;%s&quot;, &amp;name); err != nil {
+    fmt.Printf(&quot;fmt.Scanf failed with '%s'\n&quot;, err)
+} else {
+    fmt.Printf(&quot;fmt.Scanf scanned %d item(s) and set name to '%s'\n&quot;, n, name)
 }
-The intent is to provide a string representation of the value.
-
-If String() method is defined on a type, string formatting methods like fmt.Printf use it for %s formatting directive:
-
-type User1 struct {
-    Name  string
-    Email string
+fmt.Print(&quot;What is your age?\n&quot;)
+var age int
+if n, err :=  fmt.Scanf(&quot;%d&quot;, &amp;age); err != nil {
+    fmt.Printf(&quot;fmt.Scanf failed with '%s'\n&quot;, err)
+} else {
+    fmt.Printf(&quot;fmt.Scanf scanned %d item(s) and set age to '%d'\n&quot;, n, age)
 }
-
-type User2 struct {
-    Name  string
-    Email string
+</code></pre><p>fmt.Scanf从os.Stdin读取输入，并尝试根据提供的格式设置传递的变量。</p>
+<p>空格和换行符被视为值分隔符。</p>
+<p>它返回成功解析的数量(防止仅匹配前几个变量)</p>
+<p>要从任意io.Reader中读取，请使用fmt.Fscanf。</p>
+<h3 id="fmtscanln从stdin读取一行">fmt.Scanln从stdin读取一行</h3>
+<p>要读取整行(直到换行符或io.EOF，请使用fmt.Scanln：</p>
+<pre><code>var line string
+fmt.Scanln(&amp;line)
+fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
+</code></pre><h3 id="bufioreader从stdin读取一行">bufio.Reader从stdin读取一行</h3>
+<p>您也可以使用bufio.Reader：</p>
+<pre><code>reader := bufio.NewReader(os.Stdin)
+if line, err := reader.ReadString('\n'); err != nil {
+    fmt.Printf(&quot;ReadString failed with '%s'\n&quot;, err)
+} else {
+    fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
 }
-
-// String satisfies the fmt.Stringer interface
-// Defining it on type User2 makes it available on *User2 as well
-func (u User2) String() string {
-    return fmt.Sprintf(&quot;%s &lt;%s&gt;&quot;, u.Name, u.Email)
+</code></pre><p>ReadString从读取器读取，直到读取给定字符。 我们指定了换行符\n，因此它将读取整行。</p>
+<p>ReadString返回的值包含终止字符(\n)，因此通常您希望使用例如。 strings.TrimSpace。</p>
+<p>字符\n是Unix上的行终止符。 在Windows上更常见的是将\r\n视为行终止符。 如果希望在Windows上运行，请确保进行处理(例如，通过从返回的字符串中修剪\r字符)。</p>
+<h4 id="bufioscanner从stdin读取一行">bufio.Scanner从stdin读取一行</h4>
+<p>也可以使用bufio.Scanner从stdin读取行</p>
+<pre><code>scanner := bufio.NewScanner(os.Stdin)
+for scanner.Scan() {
+    line := scanner.Text()
+    fmt.Printf(&quot;Entered line: '%s'\n&quot;, line)
 }
-
-func main() {
-    u1 := &amp;User1{
-        Name:  &quot;John Doe&quot;,
-        Email: &quot;johndoe@example.com&quot;,
-    }
-
-    fmt.Printf(&quot;u1: type: %T, value: %s\n\n&quot;, u1, u1)
-
-    u2 := User2{
-        Name:  &quot;John Doe&quot;,
-        Email: &quot;johndoe@example.com&quot;,
-    }
-
-    fmt.Printf(&quot;u2: type:  %T, value: %s\n\n&quot;, u2, u2)
-
-        // method define on type User2 is also available on type *User2
-    u3 := &amp;User2{
-        Name:  &quot;John Doe&quot;,
-        Email: &quot;johndoe@example.com&quot;,
-    }
-
-    fmt.Printf(&quot;u3: type: %T, value: %s\n&quot;, u3, u3)
-}
-</code></pre><blockquote>
-<p>u1: type: *main.User1, value: &amp;{John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a>}<br>
-u2: type:  main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a><br>
-u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">johndoe@example.com</a></p>
-</blockquote>
-<p>类型User1没有实现Stringer接口，因此％s使用结构的标准格式显示它。</p>
-<p>类型User2实现了Stringer接口，因此％s使用String()方法获取值。</p>
-<p>类型User2和* User2不同。</p>
-<p>但是，为方便起见，在User2上定义的方法也可以在* User2上使用(但反之则不行)。</p>
-<p>因此，最好在struct上定义String()方法，而不是struct的指针。</p>
+</code></pre><p>bufio.Scanner允许使用更复杂的用法，您可以指定使用Scanner.Split将输入拆分成块的函数。</p>
 
                                                 
                                             </div>
@@ -258,7 +216,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Package-fmt/">https://luangeng.space/post/go/basic/Package-fmt/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/ConsoleIO/">https://luangeng.space/post/go/basic/ConsoleIO/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -277,19 +235,19 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Plugin/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/Protobuf/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go 插件</span>
+                                            <span>Go Protobuf</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go Protobuf in Go</span>
+                                            <span>Go 加解密</span>
                                         </a>
                                         
                                     </li>
@@ -326,17 +284,6 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -347,7 +294,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -358,7 +305,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -369,7 +316,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -380,7 +327,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -391,7 +338,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -402,8 +349,19 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -468,7 +426,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -479,7 +437,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -490,7 +448,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -572,8 +530,6 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
@@ -587,6 +543,8 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
                 
             </ul>
         </div>
@@ -602,9 +560,9 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>

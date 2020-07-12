@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go Panic和recover - 计算机与软件技术公开课</title>
+  <title>Go Text和HTML模板 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go Panic和recover - 计算机与软件技术公开课">
-  <meta name="description" content="Go Panic和recover">
-  <meta itemprop="name" content="Go Panic和recover - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go Panic和recover">
-  <meta property="og:title" content="Go Panic和recover - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go Text和HTML模板 - 计算机与软件技术公开课">
+  <meta name="description" content="Go Text和HTML模板">
+  <meta itemprop="name" content="Go Text和HTML模板 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go Text和HTML模板">
+  <meta property="og:title" content="Go Text和HTML模板 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/Panic-and-recover/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/Text-HTML-templates/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go Panic和recover">
+  <meta property="og:description" content="Go Text和HTML模板">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/Panic-and-recover/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Panic-and-recover/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/Text-HTML-templates/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Text-HTML-templates/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go Panic和recover</h1>
+                                        <h1 class="post-title">Go Text和HTML模板</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 1853 Words
+                                            Posted @ 2019-09-09 · 1881 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go Panic和recover">
+                                            <span class="leancloud_visitors" data-flag-title="Go Text和HTML模板">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,168 +149,463 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>本章假定你已经掌握了defer。</p>
-<p>在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。</p>
-<p>panic等同于引发或引发和恢复填充捕捉的作用。</p>
-<p>但是，尽管其他语言经常使用异常作为在呼叫链上传播错误的方式，但强烈建议不要在Go中使用panic。</p>
-<p>仅应在真正特别的情况下使用。</p>
-<p>对于普通的错误处理，请阅读有关错误处理的章节。</p>
-<h2 id="panic">panic</h2>
-<p>panic用来停止正常执行流程并退出当前函数。</p>
-<p>然后，在将控制权传递到堆栈上的下一个函数之前，将执行所有defer。</p>
-<p>堆栈上的每个函数都将退出并运行defer，直到使用defer的restore()处理panic，或者直到panic到达main()并终止程序为止。</p>
-<p>如果发生这种情况，提供给panic的参数和堆栈跟踪信息将输出到stderr。</p>
-<pre><code>func foo() {
-    defer fmt.Println(&quot;Exiting foo&quot;)
-    panic(&quot;bar&quot;)
+                                                <p>Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information.</p>
+<p>Building that HTML string by building smaller strings and concatenating them with + would be tedious.</p>
+<p>Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual output:</p>
+<p>var tmplStr = <code>User {{.User}} has {{.TotalTweets}} tweets. {{- $tweetCount := len .RecentTweets }} Recent tweets: {{range $idx, $tweet := .RecentTweets}}Tweet {{$idx}} of {{$tweetCount}}: '{{.}}' {{end -}} Most recent tweet: '{{index .RecentTweets 0}}'</code></p>
+<p>t := template.New(&ldquo;tweets&rdquo;)
+t, err := t.Parse(tmplStr)
+if err != nil {
+log.Fatalf(&ldquo;template.Parse() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
 }
+data := struct {
+User         string
+TotalTweets  int
+RecentTweets []string
+}{
+User:         &ldquo;kjk&rdquo;,
+TotalTweets:  124,
+RecentTweets: []string{&ldquo;hello&rdquo;, &ldquo;there&rdquo;},
+}
+err = t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>User kjk has 124 tweets.
+Recent tweets:
+Tweet 0 of 2: 'hello'
+Tweet 1 of 2: 'there'
+Most recent tweet: 'hello'
+Each template has a name. template.New(&quot;tweets&quot;) creates an empty template with name tweets.
 
-func main() {
-    defer fmt.Println(&quot;Exiting main&quot;)
-    foo()
-}
-</code></pre><blockquote>
-<p>Exiting foo<br>
-Exiting main<br>
-panic: bar<br>
-goroutine 1 [running]:<br>
-main.foo()<br>
-/tmp/src315791376/main.go:10 +0xb9<br>
-main.main()<br>
-/tmp/src315791376/main.go:15 +0xa2<br>
-exit status 2</p>
-</blockquote>
-<p>panic可以接受任何类型的参数。</p>
-<h2 id="恢复">恢复</h2>
-<p>recover用来从panic中恢复。</p>
-<p>由于正常的执行流程已暂停，因此必须在defer语句中尝试进行恢复。</p>
-<p>恢复语句必须直接出现在defer函数中。</p>
-<p>由defer函数调用的函数中的恢复语句将不被接受。</p>
-<p>如果程序当前处于panic状态，则recover()调用将返回提供给初始紧急状态的参数。</p>
-<p>如果该程序当前未出现紧急情况，则recover()将返回nil。</p>
-<pre><code>func foo() {
-    panic(&quot;bar&quot;)
-}
+t.Parse(s string) parses the template.
 
-func bar() {
-    defer func() {
-        if msg := recover(); msg != nil {
-            fmt.Printf(&quot;Recovered with message %s\n&quot;, msg)
-        }
-    }()
-    foo()
-    fmt.Println(&quot;Never gets executed&quot;)
-}
+t.Execute(w io.Writer, v interface{}) executes the template with a given value and writing the result to an io.Writer.
 
-func main() {
-    fmt.Println(&quot;Entering main&quot;)
-    bar()
-    fmt.Println(&quot;Exiting main the normal way&quot;)
-}
-</code></pre><blockquote>
-<p>Entering main
-Recovered with message bar
-Exiting main the normal way</p>
-</blockquote>
-<h2 id="从panic中恢复">从panic中恢复</h2>
-<p>一个常见的错误是声明一个slice并开始使用索引访问数据而不进行初始化，这会引发“index out of range”的panic。</p>
-<p>以下代码说明了如何在不退出程序的情况下从panic中恢复，这是处理panic的正确方法。</p>
-<p>在大多数情况下，以这种方式返回错误而不是紧急退出程序仅对开发或测试有用。</p>
-<pre><code>type Foo struct {
-    Is []int
-}
+{{ ... }} is an action are instructions for templating engine.
 
-func (fp *Foo) Panic() (err error) {
-    defer PanicRecovery(&amp;err)
-    fp.Is[0] = 5
-    return nil
-}
+{{.TweetCount}} means printing the value of TweetCount in current context.
 
-func PanicRecovery(err *error) {
+Data passed to a template can be hierarchical (i.e. a struct withing a struct within a struct…).
 
-    if r := recover(); r != nil {
-        if _, ok := r.(runtime.Error); ok {
-            //fmt.Println(&quot;Panicing&quot;)
-            //panic(r)
-            *err = r.(error)
-        } else {
-            *err = r.(error)
-        }
+Current context . refers to current scope within the data.
+
+Initial . refers to top-level scope:
+
+tmplStr := &quot;Data: {{.}}\n&quot;
+t := template.Must(template.New(&quot;simple&quot;).Parse(tmplStr))
+execWithData := func(data interface{}) {
+    err := t.Execute(os.Stdout, data)
+    if err != nil {
+        log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
     }
 }
 
-func main() {
-    fp := &amp;Foo{}
-    if err := fp.Panic(); err != nil {
-        fmt.Printf(&quot;Error: %v\n&quot;, err)
-    }
-    fmt.Println(&quot;ok&quot;)
+execWithData(5)
+execWithData(&quot;foo&quot;)
+st := struct {
+    Number int
+    Str    string
+}{
+    Number: 3,
+    Str:    &quot;hello&quot;,
 }
-</code></pre><blockquote>
-<p>Error: runtime error: index out of range [0] with length 0<br>
-ok</p>
-</blockquote>
-<p>The use of a separate function (rather than closure) allows re-use of the same function in other functions prone to panic.</p>
-<p>使用单独的功能(而不是关闭功能)允许在其他容易出现恐慌的功能中重复使用同一功能。</p>
-<h2 id="panic用例">panic用例</h2>
-<p>在Go中使用panic应该非常少见，但确实有有效的用例。</p>
-<p>因API使用不当而导致崩溃,这类似于在其他语言中使用assert。</p>
-<p>假设你正在编写一个httpGet函数来下载URL的内容。</p>
-<p>URL为空字符串应该怎么办？ 调用侧显然是错误的。</p>
-<p>可以返回错误，但也可以因panic而崩溃：</p>
-<pre><code>func httpGet(uri string) ([]byte, error) {
-    if uri == &quot;&quot; {
-        panic(&quot;uri cannot be empty&quot;)
-    }
-    // ... download the url
-}
-</code></pre><p>有时会更好，因为可以忽略错误，或者程序可能认为这是有效的错误情况，例如网站关闭。</p>
-<p>强制崩溃会增加开发人员查看问题并解决问题的机会。</p>
-<p>如果你经常这样做，此辅助功能将非常有用：</p>
-<pre><code>func panicIf(cond bool, args ...interface{}) {
-    if !cond {
-        return
-    }
-    if len(args) == 0 {
-        panic(errors.New(&quot;cond failed&quot;))
-    }
-    format := args[0].(string)
-    args = args[1:]
-    err := fmt.Errorf(format, args)
-    panic(err)
-}
-</code></pre><p>现在可以将其写成一行：</p>
-<pre><code>func httpGet(uri string) ([]byte, error) {
-    panicIf(uri == &quot;&quot;, &quot;uri cannot be empty&quot;)
-    // ... download the url
-}
-</code></pre><p>函数panicIf是灵活的, 也可以这样调用：</p>
-<ul>
-<li>panicIf(n &lt; 0) and it&rsquo;ll panic with generic error message</li>
-<li>panicIf(n &lt; 0, &ldquo;n must be &gt;= 0&rdquo;) to provide more descriptive message</li>
-<li>panicIf(n &lt; 0, &ldquo;n is %d and must be &gt;= 0&rdquo;, n) to provide even more descriptive message</li>
-</ul>
-<p>Simplifying flow control in isolated piece of code
-Sometimes it’s easier to propagate an error by panicking and recovering rather than returning errors.</p>
-<p>This might be true e.g. in a parser.</p>
-<p>When you use that technique, you should observe one rule: panic should not cross public API boundary.</p>
-<p>In other words, if you implement a parser library, you should always recover all panics your code creates. Panic used for easier flow control should never reach the caller of your package API.</p>
-<p>Protect a program from a crash in a goroutine
-Unhandled panic in a goroutine crashes a program.</p>
-<p>This is the right behavior most of the time (panic indicates a serious bug and you should fix bugs, not cover them up).</p>
-<p>In rare occasions we don&rsquo;t want a single goroutine to bring down the whole program so we can wrap the code with a function that does recover at the top.</p>
-<p>This technique is used in Go’s http server package which handles each connection in a separate goroutine. In a web server we don&rsquo;t want a rare bug in request handling code to crash the program.</p>
-<p>在孤立的代码段中简化流控制
-有时候，通过恐慌和恢复而不是返回错误，更容易传播错误。</p>
-<p>这可能是正确的，例如在解析器中。</p>
-<p>使用该技术时，应遵守一条规则：恐慌症不应越过公共API边界。</p>
-<p>换句话说，如果实现解析器库，则应始终恢复代码创建的所有恐慌。用于更轻松地进行流控制的紧急情况永远不会到达包API的调用者。</p>
-<p>保护程序免受goroutine崩溃的影响
-goroutine中未处理的恐慌导致程序崩溃。</p>
-<p>在大多数情况下，这是正确的行为(恐慌表示严重的错误，应该修复错误，而不是掩盖错误)。</p>
-<p>在极少数情况下，我们不希望使用单个goroutine破坏整个程序，因此我们可以使用在顶部恢复的函数包装代码。</p>
-<p>Go的http服务器程序包中使用了此技术，该程序包在单独的goroutine中处理每个连接。在Web服务器中，我们不希望请求处理代码中出现罕见的bug会使程序崩溃。</p>
+execWithData(st)
+</code></pre><p>Data: 5
+Data: foo
+Data: {3 hello}
+Values that don’t have pre-defined formatting are printed using Stringer interface. For custom formatting of your type in a template implement String() string method.</p>
+<p>{{range .Tweets}}{{end}} evaluates inner part for every element of []string slice Tweets and sets current context . within the inner part to elements of Tweets slice.</p>
+<p>{{index .RecentTweets 0}} is equivalent to RecentTweets[0] in Go code.</p>
+<p>Text in a template is copied verbatim. Having to preserve whitespace can lead to ugly templates.</p>
+<p>To help write more readable templates We can add - at the beginning or end of action as seen in {{end -}}.</p>
+<p>This remove whitespace before or after the action.</p>
+<p>{{range .RecentTweets}} changes variable scope and we don’t have access to data outside. If we need to access data from upper scope, we can define variables like {{ $tweetCount := len .RecentTweets }}.</p>
+<h2 id="methods-as-data">Methods as data</h2>
+<p>In a template {{ .Foo }} will either access struct field Foo or call a function Foo():</p>
+<p>var tmplStr = <code>Data from a field: '{{ .Field }}' Data from a method: '{{ .Method }}'</code></p>
+<p>t := template.New(&ldquo;method&rdquo;)
+t, err := t.Parse(tmplStr)
+if err != nil {
+log.Fatalf(&ldquo;template.Parse() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>data := Data{
+Field: 5,
+}</p>
+<p>err = t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Data from a field: '5'
+Data from a method: 'data from a method'
 
+## if action
+To conditionally render parts of the template, use if action:
+
+const tmplStr = `{{range . -}}
+{{if .IsNew}}'{{.Name}}' is new{{else}}'{{.Name}}' is not new{{end}}
+{{end}}`
+
+t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
+
+data := []struct {
+    Name  string
+    IsNew bool
+}{
+    {&quot;Bridge&quot;, false},
+    {&quot;Electric battery&quot;, true},
+}
+
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>&lsquo;Bridge&rsquo; is not new
+&lsquo;Electric battery&rsquo; is new
+false values
+Templating uses “truthy” logic for deciding what values are true or false in the context of if action:</p>
+<p>const tmplStr = <code>{{range . -}} {{printf &quot;%- 16s&quot; .Name}} is: {{if .Value}}true{{else}}false{{end}} {{end}}</code></p>
+<p>t := template.Must(template.New(&ldquo;if&rdquo;).Parse(tmplStr))</p>
+<p>var nilPtr *string = nil
+var nilSlice []float32
+emptySlice := []int{}</p>
+<p>data := []struct {
+Name  string
+Value interface{}
+}{
+{&ldquo;bool false&rdquo;, false},
+{&ldquo;bool true&rdquo;, true},
+{&ldquo;integer 0&rdquo;, 0},
+{&ldquo;integer 1&rdquo;, 1},
+{&ldquo;float32 0&rdquo;, float32(0)},
+{&ldquo;float64 NaN&rdquo;, math.NaN},
+{&ldquo;empty string&rdquo;, &ldquo;&quot;},
+{&ldquo;non-empty string&rdquo;, &ldquo;haha&rdquo;},
+{&ldquo;nil slice&rdquo;, nilSlice},
+{&ldquo;empty slice&rdquo;, emptySlice},
+{&ldquo;non-empty slice&rdquo;, []int{3}},
+{&ldquo;nil pointer&rdquo;, nilPtr},
+}</p>
+<p>err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>bool false       is: false
+bool true        is: true
+integer 0        is: false
+integer 1        is: true
+float32 0        is: false
+float64 NaN      is: true
+empty string     is: false
+non-empty string is: true
+nil slice        is: false
+empty slice      is: false
+non-empty slice  is: true
+nil pointer      is: false
+Avoid printing empty slices
+Truthy logic is useful when we want to show different text if a list of items is empty:
+
+type UserTweets struct {
+    User   string
+    Tweets []string
+}
+
+const tmplStr = `
+{{- if not .Tweets -}}
+User '{{.User}}' has no tweets.
+{{ else -}}
+User '{{.User}}' has {{ len .Tweets }} tweets:
+{{ range .Tweets -}}
+  '{{ . }}'
+{{ end }}
+{{- end}}`
+
+t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
+
+data := UserTweets{
+    User: &quot;kjk&quot;,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+
+data = UserTweets{
+    User:   &quot;masa&quot;,
+    Tweets: []string{&quot;tweet one&quot;, &quot;tweet two&quot;},
+}
+err = t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>User &lsquo;kjk&rsquo; has no tweets.
+User &lsquo;masa&rsquo; has 2 tweets:
+&lsquo;tweet one&rsquo;
+&lsquo;tweet two&rsquo;</p>
+<h2 id="range-action">range action</h2>
+<p>Just as in Go, range can iterate over arrays, slices, maps and channels.</p>
+<p>Range over arrays and slices
+const tmplStr = <code>Elements of arrays or slice: {{ range . }}{{ . }} {{end}}</code></p>
+<p>t := template.Must(template.New(&ldquo;range&rdquo;).Parse(tmplStr))</p>
+<p>array := [&hellip;]int{3, 8}
+err := t.Execute(os.Stdout, array)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>slice := []int{12, 5}
+err = t.Execute(os.Stdout, slice)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Elements of arrays or slice: 3 8 
+Elements of arrays or slice: 12 5 
+Range over maps
+const tmplStr = `Elements of map:
+{{ range $k, $v := . }}{{ $k }}: {{ $v }}
+{{end}}`
+
+t := template.Must(template.New(&quot;range&quot;).Parse(tmplStr))
+
+data := map[string]int{
+    &quot;one&quot;:  1,
+    &quot;five&quot;: 5,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>Elements of map:
+five: 5
+one: 1
+Range over channels
+const tmplStr = <code>Elements of a channel: {{ range . }}{{ . }} {{end}}</code></p>
+<p>t := template.Must(template.New(&ldquo;range&rdquo;).Parse(tmplStr))</p>
+<p>ch := make(chan int)
+go func() {
+for i := 0; i &lt; 3; i++ {
+ch &lt;- i
+}
+close(ch)
+}()
+err := t.Execute(os.Stdout, ch)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Elements of a channel: 0 1 2 
+
+## Built-in functions
+Templating engine supports calling functions like {{ len .Tweet }} where len is a function that returns length of an array or slice.
+
+and, or, not
+and, or, not are for logical operations:
+
+const tmplStr = `Or:  {{ if or .True .False }}true{{ else }}false{{ end }}
+And: {{ if and .True .False }}true{{ else }}false{{ end }}
+Not: {{ if not .False }}true{{ else }}false{{ end }}
+`
+
+t := template.Must(template.New(&quot;and_or_not&quot;).Parse(tmplStr))
+
+data := Data{True: true, False: false}
+
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>Or:  true
+And: false
+Not: true
+index
+index is for accessing elements of a slice by index or values in a map by key.</p>
+<p>const tmplStr = <code>Slice[0]: {{ index .Slice 0 }} SliceNested[1][0]: {{ index .SliceNested 1 0 }} Map[&quot;key&quot;]: {{ index .Map &quot;key&quot; }}</code></p>
+<p>t := template.Must(template.New(&ldquo;index&rdquo;).Parse(tmplStr))</p>
+<p>data := struct {
+Slice       []string
+SliceNested [][]int
+Map         map[string]int
+}{
+Slice: []string{&ldquo;first&rdquo;, &ldquo;second&rdquo;},
+SliceNested: [][]int{
+{3, 1},
+{2, 3},
+},
+Map: map[string]int{
+&ldquo;key&rdquo;: 5,
+},
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Slice[0]: first
+SliceNested[1][0]: 2
+Map[&quot;key&quot;]: 5
+len
+len returns length of an array of map.
+
+const tmplStr = `len(nil)       : {{ len .SliceNil }}
+len(emptySlice): {{ len .SliceEmpty }}
+len(slice)     : {{ len .Slice }}
+len(map)       : {{ len .Map }}
+`
+
+t := template.Must(template.New(&quot;len&quot;).Parse(tmplStr))
+
+data := struct {
+    SliceNil   []int
+    SliceEmpty []string
+    Slice      []bool
+    Map        map[int]bool
+}{
+    SliceNil:   nil,
+    SliceEmpty: []string{},
+    Slice:      []bool{true, true, false},
+    Map:        map[int]bool{5: true, 3: false},
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>len(nil)       : 0
+len(emptySlice): 0
+len(slice)     : 3
+len(map)       : 2
+print, printf, println
+print is like fmt.Sprint.</p>
+<p>printf is like fmt.Sprintf.</p>
+<p>println is like fmt.Sprintln.</p>
+<p>const tmplStr = <code>print:   {{ print .Str .Num }} println: {{ println .Str .Num }} printf:  {{ printf &quot;%s %#v %d&quot; .Str .Str .Num }}</code></p>
+<p>t := template.Must(template.New(&ldquo;print&rdquo;).Parse(tmplStr))</p>
+<p>data := struct {
+Str string
+Num int
+}{
+Str: &ldquo;str&rdquo;,
+Num: 8,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>print:   str8
+println: str 8
+
+printf:  str &quot;str&quot; 8
+js, html, urlquery
+js, html and urlquery is for escaping text so that it can be safely inserted in a JavaScript, HTML and URL context:
+
+const tmplStr = `js escape  : {{ js .JS }}
+html escape: {{ html .HTML }}
+url escape : {{ urlquery .URL }}
+`
+
+t := template.Must(template.New(&quot;print&quot;).Parse(tmplStr))
+
+data := struct {
+    JS   string
+    HTML string
+    URL  string
+}{
+    JS:   `function me(s) { return &quot;foo&quot;; }`,
+    HTML: `&lt;div&gt;text&lt;/div&gt;`,
+    URL:  `http://www.programming-books.io`,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>js escape  : function me(s) { return &quot;foo&quot;; }
+html escape: &lt;div&gt;text&lt;/div&gt;
+url escape : http%3A%2F%2Fwww.programming-books.io</p>
+<h2 id="custom-functions">Custom functions</h2>
+<p>You can define custom functions and make them available in templates:</p>
+<p>const tmplStr = <code>5 + 5 = {{ sum 5 .Arg }}</code></p>
+<p>customFunctions := template.FuncMap{
+&ldquo;sum&rdquo;: sum,
+}</p>
+<p>t := template.Must(template.New(&ldquo;func&rdquo;).Funcs(customFunctions).Parse(tmplStr))</p>
+<p>data := struct {
+Arg int
+}{
+Arg: 5,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>5 + 5 = 10
+
+## HTML templates
+Package html/template has the same base functionality as text/template.
+
+The difference is that html/template understands structure of HTML and JavaScript code inside HTML.
+
+Inserted text is escaped based on its surrounding context which eliminates cross-site scripting bugs.
+
+const tmplStr = `&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;
+`
+
+txt := text_template.Must(text_template.New(&quot;text&quot;).Parse(tmplStr))
+
+html := html_template.Must(html_template.New(&quot;html&quot;).Parse(tmplStr))
+
+data := struct {
+    JS   string
+    HTML string
+    URL  string
+}{
+    JS:   `foo`,
+    HTML: `&lt;span&gt;text&lt;/span&gt;`,
+    URL:  `http://www.programming-books.io`,
+}
+
+err := txt.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+
+fmt.Println()
+
+err = html.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>const tmplStr = <code>&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;</code></p>
+<p>html := template.Must(template.New(&ldquo;html&rdquo;).Parse(tmplStr))</p>
+<p>data := struct {
+JS   string
+HTML string
+}{
+JS:   <code>foo</code>,
+HTML: <code>&lt;span&gt;text&lt;/span&gt;</code>,
+}</p>
+<p>fmt.Printf(&ldquo;Escaped:\n&rdquo;)
+err := html.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>fmt.Printf(&quot;\nUnescaped:\n&rdquo;)
+data2 := struct {
+JS   template.JS
+HTML template.HTML
+}{
+JS:   <code>foo</code>,
+HTML: <code>&lt;span&gt;text&lt;/span&gt;</code>,
+}
+err = html.Execute(os.Stdout, data2)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Escaped:
+&lt;div onlick=&quot;&amp;#34;foo&amp;#34;&quot;&gt;&amp;lt;span&amp;gt;text&amp;lt;/span&amp;gt;&lt;/div&gt;
+
+Unescaped:
+&lt;div onlick=&quot;foo&quot;&gt;&lt;span&gt;text&lt;/span&gt;&lt;/div&gt;
+template.HTML and template.JS are type alises for string so you can assign string values to them.
+
+Templating engine recognizes those types and disables escaping for them.</code></pre>
                                                 
                                             </div>
 
@@ -331,7 +626,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Panic-and-recover/">https://luangeng.space/post/go/basic/Panic-and-recover/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Text-HTML-templates/">https://luangeng.space/post/go/basic/Text-HTML-templates/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -350,19 +645,19 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Defer/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go Defer</span>
+                                            <span>Go HTTP server middleware</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Concurrency/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/Reflection/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go 并发</span>
+                                            <span>Go 反射</span>
                                         </a>
                                         
                                     </li>
@@ -399,7 +694,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -541,7 +836,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Console-IO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -552,7 +847,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/" class="leancloud-count">Go Protobuf in Go
+                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -563,7 +858,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Package-fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -645,7 +940,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
@@ -675,9 +970,9 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Console-IO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf-in-Go/">Go Protobuf in Go</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>
