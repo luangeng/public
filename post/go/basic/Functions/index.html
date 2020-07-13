@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go 函数</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2032 Words
+                                            Posted @ 2019-09-09 · 2121 Words
                                             
                                             · Tags: Go
                                             
@@ -440,7 +440,22 @@ fmt.Println(two(), two(), two()) // 2 4 6
 
 fortyTwo := multiples(42)
 fmt.Println(fortyTwo(), fortyTwo(), fortyTwo()) // 42 84 126
-</code></pre>
+</code></pre><h2 id="slice做函数参数">slice做函数参数</h2>
+<p>slice做函数参数,是值传递的,即在函数中操作的是值的拷贝,要想在函数中改变参数slice,则需要传入指针:</p>
+<pre><code>func testslice(ss *[]int){
+	*ss = append(*ss, 4)
+}
+func main(){
+    var s= []int{1,2,3}
+	fmt.Println(s)
+	testslice(&amp;s)
+	fmt.Println(s)
+}
+</code></pre><blockquote>
+<p>[1 2 3]<br>
+[1 2 3 1]</p>
+</blockquote>
+
                                                 
                                             </div>
 
