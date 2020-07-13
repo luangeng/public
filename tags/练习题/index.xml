@@ -14,10 +14,10 @@
     
     <item>
       <title>反转单向链表</title>
-      <link>https://luangeng.space/post/java/exe/reverseList/</link>
+      <link>https://luangeng.space/post/java/exe/reverselist/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/exe/reverseList/</guid>
+      <guid>https://luangeng.space/post/java/exe/reverselist/</guid>
       <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
     </item>
     

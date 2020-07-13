@@ -14,289 +14,289 @@
     
     <item>
       <title>Go 介绍</title>
-      <link>https://luangeng.space/post/go/basic/Intro/</link>
+      <link>https://luangeng.space/post/go/basic/intro/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Intro/</guid>
+      <guid>https://luangeng.space/post/go/basic/intro/</guid>
       <description>Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫(Robert Gr</description>
     </item>
     
     <item>
       <title>Go 安装</title>
-      <link>https://luangeng.space/post/go/basic/Install/</link>
+      <link>https://luangeng.space/post/go/basic/install/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Install/</guid>
+      <guid>https://luangeng.space/post/go/basic/install/</guid>
       <description>Windows系统下安装和设置 安装 从 https://golang.org/dl/ 下载.msi包并运行即可 设置 安装完成后，你需要配置GOPATH环境变量。从Go 1.8开始，GOPATH</description>
     </item>
     
     <item>
       <title>Go基本数据类型</title>
-      <link>https://luangeng.space/post/go/basic/Types/</link>
+      <link>https://luangeng.space/post/go/basic/types/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Types/</guid>
+      <guid>https://luangeng.space/post/go/basic/types/</guid>
       <description>bool bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) b = false fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) var b2 bool fmt.Printf(&amp;quot;zero value of bool is: &#39;%v&#39;\n&amp;quot;, b2) b is: &amp;lsquo;true&amp;rsquo; b is: &amp;lsquo;false&amp;rsquo; zero value of bool is: &amp;lsquo;false&amp;rsquo; b</description>
     </item>
     
     <item>
       <title>Go 变量</title>
-      <link>https://luangeng.space/post/go/basic/Variables/</link>
+      <link>https://luangeng.space/post/go/basic/variables/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Variables/</guid>
+      <guid>https://luangeng.space/post/go/basic/variables/</guid>
       <description>Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // 初始化为其零值 str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is</description>
     </item>
     
     <item>
       <title>Go 常量</title>
-      <link>https://luangeng.space/post/go/basic/Constants/</link>
+      <link>https://luangeng.space/post/go/basic/constants/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Constants/</guid>
+      <guid>https://luangeng.space/post/go/basic/constants/</guid>
       <description>Go支持character, string,boolean和数字型的常量. 常量基本使用: // Greeting是public的string常量 const Greeting</description>
     </item>
     
     <item>
       <title>Go 字符串</title>
-      <link>https://luangeng.space/post/go/basic/String/</link>
+      <link>https://luangeng.space/post/go/basic/string/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/String/</guid>
+      <guid>https://luangeng.space/post/go/basic/string/</guid>
       <description>go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt</description>
     </item>
     
     <item>
       <title>Go 指针</title>
-      <link>https://luangeng.space/post/go/basic/Pointers/</link>
+      <link>https://luangeng.space/post/go/basic/pointers/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Pointers/</guid>
+      <guid>https://luangeng.space/post/go/basic/pointers/</guid>
       <description>指向变量的指针是该变量在内存中的地址。 Go不允许进行指针运算,不能在指针上加减。 指针的零值为nil。 指针使用示例： v := 5 // pv是指向v的指针</description>
     </item>
     
     <item>
       <title>Go 数组</title>
-      <link>https://luangeng.space/post/go/basic/Array/</link>
+      <link>https://luangeng.space/post/go/basic/array/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Array/</guid>
+      <guid>https://luangeng.space/post/go/basic/array/</guid>
       <description>Go中的数组是相同类型元素的有序集合。数组的长度是固定不变的,不能扩展,因此比较少用.大部分情况下我们可以使用slice,它的长度可以扩大和</description>
     </item>
     
     <item>
       <title>Go 切片</title>
-      <link>https://luangeng.space/post/go/basic/Slice/</link>
+      <link>https://luangeng.space/post/go/basic/slice/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Slice/</guid>
+      <guid>https://luangeng.space/post/go/basic/slice/</guid>
       <description>切片是相同类型的值的可增长序列。 其他语言称它们为数组或向量。 slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。 切片具有长度和容</description>
     </item>
     
     <item>
       <title>Go map类型</title>
-      <link>https://luangeng.space/post/go/basic/Map/</link>
+      <link>https://luangeng.space/post/go/basic/map/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Map/</guid>
+      <guid>https://luangeng.space/post/go/basic/map/</guid>
       <description>map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C++). map</description>
     </item>
     
     <item>
       <title>Go struct类型</title>
-      <link>https://luangeng.space/post/go/basic/Struct/</link>
+      <link>https://luangeng.space/post/go/basic/struct/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Struct/</guid>
+      <guid>https://luangeng.space/post/go/basic/struct/</guid>
       <description>struct的作用是将几个相关的变量组合成一个独立的实体. 另外,struct可以有方法,如同Java和C++中的类. 不同于Java和C++中</description>
     </item>
     
     <item>
       <title>Go 接口</title>
-      <link>https://luangeng.space/post/go/basic/Interfaces/</link>
+      <link>https://luangeng.space/post/go/basic/interface/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Interfaces/</guid>
+      <guid>https://luangeng.space/post/go/basic/interface/</guid>
       <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea</description>
     </item>
     
     <item>
       <title>Go 判断</title>
-      <link>https://luangeng.space/post/go/basic/If-switch-goto/</link>
+      <link>https://luangeng.space/post/go/basic/if-switch-goto/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/If-switch-goto/</guid>
+      <guid>https://luangeng.space/post/go/basic/if-switch-goto/</guid>
       <description>if 使用if进行基本的条件判断, 基本使用示例: a := 5 b := 6 if a == b { fmt.Print(&amp;quot;a is equal to b\n&amp;quot;) } else { fmt.Print(&amp;quot;a is not equal to b\n&amp;quot;) } a is not equal to b func returnValues(ok bool) (int, bool) { return 5, ok } func main() { a := 5</description>
     </item>
     
     <item>
       <title>Go 循环</title>
-      <link>https://luangeng.space/post/go/basic/Loop/</link>
+      <link>https://luangeng.space/post/go/basic/loop/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Loop/</guid>
+      <guid>https://luangeng.space/post/go/basic/loop/</guid>
       <description>Go中只有for循环,for循环的完整形式如下: for i := 0; i &amp;lt; 5; i += 2 { fmt.Printf(&amp;quot;i: %d\n&amp;quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的 比如没有初始化:</description>
     </item>
     
     <item>
       <title>Go range</title>
-      <link>https://luangeng.space/post/go/basic/Range/</link>
+      <link>https://luangeng.space/post/go/basic/range/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Range/</guid>
+      <guid>https://luangeng.space/post/go/basic/range/</guid>
       <description>遍历字符串 s := &amp;quot;Hey 世界&amp;quot; for i, r := range s { fmt.Printf(&amp;quot;idx: %d, rune: %d\n&amp;quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 请注意，范围假定字符串是UTF-</description>
     </item>
     
     <item>
       <title>Go 函数</title>
-      <link>https://luangeng.space/post/go/basic/Function/</link>
+      <link>https://luangeng.space/post/go/basic/function/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Function/</guid>
+      <guid>https://luangeng.space/post/go/basic/function/</guid>
       <description>基本函数示例: // addCheckOverflow 完成2个int16相加,并且额外返回是否溢出 func addCheckOverflow(a, b uint16) (uint16, bool) { res := a + b overflowed := res &amp;lt; a || res &amp;lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&amp;quot;%5d + %5d = %5d, overflowed:</description>
     </item>
     
     <item>
       <title>Go 方法</title>
-      <link>https://luangeng.space/post/go/basic/Methods/</link>
+      <link>https://luangeng.space/post/go/basic/methods/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Methods/</guid>
+      <guid>https://luangeng.space/post/go/basic/methods/</guid>
       <description>方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C++中的类相似 方法基本例子: type Person struct { FirstName string</description>
     </item>
     
     <item>
       <title>Go 错误处理</title>
-      <link>https://luangeng.space/post/go/basic/Error-handling/</link>
+      <link>https://luangeng.space/post/go/basic/error-handling/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Error-handling/</guid>
+      <guid>https://luangeng.space/post/go/basic/error-handling/</guid>
       <description>基本错误处理: func sqrt(n float64) (float64, error) { if n &amp;lt; 0 { return 0, fmt.Errorf(&amp;quot;invalid argument &#39;%f&#39;, must be &amp;gt;= 0&amp;quot;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&amp;quot;sqrt of %f is %f\n&amp;quot;, n, res) } else { fmt.Printf(&amp;quot;sqrt of %f returned error &#39;%s&#39;\n&amp;quot;, n, err) } } func main() { printSqrt(16)</description>
     </item>
     
     <item>
       <title>Go Defer</title>
-      <link>https://luangeng.space/post/go/basic/Defer/</link>
+      <link>https://luangeng.space/post/go/basic/defer/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Defer/</guid>
+      <guid>https://luangeng.space/post/go/basic/defer/</guid>
       <description>使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁) Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面</description>
     </item>
     
     <item>
       <title>Go Panic和recover</title>
-      <link>https://luangeng.space/post/go/basic/Panic-recover/</link>
+      <link>https://luangeng.space/post/go/basic/panic-recover/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Panic-recover/</guid>
+      <guid>https://luangeng.space/post/go/basic/panic-recover/</guid>
       <description>本章假定你已经掌握了defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic</description>
     </item>
     
     <item>
       <title>Go 并发</title>
-      <link>https://luangeng.space/post/go/basic/Concurrency/</link>
+      <link>https://luangeng.space/post/go/basic/concurrency/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Concurrency/</guid>
+      <guid>https://luangeng.space/post/go/basic/concurrency/</guid>
       <description>Go使用goroutines实现并发. 简单来说goroutines就像线程. Gorutines独立执行并且共享内存. 由于goroutines</description>
     </item>
     
     <item>
       <title>Go channel和select</title>
-      <link>https://luangeng.space/post/go/basic/Channels-select/</link>
+      <link>https://luangeng.space/post/go/basic/channels-select/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Channels-select/</guid>
+      <guid>https://luangeng.space/post/go/basic/channels-select/</guid>
       <description>channel是给定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。 goroutines通信时使用ch&amp;</description>
     </item>
     
     <item>
       <title>Go Mutex</title>
-      <link>https://luangeng.space/post/go/basic/Mutex/</link>
+      <link>https://luangeng.space/post/go/basic/mutex/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Mutex/</guid>
+      <guid>https://luangeng.space/post/go/basic/mutex/</guid>
       <description>Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。 避免这种</description>
     </item>
     
     <item>
       <title>Go 包管理</title>
-      <link>https://luangeng.space/post/go/basic/Packages/</link>
+      <link>https://luangeng.space/post/go/basic/packages/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Packages/</guid>
+      <guid>https://luangeng.space/post/go/basic/packages/</guid>
       <description>Go中的包代表了相关联的代码的单位,在其他语言中经常称为库. 包由一个目录下的多个文件组成.这个目录和包是一对一映射的. 一个仓库中可以包含多个</description>
     </item>
     
     <item>
       <title>Go 文件和I/O</title>
-      <link>https://luangeng.space/post/go/basic/FileIO/</link>
+      <link>https://luangeng.space/post/go/basic/fileio/</link>
       <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/FileIO/</guid>
+      <guid>https://luangeng.space/post/go/basic/fileio/</guid>
       <description>Go对文件操作的支持很健壮. 下面的程序打开,读取并关闭了一个文件: path := &amp;quot;main.go&amp;quot; f, err := os.Open(path) if err != nil { log.Fatalf(&amp;quot;os.Open() failed with %s\n&amp;quot;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&amp;quot;ioutil.ReadAll() failed with &#39;%s&#39;\n&amp;quot;, err) } lines :=</description>
     </item>
     
     <item>
       <title>Go 日期和时间</title>
-      <link>https://luangeng.space/post/go/basic/Time-date/</link>
+      <link>https://luangeng.space/post/go/basic/time-date/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Time-date/</guid>
+      <guid>https://luangeng.space/post/go/basic/time-date/</guid>
       <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型： 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
     </item>
     
     <item>
       <title>Go 解析命令行参数</title>
-      <link>https://luangeng.space/post/go/basic/Command-line-arguments/</link>
+      <link>https://luangeng.space/post/go/basic/command-line-arguments/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Command-line-arguments/</guid>
+      <guid>https://luangeng.space/post/go/basic/command-line-arguments/</guid>
       <description>标准库中的flag包用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
     </item>
     
     <item>
       <title>Go 日志</title>
-      <link>https://luangeng.space/post/go/basic/Logging/</link>
+      <link>https://luangeng.space/post/go/basic/logging/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Logging/</guid>
+      <guid>https://luangeng.space/post/go/basic/logging/</guid>
       <description>日志记录是一个非常深入的主题，因为不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方</description>
     </item>
     
     <item>
       <title>Go 执行命令</title>
-      <link>https://luangeng.space/post/go/basic/Executing-commands/</link>
+      <link>https://luangeng.space/post/go/basic/executing-commands/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Executing-commands/</guid>
+      <guid>https://luangeng.space/post/go/basic/executing-commands/</guid>
       <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command(</description>
     </item>
     
     <item>
       <title>Go Hex和 base64编码</title>
-      <link>https://luangeng.space/post/go/basic/Hex-base64-encoding/</link>
+      <link>https://luangeng.space/post/go/basic/hex-base64-encoding/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Hex-base64-encoding/</guid>
+      <guid>https://luangeng.space/post/go/basic/hex-base64-encoding/</guid>
       <description>有时候你需要将bytes编码非文本text. Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters. Hex编码和解码 我们可以把[]byte编码为st</description>
     </item>
     
     <item>
       <title>Go JSON</title>
-      <link>https://luangeng.space/post/go/basic/JSON/</link>
+      <link>https://luangeng.space/post/go/basic/json/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/JSON/</guid>
+      <guid>https://luangeng.space/post/go/basic/json/</guid>
       <description>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;`</description>
     </item>
     
     <item>
       <title>Go XML</title>
-      <link>https://luangeng.space/post/go/basic/XML/</link>
+      <link>https://luangeng.space/post/go/basic/xml/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/XML/</guid>
+      <guid>https://luangeng.space/post/go/basic/xml/</guid>
       <description>Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.
 Parse XML into a struct Parsing XML is similar to parsing JSON. You define structures that map to the structure of XML and unmarshal from []byte slice or io.Reader into a struct.
 var xmlStr = ` JohnSan FranciscoCA&amp;lt;person age=&amp;quot;23&amp;quot;&amp;gt; &amp;lt;first-name&amp;gt;Julia&amp;lt;/first-name&amp;gt; &amp;lt;/person&amp;gt;  `
@@ -306,217 +306,217 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>Go CSV</title>
-      <link>https://luangeng.space/post/go/basic/CSV/</link>
+      <link>https://luangeng.space/post/go/basic/csv/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/CSV/</guid>
+      <guid>https://luangeng.space/post/go/basic/csv/</guid>
       <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价： date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
     </item>
     
     <item>
       <title>Go YAML</title>
-      <link>https://luangeng.space/post/go/basic/YAML/</link>
+      <link>https://luangeng.space/post/go/basic/yaml/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/YAML/</guid>
+      <guid>https://luangeng.space/post/go/basic/yaml/</guid>
       <description>YAML是一种流行的格式，用于以人类友好的格式序列化数据, 类似JSON但更易于阅读。 由于其表达能力和可读性，YAML作为配置文件的格式很受欢</description>
     </item>
     
     <item>
       <title>Go SQL</title>
-      <link>https://luangeng.space/post/go/basic/SQL/</link>
+      <link>https://luangeng.space/post/go/basic/sql/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/SQL/</guid>
+      <guid>https://luangeng.space/post/go/basic/sql/</guid>
       <description>备注 有关SQL数据库驱动程序的列表，请参见Go Wiki官方文章SQLDrivers。 SQL驱动程序被导入并以_作为前缀，因此它们仅可用于驱动</description>
     </item>
     
     <item>
       <title>Go HTTP Client</title>
-      <link>https://luangeng.space/post/go/basic/HTTP-Client/</link>
+      <link>https://luangeng.space/post/go/basic/http-client/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/HTTP-Client/</guid>
+      <guid>https://luangeng.space/post/go/basic/http-client/</guid>
       <description>标准库中的net / http软件包提供了发出HTTP网络请求的功能。 在示例中，我们使用httpbin.org这是一个聪明的服务，可以返回特定的</description>
     </item>
     
     <item>
       <title>Go HTTP Server</title>
-      <link>https://luangeng.space/post/go/basic/HTTP-Server/</link>
+      <link>https://luangeng.space/post/go/basic/http-server/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/HTTP-Server/</guid>
+      <guid>https://luangeng.space/post/go/basic/http-server/</guid>
       <description>Hello World 开始使用Go编写Web服务器的典型方法是使用标准库中的net/http模块。 如下代码是最简单的HTTP服务器实现,它对任何HTTP请求都</description>
     </item>
     
     <item>
       <title>Go HTTP server middleware</title>
-      <link>https://luangeng.space/post/go/basic/HTTP-server-middleware/</link>
+      <link>https://luangeng.space/post/go/basic/middleware/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/HTTP-server-middleware/</guid>
+      <guid>https://luangeng.space/post/go/basic/middleware/</guid>
       <description>介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能</description>
     </item>
     
     <item>
       <title>Go Text和HTML模板</title>
-      <link>https://luangeng.space/post/go/basic/Text-HTML-templates/</link>
+      <link>https://luangeng.space/post/go/basic/text-html-templates/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Text-HTML-templates/</guid>
+      <guid>https://luangeng.space/post/go/basic/text-html-templates/</guid>
       <description>Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information. Building that HTML string by building smaller strings and concatenating them with + would be tedious. Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual</description>
     </item>
     
     <item>
       <title>Go 反射</title>
-      <link>https://luangeng.space/post/go/basic/Reflection/</link>
+      <link>https://luangeng.space/post/go/basic/reflection/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Reflection/</guid>
+      <guid>https://luangeng.space/post/go/basic/reflection/</guid>
       <description>Go是一种静态类型的语言。 在大多数情况下，变量的类型在编译时是已知的。接口类型是一种例外，尤其是空接口interface {}。 空接口是一种动</description>
     </item>
     
     <item>
       <title>Go Context</title>
-      <link>https://luangeng.space/post/go/basic/Context/</link>
+      <link>https://luangeng.space/post/go/basic/context/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Context/</guid>
+      <guid>https://luangeng.space/post/go/basic/context/</guid>
       <description>标准库中的context包提供了Context类型，它有多种用途。 下面是context.Context几个典型用法: 带超时（截止时间）的上下</description>
     </item>
     
     <item>
       <title>Go 测试</title>
-      <link>https://luangeng.space/post/go/basic/Testing/</link>
+      <link>https://luangeng.space/post/go/basic/testing/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Testing/</guid>
+      <guid>https://luangeng.space/post/go/basic/testing/</guid>
       <description>Go带有自己的测试功能，具有运行测试和基准所需的一切。 与大多数其他编程语言不同，尽管存在一些测试框架，但通常不需要单独的测试框架。 基本使用 main.go:</description>
     </item>
     
     <item>
       <title>Go Calling C from GO with cgo</title>
-      <link>https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/</link>
+      <link>https://luangeng.space/post/go/basic/calling-c-from-go-with-cgo/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/</guid>
+      <guid>https://luangeng.space/post/go/basic/calling-c-from-go-with-cgo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go 使用Go工具pprof进行性能分析</title>
-      <link>https://luangeng.space/post/go/basic/Pprof/</link>
+      <link>https://luangeng.space/post/go/basic/pprof/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Pprof/</guid>
+      <guid>https://luangeng.space/post/go/basic/pprof/</guid>
       <description>基本的cpu和内存分析 在主程序中添加以下代码。 var cpuprofile = flag.String(&amp;quot;cpuprofile&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;write cpu profile `file`&amp;quot;) var memprofile = flag.String(&amp;quot;memprofile&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;write memory profile to `file`&amp;quot;) func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;quot; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&amp;quot;could not create CPU profile: &amp;quot;, err) } if err</description>
     </item>
     
     <item>
       <title>Go 交叉编译</title>
-      <link>https://luangeng.space/post/go/basic/Cross-compilation/</link>
+      <link>https://luangeng.space/post/go/basic/cross-compilation/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Cross-compilation/</guid>
+      <guid>https://luangeng.space/post/go/basic/cross-compilation/</guid>
       <description>Go compiler can create native executable binaries for many operating system: Windows, Mac OS X, Linux, Android, iOS and a few lesser known like plan9, solaris, freebsd, openbsd, netbsd, dragonfly. It also supports multiple architectures (CPUs) for the same operating system e.g. it can generate both 32-bit and 64-bit Windows binaries or intel, arm, ppc, mips Linux binaries. Better yet, the toolchain supports cross-compilation i.e. you can create a Linux</description>
     </item>
     
     <item>
       <title>Go 使用构建标签进行条件编译</title>
-      <link>https://luangeng.space/post/go/basic/Conditional-compilation/</link>
+      <link>https://luangeng.space/post/go/basic/conditional-compilation/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Conditional-compilation/</guid>
+      <guid>https://luangeng.space/post/go/basic/conditional-compilation/</guid>
       <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 Tags are specified per file, at the top of the file, followed by an empty line and the code. A typical use case for tags is to provide to implementation of the same functionality and pick the</description>
     </item>
     
     <item>
       <title>Go Inlining functions</title>
-      <link>https://luangeng.space/post/go/basic/Inlining-functions/</link>
+      <link>https://luangeng.space/post/go/basic/inlining-functions/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Inlining-functions/</guid>
+      <guid>https://luangeng.space/post/go/basic/inlining-functions/</guid>
       <description>函数内联是用于提高代码性能的常见编译器优化。 经常调用的小函数可以直接包含（内联）在调用函数的主体中。 这消除了函数调用开销。 Go编译器没有提供</description>
     </item>
     
     <item>
       <title>Go 使用sync.Pool提高性能</title>
-      <link>https://luangeng.space/post/go/basic/Sync.Pool/</link>
+      <link>https://luangeng.space/post/go/basic/sync.pool/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Sync.Pool/</guid>
+      <guid>https://luangeng.space/post/go/basic/sync.pool/</guid>
       <description>高频分配和释放对象可能相对昂贵。 提高性能的常用技术是重复使用内存。 sync.Pool是用于复用分配的线程安全缓存。 package main import ( &amp;quot;bytes&amp;quot; &amp;quot;fmt&amp;quot; &amp;quot;sync&amp;quot; ) var pool = sync.Pool{ //</description>
     </item>
     
     <item>
       <title>Go gob</title>
-      <link>https://luangeng.space/post/go/basic/Gob/</link>
+      <link>https://luangeng.space/post/go/basic/gob/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Gob/</guid>
+      <guid>https://luangeng.space/post/go/basic/gob/</guid>
       <description>Gob是Go特定的序列化方法，主要为RPC（远程过程调用）创建。 它支持除通道和函数之外的所有Go数据类型。 Gob将类型信息写入序列化数据中。</description>
     </item>
     
     <item>
       <title>Go 插件</title>
-      <link>https://luangeng.space/post/go/basic/Plugin/</link>
+      <link>https://luangeng.space/post/go/basic/plugin/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Plugin/</guid>
+      <guid>https://luangeng.space/post/go/basic/plugin/</guid>
       <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。 在Go1.8中，仅在Linux上可用。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V)</description>
     </item>
     
     <item>
       <title>Go fmt包</title>
-      <link>https://luangeng.space/post/go/basic/Fmt/</link>
+      <link>https://luangeng.space/post/go/basic/fmt/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Fmt/</guid>
+      <guid>https://luangeng.space/post/go/basic/fmt/</guid>
       <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片</description>
     </item>
     
     <item>
       <title>Go Protobuf</title>
-      <link>https://luangeng.space/post/go/basic/Protobuf/</link>
+      <link>https://luangeng.space/post/go/basic/protobuf/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Protobuf/</guid>
+      <guid>https://luangeng.space/post/go/basic/protobuf/</guid>
       <description>介绍 Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道</description>
     </item>
     
     <item>
       <title>Go Console I/O</title>
-      <link>https://luangeng.space/post/go/basic/ConsoleIO/</link>
+      <link>https://luangeng.space/post/go/basic/consoleio/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/ConsoleIO/</guid>
+      <guid>https://luangeng.space/post/go/basic/consoleio/</guid>
       <description>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。 fmt.Scanf从stdio读取 最方便的方法是</description>
     </item>
     
     <item>
       <title>Go 加解密</title>
-      <link>https://luangeng.space/post/go/basic/Cryptography/</link>
+      <link>https://luangeng.space/post/go/basic/cryptography/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Cryptography/</guid>
+      <guid>https://luangeng.space/post/go/basic/cryptography/</guid>
       <description>了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 你有一个文件</description>
     </item>
     
     <item>
       <title>Go 图像</title>
-      <link>https://luangeng.space/post/go/basic/Images/</link>
+      <link>https://luangeng.space/post/go/basic/images/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Images/</guid>
+      <guid>https://luangeng.space/post/go/basic/images/</guid>
       <description>图像标准库为处理图像提供了基础。 image包提供了: image.Image接口描述位图图像 一种最常见的表示内存中图像的方式的实现，例如Ima</description>
     </item>
     
     <item>
       <title>Go 命令</title>
-      <link>https://luangeng.space/post/go/basic/Command/</link>
+      <link>https://luangeng.space/post/go/basic/command/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Command/</guid>
+      <guid>https://luangeng.space/post/go/basic/command/</guid>
       <description>go命令是一个命令行程序，用于管理Go开发。 它支持构建，运行和测试代码，以及各种其他与Go相关的任务。 go fmt 为了保持代码的一致性并消除代码格式</description>
     </item>
     
@@ -576,10 +576,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>SpringBoot集成elastic-job-lite</title>
-      <link>https://luangeng.space/post/other/elasticJob/</link>
+      <link>https://luangeng.space/post/other/elasticjob/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticJob/</guid>
+      <guid>https://luangeng.space/post/other/elasticjob/</guid>
       <description>SpringBoot集成elastic-job-lite 1.pom文件中引用jar包 &amp;lt;!-- elastic-job-lite --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-common-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-spring&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;18.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 2.本地启</description>
     </item>
     
@@ -711,10 +711,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>RocketMQ核心概念</title>
-      <link>https://luangeng.space/post/other/rocketMq-Concept/</link>
+      <link>https://luangeng.space/post/other/rocketmq-concept/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/rocketMq-Concept/</guid>
+      <guid>https://luangeng.space/post/other/rocketmq-concept/</guid>
       <description>Producer A producer sends messages generated by the business application systems to brokers. RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way. 生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例：同步，</description>
     </item>
     
@@ -1305,10 +1305,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>反转单向链表</title>
-      <link>https://luangeng.space/post/java/exe/reverseList/</link>
+      <link>https://luangeng.space/post/java/exe/reverselist/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/exe/reverseList/</guid>
+      <guid>https://luangeng.space/post/java/exe/reverselist/</guid>
       <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
     </item>
     

@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Go 接口 - 计算机与软件技术公开课</title>
+  <title>Go HTTP server middleware - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Go 接口 - 计算机与软件技术公开课">
-  <meta name="description" content="Go 接口">
-  <meta itemprop="name" content="Go 接口 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Go 接口">
-  <meta property="og:title" content="Go 接口 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="Go HTTP server middleware - 计算机与软件技术公开课">
+  <meta name="description" content="Go HTTP server middleware">
+  <meta itemprop="name" content="Go HTTP server middleware - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go HTTP server middleware">
+  <meta property="og:title" content="Go HTTP server middleware - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/go/basic/Interfaces/" />
+  <meta property="og:url" content="https://luangeng.space/post/go/basic/middleware/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Go 接口">
+  <meta property="og:description" content="Go HTTP server middleware">
 
-  <link rel="canonical" href="https://luangeng.space/post/go/basic/Interfaces/">
-  <link rel='shortlink' href="https://luangeng.space/post/go/basic/Interfaces/">
+  <link rel="canonical" href="https://luangeng.space/post/go/basic/middleware/">
+  <link rel='shortlink' href="https://luangeng.space/post/go/basic/middleware/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -54,11 +54,11 @@
 
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java教程</a>
+          <a rel="nofollow" href="https://luangeng.space/categories/java/">Java教程</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go教程</a>
+          <a rel="nofollow" href="https://luangeng.space/categories/go/">Go教程</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-text">
@@ -127,10 +127,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Go 接口</h1>
+                                        <h1 class="post-title">Go HTTP server middleware</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2430 Words
+                                            Posted @ 2019-09-09 · 427 Words
                                             
                                             · Tags: Go
                                             
@@ -138,7 +138,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Go 接口">
+                                            <span class="leancloud_visitors" data-flag-title="Go HTTP server middleware">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -149,317 +149,85 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>接口在类型上定义了一组方法。
-接口用于抽象行为。
-在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。</p>
-<p>例如：标准库中定义的io.Reader接口：</p>
-<pre><code>type Reader interface {
-    Read(d []byte) (int, error)
-}
-</code></pre><p>对二进制数据流进行操作的大多数函数(例如json解码器)都将io.Reader用作数据源。 这样，我们可以为物理文件，内存中的字节，网络连接实现Reader接口，并在所有这些源上使用json.Decode。</p>
-<p>下面是定义和实现一个简单的接口:</p>
-<pre><code>// Stringer是只有一个方法的接口
-type Stringer interface {
-    String() string
-}
-
-// User struct实现了Stringer接口
-type User struct {
-    Name string
-}
-
-func (u *User) String() string {
-    return u.Name
-}
-
-// 任何类型都可以实现接口 Here we create
-// 这里我们创建int的别称来实现Stringer接口
-
-type MyInt int
-
-func (mi MyInt) String() string {
-    return strconv.Itoa(int(mi))
-}
-
-// printTypeAndString 接收一个接口作为参数, 's'可以是实现了Stringer接口的任意值
-
-func printTypeAndString(s Stringer) {
-    fmt.Printf(&quot;%T: %s\n&quot;, s, s)
+                                                <p>介绍
+在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能可以在开发的后期阶段添加，而不会影响现有代码。</p>
+<p>中间件的签名应为(http.ResponseWriter，* http.Request)，即为http.handlerFunc类型。</p>
+<p>普通的请求处理:</p>
+<pre><code>func loginHandler(w http.ResponseWriter, r *http.Request) {
+      // Steps to login
 }
 
 func main() {
-    u := &amp;User{Name: &quot;John&quot;}
-    printTypeAndString(u)
-
-    n := MyInt(5)
-    printTypeAndString(n)
+    http.HandleFunc(&quot;/login&quot;, loginHandler)
+    http.ListenAndServe(&quot;:8080&quot;, nil)
 }
-</code></pre><blockquote>
-<p>*main.User: John<br>
-main.MyInt: 5</p>
-</blockquote>
-<p>与大多数其他语言不同，Go的接口是隐式满足的。我们不必明确声明struct User实现了Stringer接口。</p>
-<p>接口只能包含方法，不能包含数据。 如果要重用方法和数据，则可以使用结构嵌入。</p>
-<p>只能在同一包中定义的类型上定义方法。 上例中我们必须定义类型别名MyInt，因为我们无法将方法添加到Go内置的int类型。</p>
-<h2 id="简单接口">简单接口</h2>
-<pre><code>type Painter interface {
-    Paint()
-}
-</code></pre><p>类型实现接口时不必声明它正在实现那个接口。 定义相同签名的方法就可以了。</p>
-<pre><code>type Rembrandt struct{}
-
-func (r Rembrandt) Paint() {
-    // use a lot of canvas here
-}
-</code></pre><p>现在，我们可以将这个struct用作接口。</p>
-<pre><code>var p Painter
-p = Rembrandt{}
-</code></pre><p>接口可以被任意数量的类型实现。 一个类型也可以实现任意数量的接口。</p>
-<pre><code>type Singer interface {
-        Sing()
+</code></pre><p>添加计算时间中间件; 需要handlerFunc来执行</p>
+<pre><code>// logger中间件记录处理每个请求所花费的时间
+func Logger(h http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        startTime := time.Now()
+        h.ServeHttp(w,r)
+        endTime := time.Since(startTime)
+        log.Printf(&quot;%s %d %v&quot;, r.URL, r.Method, endTime)
+    })
 }
 
-type Writer interface {
-        Write()
-}
-
-type Human struct{}
-
-func (h *Human) Sing() {
-    fmt.Println(&quot;singing&quot;)
-}
-
-func (h *Human) Write() {
-    fmt.Println(&quot;writing&quot;)
-}
-
-type OnlySinger struct{}
-
-func (o *OnlySinger) Sing() {
-    fmt.Println(&quot;singing&quot;)
-}
-</code></pre><p>这里Human同时实现了Singer和Writer接口,而OnlySinger只实现了Sinnger接口.</p>
-<h2 id="空接口">空接口</h2>
-<p>空接口类型是不包含任何方法的接口。 我们将其声明为<code>interface {}</code>。 它不包含任何方法，因此每种类型都可以满足要求。 因此，空接口可以包含任何类型值。</p>
-<pre><code>var a interface{}
-var i int = 5
-s := &quot;Hello world&quot;
-
-type StructType struct {
-    i, j int
-    k string
-}
-
-// 下列声明都合法
-a = i
-a = s
-a = &amp;StructType{1, 2, &quot;hello&quot;}
-</code></pre><p>接口最常见的作用是确保变量支持一个或多个行为。 相比之下，空接口的主要作用是定义一个变量，该变量可以保留任何值，而不管其具体类型是什么。<br>
-为了使这些值恢复为原始类型，我们只需要做:</p>
-<pre><code>i = a.(int)
-s = a.(string)
-m := a.(*StructType)
-</code></pre><p>或者</p>
-<pre><code>i, ok := a.(int)
-s, ok := a.(string)
-m, ok := a.(*StructType)
-</code></pre><p>返回值ok表示接口a是否可转换为给定类型。 如果无法执行，ok将为false。</p>
-<h2 id="接口值">接口值</h2>
-<p>如果声明了接口的变量，则它可以存储任何实现了接口声明方法的任何类型！</p>
-<p>如果我们声明h为接口Singer，则它可以存储Human或OnlySinger类型的值。 这是因为它们都实现了Singer接口指定的方法。</p>
-<pre><code>var h Singer
-h = &amp;human{}
-
-h.Sing()
-</code></pre><h2 id="从接口确定底层类型">从接口确定底层类型</h2>
-<p>在Go中，有时候需要知道参数的底层类型。 这可以通过switch来完成。 假设我们有两个结构：</p>
-<pre><code>type Rembrandt struct{}
-
-func (r Rembrandt) Paint() {}
-
-type Picasso struct{}
-
-func (r Picasso) Paint() {}
-That implement the Painter interface:
-
-type Painter interface {
-    Paint()
-}
-</code></pre><p>然后我们可以通过switch来决定参数底层类型:</p>
-<pre><code>func WhichPainter(painter Painter) {
-    switch painter.(type) {
-    case Rembrandt:
-        fmt.Println(&quot;The underlying type is Rembrandt&quot;)
-    case Picasso:
-        fmt.Println(&quot;The underlying type is Picasso&quot;)
-    default:
-        fmt.Println(&quot;Unknown type&quot;)
-    }
-}
-</code></pre><h2 id="确保类型实现了接口">确保类型实现了接口</h2>
-<p>在Go中，接口是隐式满足的, 即不必声明类型是一定要实现某个接口的。
-这很方便，但也可能导致无法完全实现接口错误，并且编译器无法检测到这种情况。
-有一种方法可以进行编译期的类型检查：</p>
-<pre><code>type MyReadCloser struct {
-}
-
-func (rc *MyReadCloser) Read(d []byte) (int, error) {
-    return 0, nil
-}
-
-var _ io.ReadCloser = &amp;MyReadCloser{}
-</code></pre><blockquote>
-<p>./main.go:15:5: cannot use &amp;MyReadCloser literal (type *MyReadCloser) as type io.ReadCloser in assignment:
-*MyReadCloser does not implement io.ReadCloser (missing Close method)
-exit status 2</p>
-</blockquote>
-<p>我们的意图是让MyReadCloser实现io.ReadCloser接口, 然而我们忘记了实现Close方法,这行代码在编译时就报错了:</p>
-<blockquote>
-<p>var _ io.ReadCloser = &amp;MyReadCloser{}</p>
-</blockquote>
-<p>我们尝试把<em>MyReadCloser赋值给io.ReadCloser
-因为</em>MyReadCloser没有实现Close方法,编译器在编译期间检测到这是非法的赋值
-我们把值赋给空变量_是因为这个值并不会被使用</p>
-<h2 id="空接口-1">空接口</h2>
-<p>技术上讲, 空接口就是没有方法的接口.从而可以说任何类型都实现了空接口</p>
-<p>实际上, Go中的空接口就像Java和C++中的object类型,它结合了类型及其值。<br>
-空接口等效于静态语言中的动态类型<br>
-空接口也是Go中实现union类型的一种方法.<br>
-由于每种类型都符合interface {}，因此可以将任何值分配给interface {}类型的变量。</p>
-<p>那时你将无法在编译时知道它的真实类型。</p>
-<p>空接口的零值为nil.</p>
-<p>使用示例:</p>
-<pre><code>func printVariableType(v interface{}) {
-    switch v.(type) {
-    case string:
-        fmt.Printf(&quot;v is of type 'string'\n&quot;)
-    case int:
-        fmt.Printf(&quot;v is of type 'int'\n&quot;)
-    default:
-        // generic fallback
-        fmt.Printf(&quot;v is of type '%T'\n&quot;, v)
-    }
+func loginHandler(w http.ResponseWriter, r *http.Request) {
+            // Steps to login
 }
 
 func main() {
-    printVariableType(&quot;string&quot;) // string
-    printVariableType(5)        // int
-    printVariableType(int32(5)) // int32
+    http.HandleFunc(&quot;/login&quot;, Logger(loginHandler))
+    http.ListenAndServe(&quot;:8080&quot;, nil)
 }
-</code></pre><blockquote>
-<p>v is of type &lsquo;string&rsquo;<br>
-v is of type &lsquo;int&rsquo;<br>
-v is of type &lsquo;int32&rsquo;</p>
-</blockquote>
-<p>编译时，如果变量的类型为interface(包括空接口)，则你不知道它的真正类型是什么。</p>
-<p>可以在运行时使用类型断言来访问基础类型:</p>
-<pre><code>func printTypeAndValue(iv interface{}) {
-    if v, ok := iv.(string); ok {
-        fmt.Printf(&quot;iv is of type string and has value '%s'\n&quot;, v)
-        return
-    }
-    if v, ok := iv.(int); ok {
-        fmt.Printf(&quot;iv is of type int and has value '%d'\n&quot;, v)
-        return
-    }
-    if v, ok := iv.(*int); ok {
-        fmt.Printf(&quot;iv is of type *int and has value '%s'\n&quot;, v)
-        return
-    }
-}
+</code></pre><h2 id="cors-middleware">CORS Middleware</h2>
+<pre><code>func CORS(h http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        origin := r.Header.Get(&quot;Origin&quot;)
+        w.Header().Set(&quot;Access-Control-Allow-Origin&quot;, origin)
+        if r.Method == &quot;OPTIONS&quot; {
+            w.Header().Set(&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;)
+            w.Header().Set(&quot;Access-Control-Allow-Methods&quot;, &quot;GET,POST&quot;)
 
-func panicOnInvalidConversion() {
-    var iv interface{} = &quot;string&quot;
-
-    v := iv.(int)
-    fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
+            w.RespWriter.Header().Set(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type, X-CSRF-Token, Authorization&quot;)
+            return
+        } else {
+            h.ServeHTTP(w, r)
+        }
+    })
 }
 
 func main() {
-    // pass a string
-    printTypeAndValue(&quot;string&quot;)
-    i := 5
-    // pass an int
-    printTypeAndValue(i)
-    // pass a pointer to int i.e. *int
-    printTypeAndValue(&amp;i)
-
-    panicOnInvalidConversion()
+    http.HandleFunc(&quot;/login&quot;, Logger(CORS(loginHandler)))
+    http.ListenAndServe(&quot;:8080&quot;, nil)
 }
-</code></pre><blockquote>
-<p>iv is of type string and has value &lsquo;string&rsquo;<br>
-iv is of type int and has value &lsquo;5&rsquo;<br>
-iv is of type *int and has value &lsquo;%!s(*int=0xc000016048)&rsquo;<br>
-nic: interface conversion: interface {} is string, not int</p>
-<p>routine 1 [running]:<br>
-in.panicOnInvalidConversion()<br>
-/tmp/src178978545/type assertion.go:28 +0x45<br>
-in.main()<br>
-/tmp/src178978545/type assertion.go:41 +0x9a<br>
-it status 2</p>
-</blockquote>
-<h2 id="类型断言">类型断言</h2>
-<p>类型断言允许你检查空接口的值是否为给定的类型。</p>
-<p>为了完整起见，可以使用类型switch的简短版本：v:= iv.(int)(v, ok：= iv.(int))。</p>
-<p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
-<pre><code>func panicOnInvalidConversion(iv interface{}) {
-    v := iv.(int)
-    fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
+</code></pre><h2 id="auth-middleware">Auth Middleware</h2>
+<pre><code>func Authenticate(h http.Handler) http.Handler {
+    return CustomHandlerFunc(func(w *http.ResponseWriter, r *http.Request) {
+        // extract params from req
+        // post params | headers etc
+        if CheckAuth(params) {
+            log.Println(&quot;Auth Pass&quot;)
+            // pass control to next middleware in chain or handler func
+            h.ServeHTTP(w, r)
+        } else {
+            log.Println(&quot;Auth Fail&quot;)
+            // Responsd Auth Fail
+        }
+    })
 }
-
-func main() {
-    panicOnInvalidConversion(&quot;string&quot;)
+</code></pre><h2 id="recovery防止服务器崩溃">Recovery防止服务器崩溃</h2>
+<pre><code>func Recovery(h http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request){
+        defer func() {
+            if err := recover(); err != nil {
+                // respondInternalServerError
+            }
+        }()
+        h.ServeHTTP(w , r)
+    })
 }
-</code></pre><blockquote>
-<p>panic: interface conversion: interface {} is string, not int</p>
-<p>goroutine 1 [running]:
-main.panicOnInvalidConversion(0x4a0120, 0x4db030)
-/tmp/src459967900/type assertion.go:11 +0xd6
-main.main()
-/tmp/src459967900/type assertion.go:16 +0x39
-exit status 2</p>
-</blockquote>
-<p>As a rule of thumb, you shouldn’t try to discover underlying value of interface type as it pierces through an abstraction.
-根据经验，你不应该尝试发现贯穿抽象的接口类型的底层值。</p>
-<h2 id="类型switch">类型switch</h2>
-<p>switch语句可以基于接口包装的类型进行分派。</p>
-<p>如果具有接口值，则可以根据底层类型进行切换：</p>
-<pre><code>func smartConvertToInt(iv interface{}) (int, error) {
-    // inside case statements, v is of type matching case type
-    switch v := iv.(type) {
-    case int:
-        return v, nil
-    case string:
-        return strconv.Atoi(v)
-    case float64:
-        return int(v), nil
-    default:
-        return 0, fmt.Errorf(&quot;unsupported type: %T&quot;, iv)
-    }
-}
-
-func printSmartConvertToInt(iv interface{}) {
-    i, err := smartConvertToInt(iv)
-    if err != nil {
-        fmt.Printf(&quot;Failed to convert %#v to int\n&quot;, iv)
-        return
-    }
-    fmt.Printf(&quot;%#v of type %T converted to %d\n&quot;, iv, iv, i)
-}
-
-func main() {
-    printSmartConvertToInt(&quot;5&quot;)
-    printSmartConvertToInt(4)
-    printSmartConvertToInt(int32(8))
-    printSmartConvertToInt(&quot;not valid int&quot;)
-}
-</code></pre><blockquote>
-<p>&ldquo;5&rdquo; of type string converted to 5<br>
-4 of type int converted to 4<br>
-Failed to convert 8 to int<br>
-Failed to convert &ldquo;not valid int&rdquo; to int</p>
-</blockquote>
-
+</code></pre>
                                                 
                                             </div>
 
@@ -480,7 +248,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Interfaces/">https://luangeng.space/post/go/basic/Interfaces/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/middleware/">https://luangeng.space/post/go/basic/middleware/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -499,19 +267,19 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/Struct/" rel="next">
+                                        <a href="https://luangeng.space/post/go/basic/http-server/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Go struct类型</span>
+                                            <span>Go HTTP Server</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/go/basic/If-switch-goto/" rel="prev">
+                                        <a href="https://luangeng.space/post/go/basic/text-html-templates/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go 判断</span>
+                                            <span>Go Text和HTML模板</span>
                                         </a>
                                         
                                     </li>
@@ -526,7 +294,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                <a href="https://luangeng.space/post/go/basic/csv/" rel="bookmark" class="leancloud-count">Go CSV
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -537,7 +305,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
+                <a href="https://luangeng.space/post/go/basic/calling-c-from-go-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -548,7 +316,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/consoleio/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -559,7 +327,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
+                <a href="https://luangeng.space/post/go/basic/context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -570,7 +338,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                <a href="https://luangeng.space/post/go/basic/defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -581,7 +349,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                <a href="https://luangeng.space/post/go/basic/http-client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -592,7 +360,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                <a href="https://luangeng.space/post/go/basic/http-server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -603,7 +371,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">8.</span>
-                <a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                <a href="https://luangeng.space/post/go/basic/hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -614,7 +382,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">9.</span>
-                <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                <a href="https://luangeng.space/post/go/basic/inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -625,7 +393,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                <a href="https://luangeng.space/post/go/basic/json/" rel="bookmark" class="leancloud-count">Go JSON
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -657,7 +425,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                <a href="https://luangeng.space/post/go/basic/command/" class="leancloud-count">Go 命令
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -668,7 +436,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
+                <a href="https://luangeng.space/post/go/basic/images/" class="leancloud-count">Go 图像
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -679,7 +447,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
+                <a href="https://luangeng.space/post/go/basic/cryptography/" class="leancloud-count">Go 加解密
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -690,7 +458,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/go/basic/consoleio/" class="leancloud-count">Go Console I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -701,7 +469,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
+                <a href="https://luangeng.space/post/go/basic/protobuf/" class="leancloud-count">Go Protobuf
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -712,7 +480,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/go/basic/fmt/" class="leancloud-count">Go fmt包
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -723,7 +491,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                <a href="https://luangeng.space/post/go/basic/plugin/" class="leancloud-count">Go 插件
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -790,25 +558,25 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/csv/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/calling-c-from-go-with-cgo/">Go Calling C from GO with cgo</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/consoleio/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/context/">Go Context</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/defer/">Go Defer</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/HTTP-Client/">Go HTTP Client</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/http-client/">Go HTTP Client</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/HTTP-Server/">Go HTTP Server</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/http-server/">Go HTTP Server</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/HTTP-server-middleware/">Go HTTP server middleware</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/hex-base64-encoding/">Go Hex和 base64编码</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/inlining-functions/">Go Inlining functions</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/json/">Go JSON</a></li>
                 
             </ul>
         </div>
@@ -818,15 +586,15 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/command/">Go 命令</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Images/">Go 图像</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/images/">Go 图像</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/cryptography/">Go 加解密</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/consoleio/">Go Console I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/protobuf/">Go Protobuf</a></li>
                 
             </ul>
         </div>
@@ -848,26 +616,23 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <div id="tags" class="widget">
             <h3>标签</h3>
             
-            <a href='https://luangeng.space/tags/Go'
-                style="font-size:17px;margin:5px; padding:4px"><code>Go(56)</code></a>
-            
-            <a href='https://luangeng.space/tags/Java'
-                style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
-            
-            <a href='https://luangeng.space/tags/RocketMQ'
-                style="font-size:17px;margin:5px; padding:4px"><code>RocketMQ(2)</code></a>
-            
             <a href='https://luangeng.space/tags/elasticsearch'
                 style="font-size:17px;margin:5px; padding:4px"><code>elasticsearch(3)</code></a>
             
             <a href='https://luangeng.space/tags/git'
                 style="font-size:17px;margin:5px; padding:4px"><code>git(2)</code></a>
             
+            <a href='https://luangeng.space/tags/go'
+                style="font-size:17px;margin:5px; padding:4px"><code>go(56)</code></a>
+            
             <a href='https://luangeng.space/tags/html'
                 style="font-size:17px;margin:5px; padding:4px"><code>html(1)</code></a>
             
-            <a href='https://luangeng.space/tags/jQuery'
-                style="font-size:17px;margin:5px; padding:4px"><code>jQuery(2)</code></a>
+            <a href='https://luangeng.space/tags/java'
+                style="font-size:17px;margin:5px; padding:4px"><code>java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/jquery'
+                style="font-size:17px;margin:5px; padding:4px"><code>jquery(2)</code></a>
             
             <a href='https://luangeng.space/tags/linux'
                 style="font-size:17px;margin:5px; padding:4px"><code>linux(2)</code></a>
@@ -889,6 +654,9 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             
             <a href='https://luangeng.space/tags/redis'
                 style="font-size:17px;margin:5px; padding:4px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/rocketmq'
+                style="font-size:17px;margin:5px; padding:4px"><code>rocketmq(2)</code></a>
             
             <a href='https://luangeng.space/tags/spring'
                 style="font-size:17px;margin:5px; padding:4px"><code>spring(3)</code></a>
