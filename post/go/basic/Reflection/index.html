@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go 反射</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2580 Words
+                                            Posted @ 2018-09-09 · 2580 Words
                                             
                                             · Tags: Go
                                             
@@ -180,7 +180,7 @@ v contains value of type int</p>
 </ul>
 <p>反射有几种实际用途。</p>
 <h2 id="原始类型">原始类型</h2>
-<p>让我们看看可以对基本类型（例如int或string）执行哪种操作。</p>
+<p>让我们看看可以对基本类型(例如int或string)执行哪种操作。</p>
 <h4 id="获取类型">获取类型</h4>
 <pre><code>func printType(v interface{}) {
     rv := reflect.ValueOf(v)
@@ -235,10 +235,10 @@ main.main()<br>
 /tmp/src282322283/main.go:24 +0x7b<br>
 exit status 2</p>
 </blockquote>
-<p>为了最大程度地减少API表面，Int（）返回int64并对所有带符号的整数值（int8，int16，int32，int64）有效。</p>
-<p>UInt（）方法返回uint64并对每个无符号整数值（uint8，uint16，uint32，uint64）有效。</p>
-<p>试图从不兼容类型（如字符串）的值中获取整数值会引发panic。</p>
-<p>为了避免出现panic，您可以先使用Kind（）检查类型。</p>
+<p>为了最大程度地减少API表面，Int()返回int64并对所有带符号的整数值(int8，int16，int32，int64)有效。</p>
+<p>UInt()方法返回uint64并对每个无符号整数值(uint8，uint16，uint32，uint64)有效。</p>
+<p>试图从不兼容类型(如字符串)的值中获取整数值会引发panic。</p>
+<p>为了避免出现panic，您可以先使用Kind()检查类型。</p>
 <p>检索值的所有方法：</p>
 <ul>
 <li>Bool() bool</li>
@@ -319,7 +319,7 @@ setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetStrin
 </ul>
 <h2 id="指针">指针</h2>
 <p>指向X的指针与X是不同的类型。</p>
-<p>如果reflect.Value引用了指向值的指针，则可以通过调用Elem（）获得对该值的引用。</p>
+<p>如果reflect.Value引用了指向值的指针，则可以通过调用Elem()获得对该值的引用。</p>
 <pre><code>func printIntResolvingPointers(v interface{}) {
     rv := reflect.ValueOf(v)
     typeName := rv.Type().String()
@@ -348,7 +348,7 @@ func main() {
 <p>Value: 4. Type: &lsquo;pointer to int&rsquo; i.e. &lsquo;*int&rsquo;.</p>
 <p>Value: 5. Type: &lsquo;pointer to pointer to int&rsquo; i.e. &lsquo;**int&rsquo;.</p>
 </blockquote>
-<p>在底层，接口也是指向其基础值的指针，因此Elem（）也可以在代表接口的reflect.Value上工作。</p>
+<p>在底层，接口也是指向其基础值的指针，因此Elem()也可以在代表接口的reflect.Value上工作。</p>
 <h2 id="struct">struct</h2>
 <h4 id="列出struct的字段">列出struct的字段</h4>
 <p>使用反射，我们可以列出struct的所有字段。</p>
@@ -389,8 +389,8 @@ func main() {
 name: &lsquo;lastName&rsquo;,    type: &lsquo;string&rsquo;,    value: not accessible<br>
 name: &lsquo;Age&rsquo;,    type: &lsquo;int&rsquo;, value: 27,    tag: &lsquo;json:&ldquo;age&rdquo;,xml:&ldquo;AgeXml&rsquo;,    json tag: &lsquo;age&rsquo;</p>
 </blockquote>
-<p>使用反射，我们只能访问导出的字段的值（v.Interface {}）。</p>
-<p>导出的字段是名称以大写字母开头的字段（导出的是“姓氏”和“年龄”，而不是“ lastName”）。</p>
+<p>使用反射，我们只能访问导出的字段的值(v.Interface {})。</p>
+<p>导出的字段是名称以大写字母开头的字段(导出的是“姓氏”和“年龄”，而不是“ lastName”)。</p>
 <p>如果reflect.StructField.PkgPath ==“”，则导出字段。</p>
 <h4 id="递归列出结构的字段">递归列出结构的字段</h4>
 <p>检查struct本质上是递归过程。</p>
@@ -510,7 +510,7 @@ fmt.Printf(&quot;a: %#v\n&quot;, a)
 <p>a: []string{&ldquo;foo&rdquo;}</p>
 </blockquote>
 <h2 id="reflectkind">reflect.Kind</h2>
-<p>Reflection.Value上的函数Kind（）返回描述值类型的reflect.Kind类型。</p>
+<p>Reflection.Value上的函数Kind()返回描述值类型的reflect.Kind类型。</p>
 <p>这是所有可能的值：</p>
 <pre><code>type Kind uint
 
@@ -548,7 +548,7 @@ const (
 <p>反射使实现通用JSON序列化/反序列化成为可能。</p>
 <p>对于通用JSON序列化，我们可以枚举任意结构的字段，读取它们的字段并创建相应的JSON字符串。</p>
 <p>对于一般的JSON反序列化，我们可以枚举任意结构的字段并根据已解析的JSON数据进行设置。</p>
-<p>其他序列化格式（例如XML，YAML或协议缓冲区）也是如此。</p>
+<p>其他序列化格式(例如XML，YAML或协议缓冲区)也是如此。</p>
 <p>反射使为SQL数据库定义通用API成为可能，因为我们可以将任意结构转换为SQL数据库可以理解的格式，并将从SQL数据库接收的数据放入任意结构。</p>
 <h4 id="使用go函数扩展模板语言">使用Go函数扩展模板语言</h4>
 <p>由于能够在运行时调用任意函数，因此我们可以在文本/模板中为模板定义自定义函数。 我们向模板引擎注册Go函数。</p>
@@ -633,17 +633,6 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -654,7 +643,7 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -665,7 +654,7 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -676,7 +665,7 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -687,7 +676,7 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -698,7 +687,7 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -709,7 +698,7 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -720,8 +709,19 @@ const (
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -753,7 +753,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -764,7 +764,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -775,7 +775,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -786,7 +786,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -797,7 +797,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -808,7 +808,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -819,7 +819,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -888,8 +888,6 @@ const (
                 
                 <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
@@ -906,6 +904,8 @@ const (
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
                 
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                
             </ul>
         </div>
         
@@ -914,15 +914,15 @@ const (
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Images/">Go 图像</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>
@@ -945,7 +945,7 @@ const (
             <h3>标签</h3>
             
             <a href='https://luangeng.space/tags/Go'
-                style="font-size:17px;margin:5px; padding:4px"><code>Go(56)</code></a>
+                style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
             
             <a href='https://luangeng.space/tags/Java'
                 style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>

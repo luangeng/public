@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go Context</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 2546 Words
+                                            Posted @ 2018-09-09 · 2546 Words
                                             
                                             · Tags: Go
                                             
@@ -152,18 +152,18 @@
                                                 <p>标准库中的context包提供了Context类型，它有多种用途。</p>
 <p>下面是context.Context几个典型用法:</p>
 <ul>
-<li>带超时（截止时间）的上下文是对可能会花费很长时间的函数实施超时的一种通用方法，在这种情况下，如果它们超过超时，我们希望可以选择中止它们</li>
+<li>带超时(截止时间)的上下文是对可能会花费很长时间的函数实施超时的一种通用方法，在这种情况下，如果它们超过超时，我们希望可以选择中止它们</li>
 <li>取消上下文是取消goroutine的通用方法</li>
 <li>带值的上下文是将任意值与上下文关联的一种方式</li>
 </ul>
 <h2 id="创建context">创建context</h2>
 <p>在大多数情况下，您将调用需要context.Context的现有API。</p>
-<p>如果您没有，请使用context.TODO（）或context.Background（）函数创建它。 了解差异。</p>
-<p>context.Context是一个不可变的（只读）值，因此您无法对其进行修改。</p>
-<p>创建例如 带有值的上下文，您调用context.WithValue（）会返回一个新的上下文，该上下文将包装现有上下文并添加其他信息。</p>
+<p>如果您没有，请使用context.TODO()或context.Background()函数创建它。 了解差异。</p>
+<p>context.Context是一个不可变的(只读)值，因此您无法对其进行修改。</p>
+<p>创建例如 带有值的上下文，您调用context.WithValue()会返回一个新的上下文，该上下文将包装现有上下文并添加其他信息。</p>
 <p>context.Context是一个接口，因此您可以传递nil，但不建议这样做。</p>
-<p>许多API期望使用非null值，如果传递nil将会崩溃，因此最好始终传递使用context.Background（）或context.TODO（）创建的API。</p>
-<p>没有性能问题，因为这些函数返回共享的全局变量（是不变的！）。</p>
+<p>许多API期望使用非null值，如果传递nil将会崩溃，因此最好始终传递使用context.Background()或context.TODO()创建的API。</p>
+<p>没有性能问题，因为这些函数返回共享的全局变量(是不变的！)。</p>
 <p>使用带超时的上下文设置HTTP请求的超时
 重复执行HTTP客户端文章中的示例，这是一种创建超时的上下文的方法，以确保HTTP GET请求不会永远挂起：</p>
 <pre><code>// httpbin.org is a service for testing HTTP client
@@ -242,7 +242,7 @@ func main() {
 <p>用来设置/获取值的键也是一个接口{}。 由于可以将上下文传递给您未编写的代码中的函数，因此您要确保用于键的值是唯一的。</p>
 <p>这就是为什么我们定义非导出类型的userKeyType并使用该类型的非导出全局变量userKey的原因。</p>
 <p>这样可以确保我们程序包外部的代码无法使用此密钥。</p>
-<p>如果密钥是例如，这不是真的。 字符串（或可用于多个软件包的任何类型）。</p>
+<p>如果密钥是例如，这不是真的。 字符串(或可用于多个软件包的任何类型)。</p>
 <p>我们编写了两个函数来检索值。</p>
 <p>如果未设置值，则一个恐慌，另一个则返回nil。</p>
 <p>使用哪个是您代码的政策决定。</p>
@@ -251,8 +251,8 @@ func main() {
 <h2 id="编写可取消的函数">编写可取消的函数</h2>
 <p>使用接受可取消上下文的现有功能很容易。</p>
 <p>编写可以通过上下文取消的函数要困难得多。</p>
-<p>当时间到期或调用context.WithCancel（）或context.WithTimeout（）返回的cancel函数时，会在上下文中发出一个通道信号。</p>
-<p>编写可取消函数时，您必须定期检查context.Done（）返回的通道，并在收到信号后立即返回。</p>
+<p>当时间到期或调用context.WithCancel()或context.WithTimeout()返回的cancel函数时，会在上下文中发出一个通道信号。</p>
+<p>编写可取消函数时，您必须定期检查context.Done()返回的通道，并在收到信号后立即返回。</p>
 <p>它确实使代码笨拙：</p>
 <pre><code>func longMathOp(ctx context.Context, n int) (int, error) {
     res := n
@@ -285,9 +285,9 @@ Called longMathOp() with 10ms timeout. res: 0, err: context deadline exceeded</p
 <p>为了清楚起见，这是人为的任务。</p>
 <p>我们的longMathOp函数执行100次简单操作，并通过在每次迭代中休眠1 ms来模拟慢度。</p>
 <p>我们可以预期大约需要100毫秒。</p>
-<p>具有默认子句的select是非阻塞的。 如果ctx.Done（）通道中没有任何内容，我们就不必等待值，而是立即执行默认部分，这就是程序逻辑所在的地方。</p>
+<p>具有默认子句的select是非阻塞的。 如果ctx.Done()通道中没有任何内容，我们就不必等待值，而是立即执行默认部分，这就是程序逻辑所在的地方。</p>
 <p>我们可以在测试中看到，如果超时大于100 ms，则函数结束。</p>
-<p>如果超时小于100毫秒，则发出ctx.Done（）通道信号，我们在longMathOp中检测到它并返回ctx.Err（）。</p>
+<p>如果超时小于100毫秒，则发出ctx.Done()通道信号，我们在longMathOp中检测到它并返回ctx.Err()。</p>
 <h2 id="上下文是价值树">上下文是价值树</h2>
 <p>通过包装现有的不可变上下文并添加其他信息来创建上下文。</p>
 <p>由于您可以多次“分支”同一上下文，因此可以将上下文值视为值树。</p>
@@ -304,20 +304,20 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
 </code></pre><p>可以形象化为：</p>
 <p>上下文表示为有向图</p>
 <p>每个子上下文都可以访问其父上下文的值。</p>
-<p>数据访问在树中向上流动（由黑色边缘表示）。</p>
+<p>数据访问在树中向上流动(由黑色边缘表示)。</p>
 <p>取消信号沿着树传播。 如果取消了上下文，则其所有子级也将被取消。</p>
 <p>抵消信号流由灰色边缘表示。</p>
 <h2 id="contexttodo-vs-contextbackground">context.TODO() vs. context.Background()</h2>
-<p>您可以使用context.TODO（）和context.Background（）创建新的空上下文。</p>
+<p>您可以使用context.TODO()和context.Background()创建新的空上下文。</p>
 <p>有什么不同？</p>
 <p>在功能方面：无。它们是逐位完全相同的值。</p>
 <p>区别在于目的。</p>
-<p>官方文档将context.TODO（）描述为：</p>
-<p>TODO返回一个非空的Context。当不清楚要使用哪个上下文或尚不可用时（因为尚未扩展周围的功能以接受Context参数），代码应使用context.TODO。静态分析工具可识别TODO，该工具可确定上下文是否在程序中正确传播。
-和context.Background（）为：</p>
+<p>官方文档将context.TODO()描述为：</p>
+<p>TODO返回一个非空的Context。当不清楚要使用哪个上下文或尚不可用时(因为尚未扩展周围的功能以接受Context参数)，代码应使用context.TODO。静态分析工具可识别TODO，该工具可确定上下文是否在程序中正确传播。
+和context.Background()为：</p>
 <p>Background返回一个非空的Context。它永远不会被取消，没有价值，也没有期限。它通常由主要功能，初始化和测试使用，并用作传入请求的顶级上下文。
 坦白说，我不确定他们想说什么。</p>
-<p>我猜context.TODO（）是用于如果您希望将来不再需要在此处创建上下文的情况，因为它将从外部传递，或者会有更多创建它的特定方法。</p>
+<p>我猜context.TODO()是用于如果您希望将来不再需要在此处创建上下文的情况，因为它将从外部传递，或者会有更多创建它的特定方法。</p>
 <p>如果您不能决定，请不要大汗淋漓。实际上，它们的行为方式相同，因此请选择其中一个。</p>
 
                                                 
@@ -397,17 +397,6 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -418,7 +407,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -429,7 +418,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -440,7 +429,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -451,7 +440,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -462,7 +451,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -473,7 +462,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -484,8 +473,19 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -517,7 +517,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -528,7 +528,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -539,7 +539,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -550,7 +550,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -561,7 +561,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -572,7 +572,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -583,7 +583,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -652,8 +652,6 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
                 
                 <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
@@ -670,6 +668,8 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
                 
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
+                
             </ul>
         </div>
         
@@ -678,15 +678,15 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Images/">Go 图像</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>
@@ -709,7 +709,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
             <h3>标签</h3>
             
             <a href='https://luangeng.space/tags/Go'
-                style="font-size:17px;margin:5px; padding:4px"><code>Go(56)</code></a>
+                style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
             
             <a href='https://luangeng.space/tags/Java'
                 style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>

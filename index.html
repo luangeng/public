@@ -121,11 +121,11 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="https://luangeng.space/post/go/basic/Command/" rel="bookmark" title="Go 命令">Go 命令</a>
+              <a href="https://luangeng.space/post/go/basic/File/" rel="bookmark" title="Go 文件和I/O">Go 文件和I/O</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2019-09-09 · 1315 Words
+                  Posted @ 2019-09-08 · 2765 Words
                   
                   · Tags: Go
                   
@@ -135,7 +135,7 @@
               </p>
           </div>
           <div class="entry excerpt">
-              <p>go命令是一个命令行程序，用于管理Go开发。 它支持构建，运行和测试代码，以及各种其他与Go相关的任务。 go fmt 为了保持代码的一致性并消除代码格式</p>
+              <p>Go对文件操作的支持很健壮. 下面的程序打开,读取并关闭了一个文件: path := &quot;main.go&quot; f, err := os.Open(path) if err != nil { log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&quot;ioutil.ReadAll() failed with '%s'\n&quot;, err) } lines :=</p>
           </div>
       </div>
   </article>
@@ -146,21 +146,21 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="https://luangeng.space/post/go/basic/Images/" rel="bookmark" title="Go 图像">Go 图像</a>
+              <a href="https://luangeng.space/post/other/elasticsearch-douban/" rel="bookmark" title="爬取电影信息使用Elasticsearch检索">爬取电影信息使用Elasticsearch检索</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2019-09-09 · 3493 Words
+                  Posted @ 2018-12-05 · 1760 Words
                   
-                  · Tags: Go
+                  · Tags: elasticsearch
                   
                   
-                  · Categorie: Go
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p>图像标准库为处理图像提供了基础。 image包提供了: image.Image接口描述位图图像 一种最常见的表示内存中图像的方式的实现，例如Ima</p>
+              <p>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &quot;Movie&quot;; public static final String TYPE_COMMENT = &quot;Comment&quot;; public static final String TYPE_OTHER = &quot;Other&quot;; public static final int STATUS_UNCRAWLED = 0; public</p>
           </div>
       </div>
   </article>
@@ -171,21 +171,21 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="https://luangeng.space/post/go/basic/Cryptography/" rel="bookmark" title="Go 加解密">Go 加解密</a>
+              <a href="https://luangeng.space/post/other/elasticsearch-api/" rel="bookmark" title="elasticsearch JAVA API">elasticsearch JAVA API</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2019-09-09 · 937 Words
+                  Posted @ 2018-12-04 · 423 Words
                   
-                  · Tags: Go
+                  · Tags: elasticsearch
                   
                   
-                  · Categorie: Go
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p>了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 你有一个文件</p>
+              <p>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &quot;1&quot;) .source(&quot;user&quot;, &quot;kimchy&quot;, &quot;postDate&quot;, new Date(), &quot;message&quot;, &quot;trying out Elasticsearch&quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); //</p>
           </div>
       </div>
   </article>
@@ -196,21 +196,21 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" title="Go Console I/O">Go Console I/O</a>
+              <a href="https://luangeng.space/post/other/elasticsearch/" rel="bookmark" title="elasticsearch入门教程">elasticsearch入门教程</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2019-09-09 · 737 Words
+                  Posted @ 2018-12-03 · 1160 Words
                   
-                  · Tags: Go
+                  · Tags: elasticsearch
                   
                   
-                  · Categorie: Go
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。 fmt.Scanf从stdio读取 最方便的方法是</p>
+              <p>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</p>
           </div>
       </div>
   </article>
@@ -221,21 +221,21 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="https://luangeng.space/post/go/basic/Protobuf/" rel="bookmark" title="Go Protobuf">Go Protobuf</a>
+              <a href="https://luangeng.space/post/other/zeromq-springboot/" rel="bookmark" title="SpringBoot集成ZeroMQ">SpringBoot集成ZeroMQ</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2019-09-09 · 640 Words
+                  Posted @ 2018-11-19 · 1108 Words
                   
-                  · Tags: Go
+                  · Tags: springboot
                   
                   
-                  · Categorie: Go
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p>介绍 Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道</p>
+              <p>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</p>
           </div>
       </div>
   </article>
@@ -246,21 +246,21 @@
   <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
       <div class="post-inner post-hover">
           <h2 class="post-title">
-              <a href="https://luangeng.space/post/go/basic/Fmt/" rel="bookmark" title="Go fmt包">Go fmt包</a>
+              <a href="https://luangeng.space/post/other/github_login/" rel="bookmark" title="集成通过github登录网站功能">集成通过github登录网站功能</a>
           </h2>
           <div class="post-meta group">
               <p class="post-byline">
-                  Posted @ 2019-09-09 · 598 Words
+                  Posted @ 2018-09-18 · 482 Words
                   
-                  · Tags: Go
+                  · Tags: oauth2
                   
                   
-                  · Categorie: Go
+                  · Categorie: 学习笔记
                   
               </p>
           </div>
           <div class="entry excerpt">
-              <p>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片</p>
+              <p>使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</p>
           </div>
       </div>
   </article>
@@ -291,7 +291,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -302,7 +302,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -313,7 +313,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -324,7 +324,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -335,7 +335,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -346,7 +346,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -357,7 +357,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -434,15 +434,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Images/">Go 图像</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>
@@ -465,7 +465,7 @@
             <h3>标签</h3>
             
             <a href='https://luangeng.space/tags/Go'
-                style="font-size:17px;margin:5px; padding:4px"><code>Go(56)</code></a>
+                style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
             
             <a href='https://luangeng.space/tags/Java'
                 style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>

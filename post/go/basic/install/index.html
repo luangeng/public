@@ -130,7 +130,7 @@
                                         <h1 class="post-title">Go 安装</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-09 · 1105 Words
+                                            Posted @ 2018-09-09 · 1608 Words
                                             
                                             · Tags: Go
                                             
@@ -149,91 +149,81 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <h1 id="windows系统下安装和设置">Windows系统下安装和设置</h1>
+                                                <h2 id="windows系统下安装和设置">Windows系统下安装和设置</h2>
 <p>安装</p>
 <p>从 <a href="https://golang.org/dl/">https://golang.org/dl/</a> 下载.msi包并运行即可</p>
 <p>设置</p>
-<p>安装完成后，你需要配置GOPATH环境变量。从Go 1.8开始，GOPATH环境变量的默认值为％USERPROFILE％/ go。
-你应该了解GOPATH对go工具的影响。</p>
-<h1 id="mac-os下安装和设置">Mac OS下安装和设置</h1>
-<p>使用官方二进制文件, 从https://golang.org/dl/下载.pkg文件并运行.</p>
-<p>也可以使用Homebrew
-如果你已经安装有Homebrew,使用以下命令安装Go</p>
+<p>安装完成后，你需要配置GOPATH环境变量。从Go 1.8开始，GOPATH环境变量的默认值为％USERPROFILE％/go。</p>
+<h2 id="mac-os下安装和设置">Mac OS下安装和设置</h2>
+<p>使用官方二进制文件, 从https://golang.org/dl/ 下载.pkg文件并运行.</p>
+<p>也可以使用Homebrew</p>
+<p>如果你已经安装有Homebrew,使用以下命令安装Go</p>
 <pre><code>brew install go
 </code></pre><p>设置</p>
-<p>After installing the compiler you need to configure GOPATH environment variable.</p>
 <p>编译器安装完成后你需要设置GOPATH环境变量</p>
-<p>Since Go 1.8, the GOPATH environment variable has the default value of $HOME/go, so you can skip setting it.</p>
 <p>从GO1.8开始,GOPATH环境变量的默认值是$HOME/go,所以可以跳过设置.</p>
-<p>Create the go directory with mkdir $HOME/go.</p>
 <p>使用mkdir $HOME/go 命令创建go目录</p>
-<p>Add the following to your ~/.bash_profile file:</p>
 <p>增加如下内容到你的~/.bash_profile 文件</p>
 <pre><code>export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-Load the changes with source ~/.bash_profile or launch a new terminal for the changes to take effect.
-</code></pre><p>解释:
-File ~/.bash_profile is executed at startup by the default bash shell.</p>
-<p>By adding commands there we make them available inside every shell session.</p>
-<p>Adding $GOPATH/bin to PATH is a matter of convenience. When you install Go programs with go get &hellip;, you will be able to invoke them without typing the full path. For example, you would run gotest1 rather than $HOME/go/bin/gotest1.</p>
-<p>More configuration
-To quickly cd to a directory with Go source code I add bash alias to ~/.bash_profile:</p>
-<p>alias cdgo=&quot;cd $GOPATH/src/github.com/kjk&rdquo;
-You need to change github.com/kjk for your GitHub account.</p>
-<p>You should understand the effect of GOPATH.</p>
-<h1 id="linux-install-and-setup">Linux install and setup</h1>
-<p>Install on Ubuntu
-Using Ubuntu provided package
-$ sudo apt-get update
+</code></pre><p>输入<code>source ~/.bash_profile</code>或者打开一个新的终端以使配置生效.</p>
+<p>说明:</p>
+<p>文件~/ .bash_profile在启动时由默认的bash shell执行。</p>
+<p>通过在其中添加命令，我们可以在每个Shell会话中使用它们。</p>
+<p>将$ GOPATH/bin添加到PATH是为了方便。当使用go get安装Go程序时，无需输入完整路径即可调用它们。 例如，运行gotest1而不是$HOME/go/bin/gotest1。</p>
+<p>更多配置</p>
+<p>为了使用Go源代码快速将CD CD到目录，将bash别名添加到~/ .bash_profile中：</p>
+<p><code>alias cdgo=&quot;cd $GOPATH/src/github.com/yourpath&quot;</code></p>
+<h2 id="linux下安装和设置">Linux下安装和设置</h2>
+<p>在Ubuntu中安装,使用Ubuntu提供的包:</p>
+<pre><code>$ sudo apt-get update
 $ sudo apt-get install golang-go
-Packages provided by Ubuntu are often outdated. A new version of Go is released every 6 months but Ubuntu distribution moves at a slower pace.</p>
-<p>Newer versions are often available via ppa:gophers/archive package repository:</p>
-<p>$ sudo add-apt-repository ppa:gophers/archive
+</code></pre><p>Ubuntu提供的软件包通常已经过时。 Go的新版本每6个月发布一次，但Ubuntu发行版的移动速度较慢。</p>
+<p>通常可以通过ppa:gophers/archive软件包存储库获得较新的版本：</p>
+<pre><code>$ sudo add-apt-repository ppa:gophers/archive
 $ sudo apt-get update
 $ sudo apt-get install golang-1.11-go
-If those are still not recent enough, you can install binary parckages.</p>
-<p>Using binary packages
-These instructions work on most Linux distributions:</p>
-<p>$ sudo apt-get update
+</code></pre><p>如果这些还不够新，则可以安装二进制软件包。</p>
+<p>使用二进制包:
+这些说明适用于大多数Linux发行版：</p>
+<pre><code>$ sudo apt-get update
 $ sudo apt-get install -y build-essential git curl wget
-$ wget <a href="https://storage.googleapis.com/golang/go">https://storage.googleapis.com/golang/go</a><!-- raw HTML omitted -->.gz
-You can find the version list here.</p>
-<h1 id="to-install-go1124-use">To install go1.12.4 use</h1>
-<p>$ wget <a href="https://storage.googleapis.com/golang/go1.12.4.linux-amd64.tar.gz">https://storage.googleapis.com/golang/go1.12.4.linux-amd64.tar.gz</a></p>
-<h1 id="untar-the-file">Untar the file</h1>
-<p>$ sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz
+$ wget https://storage.googleapis.com/golang/go&lt;versions&gt;.gz
+</code></pre><p>如go1.12.4: <code>$ wget https://storage.googleapis.com/golang/go1.12.4.linux-amd64.tar.gz</code></p>
+<h2 id="解压文件">解压文件</h2>
+<pre><code>$ sudo tar -C /usr/local -xzf go1.12.4.linux-amd64.tar.gz
 $ sudo chown -R $USER:$USER /usr/local/go
 $ rm go1.12.4.linux-amd64.tar.gz
-Setup on Linux
-After installing the compiler you need to configure GOPATH environment variable.</p>
-<p>Since Go 1.8, the GOPATH environment variable has the default value of $HOME/go, so you can skip setting it.</p>
-<p>Create the go directory with mkdir $HOME/go.</p>
-<p>Add the following two lines at the end of your ~/.bashrc file</p>
-<p>export GOPATH=$HOME/go
+</code></pre><p>在Linux上安装
+安装编译器后，您需要配置GOPATH环境变量。</p>
+<p>从Go 1.8开始，GOPATH环境变量的默认值为$HOME/go，因此可以跳过设置。</p>
+<p>使用<code>mkdir $HOME/go</code>创建go目录。</p>
+<p>在~/.bashrc文件的末尾添加以下两行</p>
+<pre><code>export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
-$ source ~/.bashrc
-Test the setup by running go version.</p>
-<p>You should understand the effect of GOPATH.</p>
-<h1 id="gopath-goroot-gobin">GOPATH, GOROOT, GOBIN</h1>
+</code></pre><p>然后执行<code>source ~/.bashrc</code>, 使用<code>go version</code>验证是否安装成功.</p>
+<h2 id="gopath-goroot-gobin">GOPATH, GOROOT, GOBIN</h2>
 <p>GOPATH
-If you come from other programming languages you’re probably used to placing source code anywhere in the file system.</p>
-<p>Go tools expect a certain layout of the source code.</p>
-<p>GOPATH is the root of the workspace and contains the following folders:</p>
-<p>src — location of source files: .go, .c, .g, .s
-pkg — location of compiled packages (.a files)
-bin — location of executables built by Go
-Like the PATH environment variable, GOPATH is a list of directories separated with : (; on Windows).</p>
-<p>Go looks into GOPATH directories for packages (libraries).</p>
-<p>The go get tool downloads packages to the first directory in GOPATH.</p>
-<p>Since Go 1.8, if GOPATH environment variable is not set, it defaults to $HOME/go on Unix/Linux and %USERPROFILE%/go on Windows.</p>
-<p>Some tools assume that GOPATH only consists of a single directory.</p>
+如果您来自其他编程语言，则可能习惯于将源代码放置在文件系统中的任何位置。</p>
+<p>Go工具需要源代码的特定布局。</p>
+<p>GOPATH是工作区的根，并包含以下文件夹：</p>
+<ul>
+<li>src — 用于存放源代码文件: .go, .c, .g, .s</li>
+<li>pkg — 存放已编译的包 (.a files)</li>
+<li>bin — 存放Go生成的可执行文件</li>
+</ul>
+<p>像PATH环境变量一样，GOPATH是由:(在Windows上为;)分隔的目录列表。</p>
+<p>Go查找GOPATH目录中的软件包(库)。</p>
+<p><code>go get</code>工具将软件包下载到GOPATH中的第一个目录。</p>
+<p>从Go 1.8开始，如果未设置GOPATH环境变量，则在Unix/Linux上默认为$HOME/go，在Windows上默认为％USERPROFILE％/go。</p>
+<p>一些工具假定GOPATH仅包含一个目录。</p>
 <p>GOBIN
-The directory where go install and go get will place binaries after building main packages. Generally this is set to somewhere on the system PATH so that installed binaries can be run and discovered easily.</p>
+go install和go get的目录将在构建主软件包后放置二进制文件。 通常，将其设置为系统PATH上的某个位置，以便可以轻松运行和发现已安装的二进制文件。</p>
 <p>GOROOT
-This is the location of your Go installation. It is used to find the standard libraries.</p>
-<p>It is very rare to have to set this variable as Go embeds the build path into the toolchain. Setting GOROOT is needed if the installation directory differs from the build directory (or the value set when building).</p>
-<p>See go env for a full list of environment variables.</p>
-<h1 id="hello-world">Hello, World!</h1>
+这是Go安装的位置。它用于查找标准库。</p>
+<p>由于Go将构建路径嵌入到工具链中，因此很少需要设置此变量。 如果安装目录不同于构建目录(或构建时设置的值)，则需要设置GOROOT。</p>
+<p>有关环境变量的完整列表，请参见go env。</p>
+<h2 id="hello-world">Hello, World!</h2>
 <p>创建名为hello_world.go文件,输入如下代码:</p>
 <pre><code>package main
 
@@ -243,9 +233,9 @@ func main() {
     fmt.Println(&quot;Hello, World&quot;)
 }
 </code></pre><p>使用go run hello_world.go 命令运行程序.go run对于临时执行单文件程序很有用。</p>
-<p>你也可以使用go build hello_world.go命令创建一个可执行程序.
-在Windows系统下这将生成hello_world.exe可执行文件.
-在其他系统下将生成 ./hello_world 可执行文件.</p>
+<p>你也可以使用go build hello_world.go命令创建一个可执行程序.</p>
+<p>在Windows系统下这将生成hello_world.exe可执行文件.</p>
+<p>在其他系统下将生成 ./hello_world 可执行文件.</p>
 
                                                 
                                             </div>
@@ -298,7 +288,7 @@ func main() {
                                         <a href="https://luangeng.space/post/go/basic/Types/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Go基本数据类型</span>
+                                            <span>Go 基本数据类型</span>
                                         </a>
                                         
                                     </li>
@@ -324,17 +314,6 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/" rel="bookmark" class="leancloud-count">Go Calling C from GO with cgo
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -345,7 +324,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -356,7 +335,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -367,7 +346,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -378,7 +357,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -389,7 +368,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Middleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -400,7 +379,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -411,8 +390,19 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -444,7 +434,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -455,7 +445,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
+                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -466,7 +456,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/go/basic/Cryptography/" class="leancloud-count">Go 加解密
+                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -477,7 +467,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go Console I/O
+                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -488,7 +478,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/go/basic/Protobuf/" class="leancloud-count">Go Protobuf
+                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -499,7 +489,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">6.</span>
-                <a href="https://luangeng.space/post/go/basic/Fmt/" class="leancloud-count">Go fmt包
+                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -510,7 +500,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">7.</span>
-                <a href="https://luangeng.space/post/go/basic/Plugin/" class="leancloud-count">Go 插件
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -579,8 +569,6 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Calling-C-from-GO-with-cgo/">Go Calling C from GO with cgo</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
@@ -597,6 +585,8 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
                 
+                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                
             </ul>
         </div>
         
@@ -605,15 +595,15 @@ func main() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Command/">Go 命令</a></li>
+                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Images/">Go 图像</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Cryptography/">Go 加解密</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
+                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Protobuf/">Go Protobuf</a></li>
+                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>
@@ -636,7 +626,7 @@ func main() {
             <h3>标签</h3>
             
             <a href='https://luangeng.space/tags/Go'
-                style="font-size:17px;margin:5px; padding:4px"><code>Go(56)</code></a>
+                style="font-size:17px;margin:5px; padding:4px"><code>Go(55)</code></a>
             
             <a href='https://luangeng.space/tags/Java'
                 style="font-size:17px;margin:5px; padding:4px"><code>Java(22)</code></a>
