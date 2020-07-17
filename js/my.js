@@ -6,13 +6,13 @@ function init() {
   qrcode.makeCode(window.location.toString());
   $(window).scroll(function () { this.scrollY > 700 ? $("#back-to-top").show() : $("#back-to-top").hide(); });
 
-  // if (baseurl.indexOf('localhost') == -1) {
-  AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
-  var Counter = AV.Object.extend("Counter");
-  addCount(Counter);
-  showHitCount(Counter);
-  queryRanking();
-  // }
+  if (baseurl.indexOf('localhost') == -1) {
+    AV.initialize("q1EPKWBP8zxISs3AiwAd1P98-gzGzoHsz", "NKLkrafxvTEBPC1XeFaAWUvo");
+    var Counter = AV.Object.extend("Counter");
+    addCount(Counter);
+    showHitCount(Counter);
+    queryRanking();
+  }
 }
 
 //给一个页面中有多篇文章时所调用的，例如博客主界面或者存档界面。
