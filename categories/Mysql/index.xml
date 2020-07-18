@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on 计算机与软件技术公开课</title>
+    <link>https://luangeng.space/categories/Mysql/</link>
+    <description>Recent content in Mysql on 计算机与软件技术公开课</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2018. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 05 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://luangeng.space/categories/Mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mysql常用数据类型</title>
+      <link>https://luangeng.space/post/db/mysql/mysql-type/</link>
+      <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/db/mysql/mysql-type/</guid>
+      <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
+    </item>
+    
+    <item>
+      <title>Mysql基础语法</title>
+      <link>https://luangeng.space/post/db/mysql/mysql-sql/</link>
+      <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/db/mysql/mysql-sql/</guid>
+      <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
+    </item>
+    
+    <item>
+      <title>MySql 存储过程</title>
+      <link>https://luangeng.space/post/db/mysql/mysql-procedure/</link>
+      <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/db/mysql/mysql-procedure/</guid>
+      <description>存储过程(Stored Procedure)是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数(如果带参数)来</description>
+    </item>
+    
+    <item>
+      <title>ubuntu16.04 安装 mysql5.7</title>
+      <link>https://luangeng.space/post/db/mysql/mysql/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/db/mysql/mysql/</guid>
+      <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
+    </item>
+    
+  </channel>
+</rss>

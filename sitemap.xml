@@ -428,7 +428,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+        <loc>https://luangeng.space/categories/Java/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -499,6 +499,13 @@
     
     <url>
         <loc>https://luangeng.space/post/other/elasticJob/</loc>
+        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -773,6 +780,13 @@
     <url>
         <loc>https://luangeng.space/post/java/zookeeper/zookeeper-watch/</loc>
         <lastmod>2017-09-06T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/categories/Mysql/</loc>
+        <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -1157,13 +1171,6 @@
     
     <url>
         <loc>https://luangeng.space/tags/Java/</loc>
-        <lastmod>2016-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://luangeng.space/categories/Java/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
