@@ -32,10 +32,10 @@
     
     <item>
       <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
-      <link>https://luangeng.space/post/java/struts/</link>
+      <link>https://luangeng.space/post/java/other/struts/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/struts/</guid>
+      <guid>https://luangeng.space/post/java/other/struts/</guid>
       <description>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。 新建Maven project，type选择webap</description>
     </item>
     

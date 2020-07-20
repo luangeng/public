@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>反转单向链表 - 计算机与软件技术公开课</title>
+  <title>struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="反转单向链表 - 计算机与软件技术公开课">
-  <meta name="description" content="反转单向链表">
-  <meta itemprop="name" content="反转单向链表 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="反转单向链表">
-  <meta property="og:title" content="反转单向链表 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课">
+  <meta name="description" content="struts2 &#43; spring &#43; mybatis 框架整合">
+  <meta itemprop="name" content="struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="struts2 &#43; spring &#43; mybatis 框架整合">
+  <meta property="og:title" content="struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/java/exe/reverseList/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/struts/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="反转单向链表">
+  <meta property="og:description" content="struts2 &#43; spring &#43; mybatis 框架整合">
 
-  <link rel="canonical" href="https://luangeng.space/post/java/exe/reverseList/">
-  <link rel='shortlink' href="https://luangeng.space/post/java/exe/reverseList/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/struts/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/struts/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -131,7 +131,7 @@
                                 <ul class="meta-single group">
                                     
                                     <li class="category">
-                                        <span>算法</span>
+                                        <span>Java</span>
                                     </li>
                                     
                                 </ul>
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">反转单向链表</h1>
+                                        <h1 class="post-title">struts2 &#43; spring &#43; mybatis 框架整合</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2016-09-03 · 300 Words
+                                            Posted @ 2016-08-23 · 1739 Words
                                             
-                                            · Tags: 算法
+                                            · Tags: spring
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="反转单向链表">
+                                            <span class="leancloud_visitors" data-flag-title="struts2 &#43; spring &#43; mybatis 框架整合">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,106 +165,512 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <h2 id="1请先实现一个单向链表">1.请先实现一个单向链表</h2>
-<pre><code>public class MyLinkedList {
+                                                <p>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。</p>
+<p>新建Maven project，type选择webapp</p>
+<p>修改pom.xml文件如下：</p>
+<pre><code> &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
+     &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+     &lt;groupId&gt;com&lt;/groupId&gt;
+     &lt;artifactId&gt;javaweb&lt;/artifactId&gt;
+     &lt;packaging&gt;war&lt;/packaging&gt;
+     &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+     &lt;name&gt;javaweb Maven Webapp&lt;/name&gt;
+     &lt;url&gt;http://maven.apache.org&lt;/url&gt;
+ 
+     &lt;properties&gt;
+         &lt;struts.version&gt;2.3.28&lt;/struts.version&gt;
+         &lt;spring.version&gt;3.0.5.RELEASE&lt;/spring.version&gt;
+         &lt;mybatis.version&gt;3.2.6&lt;/mybatis.version&gt;
+         &lt;log4j.version&gt;1.2.17&lt;/log4j.version&gt;
+     &lt;/properties&gt;
+ 
+     &lt;dependencies&gt;
+     
+         &lt;!-- struts包 --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;
+             &lt;artifactId&gt;struts2-core&lt;/artifactId&gt;
+            &lt;version&gt;${struts.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;
+             &lt;artifactId&gt;struts2-spring-plugin&lt;/artifactId&gt;
+             &lt;version&gt;${struts.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+ 
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+             &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+             &lt;version&gt;${spring.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+ 
+         &lt;!-- mybatis核心包 --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+             &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+             &lt;version&gt;${mybatis.version}&lt;/version&gt;
+         &lt;/dependency&gt;
+ 
+         &lt;!-- mybatis-spring包 --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+             &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+             &lt;version&gt;1.2.2&lt;/version&gt;
+         &lt;/dependency&gt;
+ 
+         &lt;!-- java ee 包 --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;javax&lt;/groupId&gt;
+             &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+             &lt;version&gt;7.0&lt;/version&gt;
+         &lt;/dependency&gt;
+         
+         &lt;!-- Mysql数据库链接jar包 --&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;mysql&lt;/groupId&gt;
+             &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+             &lt;version&gt;5.1.30&lt;/version&gt;
+         &lt;/dependency&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+             &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+             &lt;version&gt;1.2.2&lt;/version&gt;
+         &lt;/dependency&gt;
+ 
+         &lt;dependency&gt;
+             &lt;groupId&gt;junit&lt;/groupId&gt;
+             &lt;artifactId&gt;junit&lt;/artifactId&gt;
+             &lt;version&gt;3.8.1&lt;/version&gt;
+             &lt;scope&gt;test&lt;/scope&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+ 
+     &lt;build&gt;
+         &lt;finalName&gt;javaweb&lt;/finalName&gt;
+     &lt;/build&gt;
+ &lt;/project&gt;
+</code></pre><p>在resources目录下添加applicationContext.xml文件：</p>
+<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+     xsi:schemaLocation=&quot;
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd&quot;&gt;
+     
+     &lt;!-- 配置要扫描的包 --&gt;  
+     &lt;context:component-scan base-package=&quot;action&quot;&gt;&lt;/context:component-scan&gt;
+     &lt;context:component-scan base-package=&quot;service.impl&quot;&gt;&lt;/context:component-scan&gt;  
+ 
+     &lt;!-- 指定数据源配置文件 --&gt;
+     &lt;context:property-placeholder location=&quot;classpath:jdbc.properties&quot; /&gt;
+     
+     &lt;!-- 数据源 --&gt;
+     &lt;bean id=&quot;dataSource_dev&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;
+         destroy-method=&quot;close&quot;&gt;
+         &lt;property name=&quot;driverClassName&quot; value=&quot;${driver}&quot; /&gt;
+         &lt;property name=&quot;url&quot; value=&quot;${url}&quot; /&gt;
+         &lt;property name=&quot;username&quot; value=&quot;${username}&quot; /&gt;
+         &lt;property name=&quot;password&quot; value=&quot;${password}&quot; /&gt;
+     &lt;/bean&gt;
+ 
+     &lt;!-- 配置sqlSessionFactory --&gt;
+     &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+         &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource_dev&quot; /&gt;
+         &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:mapper/*.xml&quot; /&gt;
+     &lt;/bean&gt;
+     
+     &lt;!-- 指定DAO层 --&gt;
+     &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
+         &lt;property name=&quot;basePackage&quot; value=&quot;dao&quot; /&gt;
+         &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;&gt;&lt;/property&gt;
+     &lt;/bean&gt;
+ 
+     &lt;!-- 使用Spring的事务管理器 --&gt;
+     &lt;bean id=&quot;transactionManager&quot;
+         class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+         &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource_dev&quot; /&gt;
+     &lt;/bean&gt;
+ 
+ &lt;/beans&gt;
+</code></pre><p>在resources目录下添加配置文件jdbc.properties：</p>
+<pre><code> # JDBC Configuration  
+ driver=com.mysql.jdbc.Driver
+ url=jdbc:mysql://localhost:3306/web
+ username=root
+ password=password
+ 
+ # DBCP Pool settings  
+ initialSize=0
+ maxActive=20
+ maxIdle=20
+ minIdle=1
+ maxWait=60000
+</code></pre><p>在resources目录下添加struts配置文件struts.xml：</p>
+<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE struts PUBLIC &quot;-//Apache Software Foundation//DTD Struts Configuration 2.1//EN&quot; &quot;http://struts.apache.org/dtds/struts-2.1.dtd&quot;&gt;
+ &lt;struts&gt;
+     &lt;!-- 指定默认编码集 --&gt;
+     &lt;constant name=&quot;struts.i18n.encoding&quot; value=&quot;UTF-8&quot; /&gt;
+ 
+     &lt;constant name=&quot;struts.multipart.maxSize&quot; value=&quot;99000000&quot; /&gt;
+     &lt;constant name=&quot;struts.multipart.saveDir&quot; value=&quot;/tmp&quot;/&gt;
+ 
+     &lt;!-- 当struts配置文件修改时是否自动加载 --&gt;
+     &lt;constant name=&quot;struts.configuration.xmlreload&quot; value=&quot;true&quot; /&gt;
+ 
+     &lt;!-- 开发模式下打印详细的错误信息 --&gt;
+     &lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot; /&gt;
+ 
+     &lt;constant name=&quot;struts.ui.theme&quot; value=&quot;xhtml&quot; /&gt;
+ 
+     &lt;include file=&quot;User.xml&quot;&gt;&lt;/include&gt;
+     
+ &lt;/struts&gt;    
+</code></pre><p>在resources目录下添加mybatis配置文件mybatis-config.xml：</p>
+<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+ &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+ 
+ &lt;configuration&gt;
+     &lt;settings&gt;
+         &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;
+         &lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot;/&gt;
+         &lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;true&quot;/&gt;
+     &lt;/settings&gt;
+     
+     &lt;typeAliases&gt;
+         
+     &lt;/typeAliases&gt;
+     
+ &lt;/configuration&gt;
+</code></pre><p>在web.xml中添加如下配置：</p>
+<pre><code> &lt;!-- spring的配置文件位置 --&gt;
+     &lt;context-param&gt;
+         &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+         &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
+     &lt;/context-param&gt;
+     
+     &lt;!-- struts2过滤器配置 --&gt;
+     &lt;filter&gt;
+         &lt;filter-name&gt;struts2&lt;/filter-name&gt;
+         &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;
+     &lt;/filter&gt;
+     &lt;filter-mapping&gt;
+         &lt;filter-name&gt;struts2&lt;/filter-name&gt;
+         &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+     &lt;/filter-mapping&gt;
+ 
+     &lt;!-- 集成spring --&gt;
+     &lt;listener&gt;
+         &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+     &lt;/listener&gt;
+</code></pre><p>在工程中添加如下类：</p>
+<p><img src="pic/2016/struts1.png" alt=""></p>
+<p>代码如下：</p>
+<pre><code> package action;
+ 
+ import java.io.IOException;
+ import java.io.PrintWriter;
+ import java.util.List;
+ 
+ import javax.annotation.Resource;
+ import javax.servlet.http.HttpServletResponse;
+ 
+ import org.apache.struts2.ServletActionContext;
+ import org.springframework.context.annotation.Scope;
+ import org.springframework.stereotype.Controller;
+ 
+ import com.opensymphony.xwork2.ActionSupport;
+ import beans.User;
+ import service.IUserService;
+ 
+ @Controller
+ @Scope(&quot;prototype&quot;)
+ public class UserAction extends ActionSupport {
+ 
+     private static final long serialVersionUID = 1L;
+     
+     @Resource
+     private IUserService userService;
+     
+     private User user;
+     
+     private List&lt;User&gt; userlist;
+     
+     public User getUser() {
+         return user;
+     }
+ 
+     public void setUser(User user) {
+         this.user = user;
+     }
+     
+     public List&lt;User&gt; getUserlist() {
+         return userlist;
+     }
+ 
+     public void setUserlist(List&lt;User&gt; userlist) {
+         this.userlist = userlist;
+     }
+ 
+     public String execute() throws Exception {
+         System.out.println(&quot;execute&quot;);
+         return SUCCESS;
+     }
+ 
+     public String addUser() {
+         userService.addUser(user);
+         return SUCCESS;
+     }
+ 
+     public String deleteUser() {
+         userService.deleteUser(user.getId());
+         return SUCCESS;
+     }
+ 
+     public String queryAllUser() {
+         userlist = userService.queryAllUser();
+         return &quot;list&quot;;
+     }
+ 
+     public void validate() {
+         System.out.println(&quot;validate()会对action中的所有方法进行校验&quot;);
+ //        if(this.user.getName() == null || this.user.getName().trim().equals(&quot;&quot;)) {  
+ //            this.addFieldError(&quot;name&quot;, &quot;用户名不能为空！&quot;);  
+ //        }  
+     } 
+     
+     //直接返回一个字符串
+     public String queryUserNameByID() throws IOException{
+         HttpServletResponse response = ServletActionContext.getResponse();  
+         response.setContentType(&quot;text/html;charset=UTF-8&quot;);
+         //response.sendError(401,&quot;timeout&quot;);
+         PrintWriter out = response.getWriter();  
+         out.println(&quot;luangeng123&quot;);//返回的字符串数据 
+         out.flush();
+         out.close();
+         return null;  
+     }
+ 
+ }
+</code></pre><pre><code> package beans;
+ 
+ import java.sql.Date;
+ 
+ public class User {
+     private Integer id;
+ 
+     private String name;
+ 
+     private String pwd;
+     
+     private String sex;
+     
+     private Integer age;
+ 
+     private String email;
+ 
+     private String phone;
+ 
+     private Date register_time;
+ 
+     private Date last_update_time;
+ 
+     private String remark;
+ 
+     private Integer active; 32     
+     public User(String name, String pwd, String email, String phone){
+         this.name = name;
+         this.pwd = pwd;
+         this.email = email;
+         this.phone = phone;
+     }
+ 
+     public Integer getId() {
+         return id;
+     }
+ 
+     public void setId(Integer id) {
+         this.id = id;
+     }
+     ...
+ }
+</code></pre><p>IUserDao</p>
+<pre><code> package dao;
+ 
+ import java.util.List;
+ 
+ import org.apache.ibatis.annotations.Delete;
+ import org.apache.ibatis.annotations.Select;
+ 
+ import beans.User;
+ 
+ public interface IUserDao {
+ 
+     public void addUser(User user);
+ 
+     @Delete(&quot;delete from f_user_t where id=#{id}&quot;)
+     public void delUser(Integer userId);
+ 
+     @Select(&quot;select * from f_user_t where id=#{id&quot;)
+     public User queryUserById(Integer userId);
+ 
+     @Select(&quot;select * from f_user_t&quot;)
+     public List&lt;User&gt; queryAll();
+     
+ }
+</code></pre><p>mapper中的User.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;dao.IUserDao&quot;&gt;
+    
+    &lt;resultMap type=&quot;beans.User&quot; id=&quot;userResult&quot;&gt;
+        &lt;result property=&quot;id&quot; column=&quot;id&quot; jdbcType=&quot;INTEGER&quot; javaType=&quot;java.lang.Integer&quot; /&gt;
+        &lt;result property=&quot;username&quot; column=&quot;username&quot; /&gt;
+        &lt;result property=&quot;password&quot; column=&quot;password&quot; /&gt;
+    &lt;/resultMap&gt;
 
-    private static class Node {
-        int value;
-        Node next;
-        public Node(int value) {
-            this.value = value;
-        }
-    }
+    &lt;insert id=&quot;insertUser&quot; parameterType=&quot;beans.User&quot;&gt;
+     insert into f_user_t 
+    (name,pwd,sex,age,email,phone,register_time,last_update_time,remark,active)
+    values
+    (#{name},#{pwd},#{sex},#{age},#{email},#{phone},now(),now(),#{remark},#{active})
+     &lt;/insert&gt;
 
-    private Node head;
+&lt;/mapper&gt;
+</code></pre><pre><code> package service;
+ 
+ import java.util.List;
+ import beans.User;
+ 
+ public interface IUserService {
+ 
+     public abstract void addUser(User user);
+ 
+     public abstract void deleteUser(Integer userId);
+ 
+     public abstract User queryUserById(Integer userId);
+ 
+     public abstract List&lt;User&gt; queryAllUser();
+ 
+ }
+</code></pre><pre><code> package service.impl;
+ 
+ import java.util.List;
+ 
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
+ import org.springframework.transaction.annotation.Transactional;
+ 
+ import dao.IUserDao;
+ import beans.User;
+ import service.IUserService;
+ 
+ @Service  
+ @Transactional 
+ public class UserService implements IUserService {
+ 
+     @Autowired
+     private IUserDao userDao;
+ 
+     public void addUser(User user) {
+         userDao.addUser(user);
+     }
+ 
+     public void deleteUser(Integer userId) {
+         userDao.delUser(userId);
+     }
+ 
+     public User queryUserById(Integer userId) {
+         return userDao.queryUserById(userId);
+     }
+ 
+     public List&lt;User&gt; queryAllUser() {
+         return userDao.queryAll();
+     }
+     
+ }
+</code></pre><p>struts的User.xml</p>
+<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;!DOCTYPE struts PUBLIC &quot;-//Apache Software Foundation//DTD Struts Configuration 2.1//EN&quot; &quot;http://struts.apache.org/dtds/struts-2.1.dtd&quot;&gt;
+ &lt;struts&gt;
+ &lt;package name=&quot;user&quot; namespace=&quot;/user&quot; extends=&quot;struts-default&quot;&gt;
+     &lt;action name=&quot;*&quot; class=&quot;userAction&quot; method=&quot;{1}&quot;&gt;
+         &lt;result name=&quot;success&quot; type=&quot;redirectAction&quot;&gt;queryAllUser&lt;/result&gt;
+         &lt;result name=&quot;error&quot;&gt;/error.jsp&lt;/result&gt;
+         &lt;result name=&quot;list&quot;&gt;/list.jsp&lt;/result&gt;
+         &lt;result name=&quot;input&quot;&gt;/error.jsp&lt;/result&gt;
+     &lt;/action&gt;
+     
+ &lt;/package&gt;
+ 
+ &lt;/struts&gt;
+</code></pre><p>list.jsp</p>
+<pre><code> &lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
+ &lt;%@ taglib prefix=&quot;s&quot;  uri=&quot;/struts-tags&quot;%&gt;
+ &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+ &lt;html&gt;
+   &lt;head&gt;
+     
+     &lt;title&gt;用户列表&lt;/title&gt;
+     
+     &lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
+     &lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
+     &lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;   
+ 
+   &lt;/head&gt;
+   
+   &lt;body&gt;
+     &lt;center&gt;
+         &lt;h2&gt;用户列表&lt;/h2&gt;
+         &lt;h3&gt;&lt;s:a action=&quot;toadd&quot; namespace=&quot;/user&quot;&gt;添加新用户&lt;/s:a&gt; &lt;/h3&gt;
+         
+         &lt;table width=&quot;90%&quot; border=&quot;1&quot;&gt;
+             &lt;tr&gt;
+                 &lt;th&gt;用户id&lt;/th&gt;
+                 &lt;th&gt;用户名称&lt;/th&gt;
+                 &lt;th&gt;用户密码&lt;/th&gt;
+                 &lt;th&gt;age&lt;/th&gt;
+                 &lt;th&gt;email&lt;/th&gt;
+                 &lt;th&gt;sex&lt;/th&gt;
+                 &lt;th&gt;phone&lt;/th&gt;
+                 &lt;th&gt;remark&lt;/th&gt;
+                 &lt;th&gt;操作&lt;/th&gt;
+             &lt;/tr&gt;
+             &lt;s:iterator value=&quot;userlist&quot;&gt;
+                 &lt;tr&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;id&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;name&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;pwd&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;age&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;email&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;sex&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;phone&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;&lt;s:property value=&quot;remark&quot;/&gt; &lt;/td&gt;
+                     &lt;td&gt;
+                     &lt;s:a action=&quot;toupdate&quot; namespace=&quot;/user&quot;&gt;
+                     &lt;s:param name=&quot;user.id&quot; value=&quot;id&quot;/&gt;修改
+                     &lt;/s:a&gt;
+                     &amp;nbsp;&amp;nbsp;
+                     &lt;s:a action=&quot;delete&quot; namespace=&quot;/user&quot;&gt;
+                     &lt;s:param name=&quot;user.id&quot; value=&quot;id&quot;/&gt;删除
+                     &lt;/s:a&gt;
+                     &lt;/td&gt;
+                 &lt;/tr&gt;
+             &lt;/s:iterator&gt;
+         &lt;/table&gt;
+     &lt;/center&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre><p>启动mysql，创建数据库web，创建表f_user_t, 插入数据：</p>
+<p><img src="pic/2016/struts2.png" alt=""></p>
+<p>启动Tomcat，访问 http://localhost:8080/javaweb/user/queryAllUser</p>
+<p><img src="pic/2016/struts3.png" alt=""></p>
 
-    private int size = 0;
-
-    //FILO
-    public void push(int v) {
-        size++;
-        if (head == null) {
-            head = new Node(v);
-        } else {
-            Node node = new Node(v);
-            node.next = head;
-            head = node;
-        }
-    }
-
-    public Node pop() {
-        Node node = head;
-        if (node == null) {
-            return null;
-        }
-        head = head.next;
-        size--;
-        return node;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    public void print() {
-        StringBuilder sb = new StringBuilder();
-        Node node = head;
-        if (node == null) {
-            return;
-        }
-        do {
-            sb.append(node.value);
-            sb.append(' ');
-            node = node.next;
-        } while (node != null);
-        System.out.println(sb.toString());
-    }
-}    
-</code></pre><h2 id="测试">测试</h2>
-<pre><code>    public static void main(String[] args) {
-
-        MyLinkedList list = new MyLinkedList();
-
-        for (int k = 1; k &lt;= 15; k++) {
-            list.push(k);
-        }
-
-        list.print();
-   }
-</code></pre><p><code>15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 </code></p>
-<h2 id="再写一个方法反转链表">再写一个方法反转链表</h2>
-<pre><code>    //反转单向链表
-    public void reverse() {
-        if (head == null) {
-            return;
-        }
-        Node next = head.next;
-        head.next = null;
-        do {
-            Node pre = head;
-            head = next;
-            next = next.next;
-            head.next = pre;
-        } while (next != null);
-    }
-</code></pre><h2 id="测试-1">测试</h2>
-<pre><code> public static void main(String[] args) {
-
-        MyLinkedList list = new MyLinkedList();
-
-        for (int k = 1; k &lt;= 15; k++) {
-            list.push(k);
-        }
-
-        list.print();
-        list.reverse();
-        list.print();
-
-    }
-</code></pre><h2 id="输出">输出</h2>
-<pre><code>15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
-</code></pre>
                                                 
                                             </div>
 
@@ -285,7 +691,7 @@
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/exe/reverseList/">https://luangeng.space/post/java/exe/reverseList/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/other/struts/">https://luangeng.space/post/java/other/struts/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -304,52 +710,25 @@
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/java/basic/oddeven/" rel="next">
+                                        <a href="https://luangeng.space/post/java/basic/deadlock/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>两个线程交替打印奇数和偶数</span>
+                                            <span>线程死锁</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/java/exe/string-reverse-word/" rel="prev">
+                                        <a href="https://luangeng.space/post/other/git-base/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>反转字符串中每一个单词</span>
+                                            <span>git基础命令</span>
                                         </a>
                                         
                                     </li>
                                 </ul>
                                 <br>
 
-
-<h4 class="heading">相关</h4>
-<ul class="related-posts group">
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/java/exe/string-reverse-word/" rel="bookmark" class="leancloud-count">反转字符串中每一个单词
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/java/exe/string-caption/" rel="bookmark" class="leancloud-count">将字符串中所有单词的首字母大写
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-</ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
 <ul class="related-posts group" id="ranking_ul">
@@ -418,7 +797,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -503,17 +882,6 @@
 
         
         
-        <div id="relate" class="widget widget_recent_entries">
-            <h3>相关</h3>
-            <ul>
-                
-                <li><a href="https://luangeng.space/post/java/exe/string-reverse-word/">反转字符串中每一个单词</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/exe/string-caption/">将字符串中所有单词的首字母大写</a></li>
-                
-            </ul>
-        </div>
-        
 
         <div id="recent" class="widget widget_recent_entries">
             <h3>最新</h3>
@@ -527,7 +895,7 @@
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>

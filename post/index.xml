@@ -540,10 +540,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>SpringBoot集成ZeroMQ</title>
-      <link>https://luangeng.space/post/other/zeromq-springboot/</link>
+      <link>https://luangeng.space/post/java/spring/zeromq-springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/zeromq-springboot/</guid>
+      <guid>https://luangeng.space/post/java/spring/zeromq-springboot/</guid>
       <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
     </item>
     
@@ -963,10 +963,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>CXF拦截器介绍及自定义拦截器实现</title>
-      <link>https://luangeng.space/post/java/cxf-interceptor/</link>
+      <link>https://luangeng.space/post/java/other/cxf-interceptor/</link>
       <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/cxf-interceptor/</guid>
+      <guid>https://luangeng.space/post/java/other/cxf-interceptor/</guid>
       <description>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链(I</description>
     </item>
     
@@ -1296,28 +1296,28 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>反转单向链表</title>
-      <link>https://luangeng.space/post/java/exe/reverseList/</link>
+      <link>https://luangeng.space/post/java/basic/reverseList/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/exe/reverseList/</guid>
+      <guid>https://luangeng.space/post/java/basic/reverseList/</guid>
       <description>1.请先实现一个单向链表 public class MyLinkedList { private static class Node { int value; Node next; public Node(int value) { this.value = value; } } private Node head; private int size = 0; //FILO public void push(int v) { size++; if (head == null) { head = new Node(v); } else { Node node = new Node(v); node.next = head; head</description>
     </item>
     
     <item>
       <title>反转字符串中每一个单词</title>
-      <link>https://luangeng.space/post/java/exe/string-reverse-word/</link>
+      <link>https://luangeng.space/post/java/basic/string-reverse-word/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/exe/string-reverse-word/</guid>
+      <guid>https://luangeng.space/post/java/basic/string-reverse-word/</guid>
       <description>反转字符串中每一个单词 public class StringTest { //反转每个单词 private static String reverseEveryWord(String str) { StringBuilder sb = new StringBuilder(); StringBuilder word = new StringBuilder(); for (char c : str.toCharArray()) { if (isLetter(c)) { word.append(c); } else { if (word.length() &amp;gt; 0) { sb.append(word.reverse().toString()); word.delete(0, word.length()); } sb.append(c); } } return sb.toString(); } private static boolean</description>
     </item>
     
     <item>
       <title>将字符串中所有单词的首字母大写</title>
-      <link>https://luangeng.space/post/java/exe/string-caption/</link>
+      <link>https://luangeng.space/post/java/basic/string-caption/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/exe/string-caption/</guid>
+      <guid>https://luangeng.space/post/java/basic/string-caption/</guid>
       <description>public class StringTest { // 首字母大写 private static String upper(String str) { boolean first = true; StringBuilder sb = new StringBuilder(); for (char c : str.toCharArray()) { if (first) { sb.append(Character.toUpperCase(c)); first = false; } else { sb.append(c); } if (Character.isWhitespace(c)) { first = true; } } return sb.toString(); } public static void main(String[] args) { char c = 20; System.out.println(&amp;quot;[&amp;quot; + c + &amp;quot;]&amp;quot;); String</description>
     </item>
     
@@ -1332,10 +1332,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>struts2 &#43; spring &#43; mybatis 框架整合</title>
-      <link>https://luangeng.space/post/java/struts/</link>
+      <link>https://luangeng.space/post/java/other/struts/</link>
       <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/struts/</guid>
+      <guid>https://luangeng.space/post/java/other/struts/</guid>
       <description>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。 新建Maven project，type选择webap</description>
     </item>
     

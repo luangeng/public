@@ -470,7 +470,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/zeromq-springboot/</loc>
+        <loc>https://luangeng.space/post/java/spring/zeromq-springboot/</loc>
         <lastmod>2018-11-19T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -904,7 +904,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/java/cxf-interceptor/</loc>
+        <loc>https://luangeng.space/post/java/other/cxf-interceptor/</loc>
         <lastmod>2017-03-22T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -1191,21 +1191,21 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/java/exe/reverseList/</loc>
+        <loc>https://luangeng.space/post/java/basic/reverseList/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/java/exe/string-reverse-word/</loc>
+        <loc>https://luangeng.space/post/java/basic/string-reverse-word/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/java/exe/string-caption/</loc>
+        <loc>https://luangeng.space/post/java/basic/string-caption/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -1233,7 +1233,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/java/struts/</loc>
+        <loc>https://luangeng.space/post/java/other/struts/</loc>
         <lastmod>2016-08-23T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>

@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>将字符串中所有单词的首字母大写 - 计算机与软件技术公开课</title>
+  <title>反转字符串中每一个单词 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="将字符串中所有单词的首字母大写 - 计算机与软件技术公开课">
-  <meta name="description" content="将字符串中所有单词的首字母大写">
-  <meta itemprop="name" content="将字符串中所有单词的首字母大写 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="将字符串中所有单词的首字母大写">
-  <meta property="og:title" content="将字符串中所有单词的首字母大写 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="反转字符串中每一个单词 - 计算机与软件技术公开课">
+  <meta name="description" content="反转字符串中每一个单词">
+  <meta itemprop="name" content="反转字符串中每一个单词 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="反转字符串中每一个单词">
+  <meta property="og:title" content="反转字符串中每一个单词 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/java/exe/string-caption/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/basic/string-reverse-word/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="将字符串中所有单词的首字母大写">
+  <meta property="og:description" content="反转字符串中每一个单词">
 
-  <link rel="canonical" href="https://luangeng.space/post/java/exe/string-caption/">
-  <link rel='shortlink' href="https://luangeng.space/post/java/exe/string-caption/">
+  <link rel="canonical" href="https://luangeng.space/post/java/basic/string-reverse-word/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/basic/string-reverse-word/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -143,10 +143,10 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">将字符串中所有单词的首字母大写</h1>
+                                        <h1 class="post-title">反转字符串中每一个单词</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2016-09-03 · 95 Words
+                                            Posted @ 2016-09-03 · 141 Words
                                             
                                             · Tags: 算法
                                             
@@ -154,7 +154,7 @@
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="将字符串中所有单词的首字母大写">
+                                            <span class="leancloud_visitors" data-flag-title="反转字符串中每一个单词">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,25 +165,35 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <pre><code>public class StringTest {
+                                                <h2 id="反转字符串中每一个单词">反转字符串中每一个单词</h2>
+<pre><code>public class StringTest {
 
-    // 首字母大写
-    private static String upper(String str) {
-        boolean first = true;
+    //反转每个单词
+    private static String reverseEveryWord(String str) {
         StringBuilder sb = new StringBuilder();
+        StringBuilder word = new StringBuilder();
         for (char c : str.toCharArray()) {
-            if (first) {
-                sb.append(Character.toUpperCase(c));
-                first = false;
+            if (isLetter(c)) {
+                word.append(c);
             } else {
+                if (word.length() &gt; 0) {
+                    sb.append(word.reverse().toString());
+                    word.delete(0, word.length());
+                }
                 sb.append(c);
             }
-            if (Character.isWhitespace(c)) {
-                first = true;
-            }
         }
-
         return sb.toString();
+    }
+
+    private static boolean isLetter(char c) {
+        if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') {
+            return true;
+        }
+        if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') {
+            return true;
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -193,10 +203,11 @@
 
         String str = &quot; i am luan geng hello  Good day she n nm nmb 13 !asd l0s 5a 3b 987 &quot;;
         System.out.println(str);
-        System.out.println(upper(str));
+        System.out.println(reverseEveryWord(str));
     }
 
 }
+
 </code></pre>
                                                 
                                             </div>
@@ -218,7 +229,7 @@
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/exe/string-caption/">https://luangeng.space/post/java/exe/string-caption/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/string-reverse-word/">https://luangeng.space/post/java/basic/string-reverse-word/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -237,19 +248,19 @@
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/java/exe/string-reverse-word/" rel="next">
+                                        <a href="https://luangeng.space/post/java/basic/reverseList/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>反转字符串中每一个单词</span>
+                                            <span>反转单向链表</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/java/basic/deadlock/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/basic/string-caption/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>线程死锁</span>
+                                            <span>将字符串中所有单词的首字母大写</span>
                                         </a>
                                         
                                     </li>
@@ -264,7 +275,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/java/exe/reverseList/" rel="bookmark" class="leancloud-count">反转单向链表
+                <a href="https://luangeng.space/post/java/basic/reverseList/" rel="bookmark" class="leancloud-count">反转单向链表
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -275,7 +286,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/java/exe/string-reverse-word/" rel="bookmark" class="leancloud-count">反转字符串中每一个单词
+                <a href="https://luangeng.space/post/java/basic/string-caption/" rel="bookmark" class="leancloud-count">将字符串中所有单词的首字母大写
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -351,7 +362,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -440,9 +451,9 @@
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/java/exe/reverseList/">反转单向链表</a></li>
+                <li><a href="https://luangeng.space/post/java/basic/reverseList/">反转单向链表</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/exe/string-reverse-word/">反转字符串中每一个单词</a></li>
+                <li><a href="https://luangeng.space/post/java/basic/string-caption/">将字符串中所有单词的首字母大写</a></li>
                 
             </ul>
         </div>
@@ -460,7 +471,7 @@
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>

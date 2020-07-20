@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>SpringBoot集成ZeroMQ - 计算机与软件技术公开课</title>
+  <title>将字符串中所有单词的首字母大写 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="SpringBoot集成ZeroMQ - 计算机与软件技术公开课">
-  <meta name="description" content="SpringBoot集成ZeroMQ">
-  <meta itemprop="name" content="SpringBoot集成ZeroMQ - 计算机与软件技术公开课">
-  <meta itemprop="description" content="SpringBoot集成ZeroMQ">
-  <meta property="og:title" content="SpringBoot集成ZeroMQ - 计算机与软件技术公开课" />
+  <meta name="keywords" content="将字符串中所有单词的首字母大写 - 计算机与软件技术公开课">
+  <meta name="description" content="将字符串中所有单词的首字母大写">
+  <meta itemprop="name" content="将字符串中所有单词的首字母大写 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="将字符串中所有单词的首字母大写">
+  <meta property="og:title" content="将字符串中所有单词的首字母大写 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/zeromq-springboot/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/basic/string-caption/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="SpringBoot集成ZeroMQ">
+  <meta property="og:description" content="将字符串中所有单词的首字母大写">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/zeromq-springboot/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/zeromq-springboot/">
+  <link rel="canonical" href="https://luangeng.space/post/java/basic/string-caption/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/basic/string-caption/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -131,7 +131,7 @@
                                 <ul class="meta-single group">
                                     
                                     <li class="category">
-                                        <span>Java</span>
+                                        <span>算法</span>
                                     </li>
                                     
                                 </ul>
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">SpringBoot集成ZeroMQ</h1>
+                                        <h1 class="post-title">将字符串中所有单词的首字母大写</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-11-19 · 1108 Words
+                                            Posted @ 2016-09-03 · 95 Words
                                             
-                                            · Tags: springboot
+                                            · Tags: 算法
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="SpringBoot集成ZeroMQ">
+                                            <span class="leancloud_visitors" data-flag-title="将字符串中所有单词的首字母大写">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,353 +165,37 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>开发ZeroMQ的SpringBoot Starter。</p>
-<p>resources中META-INF中增加文件spring.factories：</p>
-<p><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration</code></p>
-<p>配置文件类：ZeroMQProperties</p>
-<pre><code>@ConfigurationProperties(prefix = &quot;spring.zeromq&quot;)
-@Setter
-@Getter
-public class ZeroMQProperties {
+                                                <pre><code>public class StringTest {
 
-    private Publisher publisher;
-
-    private Subscriber subscriber;
-
-    @Data
-    public static class Publisher {
-        private Integer ioNum = 1;
-        private String address;
-    }
-
-    @Data
-    public static class Subscriber {
-        private Integer ioNum = 1;
-        private String address;
-    }
-}
-</code></pre><p>自动配置类：ZeroMQAutoConfiguration</p>
-<pre><code>@Configuration
-@EnableConfigurationProperties(ZeroMQProperties.class)
-public class ZeroMQAutoConfiguration {
-
-    @Bean(destroyMethod = &quot;destroy&quot;)
-    @ConditionalOnMissingBean(Publisher.class)
-    @ConditionalOnProperty(prefix = &quot;spring.zeromq&quot;, value = &quot;publisher.address&quot;)
-    public Publisher mqPublisher(final ZeroMQProperties zeroMQProperties) {
-        ZeroMQProperties.Publisher publisher = zeroMQProperties.getPublisher();
-        if (publisher.getAddress() == null) {
-            throw new IllegalArgumentException(&quot;mq address can not be null!&quot;);
-        }
-        if (publisher.getIoNum() == null) {
-            publisher.setIoNum(1);
-        }
-        return new Publisher(publisher.getIoNum(), publisher.getAddress());
-    }
-
-    @Configuration
-    @ConditionalOnProperty(prefix = &quot;spring.zeromq&quot;, value = &quot;subscriber.address&quot;)
-    public static class ListenerContainerConfiguration
-            implements ApplicationContextAware, InitializingBean, EnvironmentAware {
-
-        private Set&lt;String&gt; topicSet = new HashSet&lt;&gt;();
-
-        private ConfigurableApplicationContext applicationContext;
-
-        private StandardEnvironment environment;
-
-        private AtomicLong counter = new AtomicLong(0);
-
-        @Autowired
-        private ZeroMQProperties subscrbConfig;
-
-        private void registerContainer(final String beanName, final Object bean) {
-            Class&lt;?&gt; clazz = AopUtils.getTargetClass(bean);
-            if (!MessageCallback.class.isAssignableFrom(bean.getClass())) {
-                throw new IllegalStateException(clazz + &quot; must be instance of &quot; + MessageCallback.class.getName());
-            }
-            if (subscrbConfig.getSubscriber() == null) {
-                throw new IllegalArgumentException(&quot;Argument Illegal, no subscrbConfig!&quot;);
-            }
-            MessageCallback callback = (MessageCallback) bean;
-            Subscriber annotation = clazz.getAnnotation(Subscriber.class);
-            if (topicSet.contains(annotation.topic())) {
-                throw new IllegalArgumentException(&quot;Topic重复！&quot;);
-            }
-            BeanDefinitionBuilder beanBuilder = BeanDefinitionBuilder.rootBeanDefinition(SubscribContainer.class);
-            beanBuilder.addPropertyValue(&quot;topic&quot;, annotation.topic());
-            beanBuilder.addPropertyValue(&quot;address&quot;, subscrbConfig.getSubscriber().getAddress());
-            beanBuilder.addPropertyValue(&quot;ioNum&quot;, subscrbConfig.getSubscriber().getIoNum());
-            beanBuilder.addPropertyValue(&quot;threadSize&quot;, annotation.threadSize());
-            beanBuilder.addPropertyValue(&quot;queueSize&quot;, annotation.queueSize());
-            beanBuilder.addPropertyValue(&quot;callback&quot;, callback);
-            beanBuilder.addPropertyValue(&quot;clazz&quot;, findType(callback));
-            beanBuilder.setDestroyMethodName(&quot;close&quot;);
-            String containerBeanName = String.format(&quot;%s_%s&quot;, SubscribContainer.class.getName(), counter.incrementAndGet());
-            DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
-            beanFactory.registerBeanDefinition(containerBeanName, beanBuilder.getBeanDefinition());
-            SubscribContainer container = beanFactory.getBean(containerBeanName, SubscribContainer.class);
-            container.startRun();
-            topicSet.add(annotation.topic());
-            log.info(&quot;register messageCallback to container, listenerBeanName:{}, containerBeanName:{}&quot;, beanName, containerBeanName);
-        }
-
-        @Override
-        public void afterPropertiesSet() throws Exception {
-            Map&lt;String, Object&gt; beans = this.applicationContext.getBeansWithAnnotation(Subscriber.class);
-            Optional.ofNullable(beans).ifPresent(b -&gt; b.forEach(this::registerContainer));
-        }
-
-        @Override
-        public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-            this.applicationContext = (ConfigurableApplicationContext) applicationContext;
-        }
-
-        @Override
-        public void setEnvironment(Environment environment) {
-            if (environment instanceof StandardEnvironment) {
-                this.environment = (StandardEnvironment) environment;
-            }
-        }
-
-        private Type findType(MessageCallback callback) {
-            Type[] interfaces = callback.getClass().getGenericInterfaces();
-            for(Type t: interfaces){
-                if(t.getTypeName().startsWith(MessageCallback.class.getName()) &amp;&amp; ParameterizedType.class.isAssignableFrom(t.getClass())){
-                    return ((ParameterizedType)t).getActualTypeArguments()[0];
-                }
-            }
-            throw new IllegalStateException(&quot;&quot;);
-        }
-    }
-
-}
-</code></pre><p>发布者：Publisher</p>
-<pre><code>public class Publisher&lt;T extends Serializable&gt; {
-
-    private ZMQ.Context context;
-
-    private ZMQ.Socket socket;
-
-    private int mode = ZMQ.PUB;
-
-    public Publisher(int ioNum, String address) {
-        context = ZMQ.context(ioNum);
-        socket = context.socket(mode);
-        socket.bind(address);
-    }
-
-    public boolean send(String topic, T msg) {
-        return socket.send(topic + &quot; &quot; + JSON.toJSON(msg), 0);
-    }
-
-    public void destroy() {
-        socket.close();
-        context.term();
-    }
-
-}
-</code></pre><p>接收者注解：Subscriber</p>
-<pre><code>@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Component
-public @interface Subscriber {
-
-    String topic();
-
-    //并发处理消息的线程数
-    int threadSize() default 20;
-
-    int queueSize() default 20000;
-
-}
-</code></pre><p>接收者回调接口：MessageCallback</p>
-<pre><code>public interface MessageCallback&lt;T extends Serializable&gt; {
-    void onMessage(T msg);
-}
-</code></pre><p>接收者容器：SubscribContainer</p>
-<pre><code>@Data
-public class SubscribContainer extends Thread {
-
-    private String topic;
-
-    private String address;
-
-    private int threadSize;
-
-    private int queueSize;
-
-    private int keepAliveTime = 0;
-
-    private ZMQ.Socket socket;
-
-    private ZMQ.Context context;
-
-    private MessageCallback callback;
-
-    private Executor execute;
-
-    private int ioNum = 1;
-
-    private boolean exit = false;
-
-    private Type clazz;
-
-    private int mode = ZMQ.SUB;
-
-    public SubscribContainer() {
-    }
-
-    public void startRun() {
-        if (this.getState() != State.NEW) {
-            return;
-        }
-        try {
-            context = ZMQ.context(ioNum);
-            socket = context.socket(mode);
-            socket.connect(address);
-            socket.subscribe(this.topic.getBytes());
-            execute = new ThreadPoolExecutor(threadSize, threadSize, keepAliveTime, TimeUnit.SECONDS,
-                    new ArrayBlockingQueue&lt;&gt;(queueSize), new NamedThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
-            this.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void run() {
-        while (true) {
-            byte[] stringValue = socket.recv(0);
-            String msg = new String(stringValue);
-            String finalMsg = msg.substring(this.topic.length() + 1);
-            if (String.class.equals(clazz)) {
-                execute.execute(() -&gt; callback.onMessage(finalMsg));
+    // 首字母大写
+    private static String upper(String str) {
+        boolean first = true;
+        StringBuilder sb = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            if (first) {
+                sb.append(Character.toUpperCase(c));
+                first = false;
             } else {
-                Serializable o = JSON.parseObject(finalMsg, clazz);
-                execute.execute(() -&gt; callback.onMessage(o));
+                sb.append(c);
             }
-            if (exit) {
-                break;
+            if (Character.isWhitespace(c)) {
+                first = true;
             }
         }
+
+        return sb.toString();
     }
 
-    public void close() {
-        try {
-            exit = true;
-            socket.close();
-            context.term();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) {
+
+        char c = 20;
+        System.out.println(&quot;[&quot; + c + &quot;]&quot;);
+
+        String str = &quot; i am luan geng hello  Good day she n nm nmb 13 !asd l0s 5a 3b 987 &quot;;
+        System.out.println(str);
+        System.out.println(upper(str));
     }
 
-    private static class NamedThreadFactory implements ThreadFactory {
-        AtomicInteger i = new AtomicInteger(1);
-
-        @Override
-        public Thread newThread(Runnable r) {
-            Thread t = new Thread(r);
-            t.setName(&quot;ZeroMQ-Thread-&quot; + i.getAndIncrement());
-            return t;
-        }
-    }
-
-}
-</code></pre><p>使用：
-引入jar包
-application.properties</p>
-<pre><code>server.port=8080
-spring.zeromq.publisher.ioNum=4
-spring.zeromq.publisher.address=tcp://*:5557
-spring.zeromq.publisher.topic=test
-spring.zeromq.subscriber.address=tcp://localhost:5557
-</code></pre><p>启动类：</p>
-<pre><code>@SpringBootApplication
-public class ZmqApplication implements CommandLineRunner {
-
-    @Autowired
-    Publisher publisher;
-
-    @Autowired
-    Publisher&lt;Person&gt; publisher2;
-
-    /**
-     * 程序入口
-     *
-     * @param args 参数
-     */
-    public static void main(final String[] args) {
-        SpringApplication.run(ZmqApplication.class, args);
-    }
-
-    @Override
-    public void run(String... strings) throws Exception {
-        for (int i = 1; i &lt;= 100; i++) {
-            publisher.send(&quot;topic1&quot;, &quot;msg&quot; + i);
-            publisher2.send(&quot;topic2&quot;, new Person(i, &quot;name&quot; + i, new Date()));
-        }
-    }
-}
-</code></pre><p>Person对象：</p>
-<pre><code>@Data
-public class Person implements Serializable {
-
-    public Person(int id, String name, Date birthday) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-    }
-
-    private int id;
-
-    private String name;
-
-    private Date birthday;
-}
-</code></pre><p>一个Controller：</p>
-<pre><code>@RestController
-@RequestMapping(&quot;/zero&quot;)
-public class TestController {
-
-    @Autowired
-    Publisher&lt;String&gt; publisher;
-
-    @RequestMapping(&quot;/send/{n}&quot;)
-    public String send(@PathVariable(&quot;n&quot;) int n) {
-        boolean b = publisher.send(&quot;topic1&quot;, &quot;msg&quot; + n);
-        return b ? &quot;success&quot; : &quot;error&quot;;
-    }
-}
-</code></pre><p>订阅者1：</p>
-<pre><code>@Subscriber(topic = &quot;topic1&quot;, threadSize = 5)
-public class SubscriberTest implements MessageCallback&lt;String&gt;, Serializable {
-
-    @Override
-    public void onMessage(String str) {
-        System.out.println(Thread.currentThread().getName() + &quot; msg: &quot; + str);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre><p>订阅者2：</p>
-<pre><code>@Subscriber(topic = &quot;topic2&quot;, threadSize = 10)
-public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
-
-    @Override
-    public void onMessage(Person p) {
-        System.out.println(Thread.currentThread().getName() + &quot; msg: &quot; + p.toString());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
 </code></pre>
                                                 
@@ -534,7 +218,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/zeromq-springboot/">https://luangeng.space/post/other/zeromq-springboot/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/string-caption/">https://luangeng.space/post/java/basic/string-caption/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -553,19 +237,19 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticsearch/" rel="next">
+                                        <a href="https://luangeng.space/post/java/basic/string-reverse-word/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>elasticsearch入门教程</span>
+                                            <span>反转字符串中每一个单词</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/github_login/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/basic/deadlock/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>集成通过github登录网站功能</span>
+                                            <span>线程死锁</span>
                                         </a>
                                         
                                     </li>
@@ -580,7 +264,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticJob/" rel="bookmark" class="leancloud-count">SpringBoot集成elastic-job-lite
+                <a href="https://luangeng.space/post/java/basic/reverseList/" rel="bookmark" class="leancloud-count">反转单向链表
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -591,40 +275,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/java/spring/spring-ws/" rel="bookmark" class="leancloud-count">Spring Boot发布和调用RESTful web service
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/java/spring/spring-jpa/" rel="bookmark" class="leancloud-count">使用Spring Boot 和Spring Data JPA访问mysql数据库
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
-                <a href="https://luangeng.space/post/java/spring/spring-swagger/" rel="bookmark" class="leancloud-count">Spring Boot 集成Swagger2生成RESTful API文档
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/java/spring/spring-rest/" rel="bookmark" class="leancloud-count">Spring Boot自定义配置与加载
+                <a href="https://luangeng.space/post/java/basic/string-reverse-word/" rel="bookmark" class="leancloud-count">反转字符串中每一个单词
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -700,7 +351,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -789,15 +440,9 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
+                <li><a href="https://luangeng.space/post/java/basic/reverseList/">反转单向链表</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/spring/spring-ws/">Spring Boot发布和调用RESTful web service</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/spring/spring-jpa/">使用Spring Boot 和Spring Data JPA访问mysql数据库</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/spring/spring-swagger/">Spring Boot 集成Swagger2生成RESTful API文档</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/spring/spring-rest/">Spring Boot自定义配置与加载</a></li>
+                <li><a href="https://luangeng.space/post/java/basic/string-reverse-word/">反转字符串中每一个单词</a></li>
                 
             </ul>
         </div>
@@ -815,7 +460,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>

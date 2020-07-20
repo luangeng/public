@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>反转字符串中每一个单词 - 计算机与软件技术公开课</title>
+  <title>CXF拦截器介绍及自定义拦截器实现 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="反转字符串中每一个单词 - 计算机与软件技术公开课">
-  <meta name="description" content="反转字符串中每一个单词">
-  <meta itemprop="name" content="反转字符串中每一个单词 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="反转字符串中每一个单词">
-  <meta property="og:title" content="反转字符串中每一个单词 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="CXF拦截器介绍及自定义拦截器实现 - 计算机与软件技术公开课">
+  <meta name="description" content="CXF拦截器介绍及自定义拦截器实现">
+  <meta itemprop="name" content="CXF拦截器介绍及自定义拦截器实现 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="CXF拦截器介绍及自定义拦截器实现">
+  <meta property="og:title" content="CXF拦截器介绍及自定义拦截器实现 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/java/exe/string-reverse-word/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/cxf-interceptor/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="反转字符串中每一个单词">
+  <meta property="og:description" content="CXF拦截器介绍及自定义拦截器实现">
 
-  <link rel="canonical" href="https://luangeng.space/post/java/exe/string-reverse-word/">
-  <link rel='shortlink' href="https://luangeng.space/post/java/exe/string-reverse-word/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/cxf-interceptor/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/cxf-interceptor/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -131,7 +131,7 @@
                                 <ul class="meta-single group">
                                     
                                     <li class="category">
-                                        <span>算法</span>
+                                        <span>Java</span>
                                     </li>
                                     
                                 </ul>
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">反转字符串中每一个单词</h1>
+                                        <h1 class="post-title">CXF拦截器介绍及自定义拦截器实现</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2016-09-03 · 141 Words
+                                            Posted @ 2017-03-22 · 1098 Words
                                             
-                                            · Tags: 算法
+                                            · Tags: tool
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="反转字符串中每一个单词">
+                                            <span class="leancloud_visitors" data-flag-title="CXF拦截器介绍及自定义拦截器实现">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,50 +165,140 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <h2 id="反转字符串中每一个单词">反转字符串中每一个单词</h2>
-<pre><code>public class StringTest {
+                                                <p>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。
+当服务被调用时，会经过多个拦截器链(Interceptor Chain)处理，拦截器链在服务输入(IN)或输出(OUT)阶段实现附加功能，拦截器可以在客户端加入，也可以在服务端加入。</p>
+<p><img src="pic/2017/cxf1.png" alt=""></p>
+<p>拦截器链的阶段：</p>
+<p>拦截器链有多个阶段，每个阶段都有多个拦截器。拦截器在拦截器链的哪个阶段起作用，可以在拦截器的构造函数中声明。
+输入拦截器链有如下几个阶段，这些阶段按照在拦截器链中的先后顺序排列。</p>
+<p><img src="pic/2017/cxf2.png" alt=""></p>
+<p>输出拦截器链有如下几个阶段，这些阶段按照在拦截器链中的先后顺序排列。</p>
+<p><img src="pic/2017/cxf3.png" alt=""></p>
+<p>在CXF中，所有对消息的处理都是通过各种拦截器实现。CXF已经实现了多种拦截器，如操纵消息头、执行认证检查、验证消息数据、日志记录、消息压缩等，有些拦截器在发布服务、访问服务时已经默认添加到拦截器链。</p>
+<p>日志拦截器</p>
+<p>CXF已经内置了一些拦截器，这些拦截器大部分默认添加到拦截器链中，有些需要手动添加，如CXF提供的日志拦截器：输入日志拦截器LoggingInInterceptor和输出日志拦截器LoggingOutInterceptor，可以用在服务端也可以用在客户端，用来在测试或调试的时候输出服务端、客户端请求和接收到的信息。</p>
+<p>服务端配置方式如下：</p>
+<pre><code>&lt;!-- 发布REST WebService --&gt;
+    &lt;jaxrs:server id=&quot;restServiceContainer&quot; address=&quot;/cxf&quot;&gt;
+        &lt;!--输入拦截器设置--&gt;
+        &lt;jaxrs:inInterceptors&gt;
+            &lt;bean class=&quot;org.apache.cxf.interceptor.LoggingInInterceptor&quot;&gt;&lt;/bean&gt;
+        &lt;/jaxrs:inInterceptors&gt;
 
-    //反转每个单词
-    private static String reverseEveryWord(String str) {
-        StringBuilder sb = new StringBuilder();
-        StringBuilder word = new StringBuilder();
-        for (char c : str.toCharArray()) {
-            if (isLetter(c)) {
-                word.append(c);
-            } else {
-                if (word.length() &gt; 0) {
-                    sb.append(word.reverse().toString());
-                    word.delete(0, word.length());
-                }
-                sb.append(c);
-            }
-        }
-        return sb.toString();
+        &lt;!--输出拦截器设置--&gt;
+        &lt;jaxrs:outInterceptors&gt;
+            &lt;bean class=&quot;org.apache.cxf.interceptor.LoggingOutInterceptor&quot;&gt;&lt;/bean&gt;
+        &lt;/jaxrs:outInterceptors&gt;
+
+        &lt;!--WebService服务类--&gt;
+        &lt;jaxrs:serviceBeans&gt;
+            &lt;ref bean=&quot;restService&quot;/&gt;
+        &lt;/jaxrs:serviceBeans&gt;
+    &lt;/jaxrs:server&gt;
+</code></pre><p>API方式：</p>
+<pre><code>        JAXRSServerFactoryBean jrf = new JAXRSServerFactoryBean();
+        jrf.setResourceClasses(RestServiceImpl.class);
+        jrf.setResourceProvider(RestServiceImpl.class, new SingletonResourceProvider(new RestServiceImpl()));
+        jrf.setAddress(url);
+        jrf.getInInterceptors().add(new LoggingInInterceptor());
+        jrf.getOutInterceptors().add(new LoggingOutInterceptor());
+        jrf.create();
+</code></pre><p>客户端配置方式：</p>
+<pre><code>        JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
+        factory.setServiceClass(RestService.class);
+        factory.setAddress(url);
+        factory.getInInterceptors().add(new LoggingInInterceptor());
+        factory.getOutInterceptors().add(new LoggingOutInterceptor());
+        RestService ser = factory.create(RestService.class);
+        ser.get();
+</code></pre><p>输出日志形式如下：客户端：</p>
+<pre><code>[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Outbound Message
+---------------------------
+ID: 1
+Address: http://localhost:8080/webapp/ws/cxf/rest
+Http-Method: GET
+Content-Type: application/xml
+Headers: {Content-Type=[application/xml], Accept=[text/plain]}
+-------------------------------------- 
+
+[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Inbound Message
+----------------------------
+ID: 1
+Response-Code: 200
+Encoding: ISO-8859-1
+Content-Type: text/plain
+Headers: {content-type=[text/plain], Date=[Wed, 22 Mar 2017 14:33:39 GMT], transfer-encoding=[chunked]}
+Payload: this is default get plain
+-------------------------------------- 
+</code></pre><p>服务端：</p>
+<pre><code>[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Inbound Message
+----------------------------
+ID: 4
+Address: http://localhost:8080/webapp/ws/cxf/rest
+Encoding: UTF-8
+Http-Method: GET
+Content-Type: application/xml
+Headers: {Accept=[text/plain], cache-control=[no-cache], connection=[keep-alive], content-type=[application/xml], host=[localhost:8080], pragma=[no-cache], user-agent=[Apache CXF 3.0.3]}
+-------------------------------------- 
+
+[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Outbound Message
+---------------------------
+ID: 4
+Response-Code: 200
+Content-Type: text/plain
+Headers: {Content-Type=[text/plain], Date=[Wed, 22 Mar 2017 14:33:39 GMT]}
+Payload: this is default get plain
+-------------------------------------- 
+</code></pre><p>自定义拦截器</p>
+<p>CXF中也可以自定义拦截器，CXF中实现自定义拦截器需要继承AbstractPhaseInterceptor或者其子类如AbstractSoapInterceptor。</p>
+<pre><code>/**
+ * CXF 自定义拦截器
+ */
+public class MyInterceptor extends AbstractPhaseInterceptor&lt;Message&gt;{
+
+    //必需提供一个带参数的构造函数
+    public MyInterceptor(String phase){
+        super(phase);
     }
 
-    private static boolean isLetter(char c) {
-        if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z') {
-            return true;
+
+    //覆写拦截后的动作
+    @Override
+    public void handleMessage(Message message) throws Fault{
+        Q.p(&quot;~~~~~~~~~~~~~~~~~~&quot;);
+        if (message.getDestination() != null) {
+            Q.p(message.getDestination().getAddress());
         }
-        if (c &gt;= 'a' &amp;&amp; c &lt;= 'z') {
-            return true;
+        if (message.getExchange() != null) {
+            Q.p(message.getExchange().getInMessage());
+            Q.p(message.getExchange().getOutMessage());
         }
-        return false;
+        Q.p(message.getContent(String.class));
+        Q.p(&quot;~~~~~~~~~~~~~~~~~~~&quot;);
     }
-
-    public static void main(String[] args) {
-
-        char c = 20;
-        System.out.println(&quot;[&quot; + c + &quot;]&quot;);
-
-        String str = &quot; i am luan geng hello  Good day she n nm nmb 13 !asd l0s 5a 3b 987 &quot;;
-        System.out.println(str);
-        System.out.println(reverseEveryWord(str));
-    }
-
 }
-
-</code></pre>
+</code></pre><p>添加到客户端拦截器链：</p>
+<pre><code>JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
+        factory.setServiceClass(RestService.class);
+        factory.setAddress(url);
+        factory.getInInterceptors().add(new MyInterceptor(Phase.RECEIVE));
+        factory.getOutInterceptors().add(new MyInterceptor(Phase.SEND));
+        ser = factory.create(RestService.class);
+        ser.get();
+</code></pre><p>输出：</p>
+<pre><code>[DEBUG] 03-22 23:07:38 org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:304) Invoking handleMessage on interceptor cn.lg.ws.MyInterceptor@58cbafc2 
+~~~~~~~~~~~~~~~~~~
+null
+{org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.transport.Conduit=conduit: class org.apache.cxf.transport.http.URLConnectionHTTPConduit1715248762target: http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.request.uri=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.template.parameters=null, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.proxy=true, org.apache.cxf.request.method=GET, org.apache.cxf.transport.processOneWayResponse=true, http.connection=sun.net.www.protocol.http.HttpURLConnection:http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.message.Message.BASE_PATH=http://localhost:8080/webapp/ws/cxf/, org.apache.cxf.client=true, org.apache.cxf.invocation.context={ResponseContext={}, RequestContext={org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.request.uri=http://localhost:8080/webapp/ws/cxf/rest, BODY_INDEX=-1, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.proxy=true, org.apache.cxf.jaxrs.model.OperationResourceInfo=org.apache.cxf.jaxrs.model.OperationResourceInfo@117159c0}}, java.lang.annotation.Annotation=[Ljava.lang.annotation.Annotation;@19e4653c, org.apache.cxf.message.inbound=false, http.scheme=http, Content-Type=application/xml, org.apache.cxf.empty.request=true}
+null
+~~~~~~~~~~~~~~~~~~~
+</code></pre><hr>
+<pre><code>[DEBUG] 03-22 23:07:38 org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:304) Invoking handleMessage on interceptor cn.lg.ws.MyInterceptor@795509d9 
+~~~~~~~~~~~~~~~~~~
+{org.apache.cxf.message.Message.PROTOCOL_HEADERS={content-type=[text/plain], Date=[Wed, 22 Mar 2017 15:07:38 GMT], transfer-encoding=[chunked]}, org.apache.cxf.transport.Conduit=conduit: class org.apache.cxf.transport.http.URLConnectionHTTPConduit1715248762target: http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.client=true, org.apache.cxf.message.Message.ENCODING=ISO-8859-1, org.apache.cxf.message.inbound=true, org.apache.cxf.message.Message.RESPONSE_CODE=200, Content-Type=text/plain}
+{org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.transport.Conduit=conduit: class org.apache.cxf.transport.http.URLConnectionHTTPConduit1715248762target: http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.request.uri=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.template.parameters=null, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.proxy=true, org.apache.cxf.request.method=GET, org.apache.cxf.transport.processOneWayResponse=true, http.connection=sun.net.www.protocol.http.HttpURLConnection:http://localhost:8080/webapp/ws/cxf/rest, org.apache.cxf.message.Message.BASE_PATH=http://localhost:8080/webapp/ws/cxf/, org.apache.cxf.client=true, org.apache.cxf.invocation.context={ResponseContext={}, RequestContext={org.apache.cxf.message.Message.PROTOCOL_HEADERS={Content-Type=[application/xml], Accept=[text/plain]}, org.apache.cxf.request.uri=http://localhost:8080/webapp/ws/cxf/rest, BODY_INDEX=-1, org.apache.cxf.message.Message.ENDPOINT_ADDRESS=http://localhost:8080/webapp/ws/cxf/rest, jaxrs.proxy=true, org.apache.cxf.jaxrs.model.OperationResourceInfo=org.apache.cxf.jaxrs.model.OperationResourceInfo@117159c0}}, java.lang.annotation.Annotation=[Ljava.lang.annotation.Annotation;@19e4653c, org.apache.cxf.message.inbound=false, http.scheme=http, Content-Type=application/xml, org.apache.cxf.empty.request=true}
+null
+~~~~~~~~~~~~~~~~~~~</code></pre>
                                                 
                                             </div>
 
@@ -229,7 +319,7 @@
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/exe/string-reverse-word/">https://luangeng.space/post/java/exe/string-reverse-word/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/other/cxf-interceptor/">https://luangeng.space/post/java/other/cxf-interceptor/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -248,19 +338,19 @@
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/java/exe/reverseList/" rel="next">
+                                        <a href="https://luangeng.space/post/java/spring/spring-annotation/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>反转单向链表</span>
+                                            <span>一文看懂@RequestBody,@RequestParam和@PathVariable</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/java/exe/string-caption/" rel="prev">
+                                        <a href="https://luangeng.space/post/english/1-1/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>将字符串中所有单词的首字母大写</span>
+                                            <span>全新版大学英语综合教程1-1</span>
                                         </a>
                                         
                                     </li>
@@ -275,7 +365,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/java/exe/reverseList/" rel="bookmark" class="leancloud-count">反转单向链表
+                <a href="https://luangeng.space/post/other/idea-key/" rel="bookmark" class="leancloud-count">IntelliJ IDEA常用快捷键
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -286,7 +376,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/java/exe/string-caption/" rel="bookmark" class="leancloud-count">将字符串中所有单词的首字母大写
+                <a href="https://luangeng.space/post/db/mysql/mysql/" rel="bookmark" class="leancloud-count">ubuntu16.04 安装 mysql5.7
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -362,7 +452,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -451,9 +541,9 @@
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/java/exe/reverseList/">反转单向链表</a></li>
+                <li><a href="https://luangeng.space/post/other/idea-key/">IntelliJ IDEA常用快捷键</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/exe/string-caption/">将字符串中所有单词的首字母大写</a></li>
+                <li><a href="https://luangeng.space/post/db/mysql/mysql/">ubuntu16.04 安装 mysql5.7</a></li>
                 
             </ul>
         </div>
@@ -471,7 +561,7 @@
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>

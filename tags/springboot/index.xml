@@ -14,10 +14,10 @@
     
     <item>
       <title>SpringBoot集成ZeroMQ</title>
-      <link>https://luangeng.space/post/other/zeromq-springboot/</link>
+      <link>https://luangeng.space/post/java/spring/zeromq-springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/zeromq-springboot/</guid>
+      <guid>https://luangeng.space/post/java/spring/zeromq-springboot/</guid>
       <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
     </item>
     

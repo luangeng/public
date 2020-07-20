@@ -32,10 +32,10 @@
     
     <item>
       <title>CXF拦截器介绍及自定义拦截器实现</title>
-      <link>https://luangeng.space/post/java/cxf-interceptor/</link>
+      <link>https://luangeng.space/post/java/other/cxf-interceptor/</link>
       <pubDate>Wed, 22 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/java/cxf-interceptor/</guid>
+      <guid>https://luangeng.space/post/java/other/cxf-interceptor/</guid>
       <description>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。 当服务被调用时，会经过多个拦截器链(I</description>
     </item>
     

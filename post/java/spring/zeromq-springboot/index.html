@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课</title>
+  <title>SpringBoot集成ZeroMQ - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课">
-  <meta name="description" content="struts2 &#43; spring &#43; mybatis 框架整合">
-  <meta itemprop="name" content="struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="struts2 &#43; spring &#43; mybatis 框架整合">
-  <meta property="og:title" content="struts2 &#43; spring &#43; mybatis 框架整合 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="SpringBoot集成ZeroMQ - 计算机与软件技术公开课">
+  <meta name="description" content="SpringBoot集成ZeroMQ">
+  <meta itemprop="name" content="SpringBoot集成ZeroMQ - 计算机与软件技术公开课">
+  <meta itemprop="description" content="SpringBoot集成ZeroMQ">
+  <meta property="og:title" content="SpringBoot集成ZeroMQ - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/java/struts/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/spring/zeromq-springboot/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="struts2 &#43; spring &#43; mybatis 框架整合">
+  <meta property="og:description" content="SpringBoot集成ZeroMQ">
 
-  <link rel="canonical" href="https://luangeng.space/post/java/struts/">
-  <link rel='shortlink' href="https://luangeng.space/post/java/struts/">
+  <link rel="canonical" href="https://luangeng.space/post/java/spring/zeromq-springboot/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/spring/zeromq-springboot/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">struts2 &#43; spring &#43; mybatis 框架整合</h1>
+                                        <h1 class="post-title">SpringBoot集成ZeroMQ</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2016-08-23 · 1739 Words
+                                            Posted @ 2018-11-19 · 1108 Words
                                             
-                                            · Tags: spring
+                                            · Tags: springboot
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="struts2 &#43; spring &#43; mybatis 框架整合">
+                                            <span class="leancloud_visitors" data-flag-title="SpringBoot集成ZeroMQ">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,512 +165,355 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。</p>
-<p>新建Maven project，type选择webapp</p>
-<p>修改pom.xml文件如下：</p>
-<pre><code> &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-     xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
-     &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-     &lt;groupId&gt;com&lt;/groupId&gt;
-     &lt;artifactId&gt;javaweb&lt;/artifactId&gt;
-     &lt;packaging&gt;war&lt;/packaging&gt;
-     &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-     &lt;name&gt;javaweb Maven Webapp&lt;/name&gt;
-     &lt;url&gt;http://maven.apache.org&lt;/url&gt;
- 
-     &lt;properties&gt;
-         &lt;struts.version&gt;2.3.28&lt;/struts.version&gt;
-         &lt;spring.version&gt;3.0.5.RELEASE&lt;/spring.version&gt;
-         &lt;mybatis.version&gt;3.2.6&lt;/mybatis.version&gt;
-         &lt;log4j.version&gt;1.2.17&lt;/log4j.version&gt;
-     &lt;/properties&gt;
- 
-     &lt;dependencies&gt;
-     
-         &lt;!-- struts包 --&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;
-             &lt;artifactId&gt;struts2-core&lt;/artifactId&gt;
-            &lt;version&gt;${struts.version}&lt;/version&gt;
-         &lt;/dependency&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.apache.struts&lt;/groupId&gt;
-             &lt;artifactId&gt;struts2-spring-plugin&lt;/artifactId&gt;
-             &lt;version&gt;${struts.version}&lt;/version&gt;
-         &lt;/dependency&gt;
- 
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-             &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
-             &lt;version&gt;${spring.version}&lt;/version&gt;
-         &lt;/dependency&gt;
- 
-         &lt;!-- mybatis核心包 --&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-             &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-             &lt;version&gt;${mybatis.version}&lt;/version&gt;
-         &lt;/dependency&gt;
- 
-         &lt;!-- mybatis-spring包 --&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-             &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
-             &lt;version&gt;1.2.2&lt;/version&gt;
-         &lt;/dependency&gt;
- 
-         &lt;!-- java ee 包 --&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;javax&lt;/groupId&gt;
-             &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
-             &lt;version&gt;7.0&lt;/version&gt;
-         &lt;/dependency&gt;
-         
-         &lt;!-- Mysql数据库链接jar包 --&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;mysql&lt;/groupId&gt;
-             &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-             &lt;version&gt;5.1.30&lt;/version&gt;
-         &lt;/dependency&gt;
-         &lt;dependency&gt;
-             &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
-             &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
-             &lt;version&gt;1.2.2&lt;/version&gt;
-         &lt;/dependency&gt;
- 
-         &lt;dependency&gt;
-             &lt;groupId&gt;junit&lt;/groupId&gt;
-             &lt;artifactId&gt;junit&lt;/artifactId&gt;
-             &lt;version&gt;3.8.1&lt;/version&gt;
-             &lt;scope&gt;test&lt;/scope&gt;
-         &lt;/dependency&gt;
-     &lt;/dependencies&gt;
- 
-     &lt;build&gt;
-         &lt;finalName&gt;javaweb&lt;/finalName&gt;
-     &lt;/build&gt;
- &lt;/project&gt;
-</code></pre><p>在resources目录下添加applicationContext.xml文件：</p>
-<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
- &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-     xsi:schemaLocation=&quot;
-         http://www.springframework.org/schema/beans
-         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-         http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context-3.0.xsd&quot;&gt;
-     
-     &lt;!-- 配置要扫描的包 --&gt;  
-     &lt;context:component-scan base-package=&quot;action&quot;&gt;&lt;/context:component-scan&gt;
-     &lt;context:component-scan base-package=&quot;service.impl&quot;&gt;&lt;/context:component-scan&gt;  
- 
-     &lt;!-- 指定数据源配置文件 --&gt;
-     &lt;context:property-placeholder location=&quot;classpath:jdbc.properties&quot; /&gt;
-     
-     &lt;!-- 数据源 --&gt;
-     &lt;bean id=&quot;dataSource_dev&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;
-         destroy-method=&quot;close&quot;&gt;
-         &lt;property name=&quot;driverClassName&quot; value=&quot;${driver}&quot; /&gt;
-         &lt;property name=&quot;url&quot; value=&quot;${url}&quot; /&gt;
-         &lt;property name=&quot;username&quot; value=&quot;${username}&quot; /&gt;
-         &lt;property name=&quot;password&quot; value=&quot;${password}&quot; /&gt;
-     &lt;/bean&gt;
- 
-     &lt;!-- 配置sqlSessionFactory --&gt;
-     &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-         &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource_dev&quot; /&gt;
-         &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath:mapper/*.xml&quot; /&gt;
-     &lt;/bean&gt;
-     
-     &lt;!-- 指定DAO层 --&gt;
-     &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-         &lt;property name=&quot;basePackage&quot; value=&quot;dao&quot; /&gt;
-         &lt;property name=&quot;sqlSessionFactoryBeanName&quot; value=&quot;sqlSessionFactory&quot;&gt;&lt;/property&gt;
-     &lt;/bean&gt;
- 
-     &lt;!-- 使用Spring的事务管理器 --&gt;
-     &lt;bean id=&quot;transactionManager&quot;
-         class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
-         &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource_dev&quot; /&gt;
-     &lt;/bean&gt;
- 
- &lt;/beans&gt;
-</code></pre><p>在resources目录下添加配置文件jdbc.properties：</p>
-<pre><code> # JDBC Configuration  
- driver=com.mysql.jdbc.Driver
- url=jdbc:mysql://localhost:3306/web
- username=root
- password=password
- 
- # DBCP Pool settings  
- initialSize=0
- maxActive=20
- maxIdle=20
- minIdle=1
- maxWait=60000
-</code></pre><p>在resources目录下添加struts配置文件struts.xml：</p>
-<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
- &lt;!DOCTYPE struts PUBLIC &quot;-//Apache Software Foundation//DTD Struts Configuration 2.1//EN&quot; &quot;http://struts.apache.org/dtds/struts-2.1.dtd&quot;&gt;
- &lt;struts&gt;
-     &lt;!-- 指定默认编码集 --&gt;
-     &lt;constant name=&quot;struts.i18n.encoding&quot; value=&quot;UTF-8&quot; /&gt;
- 
-     &lt;constant name=&quot;struts.multipart.maxSize&quot; value=&quot;99000000&quot; /&gt;
-     &lt;constant name=&quot;struts.multipart.saveDir&quot; value=&quot;/tmp&quot;/&gt;
- 
-     &lt;!-- 当struts配置文件修改时是否自动加载 --&gt;
-     &lt;constant name=&quot;struts.configuration.xmlreload&quot; value=&quot;true&quot; /&gt;
- 
-     &lt;!-- 开发模式下打印详细的错误信息 --&gt;
-     &lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot; /&gt;
- 
-     &lt;constant name=&quot;struts.ui.theme&quot; value=&quot;xhtml&quot; /&gt;
- 
-     &lt;include file=&quot;User.xml&quot;&gt;&lt;/include&gt;
-     
- &lt;/struts&gt;    
-</code></pre><p>在resources目录下添加mybatis配置文件mybatis-config.xml：</p>
-<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
- &lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
- &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
- 
- &lt;configuration&gt;
-     &lt;settings&gt;
-         &lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;
-         &lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot;/&gt;
-         &lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;true&quot;/&gt;
-     &lt;/settings&gt;
-     
-     &lt;typeAliases&gt;
-         
-     &lt;/typeAliases&gt;
-     
- &lt;/configuration&gt;
-</code></pre><p>在web.xml中添加如下配置：</p>
-<pre><code> &lt;!-- spring的配置文件位置 --&gt;
-     &lt;context-param&gt;
-         &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
-         &lt;param-value&gt;classpath:applicationContext.xml&lt;/param-value&gt;
-     &lt;/context-param&gt;
-     
-     &lt;!-- struts2过滤器配置 --&gt;
-     &lt;filter&gt;
-         &lt;filter-name&gt;struts2&lt;/filter-name&gt;
-         &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;
-     &lt;/filter&gt;
-     &lt;filter-mapping&gt;
-         &lt;filter-name&gt;struts2&lt;/filter-name&gt;
-         &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-     &lt;/filter-mapping&gt;
- 
-     &lt;!-- 集成spring --&gt;
-     &lt;listener&gt;
-         &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
-     &lt;/listener&gt;
-</code></pre><p>在工程中添加如下类：</p>
-<p><img src="pic/2016/struts1.png" alt=""></p>
-<p>代码如下：</p>
-<pre><code> package action;
- 
- import java.io.IOException;
- import java.io.PrintWriter;
- import java.util.List;
- 
- import javax.annotation.Resource;
- import javax.servlet.http.HttpServletResponse;
- 
- import org.apache.struts2.ServletActionContext;
- import org.springframework.context.annotation.Scope;
- import org.springframework.stereotype.Controller;
- 
- import com.opensymphony.xwork2.ActionSupport;
- import beans.User;
- import service.IUserService;
- 
- @Controller
- @Scope(&quot;prototype&quot;)
- public class UserAction extends ActionSupport {
- 
-     private static final long serialVersionUID = 1L;
-     
-     @Resource
-     private IUserService userService;
-     
-     private User user;
-     
-     private List&lt;User&gt; userlist;
-     
-     public User getUser() {
-         return user;
-     }
- 
-     public void setUser(User user) {
-         this.user = user;
-     }
-     
-     public List&lt;User&gt; getUserlist() {
-         return userlist;
-     }
- 
-     public void setUserlist(List&lt;User&gt; userlist) {
-         this.userlist = userlist;
-     }
- 
-     public String execute() throws Exception {
-         System.out.println(&quot;execute&quot;);
-         return SUCCESS;
-     }
- 
-     public String addUser() {
-         userService.addUser(user);
-         return SUCCESS;
-     }
- 
-     public String deleteUser() {
-         userService.deleteUser(user.getId());
-         return SUCCESS;
-     }
- 
-     public String queryAllUser() {
-         userlist = userService.queryAllUser();
-         return &quot;list&quot;;
-     }
- 
-     public void validate() {
-         System.out.println(&quot;validate()会对action中的所有方法进行校验&quot;);
- //        if(this.user.getName() == null || this.user.getName().trim().equals(&quot;&quot;)) {  
- //            this.addFieldError(&quot;name&quot;, &quot;用户名不能为空！&quot;);  
- //        }  
-     } 
-     
-     //直接返回一个字符串
-     public String queryUserNameByID() throws IOException{
-         HttpServletResponse response = ServletActionContext.getResponse();  
-         response.setContentType(&quot;text/html;charset=UTF-8&quot;);
-         //response.sendError(401,&quot;timeout&quot;);
-         PrintWriter out = response.getWriter();  
-         out.println(&quot;luangeng123&quot;);//返回的字符串数据 
-         out.flush();
-         out.close();
-         return null;  
-     }
- 
- }
-</code></pre><pre><code> package beans;
- 
- import java.sql.Date;
- 
- public class User {
-     private Integer id;
- 
-     private String name;
- 
-     private String pwd;
-     
-     private String sex;
-     
-     private Integer age;
- 
-     private String email;
- 
-     private String phone;
- 
-     private Date register_time;
- 
-     private Date last_update_time;
- 
-     private String remark;
- 
-     private Integer active; 32     
-     public User(String name, String pwd, String email, String phone){
-         this.name = name;
-         this.pwd = pwd;
-         this.email = email;
-         this.phone = phone;
-     }
- 
-     public Integer getId() {
-         return id;
-     }
- 
-     public void setId(Integer id) {
-         this.id = id;
-     }
-     ...
- }
-</code></pre><p>IUserDao</p>
-<pre><code> package dao;
- 
- import java.util.List;
- 
- import org.apache.ibatis.annotations.Delete;
- import org.apache.ibatis.annotations.Select;
- 
- import beans.User;
- 
- public interface IUserDao {
- 
-     public void addUser(User user);
- 
-     @Delete(&quot;delete from f_user_t where id=#{id}&quot;)
-     public void delUser(Integer userId);
- 
-     @Select(&quot;select * from f_user_t where id=#{id&quot;)
-     public User queryUserById(Integer userId);
- 
-     @Select(&quot;select * from f_user_t&quot;)
-     public List&lt;User&gt; queryAll();
-     
- }
-</code></pre><p>mapper中的User.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;mapper namespace=&quot;dao.IUserDao&quot;&gt;
-    
-    &lt;resultMap type=&quot;beans.User&quot; id=&quot;userResult&quot;&gt;
-        &lt;result property=&quot;id&quot; column=&quot;id&quot; jdbcType=&quot;INTEGER&quot; javaType=&quot;java.lang.Integer&quot; /&gt;
-        &lt;result property=&quot;username&quot; column=&quot;username&quot; /&gt;
-        &lt;result property=&quot;password&quot; column=&quot;password&quot; /&gt;
-    &lt;/resultMap&gt;
+                                                <p>开发ZeroMQ的SpringBoot Starter。</p>
+<p>resources中META-INF中增加文件spring.factories：</p>
+<p><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration</code></p>
+<p>配置文件类：ZeroMQProperties</p>
+<pre><code>@ConfigurationProperties(prefix = &quot;spring.zeromq&quot;)
+@Setter
+@Getter
+public class ZeroMQProperties {
 
-    &lt;insert id=&quot;insertUser&quot; parameterType=&quot;beans.User&quot;&gt;
-     insert into f_user_t 
-    (name,pwd,sex,age,email,phone,register_time,last_update_time,remark,active)
-    values
-    (#{name},#{pwd},#{sex},#{age},#{email},#{phone},now(),now(),#{remark},#{active})
-     &lt;/insert&gt;
+    private Publisher publisher;
 
-&lt;/mapper&gt;
-</code></pre><pre><code> package service;
- 
- import java.util.List;
- import beans.User;
- 
- public interface IUserService {
- 
-     public abstract void addUser(User user);
- 
-     public abstract void deleteUser(Integer userId);
- 
-     public abstract User queryUserById(Integer userId);
- 
-     public abstract List&lt;User&gt; queryAllUser();
- 
- }
-</code></pre><pre><code> package service.impl;
- 
- import java.util.List;
- 
- import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Service;
- import org.springframework.transaction.annotation.Transactional;
- 
- import dao.IUserDao;
- import beans.User;
- import service.IUserService;
- 
- @Service  
- @Transactional 
- public class UserService implements IUserService {
- 
-     @Autowired
-     private IUserDao userDao;
- 
-     public void addUser(User user) {
-         userDao.addUser(user);
-     }
- 
-     public void deleteUser(Integer userId) {
-         userDao.delUser(userId);
-     }
- 
-     public User queryUserById(Integer userId) {
-         return userDao.queryUserById(userId);
-     }
- 
-     public List&lt;User&gt; queryAllUser() {
-         return userDao.queryAll();
-     }
-     
- }
-</code></pre><p>struts的User.xml</p>
-<pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
- &lt;!DOCTYPE struts PUBLIC &quot;-//Apache Software Foundation//DTD Struts Configuration 2.1//EN&quot; &quot;http://struts.apache.org/dtds/struts-2.1.dtd&quot;&gt;
- &lt;struts&gt;
- &lt;package name=&quot;user&quot; namespace=&quot;/user&quot; extends=&quot;struts-default&quot;&gt;
-     &lt;action name=&quot;*&quot; class=&quot;userAction&quot; method=&quot;{1}&quot;&gt;
-         &lt;result name=&quot;success&quot; type=&quot;redirectAction&quot;&gt;queryAllUser&lt;/result&gt;
-         &lt;result name=&quot;error&quot;&gt;/error.jsp&lt;/result&gt;
-         &lt;result name=&quot;list&quot;&gt;/list.jsp&lt;/result&gt;
-         &lt;result name=&quot;input&quot;&gt;/error.jsp&lt;/result&gt;
-     &lt;/action&gt;
-     
- &lt;/package&gt;
- 
- &lt;/struts&gt;
-</code></pre><p>list.jsp</p>
-<pre><code> &lt;%@ page language=&quot;java&quot; import=&quot;java.util.*&quot; pageEncoding=&quot;UTF-8&quot;%&gt;
- &lt;%@ taglib prefix=&quot;s&quot;  uri=&quot;/struts-tags&quot;%&gt;
- &lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
- &lt;html&gt;
-   &lt;head&gt;
-     
-     &lt;title&gt;用户列表&lt;/title&gt;
-     
-     &lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;&gt;
-     &lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;&gt;
-     &lt;meta http-equiv=&quot;expires&quot; content=&quot;0&quot;&gt;   
- 
-   &lt;/head&gt;
-   
-   &lt;body&gt;
-     &lt;center&gt;
-         &lt;h2&gt;用户列表&lt;/h2&gt;
-         &lt;h3&gt;&lt;s:a action=&quot;toadd&quot; namespace=&quot;/user&quot;&gt;添加新用户&lt;/s:a&gt; &lt;/h3&gt;
-         
-         &lt;table width=&quot;90%&quot; border=&quot;1&quot;&gt;
-             &lt;tr&gt;
-                 &lt;th&gt;用户id&lt;/th&gt;
-                 &lt;th&gt;用户名称&lt;/th&gt;
-                 &lt;th&gt;用户密码&lt;/th&gt;
-                 &lt;th&gt;age&lt;/th&gt;
-                 &lt;th&gt;email&lt;/th&gt;
-                 &lt;th&gt;sex&lt;/th&gt;
-                 &lt;th&gt;phone&lt;/th&gt;
-                 &lt;th&gt;remark&lt;/th&gt;
-                 &lt;th&gt;操作&lt;/th&gt;
-             &lt;/tr&gt;
-             &lt;s:iterator value=&quot;userlist&quot;&gt;
-                 &lt;tr&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;id&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;name&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;pwd&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;age&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;email&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;sex&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;phone&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;&lt;s:property value=&quot;remark&quot;/&gt; &lt;/td&gt;
-                     &lt;td&gt;
-                     &lt;s:a action=&quot;toupdate&quot; namespace=&quot;/user&quot;&gt;
-                     &lt;s:param name=&quot;user.id&quot; value=&quot;id&quot;/&gt;修改
-                     &lt;/s:a&gt;
-                     &amp;nbsp;&amp;nbsp;
-                     &lt;s:a action=&quot;delete&quot; namespace=&quot;/user&quot;&gt;
-                     &lt;s:param name=&quot;user.id&quot; value=&quot;id&quot;/&gt;删除
-                     &lt;/s:a&gt;
-                     &lt;/td&gt;
-                 &lt;/tr&gt;
-             &lt;/s:iterator&gt;
-         &lt;/table&gt;
-     &lt;/center&gt;
-   &lt;/body&gt;
- &lt;/html&gt;
-</code></pre><p>启动mysql，创建数据库web，创建表f_user_t, 插入数据：</p>
-<p><img src="pic/2016/struts2.png" alt=""></p>
-<p>启动Tomcat，访问 http://localhost:8080/javaweb/user/queryAllUser</p>
-<p><img src="pic/2016/struts3.png" alt=""></p>
+    private Subscriber subscriber;
 
+    @Data
+    public static class Publisher {
+        private Integer ioNum = 1;
+        private String address;
+    }
+
+    @Data
+    public static class Subscriber {
+        private Integer ioNum = 1;
+        private String address;
+    }
+}
+</code></pre><p>自动配置类：ZeroMQAutoConfiguration</p>
+<pre><code>@Configuration
+@EnableConfigurationProperties(ZeroMQProperties.class)
+public class ZeroMQAutoConfiguration {
+
+    @Bean(destroyMethod = &quot;destroy&quot;)
+    @ConditionalOnMissingBean(Publisher.class)
+    @ConditionalOnProperty(prefix = &quot;spring.zeromq&quot;, value = &quot;publisher.address&quot;)
+    public Publisher mqPublisher(final ZeroMQProperties zeroMQProperties) {
+        ZeroMQProperties.Publisher publisher = zeroMQProperties.getPublisher();
+        if (publisher.getAddress() == null) {
+            throw new IllegalArgumentException(&quot;mq address can not be null!&quot;);
+        }
+        if (publisher.getIoNum() == null) {
+            publisher.setIoNum(1);
+        }
+        return new Publisher(publisher.getIoNum(), publisher.getAddress());
+    }
+
+    @Configuration
+    @ConditionalOnProperty(prefix = &quot;spring.zeromq&quot;, value = &quot;subscriber.address&quot;)
+    public static class ListenerContainerConfiguration
+            implements ApplicationContextAware, InitializingBean, EnvironmentAware {
+
+        private Set&lt;String&gt; topicSet = new HashSet&lt;&gt;();
+
+        private ConfigurableApplicationContext applicationContext;
+
+        private StandardEnvironment environment;
+
+        private AtomicLong counter = new AtomicLong(0);
+
+        @Autowired
+        private ZeroMQProperties subscrbConfig;
+
+        private void registerContainer(final String beanName, final Object bean) {
+            Class&lt;?&gt; clazz = AopUtils.getTargetClass(bean);
+            if (!MessageCallback.class.isAssignableFrom(bean.getClass())) {
+                throw new IllegalStateException(clazz + &quot; must be instance of &quot; + MessageCallback.class.getName());
+            }
+            if (subscrbConfig.getSubscriber() == null) {
+                throw new IllegalArgumentException(&quot;Argument Illegal, no subscrbConfig!&quot;);
+            }
+            MessageCallback callback = (MessageCallback) bean;
+            Subscriber annotation = clazz.getAnnotation(Subscriber.class);
+            if (topicSet.contains(annotation.topic())) {
+                throw new IllegalArgumentException(&quot;Topic重复！&quot;);
+            }
+            BeanDefinitionBuilder beanBuilder = BeanDefinitionBuilder.rootBeanDefinition(SubscribContainer.class);
+            beanBuilder.addPropertyValue(&quot;topic&quot;, annotation.topic());
+            beanBuilder.addPropertyValue(&quot;address&quot;, subscrbConfig.getSubscriber().getAddress());
+            beanBuilder.addPropertyValue(&quot;ioNum&quot;, subscrbConfig.getSubscriber().getIoNum());
+            beanBuilder.addPropertyValue(&quot;threadSize&quot;, annotation.threadSize());
+            beanBuilder.addPropertyValue(&quot;queueSize&quot;, annotation.queueSize());
+            beanBuilder.addPropertyValue(&quot;callback&quot;, callback);
+            beanBuilder.addPropertyValue(&quot;clazz&quot;, findType(callback));
+            beanBuilder.setDestroyMethodName(&quot;close&quot;);
+            String containerBeanName = String.format(&quot;%s_%s&quot;, SubscribContainer.class.getName(), counter.incrementAndGet());
+            DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) applicationContext.getBeanFactory();
+            beanFactory.registerBeanDefinition(containerBeanName, beanBuilder.getBeanDefinition());
+            SubscribContainer container = beanFactory.getBean(containerBeanName, SubscribContainer.class);
+            container.startRun();
+            topicSet.add(annotation.topic());
+            log.info(&quot;register messageCallback to container, listenerBeanName:{}, containerBeanName:{}&quot;, beanName, containerBeanName);
+        }
+
+        @Override
+        public void afterPropertiesSet() throws Exception {
+            Map&lt;String, Object&gt; beans = this.applicationContext.getBeansWithAnnotation(Subscriber.class);
+            Optional.ofNullable(beans).ifPresent(b -&gt; b.forEach(this::registerContainer));
+        }
+
+        @Override
+        public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+            this.applicationContext = (ConfigurableApplicationContext) applicationContext;
+        }
+
+        @Override
+        public void setEnvironment(Environment environment) {
+            if (environment instanceof StandardEnvironment) {
+                this.environment = (StandardEnvironment) environment;
+            }
+        }
+
+        private Type findType(MessageCallback callback) {
+            Type[] interfaces = callback.getClass().getGenericInterfaces();
+            for(Type t: interfaces){
+                if(t.getTypeName().startsWith(MessageCallback.class.getName()) &amp;&amp; ParameterizedType.class.isAssignableFrom(t.getClass())){
+                    return ((ParameterizedType)t).getActualTypeArguments()[0];
+                }
+            }
+            throw new IllegalStateException(&quot;&quot;);
+        }
+    }
+
+}
+</code></pre><p>发布者：Publisher</p>
+<pre><code>public class Publisher&lt;T extends Serializable&gt; {
+
+    private ZMQ.Context context;
+
+    private ZMQ.Socket socket;
+
+    private int mode = ZMQ.PUB;
+
+    public Publisher(int ioNum, String address) {
+        context = ZMQ.context(ioNum);
+        socket = context.socket(mode);
+        socket.bind(address);
+    }
+
+    public boolean send(String topic, T msg) {
+        return socket.send(topic + &quot; &quot; + JSON.toJSON(msg), 0);
+    }
+
+    public void destroy() {
+        socket.close();
+        context.term();
+    }
+
+}
+</code></pre><p>接收者注解：Subscriber</p>
+<pre><code>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Subscriber {
+
+    String topic();
+
+    //并发处理消息的线程数
+    int threadSize() default 20;
+
+    int queueSize() default 20000;
+
+}
+</code></pre><p>接收者回调接口：MessageCallback</p>
+<pre><code>public interface MessageCallback&lt;T extends Serializable&gt; {
+    void onMessage(T msg);
+}
+</code></pre><p>接收者容器：SubscribContainer</p>
+<pre><code>@Data
+public class SubscribContainer extends Thread {
+
+    private String topic;
+
+    private String address;
+
+    private int threadSize;
+
+    private int queueSize;
+
+    private int keepAliveTime = 0;
+
+    private ZMQ.Socket socket;
+
+    private ZMQ.Context context;
+
+    private MessageCallback callback;
+
+    private Executor execute;
+
+    private int ioNum = 1;
+
+    private boolean exit = false;
+
+    private Type clazz;
+
+    private int mode = ZMQ.SUB;
+
+    public SubscribContainer() {
+    }
+
+    public void startRun() {
+        if (this.getState() != State.NEW) {
+            return;
+        }
+        try {
+            context = ZMQ.context(ioNum);
+            socket = context.socket(mode);
+            socket.connect(address);
+            socket.subscribe(this.topic.getBytes());
+            execute = new ThreadPoolExecutor(threadSize, threadSize, keepAliveTime, TimeUnit.SECONDS,
+                    new ArrayBlockingQueue&lt;&gt;(queueSize), new NamedThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+            this.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            byte[] stringValue = socket.recv(0);
+            String msg = new String(stringValue);
+            String finalMsg = msg.substring(this.topic.length() + 1);
+            if (String.class.equals(clazz)) {
+                execute.execute(() -&gt; callback.onMessage(finalMsg));
+            } else {
+                Serializable o = JSON.parseObject(finalMsg, clazz);
+                execute.execute(() -&gt; callback.onMessage(o));
+            }
+            if (exit) {
+                break;
+            }
+        }
+    }
+
+    public void close() {
+        try {
+            exit = true;
+            socket.close();
+            context.term();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class NamedThreadFactory implements ThreadFactory {
+        AtomicInteger i = new AtomicInteger(1);
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(r);
+            t.setName(&quot;ZeroMQ-Thread-&quot; + i.getAndIncrement());
+            return t;
+        }
+    }
+
+}
+</code></pre><p>使用：
+引入jar包
+application.properties</p>
+<pre><code>server.port=8080
+spring.zeromq.publisher.ioNum=4
+spring.zeromq.publisher.address=tcp://*:5557
+spring.zeromq.publisher.topic=test
+spring.zeromq.subscriber.address=tcp://localhost:5557
+</code></pre><p>启动类：</p>
+<pre><code>@SpringBootApplication
+public class ZmqApplication implements CommandLineRunner {
+
+    @Autowired
+    Publisher publisher;
+
+    @Autowired
+    Publisher&lt;Person&gt; publisher2;
+
+    /**
+     * 程序入口
+     *
+     * @param args 参数
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(ZmqApplication.class, args);
+    }
+
+    @Override
+    public void run(String... strings) throws Exception {
+        for (int i = 1; i &lt;= 100; i++) {
+            publisher.send(&quot;topic1&quot;, &quot;msg&quot; + i);
+            publisher2.send(&quot;topic2&quot;, new Person(i, &quot;name&quot; + i, new Date()));
+        }
+    }
+}
+</code></pre><p>Person对象：</p>
+<pre><code>@Data
+public class Person implements Serializable {
+
+    public Person(int id, String name, Date birthday) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+    }
+
+    private int id;
+
+    private String name;
+
+    private Date birthday;
+}
+</code></pre><p>一个Controller：</p>
+<pre><code>@RestController
+@RequestMapping(&quot;/zero&quot;)
+public class TestController {
+
+    @Autowired
+    Publisher&lt;String&gt; publisher;
+
+    @RequestMapping(&quot;/send/{n}&quot;)
+    public String send(@PathVariable(&quot;n&quot;) int n) {
+        boolean b = publisher.send(&quot;topic1&quot;, &quot;msg&quot; + n);
+        return b ? &quot;success&quot; : &quot;error&quot;;
+    }
+}
+</code></pre><p>订阅者1：</p>
+<pre><code>@Subscriber(topic = &quot;topic1&quot;, threadSize = 5)
+public class SubscriberTest implements MessageCallback&lt;String&gt;, Serializable {
+
+    @Override
+    public void onMessage(String str) {
+        System.out.println(Thread.currentThread().getName() + &quot; msg: &quot; + str);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><p>订阅者2：</p>
+<pre><code>@Subscriber(topic = &quot;topic2&quot;, threadSize = 10)
+public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
+
+    @Override
+    public void onMessage(Person p) {
+        System.out.println(Thread.currentThread().getName() + &quot; msg: &quot; + p.toString());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
                                                 
                                             </div>
 
@@ -691,7 +534,7 @@
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/struts/">https://luangeng.space/post/java/struts/</a></li>
+            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/zeromq-springboot/">https://luangeng.space/post/java/spring/zeromq-springboot/</a></li>
             <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
@@ -710,25 +553,85 @@
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/java/basic/deadlock/" rel="next">
+                                        <a href="https://luangeng.space/post/other/elasticsearch/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>线程死锁</span>
+                                            <span>elasticsearch入门教程</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/git-base/" rel="prev">
+                                        <a href="https://luangeng.space/post/other/github_login/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>git基础命令</span>
+                                            <span>集成通过github登录网站功能</span>
                                         </a>
                                         
                                     </li>
                                 </ul>
                                 <br>
 
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/other/elasticJob/" rel="bookmark" class="leancloud-count">SpringBoot集成elastic-job-lite
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-ws/" rel="bookmark" class="leancloud-count">Spring Boot发布和调用RESTful web service
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-jpa/" rel="bookmark" class="leancloud-count">使用Spring Boot 和Spring Data JPA访问mysql数据库
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-swagger/" rel="bookmark" class="leancloud-count">Spring Boot 集成Swagger2生成RESTful API文档
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-rest/" rel="bookmark" class="leancloud-count">Spring Boot自定义配置与加载
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
 <ul class="related-posts group" id="ranking_ul">
@@ -797,7 +700,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -882,6 +785,23 @@
 
         
         
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/other/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-ws/">Spring Boot发布和调用RESTful web service</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-jpa/">使用Spring Boot 和Spring Data JPA访问mysql数据库</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-swagger/">Spring Boot 集成Swagger2生成RESTful API文档</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-rest/">Spring Boot自定义配置与加载</a></li>
+                
+            </ul>
+        </div>
+        
 
         <div id="recent" class="widget widget_recent_entries">
             <h3>最新</h3>
@@ -895,7 +815,7 @@
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
             </ul>
         </div>
