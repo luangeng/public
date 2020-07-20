@@ -351,10 +351,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>Go HTTP server middleware</title>
-      <link>https://luangeng.space/post/go/basic/Middleware/</link>
+      <link>https://luangeng.space/post/go/basic/httpMiddleware/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Middleware/</guid>
+      <guid>https://luangeng.space/post/go/basic/httpMiddleware/</guid>
       <description>介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能</description>
     </item>
     
