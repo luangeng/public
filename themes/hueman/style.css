@@ -1168,7 +1168,7 @@ h6 {
 /*  common : page title
 /* ------------------------------------ */
 .page-title {
-	background: #35658b;
+	background: #00000028;
 	position: relative;
 	padding-top: 18px;
 	padding-bottom: 18px;
@@ -1178,6 +1178,7 @@ h6 {
 	font-weight: 600;
 	text-transform: uppercase;
 	line-height: 24px;
+	margin-top: -60px;
 }
 
 .page-title a {
@@ -1942,7 +1943,6 @@ h6 {
 /* ------------------------------------------------------------------------- */
 #page {
 	padding-bottom: 40px;
-	margin-top: -60px;
 }
 
 #page .container-inner {

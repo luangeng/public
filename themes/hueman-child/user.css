@@ -83,7 +83,8 @@ a,
 .jp-play-bar,
 .jp-volume-bar-value,
 .s2 .widget_calendar caption {
-    background-color: #35658b;
+    background-color: #00000028;
+    margin-top: -60px;
 }
 
 .s2 .alx-tabs-nav li.active a {
