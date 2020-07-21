@@ -120,6 +120,7 @@ function queryRanking() {
   query.notEqualTo('title', '关于').find()
     .then(function (results) {
       for (let i in results) {
+        $("#hot").show();
         var rank = results[i].attributes;
         var j = parseInt(i) + 1;
         var li = '<li><a href="' + baseurl + rank.url + '">' + j + '. ' + rank.title + '(' + rank.hits + ')</a></li>';
