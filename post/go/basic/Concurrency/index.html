@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 并发</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2275 Words
+                                            Posted @ 2018-09-09 · 2170 Words
                                             
                                             · Tags: Go
                                             
@@ -165,48 +165,26 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>Go使用goroutines实现并发. 简单来说goroutines就像线程.</p>
+                                                <p>Go使用goroutines实现并发. 简单来说goroutines是轻量级的线程.</p>
 <p>Gorutines独立执行并且共享内存.</p>
 <p>由于goroutines可以写入相同的内存，因此多个goroutine写入相同的全局变量时需要格外小心。</p>
 <p>为了协调goroutine之间的工作，Go提供了channel,即线程安全队列。</p>
-<h2 id="goroutine示例">goroutine示例</h2>
-<p>单channel，单goroutine，一次写入，一次读取。</p>
-<pre><code>func main() {
-    // 创建string型channel
-    ch := make(chan string)
-
-    // 启动一个匿名goroutine
-    go func() {
-        time.Sleep(time.Second)
-        // 发送&quot;Hello World&quot;到channel
-        ch &lt;- &quot;Hello World&quot;
-    }()
-    // 从channel读取
-    msg, ok := &lt;-ch
-    fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
-}
-</code></pre><blockquote>
-<p>msg='Hello World&rsquo;, ok='true&rsquo;</p>
-</blockquote>
-<p>这个channel ch是无缓冲的或者说是同步的。</p>
-<p>time.Sleep在这里说明main()方法将在channel上等待，这意味着goroutine执行的函数需要一定的时间才能通过channel发送值,接收操作符&lt;-ch将阻止main()方法执行。</p>
-<p>如果不是，则goroutine将在main()退出时被杀死，并且没有时间发送其值。</p>
 <h2 id="创建goroutines">创建goroutines</h2>
 <p>任何函数都可以通过使用关键字go来作为goroutine调用：</p>
 <pre><code>func mult(x, y int) {
     fmt.Printf(&quot;%d * %d = %d\n&quot;, x, y, x*y)
 }
-
-go mult(1, 2) // 第一次执行,非阻塞
-go mult(3, 4) // 第二次执行,非阻塞
+func main(){
+    go mult(1, 2) // 第一次执行,非阻塞
+    go mult(3, 4) // 第二次执行,非阻塞
+}
 </code></pre><blockquote>
 <p>1 * 2 = 2<br>
 3 * 4 = 12</p>
 </blockquote>
-<p>请注意，该函数的返回值被忽略。</p>
 <h2 id="等待goroutine完成">等待goroutine完成</h2>
-<p>Go程序在主函数结束时结束，因此通常的做法是等待所有goroutine完成。</p>
-<p>常见的解决方案是使用sync.WaitGroup对象。</p>
+<p>Go程序会在main函数结束时结束，因此需要等待所有goroutine完成之后再结束main函数。</p>
+<p>常见的方法是使用sync.WaitGroup对象:</p>
 <pre><code>var wg sync.WaitGroup // 1
 
 func routine(i int) {
@@ -236,13 +214,14 @@ routine 2 finished<br>
 main finished</p>
 </blockquote>
 <p>执行顺序中的WaitGroup用法：</p>
-<p>声明全局变量。 使它全局化是使其对所有功能和方法可见的最简单方法。
-增加柜台。 这必须在主goroutine中完成，因为由于内存模型的保证，不能保证新启动的goroutine将在4之前执行。
-减少计数器。 这必须在goroutine的出口处完成。 通过使用延迟调用，我们确保无论函数如何结束，只要函数结束，都将调用它。
-等待计数器达到0。必须在主goroutine中执行此操作，以防止程序在所有goroutine完成之前退出。
-在开始新的goroutine之前先评估参数。</p>
-<p>因此，有必要在wg.Add(10)之前显式定义其值，以免出现恐慌的代码不会增加计数器。 向WaitGroup添加10个项目，因此它将在wg.Wait之前将等待10个项目。Wait将控件返回给main()goroutine。 在这里，i的值在for循环中定义。</p>
-<h2 id="用semaphore限制并发">用semaphore限制并发</h2>
+<ul>
+<li>声明全局变量sync.WaitGroup。 使它全局化是使其对所有功能和方法可见。</li>
+<li>初始化计数。 必须在主goroutine中完成，因为由于内存模型的保证，不能保证新启动的goroutine将在4之前执行。</li>
+<li>减少计数。 必须在goroutine的出口处完成。 通过使用defer调用，确保无论函数如何结束都将调用它。</li>
+<li>等待计数器达到0。必须在主goroutine中执行此操作，以防止程序在所有goroutine完成之前退出。</li>
+</ul>
+<p>向WaitGroup添加10个计数，因此它将在wg.Wait之前将等待10个线程结束。</p>
+<h2 id="用semaphore限制并发数量">用semaphore限制并发数量</h2>
 <p>当执行CPU密集型任务(如调整图像大小)时，创建比可用CPU多的goroutine毫无意义。</p>
 <p>事情不会进展得更快，由于额外的簿记和在goroutine之间进行切换，您甚至可能会失去性能。</p>
 <p>限制并发性(即同时启动的gorutine的数量)的一种方法是使用semaphore。</p>
@@ -304,6 +283,28 @@ max concurrent tasks: 4</p>
 </blockquote>
 <p>我们使用等待goroutine完成时描述的技术来等待所有任务完成。</p>
 <p>通常，正确的并发任务数量等于可以通过runtime.NumCPU()获得的CPU数量。</p>
+<h2 id="goroutine示例">goroutine示例</h2>
+<p>单channel，单goroutine，一次写入，一次读取。</p>
+<pre><code>func main() {
+    // 创建string型channel
+    ch := make(chan string)
+
+    // 启动一个匿名goroutine
+    go func() {
+        time.Sleep(time.Second)
+        // 发送&quot;Hello World&quot;到channel
+        ch &lt;- &quot;Hello World&quot;
+    }()
+    // 从channel读取
+    msg, ok := &lt;-ch
+    fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
+}
+</code></pre><blockquote>
+<p>msg='Hello World&rsquo;, ok='true&rsquo;</p>
+</blockquote>
+<p>这个channel ch是无缓冲的或者说是同步的。</p>
+<p>time.Sleep在这里说明main()方法将在channel上等待，这意味着goroutine执行的函数需要一定的时间才能通过channel发送值,接收操作符&lt;-ch将阻止main()方法执行。</p>
+<p>如果不是，则goroutine将在main()退出时被杀死，并且没有时间发送其值。</p>
 <h2 id="下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例">下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例：</h2>
 <pre><code>var wg sync.WaitGroup
 
@@ -846,14 +847,14 @@ Got sqrt: 16</p>
         
         <div class="grid one-third">
           <div style="padding:10px 0px;text-align:center;font-size:14px">
-            <span> ©2018 · 保留所有权利 · </span>
+            <span> ©2018 · 保留所有权利 </span>
             
           </div>
         </div>
         <div class="grid one-third last">
           <ul class="social-links">
             <li>
-              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
@@ -868,7 +869,8 @@ Got sqrt: 16</p>
               </a>
             </li>
             <li>
-              <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>

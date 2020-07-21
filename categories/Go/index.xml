@@ -99,7 +99,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Map/</guid>
-      <description>map是无序的key-value对的集合. map的零值为nil map在其他语言中称为字典(C#, Python)或hash表(C++). map</description>
+      <description>map是无序的key-value对的集合. map的声明和初始化 使用map关键字声明map, 同时指明key和value的类型: // Keys are ints, values are ints. var</description>
     </item>
     
     <item>
@@ -180,7 +180,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Defer/</guid>
-      <description>使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁) Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面</description>
+      <description>Go中的defer关键字表示了要在当前函数结束时执行的函数。常用于释放资源(例如关闭文件句柄或解锁互斥锁) Defer语句是以关键字defer</description>
     </item>
     
     <item>
@@ -198,7 +198,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Concurrency/</guid>
-      <description>Go使用goroutines实现并发. 简单来说goroutines就像线程. Gorutines独立执行并且共享内存. 由于goroutines</description>
+      <description>Go使用goroutines实现并发. 简单来说goroutines是轻量级的线程. Gorutines独立执行并且共享内存. 由于gorouti</description>
     </item>
     
     <item>
@@ -207,7 +207,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Channels-select/</guid>
-      <description>channel是给定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。 goroutines通信时使用ch&amp;</description>
+      <description>channel是指定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。 goroutines通信时使用ch&amp;</description>
     </item>
     
     <item>
@@ -216,7 +216,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Mutex/</guid>
-      <description>Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。 避免这种</description>
+      <description>Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存是不安全的, 会导致数据争用和崩溃。 避免这种</description>
     </item>
     
     <item>

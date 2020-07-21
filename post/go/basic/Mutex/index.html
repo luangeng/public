@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go Mutex</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 1627 Words
+                                            Posted @ 2018-09-09 · 1479 Words
                                             
                                             · Tags: Go
                                             
@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>Go语言中goroutines共享内存.</p>
-<p>这对性能有好处，但是从多个goroutine修改相同的内存并不安全。可能导致数据争用和崩溃。</p>
+<p>这对性能有好处，但是从多个goroutine修改相同的内存是不安全的, 会导致数据争用和崩溃。</p>
 <p>避免这种情况的一种方法是使用channel转移数据的专有所有权。</p>
 <p>这是Go的座右铭：不要通过共享内存进行通信；而是通过通信共享内存。</p>
 <p>确保goroutine独占访问数据的另一种方法是使用互斥体。</p>
@@ -230,7 +230,6 @@ total: 30</p>
 var mu sync.RWMutex
 
 func expensiveOperation(n int) int {
-    // in real code this operation would be very expensive
     return n * n
 }
 
@@ -312,15 +311,6 @@ func main() {
 exec: &ldquo;gcc&rdquo;: executable file not found in $PATH<br>
 exit status 2</p>
 </blockquote>
-<p>This examples shows that memory for variable n is corrupted because the final value of n is not what we expect.</p>
-<p>It also shows that instrumentation added with -race can catch memory corruption and points out which part of program caused the corruption.</p>
-<p>When to use -race
-Additional instrumentation added by -race flag makes the program slower so it’s not usually used when compiling shipping binaries.</p>
-<p>It’s a good idea to use on your CI (continous integration) servers when running your test suite.</p>
-<p>Race detector and Windows
-Race detector requires gcc to be installed on your machine.</p>
-<p>gcc is typically installed on Mac OS and Linux but usually not on Windows.</p>
-<p>To install gcc on Windows, you can use a window-specific distribution of gcc, like MinGW. Make sure gcc is in PATH.</p>
 <p>此示例表明变量n的内存已损坏，因为n的最终值不是我们期望的值。</p>
 <p>它还显示，添加了-race的工具可以捕获内存损坏并指出程序的哪个部分导致了损坏。</p>
 <p>何时使用-race
@@ -806,14 +796,14 @@ Race detector requires gcc to be installed on your machine.</p>
         
         <div class="grid one-third">
           <div style="padding:10px 0px;text-align:center;font-size:14px">
-            <span> ©2018 · 保留所有权利 · </span>
+            <span> ©2018 · 保留所有权利 </span>
             
           </div>
         </div>
         <div class="grid one-third last">
           <ul class="social-links">
             <li>
-              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
@@ -828,7 +818,8 @@ Race detector requires gcc to be installed on your machine.</p>
               </a>
             </li>
             <li>
-              <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>

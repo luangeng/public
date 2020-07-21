@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go channel和select</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2829 Words
+                                            Posted @ 2018-09-09 · 2830 Words
                                             
                                             · Tags: Go
                                             
@@ -165,7 +165,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>channel是给定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。</p>
+                                                <p>channel是指定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。</p>
 <p>goroutines通信时使用ch&lt;-value将值写入channel,使用value&lt;-ch从channel中接收值.</p>
 <p>channel基本使用方法:</p>
 <pre><code>func genInts(chInts chan int) {
@@ -191,7 +191,7 @@ n: 887</p>
 </blockquote>
 <p>channel的零值是nil. 写入nil channel会阻塞,所以在使用channel前的第一件事是使用<code>make(chan &lt;type&gt;, &lt;queue size&gt;)</code>初始化它.Queue size是可选的,默认是0,代表没有缓冲的channel.</p>
 <p>使用chan&lt;-value发送数据会将值添加到队列的最后.</p>
-<p>如果channel满了, &lt;- 会阻塞</p>
+<p>如果channel满了, &lt;-操作会阻塞</p>
 <p>发送数据到nil channel会永久阻塞.</p>
 <p>使用value=&lt;-chan读取数据是从队列的头开始.</p>
 <p>如果channel是空的,读取操作会阻塞.</p>
@@ -300,21 +300,21 @@ close(ch)
 v := &lt;-ch
 fmt.Printf(&quot;Receive from closed channel immediately returns zero value of the type: %#v\n&quot;, v)
 </code></pre><blockquote>
-<p>Receive from closed channel immediately returns zero value of the type: &quot;&rdquo;
-也可以这样判断channel是否关闭:</p>
+<p>Receive from closed channel immediately returns zero value of the type: &quot;&rdquo;</p>
 </blockquote>
+<p>判断channel是否关闭:</p>
 <pre><code>ch := make(chan int)
 go func() {
     ch &lt;- 1
     close(ch)
 }()
-v, isClosed := &lt;-ch
-fmt.Printf(&quot;received %d, is channel closed: %v\n&quot;, v, isClosed)
+v, isOpen := &lt;-ch
+fmt.Printf(&quot;received %d, is channel open: %v\n&quot;, v, isOpen)
 v, isClosed = &lt;-ch
-fmt.Printf(&quot;received %d, is channel closed: %v\n&quot;, v, isClosed)
+fmt.Printf(&quot;received %d, is channel open: %v\n&quot;, v, isOpen)
 </code></pre><blockquote>
-<p>received 1, is channel closed: true<br>
-received 0, is channel closed: false</p>
+<p>received 1, is channel open: true<br>
+received 0, is channel open: false</p>
 </blockquote>
 <p>重复关闭channel会引发panic:</p>
 <pre><code>ch := make(chan string)
@@ -1081,14 +1081,14 @@ func main() {
         
         <div class="grid one-third">
           <div style="padding:10px 0px;text-align:center;font-size:14px">
-            <span> ©2018 · 保留所有权利 · </span>
+            <span> ©2018 · 保留所有权利 </span>
             
           </div>
         </div>
         <div class="grid one-third last">
           <ul class="social-links">
             <li>
-              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
@@ -1103,7 +1103,8 @@ func main() {
               </a>
             </li>
             <li>
-              <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>

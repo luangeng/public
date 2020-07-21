@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go Defer</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 1270 Words
+                                            Posted @ 2018-09-09 · 1008 Words
                                             
                                             · Tags: Go
                                             
@@ -165,8 +165,9 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>使用复杂的函数的时候很容易忘记释放资源(例如关闭文件句柄或解锁互斥锁)</p>
-<p>Go提供了defer语句,将释放资源的代码放置在与获取该资源的代码后面：</p>
+                                                <p>Go中的defer关键字表示了要在当前函数结束时执行的函数。常用于释放资源(例如关闭文件句柄或解锁互斥锁)</p>
+<p>Defer语句是以关键字defer为前缀的普通函数调用,即<code>defer someFunction()</code></p>
+<p>如:</p>
 <pre><code>func foo() {
   f, err := os.Open(&quot;myfile.txt&quot;)
   if err != nil {
@@ -174,11 +175,12 @@
   }
   defer f.Close()
 
-  // ... lots of code
+  // 其他代码
+  // 其他代码
 }
-</code></pre><p>在上面的示例中，defer f.Close()确保在退出foo之前调用f.Close()。</p>
-<p>将defer f.Close()紧随os.Open()之后，可以轻松审核代码并确认始终调用Close。 这对于具有多个出口点的大型函数特别有用。</p>
-<p>如果defer的代码更复杂，则可以使用匿名函数：</p>
+</code></pre><p>在上面的示例中，<code>f.Close()</code>将在foo函数退出前执行。</p>
+<p>将<code>defer f.Close()</code>紧随<code>os.Open()</code>之后，可以轻松确保始终调用Close.</p>
+<p>也使用匿名函数延迟执行多条语句：</p>
 <pre><code>func foo() {
   mutex1.Lock()
   mutex2.Lock()
@@ -190,29 +192,8 @@
 
   // ... more code
 }
-</code></pre><p>也可以使用多个defer语句。它们将以相反的顺序调用，即首先声明的defer最后执行。</p>
-<p>即使发生紧急情况，也会调用defer函数。</p>
-<h2 id="defer深度">defer深度</h2>
-<p>defer语句标记了要在当前函数结束时执行的函数。</p>
-<p>Defer语句是以关键字defer为前缀的普通函数调用。</p>
-<p><code>defer someFunction()</code></p>
-<p>一旦包含defer语句的函数返回，便执行一个deferred函数。 当以下封闭函数发生实际调用deferred函数时：-执行return语句-掉到头-panic
-例子:</p>
-<pre><code>func logExit(name string) {
-    fmt.Printf(&quot;Function %s returned\n&quot;, name)
-}
-
-func main() {
-    fmt.Println(&quot;First main statement&quot;)
-    defer logExit(&quot;main&quot;) // position of defer statement here does not matter
-    fmt.Println(&quot;Last main statement&quot;)
-}
-</code></pre><blockquote>
-<p>First main statement<br>
-Last main statement<br>
-Function main returned</p>
-</blockquote>
-<p>如果一个函数有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer(以下示例通过触发panic而返回)：</p>
+</code></pre><h2 id="多个defer">多个defer</h2>
+<p>如果一个函数中有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer(以下示例通过触发panic而返回)：</p>
 <pre><code>func logNum(i int) {
     fmt.Printf(&quot;Num %d\n&quot;, i)
 }
@@ -804,14 +785,14 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         
         <div class="grid one-third">
           <div style="padding:10px 0px;text-align:center;font-size:14px">
-            <span> ©2018 · 保留所有权利 · </span>
+            <span> ©2018 · 保留所有权利 </span>
             
           </div>
         </div>
         <div class="grid one-third last">
           <ul class="social-links">
             <li>
-              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
@@ -826,7 +807,8 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
               </a>
             </li>
             <li>
-              <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>

@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go map类型</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2830 Words
+                                            Posted @ 2018-09-09 · 2629 Words
                                             
                                             · Tags: Go
                                             
@@ -166,74 +166,24 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>map是无序的key-value对的集合.</p>
-<p>map的零值为nil</p>
-<p>map在其他语言中称为字典(C#, Python)或hash表(C++).</p>
-<p>map上的迭代具有随机顺序,在这方面许多语言是不同的。</p>
-<p>map基本用法:</p>
-<pre><code>m := make(map[string]int)
-
-// set the value
-m[&quot;three&quot;] = 3
-m[&quot;four&quot;] = 4
-
-// 获取值并查看值是否存在
-key := &quot;four&quot;
-if value, ok := m[key]; ok {
-    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
-} else {
-    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
-}
-
-key = &quot;five&quot;
-if value, ok := m[key]; ok {
-    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
-} else {
-    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
-}
-
-// if value doesn't exist, the result of lookup is zero value. In this case zero value of int is 0
-fmt.Printf(&quot;\nValue for non-existing key: %d\n\n&quot;, m[&quot;not-exists&quot;])
-
-// iterating over keys and values
-fmt.Printf(&quot;All keys and their values:\n&quot;)
-for key, value := range m {
-    fmt.Printf(&quot;%s =&gt; %d\n&quot;, key, value)
-}
-
-fmt.Printf(&quot;\nBefore deletion: len(m)=%d\n&quot;, len(m))
-delete(m, &quot;four&quot;)
-fmt.Printf(&quot;After deletion : len(m)=%d\n&quot;, len(m))
-</code></pre><blockquote>
-<p>Key &lsquo;four&rsquo; exists and maps to 4<br>
-Key &lsquo;five&rsquo; doesn&rsquo;t exists</p>
-<p>Value for non-existing key: 0</p>
-<p>All keys and their values:<br>
-three =&gt; 3<br>
-four =&gt; 4</p>
-<p>Before deletion: len(m)=2<br>
-After deletion : len(m)=1</p>
-</blockquote>
 <h2 id="map的声明和初始化">map的声明和初始化</h2>
-<p>使用map关键字声明map, 后面是key和value的类型:</p>
+<p>使用map关键字声明map, 同时指明key和value的类型:</p>
 <pre><code>// Keys are ints, values are ints.
-var m1 map[int]int // initialized to nil
+var m1 map[int]int // 初始值为nil
 
 // Keys are strings, values are ints.
-var m2 map[string]int // initialized to nil
-</code></pre><p>map是引用类型，一旦定义，它们的零值为nil。 写入nil map将导致panic，而读取将始终返回其零值。</p>
-<p>使用make方法初始化map</p>
+var m2 map[string]int // 初始值为nil
+</code></pre><p>map是引用类型，一旦声明其零值为nil。 写入nil map将导致panic，读取nil map将始终返回其零值。</p>
+<p>使用make方法初始化map:</p>
 <pre><code>m := make(map[string]int)
-</code></pre><p>使用make的两参数形式，可以为map指定初始输入容量，而不是默认容量：</p>
+</code></pre><p>也可以为map指定初始容量：</p>
 <pre><code>m := make(map[string]int, 30)
-</code></pre><p>另外，可以声明一个映射，将其初始化为零值，然后再为它分配一个文字值，如果将该结构序列化为json，从而在返回时生成一个空映射，则将有帮助。</p>
-<pre><code>m := make(map[string]int, 0)
 </code></pre><p>也可以使用{}初始化map的值</p>
 <pre><code>var m map[string]int = map[string]int{&quot;Foo&quot;: 20, &quot;Bar&quot;: 30}
 
 fmt.Println(m[&quot;Foo&quot;]) // outputs 20
 </code></pre><p>以下所有语句导致该变量绑定到相同的值。</p>
-<pre><code>// Declare, initializing to zero value, then assign a literal value.
-var m map[string]int
+<pre><code>var m map[string]int
 m = map[string]int{}
 
 // Declare and initialize via literal value.
@@ -241,8 +191,7 @@ var m = map[string]int{}
 
 // Declare via short variable declaration and initialize with a literal value.
 m := map[string]int{}
-</code></pre><p>我们还可以使用map文字来创建带有一些初始键/值对的新map。</p>
-<p>key类型可以是任何可比较的类型。值得注意的是，这不包括函数，映射和切片。 值类型可以是任何类型，包括自定义类型或接口{}。</p>
+</code></pre><p>key类型可以是任何可比较的类型。值得注意的是，这不包括函数，映射和切片。 值类型可以是任何类型，包括自定义类型或接口{}。</p>
 <pre><code>type Person struct {
     FirstName string
     LastName  string
@@ -296,7 +245,7 @@ var hitMap = map[RouteHit]int{
 hitMap := map[RouteHit]int{
     RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
     RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
-</code></pre><p>只需在方括号{}中不输入任何值即可创建一个空的map。</p>
+</code></pre><p>只需在{}中不输入任何值即可创建一个空的map。</p>
 <pre><code>mapIntInt := map[int]int{}
 mapIntString := map[int]string{}
 mapStringInt := map[string]int{}
@@ -563,6 +512,50 @@ panic: assignment to entry in nil map</p>
 main.main()<br>
 /tmp/src249866572/main.go:16 +0x1a5<br>
 exit status 2</p>
+</blockquote>
+<h2 id="map使用示例">map使用示例:</h2>
+<pre><code>m := make(map[string]int)
+
+// set the value
+m[&quot;three&quot;] = 3
+m[&quot;four&quot;] = 4
+
+// 获取值并查看值是否存在
+key := &quot;four&quot;
+if value, ok := m[key]; ok {
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+} else {
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+}
+
+key = &quot;five&quot;
+if value, ok := m[key]; ok {
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+} else {
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+}
+
+// if value doesn't exist, the result of lookup is zero value. In this case zero value of int is 0
+fmt.Printf(&quot;\nValue for non-existing key: %d\n\n&quot;, m[&quot;not-exists&quot;])
+
+// iterating over keys and values
+fmt.Printf(&quot;All keys and their values:\n&quot;)
+for key, value := range m {
+    fmt.Printf(&quot;%s =&gt; %d\n&quot;, key, value)
+}
+
+fmt.Printf(&quot;\nBefore deletion: len(m)=%d\n&quot;, len(m))
+delete(m, &quot;four&quot;)
+fmt.Printf(&quot;After deletion : len(m)=%d\n&quot;, len(m))
+</code></pre><blockquote>
+<p>Key &lsquo;four&rsquo; exists and maps to 4<br>
+Key &lsquo;five&rsquo; doesn&rsquo;t exists</p>
+<p>Value for non-existing key: 0</p>
+<p>All keys and their values:<br>
+three =&gt; 3<br>
+four =&gt; 4</p>
+<p>Before deletion: len(m)=2<br>
+After deletion : len(m)=1</p>
 </blockquote>
 
                                                 
@@ -1040,14 +1033,14 @@ exit status 2</p>
         
         <div class="grid one-third">
           <div style="padding:10px 0px;text-align:center;font-size:14px">
-            <span> ©2018 · 保留所有权利 · </span>
+            <span> ©2018 · 保留所有权利 </span>
             
           </div>
         </div>
         <div class="grid one-third last">
           <ul class="social-links">
             <li>
-              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng" target="_blank">
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
@@ -1062,7 +1055,8 @@ exit status 2</p>
               </a>
             </li>
             <li>
-              <a class="social-tooltip" title="On FaceBook" href="https://zh-cn.facebook.com/" target="_blank">
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>
