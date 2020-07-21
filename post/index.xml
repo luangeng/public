@@ -584,15 +584,6 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     </item>
     
     <item>
-      <title>如何制作一个漂亮的生日祝福网页</title>
-      <link>https://luangeng.space/post/other/birthday/</link>
-      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://luangeng.space/post/other/birthday/</guid>
-      <description>本文演示如何制作一个精美的生日祝福网页，可在手机端查看，首先看一下最终效果： Your browser does not support the audio element.预览图片： 开始前 完成本教程需要以下</description>
-    </item>
-    
-    <item>
       <title>Redis命令</title>
       <link>https://luangeng.space/post/db/redis/redis-command-string/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
@@ -1260,10 +1251,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>OpenCV 绘制图像直方图</title>
-      <link>https://luangeng.space/post/other/opencv1/</link>
+      <link>https://luangeng.space/post/other/opencv/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/opencv1/</guid>
+      <guid>https://luangeng.space/post/other/opencv/</guid>
       <description>OpenCV绘制图像直方图，版本2.4.11 直方图可展示图像中的像素分布,是用以表示数字图像中亮度分布的直方图，标绘了图像中每个亮度值的像素</description>
     </item>
     
