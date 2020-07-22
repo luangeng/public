@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 包管理</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 1450 Words
+                                            Posted @ 2018-09-09 · 1435 Words
                                             
                                             · Tags: Go
                                             
@@ -171,11 +171,10 @@
 <p>Go的标准库就是通过一系列包来提供的.</p>
 <p>包是用导入路径来标识的,比如github.com/gomarkdown/markdown是解析markdown格式的包的导入路径.</p>
 <h2 id="用go-get本地安装包">用go get本地安装包</h2>
-<p>In order to import a package in your program you must first download the package locally.
-你必须先把包下载到本地才能安装.
-比如使用go get -u github.com/gomarkdown/markdown从https://github.com/gomarkdown/markdown/下载包代码
--u的意思是如果之前下载过则更新此包到最新的版本
-代码将被下载到$GOPATH/src/github.com/gomarkdown/markdown, 因此包导入路径就是包代码在本地存储的路径.</p>
+<p>你必须先把包下载到本地才能进行安装.</p>
+<p>比如使用<code>go get -u github.com/gomarkdown/markdown</code>从https://github.com/gomarkdown/markdown/ 下载代码</p>
+<p>-u的意思是如果之前下载过则更新此包到最新的版本</p>
+<p>代码将被下载到$GOPATH/src/github.com/gomarkdown/markdown, 因此包导入路径就是包代码在本地存储的路径.</p>
 <p>导入路径被添加到$GOPATH/src.</p>
 <p>多数情况下，导入路径也是源文件的位置，但是go get也允许通过嵌入HTML文件的元数据进行重定向。</p>
 <h2 id="导入包">导入包</h2>
@@ -241,7 +240,7 @@ func init() {
     // init code
 }
 </code></pre><p>如果你只想运行程序包初始化而不从中引用任何内容，请使用以下导入表达式。</p>
-<p>import _ &ldquo;foo&rdquo;</p>
+<p><code>import _ &quot;foo&quot;</code></p>
 <p>包初始化功能用于创建包中代码所需的初始状态。</p>
 <p>不要在init函数中做太多事情。 这种隐式逻辑会对其他人理解代码产生负面影响。</p>
 <h2 id="包命名最佳实践">包命名最佳实践:</h2>
@@ -446,17 +445,6 @@ func init() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -467,7 +455,7 @@ func init() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
+                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -478,7 +466,7 @@ func init() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -489,7 +477,7 @@ func init() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -500,7 +488,7 @@ func init() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -511,8 +499,19 @@ func init() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -601,8 +600,6 @@ func init() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
@@ -610,6 +607,8 @@ func init() {
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

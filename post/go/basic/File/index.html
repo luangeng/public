@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 文件和I/O</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2019-09-08 · 2765 Words
+                                            Posted @ 2018-09-09 · 4168 Words
                                             
                                             · Tags: Go
                                             
@@ -242,37 +242,37 @@ f, err := os.Create(&quot;foo.txt&quot;)
 if err != nil {
     log.Fatalf(&quot;os.Open failed with '%s'\n&quot;, err)
 }
-</code></pre><p>Create returns *os.File which implements io.Writer and io.Closer interfaces.</p>
-<p>If file doesn’t exist, it’ll be created.</p>
-<p>If file does exist, it’ll be truncated.</p>
-<p>You should always close files to avoid leaking file descriptors.</p>
-<p>Be aware that Close on a file can return an error so for a robust code you should check for errors from Close.</p>
-<p>Writes can be buffered and Close might need to flush remaining cached bytes to disk. That might fail and return an error.</p>
-<p>Open file for appending
-f, err := os.OpenFile(filePath, os.O_WRONLY | os.O_APPEND | os.O_CREATE, 0666)
+</code></pre><p>Create返回* os.File，它实现io.Writer和io.Closer接口。</p>
+<p>如果文件不存在，则会创建该文件。</p>
+<p>如果文件确实存在，它将被截断。</p>
+<p>您应该始终关闭文件，以避免泄漏文件描述符。</p>
+<p>请注意，关闭文件可能会返回错误，因此对于强大的代码，您应该检查关闭是否有错误。</p>
+<p>可以缓冲写操作，Close可能需要将剩余的缓存字节刷新到磁盘。 那可能会失败并返回错误。</p>
+<p>打开文件进行追加</p>
+<pre><code>f, err := os.OpenFile(filePath, os.O_WRONLY | os.O_APPEND | os.O_CREATE, 0666)
 if err != nil {
-log.Fatalf(&ldquo;os.Open failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+    log.Fatalf(&quot;os.Open failed with '%s'\n&quot;, err)
 }
-Second argument to os.OpenFile is a flag that determines the exact mode for opening the file.</p>
-<p>When you open for reading, use os.Open.</p>
-<p>When you open for writing to a new file, use os.Create.</p>
+</code></pre><p>os.OpenFile的第二个参数是一个标志，用于确定打开文件的确切模式。</p>
+<p>打开读取时，请使用os.Open。</p>
+<p>当您打开以写入新文件时，请使用os.Create。</p>
 <p>When you open for appending to existing file, use os.OpenFile with the following flags: * os.O_WRONLY. Could also be os.RDWR if we also to both read and write * os.O_APPEND means that if file exists, we’ll append * os.O_CREATE means that if file doesn’t exist, we’ll create it. Without this flag opening non-existing file would fail</p>
-<p>Write to a file
-d := []byte(&ldquo;data to write&rdquo;)
+<p>写文件</p>
+<pre><code>d := []byte(&quot;data to write&quot;)
 nWritten, err := f.Write(d)
-File permissions when creating files
-When you create a new file with os.Create or os.OpenFile, you need to provide file permissions for the new file.</p>
-<p>For most cases 0644 is a good choice.</p>
-<p>Those are Unix style permissions in octal format.</p>
-<p>Let’s deconstruct parts of 0644</p>
-<p>0 means this is a number in octal format. That means that each number is in 0-7 range (compare to regular decimal notation where each number is in 0-9 range)
-6 is permissions for the creator of the file. It’s a bitmask 4 + 2. 4 means read permissions, 2 means write permission. When combined it means read/write access
-4 is permissions for the group that user belongs to. I.e. every user that also belongs to the same group will have those permissions. 4 means only read permissions
-last 4 is for everyone. Again, 4 means only read permissions
-for completeness, 1 represents executable permissions so if this is meant to be an executable file, the permissions flag would be 0755 i.e. for each user/group/anonymous component we add 1 to set executable bit
-Those permissions are native to Unix and Mac OS but they map loosely on Windows.</p>
-<p>To manage Windows permissions you need to use Windows API.</p>
-<h2 id="file-operations">File operations</h2>
+</code></pre><p>创建文件时的文件权限
+使用os.Create或os.OpenFile创建新文件时，需要为新文件提供文件权限。</p>
+<p>在大多数情况下，0644是一个不错的选择。</p>
+<p>这些是八进制格式的Unix风格权限。</p>
+<p>让我们解构0644</p>
+<p>0:表示这是八进制格式的数字。 这意味着每个数字都在0-7范围内（与每个数字都在0-9范围内的常规十进制表示法比较）
+6:文件创建者的权限。 这是位掩码4 +2。4表示读取权限，2表示写入权限。 结合使用时，意味着读/写访问
+4:用户所属组的权限。 即 也属于同一组的每个用户都将具有这些权限。 4表示仅读取权限
+4:所有用户的权限。 同样，4表示仅读取权限</p>
+<p>为了完整起见，1代表可执行权限，因此如果这是一个可执行文件，则权限标志将为0755，即对于每个用户/组/匿名组件，我们将1设置为可执行位
+这些权限是Unix和Mac OS固有的，但是在Windows上它们的映射很松散。</p>
+<p>要管理Windows权限，您需要使用Windows API。</p>
+<h2 id="file操作">File操作</h2>
 <p>获取文件大小:</p>
 <pre><code>// GetFileSize returns file size or error if e.g. file doesn't exist
 func GetFileSize(path string) (int64, error) {
@@ -294,8 +294,8 @@ func main() {
 </code></pre><blockquote>
 <p>ile main.go is 501 bytes in size</p>
 </blockquote>
-<p>Instead of os.Stat we can also use os.Lstat. The difference is that os.Stat follows symbolic links and os.Lstat doesn’t.</p>
-<p>In other words: for a symbolic link os.Lstat returns information about link and os.Stat about the file that it links to.</p>
+<p>除了os.Stat，我们还可以使用os.Lstat。 区别在于os.Stat遵循符号链接，而os.Lstat不遵循符号链接。</p>
+<p>换句话说：对于符号链接，os.Lstat返回有关链接的信息，os.Stat返回有关链接到的文件的信息。</p>
 <p>获取文件信息:</p>
 <pre><code>func main() {
     st, err := os.Stat(&quot;main.go&quot;)
@@ -316,9 +316,9 @@ Size: 363<br>
 IsDir: false<br>
 Mode: 4999c0<br>
 ModTime: 2019-11-06 04:41:24.675411079 +0000 UTC<br>
-OS info: &amp;syscall.Stat_t{Dev:0x5, Ino:0xba8, Nlink:0x1, Mode:0x81a4, Uid:0x0, Gid:0x0, X__pad0:0, Rdev:0x0, Size:363, Blksize:4096, Blocks:8, Atim:syscall.&gt; Timespec{Sec:1573015285, Nsec:208585110}, Mtim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, Ctim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, &gt; X__unused:[3]int64{0, 0, 0}}
-检查文件是否存在:</p>
+OS info: &amp;syscall.Stat_t{Dev:0x5, Ino:0xba8, Nlink:0x1, Mode:0x81a4, Uid:0x0, Gid:0x0, X__pad0:0, Rdev:0x0, Size:363, Blksize:4096, Blocks:8, Atim:syscall.&gt; Timespec{Sec:1573015285, Nsec:208585110}, Mtim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, Ctim:syscall.Timespec{Sec:1573015284, Nsec:675411079}, &gt; X__unused:[3]int64{0, 0, 0}}</p>
 </blockquote>
+<p>检查文件是否存在:</p>
 <pre><code>// IsPathxists returns true if a given path exists, false if it doesn't.
 // It might return an error if e.g. file exists but you don't have
 // access
@@ -348,13 +348,13 @@ func main() {
 }
 </code></pre><blockquote>
 <p>File &lsquo;main.go&rsquo; exists: true<br>
-File &lsquo;non-existent-file.txt&rsquo; exists: false
-Checking if a file exists is surprisingly tricky and it’s impossible to write a generic function that handles all the nuances.</p>
+File &lsquo;non-existent-file.txt&rsquo; exists: false</p>
 </blockquote>
-<p>Here are decisions we made:</p>
-<p>it treats files and directories the same. If a path exists and you want to distinguish between directory and a file, you would need to call IsDir() on result of os.Lstat
-if a file is a symbolic link, do we test the link or the real file it links to? We used os.Lstat so we test the link. We could also use os.Stat to resolve the symbolic link
-“path doesn’t exist” is only one of possible errors returned by os.Lstat. Do we want to distinguish between “file doesn’t exist” and “file exists and we don’t have access”? We decided to be more informative but in some cases it would be simpler to just return a bool and always return false if os.Lstat fails</p>
+<p>令人惊讶的是，检查文件是否存在是很难的，并且不可能编写处理所有细微差别的通用函数。</p>
+<p>这是我们做出的决定：</p>
+<p>它对待文件和目录相同。 如果存在路径，并且要区分目录和文件，则需要在os.Lstat的结果上调用IsDir（）
+如果文件是符号链接，我们是否测试链接或链接到的实际文件？ 我们使用了os.Lstat，所以我们测试了链接。 我们也可以使用os.Stat来解析符号链接
+“路径不存在”只是os.Lstat返回的可能错误之一。 我们要区分“文件不存在”和“文件存在并且我们无权访问”吗？ 我们决定提供更多信息，但在某些情况下，仅返回bool并在os.Lstat失败时始终返回false会更简单。</p>
 <h3 id="删除文件">删除文件</h3>
 <pre><code>path := &quot;foo.txt&quot;
 err := os.Remove(path)
@@ -365,8 +365,8 @@ if err != nil {
         fmt.Printf(&quot;os.Remove failed with '%s'\n&quot;, err)
     }
 }
-</code></pre><p>os.Remove returns an error for files that don’t exist.</p>
-<p>Usually you want to ignore such errors which you can do by testing error with os.IsNotExist(err).</p>
+</code></pre><p>os.Remove对于不存在的文件返回错误。</p>
+<p>通常，您想忽略此类错误，可以通过使用os.IsNotExist（err）测试错误来完成。</p>
 <h3 id="重命名文件">重命名文件</h3>
 <pre><code>oldPath := &quot;old_name.txt&quot;
 newPath := &quot;new_name.txt&quot;
@@ -398,11 +398,11 @@ func CopyFile(dst, src string) error {
     }
     return err
 }
-</code></pre><p>Writing a generic function for copying files is tricky and it’s impossible to write a function that serves all use cases.</p>
-<p>Here are policy decisions we made:</p>
-<p>should we over-write existing files or return error if destination exists? We decided to over-write
-what permissions should new file have? We decided for the simplest case of using default permissions. Another option would be to copy permissions from source or allow the caller to provide permissions
-If you want different behavior, you will have to modify the code as needed.</p>
+</code></pre><p>编写用于复制文件的通用函数非常棘手，并且不可能编写可满足所有用例的函数。</p>
+<p>以下是我们制定的政策决策：</p>
+<p>如果目标存在，我们应该覆盖现有文件还是返回错误？ 我们决定改写
+新文件应具有什么权限？ 我们决定了使用默认权限的最简单情况。 另一种选择是从源复制权限或允许调用方提供权限
+如果您想要不同的行为，则必须根据需要修改代码。</p>
 <h2 id="目录操作">目录操作</h2>
 <h4 id="创建目录">创建目录</h4>
 <pre><code>dir := &quot;my_dir&quot;
@@ -415,27 +415,32 @@ err := os.MkdirAll(dir, 0755)
 if err != nil {
     fmt.Printf(&quot;os.MkdirAll('%s') failed with '%s'\n&quot;, dir)
 }
-</code></pre><p>os.Mkdir only succeeds if parent directory of dir already exists.</p>
-<p>os.MkdirAll will create all intermediary directories.</p>
-<p>0755 describes permissions for the directory.</p>
-<p>Those are Unix style permissions in octal format.</p>
-<p>Let’s deconstruct parts of 0755 * 0 means this is a number in octal format. That means that each number is in 0-7 range (compare to regular decimal notation where each number is in 0-9 range) * 7 is permissions for the creator of the file. It’s a bitmask 4 + 2 + 1. 4 means read permissions, 2 means write permission, 1 means that directory can be traversed. When combined it means read/write/traverse access * 5 is permissions for the group that user belongs to. I.e. every user that also belongs to the same group will have those permissions. 4 + 1 means read and traverse permissions, but not write permissions * last 5 is for everyone. Again, 5 means read and traverse permissions</p>
+</code></pre><p>os.Mkdir仅在dir的父目录已存在时才成功。</p>
+<p>os.MkdirAll将创建所有中间目录。</p>
+<p>0755描述了目录的权限。</p>
+<p>这些是八进制格式的Unix样式权限。</p>
+<p>让我们解构0755</p>
+<ul>
+<li>0的部分表示这是八进制格式的数字。 这意味着每个数字都在0-7范围内（与每个数字在0-9范围内的常规十进制表示法相比）</li>
+<li>7是文件创建者的权限。 这是位掩码4 + 2 +1。4表示读取权限，2表示写入权限，1表示可以遍历目录。 组合使用时，意味着读/写/遍历访问</li>
+<li>5是用户所属组的权限。 即 也属于同一组的每个用户都将具有这些权限。 4 + 1表示读取和遍历权限，但不具有写入权限</li>
+<li>5所有人权限。 同样，5表示读取和遍历权限</li>
+</ul>
 <h4 id="删除目录">删除目录</h4>
 <pre><code>dir := &quot;my_dir&quot;
 err := os.Remove(dir)
 if err != nil {
     fmt.Printf(&quot;os.Remove('%s') failed with '%s'\n&quot;, path, err)
 }
-os.Remove only works for empty directories i.e. directories without any files of sub-directories.
-
-dir := &quot;my_dir&quot;
+</code></pre><p>os.Remove仅适用于空目录，即没有任何子目录和文件的目录。</p>
+<pre><code>dir := &quot;my_dir&quot;
 err := os.RemoveAll(dir)
 if err != nil {
     fmt.Printf(&quot;os.RemoveAll('%s') failed with '%s'\n&quot;, path, err)
 }
-</code></pre><p>os.RemoveAll removes the directory and all its children (files and sub-directories).</p>
+</code></pre><p>os.RemoveAll删除目录及其所有子目录（文件和子目录）。</p>
 <h4 id="列出目录中的文件">列出目录中的文件</h4>
-<p>To list files and directories in a given directory we can use ioutil.ReadDir:</p>
+<p>使用ioutil.ReadDir列出给定目录下的文件:</p>
 <pre><code>func main() {
     dir := &quot;.&quot;
     fileInfos, err := ioutil.ReadDir(dir)
@@ -478,91 +483,101 @@ Path: app, is dir: false, size: 2179294 bytes<br>
 Path: go.mod, is dir: false, size: 21 bytes<br>
 Path: main.go, is dir: false, size: 466 bytes</p>
 </blockquote>
-<p>To visit files in a directory recursively use filepath.Walk.</p>
-<p>You provide a callback function that will be called for every file and directory under directory.</p>
-<p>Callback function is called even for files/directories that we can’t read e.g. due to insufficient permissions.</p>
-<p>We can end traversal early by returning non-nil error from callback function.</p>
+<p>要递归访问目录中的文件，请使用filepath.Walk。</p>
+<p>提供了一个回调函数，该函数将为目录下的每个文件和目录调用。</p>
+<p>甚至对于我们无法读取的文件/目录(如权限不足)，也会调用回调函数。</p>
+<p>我们可以通过从回调函数返回非nil错误来尽早结束遍历。</p>
 <h2 id="文件目录操作">文件目录操作</h2>
-<p>Unfortunately different operating systems have different rules about the format of file paths.</p>
-<p>For example, on Unix and Mac OS, path separator character is / and on Windows it’s .</p>
-<p>For portable programs, it’s important to use functions in filepath package that understand conventions used by a given operating system.</p>
-<p>Note: filepath package manages OS file paths. There’s also path package with similar functionality but it always uses / as path separator.</p>
-<p>Join a path
-path := filepath.Join(&ldquo;dir&rdquo;, &ldquo;sub&rdquo;, &ldquo;file.txt&rdquo;)
-fmt.Printf(&ldquo;path: %s\n&rdquo;, path)</p>
-<pre><code>path: dir/sub/file.txt
-You can join more than 2 path elements.
-
-On Windows the above would return dir\file.txt, on Unix and Mac OS it would return dir/file.txt.
-
-Split a path into a directory and file
-path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
+<p>不幸的是，不同的操作系统对文件路径的格式具有不同的规则。</p>
+<p>例如，在Unix和Mac OS上，路径分隔符为/，而在Windows上为\。</p>
+<p>对于可移植程序，重要的是使用文件路径包中的函数，这些函数应了解给定操作系统使用的约定。</p>
+<p>注意：filepath软件包管理OS文件路径。 也有具有类似功能的路径包，但它始终使用/作为路径分隔符。</p>
+<p>Join a path</p>
+<pre><code>path := filepath.Join(&quot;dir&quot;, &quot;sub&quot;, &quot;file.txt&quot;)
+fmt.Printf(&quot;path: %s\n&quot;, path)
+</code></pre><blockquote>
+<p>path: dir/sub/file.txt</p>
+</blockquote>
+<p>您可以加入两个以上的路径元素。</p>
+<p>在Windows上，以上将返回dir \ file.txt，在Unix和Mac OS上，将返回dir / file.txt。</p>
+<p>将路径拆分为目录和文件</p>
+<pre><code>path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
 file := filepath.Base(path)
 fmt.Printf(&quot;path: %s, file: %s\n&quot;, path, file)
-</code></pre><p>path: dir/file.txt, file: file.txt
-Split list of paths
-parts := filepath.SplitList(&quot;/usr/bin:/tmp&rdquo;)
-fmt.Printf(&ldquo;parts: %#v\n&rdquo;, parts)</p>
-<pre><code>parts: []string{&quot;/usr/bin&quot;, &quot;/tmp&quot;}
-Get file name from path
-path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
+</code></pre><blockquote>
+<p>path: dir/file.txt, file: file.txt</p>
+</blockquote>
+<p>分割路径list</p>
+<pre><code>parts := filepath.SplitList(&quot;/usr/bin:/tmp&quot;)
+fmt.Printf(&quot;parts: %#v\n&quot;, parts)
+</code></pre><blockquote>
+<p>parts: []string{&quot;/usr/bin&rdquo;, &ldquo;/tmp&rdquo;}</p>
+</blockquote>
+<p>从path获取文件名</p>
+<pre><code>path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
 dir, file := filepath.Split(path)
 fmt.Printf(&quot;dir: %s, file: %s\n&quot;, dir, file)
-</code></pre><p>dir: dir/, file: file.txt
-Get directory name from path
-path := filepath.Join(&ldquo;dir&rdquo;, &ldquo;file.txt&rdquo;)
+</code></pre><blockquote>
+<p>dir: dir/, file: file.txt</p>
+</blockquote>
+<p>从path获取路径名</p>
+<pre><code>path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
 dir := filepath.Dir(path)
-fmt.Printf(&ldquo;path: %s, dif: %s\n&rdquo;, path, dir)</p>
-<pre><code>path: dir/file.txt, dif: dir
-Get file extension
-ext := filepath.Ext(&quot;file.txt&quot;)
+fmt.Printf(&quot;path: %s, dif: %s\n&quot;, path, dir)
+</code></pre><blockquote>
+<p>path: dir/file.txt, dif: dir</p>
+</blockquote>
+<p>获取文件后缀</p>
+<pre><code>ext := filepath.Ext(&quot;file.txt&quot;)
 fmt.Printf(&quot;ext: %s\n&quot;, ext)
-</code></pre><p>ext: .txt</p>
-<h2 id="io-related-interfaces">I/O related interfaces</h2>
-<p>Go standard library defines several interfaces related to i/o.</p>
-<p>They are crucial for abstracting i/o operation from the concrete object.</p>
-<p>Thanks to io.Reader interface we can write code that operates on any type that implements that interface, be it a type representing a file on disk, a network connection, or a buffer in memory.</p>
-<p>Having, for example, a JSON decoder operate on io.Reader is more powerful than JSON decoder that can only work on files.</p>
-<p>For maximum flexibility, when possible you should write functions that operate on least specific interfaces like io.Reader or io.Writer and not concrete types like *os.File.</p>
-<p>io.Reader
-type Reader interface {
-Read(p []byte) (n int, err error)
+</code></pre><blockquote>
+<p>ext: .txt</p>
+</blockquote>
+<h2 id="io相关接口">I/O相关接口</h2>
+<p>Go标准库定义了几个与I / O相关的接口。</p>
+<p>它们对于从具体对象中抽象I / O操作至关重要。</p>
+<p>借助io.Reader接口，我们可以编写可在实现该接口的任何类型上运行的代码，无论该类型代表磁盘上的文件，网络连接还是内存中的缓冲区。</p>
+<p>例如，让JSON解码器在io.Reader上运行，比仅对文件起作用的JSON解码器功能更强大。</p>
+<p>为了获得最大的灵活性，应尽可能编写在最少特定接口（如io.Reader或io.Writer）上操作的函数，而不是在* os.File等具体类型上运行的函数。</p>
+<h4 id="ioreader">io.Reader</h4>
+<pre><code>type Reader interface {
+    Read(p []byte) (n int, err error)
 }
-io.Reader is a crucial abstraction for reading from sequential stream of bytes.</p>
-<p>Read function reads up to len(p) bytes into a buffer p, returning the number of bytes read and error status.</p>
-<p>It might return less than the len(p), even 0 bytes.</p>
-<p>When it reaches end of file, it returns io.EOF as error. Notice that Read is allowed to return data in the same call as returning io.EOF so handling end of file requires attention to details.</p>
-<p>io.Reader doesn’t allow going back in the stream. For that the type must implement io.Seeker or io.ReaderAt interfaces.</p>
-<p>io.Writer
-type Writer interface {
-Write(p []byte) (n int, err error)
+</code></pre><p>io.Reader是从顺序字节流中读取的关键抽象。</p>
+<p>读取功能最多将len（p）个字节读入缓冲区p，返回读取的字节数和错误状态。</p>
+<p>它可能返回小于len（p）的值，甚至返回0个字节。</p>
+<p>当到达文件末尾时，它将返回io.EOF作为错误。 请注意，允许Read与返回io.EOF在同一调用中返回数据，因此处理文件结尾需要注意细节。</p>
+<p>io.Reader不允许返回流。 为此，该类型必须实现io.Seeker或io.ReaderAt接口。</p>
+<h4 id="iowriter">io.Writer</h4>
+<pre><code>type Writer interface {
+    Write(p []byte) (n int, err error)
 }
-io.Writer is for writing to a sequential stream of bytes.</p>
-<p>Write writes bytes in p and returns the number of bytes written and error status.</p>
-<p>Write guarantees that it’ll write all data or return an error i.e. if returned n is &lt; len(p) then err must be non-nil.</p>
-<p>io.Closer
-type Closer interface {
-Close() error
+</code></pre><p>io.Writer用于写入顺序的字节流。</p>
+<p>Write在p中写入字节，并返回写入的字节数和错误状态。</p>
+<p>写保证它会写所有数据或返回错误，即，如果返回的n为&lt;len（p），则err必须为非nil。</p>
+<h4 id="iocloser">io.Closer</h4>
+<pre><code>type Closer interface {
+    Close() error
 }
-Closer describes streams that must be explicitly closed.</p>
-<p>Close returns an error because it’s required in some real-world cases. For example, when doing buffered writes to a file, Close might need to flush remaining buffered data to a file, which might fail.</p>
-<p>For that reason it’s important to check error returned from Close when closing a write-able streams.</p>
-<p>io.ReaderAt
-type ReaderAt interface {
-ReadAt(p []byte, off int64) (n int, err error)
+</code></pre><p>Closer描述必须显式关闭的流。</p>
+<p>因为在某些实际情况下需要关闭，所以关闭会返回错误。 例如，在对文件进行缓冲写入时，Close可能需要将剩余的缓冲数据刷新到文件中，这可能会失败。</p>
+<p>因此，在关闭可写流时，请检查从关闭返回的错误，这一点很重要。</p>
+<h4 id="ioreaderat">io.ReaderAt</h4>
+<pre><code>type ReaderAt interface {
+    ReadAt(p []byte, off int64) (n int, err error)
 }
-io.ReaderAt is like io.Reader but allows to read at any position in the stream.</p>
-<p>This is possible in files but not in network connections.</p>
-<p>io.WriterAt
-type WriterAt interface {
-WriteAt(p []byte, off int64) (n int, err error)
+</code></pre><p>io.ReaderAt类似于io.Reader，但允许在流中的任何位置进行读取。</p>
+<p>这在文件中是可能的，但在网络连接中是不可能的。</p>
+<h4 id="iowriterat">io.WriterAt</h4>
+<pre><code>type WriterAt interface {
+    WriteAt(p []byte, off int64) (n int, err error)
 }
-io.WriterAt is like io.Write but allows to write at an arbitrary position in the stream.</p>
-<p>io.Seeker
-type Seeker interface {
-Seek(offset int64, whence int) (int64, error)
+</code></pre><p>io.WriterAt类似于io.Write，但允许在流中的任意位置进行写入。</p>
+<h4 id="ioseeker">io.Seeker</h4>
+<pre><code>type Seeker interface {
+        Seek(offset int64, whence int) (int64, error)
 }
-io.Seeker allows seeking within the stream. If you can seek, you can also implement io.ReaderAt and io.WriterAt.</p>
+</code></pre><p>io.Seeker允许在流中进行搜索。 如果可以查找，还可以实现io.ReaderAt和io.WriterAt。</p>
 
                                                 
                                             </div>
@@ -761,17 +776,6 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -782,7 +786,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
+                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -793,7 +797,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -804,7 +808,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -815,7 +819,7 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -826,8 +830,19 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -916,8 +931,6 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
@@ -925,6 +938,8 @@ io.Seeker allows seeking within the stream. If you can seek, you can also implem
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

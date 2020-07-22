@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go channel和select</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2830 Words
+                                            Posted @ 2018-09-09 · 3246 Words
                                             
                                             · Tags: Go
                                             
@@ -339,13 +339,13 @@ main.main()<br>
 exit status 2</p>
 </blockquote>
 <h2 id="是否缓冲">是否缓冲</h2>
-<p>Sending and receiving goroutines block unless sending goroutine has a value to send and receiving goroutine is ready to receive.</p>
-<p>Insisting on synchronization for every receive/send operation might introduce unnecessary slowdowns.</p>
-<p>Imagine a scenario where one worker produces values and another worker consumes it.</p>
-<p>If it takes a second to produce a value and a second to consume it, it takes 2 * N seconds to produce and consume all values.</p>
-<p>If producer can queue up multiple values in the channel, producer doesn’t have to wait for consumer to be ready for each value.</p>
-<p>This is a job for buffered channels.</p>
-<p>By allowing producer to proceed independently of the consumer we can speed up some scenarios.</p>
+<p>发送和接收goroutines块，除非发送goroutine具有要发送的值，并且接收goroutine已准备好接收。</p>
+<p>对每个接收/发送操作坚持同步可能会导致不必要的速度降低。</p>
+<p>想象一个场景，一个工人生产，而另一个工人消费。</p>
+<p>如果产生一个值要花一秒钟，消耗也要花一秒钟，则要花2秒的时间来产生和消耗一个值。</p>
+<p>如果生产者可以在channel中排队，则不必等待消费者为每个值做好准备。</p>
+<p>这是缓冲channel的好处。</p>
+<p>通过允许生产者独立于消费者进行生产，我们可以加快某些场景:</p>
 <pre><code>func producer(ch chan int) {
     for i := 0; i &lt; 5; i++ {
         if i%2 == 0 {
@@ -393,8 +393,8 @@ func main() {
 <p>Unbuffered version took 50.854313ms
 Buffered version took 32.800727ms</p>
 </blockquote>
-<h2 id="non-blocking-receive-with-select">Non-blocking receive with select</h2>
-<p>You can use default part of select statement to do a non-blocking wait.</p>
+<h2 id="使用select非阻塞接收">使用select非阻塞接收</h2>
+<p>您可以使用select语句的默认部分进行非阻塞等待。</p>
 <pre><code>func main() {
     ch := make(chan int, 1)
 
@@ -417,12 +417,11 @@ end:
 <p>Channel is empty<br>
 Received 8 from a channel</p>
 </blockquote>
-<p>During first iteration of for loop select immediately ends up in default clause because channel is empty.</p>
-<p>We send a value to the channel there so the next select will pick up the value from the channel.</p>
-<h2 id="signaling-channel-with-chan-struct">Signaling channel with chan struct</h2>
-<p>Sometimes you don’t want to send a value over a channel but use it only as a way to signal an event.</p>
-<p>In those cases use chan struct{} to document the fact that the value sent over a channel has no meaning.</p>
-<p>Signaling channel is often used as a way to tell goroutines to finish.</p>
+<p>在for循环的第一次迭代中，由于channel为空，因此select立即以default子句结束。</p>
+<p>我们将值发送到该通道，以便下一个选择将从通道中获取该值。</p>
+<h2 id="信令信道-chan-struct">信令信道 chan struct</h2>
+<p>有时不想通过channel发送值，而仅将其用作信号事件的一种方式。</p>
+<p>信令通道通常用来通知goroutine结束:</p>
 <pre><code>func worker(ch chan int, chQuit chan struct{}) {
     for {
         select {
@@ -445,33 +444,25 @@ func main() {
     &lt;-chQuit
 }
 </code></pre><blockquote>
-<p>Got value 3
+<p>Got value 3<br>
 Signalled on quit channel. Finishing</p>
 </blockquote>
-<h2 id="checking-if-channel-has-data-available">Checking if channel has data available</h2>
-<p>Receiving on a channel blocks if there is no data in the channel.</p>
-<p>What if you don’t want to block?</p>
-<p>You might be tempted to check if channel has data before doing a receive.</p>
-<p>You can’t do that in Go as it couldn’t possibly work correctly. Between the time you check for availability and the time you do a receive, some other goroutine could have picked up the value.</p>
-<p>If you want to avoid infinite waiting, you can add a timeout or do a non-blocking wait by using select.</p>
-<h2 id="channel-idioms">Channel idioms</h2>
-<p>channel具有以下属性：</p>
-<blockquote>
-<p>send to a nil channel blocks forever<br>
-receive from a nil channel blocks forever<br>
-send to a closed channel panics<br>
-receive from a closed channel returns the zero value immediately<br>
-Send to a nil channel blocks forever</p>
-</blockquote>
+<h2 id="检查通道是否有可用数据">检查通道是否有可用数据</h2>
+<p>如果通道中没有数据，则在通道上接收会阻塞。</p>
+<p>如果您不想阻止怎么办？</p>
+<p>您可能很想在接收之前检查通道是否有数据。</p>
+<p>您无法在Go中执行此操作，因为它可能无法正常运行。 在您检查可用性的时间和您收到数据的时间之间，其他一些goroutine可能会获取该值。</p>
+<p>如果要避免无限等待，可以使用select添加超时或进行非阻塞等待。</p>
+<h2 id="注意">注意</h2>
+<h4 id="发送数据到nil-channel将永久阻塞">发送数据到nil channel将永久阻塞</h4>
 <pre><code>package main
 
 func main() {
-        var ch chan bool
-        ch &lt;- true // deadlocks because ch is nil
+    var ch chan bool
+    ch &lt;- true // deadlocks because ch is nil
 }
-</code></pre><p>Uninitialized value of a channel is nil so the above program blocks forever.</p>
-<p>There&rsquo;s no valid use case for that so it&rsquo;s always a bug. Don&rsquo;t do it.</p>
-<p>Receive from a nil channel blocks forever</p>
+</code></pre><p>通道的未初始化值是nil，因此上述程序会永远阻塞。</p>
+<h4 id="从nil-channel接收数据将永久阻塞">从nil channel接收数据将永久阻塞</h4>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -480,8 +471,7 @@ func main() {
         var ch chan bool
         fmt.Printf(&quot;Value received from ch is: %v\n&quot;, &lt;-ch) // deadlock because c is nil
 }
-</code></pre><p>Similarly, receive from nil channel blocks forever and it&rsquo;s always a bug. Don&rsquo;t do it.</p>
-<p>Send to a closed channel panics</p>
+</code></pre><h4 id="发送数据到关闭的channel引发panic">发送数据到关闭的channel引发panic</h4>
 <pre><code>package main
 
 import (
@@ -510,11 +500,11 @@ main.main.func1(0x452000, 0xc99)<br>
 created by main.main<br>
 /tmp/sandbox307976305/main.go:10 +0x60</p>
 </blockquote>
-<p>You should architecture your programs so that one sender controls the lifetime of a channel.</p>
-<p>This rule emphasizes that: if there&rsquo;s only one channel sender then there&rsquo;s no problem making sure that you never write to a closed channel.</p>
-<p>If you have multiple senders then it becomes hard: if one sender closes a channel, how other senders are supposed to not crash?</p>
-<p>Instead of trying to find solution to the above problem, re-architect your code so that there&rsquo;s only one sender that controls the lifetime of a channel.</p>
-<p>Receive from a closed channel returns the zero value immediately</p>
+<p>您应该对程序进行架构设计，以使一个发送方控制频道的生存期。</p>
+<p>该规则强调：如果只有一个频道发送者，那么确保您永远不会写入封闭的频道没有问题。</p>
+<p>如果您有多个发件人，这将变得很困难：如果一个发件人关闭了一个频道，那么其他发件人应该不会崩溃吗？</p>
+<p>无需尝试解决上述问题的方法，而是重新设计代码，以使只有一个发送方可以控制通道的生存期。</p>
+<h4 id="从已关闭的channel接收数据会立即返回零值">从已关闭的channel接收数据会立即返回零值</h4>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -530,8 +520,7 @@ func main() {
     }
     // show end
 }
-</code></pre><p>This is not ideal: we&rsquo;ve read a value from a channel that was never sent.</p>
-<p>It&rsquo;s easy to remedy:</p>
+</code></pre><p>很容易补救：</p>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -551,7 +540,7 @@ func main() {
     }
     // show end
 }
-</code></pre><p>And even better and more idiomatically:</p>
+</code></pre><p>更好更惯用的方法：</p>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -567,12 +556,11 @@ func main() {
     }
     // show end
 }
-</code></pre><p>Closing channel to signal a goroutine has finished
-Sometimes you need to wait until a goroutine has finished.</p>
-<p>The fact that a receive from a closed channel returns immediately but otherwise blocks can be used to coordinate between goroutines by a shared &ldquo;done&rdquo; channel.</p>
-<p>One goroutine closes the channel at the end.</p>
-<p>The other goroutine can either wait indefinitely until that happens with a receive: chDone &lt;-</p>
-<p>In more complex scenarios it can receive from multiple channels with select statement. For example, to limit a waiting time:</p>
+</code></pre><h2 id="关闭channel以表明goroutine已结束">关闭channel以表明Goroutine已结束</h2>
+<p>有时我们需要等到goroutine完成。</p>
+<p>来自已关闭channel的接收会立即返回，可以通过共享done channel来在goroutine之间进行协调。</p>
+<p>一个goroutine在最后关闭通道。另一个goroutine可以无限期地等待，直到接收到chDone &lt;-</p>
+<p>在更复杂的情况下，它可以使用select语句从多个渠道接收。 例如，要限制等待时间：</p>
 <pre><code>select {
     case &lt;- chDone:
         // goroutine has finished
@@ -580,7 +568,7 @@ Sometimes you need to wait until a goroutine has finished.</p>
         // goroutine didn't finish but we don't want to wait
         // more than 5 seconds
 }
-</code></pre><p>To check if channel is closed (i.e. goroutine has finished) without waiting:</p>
+</code></pre><p>要检查channel是否已关闭（即goroutine已完成）而不等待：</p>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -604,7 +592,7 @@ func main() {
     checkState(ch)
     // show end
 }
-</code></pre><p>This technique is used in context.Done() channel.</p>
+</code></pre><p>此技术用于context.Done() channel</p>
 
                                                 
                                             </div>
@@ -803,17 +791,6 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -824,7 +801,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
+                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -835,7 +812,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -846,7 +823,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -857,7 +834,7 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -868,8 +845,19 @@ func main() {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -958,8 +946,6 @@ func main() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
@@ -967,6 +953,8 @@ func main() {
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

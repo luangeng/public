@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go Hex和 base64编码</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 586 Words
+                                            Posted @ 2018-09-09 · 787 Words
                                             
                                             · Tags: Go
                                             
@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>有时候你需要将bytes编码非文本text.</p>
-<p>Most popular encodings are hex, where each byte is represented by 2 characters and base64 where each 3 bytes are encoded as 4 characters.</p>
+<p>最流行的编码是十六进制，其中每个字节由2个字符表示，而base64则将每个3个字节编码为4个字符。</p>
 <h2 id="hex编码和解码">Hex编码和解码</h2>
 <p>我们可以把[]byte编码为string,也可以把string解码为 []byte</p>
 <pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
@@ -183,9 +183,9 @@ if !bytes.Equal(d, d2) {
 </code></pre><blockquote>
 <p>Hex: 01ff3acd</p>
 </blockquote>
-<h2 id="使用fmtsprintf编码hex">使用fmt.Sprintf编码Hex</h2>
-<p>We can encode to string using fmt.Sprintf and %x directive. Similarly, we can decode using fmt.Sscanf and %x.</p>
-<p>Directive %x supports integers in addtion to []byte.</p>
+<h4 id="使用fmtsprintf编码hex">使用fmt.Sprintf编码Hex</h4>
+<p>我们可以使用fmt.Sprintf和％x指令编码为字符串。 同样，我们可以使用fmt.Sscanf和％x进行解码。</p>
+<p>指令％x除[] byte外还支持整数。</p>
 <pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 s := fmt.Sprintf(&quot;%x&quot;, d)
 fmt.Printf(&quot;Hex: %s\n&quot;, s)
@@ -205,8 +205,8 @@ fmt.Printf(&quot;%d in hex is 0x%x\n&quot;, n, n)
 <p>Hex: 01ff3acd<br>
 3824 in hex is 0xef0</p>
 </blockquote>
-<p>Hex encoding to writer, decoding from reader
-For encoding and decoding larger values in streaming mode, we can encode to a io.Writer and decode from io.Reader.</p>
+<h4 id="十六进制编码到writer从reader解码">十六进制编码到writer，从reader解码</h4>
+<p>为了在流模式下对较大的值进行编码和解码，我们可以编码为io.Writer并从io.Reader进行解码。</p>
 <pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 
 writer := &amp;bytes.Buffer{}
@@ -251,8 +251,8 @@ if !bytes.Equal(d, d2) {
 <p>base64: Af86zQ==</p>
 </blockquote>
 <h4 id="url-safe-base64">URL-safe base64</h4>
-<p>Original base64 encoding unfortunately might produce characters that are not valid in urls.</p>
-<p>Given that urls are important those days we have a variant of base64 encoding that doesn’t have that flaw:</p>
+<p>不幸的是，原始的base64编码可能会产生在URL中无效的字符。</p>
+<p>考虑到网址在当时很重要，因此我们提供了一种base64编码的变体，它没有该缺陷：</p>
 <pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 s := base64.URLEncoding.EncodeToString(d)
 fmt.Printf(&quot;base64: %s\n&quot;, s)
@@ -267,8 +267,8 @@ if !bytes.Equal(d, d2) {
 </code></pre><blockquote>
 <p>base64: Af86zQ==</p>
 </blockquote>
-<p>Base64 encoding to writer, decoding from reader
-For encoding and decoding larger values in streaming mode, we can encode to an io.Writer and decode from io.Reader.</p>
+<h4 id="base64编码到写入器从读取器解码">Base64编码到写入器，从读取器解码</h4>
+<p>为了在流模式下对较大的值进行编码和解码，我们可以编码为io.Writer并从io.Reader进行解码。</p>
 <pre><code>d := []byte{0x01, 0xff, 0x3a, 0xcd}
 
 writer := &amp;bytes.Buffer{}
@@ -498,17 +498,6 @@ if !bytes.Equal(d, decoded) {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/go/basic/File/" class="leancloud-count">Go 文件和I/O
-                    (<span class="post-date" style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -519,7 +508,7 @@ if !bytes.Equal(d, decoded) {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
+                <span class="post-date" style="font-size:14px">2.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -530,7 +519,7 @@ if !bytes.Equal(d, decoded) {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -541,7 +530,7 @@ if !bytes.Equal(d, decoded) {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -552,7 +541,7 @@ if !bytes.Equal(d, decoded) {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
@@ -563,8 +552,19 @@ if !bytes.Equal(d, decoded) {
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -653,8 +653,6 @@ if !bytes.Equal(d, decoded) {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/go/basic/File/">Go 文件和I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
                 <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
@@ -662,6 +660,8 @@ if !bytes.Equal(d, decoded) {
                 <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>
