@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 文件和I/O</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 4168 Words
+                                            Posted @ 2018-09-09 · 4295 Words
                                             
                                             · Tags: Go
                                             
@@ -198,8 +198,8 @@ if err != nil {
     log.Fatalf(&quot;os.Open failed with '%s'\n&quot;, err)
 }
 defer f.Close()
-</code></pre><p>Open returns *os.File which implements io.Reader and io.Closer interfaces.</p>
-<p>You should always close files to avoid leaking file descriptors. defer is perfect for ensuring Close will be called on exit of the function.</p>
+</code></pre><p>Open返回* os.File，它实现io.Reader和io.Closer接口。</p>
+<p>您应该始终关闭文件，以避免泄漏文件描述符。 defer非常适合确保在函数退出时调用Close。</p>
 <h4 id="逐行读取文件">逐行读取文件</h4>
 <pre><code>func ReadLines(filePath string) ([]string, error) {
     file, err := os.OpenFile(filePath, os.O_RDONLY, 0666)
@@ -256,7 +256,7 @@ if err != nil {
 </code></pre><p>os.OpenFile的第二个参数是一个标志，用于确定打开文件的确切模式。</p>
 <p>打开读取时，请使用os.Open。</p>
 <p>当您打开以写入新文件时，请使用os.Create。</p>
-<p>When you open for appending to existing file, use os.OpenFile with the following flags: * os.O_WRONLY. Could also be os.RDWR if we also to both read and write * os.O_APPEND means that if file exists, we’ll append * os.O_CREATE means that if file doesn’t exist, we’ll create it. Without this flag opening non-existing file would fail</p>
+<p>当打开以追加到现有文件时，请使用带有以下标志的os.OpenFile：* os.O_WRONLY。 如果我们也要读写，也可以是os.RDWR。* os.O_APPEND表示如果文件存在，我们将附加* os.O_CREATE表示如果文件不存在，我们将创建它。 如果没有此标志，打开不存在的文件将失败</p>
 <p>写文件</p>
 <pre><code>d := []byte(&quot;data to write&quot;)
 nWritten, err := f.Write(d)
@@ -265,10 +265,12 @@ nWritten, err := f.Write(d)
 <p>在大多数情况下，0644是一个不错的选择。</p>
 <p>这些是八进制格式的Unix风格权限。</p>
 <p>让我们解构0644</p>
-<p>0:表示这是八进制格式的数字。 这意味着每个数字都在0-7范围内（与每个数字都在0-9范围内的常规十进制表示法比较）
-6:文件创建者的权限。 这是位掩码4 +2。4表示读取权限，2表示写入权限。 结合使用时，意味着读/写访问
-4:用户所属组的权限。 即 也属于同一组的每个用户都将具有这些权限。 4表示仅读取权限
-4:所有用户的权限。 同样，4表示仅读取权限</p>
+<ul>
+<li>0:表示这是八进制格式的数字。 这意味着每个数字都在0-7范围内（与每个数字都在0-9范围内的常规十进制表示法比较）</li>
+<li>6:文件创建者的权限。 这是位掩码4 +2。4表示读取权限，2表示写入权限。 结合使用时，意味着读/写访问</li>
+<li>4:用户所属组的权限。 即 也属于同一组的每个用户都将具有这些权限。 4表示仅读取权限</li>
+<li>4:所有用户的权限。 同样，4表示仅读取权限</li>
+</ul>
 <p>为了完整起见，1代表可执行权限，因此如果这是一个可执行文件，则权限标志将为0755，即对于每个用户/组/匿名组件，我们将1设置为可执行位
 这些权限是Unix和Mac OS固有的，但是在Windows上它们的映射很松散。</p>
 <p>要管理Windows权限，您需要使用Windows API。</p>
@@ -492,7 +494,7 @@ Path: main.go, is dir: false, size: 466 bytes</p>
 <p>例如，在Unix和Mac OS上，路径分隔符为/，而在Windows上为\。</p>
 <p>对于可移植程序，重要的是使用文件路径包中的函数，这些函数应了解给定操作系统使用的约定。</p>
 <p>注意：filepath软件包管理OS文件路径。 也有具有类似功能的路径包，但它始终使用/作为路径分隔符。</p>
-<p>Join a path</p>
+<h4 id="合并路径">合并路径</h4>
 <pre><code>path := filepath.Join(&quot;dir&quot;, &quot;sub&quot;, &quot;file.txt&quot;)
 fmt.Printf(&quot;path: %s\n&quot;, path)
 </code></pre><blockquote>
@@ -500,34 +502,34 @@ fmt.Printf(&quot;path: %s\n&quot;, path)
 </blockquote>
 <p>您可以加入两个以上的路径元素。</p>
 <p>在Windows上，以上将返回dir \ file.txt，在Unix和Mac OS上，将返回dir / file.txt。</p>
-<p>将路径拆分为目录和文件</p>
+<h4 id="将路径拆分为目录和文件">将路径拆分为目录和文件</h4>
 <pre><code>path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
 file := filepath.Base(path)
 fmt.Printf(&quot;path: %s, file: %s\n&quot;, path, file)
 </code></pre><blockquote>
 <p>path: dir/file.txt, file: file.txt</p>
 </blockquote>
-<p>分割路径list</p>
+<h4 id="分割路径list">分割路径list</h4>
 <pre><code>parts := filepath.SplitList(&quot;/usr/bin:/tmp&quot;)
 fmt.Printf(&quot;parts: %#v\n&quot;, parts)
 </code></pre><blockquote>
 <p>parts: []string{&quot;/usr/bin&rdquo;, &ldquo;/tmp&rdquo;}</p>
 </blockquote>
-<p>从path获取文件名</p>
+<h4 id="从path获取文件名">从path获取文件名</h4>
 <pre><code>path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
 dir, file := filepath.Split(path)
 fmt.Printf(&quot;dir: %s, file: %s\n&quot;, dir, file)
 </code></pre><blockquote>
 <p>dir: dir/, file: file.txt</p>
 </blockquote>
-<p>从path获取路径名</p>
+<h4 id="从path获取路径名">从path获取路径名</h4>
 <pre><code>path := filepath.Join(&quot;dir&quot;, &quot;file.txt&quot;)
 dir := filepath.Dir(path)
 fmt.Printf(&quot;path: %s, dif: %s\n&quot;, path, dir)
 </code></pre><blockquote>
 <p>path: dir/file.txt, dif: dir</p>
 </blockquote>
-<p>获取文件后缀</p>
+<h4 id="获取文件后缀">获取文件后缀</h4>
 <pre><code>ext := filepath.Ext(&quot;file.txt&quot;)
 fmt.Printf(&quot;ext: %s\n&quot;, ext)
 </code></pre><blockquote>
@@ -656,17 +658,6 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -677,7 +668,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -688,7 +679,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -699,7 +690,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -710,7 +701,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -721,7 +712,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -732,7 +723,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -743,8 +734,19 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -905,8 +907,6 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
                 
                 <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
@@ -922,6 +922,8 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
                 
             </ul>
         </div>

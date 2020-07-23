@@ -63,7 +63,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/string/</guid>
-      <description>go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt</description>
+      <description>Go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt</description>
     </item>
     
     <item>
@@ -113,10 +113,10 @@
     
     <item>
       <title>Go 接口</title>
-      <link>https://luangeng.space/post/go/basic/Interface/</link>
+      <link>https://luangeng.space/post/go/basic/Interfaces/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/go/basic/Interface/</guid>
+      <guid>https://luangeng.space/post/go/basic/Interfaces/</guid>
       <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea</description>
     </item>
     
@@ -476,7 +476,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     </item>
     
     <item>
-      <title>Go Console I/O</title>
+      <title>Go 控制台输入</title>
       <link>https://luangeng.space/post/go/basic/ConsoleIO/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       

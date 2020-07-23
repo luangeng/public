@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go fmt包</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 598 Words
+                                            Posted @ 2018-09-09 · 659 Words
                                             
                                             · Tags: Go
                                             
@@ -193,18 +193,14 @@ fmt.Printf(&quot;Hello %s&quot;, &quot;World&quot;) // prints: Hello World
 fmt.Scanln(&amp;s) // pass pointer to buffer
 // Scanln is similar to fmt.Scan(), but it stops scanning at new line.
 fmt.Println(s) // whatever was inputted
-
-## Stringer interface
-fmt.Stringer interface consists of a single String() string function:
-
-type Stringer interface {
+</code></pre><h2 id="stringer接口">Stringer接口</h2>
+<p>fmt.Stringer接口由一个 <code>String()string</code> 函数组成：</p>
+<pre><code>type Stringer interface {
     String() string
 }
-The intent is to provide a string representation of the value.
-
-If String() method is defined on a type, string formatting methods like fmt.Printf use it for %s formatting directive:
-
-type User1 struct {
+</code></pre><p>目的是为一个值提供字符串表示形式。</p>
+<p>如果在类型上定义String()方法，则字符串格式化方法（如fmt.Printf）将其用于％s格式化指令：</p>
+<pre><code>type User1 struct {
     Name  string
     Email string
 }
@@ -331,17 +327,6 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -352,7 +337,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -363,7 +348,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -374,7 +359,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -385,7 +370,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -396,7 +381,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -407,7 +392,7 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -418,8 +403,19 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -580,8 +576,6 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 
                 <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
@@ -597,6 +591,8 @@ u3: type: *main.User2, value: John Doe <a href="mailto:johndoe@example.com">john
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
                 
             </ul>
         </div>

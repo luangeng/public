@@ -182,6 +182,28 @@ func main(){
 <p>1 * 2 = 2<br>
 3 * 4 = 12</p>
 </blockquote>
+<h2 id="goroutine示例">goroutine示例</h2>
+<p>单channel，单goroutine，一次写入，一次读取。</p>
+<pre><code>func main() {
+    // 创建string型channel
+    ch := make(chan string)
+
+    // 启动一个匿名goroutine
+    go func() {
+        time.Sleep(time.Second)
+        // 发送&quot;Hello World&quot;到channel
+        ch &lt;- &quot;Hello World&quot;
+    }()
+    // 从channel读取
+    msg, ok := &lt;-ch
+    fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
+}
+</code></pre><blockquote>
+<p>msg='Hello World&rsquo;, ok='true&rsquo;</p>
+</blockquote>
+<p>这个channel ch是无缓冲的或者说是同步的。</p>
+<p>time.Sleep在这里说明main()方法将在channel上等待，这意味着goroutine执行的函数需要一定的时间才能通过channel发送值,接收操作符&lt;-ch将阻止main()方法执行。</p>
+<p>如果不是，则goroutine将在main()退出时被杀死，并且没有时间发送其值。</p>
 <h2 id="等待goroutine完成">等待goroutine完成</h2>
 <p>Go程序会在main函数结束时结束，因此需要等待所有goroutine完成之后再结束main函数。</p>
 <p>常见的方法是使用sync.WaitGroup对象:</p>
@@ -283,28 +305,6 @@ max concurrent tasks: 4</p>
 </blockquote>
 <p>我们使用等待goroutine完成时描述的技术来等待所有任务完成。</p>
 <p>通常，正确的并发任务数量等于可以通过runtime.NumCPU()获得的CPU数量。</p>
-<h2 id="goroutine示例">goroutine示例</h2>
-<p>单channel，单goroutine，一次写入，一次读取。</p>
-<pre><code>func main() {
-    // 创建string型channel
-    ch := make(chan string)
-
-    // 启动一个匿名goroutine
-    go func() {
-        time.Sleep(time.Second)
-        // 发送&quot;Hello World&quot;到channel
-        ch &lt;- &quot;Hello World&quot;
-    }()
-    // 从channel读取
-    msg, ok := &lt;-ch
-    fmt.Printf(&quot;msg='%s', ok='%v'\n&quot;, msg, ok)
-}
-</code></pre><blockquote>
-<p>msg='Hello World&rsquo;, ok='true&rsquo;</p>
-</blockquote>
-<p>这个channel ch是无缓冲的或者说是同步的。</p>
-<p>time.Sleep在这里说明main()方法将在channel上等待，这意味着goroutine执行的函数需要一定的时间才能通过channel发送值,接收操作符&lt;-ch将阻止main()方法执行。</p>
-<p>如果不是，则goroutine将在main()退出时被杀死，并且没有时间发送其值。</p>
 <h2 id="下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例">下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例：</h2>
 <pre><code>var wg sync.WaitGroup
 
@@ -449,17 +449,6 @@ Got sqrt: 16</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" rel="bookmark" class="leancloud-count">Go Console I/O
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Context/" rel="bookmark" class="leancloud-count">Go Context
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -470,7 +459,7 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">4.</span>
+                <span class="post-date" style="font-size:14px">3.</span>
                 <a href="https://luangeng.space/post/go/basic/Defer/" rel="bookmark" class="leancloud-count">Go Defer
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -481,7 +470,7 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">5.</span>
+                <span class="post-date" style="font-size:14px">4.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -492,7 +481,7 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">6.</span>
+                <span class="post-date" style="font-size:14px">5.</span>
                 <a href="https://luangeng.space/post/go/basic/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -503,7 +492,7 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">7.</span>
+                <span class="post-date" style="font-size:14px">6.</span>
                 <a href="https://luangeng.space/post/go/basic/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -514,7 +503,7 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">8.</span>
+                <span class="post-date" style="font-size:14px">7.</span>
                 <a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -525,7 +514,7 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">9.</span>
+                <span class="post-date" style="font-size:14px">8.</span>
                 <a href="https://luangeng.space/post/go/basic/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
                     (<span style="font-size:14px">0</span>)
                 </a>
@@ -536,8 +525,19 @@ Got sqrt: 16</p>
     <li class="related post-hover">
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
+                <span class="post-date" style="font-size:14px">9.</span>
                 <a href="https://luangeng.space/post/go/basic/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">10.</span>
+                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -698,8 +698,6 @@ Got sqrt: 16</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/CSV/">Go CSV</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/ConsoleIO/">Go Console I/O</a></li>
-                
                 <li><a href="https://luangeng.space/post/go/basic/Context/">Go Context</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/Defer/">Go Defer</a></li>
@@ -715,6 +713,8 @@ Got sqrt: 16</p>
                 <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
                 
                 <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
+                
+                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
                 
             </ul>
         </div>
