@@ -553,6 +553,24 @@
     </item>
     
     <item>
+      <title>k8s ingress</title>
+      <link>https://luangeng.space/post/k8s/ingress/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/k8s/ingress/</guid>
+      <description>Kubernetes Ingress用于控制将流量从外部路由到Kubernetes集群的服务中。 通常情况下，自定义Nginx或HAproxy Kubernetes</description>
+    </item>
+    
+    <item>
+      <title>k8s 持久化存储</title>
+      <link>https://luangeng.space/post/k8s/pv-pvc/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/k8s/pv-pvc/</guid>
+      <description>k8s 持久化存储 pv － 持久化卷， 支持本地存储和网络存储， 例如hostpath，ceph rbd， nfs等，只支持两个属性， capacity和acce</description>
+    </item>
+    
+    <item>
       <title>Oauth2协议 通过js和ajax获取token及刷新token</title>
       <link>https://luangeng.space/post/java/other/token-front/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>

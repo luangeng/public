@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://luangeng.space">
+  <title>k8s 持久化存储 - 计算机与软件技术公开课</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="k8s 持久化存储 - 计算机与软件技术公开课">
+  <meta name="description" content="k8s 持久化存储">
+  <meta itemprop="name" content="k8s 持久化存储 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="k8s 持久化存储">
+  <meta property="og:title" content="k8s 持久化存储 - 计算机与软件技术公开课" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://luangeng.space/post/k8s/pv-pvc/" />
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description" content="k8s 持久化存储">
+
+  <link rel="canonical" href="https://luangeng.space/post/k8s/pv-pvc/">
+  <link rel='shortlink' href="https://luangeng.space/post/k8s/pv-pvc/">
+  <link rel="shortcut icon" href="img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/code/rainbow.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+    <div id="wrapper">
+        <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Mysql/">Mysql</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/Kubernetes/">Kubernetes</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://luangeng.space/about"></a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://luangeng.space" rel="home">
+              
+              计算机与软件技术公开课
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+        <div class="container" id="page">
+            <div class="container-inner">
+                <div class="main">
+                    <div class="main-inner group">
+                        <section class="content">
+                            <div class="page-title pad group">
+                                <ul class="meta-single group">
+                                    
+                                    <li class="category">
+                                        <span>云计算</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="pad group">
+
+                                <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                    <div class="post-inner group">
+
+                                        <h1 class="post-title">k8s 持久化存储</h1>
+
+                                        <p class="post-byline">
+                                            Posted @ 2018-09-03 · 2756 Words
+                                            
+                                            · Tags: ks8
+                                            
+                                            
+                                            
+                                            
+                                            · Hits:
+                                            <span class="leancloud_visitors" data-flag-title="k8s 持久化存储">
+                                                <span class="leancloud-visitors-count"></span>
+                                            </span>
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <div class="entry">
+                                            <div class="entry-inner">
+                                                
+                                                <h2 id="k8s-持久化存储">k8s 持久化存储</h2>
+<ul>
+<li>pv － 持久化卷， 支持本地存储和网络存储， 例如hostpath，ceph rbd， nfs等，只支持两个属性， capacity和accessModes。其中capacity只支持size的定义，不支持iops等参数的设定，accessModes有三种，ReadWriteOnce（被单个node读写）， ReadOnlyMany（被多个nodes读）， ReadWriteMany（被多个nodes读写）</li>
+<li>storageclass－另外一种提供存储资源的方式， 提供更多的层级选型， 如iops等参数。 但是具体的参数与提供方是绑定的。 如aws和gce它们提供的storageclass的参数可选项是有不同的。</li>
+<li>pvc － 对pv或者storageclass资源的请求， pvc 对 pv 类比于pod 对不同的cpu， mem的请求。</li>
+</ul>
+<h2 id="生命周期">生命周期</h2>
+<p>k8s对pv和pvc之间的交互的生命周期进行管理。</p>
+<ul>
+<li>Provisioning 配置阶段， 分为static， dynamic两种方式。静态的方式是创建一系列的pv，然后pvc从pv中请求。 动态的方式是基于storageclass的。</li>
+<li>Binding 绑定阶段， pvc根据请求的条件筛选并绑定对应的pv。 一定pvc绑定pv后， 就会排斥其它绑定，即其它pvc无法再绑定同一个pv，即使这个pv设定的access mode允许多个node读写。 此外 ，pvc 如何匹配不到相应条件的pv， 那么就会显示unbound状态， 直到匹配为止。 需要注意的是，pvc请求100Gi大小的存储，即使用户创建了很多50Gi大小的存储， 也是无法被匹配的。</li>
+<li>Using 使用阶段， pods 挂载存储， 即在pod的template文件中定义volumn使用某个pvc。</li>
+<li>Releasing 释放阶段， 当pvc对象被删除后， 就处于释放阶段。 在这个阶段， 使用的pv还不能被其它的pvc请求。 之前数据可能还会留存下来， 取决于用户在pv中设定的policy， 见persistentVolumeReclaimPolicy。</li>
+<li>Reclaiming 重声明阶段。 到这个阶段， 会告诉cluster如何处理释放的pv。 数据可能被保留（需要手工清除）， 回收和删除。动态分配的存储总是会被删除掉的。</li>
+<li>Recycling 回收阶段。回收阶段会执行基本的递归删除（取决于volumn plugins的支持），把pv上的数据删除掉， 以使pv可以被新的pvc请求。 用户也可以自定义一个 recycler pod ， 对数据进行删除。</li>
+</ul>
+<h2 id="pv的访问模式">PV的访问模式</h2>
+<ul>
+<li>ReadWriteOnce：是最基本的方式，可读可写，但只能被单个Pod挂载。</li>
+<li>ReadOnlyMany：可以以只读的方式被多个Pod挂载。</li>
+<li>ReadWriteMany：这种存储可以以读写的方式被多个Pod共享。
+不是每一种存储都支持这三种方式，像共享方式，目前支持的还比较少，比较常用的是NFS。在PVC绑定PV时通常根据两个条件来绑定，一个是存储的大小，另一个就是访问模式。</li>
+</ul>
+<h2 id="pv-plugins">PV Plugins</h2>
+<p>pv是以plugin的形式来提供支持的，考虑到私有云的使用场景，排除掉azure， aws，gce等公有云厂商绑定的plugin， 有9个插件值得关注。这些plugin所支持的accessmode是不同的。 分别是：</p>
+<h2 id="重声明策略reclaim-policy">重声明策略(reclaim policy)</h2>
+<ul>
+<li>Retain – 手动重新使用</li>
+<li>Recycle – 基本的数据擦除 (“rm -rf /thevolume/*”)</li>
+<li>Delete – 相关联的后端存储卷删除， 后端存储比如AWS EBS, GCE PD, Azure Disk, or OpenStack Cinder
+需要特别注意的是只有本地盘和nfs支持数据盘Recycle 擦除回收， AWS EBS, GCE PD, Azure Disk, and Cinder 存储卷支持Delete策略</li>
+</ul>
+<h2 id="阶段volumn-phase">阶段(volumn phase)</h2>
+<p>一个存储卷会处于下面几个阶段中的一个阶段：</p>
+<ul>
+<li>Available –资源可用， 还没有被声明绑定</li>
+<li>Bound – 被声明绑定</li>
+<li>Released – 绑定的声明被删除了，但是还没有被集群重声明</li>
+<li>Failed – 自动回收失败</li>
+</ul>
+<h2 id="pv选择器">PV选择器</h2>
+<p>在PVC中绑定一个PV，可以根据下面几种条件组合选择</p>
+<ul>
+<li>Access Modes， 按照访问模式选择pv</li>
+<li>Resources， 按照资源属性选择， 比如说请求存储大小为8个G的pv</li>
+<li>Selector， 按照pv的label选择</li>
+<li>Class， 根据StorageClass的class名称选择, 通过annotation指定了Storage Class的名字, 来绑定特定类型的后端存储</li>
+</ul>
+<p>关于根据class过滤出pv的说明：</p>
+<p>所有的 PVC 都可以在不使用 StorageClass 注解的情况下，直接使用某个动态存储。把一个StorageClass 对象标记为 “default” 就可以了。</p>
+<p>StorageClass 用注解http://storageclass.beta.kubernetes.io/is-default-class 就可以成为缺省存储。有了缺省的 StorageClass，用户创建 PVC 就不用 storage-class 的注解了，1.4 中新加入的DefaultStorageClass 准入控制器会自动把这个标注指向缺省存储类。PVC 指定特定storageClassName，如fast时， 绑定名称为fast的storageClassPVC中指定storageClassName为“”时， 绑定no class的pv（pv中无class annotation， 或者其值为“”）PVC不指定storageClassName时， DefaultStorageClass admission plugin 开启与否（在apiserver启动时可以指定）， 对default class的解析行为是不同的。当DefaultStorageClass admission plugin启用时， 针对没有storageClass annotation的pvc，DefaultStorageClass会分配一个默认的class， 这个默认的class需要用户指定，比如在创建storageclass对象时加入annotation,如 <a href="http://storageclass.beta.kubernetes.io/is-default-class:">http://storageclass.beta.kubernetes.io/is-default-class:</a> “true” 。如果有多个默认的class， 则pvc会被拒绝创建， 如果用户没有指定默认的class， 则这个DefaultStorageClass admission plugin不会起任何作用。 pvc会找那些no class的pv做绑定。当DefaultStorageClass admission plugin没有启用时， 针对没有storageClass annotation的pvc， 会绑定no class的pv（pv中无class annotation， 或者其值为“”）</p>
+<h2 id="建议">建议</h2>
+<p>把你的 pvc，和 其它一系列配置放一起， 比如说deployment，configmap
+不要把你的pv放在其它配置里， 因为用户可能没有权限创建pv
+初始化pvc 模版的时候， 提供一个storageclass
+在你的工具软件中，watch那些没有bound的pvc，并呈现给用户
+集群启动的时候启用DefaultStorageClass， 但是不要指定某一类特定的class， 因为不同provisioner的class，参数很难一致</p>
+<h2 id="示例">示例</h2>
+<p>创建pv：</p>
+<pre><code>apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0003
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: slow
+  nfs:
+    path: /tmp
+    server: 172.17.0.2
+</code></pre><p>创建pvc：</p>
+<pre><code>kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: slow
+  selector:
+    matchLabels:
+      release: &quot;stable&quot;
+    matchExpressions:
+      - {key: environment, operator: In, values: [dev]}
+</code></pre><p>在pod中使用pvc</p>
+<pre><code>kind: Pod
+apiVersion: v1
+metadata:
+  name: mypod
+spec:&gt; 
+  containers:
+    - name: myfrontend
+      image: dockerfile/nginx
+      volumeMounts:
+      - mountPath: &quot;/var/www/html&quot;
+        name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: myclaim
+</code></pre>
+                                                
+                                            </div>
+
+                                            <div style="margin-top:40px">
+                                                
+                                                &nbsp;
+                                            </div>
+
+                                            <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
+            
+            
+            
+            
+            
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/k8s/pv-pvc/">https://luangeng.space/post/k8s/pv-pvc/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
+            </li>
+        </ul>
+    </div>
+</div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </article>
+                                
+                                <div class="clear"></div>
+                                <ul class="post-nav group">
+                                    <li class="next">
+                                        
+                                        <a href="https://luangeng.space/post/k8s/ingress/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>k8s ingress</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="previous">
+                                        
+                                        <a href="https://luangeng.space/post/java/other/token-front/" rel="prev">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <strong>Previous</strong>
+                                            <span>Oauth2协议 通过js和ajax获取token及刷新token</span>
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                                <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/k8s/ingress/" rel="bookmark" class="leancloud-count">k8s ingress
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                                <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                                
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://luangeng.space/post/go/basic/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://luangeng.space/post/go/basic/Images/" class="leancloud-count">Go 图像
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            </div>
+                        </section>
+                        <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <p>分享</p>
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                        target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="wechat" class="widget widget_categories">
+            <div class="widget qrcode">
+                <img src="img/qrcode.png" alt="weixin" width="172px" height="172px" />
+                <p> 计算机与软件技术公开课 </p>
+            </div>
+        </div>
+
+        
+
+        
+
+        
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/k8s/ingress/">k8s ingress</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://luangeng.space/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://luangeng.space/tags/Go'
+                style="font-size:17px;margin:3px; padding:2px"><code>Go(55)</code></a>
+            
+            <a href='https://luangeng.space/tags/Java'
+                style="font-size:17px;margin:3px; padding:2px"><code>Java(22)</code></a>
+            
+            <a href='https://luangeng.space/tags/RocketMQ'
+                style="font-size:17px;margin:3px; padding:2px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/elasticsearch'
+                style="font-size:17px;margin:3px; padding:2px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/git'
+                style="font-size:17px;margin:3px; padding:2px"><code>git(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/html'
+                style="font-size:17px;margin:3px; padding:2px"><code>html(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/jQuery'
+                style="font-size:17px;margin:3px; padding:2px"><code>jQuery(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/ks8'
+                style="font-size:17px;margin:3px; padding:2px"><code>ks8(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/linux'
+                style="font-size:17px;margin:3px; padding:2px"><code>linux(2)</code></a>
+            
+            <a href='https://luangeng.space/tags/maven'
+                style="font-size:17px;margin:3px; padding:2px"><code>maven(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/mysql'
+                style="font-size:17px;margin:3px; padding:2px"><code>mysql(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/netty'
+                style="font-size:17px;margin:3px; padding:2px"><code>netty(8)</code></a>
+            
+            <a href='https://luangeng.space/tags/oauth2'
+                style="font-size:17px;margin:3px; padding:2px"><code>oauth2(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/opencv'
+                style="font-size:17px;margin:3px; padding:2px"><code>opencv(1)</code></a>
+            
+            <a href='https://luangeng.space/tags/redis'
+                style="font-size:17px;margin:3px; padding:2px"><code>redis(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/spring'
+                style="font-size:17px;margin:3px; padding:2px"><code>spring(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/springboot'
+                style="font-size:17px;margin:3px; padding:2px"><code>springboot(6)</code></a>
+            
+            <a href='https://luangeng.space/tags/springcloud'
+                style="font-size:17px;margin:3px; padding:2px"><code>springcloud(5)</code></a>
+            
+            <a href='https://luangeng.space/tags/tool'
+                style="font-size:17px;margin:3px; padding:2px"><code>tool(4)</code></a>
+            
+            <a href='https://luangeng.space/tags/zookeeper'
+                style="font-size:17px;margin:3px; padding:2px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E7%AE%97%E6%B3%95'
+                style="font-size:17px;margin:3px; padding:2px"><code>算法(3)</code></a>
+            
+            <a href='https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD'
+                style="font-size:17px;margin:3px; padding:2px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px" />
+                <p> </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages </a>
+            · Powered by <a href="https://leancloud.cn/" style="font-weight: bold" target="_blank">LeanCloud</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 </span>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script>
+    init();
+</script>
+</body>
+
+</html>
