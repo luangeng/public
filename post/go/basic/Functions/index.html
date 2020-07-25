@@ -307,7 +307,7 @@ func main() {
 </blockquote>
 <p>使用在函数外部定义的变量的函数称为闭包。</p>
 <h2 id="函数类型的变量">函数类型的变量</h2>
-<p>函数是Go中的一等值：</p>
+<p>函数是Go中的一等值:</p>
 <ul>
 <li>函数可以分配给变量</li>
 <li>函数可以作为值传递给函数</li>
@@ -374,7 +374,7 @@ intOp(2, 3) = 6</p>
 <p>另一个实现正在伪造工作，并在测试中使用。</p>
 <p>为了在它们之间切换，我们将变量用于一级间接。</p>
 <p>这种技术称为mocking。</p>
-<p>这是它可能如何工作的例子：</p>
+<p>这是它可能如何工作的例子:</p>
 <pre><code>var isUserAdminFn func(string) bool
 
 func isUserAdminProduction(userName string) bool {
@@ -416,11 +416,11 @@ func main() {
     return f
 }
 </code></pre><p>在上面的定义中，NaturalNumbers具有一个内部函数f，NaturalNumbers返回该函数。 在f内部，正在访问在NaturalNumbers范围内定义的变量i。</p>
-<p>我们从NaturalNumbers获得了一个新函数，如下所示：</p>
+<p>我们从NaturalNumbers获得了一个新函数，如下所示:</p>
 <pre><code>n := NaturalNumbers()
 </code></pre><p>现在n是一个闭包。它是一个函数(由f定义)，而且还具有关联的环境(NaturalNumbers范围)。</p>
-<p>在n中，环境部分仅包含一个变量：i</p>
-<p>由于n是一个函数，因此可以调用：</p>
+<p>在n中，环境部分仅包含一个变量:i</p>
+<p>由于n是一个函数，因此可以调用:</p>
 <pre><code>fmt.Println(n()) // 1
 fmt.Println(n()) // 2
 fmt.Println(n()) // 3
@@ -476,24 +476,22 @@ func main(){
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Functions/">https://luangeng.space/post/go/basic/Functions/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Functions/">https://luangeng.space/post/go/basic/Functions/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -633,17 +631,6 @@ func main(){
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -669,7 +656,7 @@ func main(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -680,7 +667,7 @@ func main(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -691,7 +678,7 @@ func main(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -713,7 +700,7 @@ func main(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -742,8 +729,29 @@ func main(){
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -808,14 +816,6 @@ func main(){
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -824,15 +824,15 @@ func main(){
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

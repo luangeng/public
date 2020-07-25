@@ -185,7 +185,7 @@ fmt.Printf(&quot;size of bool is: %d\n&quot;, unsafe.Sizeof(b))
 <p>size of bool is: 1</p>
 </blockquote>
 <h2 id="int">int</h2>
-<p>Go有固定大小的无符号和有符号int类型：</p>
+<p>Go有固定大小的无符号和有符号int类型:</p>
 <ul>
 <li>int8, uint8</li>
 <li>byte 是 uint8的别名</li>
@@ -194,7 +194,7 @@ fmt.Printf(&quot;size of bool is: %d\n&quot;, unsafe.Sizeof(b))
 <li>rune 是 int32的别名</li>
 <li>int64, uint64</li>
 </ul>
-<p>Go中还有与体系结构相关的整数：</p>
+<p>Go中还有与体系结构相关的整数:</p>
 <p>int在32位处理器上为int32，在64位处理器上为int64
 uint在32位处理器上是uint32，在64位处理器上是uint64</p>
 <p>int的初始值为0。</p>
@@ -242,7 +242,7 @@ fmt.Printf(&quot;i1: %d\n&quot;, i)
 <p>i1: 348</p>
 </blockquote>
 <h2 id="浮点类型">浮点类型</h2>
-<p>Go具有与IEEE 754标准相对应的浮点数类型：</p>
+<p>Go具有与IEEE 754标准相对应的浮点数类型:</p>
 <ul>
 <li>float32 为 4 byte 长的浮点型数字 (即C语言中的float)</li>
 <li>float64 为 8 byte 长的浮点型数字 (即C语言中的double)</li>
@@ -376,7 +376,7 @@ key &lsquo;number3&rsquo; doesn&rsquo;t exist in map</p>
     unexportedIntVal int
 }
 </code></pre><h2 id="interface">Interface</h2>
-<p>接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义：</p>
+<p>接口在结构上定义了一组方法。接口的零值为nil。这是标准库中io.Reader接口的定义:</p>
 <pre><code>type Reader interface {
     Read(p []byte) (n int, err error)
 }
@@ -482,7 +482,7 @@ struct:     main.struc{a:0, b:&quot;&quot;}<br>
 function:   <!-- raw HTML omitted --></p>
 </blockquote>
 <h1 id="类型转换">类型转换</h1>
-<p>与C语言不同，Go不会进行类型之间的隐式转换,你必须在兼容类型之间显式转换：</p>
+<p>与C语言不同，Go不会进行类型之间的隐式转换,你必须在兼容类型之间显式转换:</p>
 <pre><code>// 在数字之间进行转换，即各种大小的整数和浮点数
 var i1 int32 = 3
 var i2 int = int(i1) // 从int32显式转换为int
@@ -501,7 +501,7 @@ var d []byte = []byte(s)
 <p>首先通过为foo.Bar引入别名并用别名替换foo.Bar的所有用法来更新依赖项。</p>
 <pre><code>import &quot;foo&quot;
 type Bar = foo.Bar // Bar is now an alias of foo.Bar
-</code></pre><p>现在将foo.Bar重命名为foo.NewBar并更新别名：</p>
+</code></pre><p>现在将foo.Bar重命名为foo.NewBar并更新别名:</p>
 <pre><code>import &quot;foo&quot;
 type Bar = foo.NewBar
 </code></pre><p>这是一个非常小的改动.</p>
@@ -515,24 +515,22 @@ type Bar = foo.NewBar
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Types/">https://luangeng.space/post/go/basic/Types/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Types/">https://luangeng.space/post/go/basic/Types/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -672,17 +670,6 @@ type Bar = foo.NewBar
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -708,7 +695,7 @@ type Bar = foo.NewBar
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -719,7 +706,7 @@ type Bar = foo.NewBar
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -730,7 +717,7 @@ type Bar = foo.NewBar
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -752,7 +739,7 @@ type Bar = foo.NewBar
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -781,8 +768,29 @@ type Bar = foo.NewBar
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -847,14 +855,6 @@ type Bar = foo.NewBar
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -863,15 +863,15 @@ type Bar = foo.NewBar
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -421,7 +421,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/elasticsearch-douban/</loc>
+        <loc>https://luangeng.space/post/java/other/elasticsearch-douban/</loc>
         <lastmod>2018-12-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -435,14 +435,14 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/elasticsearch-api/</loc>
+        <loc>https://luangeng.space/post/java/other/elasticsearch-api/</loc>
         <lastmod>2018-12-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/elasticsearch/</loc>
+        <loc>https://luangeng.space/post/java/other/elasticsearch/</loc>
         <lastmod>2018-12-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -477,7 +477,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/github_login/</loc>
+        <loc>https://luangeng.space/post/java/other/github_login/</loc>
         <lastmod>2018-09-18T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -498,28 +498,21 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/token-front/</loc>
+        <loc>https://luangeng.space/post/java/other/token-front/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/elasticJob/</loc>
+        <loc>https://luangeng.space/post/java/other/elasticJob/</loc>
         <lastmod>2018-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-        <lastmod>2018-09-03T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://luangeng.space/post/other/dingding/</loc>
+        <loc>https://luangeng.space/post/java/other/dingding/</loc>
         <lastmod>2018-08-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -638,6 +631,13 @@
     </url>
     
     <url>
+        <loc>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+        <lastmod>2017-09-11T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
         <loc>https://luangeng.space/tags/html/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -659,7 +659,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/rocketMq-Concept/</loc>
+        <loc>https://luangeng.space/post/java/other/rocketMq-Concept/</loc>
         <lastmod>2017-09-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -862,7 +862,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/rocketmq/</loc>
+        <loc>https://luangeng.space/post/java/other/rocketmq/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -883,7 +883,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/maven/</loc>
+        <loc>https://luangeng.space/post/java/other/maven/</loc>
         <lastmod>2017-09-02T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -1163,7 +1163,7 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/other/idea-key/</loc>
+        <loc>https://luangeng.space/post/java/other/idea-key/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>

@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Oauth2协议 通过js和ajax获取token及刷新token</title>
-      <link>https://luangeng.space/post/other/token-front/</link>
-      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://luangeng.space/post/other/token-front/</guid>
-      <description>基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth</description>
-    </item>
     
     <item>
       <title>jQuery事件</title>
@@ -76,15 +67,6 @@
     </item>
     
     <item>
-      <title>Maven安装配置使用</title>
-      <link>https://luangeng.space/post/other/maven/</link>
-      <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://luangeng.space/post/other/maven/</guid>
-      <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
-    </item>
-    
-    <item>
       <title>OpenCV 绘制图像直方图</title>
       <link>https://luangeng.space/post/other/opencv/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
@@ -94,21 +76,12 @@
     </item>
     
     <item>
-      <title>IntelliJ IDEA常用快捷键</title>
-      <link>https://luangeng.space/post/other/idea-key/</link>
-      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://luangeng.space/post/other/idea-key/</guid>
-      <description>Mac: 符号说明 ⌃ Control键 ⌥ Option键 ⌘ Command键 ⇧ 大写锁定键 ↩ 回车键 ⌫ BackSpace键 ⎋ Escape (Esc) ⌦ 向前删除键(Fn+Delet</description>
-    </item>
-    
-    <item>
       <title>git基础命令</title>
       <link>https://luangeng.space/post/other/git-base/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-base/</guid>
-      <description>初始设置： git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
+      <description>初始设置: git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库: git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
@@ -117,7 +90,7 @@
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-undo/</guid>
-      <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
+      <description>修改上一次错误的提交:(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
     </item>
     
   </channel>

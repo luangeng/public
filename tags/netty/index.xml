@@ -18,7 +18,7 @@
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/netty/netty-file/</guid>
-      <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
+      <description>简介: 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现: 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
     </item>
     
     <item>

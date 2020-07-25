@@ -183,23 +183,23 @@
 <p>sudo service mysql status   查看mysql状态</p>
 <p>sudo service mysql start     启动mysql服务</p>
 <p>sudo service mysql stop      停止mysql</p>
-<p>使用root登录mysql：</p>
+<p>使用root登录mysql:</p>
 <p><code>shell&gt;mysql -u root -p</code></p>
-<p>修改root账号密码：</p>
+<p>修改root账号密码:</p>
 <p><code>shell&gt;mysqladmin -u root -p password 'pwd'</code></p>
 <p>或者</p>
 <p><code>mysql&gt;ALTER USER root@localhost IDENIFIED BY 'pwd'</code></p>
-<p>添加其他账号并授权：</p>
+<p>添加其他账号并授权:</p>
 <p><code>mysql&gt;create user 'admin'@'localhost' identified by 'pwd';</code></p>
 <p><code>mysql&gt;grant all privileges on *.* to 'admin'@'localhost' with grant option;</code></p>
 <p>指定域名，指定权限，指定database</p>
 <p><code>mysql&gt;create user 'dever'@'%.xxx.com' identified by 'pwd';</code></p>
 <p><code>mysql&gt;grant select,delete,drop,insert,update,create on your_database.* to 'dever'@'%.xxx.com';</code></p>
-<p>查看mysql用户：</p>
+<p>查看mysql用户:</p>
 <p><img src="pic/2016/mysql1.png" alt=""></p>
-<p>查看用户权限：</p>
+<p>查看用户权限:</p>
 <p><img src="pic/2016/mysql2.png" alt=""></p>
-<p>配置Mysql远程访问：</p>
+<p>配置Mysql远程访问:</p>
 <p>修改mysql配置文件</p>
 <p><code>vi /etc/mysql/mysql.conf.d/mysqld.cnf1</code></p>
 <p>把其中bind-address = 127.0.0.1注释掉:</p>
@@ -207,7 +207,7 @@
 <p>登陆mysql修改权限</p>
 <p><code>mysql&gt;grant all on *.* to root@'%' identified by 'pwd';</code></p>
 <p><code>flush privileges;</code></p>
-<p>重启mysql：</p>
+<p>重启mysql:</p>
 <p><code>shell&gt;etc/init.d/mysql restart</code></p>
 <p>远程访问:</p>
 <p><img src="pic/2016/mysql4.png" alt=""></p>
@@ -216,24 +216,22 @@
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/db/mysql/mysql/">https://luangeng.space/post/db/mysql/mysql/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/db/mysql/mysql/">https://luangeng.space/post/db/mysql/mysql/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -251,7 +249,7 @@
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/idea-key/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/idea-key/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>IntelliJ IDEA常用快捷键</span>
@@ -278,7 +276,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/idea-key/" rel="bookmark" class="leancloud-count">IntelliJ IDEA常用快捷键
+                <a href="https://luangeng.space/post/java/other/idea-key/" rel="bookmark" class="leancloud-count">IntelliJ IDEA常用快捷键
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -310,7 +308,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -321,7 +319,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -332,7 +330,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -354,7 +352,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -383,8 +381,29 @@
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -437,7 +456,7 @@
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/idea-key/">IntelliJ IDEA常用快捷键</a></li>
+                <li><a href="https://luangeng.space/post/java/other/idea-key/">IntelliJ IDEA常用快捷键</a></li>
                 
             </ul>
         </div>
@@ -447,15 +466,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -169,11 +169,11 @@
 <p>当在浏览器中输入一个指向特定网页的URL时，浏览器就会生成一个HTTP请求，并与服务器建立TCP连接，当TCP可靠连接建立之后，浏览器会将生成的HTTP请求发送到服务器端。
 服务器程序接收到了信息将要去识别这个信息的内容，然后调用相应的服务程序，经过服务程序的分析和处理之后服务器端返回内容给浏览器。
 当服务器返回了内容给浏览器后，这时浏览器与服务器之间的数据交换完毕，这时TCP可靠连接就会断开。</p>
-<p>下面是一个HTTP服务器的简单实现，只处理来自浏览器的GET请求：</p>
+<p>下面是一个HTTP服务器的简单实现，只处理来自浏览器的GET请求:</p>
 <p>html，css，js，jpg等资源位置如下</p>
 <p><img src="pic/netty/1.png" alt=""></p>
 <h3 id="httpserverjava">HttpServer.java:</h3>
-<p>作用：启动Netty server，监听80端口，初始化http相关的编码器和解码器。</p>
+<p>作用:启动Netty server，监听80端口，初始化http相关的编码器和解码器。</p>
 <pre><code>package com.luangeng.netty.http;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -335,7 +335,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
     }
 
 }
-</code></pre><h3 id="一个包含资源的html页面">一个包含资源的html页面：</h3>
+</code></pre><h3 id="一个包含资源的html页面">一个包含资源的html页面:</h3>
 <p>hello.html</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -350,11 +350,11 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
 &lt;/div&gt;
 
 &lt;p&gt;
-    一幅图像：
+    一幅图像:
     &lt;img src=&quot;/img1.jpg&quot; width=&quot;128&quot; height=&quot;128&quot;/&gt;
 &lt;/p&gt;
 &lt;p&gt;
-    一幅动画图像：
+    一幅动画图像:
     &lt;img id=&quot;img1&quot; src=&quot;/eg_cute.gif&quot; width=&quot;50&quot; height=&quot;50&quot;/&gt;
 &lt;/p&gt;
 
@@ -382,33 +382,31 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
 
 &lt;/script&gt;
 &lt;/html&gt;
-</code></pre><p>启动程序，在浏览器中访问localhost:80/hello.html,结果如下：</p>
+</code></pre><p>启动程序，在浏览器中访问localhost:80/hello.html,结果如下:</p>
 <p><img src="pic/netty/2.png" alt=""></p>
 <p>可见html，js，css，jpg等资源都可正常加载，</p>
-<p>参考：Netty权威指南</p>
+<p>参考:Netty权威指南</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-http/">https://luangeng.space/post/java/netty/netty-http/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/netty/netty-http/">https://luangeng.space/post/java/netty/netty-http/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -507,7 +505,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -518,7 +516,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -529,7 +527,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -551,7 +549,7 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -580,8 +578,29 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -648,15 +667,15 @@ public class HttpServerHandler extends SimpleChannelInboundHandler&lt;FullHttpRe
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

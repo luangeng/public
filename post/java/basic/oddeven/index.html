@@ -146,7 +146,7 @@
                                         <h1 class="post-title">两个线程交替打印奇数和偶数</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2016-09-03 · 1174 Words
+                                            Posted @ 2016-09-03 · 1152 Words
                                             
                                             · Tags: Java
                                             
@@ -165,7 +165,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即：</p>
+                                                <p>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即:</p>
 <pre><code>奇 1
 偶 2
 奇 3
@@ -176,7 +176,7 @@
 偶 8
 奇 9
 偶 10
-</code></pre><h1 id="解法一">解法一：</h1>
+</code></pre><h1 id="解法一">解法一:</h1>
 <p>wait和notify方法</p>
 <pre><code>public class OddEven {
 
@@ -212,7 +212,7 @@
 
     }
 }
-</code></pre><h1 id="解法二">解法二：</h1>
+</code></pre><h1 id="解法二">解法二:</h1>
 <p>LockSupport实现</p>
 <pre><code>public class OddEvenLockSupport {
 
@@ -254,7 +254,7 @@
 
     }
 }
-</code></pre><h1 id="解法三">解法三：</h1>
+</code></pre><h1 id="解法三">解法三:</h1>
 <p>使用Condition</p>
 <pre><code>public class OddEven2 {
 
@@ -309,38 +309,36 @@
         new Odd().start();
     }
 }
-</code></pre><p>基础回顾：</p>
+</code></pre><p>基础回顾:</p>
 <p>每个Java对象都拥有一个锁标记，即monitor(监视器)，称为对象锁。</p>
-<p>wait：</p>
+<p>wait:</p>
 <p>调用obj.wait()方法会阻塞当前线程，直到另一线程调用obj.notify()或obj.notifyAll()方法，其中obj为同一对象，当前线程必须持有obj对象锁，即必须在synchronized方法或代码块中，否则抛出IllegalMonitorStateException。调用wait方法的线程会释放对象锁。</p>
-<p>notify：</p>
+<p>notify:</p>
 <p>唤醒一个正在等待该对象锁的线程，若有多个线程都在等待也只会唤醒一个。被唤醒的线程无法立即执行，直到当前线程放弃该对象锁，然后被唤醒的线程会像往常一样与任何其他线程竞争该对象锁，</p>
 <p>该方法也必须在持有该对象锁的线程里调用，即必须在synchronized方法或代码块中，否则抛出IllegalMonitorStateException。</p>
-<p>synchronized：</p>
+<p>synchronized:</p>
 <p>synchronized关键字标记一个方法或者代码块，当某个线程调用该对象的synchronized方法或者访问synchronized代码块时，这个线程便获得了该对象的锁，其他线程暂时无法访问这个方法，只有等待这个方法执行完毕或者代码块执行完毕，这个线程才会释放该对象的锁，其他线程才能执行这个方法或者代码块。</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/oddeven/">https://luangeng.space/post/java/basic/oddeven/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/basic/oddeven/">https://luangeng.space/post/java/basic/oddeven/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -480,17 +478,6 @@
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/java/basic/java-jvm/" rel="bookmark" class="leancloud-count">Java基础--虚拟机JVM
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -516,7 +503,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -527,7 +514,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -538,7 +525,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -560,7 +547,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -589,8 +576,29 @@
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -655,14 +663,6 @@
                 
                 <li><a href="https://luangeng.space/post/java/basic/java-annotation/">Java基础--注解Annotation</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/basic/java-innerclass/">Java基础--内部类</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-comparator/">Java基础--比较器Comparator</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-countdownlatch/">Java基础--CountDownLatch</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-jvm/">Java基础--虚拟机JVM</a></li>
-                
             </ul>
         </div>
         
@@ -671,15 +671,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

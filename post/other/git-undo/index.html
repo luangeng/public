@@ -165,8 +165,8 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <h3 id="修改上一次错误的提交适用于未push的commit">修改上一次错误的提交：(适用于未push的commit):</h3>
-<p>git commit &ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删除上一次commit，然后新生成一个commit。示例：</p>
+                                                <h3 id="修改上一次错误的提交适用于未push的commit">修改上一次错误的提交:(适用于未push的commit):</h3>
+<p>git commit &ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删除上一次commit，然后新生成一个commit。示例:</p>
 <ol>
 <li>修改代码(包含了错误代码或漏提交文件)</li>
 <li>commit 错误代码(包含了错误的commit记录)</li>
@@ -174,9 +174,9 @@
 <li>git commit &ndash;amend</li>
 <li>修改错误commit记录，退出编辑，完成</li>
 </ol>
-<p>注意：该操作会删除commit记录，故该commit必须(未公开)只在本地，否则会对别人造成影响</p>
-<h3 id="使用reset回退错误的commit适用于未push的commit">使用reset回退错误的commit，(适用于未push的commit)：</h3>
-<p>当commit了错误的代码，还未push，可以使用reset命令，将commit撤销，错误代码还保留着，示例：</p>
+<p>注意:该操作会删除commit记录，故该commit必须(未公开)只在本地，否则会对别人造成影响</p>
+<h3 id="使用reset回退错误的commit适用于未push的commit">使用reset回退错误的commit，(适用于未push的commit):</h3>
+<p>当commit了错误的代码，还未push，可以使用reset命令，将commit撤销，错误代码还保留着，示例:</p>
 <ol>
 <li>git commit -m &lsquo;正确的代码&rsquo;</li>
 <li>写了错误的代码</li>
@@ -185,9 +185,9 @@
 <li>上次commit被撤销，回到第2步时的状态</li>
 <li>修改错误代码，再次commit</li>
 </ol>
-<p>注意：push之后的commit不可用此方法，原因是reset之后远程commit记录滞后本地，无法再push</p>
-<h3 id="使用revert-撤销错误的commit和push">使用revert 撤销错误的commit和push：</h3>
-<p>当commit了错误的代码并push后，可以使用git revert命令，将代码回退到 错误提交前一次提交的状态，也就是相当于还没有写错误代码，然后再push一次即可。示例：</p>
+<p>注意:push之后的commit不可用此方法，原因是reset之后远程commit记录滞后本地，无法再push</p>
+<h3 id="使用revert-撤销错误的commit和push">使用revert 撤销错误的commit和push:</h3>
+<p>当commit了错误的代码并push后，可以使用git revert命令，将代码回退到 错误提交前一次提交的状态，也就是相当于还没有写错误代码，然后再push一次即可。示例:</p>
 <ol>
 <li>git commit -m &lsquo;add 1&rsquo;</li>
 <li>写了错误的代码</li>
@@ -195,18 +195,18 @@
 <li>git revert HEAD</li>
 <li>编辑revert的原因，退出编辑</li>
 <li>此时工作空间clear，错误代码不见了，回到了第1步提交后的状态</li>
-<li>写正确的代码，add commit push 。 全部commit记录如下：</li>
+<li>写正确的代码，add commit push 。 全部commit记录如下:</li>
 </ol>
 <p><img src="pic/2016/git2.png" alt="git"></p>
-<p>注意：revert会丢弃所有错误代码，而有时我们只是想再修改下，故需要先通过分支备份代码。</p>
-<h3 id="修改上一次错误的提交信息适用于push后的commit">修改上一次错误的提交信息：(适用于push后的commit)</h3>
+<p>注意:revert会丢弃所有错误代码，而有时我们只是想再修改下，故需要先通过分支备份代码。</p>
+<h3 id="修改上一次错误的提交信息适用于push后的commit">修改上一次错误的提交信息:(适用于push后的commit)</h3>
 <ol>
 <li>git rebase -i HEAD^</li>
 <li>修改pick为reword, 退出编辑</li>
 <li>修改提交记录,退出编辑</li>
 <li>git push -f origin master</li>
 </ol>
-<h3 id="使用rebase合并分支">使用rebase合并分支：</h3>
+<h3 id="使用rebase合并分支">使用rebase合并分支:</h3>
 <p>当多分支开发时出现分叉的情况时，可以使用rebase命令将其他分支的提交插入进到当前分支的提交之前的位置。</p>
 <p><img src="pic/2016/git4.png" alt="git">
 如图，在mywork分支执行 git rebase origin 之后，把mywork分支里的每个提交(commit)取消掉，并且把它们临时保存为补丁(patch)(这些补丁放到&rdquo;.git/rebase&quot;目录中),然后把&quot;mywork&quot;分支更新到最新的&quot;origin&quot;分支，最后把保存的这些补丁应用到&quot;mywork&quot;分支上，</p>
@@ -218,24 +218,22 @@
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/git-undo/">https://luangeng.space/post/other/git-undo/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/other/git-undo/">https://luangeng.space/post/other/git-undo/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -312,7 +310,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -323,7 +321,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -334,7 +332,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -356,7 +354,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -385,8 +383,29 @@
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -449,15 +468,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

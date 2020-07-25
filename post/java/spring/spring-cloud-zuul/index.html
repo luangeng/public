@@ -167,7 +167,7 @@
                                                 
                                                 <p>Spring Cloud 服务网关Zuul</p>
 <p>服务网关是分布式架构中不可缺少的组成部分，是外部网络和内部服务之间的屏障，例如权限控制之类的逻辑应该在这里实现，而不是放在每个服务单元。</p>
-<p>Spring Cloud Netflix 中的Zuul正是提供该功能的组件：</p>
+<p>Spring Cloud Netflix 中的Zuul正是提供该功能的组件:</p>
 <ol>
 <li>
 <p>提供路由功能，可屏蔽内部服务细节，并可提供负载均衡</p>
@@ -179,7 +179,7 @@
 <p>实现了断路器，不会因为具体微服务的故障而导致服务网关的阻塞，依然可以对外服务。</p>
 </li>
 </ol>
-<p>下来通过简单的例子体验一下Zuul提供的功能：</p>
+<p>下来通过简单的例子体验一下Zuul提供的功能:</p>
 <ol>
 <li>首先需要一个eureka单元注册服务，一个client单元提供服务，之前已创建</li>
 </ol>
@@ -229,10 +229,10 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
     private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
 
     /**
-     pre：可以在请求被路由之前调用
-     routing：在路由请求时候被调用
-     post：在routing和error过滤器之后被调用
-     error：处理请求时发生错误时被调用
+     pre:可以在请求被路由之前调用
+     routing:在路由请求时候被调用
+     post:在routing和error过滤器之后被调用
+     error:处理请求时发生错误时被调用
      * @return
      */
     @Override
@@ -287,31 +287,29 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
 <p>访问 http://localhost:8011/client/info?token=1 查看zuul默认映射规则是否生效</p>
 </li>
 </ol>
-<p>代码路径： <a href="https://github.com/luangeng/Cloud">https://github.com/luangeng/Cloud</a></p>
-<p>参考：http://projects.spring.io/spring-cloud/spring-cloud.html</p>
+<p>代码路径: <a href="https://github.com/luangeng/Cloud">https://github.com/luangeng/Cloud</a></p>
+<p>参考:http://projects.spring.io/spring-cloud/spring-cloud.html</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-zuul/">https://luangeng.space/post/java/spring/spring-cloud-zuul/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-zuul/">https://luangeng.space/post/java/spring/spring-cloud-zuul/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -329,7 +327,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/rocketMq-Concept/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/rocketMq-Concept/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>RocketMQ核心概念</span>
@@ -410,7 +408,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -421,7 +419,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -432,7 +430,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -454,7 +452,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -483,8 +481,29 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -551,15 +570,15 @@ eureka.client.serviceUrl.defaultZone=http://localhost:8001/eureka/
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

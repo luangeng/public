@@ -63,7 +63,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/string/</guid>
-      <description>Go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt</description>
+      <description>Go中的string是不可变的byte序列 与Python或Java等语言不同，它们在内部未表示为Unicode。 因此，从文件或网络连接读取字</description>
     </item>
     
     <item>
@@ -72,7 +72,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Pointers/</guid>
-      <description>指针是其指向变量在内存中的地址。 不同与C语言, Go不允许指针上的运算, 不能对指针做加减。 指针的零值为nil。 指针使用示例： v := 5 // pv是指向</description>
+      <description>指针是其指向变量在内存中的地址。 不同与C语言, Go不允许指针上的运算, 不能对指针做加减。 指针的零值为nil。 指针使用示例: v := 5 // pv是指向</description>
     </item>
     
     <item>
@@ -108,7 +108,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/struct/</guid>
-      <description>struct的作用是将几个相关的变量组合成一个独立的实体. 另外,struct可以有方法,如同Java和C++中的类. 不同于Java和C++中</description>
+      <description>struct的作用是将几个相关的变量组合成一个独立的实体. 如同Java和C++中的类,struct可以有方法. 不同于Java和C++中的类,</description>
     </item>
     
     <item>
@@ -117,7 +117,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Interfaces/</guid>
-      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea</description>
+      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如:标准库中定义的io.Rea</description>
     </item>
     
     <item>
@@ -171,7 +171,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Error-handling/</guid>
-      <description>基本错误处理: func sqrt(n float64) (float64, error) { if n &amp;lt; 0 { return 0, fmt.Errorf(&amp;quot;invalid argument &#39;%f&#39;, must be &amp;gt;= 0&amp;quot;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&amp;quot;sqrt of %f is %f\n&amp;quot;, n, res) } else { fmt.Printf(&amp;quot;sqrt of %f returned error &#39;%s&#39;\n&amp;quot;, n, err) } } func main() { printSqrt(16)</description>
+      <description>与C#或Python等语言不同，Go通过返回错误值而不是抛出异常来表示程序故障。 Go同时提供了panic和recover，但很少使用。 错误是</description>
     </item>
     
     <item>
@@ -243,7 +243,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Time-date/</guid>
-      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型： 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
+      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型: 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
     </item>
     
     <item>
@@ -252,7 +252,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Command-line-arguments/</guid>
-      <description>标准库中的flag包用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
+      <description>标准库中的flag包用于解析命令行参数: var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
     </item>
     
     <item>
@@ -261,7 +261,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Logging/</guid>
-      <description>日志记录是一个非常深入的主题，因为不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方</description>
+      <description>日志记录非常重要, 不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方式是打印在标准输</description>
     </item>
     
     <item>
@@ -270,7 +270,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Executing-commands/</guid>
-      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command(</description>
+      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是:使用exec.Command(</description>
     </item>
     
     <item>
@@ -288,7 +288,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/JSON/</guid>
-      <description>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;`</description>
+      <description>Go中的标准库encoding/json提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;` } p</description>
     </item>
     
     <item>
@@ -297,11 +297,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/XML/</guid>
-      <description>Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.
-Parse XML into a struct Parsing XML is similar to parsing JSON. You define structures that map to the structure of XML and unmarshal from []byte slice or io.Reader into a struct.
-var xmlStr = ` JohnSan FranciscoCA&amp;lt;person age=&amp;quot;23&amp;quot;&amp;gt; &amp;lt;first-name&amp;gt;Julia&amp;lt;/first-name&amp;gt; &amp;lt;/person&amp;gt;  `
-type People struct { Person []Person xml:&amp;quot;person&amp;quot; }
-type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string xml:&amp;quot;first-name&amp;quot; Address Address xml:&amp;quot;address&amp;quot; }</description>
+      <description>标准库中的encoding/xml包提供了XML格式的序列化功能. 将XML解析为struct 解析XML与解析JSON类似。可以从[]byte</description>
     </item>
     
     <item>
@@ -310,7 +306,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/CSV/</guid>
-      <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价： date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
+      <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价: date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
     </item>
     
     <item>
@@ -364,7 +360,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Text-HTML-templates/</guid>
-      <description>Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information. Building that HTML string by building smaller strings and concatenating them with + would be tedious. Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual</description>
+      <description>假设您正在使用Web应用程序，并且需要返回列出最新推文的HTML。 您需要从数据库加载推文列表，并根据该信息创建HTML。 通过构建较小的字符串</description>
     </item>
     
     <item>
@@ -409,7 +405,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Cross-compilation/</guid>
-      <description>Go compiler can create native executable binaries for many operating system: Windows, Mac OS X, Linux, Android, iOS and a few lesser known like plan9, solaris, freebsd, openbsd, netbsd, dragonfly. It also supports multiple architectures (CPUs) for the same operating system e.g. it can generate both 32-bit and 64-bit Windows binaries or intel, arm, ppc, mips Linux binaries. Better yet, the toolchain supports cross-compilation i.e. you can create a Linux</description>
+      <description>Go编译器可以为许多操作系统创建本机可执行二进制文件：Windows，Mac OS X，Linux，Android，iOS和一些鲜为人知的工具，例</description>
     </item>
     
     <item>
@@ -418,7 +414,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Conditional-compilation/</guid>
-      <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 Tags are specified per file, at the top of the file, followed by an empty line and the code. A typical use case for tags is to provide to implementation of the same functionality and pick the</description>
+      <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 标签是在每个文件的顶部指定的，然后是空行和代码。 标签的典型用例是提供相同功</description>
     </item>
     
     <item>
@@ -454,7 +450,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Plugin/</guid>
-      <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。 在Go1.8中，仅在Linux上可用。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V)</description>
+      <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。在Go1.8中，仅支持Linux。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V) } 使</description>
     </item>
     
     <item>
@@ -463,7 +459,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Fmt/</guid>
-      <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片</description>
+      <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O: %v 默认格式 %T 值的类型 %s 字符串或片</description>
     </item>
     
     <item>

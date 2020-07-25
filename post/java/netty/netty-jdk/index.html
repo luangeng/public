@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>使用JDK序列化不需要额外的类库，只需要实现Serializable即可，但是序列化之后的码流只有Java才能反序列化，所以它不是跨语言的，另外由于Java序列化后码流比较大，效率也不高，所以在RPC中很少使用，本文只是做学习之用。</p>
-<p>编解码器：</p>
+<p>编解码器:</p>
 <pre><code>public class JdkDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List&lt;Object&gt; list) throws Exception {
@@ -194,7 +194,7 @@ public class JdkEncoder extends MessageToByteEncoder&lt;Object&gt; {
         oos.close();
     }
 }
-</code></pre><p>传输对象：</p>
+</code></pre><p>传输对象:</p>
 <pre><code>public class Person implements Serializable{
 
     private int age;
@@ -231,7 +231,7 @@ public class JdkEncoder extends MessageToByteEncoder&lt;Object&gt; {
                 '}';
     }
 }
-</code></pre><p>Server端：</p>
+</code></pre><p>Server端:</p>
 <pre><code>public class EchoServer {
     public static void main(String[] args) {
         new EchoServer().bind(8080);
@@ -305,7 +305,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     }
 
 }
-</code></pre><p>Client端：</p>
+</code></pre><p>Client端:</p>
 <pre><code>public class EchoClient {
 
     public static void main(String[] args) {
@@ -393,7 +393,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
         ctx.close();
     }
 }
-</code></pre><p>执行结果：</p>
+</code></pre><p>执行结果:</p>
 <pre><code>client started
 Person{age=0, name='luangeng', man=true, list=[abc, 123], birth=Wed Nov 22 21:18:48 CST 2017, son=null}
 Person{age=1, name='luangeng', man=true, list=[abc, 123], birth=Wed Nov 22 21:18:48 CST 2017, son=null}
@@ -405,15 +405,15 @@ Person{age=6, name='luangeng', man=true, list=[abc, 123], birth=Wed Nov 22 21:18
 Person{age=7, name='luangeng', man=true, list=[abc, 123], birth=Wed Nov 22 21:18:48 CST 2017, son=null}
 Person{age=8, name='luangeng', man=true, list=[abc, 123], birth=Wed Nov 22 21:18:48 CST 2017, son=null}
 Person{age=9, name='luangeng', man=true, list=[abc, 123], birth=Wed Nov 22 21:18:48 CST 2017, son=null}
-</code></pre><p>Netty也提供了基于JDK的编解码器，可以直接使用，比如：</p>
+</code></pre><p>Netty也提供了基于JDK的编解码器，可以直接使用，比如:</p>
 <pre><code>channel.pipeline()
                     .addLast(new LengthFieldBasedFrameDecoder(65535, 0, 4, 0, 4))
                     .addLast(new ObjectDecoder(ClassResolvers.weakCachingConcurrentResolver(this.getClass().getClassLoader())))
                     .addLast(new LengthFieldPrepender(4))
                     .addLast(new ObjectEncoder())
                     .addLast(new ServerHandler());
-</code></pre><p>MessagePack工具：</p>
-<p>MessagePack是与JSON数据格式类似的二进制序列化格式，更快更小，并且是跨语言的，用于在多个语言之间交换数据。使用MessagePack实现的编解码器如下：</p>
+</code></pre><p>MessagePack工具:</p>
+<p>MessagePack是与JSON数据格式类似的二进制序列化格式，更快更小，并且是跨语言的，用于在多个语言之间交换数据。使用MessagePack实现的编解码器如下:</p>
 <pre><code>public class MsgpackEncoder extends MessageToByteEncoder&lt;Object&gt; {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object o, ByteBuf byteBuf) throws Exception {
@@ -439,24 +439,22 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-jdk/">https://luangeng.space/post/java/netty/netty-jdk/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/netty/netty-jdk/">https://luangeng.space/post/java/netty/netty-jdk/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -566,7 +564,7 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -577,7 +575,7 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -588,7 +586,7 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -610,7 +608,7 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -639,8 +637,29 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -709,15 +728,15 @@ public class MsgpackDecoder extends MessageToMessageDecoder&lt;ByteBuf&gt; {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

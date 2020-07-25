@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 错误处理</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2504 Words
+                                            Posted @ 2018-09-09 · 2449 Words
                                             
                                             · Tags: Go
                                             
@@ -165,7 +165,34 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>基本错误处理:</p>
+                                                <p>与C#或Python等语言不同，Go通过返回错误值而不是抛出异常来表示程序故障。</p>
+<p>Go同时提供了panic和recover，但很少使用。</p>
+<p>错误是值，就像整数或字符串一样。</p>
+<p>类型错误是实现Error()字符串方法的内置接口。</p>
+<p>如果表示成功，请返回nil。</p>
+<p>要创建错误，可以使用标准库函数errors.New(msg字符串)或fmt.Errorf(格式字符串，args &hellip; interface {})。</p>
+<p>你还可以通过定义实现Error()字符串方法的结构来返回自定义错误类型。</p>
+<p>如果函数返回错误，则应始终为最后一个返回值.</p>
+<p>始终检查返回的错误并妥善处理而不是忽略它。</p>
+<h2 id="返回错误">返回错误</h2>
+<p>为了指示一个错误,函数应该返回一个错误值.函数没有错误时,返回nil.</p>
+<pre><code>// somewhat inefficient way of appending a string at the end of a file
+func appendToFile(path string, s string) error {
+    d, err := ioutil.ReadFile(path)
+  if err != nil {
+        return err
+  }
+    d = append(d, []byte(s)...)
+  return ioutil.WriteFile(path, d, 0644)
+}
+</code></pre><p>如果函数有多个返回值时,error始终应该是最后一个:</p>
+<pre><code>func sqrt(n int) (int, error) {
+    if n &lt; 0 {
+        return 0, fmt.Errorf(&quot;n should be &gt;= 0, is %d&quot;, n)
+    }
+    return n*n, nil
+}
+</code></pre><p>基本错误处理:</p>
 <pre><code>func sqrt(n float64) (float64, error) {
     if n &lt; 0 {
         return 0, fmt.Errorf(&quot;invalid argument '%f', must be &gt;= 0&quot;, n)
@@ -190,34 +217,7 @@ func main() {
 <p>sqrt of 16.000000 is 4.000000<br>
 sqrt of -16.000000 returned error &lsquo;invalid argument &lsquo;-16.000000&rsquo;, must be &gt;= 0&rsquo;</p>
 </blockquote>
-<p>与C＃或Python等语言不同，Go通过返回错误值而不引发异常来处理故障。</p>
-<p>Go还提供了紧急和恢复异常，但很少使用。</p>
-<p>错误是值，就像整数或字符串一样。</p>
-<p>类型错误是实现Error()字符串方法的内置接口。</p>
-<p>为了表示成功，请返回nil。</p>
-<p>要创建错误，可以使用标准库函数errors.New(msg字符串)或fmt.Errorf(格式字符串，args &hellip; interface {})。</p>
-<p>你还可以通过定义实现Error()字符串方法的结构来返回自定义错误类型。</p>
-<p>如果函数返回错误，则应始终为最后返回的值。</p>
-<p>始终检查返回的错误。 编写功能强大的软件的关键是检查错误并进行适当处理。 初学者通常无法检查错误，然后面临调试神秘故障的麻烦。</p>
-<h2 id="返回错误">返回错误</h2>
-<p>为了指示一个错误,函数应该返回一个错误值.函数没有错误时,返回nil.</p>
-<pre><code>// somewhat inefficient way of appending a string at the end of a file
-func appendToFile(path string, s string) error {
-    d, err := ioutil.ReadFile(path)
-  if err != nil {
-        return err
-  }
-    d = append(d, []byte(s)...)
-  return ioutil.WriteFile(path, d, 0644)
-}
-</code></pre><p>如果函数有多个返回值时,error始终应该是最后一个:</p>
-<pre><code>func sqrt(n int) (int, error) {
-    if n &lt; 0 {
-        return 0, fmt.Errorf(&quot;n should be &gt;= 0, is %d&quot;, n)
-    }
-    return n*n, nil
-}
-</code></pre><h2 id="pitfalls">Pitfalls</h2>
+<h2 id="pitfalls">Pitfalls</h2>
 <p>如果你使用的是自定义错误类型，请不要返回底层类型，而请务必返回错误类型。</p>
 <pre><code>type CustomError struct {
 }
@@ -245,7 +245,6 @@ func caller() {
 }
 </code></pre><p>出乎意料的是，即使返回null，它看起来也像returnCustomError()返回了错误。</p>
 <p>这是nil接口陷阱的一种变体。</p>
-<p>#note链接到该章</p>
 <p>未初始化的err值为nil，因为它是接口类型的零值。</p>
 <p>returnCustomError()返回CustomError结构的nil值。</p>
 <p>此nil值分配给err变量。 这等效于：</p>
@@ -436,47 +435,43 @@ func main() {
 <h2 id="编写良好的错误消息">编写良好的错误消息</h2>
 <p>良好的错误消息有助于调试问题。</p>
 <p>在生产部署中，将记录错误消息。 当出现问题时，日志文件是调试线索的主要来源。</p>
-<p>在创建错误消息时，请考虑一下并包括尽可能多的有用信息。</p>
-<p>不好的错误讯息：</p>
+<p>在创建错误消息时，包括尽可能多的有用信息。</p>
+<p>不好的错误消息：</p>
 <pre><code>func openLog(path string) (io.Reader, error) {
     f, err := os.Open(path)
     if err != nil {
         return nil, errors.New(&quot;failed to open log file&quot;)
     }
-    ...
 }
-</code></pre><p>良好的错误消息</p>
+</code></pre><p>好的错误消息:</p>
 <pre><code>func openLog(path string) (io.Reader, error) {
     f, err := os.Open(path)
     if err != nil {
         return nil, errors.New(&quot;openLog('%s'), os.Open() failed with '%s'&quot;, path, err)
     }
-    ...
 }
-</code></pre><p>错误消息的第二版包含更多调试线索：哪个函数生成了错误,我们正试图打开的文件的路径,来自os.Open()的错误消息，以便我们可以判断是否是因为文件没有 存在，或者我们没有访问权限等。</p>
+</code></pre><p>好的错误信息包含更多调试线索：哪个函数生成了错误,我们正试图打开的文件的路径,来自os.Open()的错误消息，以便判断是否是因为文件没有存在，或者没有访问权限等。</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Error-handling/">https://luangeng.space/post/go/basic/Error-handling/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Error-handling/">https://luangeng.space/post/go/basic/Error-handling/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -616,17 +611,6 @@ func main() {
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -652,7 +636,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -663,7 +647,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -674,7 +658,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -696,7 +680,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -725,8 +709,29 @@ func main() {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -791,14 +796,6 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -807,15 +804,15 @@ func main() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

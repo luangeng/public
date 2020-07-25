@@ -166,11 +166,11 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>Zookeeper&ndash;单机模式安装 及命令</p>
-<p>下载地址： <a href="http://zookeeper.apache.org/releases.html">http://zookeeper.apache.org/releases.html</a></p>
+<p>下载地址: <a href="http://zookeeper.apache.org/releases.html">http://zookeeper.apache.org/releases.html</a></p>
 <p><code>tar -zxvf zookeeper-3.4.10.tar.gz</code></p>
 <p><code>mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10</code></p>
 <p><code>cd /Users/LG/tools/zookeeper-3.4.10</code></p>
-<p>conf目录下新建配置文件zoo.cfg，内容如下：</p>
+<p>conf目录下新建配置文件zoo.cfg，内容如下:</p>
 <pre><code># The number of milliseconds of each tick
 tickTime=2000
 
@@ -191,7 +191,7 @@ clientPort=2181
 <p><code>./zkServer.sh start</code>    #启动zk服务</p>
 <p><code>./zkCli.sh</code>    #进入zk命令工具</p>
 <p><code>./zkServer.sh stop</code>　#关闭zk服务</p>
-<p>zkCli.sh基本命令列表：</p>
+<p>zkCli.sh基本命令列表:</p>
 <p><code>help</code> 查看帮助</p>
 <p><code>ls</code> 查看子节点，如 <code>ls /</code>;   <code>ls /mynode</code>;  <code>ls /znodes/node1</code></p>
 <p><code>create</code> 创建节点， 如 <code>create /mynode mydate</code></p>
@@ -201,33 +201,31 @@ clientPort=2181
 <p><code>delete</code> 删除节点，  如 <code>delete /mynode</code></p>
 <p><code>quit</code> 退出命令工具</p>
 <p><code>close</code> 关闭zk服务</p>
-<p>Zookeeper四字母组合命令：</p>
+<p>Zookeeper四字母组合命令:</p>
 <p>在ZK启动后，使用nc命令或telnet命令可以向ZK发送指令，如 echo ruok | nc localhost 2181 ，zk会返回 imok 表示zk正常运行</p>
-<p>其他命令：</p>
+<p>其他命令:</p>
 <p><img src="pic/zookeeper/3.png" alt="zoo"></p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-cmd/">https://luangeng.space/post/java/zookeeper/zookeeper-cmd/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-cmd/">https://luangeng.space/post/java/zookeeper/zookeeper-cmd/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -304,7 +302,7 @@ clientPort=2181
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -315,7 +313,7 @@ clientPort=2181
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -326,7 +324,7 @@ clientPort=2181
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -348,7 +346,7 @@ clientPort=2181
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -377,8 +375,29 @@ clientPort=2181
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -441,15 +460,15 @@ clientPort=2181
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

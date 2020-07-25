@@ -184,7 +184,7 @@ image.Image接口描述位图图像
 <li>vp8 解码</li>
 <li>vp8l 解码.</li>
 </ul>
-<p>image.Image接口是最小的：</p>
+<p>image.Image接口是最小的:</p>
 <pre><code>type Image interface {
         // ColorModel returns the Image's color model.
         ColorModel() color.Model
@@ -196,7 +196,7 @@ image.Image接口描述位图图像
         // At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
         At(x, y int) color.Color
 }
-</code></pre><p>这是从URL解码PNG图像并使用Bounds()方法打印图像大小的示例：</p>
+</code></pre><p>这是从URL解码PNG图像并使用Bounds()方法打印图像大小的示例:</p>
 <pre><code>func showImageSize(uri string) {
     resp, err := http.Get(uri)
     if err != nil {
@@ -255,7 +255,7 @@ format in memory: &lsquo;*image.NRGBA&rsquo;</p>
     Convert(c Color) Color
 }
 </code></pre><h2 id="访问图像尺寸和像素">访问图像尺寸和像素</h2>
-<p>假设我们将图像存储为变量img，则可以通过以下方式获取尺寸和图像像素：</p>
+<p>假设我们将图像存储为变量img，则可以通过以下方式获取尺寸和图像像素:</p>
 <pre><code>// Image bounds and dimension
 b := img.Bounds()
 width, height := b.Dx(), b.Dy()
@@ -285,10 +285,10 @@ for y := top; y &lt; bottom; y++ {
 <pre><code>func RegisterFormat(name, magic string,
     decode func(io.Reader) (Image, error), decodeConfig func(io.Reader) (Config, error))
 
-</code></pre><p>目前，image包支持三种文件格式：JPEG，GIF和PNG。 要注册解码器，请添加以下内容:<br>
+</code></pre><p>目前，image包支持三种文件格式:JPEG，GIF和PNG。 要注册解码器，请添加以下内容:<br>
 <code>import _ &quot;image/jpeg&quot;    //register JPEG decoder</code>
 到应用程序的主程序包。</p>
-<p>如要在代码中的某个位置(在主程序包中不是必需的)加载JPEG图像，请使用以下代码段：</p>
+<p>如要在代码中的某个位置(在主程序包中不是必需的)加载JPEG图像，请使用以下代码段:</p>
 <pre><code>f, err := os.Open(&quot;inputimage.jpg&quot;)
 if err != nil {
     log.Fatalf(&quot;os.Open() failed with %s\n&quot;, err)
@@ -305,7 +305,7 @@ if err != nil {
 </code></pre><h4 id="保存png图片">保存png图片</h4>
 <p>为了将图像保存为特定格式，必须明确导入相应的编码器，即<br>
 <code>import &quot;image/png&quot;    //needed to use png encoder</code></p>
-<p>然后可以使用以下代码段保存图像：</p>
+<p>然后可以使用以下代码段保存图像:</p>
 <pre><code>f, err := os.Create(&quot;outimage.png&quot;)
 if err != nil {
     log.Fatalf(&quot;os.Create() failed with %s\n&quot;, err)
@@ -324,7 +324,7 @@ if err != nil {
 }
 err := enc.Encode(f, img)
 </code></pre><h4 id="保存jpeg图片">保存JPEG图片</h4>
-<p>要保存为jpeg格式，请使用以下命令：</p>
+<p>要保存为jpeg格式，请使用以下命令:</p>
 <pre><code>import &quot;image/jpeg&quot;
 
 // Somewhere in the same package
@@ -477,7 +477,7 @@ func main() {
 
     return Gray{uint8(y)}
 }
-</code></pre><p>基于上述事实，强度Y通过以下公式计算：
+</code></pre><p>基于上述事实，强度Y通过以下公式计算:
 <code>Luminance: Y = 0.299R + 0.587G + 0.114B</code></p>
 <p>如果我们想应用不同的公式/算法将颜色转换为强度，例如:
 <code>Mean: Y = (R + G + B) / 3 Luma: Y = 0.2126R + 0.7152G + 0.0722B Luster: Y = (min(R, G, B) + max(R, G, B))/2</code></p>
@@ -495,7 +495,7 @@ for y := img.Bounds().Min.Y; y &lt; img.Bounds().Max.Y; y++ {
 }
 </code></pre><p>上面的计算是通过浮点乘法完成的，虽然肯定不是最有效的方法，但是足以证明这一点。 另一点是，当使用color.Gray作为第三个参数调用Set(x，y int，c color.Color)时，颜色模型将不会执行颜色转换，就像在以前的grayModel函数中可以看到的那样。</p>
 <h2 id="调整图像大小">调整图像大小</h2>
-<p>有几个库可以在Go中调整图像大小。 软件包golang.org/x/image/draw是以下选项之一：</p>
+<p>有几个库可以在Go中调整图像大小。 软件包golang.org/x/image/draw是以下选项之一:</p>
 <pre><code>func resize(src image.Image, dstSize image.Point) *image.RGBA {
     srcRect := src.Bounds()
     dstRect := image.Rectangle{
@@ -506,41 +506,39 @@ for y := img.Bounds().Min.Y; y &lt; img.Bounds().Max.Y; y++ {
     draw.CatmullRom.Scale(dst, dstRect, src, srcRect, draw.Over, nil)
     return dst
 }
-</code></pre><p>要点：</p>
+</code></pre><p>要点:</p>
 <p>我们返回image.RGBA而不是image.Image，因为Go的最佳实践是接受接口作为函数的参数，但返回具体类型
 图像边界不必从(0,0)开始，因此对于源图像，我们要求边界矩形。我们自己创建目标图像，所以我们创建的边界以(0,0)开始
 缩放接口非常通用，因此有些复杂。包绘制是其核心，它是一个合成引擎，它允许使用特定的操作来合成(绘制)位图图像。 draw.Over是一种操作，可以选择使用遮罩在一个图像上绘制另一个图像。
 resizing是作为Scaler接口实现的，它接收目标图像，目标图像内的矩形，源图像，源图像内的矩形并将源矩形绘制为目标矩形。当目标矩形的尺寸与源矩形的尺寸不同时，会发生大小调整
-该软件包实现了4种不同的缩放算法：
+该软件包实现了4种不同的缩放算法:
 最近的邻居-快速，低质量
 近似双线性-速度较慢，质量更好
 双线性-甚至更慢，高质量
 catmull-rom-最慢，最高质量
 draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法可以作为draw.NearestNeighbor，draw.ApproxBiLinear和draw.BiLinear包全局变量使用
-放在一起：要将源图像调整为给定大小，我们创建所需大小的目标图像，然后使用全局缩放器之一的Scale方法将源图像绘制到目标中，而调整大小是使用scaler的副作用。</p>
+放在一起:要将源图像调整为给定大小，我们创建所需大小的目标图像，然后使用全局缩放器之一的Scale方法将源图像绘制到目标中，而调整大小是使用scaler的副作用。</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Images/">https://luangeng.space/post/go/basic/Images/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Images/">https://luangeng.space/post/go/basic/Images/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -680,17 +678,6 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -716,7 +703,7 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -727,7 +714,7 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -738,7 +725,7 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -760,7 +747,7 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -789,8 +776,29 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -855,14 +863,6 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -871,15 +871,15 @@ draw.CatmullRom是实现catmull-rom算法的实例的全局变量。其他算法
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

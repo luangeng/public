@@ -13,12 +13,12 @@
   <meta itemprop="description" content="Maven安装配置使用">
   <meta property="og:title" content="Maven安装配置使用 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/maven/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/maven/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description" content="Maven安装配置使用">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/maven/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/maven/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/maven/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/maven/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -131,7 +131,7 @@
                                 <ul class="meta-single group">
                                     
                                     <li class="category">
-                                        <span>学习笔记</span>
+                                        <span>Java</span>
                                     </li>
                                     
                                 </ul>
@@ -199,7 +199,7 @@ tar:  $tar xzvf apache-maven-3.3.9-bin.tar.gz
 <p>POM (Project Object Model)
 一个项目所有的配置都放置在 POM 文件中,包括项目的类型、名字，管理依赖关系，定制插件的行为等等。</p>
 <p>在POM中，groupId + artifactId + packaging + version 才称为项目标识,能唯一确定一个项目, 可用来指定项目所依赖的其他项目，插件，或者父项目。</p>
-<p>格式一般如下：     groupId:artifactId:packaging:version      比如:     com.mycompanyname.helloworld: helloworld: jar: 1.0-SNAPSHOT</p>
+<p>格式一般如下:     groupId:artifactId:packaging:version      比如:     com.mycompanyname.helloworld: helloworld: jar: 1.0-SNAPSHOT</p>
 <p>大项目一般会分成几个子项目。在这种情况下，每个子项目就会有自己的 POM 文件，然后它们会有一个共同的父项目。这样只要构建父项目就能够构建所有的子项目了。子项目的 POM 会继承父项目的 POM。另外，所有的 POM都继承了一个 Super-POM。Super-POM 设置了一些默认值，比如默认的目录结构，默认的插件等.</p>
 <p>Maven 插件
 maven整合了各种插件, 如Jar，Compiler，Surefire等。Jar 用来建立Jar文件， Compiler 插件用来编译源代码和单元测试代码。Surefire 插件运行单元测试。</p>
@@ -208,15 +208,15 @@ maven整合了各种插件, 如Jar，Compiler，Surefire等。Jar 用来建立Ja
 <p>Maven 生命周期
 生命周期指项目的构建过程，它包含了一系列的有序的阶段 (phase)，而一个阶段就是构建过程中的一个步骤。mvn package 是一个maven的生命周期阶段 (lifecycle phase)。</p>
 <p>插件目标可以绑定到生命周期阶段上。一个生命周期阶段可以绑定多个插件目标。当 maven 在构建过程中逐步的通过每个阶段时，会执行该阶段所有的插件目标。</p>
-<p>maven 能支持不同的生命周期，但是最常用的是默认的Maven生命周期。如果你没有对它进行任何的插件配置或者定制的话，那么命令 mvn package 会依次执行默认生命周期中直到包括 package 阶段前的所有阶段的插件目标：</p>
-<p>process-resources 阶段：resources:resources</p>
-<p>compile 阶段：compiler:compile</p>
-<p>process-classes 阶段：(默认无目标)</p>
-<p>process-test-resources 阶段：resources:testResources</p>
-<p>test-compile 阶段：compiler:testCompile</p>
-<p>test 阶段：surefire:test</p>
-<p>prepare-package 阶段：(默认无目标)</p>
-<p>package 阶段：jar:jar</p>
+<p>maven 能支持不同的生命周期，但是最常用的是默认的Maven生命周期。如果你没有对它进行任何的插件配置或者定制的话，那么命令 mvn package 会依次执行默认生命周期中直到包括 package 阶段前的所有阶段的插件目标:</p>
+<p>process-resources 阶段:resources:resources</p>
+<p>compile 阶段:compiler:compile</p>
+<p>process-classes 阶段:(默认无目标)</p>
+<p>process-test-resources 阶段:resources:testResources</p>
+<p>test-compile 阶段:compiler:testCompile</p>
+<p>test 阶段:surefire:test</p>
+<p>prepare-package 阶段:(默认无目标)</p>
+<p>package 阶段:jar:jar</p>
 <p>Maven 依赖管理
 在 POM 中，依赖关系是在 dependencies 部分中定义的。比如:</p>
 <pre><code>&lt;dependencies&gt;
@@ -235,18 +235,18 @@ maven整合了各种插件, 如Jar，Compiler，Surefire等。Jar 用来建立Ja
 <p>scope 的默认值是 compile，即任何时候都会被包含在 classpath 中，在打包的时候也会被包括进去。</p>
 <p>Maven 库
 当第一次运行 maven 命令的时候，会从 maven 默认的远程库(<a href="http://repo1.maven.org/maven2">http://repo1.maven.org/maven2</a>) 下载 maven 的核心插件和可供下载的 jar 文件。</p>
-<p>但是不是所有的 jar 文件都是可以从默认的远程库下载的，比如说我们自己开发的项目。这个时候，有两个选择：要么在公司内部设置定制库，要么手动下载和安装所需的jar文件到本地库。</p>
+<p>但是不是所有的 jar 文件都是可以从默认的远程库下载的，比如说我们自己开发的项目。这个时候，有两个选择:要么在公司内部设置定制库，要么手动下载和安装所需的jar文件到本地库。</p>
 <p>本地库是指 maven 下载了插件或者 jar 文件后存放在本地机器上的拷贝。在 Linux 上，它的位置在 ~/.m2/repository，在 Windows XP 上，在 C:\Documents and Settings\username.m2\repository ，在 Windows 7 上，在 C:\Users\username.m2\repository。当 maven 查找需要的 jar 文件时，它会先在本地库中寻找，只有在找不到的情况下，才会去远程库中找。</p>
-<p>运行下面的命令能把项目安装到本地库：     $mvn install</p>
+<p>运行下面的命令能把项目安装到本地库:     $mvn install</p>
 <p>一旦一个项目被安装到了本地库后，其他的项目就可以通过 maven 坐标和这个项目建立依赖关系。</p>
-<p>比如如果我现在有一个新项目需要用到 helloworld，那么在运行了上面的 mvn install 命令后，我就可以如下所示来建立依赖关系：</p>
+<p>比如如果我现在有一个新项目需要用到 helloworld，那么在运行了上面的 mvn install 命令后，我就可以如下所示来建立依赖关系:</p>
 <pre><code>&lt;dependency&gt;
       &lt;groupId&gt;com.mycompany.helloworld&lt;/groupId&gt;
       &lt;artifactId&gt;helloworld&lt;/artifactId&gt;
       &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre><p>依赖Jar查找:  <a href="http://search.maven.org/">http://search.maven.org/</a></p>
-<p>标准目录结构：</p>
+<p>标准目录结构:</p>
 <pre><code>src
 
   -main
@@ -309,24 +309,22 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/maven/">https://luangeng.space/post/other/maven/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/maven/">https://luangeng.space/post/java/other/maven/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -387,7 +385,7 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -398,7 +396,7 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -409,7 +407,7 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -431,7 +429,7 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -460,8 +458,29 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -515,15 +534,15 @@ target是有存放项目构建后的文件和目录，jar包、war包、编译�
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

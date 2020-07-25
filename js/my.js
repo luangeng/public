@@ -115,7 +115,7 @@ function save() {
 function queryRanking() {
   var Counter = AV.Object.extend("Counter");
   var query = new AV.Query(Counter);
-  query.limit(9);
+  query.limit(7);
   query.descending('hits');
   query.notEqualTo('title', '关于').find()
     .then(function (results) {

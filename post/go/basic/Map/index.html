@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go map类型</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2629 Words
+                                            Posted @ 2018-09-09 · 2622 Words
                                             
                                             · Tags: Go
                                             
@@ -176,7 +176,7 @@ var m2 map[string]int // 初始值为nil
 </code></pre><p>map是引用类型，一旦声明其零值为nil。 写入nil map将导致panic，读取nil map将始终返回其零值。</p>
 <p>使用make方法初始化map:</p>
 <pre><code>m := make(map[string]int)
-</code></pre><p>也可以为map指定初始容量：</p>
+</code></pre><p>也可以为map指定初始容量:</p>
 <pre><code>m := make(map[string]int, 30)
 </code></pre><p>也可以使用{}初始化map的值</p>
 <pre><code>var m map[string]int = map[string]int{&quot;Foo&quot;: 20, &quot;Bar&quot;: 30}
@@ -211,7 +211,7 @@ var m = map[string]Person{}
 m := map[string]Person{}
 </code></pre><h2 id="创建map">创建map</h2>
 <p>可以使用复合语法在单个语句中声明和初始化map。</p>
-<p>使用自动类型短变量声明：</p>
+<p>使用自动类型短变量声明:</p>
 <pre><code>mapIntInt := map[int]int{10: 100, 20: 100, 30: 1000}
 mapIntString := map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
 mapStringInt := map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
@@ -221,7 +221,7 @@ mapStringString := map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar
 var mapIntString = map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
 var mapStringInt = map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
 var mapStringString = map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
-</code></pre><p>还可以在map中包含自己的结构,即使用自定义类型作为值：</p>
+</code></pre><p>还可以在map中包含自己的结构,即使用自定义类型作为值:</p>
 <pre><code>// Custom struct types
 type Person struct {
   FirstName, LastName string
@@ -271,7 +271,7 @@ fmt.Println(data)
 k  := m[&quot;foo&quot;]  // returns &quot;foo_value&quot; since that is the value stored in the map
 k2 := m[&quot;bar&quot;]  // returns &quot;&quot; since that is the value stored in the map
 k3 := m[&quot;nop&quot;]  // returns &quot;&quot; since the key does not exist, and &quot;&quot; is the string type's zero value
-</code></pre><p>那么要区分零值和不存在的键，可以使用get的第二个返回值(例如<code>value, hasKey：= map [“ key”]</code>)</p>
+</code></pre><p>那么要区分零值和不存在的键，可以使用get的第二个返回值(例如<code>value, hasKey:= map [“ key”]</code>)</p>
 <p>第二个值是布尔型</p>
 <ul>
 <li>true 当map中包含这个key</li>
@@ -429,7 +429,7 @@ fmt.Printf(&quot;\ndelete() sets back to nil slice: %#v\n&quot;, m[&quot;key1&qu
 After appending to slice: []int{8, 3}<br>
 delete() sets back to nil slice: []int(nil)</p>
 </blockquote>
-<p>注意到在m[&ldquo;key1&rdquo;] = append(m[&ldquo;key1&rdquo;], 8)时我们没有检查m[&ldquo;key1&rdquo;]是否存在. 这是三个规则相互影响的结果：</p>
+<p>注意到在m[&ldquo;key1&rdquo;] = append(m[&ldquo;key1&rdquo;], 8)时我们没有检查m[&ldquo;key1&rdquo;]是否存在. 这是三个规则相互影响的结果:</p>
 <ol>
 <li>m[&ldquo;foo&rdquo;] 如果不存在foo键，则返回零值</li>
 <li>slice的零值是nil</li>
@@ -438,7 +438,7 @@ delete() sets back to nil slice: []int(nil)</p>
 <h2 id="并发访问map">并发访问map</h2>
 <p>Go中的map不是并发安全的</p>
 <p>确保并发安全的一种访问方法是使用sync.Mutex或sync.RWMutex锁定所有映射进行读取和写入。</p>
-<p>例如，一个简单的map包装器，只要通过Get，Set和Add方法完成，即可安全地并发使用：</p>
+<p>例如，一个简单的map包装器，只要通过Get，Set和Add方法完成，即可安全地并发使用:</p>
 <pre><code>package main
 
 import (
@@ -562,24 +562,22 @@ After deletion : len(m)=1</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Map/">https://luangeng.space/post/go/basic/Map/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Map/">https://luangeng.space/post/go/basic/Map/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -719,17 +717,6 @@ After deletion : len(m)=1</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -755,7 +742,7 @@ After deletion : len(m)=1</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -766,7 +753,7 @@ After deletion : len(m)=1</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -777,7 +764,7 @@ After deletion : len(m)=1</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -799,7 +786,7 @@ After deletion : len(m)=1</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -828,8 +815,29 @@ After deletion : len(m)=1</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -894,14 +902,6 @@ After deletion : len(m)=1</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -910,15 +910,15 @@ After deletion : len(m)=1</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

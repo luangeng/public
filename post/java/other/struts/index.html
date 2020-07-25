@@ -167,7 +167,7 @@
                                                 
                                                 <p>在Eclipse下基于Maven整合Struts2，Spring和Mybatis3框架。</p>
 <p>新建Maven project，type选择webapp</p>
-<p>修改pom.xml文件如下：</p>
+<p>修改pom.xml文件如下:</p>
 <pre><code> &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
      xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
      &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -250,7 +250,7 @@
          &lt;finalName&gt;javaweb&lt;/finalName&gt;
      &lt;/build&gt;
  &lt;/project&gt;
-</code></pre><p>在resources目录下添加applicationContext.xml文件：</p>
+</code></pre><p>在resources目录下添加applicationContext.xml文件:</p>
 <pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
  &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
@@ -295,7 +295,7 @@
      &lt;/bean&gt;
  
  &lt;/beans&gt;
-</code></pre><p>在resources目录下添加配置文件jdbc.properties：</p>
+</code></pre><p>在resources目录下添加配置文件jdbc.properties:</p>
 <pre><code> # JDBC Configuration  
  driver=com.mysql.jdbc.Driver
  url=jdbc:mysql://localhost:3306/web
@@ -308,7 +308,7 @@
  maxIdle=20
  minIdle=1
  maxWait=60000
-</code></pre><p>在resources目录下添加struts配置文件struts.xml：</p>
+</code></pre><p>在resources目录下添加struts配置文件struts.xml:</p>
 <pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
  &lt;!DOCTYPE struts PUBLIC &quot;-//Apache Software Foundation//DTD Struts Configuration 2.1//EN&quot; &quot;http://struts.apache.org/dtds/struts-2.1.dtd&quot;&gt;
  &lt;struts&gt;
@@ -329,7 +329,7 @@
      &lt;include file=&quot;User.xml&quot;&gt;&lt;/include&gt;
      
  &lt;/struts&gt;    
-</code></pre><p>在resources目录下添加mybatis配置文件mybatis-config.xml：</p>
+</code></pre><p>在resources目录下添加mybatis配置文件mybatis-config.xml:</p>
 <pre><code> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
  &lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
@@ -346,7 +346,7 @@
      &lt;/typeAliases&gt;
      
  &lt;/configuration&gt;
-</code></pre><p>在web.xml中添加如下配置：</p>
+</code></pre><p>在web.xml中添加如下配置:</p>
 <pre><code> &lt;!-- spring的配置文件位置 --&gt;
      &lt;context-param&gt;
          &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
@@ -367,9 +367,9 @@
      &lt;listener&gt;
          &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
      &lt;/listener&gt;
-</code></pre><p>在工程中添加如下类：</p>
+</code></pre><p>在工程中添加如下类:</p>
 <p><img src="pic/2016/struts1.png" alt=""></p>
-<p>代码如下：</p>
+<p>代码如下:</p>
 <pre><code> package action;
  
  import java.io.IOException;
@@ -666,7 +666,7 @@
      &lt;/center&gt;
    &lt;/body&gt;
  &lt;/html&gt;
-</code></pre><p>启动mysql，创建数据库web，创建表f_user_t, 插入数据：</p>
+</code></pre><p>启动mysql，创建数据库web，创建表f_user_t, 插入数据:</p>
 <p><img src="pic/2016/struts2.png" alt=""></p>
 <p>启动Tomcat，访问 http://localhost:8080/javaweb/user/queryAllUser</p>
 <p><img src="pic/2016/struts3.png" alt=""></p>
@@ -675,24 +675,22 @@
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/other/struts/">https://luangeng.space/post/java/other/struts/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/struts/">https://luangeng.space/post/java/other/struts/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -753,7 +751,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -764,7 +762,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -775,7 +773,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -797,7 +795,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -826,8 +824,29 @@
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -881,15 +900,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

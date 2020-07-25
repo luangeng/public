@@ -180,7 +180,7 @@
 }
 </code></pre><p>在上面的示例中，<code>f.Close()</code>将在foo函数退出前执行。</p>
 <p>将<code>defer f.Close()</code>紧随<code>os.Open()</code>之后，可以轻松确保始终调用Close.</p>
-<p>也使用匿名函数延迟执行多条语句：</p>
+<p>也使用匿名函数延迟执行多条语句:</p>
 <pre><code>func foo() {
   mutex1.Lock()
   mutex2.Lock()
@@ -193,7 +193,7 @@
   // ... more code
 }
 </code></pre><h2 id="多个defer">多个defer</h2>
-<p>如果一个函数中有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer(以下示例通过触发panic而返回)：</p>
+<p>如果一个函数中有多个defer语句，它们将形成一个栈。 最后一个defer是在函数返回之后第一个执行的，然后依次调用先前的defer(以下示例通过触发panic而返回):</p>
 <pre><code>func logNum(i int) {
     fmt.Printf(&quot;Num %d\n&quot;, i)
 }
@@ -221,7 +221,7 @@ main.main()<br>
 /tmp/src963563549/main.go:17 +0x152<br>
 exit status 2</p>
 </blockquote>
-<p>defer函数在执行时会计算其参数：</p>
+<p>defer函数在执行时会计算其参数:</p>
 <pre><code>func logNum(i int) {
     fmt.Printf(&quot;Num %d\n&quot;, i)
 }
@@ -240,7 +240,7 @@ Num 4<br>
 Num 2<br>
 Num 1</p>
 </blockquote>
-<p>如果一个函数具有命名的返回值，则即使该函数返回，该函数中的defer匿名函数也可以访问和更新返回的值：</p>
+<p>如果一个函数具有命名的返回值，则即使该函数返回，该函数中的defer匿名函数也可以访问和更新返回的值:</p>
 <pre><code>func plusOne(i int) (result int) {
     // anonymous function must be called by adding ()
     defer func() { result++ }()
@@ -257,8 +257,8 @@ func main() {
 <p>2</p>
 </blockquote>
 <h2 id="defer-pitfalls">Defer pitfalls</h2>
-<p>使用defer时，请牢记以下几点：defer函数在函数结束时调用。</p>
-<p>defer语句是函数范围，而不是代码块范围, 换句话说：defer调用在退出函数时执行，而不是在执行使用if或for语句创建的块时执行。</p>
+<p>使用defer时，请牢记以下几点:defer函数在函数结束时调用。</p>
+<p>defer语句是函数范围，而不是代码块范围, 换句话说:defer调用在退出函数时执行，而不是在执行使用if或for语句创建的块时执行。</p>
 <pre><code>func main() {
     fmt.Print(&quot;Before if\n&quot;)
     if true {
@@ -287,7 +287,7 @@ inside if</p>
 </blockquote>
 <p>一个常见的错误是认为该代码将输出0和1。当我们看到defer时，这些就是i的值。</p>
 <p>但是，defer创建一个仅通过引用捕获变量i的闭包。 它不捕获变量的值。</p>
-<p>当我们看什么代码执行时，应该变得很清楚：</p>
+<p>当我们看什么代码执行时，应该变得很清楚:</p>
 <pre><code>var i int
 for i = 0; i &lt; 2; i++ {
     // create closure that references i by reference
@@ -296,7 +296,7 @@ for i = 0; i &lt; 2; i++ {
 fmt.Printf(&quot;%d\n&quot;, i) // from created by defer in second loop iteration (remember: reverse order)
 fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop iteration
 </code></pre><p>现在很明显，当我们调用deferred fmt.Printf时，我是2。</p>
-<p>我们可以通过强制捕获变量来解决此问题：</p>
+<p>我们可以通过强制捕获变量来解决此问题:</p>
 <pre><code>func main() {
     for i := 0; i &lt; 2; i++ {
         defer func(i2 int) {
@@ -314,24 +314,22 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Defer/">https://luangeng.space/post/go/basic/Defer/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Defer/">https://luangeng.space/post/go/basic/Defer/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -471,17 +469,6 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Panic-recover/" rel="bookmark" class="leancloud-count">Go Panic和recover
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -507,7 +494,7 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -518,7 +505,7 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -529,7 +516,7 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -551,7 +538,7 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -580,8 +567,29 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -646,14 +654,6 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Panic-recover/">Go Panic和recover</a></li>
-                
             </ul>
         </div>
         
@@ -662,15 +662,15 @@ fmt.Printf(&quot;%d\n&quot;, i) // from closure created by defer in first loop i
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

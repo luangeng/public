@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Spring Cloud Bus-RabbitMQ</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-11 · 1185 Words
+                                            Posted @ 2017-09-11 · 1144 Words
                                             
                                             · Tags: springcloud
                                             
@@ -167,8 +167,8 @@
                                                 
                                                 <p>Spring Cloud Bus将分布式系统中各节点通过轻量级消息代理连接起来。 从而实现例如广播状态改变(例如配置改变)或其他的管理指令。 目前唯一的实现是使用AMQP代理作为传输对象。</p>
 <p>Spring Cloud Bus又被称为消息总线，负责管理和传播所有分布式系统中的消息，通过集成MQ实现广播机制，目前常用的有Kafka和RabbitMQ。利用bus的机制可以做很多的事情，其中配置中心客户端刷新就是典型的应用场景。及利用消息总线，可以实现当配置中心的refresh命令触发后，通过广播发送到每一个配置使用端。</p>
-<p>Spring已经在Config包中完成了大部分的工作，我们只需要在之前的配置中心的基础上，做如下修改：</p>
-<p>1.给config-server和config-client增加依赖：</p>
+<p>Spring已经在Config包中完成了大部分的工作，我们只需要在之前的配置中心的基础上，做如下修改:</p>
+<p>1.给config-server和config-client增加依赖:</p>
 <pre><code>&lt;dependency&gt;
      &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
      &lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;
@@ -182,10 +182,10 @@ spring.rabbitmq.password=lg
 <p>4.在github上修改配置文件，刷新config-client查看配置，此时未更新</p>
 <p>然后执行 <code>curl -X POST http://localhost:8011/bus/refresh</code> 后，再次查看config-client配置，此时已经更新</p>
 <p>5.登录RabbitMQ 管理页面，可查看到connecting，queue等信息。</p>
-<p>有时候可能需要部分刷新，即只刷新指定的config-client，spring同样支持，只需要在调用/bus/refresh接口时传递destination参数即可，如：</p>
+<p>有时候可能需要部分刷新，即只刷新指定的config-client，spring同样支持，只需要在调用/bus/refresh接口时传递destination参数即可，如:</p>
 <p><code>/bus/refresh?destination=config-client:8031</code> 或 <code>/bus/refresh?destination=config-client:**</code></p>
 <p>自定义消息并通过消息总线发送</p>
-<p>在之前几个项目的基础上，我们做如下修改：</p>
+<p>在之前几个项目的基础上，我们做如下修改:</p>
 <p>1.config-server类增加Sender类</p>
 <pre><code>@Component
 public class Sender {
@@ -201,7 +201,7 @@ public class Sender {
         this.rabbitTemplate.convertAndSend(&quot;hello&quot;, msg);
     }
 }
-</code></pre><p>2.config-server类增加定时任务，给主类加注解@EnableScheduling，每3秒发一次消息：</p>
+</code></pre><p>2.config-server类增加定时任务，给主类加注解@EnableScheduling，每3秒发一次消息:</p>
 <pre><code>@Component
 public class ScheduledTasks {
 
@@ -226,8 +226,8 @@ public class Receiver {
 
 }
 </code></pre><p>4.依次启动 eureka config-server config-client</p>
-<p>5.观察控制台输出如下：</p>
-<p>config-server：</p>
+<p>5.观察控制台输出如下:</p>
+<p>config-server:</p>
 <pre><code>Sender : msg1 Sun Aug 06 21:56:03 CST 2017
 Sender : msg2 Sun Aug 06 21:56:06 CST 2017
 Sender : msg3 Sun Aug 06 21:56:09 CST 2017
@@ -237,42 +237,40 @@ Sender : msg6 Sun Aug 06 21:56:18 CST 2017
 Sender : msg7 Sun Aug 06 21:56:21 CST 2017
 Sender : msg8 Sun Aug 06 21:56:24 CST 2017
 Sender : msg9 Sun Aug 06 21:56:27 CST 2017
-</code></pre><p>config-client1：</p>
+</code></pre><p>config-client1:</p>
 <pre><code>Receiver : msg2 Sun Aug 06 21:56:06 CST 2017
 Receiver : msg4 Sun Aug 06 21:56:12 CST 2017
 Receiver : msg6 Sun Aug 06 21:56:18 CST 2017
 Receiver : msg8 Sun Aug 06 21:56:24 CST 2017
-</code></pre><p>config-client2：</p>
+</code></pre><p>config-client2:</p>
 <pre><code>Receiver : msg1 Sun Aug 06 21:56:03 CST 2017
 Receiver : msg3 Sun Aug 06 21:56:09 CST 2017
 Receiver : msg5 Sun Aug 06 21:56:15 CST 2017
 Receiver : msg7 Sun Aug 06 21:56:21 CST 2017
 Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
 </code></pre><p>可见client从单个queue中依次取消息</p>
-<p>参考：http://projects.spring.io/spring-cloud/spring-cloud.html</p>
+<p>参考:http://projects.spring.io/spring-cloud/spring-cloud.html</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/">https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/">https://luangeng.space/post/java/spring/spring-cloud-rabbitmq/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -382,7 +380,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -393,7 +391,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -404,7 +402,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -426,7 +424,7 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -455,8 +453,29 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -525,15 +544,15 @@ Receiver : msg9 Sun Aug 06 21:56:27 CST 2017
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

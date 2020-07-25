@@ -18,7 +18,7 @@
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-base/</guid>
-      <description>初始设置： git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
+      <description>初始设置: git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库: git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-undo/</guid>
-      <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
+      <description>修改上一次错误的提交:(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
     </item>
     
   </channel>

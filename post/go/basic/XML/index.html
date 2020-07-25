@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go XML</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 1620 Words
+                                            Posted @ 2018-09-09 · 2250 Words
                                             
                                             · Tags: Go
                                             
@@ -165,62 +165,60 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.</p>
-<p>Parse XML into a struct
-Parsing XML is similar to parsing JSON. You define structures that map to the structure of XML and unmarshal from []byte slice or io.Reader into a struct.</p>
-<p>var xmlStr = `
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->John<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->CA<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<pre><code>&lt;person age=&quot;23&quot;&gt;
-    &lt;first-name&gt;Julia&lt;/first-name&gt;
-&lt;/person&gt;
-</code></pre>
-<p><!-- raw HTML omitted -->`</p>
-<p>type People struct {
-Person []Person <code>xml:&quot;person&quot;</code>
-}</p>
-<p>type Person struct {
-Age       int     <code>xml:&quot;age,attr&quot;</code>
-FirstName string  <code>xml:&quot;first-name&quot;</code>
-Address   Address <code>xml:&quot;address&quot;</code>
-}</p>
-<p>type Address struct {
-City  *string <code>xml:&quot;city&quot;</code>
-State string  <code>xml:&quot;state&quot;</code>
-}</p>
-<p>var people People
+                                                <p>标准库中的encoding/xml包提供了XML格式的序列化功能.</p>
+<h2 id="将xml解析为struct">将XML解析为struct</h2>
+<p>解析XML与解析JSON类似。可以从[]byte, slice或io.Reader获取XML数据。</p>
+<pre><code>var xmlStr = `
+&lt;people&gt;
+    &lt;person age=&quot;34&quot;&gt;
+        &lt;first-name&gt;John&lt;/first-name&gt;
+        &lt;address&gt;
+            &lt;city&gt;San Francisco&lt;/city&gt;
+            &lt;state&gt;CA&lt;/state&gt;
+        &lt;/address&gt;
+    &lt;/person&gt;
+
+    &lt;person age=&quot;23&quot;&gt;
+        &lt;first-name&gt;Julia&lt;/first-name&gt;
+    &lt;/person&gt;
+&lt;/people&gt;`
+
+type People struct {
+    Person []Person `xml:&quot;person&quot;`
+}
+
+type Person struct {
+    Age       int     `xml:&quot;age,attr&quot;`
+    FirstName string  `xml:&quot;first-name&quot;`
+    Address   Address `xml:&quot;address&quot;`
+}
+
+type Address struct {
+    City  *string `xml:&quot;city&quot;`
+    State string  `xml:&quot;state&quot;`
+}
+
+var people People
 data := []byte(xmlStr)
 err := xml.Unmarshal(data, &amp;people)
 if err != nil {
-log.Fatalf(&ldquo;xml.Unmarshal failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+    log.Fatalf(&quot;xml.Unmarshal failed with '%s'\n&quot;, err)
 }
-fmt.Printf(&quot;%#v\n\n&rdquo;, people)</p>
-<pre><code>main.People{Person:[]main.Person{main.Person{Age:34, FirstName:&quot;John&quot;, Address:main.Address{City:(*string)(0xc000010430), State:&quot;CA&quot;}}, main.Person{Age:23, FirstName:&quot;Julia&quot;, Address:main.Address{City:(*string)(nil), State:&quot;&quot;}}}}
-
-Unlike with serializing, when unmarshalling into a struct, we must pass a pointer to struct. Otherwise xml.Unmarshal will receive and modify a copy of the struct, not the struct itself. The copy will be then discarded after returning from xml.Unmarshal.
-
-In XML a value can be represented as element (&lt;state&gt;CA&lt;/state&gt;) or attribute (&lt;person age=&quot;34&quot;&gt;).
-
-In xml struct tags element is the default. To switch to attribute, add ,attr to struct xml tag as done for Age.
-
-All struct fields are optional. When not present in XML text their values will be untouched. When decoding into newly initialized struct their value will be zero value for a given type.
-
-Field City shows that XML decoder can automatically decode into a pointer to a value.
-
-This is useful when you need to know if a value was present in XML or not. If we used string for City field, we wouldn’t know if empty string means:
-
-city element was not present in XML
-element was present but had empty value (&lt;city&gt;&lt;/city&gt;)
-By using a pointer to a string we know that nil means there was no value.
-
-Serialize a struct as XML
-type People struct {
+fmt.Printf(&quot;%#v\n\n&quot;, people)
+</code></pre><blockquote>
+<p>main.People{Person:[]main.Person{main.Person{Age:34, FirstName:&ldquo;John&rdquo;, Address:main.Address{City:(*string)(0xc000010430), State:&ldquo;CA&rdquo;}}, main.Person{Age:23, FirstName:&ldquo;Julia&rdquo;, Address:main.Address{City:(*string)(nil), State:&quot;&quot;}}}}</p>
+</blockquote>
+<p>与序列化不同，当解组为结构时，必须传递指向结构的指针。否则，xml.Unmarshal将接收并修改该结构的副本，而不是结构本身。从xml.Unmarshal返回后，该副本将被丢弃。</p>
+<p>在XML中，值可以表示为元素（<!-- raw HTML omitted --> CA &lt;/ state&gt;）或属性（&lt;person age =“ 34”&gt;）。</p>
+<p>在xml中，struct tags元素是默认值。要切换到属性，请像为Age一样，将，attr添加到struct xml标记中。</p>
+<p>所有结构字段都是可选的。当不以XML文本形式出现时，其值将保持不变。当解码为新初始化的struct时，对于给定类型，其值为零。</p>
+<p>Field City显示XML解码器可以自动将其解码为指向值的指针。</p>
+<p>当您需要知道XML中是否存在值时，这很有用。如果我们在“城市”字段中使用字符串，则不知道空字符串是否意味着：</p>
+<p>XML中不存在city元素
+元素存在但值为空（<!-- raw HTML omitted --> &lt;/ city&gt;）
+通过使用指向字符串的指针，我们知道nil表示没有值。</p>
+<h2 id="将struct序列化为xml">将struct序列化为XML</h2>
+<pre><code>type People struct {
     XMLName        xml.Name `xml:&quot;people&quot;`
     Person         []Person `xml:&quot;person&quot;`
     noteSerialized int
@@ -258,32 +256,36 @@ if err != nil {
     log.Fatalf(&quot;xml.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Pretty printed XML:\n%s\n&quot;, string(d))
-</code></pre><p>Compact XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted --><!-- raw HTML omitted -->CA<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p>Pretty printed XML:
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->John<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->CA<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-Both xml.Marshal and xml.MarshalIndent take interface{} as first argument. We can pass any Go value and it’ll be wrapped into interface{} with their type.</p>
-<p>Marshaller will use reflection to inspect passed value and encode it as XML strings.</p>
-<p>When serializing structs, only exported fields (whose names start with capital letter) are serialized / deserialized.</p>
-<p>In our example, noteSerialized is not serialized.</p>
-<p>Structs are serialized as XML elements.</p>
-<p>Simple types can be serialized as XML elements or attributes (Age field in Person struct)</p>
-<p>By default name of element / attribute is the same as name of the field.</p>
-<p>We can provide custom mappings with struct tags.</p>
-<p>xml:&ldquo;city&rdquo; tells XML encoder to use name city for field City.</p>
-<p>When serializing structs, passing the value or a pointer to xml.Marshal generates the same result.</p>
-<p>Passing a pointer is more efficient because passing by value creates unnecessary copy.</p>
-<p>xml.MarshallIndent allows for pretty-printing of nested structures. The result takes up more space but is easier to read.</p>
-<p>XMLName allows to control the name of top-level element. In our example, without providing XML element, the data would be serialized based on the struct name:</p>
-<!-- raw HTML omitted -->
-<h2 id="pull-streaming-xml-parsing">Pull (streaming) XML parsing</h2>
+</code></pre><blockquote>
+<p>Compact XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted --><!-- raw HTML omitted -->CA<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>Pretty printed XML:<br>
+<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->John<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted -->CA<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --><br>
+<!-- raw HTML omitted --></p>
+</blockquote>
+<p>xml.Marshal和xml.MarshalIndent都将interface {}作为第一个参数。我们可以传递任何Go值，并将其类型包装到interface {}中。</p>
+<p>Marshaller将使用反射来检查传递的值并将其编码为XML字符串。</p>
+<p>在序列化结构时，仅对导出的字段（其名称以大写字母开头）进行序列化/反序列化。</p>
+<p>在我们的示例中，noteSerialized未序列化。</p>
+<p>结构被序列化为XML元素。</p>
+<p>简单类型可以序列化为XML元素或属性（Person结构中的Age字段）</p>
+<p>默认情况下，元素/属性的名称与字段的名称相同。</p>
+<p>我们可以提供带有struct标签的自定义映射。</p>
+<p>xml：“ city”告诉XML编码器将名称city用于字段City。</p>
+<p>序列化结构时，将值或指针传递给xml.Marshal会生成相同的结果。</p>
+<p>传递指针效率更高，因为按值传递会创建不必要的副本。</p>
+<p>xml.MarshallIndent允许漂亮地打印嵌套结构。结果占用更多空间，但更易于阅读。</p>
+<p>XMLName允许控制顶级元素的名称。在我们的示例中，如果不提供XML元素，则将根据结构名称对数据进行序列化：</p>
+<pre><code>&lt;People&gt;
+    ....
+&lt;/People&gt;
+</code></pre><h2 id="pull-streaming-xml-parsing">Pull (streaming) XML parsing</h2>
 <p>Parsing into a struct is convenient but requires a lot of memory to hold the whole decoded document in memory.</p>
 <p>In some cases XML files are so large that it’s not possible to decode the whole file into memory. For example XML dumps of Wikipedia content are several gigabytes in size.</p>
 <p>Pull parsing is more efficient but API is harder to use.</p>
@@ -296,50 +298,70 @@ Pull parsing requests next token from stream of XML tokens.</p>
 <p>In the above example we print age attribute of <!-- raw HTML omitted --> element and char data inside <!-- raw HTML omitted --> element.</p>
 <p>This is a very basic example. In real programs you might need to remember more state.</p>
 <p>For example, if your XML is:</p>
-<!-- raw HTML omitted -->
+<pre><code>&lt;foo&gt;
+  &lt;bar&gt;
+    &lt;foo&gt;&lt;/foo&gt;
+  &lt;/bar&gt;
+&lt;/foo&gt;
+</code></pre><p>If you look just at the xml.StartElement token, you don’t know if foo is for the top-level element or is it a child of <!-- raw HTML omitted --> element.</p>
 <h2 id="hybrid-xml-parsing-combine-pull-and-unmarshal">Hybrid XML parsing: combine pull and unmarshal</h2>
 <p>Pull parsing is efficient but tedious.</p>
 <p>We can combine pull parsing with decoding into a struct.</p>
-<p>var xmlStr = <code>&lt;people&gt; &lt;person age=&quot;34&quot;&gt; &lt;first-name&gt;John&lt;/first-name&gt; &lt;address&gt; &lt;city&gt;San Francisco&lt;/city&gt; &lt;state&gt;CA&lt;/state&gt; &lt;/address&gt; &lt;/person&gt; &lt;person age=&quot;23&quot;&gt; &lt;address&gt; &lt;city&gt;Austin&lt;/city&gt; &lt;state&gt;TX&lt;/state&gt; &lt;/address&gt; &lt;/person&gt; &lt;/people&gt;</code></p>
-<p>type Address struct {
-City  string <code>xml:&quot;city&quot;</code>
-State string <code>xml:&quot;state&quot;</code>
-}</p>
-<p>r := bytes.NewBufferString(xmlStr)
+<pre><code>var xmlStr = `
+&lt;people&gt;
+    &lt;person age=&quot;34&quot;&gt;
+        &lt;first-name&gt;John&lt;/first-name&gt;
+        &lt;address&gt;
+            &lt;city&gt;San Francisco&lt;/city&gt;
+            &lt;state&gt;CA&lt;/state&gt;
+        &lt;/address&gt;
+    &lt;/person&gt;
+    &lt;person age=&quot;23&quot;&gt;
+        &lt;address&gt;
+            &lt;city&gt;Austin&lt;/city&gt;
+            &lt;state&gt;TX&lt;/state&gt;
+        &lt;/address&gt;
+    &lt;/person&gt;
+&lt;/people&gt;`
+
+type Address struct {
+    City  string `xml:&quot;city&quot;`
+    State string `xml:&quot;state&quot;`
+}
+
+r := bytes.NewBufferString(xmlStr)
 decoder := xml.NewDecoder(r)
 for {
-t, err := decoder.Token()
-if err == io.EOF {
-// io.EOF is a successful end
-break
-}
-if err != nil {
-fmt.Printf(&ldquo;decoder.Token() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
-break
-}</p>
-<pre><code>switch v := t.(type) {
+    t, err := decoder.Token()
+    if err == io.EOF {
+        // io.EOF is a successful end
+        break
+    }
+    if err != nil {
+        fmt.Printf(&quot;decoder.Token() failed with '%s'\n&quot;, err)
+        break
+    }
 
-case xml.StartElement:
-    if v.Name.Local == &quot;address&quot; {
-        var address Address
-        err = decoder.DecodeElement(&amp;address, &amp;v)
-        if err != nil {
-            fmt.Printf(&quot;decoder.DecodeElement() failed with '%s'\n&quot;, err)
-            break
+    switch v := t.(type) {
+
+    case xml.StartElement:
+        if v.Name.Local == &quot;address&quot; {
+            var address Address
+            err = decoder.DecodeElement(&amp;address, &amp;v)
+            if err != nil {
+                fmt.Printf(&quot;decoder.DecodeElement() failed with '%s'\n&quot;, err)
+                break
+            }
+            fmt.Printf(&quot;%+#v\n&quot;, address)
         }
-        fmt.Printf(&quot;%+#v\n&quot;, address)
     }
 }
-</code></pre>
-<p>}</p>
-<pre><code>main.Address{City:&quot;San Francisco&quot;, State:&quot;CA&quot;}
-main.Address{City:&quot;Austin&quot;, State:&quot;TX&quot;}
-
-
-## Parse XML from file
-We can decode XML data from a file on disk.
-
-func decodeFromReader(r io.Reader) (*People, error) {
+</code></pre><blockquote>
+<p>main.Address{City:&ldquo;San Francisco&rdquo;, State:&ldquo;CA&rdquo;}
+main.Address{City:&ldquo;Austin&rdquo;, State:&ldquo;TX&rdquo;}</p>
+</blockquote>
+<h2 id="从文件解析xml">从文件解析XML</h2>
+<pre><code>func decodeFromReader(r io.Reader) (*People, error) {
     var people People
     decoder := xml.NewDecoder(r)
     err := decoder.Decode(&amp;people)
@@ -362,24 +384,27 @@ func decodeFromFile(path string) (*People, error) {
     defer f.Close()
     return decodeFromReader(f)
 }
-</code></pre><p>&amp;main.People{Person:[]main.Person{main.Person{Age:34, FirstName:&ldquo;John&rdquo;, Address:main.Address{City:(*string)(0xc000010430), State:&ldquo;CA&rdquo;}}, main.Person{Age:23, FirstName:&ldquo;Julia&rdquo;, Address:main.Address{City:(*string)(nil), State:&quot;&quot;}}}}</p>
+</code></pre><blockquote>
+<p>&amp;main.People{Person:[]main.Person{main.Person{Age:34, FirstName:&ldquo;John&rdquo;, Address:main.Address{City:(*string)(0xc000010430), State:&ldquo;CA&rdquo;}}, main.Person&gt; {Age:23, FirstName:&ldquo;Julia&rdquo;, Address:main.Address{City:(*string)(nil), State:&quot;&quot;}}}}</p>
+</blockquote>
 <p>By writing a helper function decodeFromReader, we can easily write wrappers that will work on files, strings or network connections.</p>
 <h2 id="configuring-xml-parsing-and-serialization">Configuring XML parsing and serialization</h2>
 <p>You can modify how a struct is serialized to XML by annotating fields with tags.</p>
 <p>By providing XMLName, this will be serialized as <!-- raw HTML omitted -->&hellip;<!-- raw HTML omitted --> and not <!-- raw HTML omitted -->..<!-- raw HTML omitted -->.</p>
-<p>type ShowXMLName struct {
-XMLName xml.Name <code>xml:&quot;data&quot;</code>
-N       int      <code>xml:&quot;n&quot;</code>
-}</p>
-<p>v := &amp;ShowXMLName{
-N: 5,
+<pre><code>type ShowXMLName struct {
+    XMLName xml.Name `xml:&quot;data&quot;`
+    N       int      `xml:&quot;n&quot;`
 }
-printXML(v)</p>
-<pre><code>XML: &lt;data&gt;&lt;n&gt;5&lt;/n&gt;&lt;/data&gt;
 
-Fields marked with xml:&quot;-&quot; are not serialized.
-
-type ShowOmit struct {
+v := &amp;ShowXMLName{
+    N: 5,
+}
+printXML(v)
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->5<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
+<p>Fields marked with xml:&quot;-&rdquo; are not serialized.</p>
+<pre><code>type ShowOmit struct {
     Name          string `xml:&quot;name&quot;`
     NotSerialized string `xml:&quot;-&quot;`
 }
@@ -389,22 +414,25 @@ v := &amp;ShowOmit{
     NotSerialized: &quot;Connor&quot;,
 }
 printXML(v)
-</code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
 <p>To skip serializing fields with empty values, use xml:&quot;,omitempty&rdquo;.</p>
-<p>type ShowOmitEmpty struct {
-NonEmpty string <code>xml:&quot;,omitempty&quot;</code>
-Empty    string <code>xml:&quot;,omitempty&quot;</code>
-}</p>
-<p>v := &amp;ShowOmitEmpty{
-NonEmpty: &ldquo;non empty&rdquo;,
-Empty:    &ldquo;&quot;,
+<pre><code>type ShowOmitEmpty struct {
+    NonEmpty string `xml:&quot;,omitempty&quot;`
+    Empty    string `xml:&quot;,omitempty&quot;`
 }
-printXML(v)</p>
-<pre><code>XML: &lt;ShowOmitEmpty&gt;&lt;NonEmpty&gt;non empty&lt;/NonEmpty&gt;&lt;/ShowOmitEmpty&gt;
 
-To change serialization from XML element to XML attribute use xml:&quot;,attr&quot;.
-
-type ShowAttr struct {
+v := &amp;ShowOmitEmpty{
+    NonEmpty: &quot;non empty&quot;,
+    Empty:    &quot;&quot;,
+}
+printXML(v)
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->non empty<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
+<p>To change serialization from XML element to XML attribute use xml:&quot;,attr&rdquo;.</p>
+<pre><code>type ShowAttr struct {
     B bool `xml:&quot;n,attr&quot;`
 }
 
@@ -412,20 +440,23 @@ v := &amp;ShowAttr{
     B: true,
 }
 printXML(v)
-</code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
 <p>To change serialization from XML element to character data use xml:&quot;,chardata&rdquo;.</p>
-<p>type ShowCharData struct {
-S string <code>xml:&quot;,chardata&quot;</code>
-}</p>
-<p>v := &amp;ShowCharData{
-S: &ldquo;str&rdquo;,
+<pre><code>type ShowCharData struct {
+    S string `xml:&quot;,chardata&quot;`
 }
-printXML(v)</p>
-<pre><code>XML: &lt;ShowCharData&gt;str&lt;/ShowCharData&gt;
 
-To change serialization from XML element to CDATA use xml:&quot;,cdata&quot;.
-
-type ShowCData struct {
+v := &amp;ShowCharData{
+    S: &quot;str&quot;,
+}
+printXML(v)
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted -->str<!-- raw HTML omitted --></p>
+</blockquote>
+<p>To change serialization from XML element to CDATA use xml:&quot;,cdata&rdquo;.</p>
+<pre><code>type ShowCData struct {
     S string `xml:&quot;,cdata&quot;`
 }
 
@@ -433,22 +464,25 @@ v := &amp;ShowCData{
     S: &quot;cdata&quot;,
 }
 printXML(v)
-</code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
 <p>To serialize the value verbatim, use xml:&quot;,innerxml&rdquo;.</p>
-<p>type ShowInnerXML struct {
-Str string <code>xml:&quot;s&quot;</code>
-Raw string <code>xml:&quot;,innerxml&quot;</code>
-}</p>
-<p>v := &amp;ShowInnerXML{
-Str: &ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->&rdquo;,
-Raw: &ldquo;<!-- raw HTML omitted --><!-- raw HTML omitted -->&rdquo;,
+<pre><code>type ShowInnerXML struct {
+    Str string `xml:&quot;s&quot;`
+    Raw string `xml:&quot;,innerxml&quot;`
 }
-printXML(v)</p>
-<pre><code>XML: &lt;ShowInnerXML&gt;&lt;s&gt;&amp;lt;foo&amp;gt;&amp;lt;/foo&amp;gt;&lt;/s&gt;&lt;foo&gt;&lt;/foo&gt;&lt;/ShowInnerXML&gt;
 
-To serialize field as XML comment, use xml:&quot;,comment&quot;. Value can’t contain --.
-
-type ShowComment struct {
+v := &amp;ShowInnerXML{
+    Str: &quot;&lt;foo&gt;&lt;/foo&gt;&quot;,
+    Raw: &quot;&lt;foo&gt;&lt;/foo&gt;&quot;,
+}
+printXML(v)
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;foo&gt;&lt;/foo&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
+<p>To serialize field as XML comment, use xml:&quot;,comment&rdquo;. Value can’t contain &ndash;.</p>
+<pre><code>type ShowComment struct {
     Str string `xml:&quot;,comment&quot;`
 }
 
@@ -456,130 +490,128 @@ v := &amp;ShowComment{
     Str: &quot;comment&quot;,
 }
 printXML(v)
-</code></pre><p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
 <p>xml:&ldquo;a&gt;b&gt;str&rdquo; nests XML element. This also influences parsing.</p>
-<p>type ShowNesting struct {
-Str string <code>xml:&quot;a&gt;b&gt;str&quot;</code>
-}</p>
-<p>v := &amp;ShowNesting{
-Str: &ldquo;str&rdquo;,
+<pre><code>type ShowNesting struct {
+    Str string `xml:&quot;a&gt;b&gt;str&quot;`
 }
-printXML(v)</p>
-<pre><code>XML: &lt;ShowNesting&gt;&lt;a&gt;&lt;b&gt;&lt;str&gt;str&lt;/str&gt;&lt;/b&gt;&lt;/a&gt;&lt;/ShowNesting&gt;
 
-## Custom XML marshaling
-Writing custom XML marshalling
-Sometimes a type doesn’t have an obvious mapping to JSON.
-
-How would you serialize time.Time? There are so many possibilities.
-
-Go provides a default XML mapping for time.Time. We can implement custom marshaller for user-defined types like structs.
-
-For existing types we can define a new (but compatible) type.
-
-Here’s a custom marshalling and unmarshalling for time.Time that only serializes year/month/date part:
-
-type Event struct {
-    What string
-    When time.Time
+v := &amp;ShowNesting{
+    Str: &quot;str&quot;,
+}
+printXML(v)
+</code></pre><blockquote>
+<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->str<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+</blockquote>
+<h2 id="custom-xml-marshaling">Custom XML marshaling</h2>
+<p>Writing custom XML marshalling
+Sometimes a type doesn’t have an obvious mapping to JSON.</p>
+<p>How would you serialize time.Time? There are so many possibilities.</p>
+<p>Go provides a default XML mapping for time.Time. We can implement custom marshaller for user-defined types like structs.</p>
+<p>For existing types we can define a new (but compatible) type.</p>
+<p>Here’s a custom marshalling and unmarshalling for time.Time that only serializes year/month/date part:</p>
+<p>type Event struct {
+What string
+When time.Time
 }
 e := Event{
-    What: &quot;earthquake&quot;,
-    When: time.Now(),
+What: &ldquo;earthquake&rdquo;,
+When: time.Now(),
 }
 d, err := xml.Marshal(&amp;e)
 if err != nil {
-    log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
+log.Fatalf(&ldquo;json.MarshalIndent failed with &lsquo;%s&rsquo;\n&rdquo;, err)
 }
-fmt.Printf(&quot;Standard time JSON: %s\n&quot;, string(d))
-
-type customTime time.Time
-
-const customTimeFormat = `2006-02-01`
-
-func (ct customTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
-    t := time.Time(ct)
-    v := t.Format(customTimeFormat)
-    return e.EncodeElement(v, start)
+fmt.Printf(&ldquo;Standard time JSON: %s\n&rdquo;, string(d))</p>
+<p>type customTime time.Time</p>
+<p>const customTimeFormat = <code>2006-02-01</code></p>
+<p>func (ct customTime) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+t := time.Time(ct)
+v := t.Format(customTimeFormat)
+return e.EncodeElement(v, start)
+}</p>
+<p>func (ct *customTime) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+var s string
+err := d.DecodeElement(&amp;s, &amp;start)
+if err != nil {
+return err
 }
-
-func (ct *customTime) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-    var s string
-    err := d.DecodeElement(&amp;s, &amp;start)
-    if err != nil {
-        return err
-    }
-    t, err := time.Parse(customTimeFormat, s)
-    if err != nil {
-        return err
-    }
-    *ct = customTime(t)
-    return nil
+t, err := time.Parse(customTimeFormat, s)
+if err != nil {
+return err
 }
-
-type Event2 struct {
-    What string
-    When customTime
-}
-
-e := Event2{
-    What: &quot;earthquake&quot;,
-    When: customTime(time.Now()),
+*ct = customTime(t)
+return nil
+}</p>
+<p>type Event2 struct {
+What string
+When customTime
+}</p>
+<p>e := Event2{
+What: &ldquo;earthquake&rdquo;,
+When: customTime(time.Now()),
 }
 d, err := xml.Marshal(&amp;e)
 if err != nil {
-    log.Fatalf(&quot;xml.Marshal failed with '%s'\n&quot;, err)
+log.Fatalf(&ldquo;xml.Marshal failed with &lsquo;%s&rsquo;\n&rdquo;, err)
 }
-fmt.Printf(&quot;\nCustom time XML: %s\n&quot;, string(d))
+fmt.Printf(&quot;\nCustom time XML: %s\n&rdquo;, string(d))
 var decoded Event2
 err = xml.Unmarshal(d, &amp;decoded)
 if err != nil {
-    log.Fatalf(&quot;xml.Unmarshal failed with '%s'\n&quot;, err)
+log.Fatalf(&ldquo;xml.Unmarshal failed with &lsquo;%s&rsquo;\n&rdquo;, err)
 }
 t := time.Time(decoded.When)
-fmt.Printf(&quot;Decoded custom time: %s\n&quot;, t.Format(customTimeFormat))
+fmt.Printf(&ldquo;Decoded custom time: %s\n&rdquo;, t.Format(customTimeFormat))</p>
+<p>notCustom()
+custom()</p>
+<pre><code>Standard time JSON: &lt;Event&gt;&lt;What&gt;earthquake&lt;/What&gt;&lt;When&gt;2019-11-06T04:19:54.27741912Z&lt;/When&gt;&lt;/Event&gt;
 
-notCustom()
-custom()
-</code></pre><p>Standard time JSON: <!-- raw HTML omitted --><!-- raw HTML omitted -->earthquake<!-- raw HTML omitted --><!-- raw HTML omitted -->2019-11-06T04:19:54.27741912Z<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p>Custom time XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->earthquake<!-- raw HTML omitted --><!-- raw HTML omitted -->2019-06-11<!-- raw HTML omitted --><!-- raw HTML omitted -->
+Custom time XML: &lt;Event2&gt;&lt;What&gt;earthquake&lt;/What&gt;&lt;When&gt;2019-06-11&lt;/When&gt;&lt;/Event2&gt;
 Decoded custom time: 2019-06-11
-Notice that receiver type of UnmashalXML is a pointer to the type.</p>
-<p>This is necessary for changes to persist outside the function itself.</p>
-<p>Custom marshaling behind the scenes
-How does custom marshaling works?</p>
-<p>Package XML defines 2 interfaces: Marshaler and Unmarshaler.</p>
-<p>type Marshaler interface {
-MarshalXML(e *Encoder, start StartElement) error
-}</p>
-<p>type Unmarshaler interface {
-UnmarshalXML(d *Decoder, start StartElement) error
-}
-By implementing those functions we make our type conform to Marshaler or Unmarshaler interface.</p>
-<p>XML encoder / decoder checks if the value being encoded conforms to those interfaces and will call those functions instead of executing default logic.</p>
+Notice that receiver type of UnmashalXML is a pointer to the type.
 
+This is necessary for changes to persist outside the function itself.
+
+Custom marshaling behind the scenes
+How does custom marshaling works?
+
+Package XML defines 2 interfaces: Marshaler and Unmarshaler.
+
+type Marshaler interface {
+    MarshalXML(e *Encoder, start StartElement) error
+}
+
+type Unmarshaler interface {
+    UnmarshalXML(d *Decoder, start StartElement) error
+}
+By implementing those functions we make our type conform to Marshaler or Unmarshaler interface.
+
+XML encoder / decoder checks if the value being encoded conforms to those interfaces and will call those functions instead of executing default logic.
+
+</code></pre>
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/XML/">https://luangeng.space/post/go/basic/XML/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/XML/">https://luangeng.space/post/go/basic/XML/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -719,17 +751,6 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -755,7 +776,7 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -766,7 +787,7 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -777,7 +798,7 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -799,7 +820,7 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -828,8 +849,29 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -894,14 +936,6 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -910,15 +944,15 @@ By implementing those functions we make our type conform to Marshaler or Unmarsh
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

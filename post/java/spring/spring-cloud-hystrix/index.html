@@ -169,7 +169,7 @@
 <p>断路器就像电路中的断路器一样，当短路发生时，它第一时刻熔断，切断了故障电路，保护其他用电单元。</p>
 <p>在分布式架构中，断路器的作用类似，当某个服务单元发生了故障，通过断路器的故障监控，直接切断原来的主逻辑调用，强迫以后的多个服务调用不再访问远程服务器，防止应用程序继续执行或等待超时。熔断器也可以监控服务单元的错误是否已经修正，如果已经修正，应用程序会再次尝试调用操作。</p>
 <p>在微服务架构中，系统被拆分成了一个个小的服务单元，各自运行在自己的线程中，各单元之间通过注册与订阅的方式互相远程调用，此时若网络故障或是某一服务挂掉则会出现调用延迟，进一步导致调用方的对外服务也出现延迟，如果调用方的请求不断增加，服务单元线程资源无法释放，队列装满，最终导致故障的蔓延，故断路器就是解决这种问题的。</p>
-<p>Hystrix是Spring Cloud中实现此功能的单元，他有如下保护机制：</p>
+<p>Hystrix是Spring Cloud中实现此功能的单元，他有如下保护机制:</p>
 <p>1.服务降级</p>
 <p>对于查询操作, 我们可以实现一个fallback方法, 当请求后端服务出现异常的时候, 可以使用fallback方法返回的值. fallback方法的返回值一般是设置的默认值或者来自缓存.</p>
 <p>2.断路器</p>
@@ -206,7 +206,7 @@ public class HystrixService {
     RestTemplate restTemplate;
 
     /**
-     * 拼接方式： http://服务名/接口名  (未指定ip和端口)
+     * 拼接方式: http://服务名/接口名  (未指定ip和端口)
      */
     @HystrixCommand(fallbackMethod = &quot;fallback&quot;)
     public String consumer() {
@@ -244,10 +244,10 @@ public class RibbonController {
 </code></pre><p>nohy方法直接调用服务，无断路保护，hy方法有断路保护</p>
 <p>6.依次启动 Eureka &gt; client &gt; consumer</p>
 <p>首先分别访问 http://localhost:8081/ribbon 和 http://localhost:8081/ribbonhy 都可以正确调用，说明断路器不影响正常的服务。</p>
-<p>其次在client中打断点模拟延迟和故障，再访问 http://localhost:8081/ribbon 和 http://localhost:8081/ribbonhy 对比效果：</p>
+<p>其次在client中打断点模拟延迟和故障，再访问 http://localhost:8081/ribbon 和 http://localhost:8081/ribbonhy 对比效果:</p>
 <p>没有断路保护的/ribbon页面一直在加载，而又断路保护的/ribbonhy则立即返回我们指定的错误信息，说明断路器已正常工作。</p>
-<p>启用Feign的项目如何配置断路器：</p>
-<p>1.修改接口如下：</p>
+<p>启用Feign的项目如何配置断路器:</p>
+<p>1.修改接口如下:</p>
 <pre><code>@FeignClient(name=&quot;client&quot;, fallback = FeignService.class)
 public interface FeignInterface {
 
@@ -287,24 +287,22 @@ public class FeignController {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-hystrix/">https://luangeng.space/post/java/spring/spring-cloud-hystrix/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/spring-cloud-hystrix/">https://luangeng.space/post/java/spring/spring-cloud-hystrix/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -392,7 +390,7 @@ public class FeignController {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -403,7 +401,7 @@ public class FeignController {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -414,7 +412,7 @@ public class FeignController {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -436,7 +434,7 @@ public class FeignController {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -465,8 +463,29 @@ public class FeignController {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -531,15 +550,15 @@ public class FeignController {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

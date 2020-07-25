@@ -181,7 +181,7 @@
 <p>许多API期望使用非null值，如果传递nil将会崩溃，因此最好始终传递使用context.Background()或context.TODO()创建的API。</p>
 <p>没有性能问题，因为这些函数返回共享的全局变量(是不变的！)。</p>
 <p>使用带超时的上下文设置HTTP请求的超时
-重复执行HTTP客户端文章中的示例，这是一种创建超时的上下文的方法，以确保HTTP GET请求不会永远挂起：</p>
+重复执行HTTP客户端文章中的示例，这是一种创建超时的上下文的方法，以确保HTTP GET请求不会永远挂起:</p>
 <pre><code>// httpbin.org is a service for testing HTTP client
 // this URL waits 3 seconds before returning a response
 uri := &quot;https://httpbin.org/delay/3&quot;
@@ -269,7 +269,7 @@ func main() {
 <p>编写可以通过上下文取消的函数要困难得多。</p>
 <p>当时间到期或调用context.WithCancel()或context.WithTimeout()返回的cancel函数时，会在上下文中发出一个通道信号。</p>
 <p>编写可取消函数时，您必须定期检查context.Done()返回的通道，并在收到信号后立即返回。</p>
-<p>它确实使代码笨拙：</p>
+<p>它确实使代码笨拙:</p>
 <pre><code>func longMathOp(ctx context.Context, n int) (int, error) {
     res := n
     for i := 0; i &lt; 100; i++ {
@@ -307,7 +307,7 @@ Called longMathOp() with 10ms timeout. res: 0, err: context deadline exceeded</p
 <h2 id="上下文是价值树">上下文是价值树</h2>
 <p>通过包装现有的不可变上下文并添加其他信息来创建上下文。</p>
 <p>由于您可以多次“分支”同一上下文，因此可以将上下文值视为值树。</p>
-<p>下面的树：</p>
+<p>下面的树:</p>
 <pre><code>ctx := context.WithValue(
     context.WithDeadline(
         context.WithValue(context.Background(), sidKey, sid),
@@ -317,7 +317,7 @@ Called longMathOp() with 10ms timeout. res: 0, err: context deadline exceeded</p
 )
 trCtx := trace.NewContext(ctx, tr)
 logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
-</code></pre><p>可以形象化为：</p>
+</code></pre><p>可以形象化为:</p>
 <p>上下文表示为有向图</p>
 <p>每个子上下文都可以访问其父上下文的值。</p>
 <p>数据访问在树中向上流动(由黑色边缘表示)。</p>
@@ -326,11 +326,11 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
 <h2 id="contexttodo-vs-contextbackground">context.TODO() vs. context.Background()</h2>
 <p>您可以使用context.TODO()和context.Background()创建新的空上下文。</p>
 <p>有什么不同？</p>
-<p>在功能方面：无。它们是逐位完全相同的值。</p>
+<p>在功能方面:无。它们是逐位完全相同的值。</p>
 <p>区别在于目的。</p>
-<p>官方文档将context.TODO()描述为：</p>
+<p>官方文档将context.TODO()描述为:</p>
 <p>TODO返回一个非空的Context。当不清楚要使用哪个上下文或尚不可用时(因为尚未扩展周围的功能以接受Context参数)，代码应使用context.TODO。静态分析工具可识别TODO，该工具可确定上下文是否在程序中正确传播。
-和context.Background()为：</p>
+和context.Background()为:</p>
 <p>Background返回一个非空的Context。它永远不会被取消，没有价值，也没有期限。它通常由主要功能，初始化和测试使用，并用作传入请求的顶级上下文。
 坦白说，我不确定他们想说什么。</p>
 <p>我猜context.TODO()是用于如果您希望将来不再需要在此处创建上下文的情况，因为它将从外部传递，或者会有更多创建它的特定方法。</p>
@@ -340,24 +340,22 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Context/">https://luangeng.space/post/go/basic/Context/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Context/">https://luangeng.space/post/go/basic/Context/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -497,17 +495,6 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Panic-recover/" rel="bookmark" class="leancloud-count">Go Panic和recover
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -533,7 +520,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -544,7 +531,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -555,7 +542,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -577,7 +564,7 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -606,8 +593,29 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -672,14 +680,6 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Panic-recover/">Go Panic和recover</a></li>
-                
             </ul>
         </div>
         
@@ -688,15 +688,15 @@ logCtx := myRequestLogging.NewContext(ctx, myRequestLogging.NewLogger())
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

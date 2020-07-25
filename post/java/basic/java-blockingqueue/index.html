@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取，</p>
-<p>构造函数：</p>
+<p>构造函数:</p>
 <pre><code>
 ArrayBlockingQueue(int capacity)
 
@@ -175,7 +175,7 @@ ArrayBlockingQueue(int capacity, boolean fair)
 ArrayBlockingQueue(int capacity, boolean fair, Collection&lt;? extends E&gt; c)
 </code></pre><p>其中capacity为队列的容量，初始化后不可变化。</p>
 <p>fair表示多线程操作时是否排队，默认为false，即不保证等待最久的线程优先唤醒。</p>
-<p>public方法：</p>
+<p>public方法:</p>
 <pre><code>
 boolean add(E e)　　在队尾添加，若队列已满则抛出异常，成功返回true
 
@@ -202,7 +202,7 @@ boolean remove(Object o) 　　移除一个equals(o)的元素
 boolean contains(Object o)   返回是否包含equals(o)
 
 void clear()　　清空队列
-</code></pre><p>实现原理：</p>
+</code></pre><p>实现原理:</p>
 <h2 id="put">put</h2>
 <pre><code>public void put(E e) throws InterruptedException {
         checkNotNull(e);
@@ -251,7 +251,7 @@ void clear()　　清空队列
         return x;
     }
 </code></pre><p>首先获取可中断锁，然后判断队列中是否为空，是则notEmpty状态等待，否则取出元素并激活等待notFull状态的线程，最后解锁。</p>
-<p>其他阻塞队列：</p>
+<p>其他阻塞队列:</p>
 <p>//链表实现的队列，动态大小</p>
 <p><code>BlockingQueue&lt;String&gt; queue2 = new LinkedBlockingQueue&lt;String&gt;();</code></p>
 <p>//有优先级的阻塞队列</p>
@@ -263,24 +263,22 @@ void clear()　　清空队列
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/java-blockingqueue/">https://luangeng.space/post/java/basic/java-blockingqueue/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/basic/java-blockingqueue/">https://luangeng.space/post/java/basic/java-blockingqueue/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -445,7 +443,7 @@ void clear()　　清空队列
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -456,7 +454,7 @@ void clear()　　清空队列
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -467,7 +465,7 @@ void clear()　　清空队列
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -489,7 +487,7 @@ void clear()　　清空队列
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -518,8 +516,29 @@ void clear()　　清空队列
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -584,12 +603,6 @@ void clear()　　清空队列
                 
                 <li><a href="https://luangeng.space/post/java/basic/java-threadlocal/">Java基础--ThreadLocal</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/basic/java-io/">Java基础--读写文件</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-gz/">Java基础--压缩和解压缩gz包</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-enum/">Java基础--枚举Enum</a></li>
-                
             </ul>
         </div>
         
@@ -598,15 +611,15 @@ void clear()　　清空队列
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

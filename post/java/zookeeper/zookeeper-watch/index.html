@@ -171,8 +171,8 @@
 <p>通过exists，getChildren和getData这些读操作可以设置观察，通过create，delete和setData这些写操作触发观察。当一个观察被触发时会产生一个事件，这个观察和触发它的操作共同决定了观察事件的类型。</p>
 <p>1.当所观察的znode被创建，删除或其数据被更新时，设置在exists操作上的观察被触发。</p>
 <p>2.当所观察的znode被删除或其数据被更新时，设置在getData操作上的观察被触发。创建znode不会触发getData上的观察。</p>
-<p>3.当所观察的znode的子节点被创建或删除，或所观察的znode被删除时，设置在getChildren上的观察会被触发。通过观察事件的类型来判断被删除的是znode还是其子节点：NodeDelete或NodeChildrenChanged。</p>
-<h2 id="观察和触发映射表">观察和触发映射表：</h2>
+<p>3.当所观察的znode的子节点被创建或删除，或所观察的znode被删除时，设置在getChildren上的观察会被触发。通过观察事件的类型来判断被删除的是znode还是其子节点:NodeDelete或NodeChildrenChanged。</p>
+<h2 id="观察和触发映射表">观察和触发映射表:</h2>
 <pre><code>                          创建节点               创建子节点                      删除节点                     删除子节点                       setData
 </code></pre>
 <p>exists                    NodeCreated                                              NodeDeleted                                                    NodeDataChanged</p>
@@ -180,17 +180,17 @@
 <p>getChildren                                   NodeChildrenChanged           NodeDeleted              NodeChildrenChanged</p>
 <p>观察事件参数中可获取到被观察节点的路径，因此对于NodeCreated和NodeDeleted事件可获取到是哪个节点被创建和获取。</p>
 <p>对于NodeChildrenChanged事件则需要使用getChildren方法获取新创建的节点。</p>
-<p>对于NodeDataChanged事件则需要调用getData方法获取更新后的数据。注意：观察被触发后和获取数据之间节点可能又发生了变化。</p>
+<p>对于NodeDataChanged事件则需要调用getData方法获取更新后的数据。注意:观察被触发后和获取数据之间节点可能又发生了变化。</p>
 <p>ACL相关的操作不触发任何观察。</p>
 <h2 id="acl-访问控制表">ACL (访问控制表)</h2>
 <p>每个znode被创建时都需要指定一个ACL列表，定义了该节点被执行各种操作的权限。</p>
-<p>ACL依赖于Zookeeper的客户端身份验证机制。zk提供了以下几种验证方式：</p>
+<p>ACL依赖于Zookeeper的客户端身份验证机制。zk提供了以下几种验证方式:</p>
 <p>Digest 　  通过用户名和密码来识别客户端</p>
 <p>sasl   　　通过Kerberos来识别客户端</p>
 <p>IP   　　　通过客户端IP地址来识别客户端</p>
 <p>每个ACL都是验证方式和赋予权限的组合，如 new ACL(Perms.READ, new ID(&ldquo;ip&rdquo;, &ldquo;10.11.19.18&rdquo;));  使用IP验证方式赋予READ权限</p>
 <p>注意exists操作不需要任何权限，因此任何客户端都可以调用。</p>
-<p>ACL权限表：</p>
+<p>ACL权限表:</p>
 <ul>
 <li>
 <p>CREATE　　允许create</p>
@@ -214,24 +214,22 @@
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-watch/">https://luangeng.space/post/java/zookeeper/zookeeper-watch/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-watch/">https://luangeng.space/post/java/zookeeper/zookeeper-watch/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -330,7 +328,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -341,7 +339,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -352,7 +350,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -374,7 +372,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -403,8 +401,29 @@
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -471,15 +490,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -166,9 +166,9 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>开发ZeroMQ的SpringBoot Starter。</p>
-<p>resources中META-INF中增加文件spring.factories：</p>
+<p>resources中META-INF中增加文件spring.factories:</p>
 <p><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration</code></p>
-<p>配置文件类：ZeroMQProperties</p>
+<p>配置文件类:ZeroMQProperties</p>
 <pre><code>@ConfigurationProperties(prefix = &quot;spring.zeromq&quot;)
 @Setter
 @Getter
@@ -190,7 +190,7 @@ public class ZeroMQProperties {
         private String address;
     }
 }
-</code></pre><p>自动配置类：ZeroMQAutoConfiguration</p>
+</code></pre><p>自动配置类:ZeroMQAutoConfiguration</p>
 <pre><code>@Configuration
 @EnableConfigurationProperties(ZeroMQProperties.class)
 public class ZeroMQAutoConfiguration {
@@ -286,7 +286,7 @@ public class ZeroMQAutoConfiguration {
     }
 
 }
-</code></pre><p>发布者：Publisher</p>
+</code></pre><p>发布者:Publisher</p>
 <pre><code>public class Publisher&lt;T extends Serializable&gt; {
 
     private ZMQ.Context context;
@@ -311,7 +311,7 @@ public class ZeroMQAutoConfiguration {
     }
 
 }
-</code></pre><p>接收者注解：Subscriber</p>
+</code></pre><p>接收者注解:Subscriber</p>
 <pre><code>@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
@@ -326,11 +326,11 @@ public @interface Subscriber {
     int queueSize() default 20000;
 
 }
-</code></pre><p>接收者回调接口：MessageCallback</p>
+</code></pre><p>接收者回调接口:MessageCallback</p>
 <pre><code>public interface MessageCallback&lt;T extends Serializable&gt; {
     void onMessage(T msg);
 }
-</code></pre><p>接收者容器：SubscribContainer</p>
+</code></pre><p>接收者容器:SubscribContainer</p>
 <pre><code>@Data
 public class SubscribContainer extends Thread {
 
@@ -420,7 +420,7 @@ public class SubscribContainer extends Thread {
     }
 
 }
-</code></pre><p>使用：
+</code></pre><p>使用:
 引入jar包
 application.properties</p>
 <pre><code>server.port=8080
@@ -428,7 +428,7 @@ spring.zeromq.publisher.ioNum=4
 spring.zeromq.publisher.address=tcp://*:5557
 spring.zeromq.publisher.topic=test
 spring.zeromq.subscriber.address=tcp://localhost:5557
-</code></pre><p>启动类：</p>
+</code></pre><p>启动类:</p>
 <pre><code>@SpringBootApplication
 public class ZmqApplication implements CommandLineRunner {
 
@@ -455,7 +455,7 @@ public class ZmqApplication implements CommandLineRunner {
         }
     }
 }
-</code></pre><p>Person对象：</p>
+</code></pre><p>Person对象:</p>
 <pre><code>@Data
 public class Person implements Serializable {
 
@@ -471,7 +471,7 @@ public class Person implements Serializable {
 
     private Date birthday;
 }
-</code></pre><p>一个Controller：</p>
+</code></pre><p>一个Controller:</p>
 <pre><code>@RestController
 @RequestMapping(&quot;/zero&quot;)
 public class TestController {
@@ -485,7 +485,7 @@ public class TestController {
         return b ? &quot;success&quot; : &quot;error&quot;;
     }
 }
-</code></pre><p>订阅者1：</p>
+</code></pre><p>订阅者1:</p>
 <pre><code>@Subscriber(topic = &quot;topic1&quot;, threadSize = 5)
 public class SubscriberTest implements MessageCallback&lt;String&gt;, Serializable {
 
@@ -499,7 +499,7 @@ public class SubscriberTest implements MessageCallback&lt;String&gt;, Serializab
         }
     }
 }
-</code></pre><p>订阅者2：</p>
+</code></pre><p>订阅者2:</p>
 <pre><code>@Subscriber(topic = &quot;topic2&quot;, threadSize = 10)
 public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
 
@@ -518,24 +518,22 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/zeromq-springboot/">https://luangeng.space/post/java/spring/zeromq-springboot/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/zeromq-springboot/">https://luangeng.space/post/java/spring/zeromq-springboot/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -553,7 +551,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticsearch/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/elasticsearch/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>elasticsearch入门教程</span>
@@ -562,7 +560,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/github_login/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/other/github_login/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
                                             <span>集成通过github登录网站功能</span>
@@ -580,7 +578,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticJob/" rel="bookmark" class="leancloud-count">SpringBoot集成elastic-job-lite
+                <a href="https://luangeng.space/post/java/other/elasticJob/" rel="bookmark" class="leancloud-count">SpringBoot集成elastic-job-lite
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -656,7 +654,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -667,7 +665,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -678,7 +676,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -700,7 +698,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -729,8 +727,29 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -783,7 +802,7 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticJob/">SpringBoot集成elastic-job-lite</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/spring-ws/">Spring Boot发布和调用RESTful web service</a></li>
                 
@@ -801,15 +820,15 @@ public class SubscriberTest2 implements MessageCallback&lt;Person&gt; {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

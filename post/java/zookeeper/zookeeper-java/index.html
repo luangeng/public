@@ -167,18 +167,18 @@
                                                 
                                                 <h2 id="zookeeper--java-api及示例">Zookeeper&ndash;Java API及示例</h2>
 <p>zk客户端要连接zk服务器，首先需要创建org.apache.zookeeper.ZooKeeper的一个实例对象，然后调用该类的接口来和服务器交互。</p>
-<p>主要接口如下：</p>
+<p>主要接口如下:</p>
 <p><code>String create(String path, byte[] data, List&lt;ACL&gt; acl, CreateMode createMode)</code></p>
-<p>创建一个给定的目录节点path，并给它设置数据(所创建节点的父节点必须先存在)，CreateMode标识有4种形式的目录节点，分别是：</p>
+<p>创建一个给定的目录节点path，并给它设置数据(所创建节点的父节点必须先存在)，CreateMode标识有4种形式的目录节点，分别是:</p>
 <ul>
 <li>
-<p>PERSISTENT：持久化节点，节点储存的数据不会丢失</p>
+<p>PERSISTENT:持久化节点，节点储存的数据不会丢失</p>
 </li>
 <li>
-<p>PERSISTENT_SEQUENTIAL：按顺序自动编号的持久化节点，根据已经存在的节点名自动加一，并返回该名称</p>
+<p>PERSISTENT_SEQUENTIAL:按顺序自动编号的持久化节点，根据已经存在的节点名自动加一，并返回该名称</p>
 </li>
 <li>
-<p>EPHEMERAL：临时节点，一旦创建该节点的客户端与服务端session超时，该节点自动删除。</p>
+<p>EPHEMERAL:临时节点，一旦创建该节点的客户端与服务端session超时，该节点自动删除。</p>
 </li>
 <li>
 <p>EPHEMERAL_SEQUENTAL:临时自动编号节点</p>
@@ -211,7 +211,7 @@
 <p><code>List&lt;ACL&gt; getACL(String path, Stat stat)</code></p>
 <p>获取某个目录节点的访问权限列表</p>
 <hr>
-<p>示例：</p>
+<p>示例:</p>
 <pre><code>public class ZnodeTest {
 
     // 会话超时时间
@@ -223,7 +223,7 @@
     // 创建 Watcher 实例
     Watcher wh = new Watcher() {
         public void process(WatchedEvent event) {
-            System.out.println(&quot;监控到：&quot; + event.getType());
+            System.out.println(&quot;监控到:&quot; + event.getType());
         }
     };
 
@@ -246,12 +246,12 @@
         zk.create(&quot;/zoo/keep&quot;, &quot;keep data&quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
         zk.create(&quot;/zoo/keep&quot;, &quot;keep data&quot;.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL);
 
-        System.out.println(&quot;查看是否创建成功： &quot; + new String(zk.getData(&quot;/zoo&quot;, false, null)));
+        System.out.println(&quot;查看是否创建成功: &quot; + new String(zk.getData(&quot;/zoo&quot;, false, null)));
 
         System.out.println(&quot;修改节点数据 &quot;);
         zk.setData(&quot;/zoo&quot;, &quot;zoo data update&quot;.getBytes(), -1);
 
-        System.out.println(&quot;查看是否修改成功： &quot; + new String(zk.getData(&quot;/zoo&quot;, false, null)));
+        System.out.println(&quot;查看是否修改成功: &quot; + new String(zk.getData(&quot;/zoo&quot;, false, null)));
 
         System.out.println(&quot;查看子节点&quot;);
         List&lt;String&gt; keeps = zk.getChildren(&quot;/zoo&quot;, false);
@@ -262,7 +262,7 @@
         System.out.println(&quot;删除节点 &quot;);
         rDelete(&quot;/zoo&quot;);
 
-        System.out.println(&quot;查看节点是否被删除： &quot; + zk.exists(&quot;/zoo&quot;, false));
+        System.out.println(&quot;查看节点是否被删除: &quot; + zk.exists(&quot;/zoo&quot;, false));
 
     }
 
@@ -294,20 +294,20 @@
     }
 
 }
-</code></pre><p>输出：</p>
-<pre><code>监控到：None
+</code></pre><p>输出:</p>
+<pre><code>监控到:None
 level2:zookeeper
 创建节点zoo
 创建子节点keep
-查看是否创建成功： zoo data
+查看是否创建成功: zoo data
 修改节点数据
-查看是否修改成功： zoo data update
+查看是否修改成功: zoo data update
 查看子节点
 keeps:keep0000000001
 keeps:keep0000000000
 删除节点
-查看节点是否被删除： null
-</code></pre><p>递归删除节点及其子节点：</p>
+查看节点是否被删除: null
+</code></pre><p>递归删除节点及其子节点:</p>
 <pre><code>private void rDelete(String path) throws KeeperException, InterruptedException {
         if (zk.exists(path, false) == null) {
             return;
@@ -318,31 +318,29 @@ keeps:keep0000000000
         }
         zk.delete(path, -1);
     }
-</code></pre><p>参考：</p>
+</code></pre><p>参考:</p>
 <p><a href="http://zookeeper.apache.org/doc/r3.2.2/api/org/apache/zookeeper/ZooKeeper.html#create%28java.lang.String,%20byte%5B%5D,%20java.util.List,%20org.apache.zookeeper.CreateMode%29">http://zookeeper.apache.org/doc/r3.2.2/api/org/apache/zookeeper/ZooKeeper.html#create%28java.lang.String,%20byte%5B%5D,%20java.util.List,%20org.apache.zookeeper.CreateMode%29</a></p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-java/">https://luangeng.space/post/java/zookeeper/zookeeper-java/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-java/">https://luangeng.space/post/java/zookeeper/zookeeper-java/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -430,7 +428,7 @@ keeps:keep0000000000
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -441,7 +439,7 @@ keeps:keep0000000000
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -452,7 +450,7 @@ keeps:keep0000000000
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -474,7 +472,7 @@ keeps:keep0000000000
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -503,8 +501,29 @@ keeps:keep0000000000
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -569,15 +588,15 @@ keeps:keep0000000000
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

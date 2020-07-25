@@ -169,8 +169,8 @@
 <p>它支持构建，运行和测试代码，以及各种其他与Go相关的任务。</p>
 <h2 id="go-fmt">go fmt</h2>
 <p>为了保持代码的一致性并消除代码格式化方面的争论，Go提供了go fmt工具。</p>
-<p>格式化文件：<code>go fmt main.go</code></p>
-<p>或目录中的所有文件：<code>fmt myProject</code></p>
+<p>格式化文件:<code>go fmt main.go</code></p>
+<p>或目录中的所有文件:<code>fmt myProject</code></p>
 <p>也可以使用<code>gofmt -s</code>(而不是fmt)来尝试简化代码。</p>
 <p>gofmt(不是go fmt)也可以用于重构代码。 它了解Go语法，因此它比搜索和替换功能更强大。 例如，给定该程序(main.go):</p>
 <pre><code>package main
@@ -187,9 +187,9 @@ func main() {
     e := &amp;Example{&quot;Hello&quot;}
     e.Original(&quot;Goodbye&quot;)
 }
-</code></pre><p>可以使用gofmt将方法Original替换为Refactor：
+</code></pre><p>可以使用gofmt将方法Original替换为Refactor:
 <code>$ gofmt -r 'Original -&gt; Refactor' -d main.go</code></p>
-<p>这将产生差异：</p>
+<p>这将产生差异:</p>
 <pre><code>-func (e *Example) Original(name string) {
 +func (e *Example) Refactor(name string) {
         e.Name = name
@@ -202,7 +202,7 @@ func main() {
     }
 </code></pre><h2 id="go-run">go run</h2>
 <p>go run会在不创建可执行文件的情况下运行程序。 对开发最有用。 run将仅执行软件包名称为main的软件包。</p>
-<p>为了演示，我们将使用一个简单的Hello World示例main.go：</p>
+<p>为了演示，我们将使用一个简单的Hello World示例main.go:</p>
 <pre><code>package main
 
 import fmt
@@ -210,13 +210,13 @@ import fmt
 func main() {
     fmt.Println(&quot;Hello, World!&quot;)
 }
-</code></pre><p>无需编译即可执行：<code>go run main.go</code></p>
+</code></pre><p>无需编译即可执行:<code>go run main.go</code></p>
 <p>包中运行多个文件</p>
-<p>如果程序分为多个文件，则必须提供所有文件：
+<p>如果程序分为多个文件，则必须提供所有文件:
 <code>$ go run main.go assets.go</code></p>
 <h2 id="go-build">go build</h2>
 <p>go build会将程序编译为可执行文件。</p>
-<p>为了演示，我们将使用一个简单的Hello World示例main.go：</p>
+<p>为了演示，我们将使用一个简单的Hello World示例main.go:</p>
 <pre><code>package main
 
 import fmt
@@ -225,16 +225,16 @@ func main() {
     fmt.Println(&quot;Hello, World!&quot;)
 }
 </code></pre><p>编译程序运行: <code>go build main.go</code></p>
-<p>build将创建一个可执行程序，在这种情况下：main或main.exe。 然后运行此文件以查看输出Hello，World!。 还可以将其复制到未安装Go的类似系统上，使其可执行并在其中运行。</p>
-<p>在构建中指定操作系统或体系结构：
-可以在构建之前修改环境来指定要构建的系统或体系结构：</p>
+<p>build将创建一个可执行程序，在这种情况下:main或main.exe。 然后运行此文件以查看输出Hello，World!。 还可以将其复制到未安装Go的类似系统上，使其可执行并在其中运行。</p>
+<p>在构建中指定操作系统或体系结构:
+可以在构建之前修改环境来指定要构建的系统或体系结构:</p>
 <pre><code>$ env GOOS=linux go build main.go # builds for Linux
 $ env GOARCH=arm go build main.go # builds for ARM architecture
 </code></pre><p>构建多个文件</p>
-<p>如果将软件包拆分为多个文件，并且软件包名称为main(即，它不是可导入的软件包)，则必须指定要构建的所有文件：</p>
+<p>如果将软件包拆分为多个文件，并且软件包名称为main(即，它不是可导入的软件包)，则必须指定要构建的所有文件:</p>
 <pre><code>$ go build main.go assets.go # outputs an executable: main
 </code></pre><p>build一个包</p>
-<p>要构建一个名为main的软件包，可以简单地使用：</p>
+<p>要构建一个名为main的软件包，可以简单地使用:</p>
 <pre><code>$ go build . # outputs an executable with name as the name of enclosing folder
 </code></pre><h2 id="go-clean">go clean</h2>
 <p>go clean将删除运行go build时创建的临时文件。</p>
@@ -277,24 +277,22 @@ CGO_ENABLED=&quot;1&rdquo;
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Command/">https://luangeng.space/post/go/basic/Command/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Command/">https://luangeng.space/post/go/basic/Command/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -321,7 +319,7 @@ CGO_ENABLED=&quot;1&rdquo;
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticsearch-douban/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
                                             <span>爬取电影信息使用Elasticsearch检索</span>
@@ -434,17 +432,6 @@ CGO_ENABLED=&quot;1&rdquo;
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -470,7 +457,7 @@ CGO_ENABLED=&quot;1&rdquo;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -481,7 +468,7 @@ CGO_ENABLED=&quot;1&rdquo;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -492,7 +479,7 @@ CGO_ENABLED=&quot;1&rdquo;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -514,7 +501,7 @@ CGO_ENABLED=&quot;1&rdquo;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -543,8 +530,29 @@ CGO_ENABLED=&quot;1&rdquo;
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -609,14 +617,6 @@ CGO_ENABLED=&quot;1&rdquo;
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -625,15 +625,15 @@ CGO_ENABLED=&quot;1&rdquo;
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

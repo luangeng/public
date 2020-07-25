@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Netty--TCP粘包和拆包</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-14 · 1398 Words
+                                            Posted @ 2017-09-14 · 1386 Words
                                             
                                             · Tags: netty
                                             
@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>TCP协议以流的方式进行数据传输，它无法理解其上层协议的数据意义，而是根据TCP缓冲区的大小对数据进行拆分或组装，即上层一个完整的包可能被拆为几个TCP包来发送，或上层几个包会被组合为一个TCP包发送，这就是TCP的粘包和拆包问题。TCP协议按照自己的工作方式工作，包的拆分和组装问题就需要上层应用来解决，比如每次发送定长的数据包，数据包中包含数据的大小或在包结尾处增加标记等方法。</p>
-<p>Netty提供了多种解码器如LineBasedFrameDecoder和StringDecoder等来解决这个问题，只需要在pipeline中加入这些解码器即可，如：</p>
+<p>Netty提供了多种解码器如LineBasedFrameDecoder和StringDecoder等来解决这个问题，只需要在pipeline中加入这些解码器即可，如:</p>
 <p>&ndash;</p>
 <pre><code>new ChannelInitializer&lt;SocketChannel&gt;() {
     protected void initChannel(SocketChannel socketChannel) throws Exception {
@@ -176,10 +176,10 @@
     }
 }
 </code></pre><p>StringDecoder 作用是将接受到的对象转换为字符串，然后继续调用后面的handler。</p>
-<p>LineBasedFrameDecoder 以换号符为结束标记的解码器，它依次遍历ByteBuf中的可读字节，如果碰到\n 或\r\n则设置为结束。参数为最大长度，如果读到最大长度还是没有换号则会抛出异常： Unexpected exception from downstream : frame length (16) exceeds the allowed maximum (10)</p>
+<p>LineBasedFrameDecoder 以换号符为结束标记的解码器，它依次遍历ByteBuf中的可读字节，如果碰到\n 或\r\n则设置为结束。参数为最大长度，如果读到最大长度还是没有换号则会抛出异常: Unexpected exception from downstream : frame length (16) exceeds the allowed maximum (10)</p>
 <p>DelimiterBasedFrameDecoder 是以分隔符作为结束标志的解码器，并且解码时会自动去掉分隔符</p>
 <p>FixedLengthFrameDecoder 是用于定长消息的解码器。</p>
-<p>下面是一个简单的例子，演示几种decoder的用法：</p>
+<p>下面是一个简单的例子，演示几种decoder的用法:</p>
 <p>EchoServer:</p>
 <pre><code>package com.luangeng.netty.echo;
 
@@ -365,8 +365,8 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     }
 
 }
-</code></pre><p>执行结果：</p>
-<p>Server：</p>
+</code></pre><p>执行结果:</p>
+<p>Server:</p>
 <pre><code>2017-11-20 22:21:35,508 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21] REGISTERED
 2017-11-20 22:21:35,510 INFO [io.netty.handler.logging.LoggingHandler] - [id: 0x9b011f21] BIND: 0.0.0.0/0.0.0.0:8080
 server started
@@ -383,7 +383,7 @@ The server received(6): Hi,my name is luangeng
 The server received(7): Hi,my name is luangeng
 The server received(8): Hi,my name is luangeng
 The server received(9): Hi,my name is luangeng
-</code></pre><p>Client：</p>
+</code></pre><p>Client:</p>
 <pre><code>client started
 0 client get: Hi,my name is luangeng
 1 client get: Hi,my name is luangeng
@@ -400,24 +400,22 @@ The server received(9): Hi,my name is luangeng
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-tcpdecoder/">https://luangeng.space/post/java/netty/netty-tcpdecoder/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/netty/netty-tcpdecoder/">https://luangeng.space/post/java/netty/netty-tcpdecoder/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -505,7 +503,7 @@ The server received(9): Hi,my name is luangeng
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -516,7 +514,7 @@ The server received(9): Hi,my name is luangeng
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -527,7 +525,7 @@ The server received(9): Hi,my name is luangeng
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -549,7 +547,7 @@ The server received(9): Hi,my name is luangeng
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -578,8 +576,29 @@ The server received(9): Hi,my name is luangeng
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -644,15 +663,15 @@ The server received(9): Hi,my name is luangeng
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

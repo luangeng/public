@@ -146,7 +146,7 @@
                                         <h1 class="post-title">使用Spring Boot 和Spring Data JPA访问mysql数据库</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-05 · 1981 Words
+                                            Posted @ 2017-09-05 · 1954 Words
                                             
                                             · Tags: springboot
                                             
@@ -165,7 +165,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使用ORM框架，比如：Hibernate，
+                                                <p>在Spring中使用JdbcTemplate是一种基本的数据访问方式，但是仍然需要较多的代码，为了解决这些大量枯燥的数据操作语句，我们可以使用ORM框架，比如:Hibernate，
 通过整合Hibernate，解决抽象各个Java实体基本的“增删改查”操作，通常会以泛型的方式封装一个模板Dao来进行抽象简化，
 那些具体的Dao实现完全就是对模板Dao的简单代理，Spring-data-jpa正可以完成这一项工作。</p>
 <p>JPA(Java Persistence API)是Sun官方提出的Java持久化规范。它为Java开发人员提供了一种对象/关联映射工具来管理Java应用中的关系数据。
@@ -237,11 +237,11 @@ spring.datasource.url=jdbc:mysql://localhost:3306/lgtest
 spring.datasource.username=root
 spring.datasource.password=pwd
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.jpa.hibernate.ddl-auto值可以是none, update, create, create-drop，根据Hibernate的说明，他们的意义如下：
-</code></pre><p>none： 表示Hibernate不改变表结构</p>
-<p>update： Hibernate会根据Entity修改表结构</p>
-<p>create： Hibernate每次加载都创建表，但是SessionFactory关闭时不drop表</p>
-<p>create-drop： Hibernate每次加载都创建表，SessionFactory关闭时drop表</p>
+spring.jpa.hibernate.ddl-auto值可以是none, update, create, create-drop，根据Hibernate的说明，他们的意义如下:
+</code></pre><p>none: 表示Hibernate不改变表结构</p>
+<p>update: Hibernate会根据Entity修改表结构</p>
+<p>create: Hibernate每次加载都创建表，但是SessionFactory关闭时不drop表</p>
+<p>create-drop: Hibernate每次加载都创建表，SessionFactory关闭时drop表</p>
 <p>所以第一次运行时应该选择Create，之后应该选择为update或none。</p>
 <p>内存数据库如H2的默认值为create-drop，MySql默认值为none。</p>
 <p>5.创建数据访问接口</p>
@@ -295,12 +295,12 @@ public class UserController {
 
 }
 </code></pre><p>启动即可调试。</p>
-<p>补充：</p>
+<p>补充:</p>
 <p>自定义简单查询
 自定义的简单查询就是根据方法名来自动生成SQL，支持findBy,readBy,queryBy,countBy, getBy，deleteBy后面加属性名称</p>
 <p>如User findByUserName(String userName);</p>
 <p>可以组合And、 Or，如 User findByUserNameOrEmail(String username, String email);</p>
-<p>可以组合LIKE、 IgnoreCase、 OrderBy如：</p>
+<p>可以组合LIKE、 IgnoreCase、 OrderBy如:</p>
 <p><code>List&lt;User&gt; findByEmailLike(String email);</code></p>
 <p><code>User findByUserNameIgnoreCase(String userName);</code></p>
 <p><code>List&lt;User&gt; findByUserNameOrderByEmailDesc(String email);</code></p>
@@ -342,7 +342,7 @@ public void testPageQuery() throws Exception {
     userRepository.findALL(pageable);
     userRepository.findByUserName(&quot;testName&quot;, pageable);
 }
-</code></pre><p>限制数量查询：</p>
+</code></pre><p>限制数量查询:</p>
 <pre><code>ser findFirstByOrderByLastnameAsc();
 
 User findTopByOrderByAgeDesc();
@@ -378,24 +378,22 @@ private UserType type;</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-jpa/">https://luangeng.space/post/java/spring/spring-jpa/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/spring-jpa/">https://luangeng.space/post/java/spring/spring-jpa/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -483,7 +481,7 @@ private UserType type;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -494,7 +492,7 @@ private UserType type;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -505,7 +503,7 @@ private UserType type;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -527,7 +525,7 @@ private UserType type;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -556,8 +554,29 @@ private UserType type;</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -622,15 +641,15 @@ private UserType type;</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

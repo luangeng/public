@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>Go时间包提供了处理时间和日期的功能。</p>
-<p>包中的主要类型：</p>
+<p>包中的主要类型:</p>
 <ul>
 <li>结构time.Time表示了时间和日期的值</li>
 <li>time.Duration 代表了时间差,单位为nanoseconds</li>
@@ -185,7 +185,7 @@
 <p>减一段时间</p>
 <pre><code>newTime := now.Add(-6 * time.Second)
 </code></pre><p>要减去6秒，我们需要加上-6秒。</p>
-<p>时间加减要求是时间小于24小时。要按日历年，月或日加减时间，如下所示：</p>
+<p>时间加减要求是时间小于24小时。要按日历年，月或日加减时间，如下所示:</p>
 <pre><code>years := 2
 months := 3
 days := 13
@@ -197,7 +197,7 @@ For interoperability with existing code you often need to use Unix time, which i
 <pre><code>year, month, day := t.Day()
 </code></pre><h2 id="格式化日期时间">格式化日期时间</h2>
 <p>大多数语言都从strftime函数C库继承了时间格式化方法，该函数使用了一些神秘的格式字符串，例如％Y-％m-％d。</p>
-<p>Go设计人员提出了更直观的时间解析和格式设置的方法，即在其中传入一个模板：</p>
+<p>Go设计人员提出了更直观的时间解析和格式设置的方法，即在其中传入一个模板:</p>
 <pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
 fmt.Println(t.Format(&quot;2006-02-01 15:04:05.000 MST&quot;))
 fmt.Println(t.Format(&quot;2006-02-1 15pm&quot;))
@@ -211,7 +211,7 @@ Sep 17 Mon 4 09
 September 6 Mon 4 9
 Month: Sep &lsquo;9&rsquo;, &lsquo;09&rsquo;,  4</p>
 </blockquote>
-<p>格式化字符串是将一个任意字符串中某些部分被time.Time值中的数据替换：</p>
+<p>格式化字符串是将一个任意字符串中某些部分被time.Time值中的数据替换:</p>
 <ul>
 <li>2006, 06    4或2位年</li>
 <li>2    月, 1-12</li>
@@ -226,7 +226,7 @@ Month: Sep &lsquo;9&rsquo;, &lsquo;09&rsquo;,  4</p>
 <p>通过将格式编号加0，可以将天，月，年，小时，分钟和秒补零。 仅显示数字&lt;10。02表示零填充月份，即04或11。</p>
 <p>某些值可以用空格填充。 _2将是4或11。</p>
 <p>打包时间还定义了一些众所周知的日期/时间格式的常量，例如日期/时间格式。 time.RFC822是RFC 822中定义的日期格式，它是电子邮件中的日期格式。</p>
-<p>以下是预定义格式的完整列表：</p>
+<p>以下是预定义格式的完整列表:</p>
 <pre><code>const (
         ANSIC       = &quot;Mon Jan _2 15:04:05 2006&quot;
         UnixDate    = &quot;Mon Jan _2 15:04:05 MST 2006&quot;
@@ -261,11 +261,11 @@ fmt.Printf(&quot;year: %d, month: %d, day: %d\n&quot;, t.Year(), t.Month(), t.Da
 <p>如果你更喜欢strftime样式的解析时间怎么办？ 也可以。</p>
 <h2 id="像strftime一样格式化时间">像strftime一样格式化时间</h2>
 <p>如果你喜欢格式化时间值的strftime样式(如在Python或Ruby中使用的)或使用该样式的移植代码，则可以使用以下几种库之一。</p>
-<p>这是使用github.com/jehiah/go-strftime软件包的示例：</p>
+<p>这是使用github.com/jehiah/go-strftime软件包的示例:</p>
 <pre><code>t := time.Date(2017, 9, 4, 3, 38, 45, 0, time.UTC)
 fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
-</code></pre><p>关于软件包命名的附带说明：由于软件包名称为strftime，因此导入路径/存储库路径应为github.com/jehiah/strftime。 添加go或go-to-repository路径的样式不好。
-不幸的是，当涉及到解析时，效果并不理想。 有两个软件包：</p>
+</code></pre><p>关于软件包命名的附带说明:由于软件包名称为strftime，因此导入路径/存储库路径应为github.com/jehiah/strftime。 添加go或go-to-repository路径的样式不好。
+不幸的是，当涉及到解析时，效果并不理想。 有两个软件包:</p>
 <ul>
 <li><a href="https://godoc.org/github.com/jeffjen/datefmt">https://godoc.org/github.com/jeffjen/datefmt</a></li>
 <li><a href="https://godoc.org/github.com/knz/strtime">https://godoc.org/github.com/knz/strtime</a>
@@ -302,15 +302,15 @@ fmt.Println(strftime.Format(&quot;%Y-%m-%d %H:%M:%S&quot;, t))
 <p>你还可以使用http://www.strfti.me/服务来帮助你构建strftime格式字符串。</p>
 <h2 id="比较时间和日期">比较时间和日期</h2>
 <p>有时你将需要使用2个日期对象来知道是否存在与同一日期相对应的日期，或者找到哪个日期在另一个日期之后。</p>
-<p>在Go中，有4种比较日期的方式：</p>
+<p>在Go中，有4种比较日期的方式:</p>
 <ul>
 <li>date1 == date2, returns true when the 2 are the same moment</li>
 <li>date1 != date2, returns true when the 2 are different moment</li>
 <li>date1.Before(date2), returns true when the first is strictly before the second</li>
 <li>date1.After(date2), returns true when the first is strictly after the second</li>
 </ul>
-<p>警告：当两个比较时间相同(或对应于完全相同的日期)时，After和Before函数将返回false，因为日期既不早于其本身也不在其后-date1 == date1，则返回true-date1！= date1，返回false-date1。After(date1)，返回false-date1.Before(date1)，返回false
-提示：如果你需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After(date2)，当date1在date2之后或等于date2或使用！返回true。 (date1.Before(date2))-date1 == date2 || date1.Before(date2)，如果date1在date2之前或等于date2或使用！(date1.After(date2))，则返回true。</p>
+<p>警告:当两个比较时间相同(或对应于完全相同的日期)时，After和Before函数将返回false，因为日期既不早于其本身也不在其后-date1 == date1，则返回true-date1！= date1，返回false-date1。After(date1)，返回false-date1.Before(date1)，返回false
+提示:如果你需要知道某个日期是否在另一个日期之前或等于该日期，则只需组合4个运算符-date1 == date2 || date1.After(date2)，当date1在date2之后或等于date2或使用！返回true。 (date1.Before(date2))-date1 == date2 || date1.Before(date2)，如果date1在date2之前或等于date2或使用！(date1.After(date2))，则返回true。</p>
 <p>使用示例:</p>
 <pre><code>//初始化时间
 var date1 = time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
@@ -339,24 +339,22 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Time-date/">https://luangeng.space/post/go/basic/Time-date/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Time-date/">https://luangeng.space/post/go/basic/Time-date/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -496,17 +494,6 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -532,7 +519,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -543,7 +530,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -554,7 +541,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -576,7 +563,7 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -605,8 +592,29 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -671,14 +679,6 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -687,15 +687,15 @@ bool12 := !(date1.After(date3)) // true, because date1 is not after date3
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

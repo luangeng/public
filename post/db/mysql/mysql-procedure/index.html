@@ -146,7 +146,7 @@
                                         <h1 class="post-title">MySql 存储过程</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-01 · 2066 Words
+                                            Posted @ 2017-09-01 · 2055 Words
                                             
                                             · Tags: mysql
                                             
@@ -179,7 +179,7 @@ mysql&gt; CREATE PROCEDURE proc1(OUT s int)
 mysql&gt; DELIMITER ;</p>
 <p>命令行下需要暂时修改MySQL的分隔符</p>
 <p>参数
-MySQL存储过程的参数用在存储过程的定义，共有三种参数类型,IN,OUT,INOUT,形式如：
+MySQL存储过程的参数用在存储过程的定义，共有三种参数类型,IN,OUT,INOUT,形式如:
 CREATE PROCEDURE([[IN |OUT |INOUT ] 参数名 数据类形&hellip;])
 IN 输入参数:表示该参数的值必须在调用存储过程时指定，在存储过程中修改该参数的值不能被返回，为默认值
 OUT 输出参数:该值可在存储过程内部被改变，并可返回
@@ -206,8 +206,8 @@ mysql&gt; CREATE PROCEDURE p2() SELECT CONCAT(&lsquo;Last procedure was &lsquo;,
 mysql&gt; CALL p1( );
 mysql&gt; CALL p2( );</p>
 <p>注释
-双模杠：&ndash; 用于单行注释
-c风格： 一般用于多行注释</p>
+双模杠:&ndash; 用于单行注释
+c风格: 一般用于多行注释</p>
 <p>MySQL存储过程的查询
 select name from mysql.proc where db=’数据库名’;</p>
 <p>SHOW CREATE PROCEDURE 数据库.存储过程名;
@@ -227,7 +227,7 @@ DROP PROCEDURE</p>
 -&gt; update t set s1=s1+2;
 -&gt; end if;
 -&gt; end;
-</code></pre><p>case语句：</p>
+</code></pre><p>case语句:</p>
 <pre><code>-&gt; begin
 -&gt; declare var int;
 -&gt; set var=parameter+1;
@@ -240,7 +240,7 @@ DROP PROCEDURE</p>
 -&gt; insert into t values(19);
 -&gt; end case;
 -&gt; end;
-</code></pre><p>while ···· end while：</p>
+</code></pre><p>while ···· end while:</p>
 <pre><code>-&gt; begin
 -&gt; declare var int;
 -&gt; set var=0;
@@ -249,7 +249,7 @@ DROP PROCEDURE</p>
 -&gt; set var=var+1;
 -&gt; end while;
 -&gt; end;
-</code></pre><pre><code>repeat···· end repeat：
+</code></pre><pre><code>repeat···· end repeat:
 -&gt; begin
 -&gt; declare v int;
 -&gt; set v=0;
@@ -271,7 +271,7 @@ DROP PROCEDURE</p>
 -&gt; end if;
 -&gt; end loop;
 -&gt; end;
-</code></pre><p>lables 标号：
+</code></pre><p>lables 标号:
 标号可以用在begin repeat while 或者loop 语句前，语句标号只能在合法的语句前面使用。可以跳出循环，使运行指令达到复合语句的最后一步。</p>
 <p>ITERATE:
 通过引用复合语句的标号,来从新开始复合语句</p>
@@ -307,7 +307,7 @@ RPAD (string2 ,length ,pad) //在str后用pad补充,直到长度为length
 RTRIM (string2 ) //去除后端空格
 STRCMP (string1 ,string2 ) //逐字符比较两字串大小,
 SUBSTRING (str , position [,length ]) //从str的position开始,取length个字符,
-注：mysql中处理字符串时，默认第一个字符下标为1，即参数position必须大于等于1
+注:mysql中处理字符串时，默认第一个字符下标为1，即参数position必须大于等于1
 mysql&gt; select substring(&lsquo;abcd&rsquo;,0,2);
 mysql&gt; select substring(&lsquo;abcd&rsquo;,1,2);
 TRIM([[BOTH|LEADING|TRAILING] [padding] FROM]string2) //去除指定位置的指定字符
@@ -358,7 +358,7 @@ CONV(number2,from_base,to_base) //进制转换
 FLOOR (number2 ) //向下取整
 FORMAT (number,decimal_places ) //保留小数位数
 HEX (DecimalNumber ) //转十六进制
-注：HEX()中可传入字符串，则返回其ASC-11码，如HEX(&lsquo;DEF&rsquo;)返回4142143
+注:HEX()中可传入字符串，则返回其ASC-11码，如HEX(&lsquo;DEF&rsquo;)返回4142143
 也可以传入十进制整数，返回其十六进制编码，如HEX(25)返回19
 LEAST (number , number2 [,..]) //求最小值
 MOD (numerator ,denominator ) //求余
@@ -371,24 +371,22 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/db/mysql/mysql-procedure/">https://luangeng.space/post/db/mysql/mysql-procedure/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/db/mysql/mysql-procedure/">https://luangeng.space/post/db/mysql/mysql-procedure/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -406,7 +404,7 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/maven/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/maven/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>Maven安装配置使用</span>
@@ -465,7 +463,7 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -476,7 +474,7 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -487,7 +485,7 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -509,7 +507,7 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -538,8 +536,29 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -602,15 +621,15 @@ ROUND (number [,decimals ]) //四舍五入,decimals为小数位数]</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

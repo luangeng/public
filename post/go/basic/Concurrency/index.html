@@ -170,7 +170,7 @@
 <p>由于goroutines可以写入相同的内存，因此多个goroutine写入相同的全局变量时需要格外小心。</p>
 <p>为了协调goroutine之间的工作，Go提供了channel,即线程安全队列。</p>
 <h2 id="创建goroutines">创建goroutines</h2>
-<p>任何函数都可以通过使用关键字go来作为goroutine调用：</p>
+<p>任何函数都可以通过使用关键字go来作为goroutine调用:</p>
 <pre><code>func mult(x, y int) {
     fmt.Printf(&quot;%d * %d = %d\n&quot;, x, y, x*y)
 }
@@ -235,7 +235,7 @@ routine 1 finished<br>
 routine 2 finished<br>
 main finished</p>
 </blockquote>
-<p>执行顺序中的WaitGroup用法：</p>
+<p>执行顺序中的WaitGroup用法:</p>
 <ul>
 <li>声明全局变量sync.WaitGroup。 使它全局化是使其对所有功能和方法可见。</li>
 <li>初始化计数。 必须在主goroutine中完成，因为由于内存模型的保证，不能保证新启动的goroutine将在4之前执行。</li>
@@ -250,7 +250,7 @@ main finished</p>
 <p>您可以进入(获取)semaphore并离开(释放)semaphore。</p>
 <p>semaphore具有固定的容量。如果超出了信号量的容量，获取semaphore将阻塞，直到有gorutine释放semaphore。</p>
 <p>缓冲channel是自然的semaphore。</p>
-<p>这是一个使用channel作为semaphore来限制在任何给定时间激活的goroutine数量的示例：</p>
+<p>这是一个使用channel作为semaphore来限制在任何给定时间激活的goroutine数量的示例:</p>
 <pre><code>var (
     semaphoreSize = 4
 
@@ -305,7 +305,7 @@ max concurrent tasks: 4</p>
 </blockquote>
 <p>我们使用等待goroutine完成时描述的技术来等待所有任务完成。</p>
 <p>通常，正确的并发任务数量等于可以通过runtime.NumCPU()获得的CPU数量。</p>
-<h2 id="下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例">下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例：</h2>
+<h2 id="下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例">下面是一个使用goroutine的工作程序池并将其工作与channel进行协调的示例:</h2>
 <pre><code>var wg sync.WaitGroup
 
 func sqrtWorker(chIn chan int, chOut chan int) {
@@ -376,24 +376,22 @@ Got sqrt: 16</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Concurrency/">https://luangeng.space/post/go/basic/Concurrency/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Concurrency/">https://luangeng.space/post/go/basic/Concurrency/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -533,17 +531,6 @@ Got sqrt: 16</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -569,7 +556,7 @@ Got sqrt: 16</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -580,7 +567,7 @@ Got sqrt: 16</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -591,7 +578,7 @@ Got sqrt: 16</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -613,7 +600,7 @@ Got sqrt: 16</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -642,8 +629,29 @@ Got sqrt: 16</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -708,14 +716,6 @@ Got sqrt: 16</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -724,15 +724,15 @@ Got sqrt: 16</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

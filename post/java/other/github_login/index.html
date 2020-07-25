@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>elasticsearch入门教程 - 计算机与软件技术公开课</title>
+  <title>集成通过github登录网站功能 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="elasticsearch入门教程 - 计算机与软件技术公开课">
-  <meta name="description" content="elasticsearch入门教程">
-  <meta itemprop="name" content="elasticsearch入门教程 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="elasticsearch入门教程">
-  <meta property="og:title" content="elasticsearch入门教程 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="集成通过github登录网站功能 - 计算机与软件技术公开课">
+  <meta name="description" content="使用github登录网址 sdsdsdsd">
+  <meta itemprop="name" content="集成通过github登录网站功能 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="使用github登录网址 sdsdsdsd">
+  <meta property="og:title" content="集成通过github登录网站功能 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/elasticsearch/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/github_login/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="elasticsearch入门教程">
+  <meta property="og:description" content="使用github登录网址 sdsdsdsd">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/elasticsearch/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/elasticsearch/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/github_login/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/github_login/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">elasticsearch入门教程</h1>
+                                        <h1 class="post-title">集成通过github登录网站功能</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-12-03 · 1160 Words
+                                            Posted @ 2018-09-18 · 482 Words
                                             
-                                            · Tags: elasticsearch
+                                            · Tags: oauth2
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="elasticsearch入门教程">
+                                            <span class="leancloud_visitors" data-flag-title="集成通过github登录网站功能">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,89 +165,139 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。</p>
-<h2 id="基本概念">基本概念:</h2>
-<h4 id="node-与-cluster">Node 与 Cluster</h4>
-<p>Elastic 本质上是一个分布式数据库，允许多台服务器协同工作，每台服务器可以运行多个 Elastic 实例。单个 Elastic 实例称为一个节点(node),一组节点构成一个集群(cluster)。</p>
-<h4 id="index">Index</h4>
-<p>Elastic 会索引所有字段，经过处理后写入一个反向索引(Inverted Index)。查找数据的时候，直接查找该索引。
-所以，Elastic 数据管理的顶层单位就叫做 Index(索引)。它是单个数据库的同义词。每个 Index (即数据库)的名字必须是小写。</p>
-<p>下面的命令可以查看当前节点的所有 Index。
-<code>curl -X GET 'http://localhost:9200/_cat/indices?v'</code></p>
-<h4 id="document">Document</h4>
-<p>Index 里面单条的记录称为 Document(文档)。许多条 Document 构成了一个 Index。
-Document 使用 JSON 格式表示，下面是一个例子:</p>
-<pre><code>{
-  &quot;user&quot;: &quot;张三&quot;,
-  &quot;title&quot;: &quot;工程师&quot;,
-  &quot;desc&quot;: &quot;数据库管理&quot;
+                                                <p>使用第三方网址登录系统，使用github</p>
+<p>工作流程:</p>
+<ul>
+<li>页面点击使用github登录，</li>
+<li>重定向到回调地址</li>
+<li>回调地址后台获取token，获取用户信息，完成登录，将页面重定向到某页面</li>
+<li>页面正常显示</li>
+</ul>
+<h2 id="github新建app">github新建App</h2>
+<p>github设置页，deleveper setting页 新建app，注册回调地址。</p>
+<h2 id="html页中增加登录按钮">html页中增加登录按钮</h2>
+<pre><code> &lt;a class=&quot;btn btn-link-2&quot; href=&quot;#&quot; onclick=&quot;git_login()&quot;&gt;
+     &lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt; Github
+ &lt;/a&gt;
+</code></pre><h2 id="获取code">获取code</h2>
+<pre><code>const FULL_CHARTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopgrstuvwxyz';
+const git_clientId='269c706502923e741920';
+const redirect_uri = 'http://luangeng.leanapp.cn/test';
+const git_auth = 'https://github.com/login/oauth/authorize?';
+const scope	= 'read';
+
+function getState(){
+var state='';
+for (var a=0;a&lt;6;a++){
+    state+=FULL_CHARTER[Math.floor(Math.random() * 52)];
 }
-</code></pre><p>同一个 Index 里面的 Document，不要求有相同的结构(scheme)，但是最好保持相同，这样有利于提高搜索效率。</p>
-<h4 id="type">Type</h4>
-<p>Document 可以分组，比如weather这个 Index 里面，可以按城市分组(北京和上海)，也可以按气候分组(晴天和雨天)。这种分组就叫做 Type，它是虚拟的逻辑分组，用来过滤 Document。
-不同的 Type 应该有相似的结构(schema)，举例来说，id字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的一个区别。性质完全不同的数据(比如products和logs)应该存成两个 Index，而不是一个 Index 里面的两个 Type(虽然可以做到)。</p>
-<p>下面的命令可以列出每个 Index 所包含的 Type。</p>
-<p><code>$ curl 'localhost:9200/_mapping?pretty=true'</code>
-根据规划，Elastic 6.x 版只允许每个 Index 包含一个 Type，7.x 版将会彻底移除 Type。</p>
-<h2 id="常用操作">常用操作:</h2>
-<p>新建索引    <code>curl -X PUT 'localhost:9200/index_name'</code></p>
-<p>删除索引    <code>curl -X DELETE 'localhost:9200/index_name'</code></p>
-<p>新增记录    <code>curl -X PUT 'localhost:9200/accounts/person/1' -d '{  &quot;user&quot;: &quot;张三&quot;}' </code></p>
-<p>查询记录    <code>curl 'localhost:9200/accounts/person/1?pretty=true'</code></p>
-<p>删除记录    <code>curl -X DELETE 'localhost:9200/accounts/person/1'</code></p>
-<p>更新记录    <code>curl -X PUT 'localhost:9200/accounts/person/1' -d '{&quot;user&quot; : &quot;张三&quot;,}' </code></p>
-<p>查询所有    <code>curl 'localhost:9200/accounts/person/_search'</code></p>
-<p>全文搜索    <code>curl 'localhost:9200/accounts/person/_search'  -d '{  &quot;query&quot; : { &quot;match&quot; : { &quot;name&quot; : &quot;张三&quot; }}}'</code></p>
-<p>or搜索    <code>curl 'localhost:9200/accounts/person/_search'  -d '{  &quot;query&quot; : { &quot;match&quot; : { &quot;desc&quot; : &quot;软件 系统&quot; }}}'</code></p>
-<p>and搜索   <code>curl 'localhost:9200/accounts/person/_search'  -d '{  &quot;query&quot;: {&quot;bool&quot;: {&quot;must&quot;: [{ &quot;match&quot;: { &quot;desc&quot;: &quot;软件&quot; } }, { &quot;match&quot;:&quot;desc&quot;: &quot;系统&quot; } } ] } }}'</code></p>
-<h1 id="elasticsearch安装记录">elasticsearch安装记录：</h1>
-<h2 id="linux">Linux：</h2>
-<pre><code>sudo wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.1.zip
-unzip elasticsearch-6.5.1.zip
-cd elasticsearch-6.5.1
-sudo chown -R z *
-./bin/elasticsearch
-curl localhost:9200
-</code></pre><h2 id="windows">Windows：</h2>
-<p>下载elasticsearch， <a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a></p>
-<p>修改配置文件config/elasticsearch.yml 增加</p>
-<pre><code>http.cors.enabled: true
-http.cors.allow-origin: &quot;*&quot;
-http.cors.allow-headers: Authorization,Content-Type
-</code></pre><p>进入bin 双击elasticsearch.bat，启动
-测试: <code>curl localhost:9200</code></p>
-<h2 id="安装head">安装head：</h2>
-<p>下载elasticsearch-head-master git://github.com/mobz/elasticsearch-head.git</p>
-<p>先装node.js</p>
-<p>解压，进入目录，npm install；   npm run start，然后访问 http://localhost:9100/</p>
-<h2 id="安装中文分词插件">安装中文分词插件</h2>
-<p><code>./bin/elasticsearch-plugin install https://luangeng.gitee.io/cdn/package/elasticsearch-analysis-ik-6.3.0.zip</code></p>
-<h2 id="参考">参考：</h2>
-<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html</a></p>
-<p><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html">https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html</a></p>
+token_storage.setItem(&quot;git_state&quot;, state);
+return state;
+}
+
+function git_login(){
+    var url=git_auth+'client_id='+git_clientId+'&amp;redirect_uri='+redirect_uri+'&amp;scope='+scope+'&amp;state='+getState();
+    window.location = url;
+}
+
+</code></pre><h2 id="获取token">获取token</h2>
+<pre><code>@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        String toke = &quot; https://github.com/login/oauth/access_token&quot;;
+        String user = &quot;https://api.github.com/user?access_token=&quot;;
+        String state = req.getParameter(&quot;state&quot;);
+        String code = req.getParameter(&quot;code&quot;);
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody formBody = new FormEncodingBuilder()
+                .add(&quot;client_id&quot;, &quot;269c706502923e741920&quot;)
+                .add(&quot;client_secret&quot;, &quot;a8594616a65fb12bc87d5088819b84fcb65ccdc7&quot;)
+                .add(&quot;code&quot;, code)
+                .add(&quot;redirect_uri&quot;, &quot;http://luangeng.leanapp.cn/test&quot;)
+                .add(&quot;state&quot;, state)
+                .build();
+        Request request = new Request.Builder()
+                .url(toke)
+                .post(formBody)
+                .build();
+        Response response = client.newCall(request).execute();
+        String ret = response.body().string();
+        String token = ret.substring(ret.indexOf(&quot;=&quot;) + 1, ret.indexOf(&quot;&amp;&quot;));
+        //GET
+        Request.Builder builder = new Request.Builder();
+        builder.url(user + token).get();
+        client = new OkHttpClient();
+        Call call = client.newCall(builder.build());
+        try {
+            response = call.execute();
+            resp.getWriter().append(&quot;ok: &quot;).append(&quot;token: &quot; + token + &quot;  &quot;);
+        } catch (Exception e) {
+            resp.getWriter().append(e.getMessage());
+        }
+        Gson gson = new Gson();
+        User u = gson.fromJson(response.body().string(), User.class);
+        }
+   }
+</code></pre><h2 id="获取用户信息">获取用户信息</h2>
+<p>后台调用</p>
+<p><code>https://api.github.com/user?access_token=0013d0335c9d38104a55bb2973045160c9648474</code></p>
+<p>返回的数据:</p>
+<pre><code>{
+  &quot;login&quot;: &quot;luangeng&quot;,
+  &quot;id&quot;: 10940569,
+  &quot;node_id&quot;: &quot;MDQ6VXNlcjEwOTQwNTY5&quot;,
+  &quot;avatar_url&quot;: &quot;https://avatars2.githubusercontent.com/u/10940569?v=4&quot;,
+  &quot;gravatar_id&quot;: &quot;&quot;,
+  &quot;url&quot;: &quot;https://api.github.com/users/luangeng&quot;,
+  &quot;html_url&quot;: &quot;https://github.com/luangeng&quot;,
+  &quot;followers_url&quot;: &quot;https://api.github.com/users/luangeng/followers&quot;,
+  &quot;following_url&quot;: &quot;https://api.github.com/users/luangeng/following{/other_user}&quot;,
+  &quot;gists_url&quot;: &quot;https://api.github.com/users/luangeng/gists{/gist_id}&quot;,
+  &quot;starred_url&quot;: &quot;https://api.github.com/users/luangeng/starred{/owner}{/repo}&quot;,
+  &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/luangeng/subscriptions&quot;,
+  &quot;organizations_url&quot;: &quot;https://api.github.com/users/luangeng/orgs&quot;,
+  &quot;repos_url&quot;: &quot;https://api.github.com/users/luangeng/repos&quot;,
+  &quot;events_url&quot;: &quot;https://api.github.com/users/luangeng/events{/privacy}&quot;,
+  &quot;received_events_url&quot;: &quot;https://api.github.com/users/luangeng/received_events&quot;,
+  &quot;type&quot;: &quot;User&quot;,
+  &quot;site_admin&quot;: false,
+  &quot;name&quot;: &quot;luangeng&quot;,
+  &quot;location&quot;: &quot;中国 西安&quot;,
+  &quot;email&quot;: &quot;luangeng2015@qq.com&quot;,
+  &quot;hireable&quot;: true,
+  &quot;bio&quot;: &quot;🍉🍉🍉🍉🍉🍉🍉&quot;,
+  &quot;public_repos&quot;: 45,
+  &quot;public_gists&quot;: 0,
+  &quot;followers&quot;: 6,
+  &quot;following&quot;: 30,
+  &quot;created_at&quot;: &quot;2015-02-10T12:04:47Z&quot;,
+  &quot;updated_at&quot;: &quot;2018-09-18T01:42:47Z&quot;
+}
+</code></pre><p>接下来是绑定用户，确定登录者，完成登录</p>
+<h2 id="参考">参考</h2>
+<p><a href="github:https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow">github帮助文档</a></p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/elasticsearch/">https://luangeng.space/post/other/elasticsearch/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/github_login/">https://luangeng.space/post/java/other/github_login/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -265,25 +315,52 @@ http.cors.allow-headers: Authorization,Content-Type
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticsearch-api/" rel="next">
+                                        <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>elasticsearch JAVA API</span>
+                                            <span>SpringBoot集成ZeroMQ</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/other/token-front/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>SpringBoot集成ZeroMQ</span>
+                                            <span>Oauth2协议 通过js和ajax获取token及刷新token</span>
                                         </a>
                                         
                                     </li>
                                 </ul>
                                 <br>
 
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://luangeng.space/post/java/other/token-front/" rel="bookmark" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/other/dingding/" rel="bookmark" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
 <ul class="related-posts group" id="ranking_ul">
@@ -308,7 +385,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -319,7 +396,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -330,7 +407,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -352,7 +429,7 @@ http.cors.allow-headers: Authorization,Content-Type
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -381,8 +458,29 @@ http.cors.allow-headers: Authorization,Content-Type
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -431,20 +529,31 @@ http.cors.allow-headers: Authorization,Content-Type
 
         
         
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://luangeng.space/post/java/other/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/other/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a></li>
+                
+            </ul>
+        </div>
+        
 
         <div id="recent" class="widget widget_recent_entries">
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

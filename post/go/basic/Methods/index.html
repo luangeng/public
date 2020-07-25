@@ -189,14 +189,14 @@ func main() {
 <p>该方法在其上运行的实例称为接收器。</p>
 <p>在上面的示例方法中，PrintFullName使用类型为* Person的接收者p。</p>
 <p>来自其他语言的人很容易将接收者命名为“this”(模仿C ++)或“self”(模仿Python)。 在Go中这是不好的风格。</p>
-<p>在Go中，命名接收者的规则是：</p>
+<p>在Go中，命名接收者的规则是:</p>
 <ul>
 <li>简短(通常是一个字母)</li>
 <li>所有方法都相同</li>
 </ul>
 <h2 id="值-vs-指针接收器">值 vs 指针接收器</h2>
 <p>方法接收者可以是值或指针。</p>
-<p>为方便起见，Go允许在值上调用指针接收器，并在指针上调用值接收器：</p>
+<p>为方便起见，Go允许在值上调用指针接收器，并在指针上调用值接收器:</p>
 <pre><code>type Person struct {
     FirstName string
     LastName  string
@@ -224,7 +224,7 @@ func main() {
 PrintFullNamePointer: p is            0xc00000c060<br>
 PrintFullNameValue:   address of p is 0xc00000c080</p>
 </blockquote>
-<p>在值的副本上调用值接收者：</p>
+<p>在值的副本上调用值接收者:</p>
 <pre><code>type Foo struct {
     Str string
 }
@@ -249,7 +249,7 @@ Address of &amp;f  inside Print: 0x0xc000010220<br>
 Address of &amp;fv before Print: 0x0xc000010210<br>
 Value of Str after Print: &lsquo;Foo&rsquo;</p>
 </blockquote>
-<p>可以在上方看到在值的副本上调用值接收器的后果：</p>
+<p>可以在上方看到在值的副本上调用值接收器的后果:</p>
 <ul>
 <li>f接收器的地址与fv值的地址不同。 这表示它是一个不同的值，即f是Go编译器创建的fv的副本</li>
 <li>在Print函数中更改接收器f的值不会更改fv值</li>
@@ -259,24 +259,22 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Methods/">https://luangeng.space/post/go/basic/Methods/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Methods/">https://luangeng.space/post/go/basic/Methods/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -416,17 +414,6 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -452,7 +439,7 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -463,7 +450,7 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -474,7 +461,7 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -496,7 +483,7 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -525,8 +512,29 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -591,14 +599,6 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -607,15 +607,15 @@ Value of Str after Print: &lsquo;Foo&rsquo;</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

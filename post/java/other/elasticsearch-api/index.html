@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>ubuntu16.04安装rocketMQ - 计算机与软件技术公开课</title>
+  <title>elasticsearch JAVA API - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="ubuntu16.04安装rocketMQ - 计算机与软件技术公开课">
-  <meta name="description" content="ubuntu16.04安装rocketMQ">
-  <meta itemprop="name" content="ubuntu16.04安装rocketMQ - 计算机与软件技术公开课">
-  <meta itemprop="description" content="ubuntu16.04安装rocketMQ">
-  <meta property="og:title" content="ubuntu16.04安装rocketMQ - 计算机与软件技术公开课" />
+  <meta name="keywords" content="elasticsearch JAVA API - 计算机与软件技术公开课">
+  <meta name="description" content="elasticsearch JAVA API">
+  <meta itemprop="name" content="elasticsearch JAVA API - 计算机与软件技术公开课">
+  <meta itemprop="description" content="elasticsearch JAVA API">
+  <meta property="og:title" content="elasticsearch JAVA API - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/rocketmq/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/elasticsearch-api/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="ubuntu16.04安装rocketMQ">
+  <meta property="og:description" content="elasticsearch JAVA API">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/rocketmq/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/rocketmq/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/elasticsearch-api/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/elasticsearch-api/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">ubuntu16.04安装rocketMQ</h1>
+                                        <h1 class="post-title">elasticsearch JAVA API</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-03 · 398 Words
+                                            Posted @ 2018-12-04 · 423 Words
                                             
-                                            · Tags: RocketMQ
+                                            · Tags: elasticsearch
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="ubuntu16.04安装rocketMQ">
+                                            <span class="leancloud_visitors" data-flag-title="elasticsearch JAVA API">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,82 +165,159 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>本文详细说明如何在ubuntu16.04下安装rocketMQ的步骤。</p>
-<p>首先需要打开root权限 <code>sudo -i</code></p>
-<h2 id="下载安装jdk">下载安装jdk</h2>
-<p><code>wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz</code></p>
-<p><code>tar -zxvf jdk-8u181-linux-x64.tar.gz</code></p>
-<p><code>mv jdk-8u181-linux-x64 /usr/jdk</code></p>
-<h2 id="配置java_home">配置JAVA_HOME</h2>
-<p><code>vi /etc/profile</code></p>
-<p>在文件末尾追加:</p>
-<pre><code>JAVA_HOME=/usr/jdk
-export JRE_HOME=$JAVA_HOME/jre
-export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
-</code></pre><p><img src="https://luangeng.space/pic/2018-8/rocketmq1.jpg" alt=""></p>
-<p>更新配置  <code>source /etc/profile</code></p>
-<p>通过 <code>java -version</code> 和 <code>echo $JAVA_HOME</code> 查看是否配置成功</p>
-<h2 id="下载安装rocketmq">下载安装rocketmq</h2>
-<p><code>wget http://mirrors.shu.edu.cn/apache/rocketmq/4.3.0/rocketmq-all-4.3.0-bin-release.zip</code></p>
-<p>安装unzip工具： <code>apt install unzip</code></p>
-<p><code>unzip rocketmq-all-4.3.0-bin-release.zip</code></p>
-<p><code>mv rocketmq-all-4.3.0-bin-release /usr/rocketmq</code></p>
-<h2 id="启动mq">启动mq</h2>
-<p>首先直接输入命令，启动命名服务，查看是否启动成功或报错</p>
-<p><code>./bin/mqnamesrv</code></p>
-<p>成功的话按Ctrl+C关闭，然后启动broker，查看是否启动成功</p>
-<p><code>./bin/mqbroker -n localhost:9876</code></p>
-<h2 id="通过编写启动脚本来在后台启动服务">通过编写启动脚本来在后台启动服务</h2>
-<p><code>vi start-rocket.sh</code></p>
-<p>输入：</p>
-<pre><code>nohup sh /usr/rocketmq/bin/mqnamesrv &amp;
-nohup sh /usr/rocketmq/bin/mqbroker -n localhost:9876 &amp;
-</code></pre><p>修改文件权限</p>
-<p><code>chmod +x start-rocket.sh</code></p>
-<p>执行脚本</p>
-<p><code>./start-rocket.sh</code></p>
-<h2 id="验证mq是否正常工作">验证mq是否正常工作</h2>
-<p>查看进程是否启动：</p>
-<p><code>jps</code></p>
-<p>设置命名服务地址：</p>
-<p><code>export NAMESRV_ADDR=localhost:9876</code></p>
-<p>启动生产者发送消息，然后关闭它：</p>
-<p><code>sh bin/tools.sh org.apache.rocketmq.example.quickstart.Producer</code></p>
-<p>启动消费者查看是否接收到消息：</p>
-<p><code>sh bin/tools.sh org.apache.rocketmq.example.quickstart.Consumer</code></p>
-<h2 id="其他">其他</h2>
-<h3 id="关闭服务的脚本">关闭服务的脚本</h3>
-<pre><code>sh /usr/rocketmq/bin/mqshutdown broker
-sh /usr/rocketmq/bin/mqshutdown namesrv
-</code></pre><h3 id="修改启动参数">修改启动参数:</h3>
-<p>由于rocketmq默认设置的Java堆内存比较大，在开发时可以通过修改如下文件减少内存占用</p>
-<p><code>vi runbroker.sh</code>   <code>vi runserver.sh</code></p>
-<p><img src="https://luangeng.space/pic/2018-8/rocketmq2.jpg" alt=""></p>
-<p><img src="https://luangeng.space/pic/2018-8/rocketmq3.jpg" alt=""></p>
+                                                <pre><code>@Service
+public class DocApi implements Const {
 
+    @Autowired
+    RestHighLevelClient client;
+
+    public void info() throws IOException {
+        MainResponse response = client.info(RequestOptions.DEFAULT);
+        ClusterName clusterName = response.getClusterName();
+        String clusterUuid = response.getClusterUuid();
+        String nodeName = response.getNodeName();
+        Version version = response.getVersion();
+        Build build = response.getBuild();
+    }
+
+    public IndexResponse index(int n) throws IOException {
+        IndexRequest request = new IndexRequest(INDEX, TYPE, &quot;1&quot;)
+                .source(&quot;user&quot;, &quot;kimchy&quot;, &quot;postDate&quot;, new Date(), &quot;message&quot;, &quot;trying out Elasticsearch&quot;);
+        IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
+//        client.indexAsync(request, RequestOptions.DEFAULT, new MyActionListener());
+
+        String index = indexResponse.getIndex();
+        String type = indexResponse.getType();
+        String id = indexResponse.getId();
+        long version = indexResponse.getVersion();
+        if (indexResponse.getResult() == DocWriteResponse.Result.CREATED) {
+
+        } else if (indexResponse.getResult() == DocWriteResponse.Result.UPDATED) {
+
+        }
+        ReplicationResponse.ShardInfo shardInfo = indexResponse.getShardInfo();
+        if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
+
+        }
+        if (shardInfo.getFailed() &gt; 0) {
+            for (ReplicationResponse.ShardInfo.Failure failure :
+                    shardInfo.getFailures()) {
+                String reason = failure.reason();
+            }
+        }
+        return indexResponse;
+    }
+
+    public void get() throws IOException {
+        GetRequest request = new GetRequest(INDEX, TYPE, &quot;1&quot;);
+//        request.storedFields(&quot;message&quot;);
+        GetResponse getResponse = client.get(request, RequestOptions.DEFAULT);
+//        String msg = getResponse.getField(&quot;message&quot;).getValue();
+        String message = getResponse.getSourceAsMap().get(&quot;message&quot;).toString();
+    }
+
+    public void exist() throws IOException {
+        GetRequest getRequest = new GetRequest(INDEX, TYPE, &quot;1&quot;);
+        getRequest.fetchSourceContext(new FetchSourceContext(false));
+        getRequest.storedFields(&quot;_none_&quot;);
+        boolean exists = client.exists(getRequest, RequestOptions.DEFAULT);
+    }
+
+    public DeleteResponse delete() throws IOException {
+        DeleteRequest request = new DeleteRequest(INDEX, TYPE, &quot;1&quot;);
+        DeleteResponse deleteResponse = client.delete(request, RequestOptions.DEFAULT);
+        String index = deleteResponse.getIndex();
+        String type = deleteResponse.getType();
+        String id = deleteResponse.getId();
+        long version = deleteResponse.getVersion();
+        ReplicationResponse.ShardInfo shardInfo = deleteResponse.getShardInfo();
+        if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
+
+        }
+        if (shardInfo.getFailed() &gt; 0) {
+            for (ReplicationResponse.ShardInfo.Failure failure :
+                    shardInfo.getFailures()) {
+                String reason = failure.reason();
+            }
+        }
+
+        return deleteResponse;
+    }
+
+    public void bulk() throws IOException {
+        BulkRequest request = new BulkRequest();
+        request.add(new IndexRequest(INDEX, TYPE, &quot;1&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;foo&quot;));
+        request.add(new IndexRequest(INDEX, TYPE, &quot;2&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;bar&quot;));
+        request.add(new IndexRequest(INDEX, TYPE, &quot;3&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;baz&quot;));
+        BulkResponse bulkResponse = client.bulk(request, RequestOptions.DEFAULT);
+        for (BulkItemResponse bulkItemResponse : bulkResponse) {
+            DocWriteResponse itemResponse = bulkItemResponse.getResponse();
+            if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.INDEX
+                    || bulkItemResponse.getOpType() == DocWriteRequest.OpType.CREATE) {
+                IndexResponse indexResponse = (IndexResponse) itemResponse;
+
+            } else if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.UPDATE) {
+                UpdateResponse updateResponse = (UpdateResponse) itemResponse;
+
+            } else if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.DELETE) {
+                DeleteResponse deleteResponse = (DeleteResponse) itemResponse;
+            }
+        }
+    }
+
+    public MultiGetResponse multget() throws IOException {
+        MultiGetRequest request = new MultiGetRequest();
+        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;1&quot;));
+        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;2&quot;));
+        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;3&quot;));
+
+        MultiGetResponse response = client.mget(request, RequestOptions.DEFAULT);
+
+        MultiGetItemResponse firstItem = response.getResponses()[0];
+        Assert.isNull(firstItem.getFailure(), &quot;should be no failure&quot;);
+        GetResponse firstGet = firstItem.getResponse();
+        String index = firstItem.getIndex();
+        String type = firstItem.getType();
+        String id = firstItem.getId();
+        if (firstGet.isExists()) {
+            long version = firstGet.getVersion();
+            String sourceAsString = firstGet.getSourceAsString();
+            Map&lt;String, Object&gt; sourceAsMap = firstGet.getSourceAsMap();
+            byte[] sourceAsBytes = firstGet.getSourceAsBytes();
+        } else {
+
+        }
+
+        return response;
+    }
+
+
+    public void close() throws IOException {
+        client.close();
+    }
+
+}
+</code></pre>
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/rocketmq/">https://luangeng.space/post/other/rocketmq/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/elasticsearch-api/">https://luangeng.space/post/java/other/elasticsearch-api/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -258,19 +335,19 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/java/spring/spring-rest/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>Spring Boot自定义配置与加载</span>
+                                            <span>爬取电影信息使用Elasticsearch检索</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/java/zookeeper/zookeeper-base/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/other/elasticsearch/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>zookeeper-基本概念</span>
+                                            <span>elasticsearch入门教程</span>
                                         </a>
                                         
                                     </li>
@@ -285,7 +362,7 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/db/mysql/mysql/" rel="bookmark" class="leancloud-count">ubuntu16.04 安装 mysql5.7
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" rel="bookmark" class="leancloud-count">elasticsearch入门教程
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -317,7 +394,7 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -328,7 +405,7 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -339,7 +416,7 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -361,7 +438,7 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -390,8 +467,29 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -444,7 +542,7 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/db/mysql/mysql/">ubuntu16.04 安装 mysql5.7</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
             </ul>
         </div>
@@ -454,15 +552,15 @@ sh /usr/rocketmq/bin/mqshutdown namesrv
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 字符串</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 3830 Words
+                                            Posted @ 2018-09-09 · 3685 Words
                                             
                                             · Tags: Go
                                             
@@ -166,16 +166,11 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>Go中的string是不可变的byte序列</p>
-<p>Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page.
-与Python或Java等语言不同，它们在内部未表示为Unicode。 因此，从文件或网络连接读取字符串时，没有从字节到内部表示的转换步骤。 将字符串写入文件时，不会转换为代码页。
-Go strings don’t assume any particular code page. They are just bytes.
-转到字符串不需要任何特定的代码页。 它们只是字节。
-Go source code files are always UTF-8 so strings defined in source code are also valid UTF-8 strings.
-Additionally, functions in the standard library that involve converting characters to upper-case or lower-case etc. assume that raw bytes represent UTF-8-encoded Unicode strings and perform transformations using Unicode rules.</p>
-<p>Note the distinction between string literals delimited by double quotes (aka interpreted literals) as in &ldquo;bar&rdquo;, and those delimited by backticks (aka raw literals) as in <code>foo</code>. Text between double quotes forms the value of the literal, with a backslash used to escape characters as in &ldquo;\n&rdquo; for newline. Text between backticks is treated as uninterpreted (implicitly UTF-8-encoded); in particular, backslashes have no special meaning and the string may contain newlines.</p>
-<p>Go源代码文件始终是UTF-8，因此源代码中定义的字符串也是有效的UTF-8字符串。
-此外，标准库中涉及将字符转换为大写或小写等的函数都假定原始字节代表UTF-8编码的Unicode字符串，并使用Unicode规则执行转换。</p>
-<p>请注意，如&quot;bar&quot;表示的双引号(又称解释文字)与如&rsquo;foo'表示的以反引号(即原始文字)界定的字符串文字之间的区别。 双引号之间的文本形成文字的值，并使用反斜杠将换行符转义为“ \ n”，以转义字符。 反引号之间的文本被视为未解释(隐式为UTF-8编码)； 特别是，反斜杠没有特殊含义，并且字符串可能包含换行符。</p>
+<p>与Python或Java等语言不同，它们在内部未表示为Unicode。 因此，从文件或网络连接读取字符串时，没有从字节到内部表示的转换步骤。 将字符串写入文件时，不会转换为代码页。</p>
+<p>转到字符串不需要任何特定的代码页。 它们只是字节。</p>
+<p>Go源代码文件始终是UTF-8，因此源代码中定义的字符串也是UTF-8字符串。</p>
+<p>此外，标准库中涉及将字符转换为大写或小写等的函数都假定原始字节代表UTF-8编码的Unicode字符串，并使用Unicode规则执行转换。</p>
+<p>请注意，如&quot;bar&quot;表示的双引号(又称解释文字)与如&rsquo;foo'表示的以反引号(即原始文字)界定的字符串文字之间的区别。 双引号之间的文本形成文字的值，并使用反斜杠将换行符转义为&rdquo;\n&rdquo;，以转义字符。 反引号之间的文本被视为未解释(隐式为UTF-8编码)； 特别是，反斜杠没有特殊含义，并且字符串可能包含换行符。</p>
 <p>string的基本使用:</p>
 <pre><code>var s string // empty string &quot;&quot;
 s1 := &quot;string\nliteral\nwith\tescape characters&quot;
@@ -212,15 +207,15 @@ s: 1 + 3.000000 = 4</p>
 <h2 id="标准库中重要的字符串操作">标准库中重要的字符串操作:</h2>
 <ul>
 <li><strong>strings</strong> 实现字符串搜索，拆分，大小写转换</li>
-<li><strong>bytes</strong> has the same functionality as strings package but operates on []byte byte slices</li>
+<li><strong>bytes</strong> 具有与strings相同的功能，但是用来操作[]byte和byte切片</li>
 <li><strong>strconv</strong> 用于字符串与整数和浮点数之间的转换</li>
-<li><strong>unicode/utf8</strong> 从UTF-8编码的字符串解码和编码为UTF-8编码的字符串</li>
+<li><strong>unicode/utf8</strong> UTF-8编码和解码</li>
 <li><strong>regexp</strong> 实现正则表达式</li>
 <li><strong>text/scanner</strong> 用于扫描和标记化UTF-8编码的文本</li>
 <li><strong>text/template</strong> 用于从模板生成更大的字符串</li>
-<li><strong>html/template</strong> 具有text/template的所有功能，但理解用于生成HTML的语法结构，可以防止代码注入攻击</li>
+<li><strong>html/template</strong> 具有text/template的所有功能，用于生成HTML的语法结构，可以防止代码注入攻击</li>
 </ul>
-<h2 id="在string中找指定的字符串">在string中找指定的字符串</h2>
+<h4 id="在string中找指定的字符串">在string中找指定的字符串</h4>
 <p>使用strings.Index寻找子字符串的位置:</p>
 <pre><code>s := &quot;where hello is?&quot;
 toFind := &quot;hello&quot;
@@ -234,15 +229,17 @@ fmt.Printf(&quot;Index of non-existent substring is: %d\n&quot;, idx)
 <p>&lsquo;hello&rsquo; is in s starting at position 6 <br>
 Index of non-existent substring is: -1</p>
 </blockquote>
-<p>从末尾开始查找字符串在另一个字符串中的位置
-在上面，我们从字符串的开头搜索。 我们也可以使用string.LastIndex从头开始搜索：</p>
+<h4 id="从末尾开始查找子字符串">从末尾开始查找子字符串</h4>
+<p>使用string.LastIndex从末尾开始搜索：</p>
 <pre><code>s := &quot;hello and second hello&quot;
 toFind := &quot;hello&quot;
 idx := strings.LastIndex(s, toFind)
 fmt.Printf(&quot;when searching from end, '%s' is in s at position %d\n&quot;, toFind, idx)
-</code></pre><p>从末尾搜索时，“ hello”在位置17处
-查找所有出现的子串
-上面，我们只发现了子字符串的第一次出现。 查找所有事件的方法如下：</p>
+</code></pre><blockquote>
+<p>when searching from end, hello is in s at position 17</p>
+</blockquote>
+<h4 id="查找所有子串">查找所有子串</h4>
+<p>上面我们只查找字符串首次出现的位置, 查找所有子串如下:</p>
 <pre><code>s := &quot;first is, second is, third is&quot;
 toFind := &quot;is&quot;
 currStart := 0
@@ -260,8 +257,8 @@ for {
 found &lsquo;is&rsquo; at position 17 <br>
 found &lsquo;is&rsquo; at position 27</p>
 </blockquote>
-<h3 id="是否包含字符串">是否包含字符串</h3>
-<p>使用strings.Contains查看字符串中是否包含另一个字符串</p>
+<h4 id="是否包含字符串">是否包含字符串</h4>
+<p>使用strings.Contains查看string中是否包含另一个string</p>
 <pre><code>s := &quot;is hello there?&quot;
 toFind := &quot;hello&quot;
 if strings.Contains(s, toFind) {
@@ -272,7 +269,7 @@ if strings.Contains(s, toFind) {
 </code></pre><blockquote>
 <p>&lsquo;is hello there?&rsquo; contains &lsquo;hello&rsquo;</p>
 </blockquote>
-<h3 id="是否以另一个字符串开头">是否以另一个字符串开头</h3>
+<h4 id="是否以另一个字符串开头">是否以另一个字符串开头</h4>
 <p>使用strings.HasPrefix</p>
 <pre><code>s := &quot;this is string&quot;
 toFind := &quot;this&quot;
@@ -284,8 +281,8 @@ if strings.HasPrefix(s, toFind) {
 </code></pre><blockquote>
 <p>&lsquo;this is string&rsquo; starts with &lsquo;this&rsquo;</p>
 </blockquote>
-<h2 id="是否以另一个字符串结尾">是否以另一个字符串结尾</h2>
-<p>Using strings.HasSuffix:</p>
+<h4 id="是否以另一个字符串结尾">是否以另一个字符串结尾</h4>
+<p>使用strings.HasSuffix:</p>
 <pre><code>s := &quot;this is string&quot;
 toFind := &quot;string&quot;
 if strings.HasSuffix(s, toFind) {
@@ -296,12 +293,12 @@ if strings.HasSuffix(s, toFind) {
 </code></pre><blockquote>
 <p>&lsquo;this is string&rsquo; ends with &lsquo;string&rsquo;</p>
 </blockquote>
-<h2 id="string比较">string比较</h2>
+<h4 id="string比较">string比较</h4>
 <p>可以使用 ==, &gt; 和 &lt; 来比较字符串,比较是对原始字节执行的。</p>
-<p>This works as you would expect for ascii (i.e. english) text but might not be what you want when strings use mixed case (e.g. “abba” is &gt; “Zorro”) or use letters from non-english alphabets.</p>
-<h3 id="使用stringscompare比较字符串">使用strings.Compare比较字符串</h3>
-<p>You can also compare with strings.Compare but use ==, &gt; and &lt; instead as it has the same semantics.</p>
-<h3 id="大小写敏感的比较">大小写敏感的比较</h3>
+<p>这可以按照您期望的ascii（即英语）文本的方式工作，但是当字符串使用大小写混合的字符（例如“ abba”为“ Zorro”）或使用非英语字母的字母时，可能就不是您想要的。</p>
+<h4 id="使用stringscompare比较字符串">使用strings.Compare比较字符串</h4>
+<p>也可以与strings.Compare进行比较。和==，&gt;和&lt;相同.</p>
+<h4 id="大小写敏感的比较">大小写敏感的比较</h4>
 <p>使用strings.EqualFold进行忽略大小写的比较:</p>
 <pre><code>s1 := &quot;gone&quot;
 s2 := &quot;GoNe&quot;
@@ -346,7 +343,7 @@ s1 is equal to s1<br>
 s1 is not &gt; than s2<br>
 s1 is &lt; than s2</p>
 </blockquote>
-<h2 id="大小写转换">大小写转换</h2>
+<h4 id="大小写转换">大小写转换</h4>
 <pre><code>s := &quot;Mixed Case&quot;
 fmt.Printf(&quot;ToLower(s): '%s'\n&quot;, strings.ToLower(s))
 fmt.Printf(&quot;ToUpper(s): '%s'\n&quot;, strings.ToUpper(s))
@@ -356,7 +353,7 @@ fmt.Printf(&quot;ToTitle(s): '%s'\n&quot;, strings.ToTitle(s))
 ToUpper(s): &lsquo;MIXED CASE&rsquo;<br>
 ToTitle(s): &lsquo;MIXED CASE&rsquo;</p>
 </blockquote>
-<h2 id="string转int-float32-float64的几种方法">string转int, float32, float64的几种方法</h2>
+<h4 id="string转int-float32-float64">string转int, float32, float64</h4>
 <pre><code>s := &quot;234&quot;
 i, err := strconv.Atoi(s)
 if err != nil {
@@ -395,7 +392,7 @@ strconv.ParseInt(&lsquo;234&rsquo;, 64): 234<br>
 strconv.ParseFloat('-3.234&rsquo;, 64): -3.234<br>
 fmt.Sscanf(): -3.234</p>
 </blockquote>
-<h2 id="修剪string-移除char或string">修剪string (移除char或string)</h2>
+<h4 id="修剪string-移除char或string">修剪string (移除char或string)</h4>
 <p>strings.TrimSpace   strings.TrimSpace(s string) 删除字符串开头和结尾的空格:</p>
 <pre><code>s := &quot;  str\n &quot;
 fmt.Printf(&quot;TrimSpace: %#v =&gt; %#v\n&quot;, s, strings.TrimSpace(s))
@@ -433,11 +430,11 @@ fmt.Printf(&quot;TrimRight chars %#v from %#v =&gt; %#v\n\n&quot;, cutset, s, tr
 <p>TrimLeft chars &ldquo;zab&rdquo; from &ldquo;abacdda&rdquo; =&gt; &ldquo;cdda&rdquo;</p>
 <p>TrimRight chars &ldquo;zab&rdquo; from &ldquo;abacdda&rdquo; =&gt; &ldquo;abacdd&rdquo;</p>
 </blockquote>
-<p>strings.Replace替换指定字符串</p>
+<h4 id="stringsreplace替换指定字符串">strings.Replace替换指定字符串</h4>
 <pre><code>s := &quot;this is string&quot;
 toRemove := &quot; is&quot;
 
- after := strings.Replace(s, toRemove, &quot;&quot;, -1)    
+after := strings.Replace(s, toRemove, &quot;&quot;, -1)    
 fmt.Printf(&quot;Removed %#v from %#v =&gt; %#v\n\n&quot;, toRemove, s, after)
 </code></pre><blockquote>
 <p>Removed &quot; is&rdquo; from &ldquo;this is string&rdquo; =&gt; &ldquo;this string&rdquo;</p>
@@ -449,7 +446,7 @@ fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
 <p>s2: &lsquo;replaced string replaced&rsquo;</p>
 </blockquote>
 <p>strings.Replace 函数最后一个参数代表最大的替换数,-1代表替换所有的</p>
-<p>使用正则表达式替换字符串</p>
+<h4 id="使用正则表达式替换字符串">使用正则表达式替换字符串</h4>
 <pre><code>s := &quot;original string original&quot;
 rx := regexp.MustCompile(&quot;(?U)or.*al&quot;)
 s2 := rx.ReplaceAllString(s, &quot;replaced&quot;)
@@ -460,7 +457,7 @@ fmt.Printf(&quot;s2: '%s'\n&quot;, s2)
 <p>这显示了如何用正则表达式替换字符串。 (？U)or。* al是与原始字符串匹配的非贪婪((？U)标志)正则表达式。</p>
 <p>我们用替换的字符串替换匹配正则表达式的字符串的所有部分。</p>
 <p>正则表达式是非贪婪的，这意味着它与可能的最短字符串匹配，而不是与寻找可能的最长匹配的默认贪婪匹配相对。</p>
-<h2 id="拆分和合并">拆分和合并</h2>
+<h4 id="拆分和合并">拆分和合并</h4>
 <p>将字符串分割为[] string，或者将其重新连接为字符串:</p>
 <pre><code>s := &quot;this is a string&quot;
 a := strings.Split(s, &quot; &quot;)
@@ -473,7 +470,7 @@ fmt.Printf(&quot;s2: %#v\n&quot;, s2)
 s2: &ldquo;this,is,a,string&rdquo;
 使用Join连接字符串比使用+快</p>
 </blockquote>
-<h2 id="格式化文本">格式化文本</h2>
+<h4 id="格式化文本">格式化文本</h4>
 <p>Go的标准库fmt包实现了C语言风格的字符串格式化:</p>
 <pre><code>s := fmt.Sprintf(&quot;Hello %s&quot;, &quot;World&quot;)
 fmt.Printf(&quot;s: '%s'\n&quot;, s)
@@ -523,7 +520,7 @@ fmt.Println(s)
 <li>%g    // %e for large exponents, %f otherwise</li>
 <li>%G    // %E for large exponents, %F otherwise</li>
 </ul>
-<p>字符串和字节片(与这些动词等效地对待)：</p>
+<p>字符串和字节片(与这些动词等效地对待):</p>
 <ul>
 <li>%s    // the uninterpreted bytes of the string or slice</li>
 <li>%q    // a double-quoted string safely escaped with Go syntax</li>
@@ -534,7 +531,7 @@ fmt.Println(s)
 <ul>
 <li>%p    // base 16 notation, with leading 0x</li>
 </ul>
-<h2 id="解析文本">解析文本</h2>
+<h4 id="解析文本">解析文本</h4>
 <p>使用fmt.Sscanf
 fmt.Sscanf is the reverse of fmt.Sprintf. Given a string and formatting directive you can parse string into components.</p>
 <pre><code>// extract int and float from a string
@@ -635,24 +632,22 @@ func NormalizeNewlines(d []byte) []byte {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/string/">https://luangeng.space/post/go/basic/string/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/string/">https://luangeng.space/post/go/basic/string/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -792,17 +787,6 @@ func NormalizeNewlines(d []byte) []byte {
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -828,7 +812,7 @@ func NormalizeNewlines(d []byte) []byte {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -839,7 +823,7 @@ func NormalizeNewlines(d []byte) []byte {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -850,7 +834,7 @@ func NormalizeNewlines(d []byte) []byte {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -872,7 +856,7 @@ func NormalizeNewlines(d []byte) []byte {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -901,8 +885,29 @@ func NormalizeNewlines(d []byte) []byte {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -967,14 +972,6 @@ func NormalizeNewlines(d []byte) []byte {
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -983,15 +980,15 @@ func NormalizeNewlines(d []byte) []byte {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

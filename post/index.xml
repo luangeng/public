@@ -63,7 +63,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/string/</guid>
-      <description>Go中的string是不可变的byte序列 Unlike languages like Python or Java, they are not internally represented as Unicode. Consequently, when reading strings from files or network connections, there is no conversion step from bytes to internal representation. When writing strings to files, there is no conversion to a code page. 与Pyt</description>
+      <description>Go中的string是不可变的byte序列 与Python或Java等语言不同，它们在内部未表示为Unicode。 因此，从文件或网络连接读取字</description>
     </item>
     
     <item>
@@ -72,7 +72,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Pointers/</guid>
-      <description>指针是其指向变量在内存中的地址。 不同与C语言, Go不允许指针上的运算, 不能对指针做加减。 指针的零值为nil。 指针使用示例： v := 5 // pv是指向</description>
+      <description>指针是其指向变量在内存中的地址。 不同与C语言, Go不允许指针上的运算, 不能对指针做加减。 指针的零值为nil。 指针使用示例: v := 5 // pv是指向</description>
     </item>
     
     <item>
@@ -108,7 +108,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/struct/</guid>
-      <description>struct的作用是将几个相关的变量组合成一个独立的实体. 另外,struct可以有方法,如同Java和C++中的类. 不同于Java和C++中</description>
+      <description>struct的作用是将几个相关的变量组合成一个独立的实体. 如同Java和C++中的类,struct可以有方法. 不同于Java和C++中的类,</description>
     </item>
     
     <item>
@@ -117,7 +117,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Interfaces/</guid>
-      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如：标准库中定义的io.Rea</description>
+      <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如:标准库中定义的io.Rea</description>
     </item>
     
     <item>
@@ -171,7 +171,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Error-handling/</guid>
-      <description>基本错误处理: func sqrt(n float64) (float64, error) { if n &amp;lt; 0 { return 0, fmt.Errorf(&amp;quot;invalid argument &#39;%f&#39;, must be &amp;gt;= 0&amp;quot;, n) } return math.Sqrt(n), nil } func printSqrt(n float64) { if res, err := sqrt(n); err == nil { fmt.Printf(&amp;quot;sqrt of %f is %f\n&amp;quot;, n, res) } else { fmt.Printf(&amp;quot;sqrt of %f returned error &#39;%s&#39;\n&amp;quot;, n, err) } } func main() { printSqrt(16)</description>
+      <description>与C#或Python等语言不同，Go通过返回错误值而不是抛出异常来表示程序故障。 Go同时提供了panic和recover，但很少使用。 错误是</description>
     </item>
     
     <item>
@@ -243,7 +243,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Time-date/</guid>
-      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型： 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
+      <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型: 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
     </item>
     
     <item>
@@ -252,7 +252,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Command-line-arguments/</guid>
-      <description>标准库中的flag包用于解析命令行参数： var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
+      <description>标准库中的flag包用于解析命令行参数: var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
     </item>
     
     <item>
@@ -261,7 +261,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Logging/</guid>
-      <description>日志记录是一个非常深入的主题，因为不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方</description>
+      <description>日志记录非常重要, 不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方式是打印在标准输</description>
     </item>
     
     <item>
@@ -270,7 +270,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Executing-commands/</guid>
-      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是：使用exec.Command(</description>
+      <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是:使用exec.Command(</description>
     </item>
     
     <item>
@@ -288,7 +288,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/JSON/</guid>
-      <description>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;`</description>
+      <description>Go中的标准库encoding/json提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;` } p</description>
     </item>
     
     <item>
@@ -297,11 +297,7 @@
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/XML/</guid>
-      <description>Package encoding/xml in standard library provides functionality for serializing data as XML and parsing XML.
-Parse XML into a struct Parsing XML is similar to parsing JSON. You define structures that map to the structure of XML and unmarshal from []byte slice or io.Reader into a struct.
-var xmlStr = ` JohnSan FranciscoCA&amp;lt;person age=&amp;quot;23&amp;quot;&amp;gt; &amp;lt;first-name&amp;gt;Julia&amp;lt;/first-name&amp;gt; &amp;lt;/person&amp;gt;  `
-type People struct { Person []Person xml:&amp;quot;person&amp;quot; }
-type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string xml:&amp;quot;first-name&amp;quot; Address Address xml:&amp;quot;address&amp;quot; }</description>
+      <description>标准库中的encoding/xml包提供了XML格式的序列化功能. 将XML解析为struct 解析XML与解析JSON类似。可以从[]byte</description>
     </item>
     
     <item>
@@ -310,7 +306,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/CSV/</guid>
-      <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价： date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
+      <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价: date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
     </item>
     
     <item>
@@ -364,7 +360,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Text-HTML-templates/</guid>
-      <description>Imagine you’re working on a web application and need to return HTML that lists most recent tweets. You need to load list of tweets from a database and create HTML based on that information. Building that HTML string by building smaller strings and concatenating them with + would be tedious. Packages text/template and html/template in Go standard library make implement data-driven templates for generating textual</description>
+      <description>假设您正在使用Web应用程序，并且需要返回列出最新推文的HTML。 您需要从数据库加载推文列表，并根据该信息创建HTML。 通过构建较小的字符串</description>
     </item>
     
     <item>
@@ -409,7 +405,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Cross-compilation/</guid>
-      <description>Go compiler can create native executable binaries for many operating system: Windows, Mac OS X, Linux, Android, iOS and a few lesser known like plan9, solaris, freebsd, openbsd, netbsd, dragonfly. It also supports multiple architectures (CPUs) for the same operating system e.g. it can generate both 32-bit and 64-bit Windows binaries or intel, arm, ppc, mips Linux binaries. Better yet, the toolchain supports cross-compilation i.e. you can create a Linux</description>
+      <description>Go编译器可以为许多操作系统创建本机可执行二进制文件：Windows，Mac OS X，Linux，Android，iOS和一些鲜为人知的工具，例</description>
     </item>
     
     <item>
@@ -418,7 +414,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Conditional-compilation/</guid>
-      <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 Tags are specified per file, at the top of the file, followed by an empty line and the code. A typical use case for tags is to provide to implementation of the same functionality and pick the</description>
+      <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 标签是在每个文件的顶部指定的，然后是空行和代码。 标签的典型用例是提供相同功</description>
     </item>
     
     <item>
@@ -454,7 +450,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Plugin/</guid>
-      <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。 在Go1.8中，仅在Linux上可用。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V)</description>
+      <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。在Go1.8中，仅支持Linux。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V) } 使</description>
     </item>
     
     <item>
@@ -463,7 +459,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/go/basic/Fmt/</guid>
-      <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O： %v 默认格式 %T 值的类型 %s 字符串或片</description>
+      <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O: %v 默认格式 %T 值的类型 %s 字符串或片</description>
     </item>
     
     <item>
@@ -513,28 +509,28 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>爬取电影信息使用Elasticsearch检索</title>
-      <link>https://luangeng.space/post/other/elasticsearch-douban/</link>
+      <link>https://luangeng.space/post/java/other/elasticsearch-douban/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticsearch-douban/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticsearch-douban/</guid>
       <description>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &amp;quot;Movie&amp;quot;; public static final String TYPE_COMMENT = &amp;quot;Comment&amp;quot;; public static final String TYPE_OTHER = &amp;quot;Other&amp;quot;; public static final int STATUS_UNCRAWLED = 0; public</description>
     </item>
     
     <item>
       <title>elasticsearch JAVA API</title>
-      <link>https://luangeng.space/post/other/elasticsearch-api/</link>
+      <link>https://luangeng.space/post/java/other/elasticsearch-api/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticsearch-api/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticsearch-api/</guid>
       <description>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &amp;quot;1&amp;quot;) .source(&amp;quot;user&amp;quot;, &amp;quot;kimchy&amp;quot;, &amp;quot;postDate&amp;quot;, new Date(), &amp;quot;message&amp;quot;, &amp;quot;trying out Elasticsearch&amp;quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); // client.</description>
     </item>
     
     <item>
       <title>elasticsearch入门教程</title>
-      <link>https://luangeng.space/post/other/elasticsearch/</link>
+      <link>https://luangeng.space/post/java/other/elasticsearch/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticsearch/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticsearch/</guid>
       <description>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</description>
     </item>
     
@@ -544,43 +540,43 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/spring/zeromq-springboot/</guid>
-      <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
+      <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories: org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
     </item>
     
     <item>
       <title>集成通过github登录网站功能</title>
-      <link>https://luangeng.space/post/other/github_login/</link>
+      <link>https://luangeng.space/post/java/other/github_login/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/github_login/</guid>
-      <description>使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</description>
+      <guid>https://luangeng.space/post/java/other/github_login/</guid>
+      <description>使用第三方网址登录系统，使用github 工作流程: 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</description>
     </item>
     
     <item>
       <title>Oauth2协议 通过js和ajax获取token及刷新token</title>
-      <link>https://luangeng.space/post/other/token-front/</link>
+      <link>https://luangeng.space/post/java/other/token-front/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/token-front/</guid>
-      <description>基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程： 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth</description>
+      <guid>https://luangeng.space/post/java/other/token-front/</guid>
+      <description>基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程: 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth</description>
     </item>
     
     <item>
       <title>SpringBoot集成elastic-job-lite</title>
-      <link>https://luangeng.space/post/other/elasticJob/</link>
+      <link>https://luangeng.space/post/java/other/elasticJob/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticJob/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticJob/</guid>
       <description>SpringBoot集成elastic-job-lite 1.pom文件中引用jar包 &amp;lt;!-- elastic-job-lite --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-common-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-spring&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;18.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 2.本地启</description>
     </item>
     
     <item>
       <title>spring-security-oauth2 授权服务集成钉钉扫码登录</title>
-      <link>https://luangeng.space/post/other/dingding/</link>
+      <link>https://luangeng.space/post/java/other/dingding/</link>
       <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/dingding/</guid>
-      <description>spring boot版本 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; spring-security-oauth2版本 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security.oauth&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-oauth2&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 实现原理： 参照spring-security</description>
+      <guid>https://luangeng.space/post/java/other/dingding/</guid>
+      <description>spring boot版本 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; spring-security-oauth2版本 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security.oauth&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-oauth2&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 实现原理: 参照spring-security</description>
     </item>
     
     <item>
@@ -598,7 +594,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/netty/netty-file/</guid>
-      <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
+      <description>简介: 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现: 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
     </item>
     
     <item>
@@ -693,11 +689,11 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>RocketMQ核心概念</title>
-      <link>https://luangeng.space/post/other/rocketMq-Concept/</link>
+      <link>https://luangeng.space/post/java/other/rocketMq-Concept/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/rocketMq-Concept/</guid>
-      <description>Producer A producer sends messages generated by the business application systems to brokers. RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way. 生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例：同步，</description>
+      <guid>https://luangeng.space/post/java/other/rocketMq-Concept/</guid>
+      <description>Producer A producer sends messages generated by the business application systems to brokers. RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way. 生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例:同步，</description>
     </item>
     
     <item>
@@ -832,7 +828,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/db/mysql/mysql-type/</guid>
-      <description>Mysql常用数据类型 数字： 字符串： 时间：</description>
+      <description>Mysql常用数据类型 数字: 字符串: 时间:</description>
     </item>
     
     <item>
@@ -877,7 +873,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/zookeeper/zookeeper-cmd/</guid>
-      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
+      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址: http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下: # The number of milliseconds</description>
     </item>
     
     <item>
@@ -895,7 +891,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/db/redis/redis-intr/</guid>
-      <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列</description>
+      <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构:字符串，散列</description>
     </item>
     
     <item>
@@ -909,10 +905,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>ubuntu16.04安装rocketMQ</title>
-      <link>https://luangeng.space/post/other/rocketmq/</link>
+      <link>https://luangeng.space/post/java/other/rocketmq/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/rocketmq/</guid>
+      <guid>https://luangeng.space/post/java/other/rocketmq/</guid>
       <description>本文详细说明如何在ubuntu16.04下安装rocketMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
     </item>
     
@@ -927,10 +923,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>Maven安装配置使用</title>
-      <link>https://luangeng.space/post/other/maven/</link>
+      <link>https://luangeng.space/post/java/other/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/maven/</guid>
+      <guid>https://luangeng.space/post/java/other/maven/</guid>
       <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
     </item>
     
@@ -1219,7 +1215,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/english/4-5/</guid>
-      <description>Some people seem easy to understand: their character appears obvious on first meeting. Appearances, however, can be deceptive1. 有些人似乎容易了解：他们的个性在初次交往时就表露无遗。然而，外表可能具有欺骗性。 A Friend in Need Somerset Maugham 1 For thirty years now I</description>
+      <description>Some people seem easy to understand: their character appears obvious on first meeting. Appearances, however, can be deceptive1. 有些人似乎容易了解:他们的个性在初次交往时就表露无遗。然而，外表可能具有欺骗性。 A Friend in Need Somerset Maugham 1 For thirty years now I</description>
     </item>
     
     <item>
@@ -1260,10 +1256,10 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
     
     <item>
       <title>IntelliJ IDEA常用快捷键</title>
-      <link>https://luangeng.space/post/other/idea-key/</link>
+      <link>https://luangeng.space/post/java/other/idea-key/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/idea-key/</guid>
+      <guid>https://luangeng.space/post/java/other/idea-key/</guid>
       <description>Mac: 符号说明 ⌃ Control键 ⌥ Option键 ⌘ Command键 ⇧ 大写锁定键 ↩ 回车键 ⌫ BackSpace键 ⎋ Escape (Esc) ⌦ 向前删除键(Fn+Delet</description>
     </item>
     
@@ -1282,7 +1278,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/oddeven/</guid>
-      <description>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即： 奇 1 偶 2 奇 3 偶 4 奇 5 偶 6 奇 7 偶 8 奇 9 偶 10 解法一： w</description>
+      <description>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即: 奇 1 偶 2 奇 3 偶 4 奇 5 偶 6 奇 7 偶 8 奇 9 偶 10 解法一: w</description>
     </item>
     
     <item>
@@ -1318,7 +1314,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/deadlock/</guid>
-      <description>会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new Object(), o2</description>
+      <description>会导致死锁的代码: public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new Object(), o2</description>
     </item>
     
     <item>
@@ -1336,7 +1332,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-base/</guid>
-      <description>初始设置： git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库： git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
+      <description>初始设置: git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库: git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
@@ -1345,7 +1341,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/other/git-undo/</guid>
-      <description>修改上一次错误的提交：(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
+      <description>修改上一次错误的提交:(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
     </item>
     
     <item>
@@ -1354,7 +1350,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-proxy/</guid>
-      <description>代理模式：为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
+      <description>代理模式:为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
     </item>
     
     <item>
@@ -1381,7 +1377,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Thu, 19 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-oddeven/</guid>
-      <description>今天看到一个题：两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
+      <description>今天看到一个题:两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
     </item>
     
     <item>
@@ -1435,7 +1431,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Fri, 13 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-jvm/</guid>
-      <description>JVM内存结构 Heap Space： 堆内存(Heap Space)是由Young Generation和Old Generation组成，而Young Ge</description>
+      <description>JVM内存结构 Heap Space: 堆内存(Heap Space)是由Young Generation和Old Generation组成，而Young Generat</description>
     </item>
     
     <item>
@@ -1444,7 +1440,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-blockingqueue/</guid>
-      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
+      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数: ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
     </item>
     
     <item>
@@ -1480,7 +1476,7 @@ type Person struct { Age int xml:&amp;quot;age,attr&amp;quot; FirstName string x
       <pubDate>Fri, 06 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-serializable/</guid>
-      <description>对Java对象序列化的目的是持久化对象或者为RMI(远程方法调用)传递参数和返回值。 下面是一个序列化对象写入文件的例子： package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
+      <description>对Java对象序列化的目的是持久化对象或者为RMI(远程方法调用)传递参数和返回值。 下面是一个序列化对象写入文件的例子: package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
     </item>
     
     <item>

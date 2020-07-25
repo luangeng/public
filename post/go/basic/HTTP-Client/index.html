@@ -205,7 +205,7 @@ if err != nil {
 }
 </code></pre><p>这显示了如何对URL发出HTTP GET请求(在这种情况下为HTML页面)。</p>
 <p>我使用uri作为变量名，因为有net / url包，这意味着在同一文件中导入net / url时使用更自然的url会导致命名冲突。</p>
-<p>如果没有错误，则http.Get()返回* http.Response，其中包含以下重要字段：</p>
+<p>如果没有错误，则http.Get()返回* http.Response，其中包含以下重要字段:</p>
 <p>正文是包含响应内容的io.Reader。 如果URL是HTML页面，则为HTML数据。 如果网址是PNG图片，则为PNG数据
 StatusCode是描述HTTP状态代码的int。 200表示确定。 404表示未找到等。
 标头包含响应标头。 其类型为map [string] [] string，因为根据HTTP规范，可以使用多个具有相同名称的标头
@@ -241,7 +241,7 @@ d, err := ioutil.ReadAll(resp.Body)
 if err != nil {
     log.Fatalf(&quot;http.Get() failed with '%s'\n&quot;, err)
 }
-</code></pre><p>fmt.Printf(“ http.Post()返回状态代码％d，截断的文本：\ n％s &hellip; \ n”，分别为StatusCode，字符串(d)[：93])
+</code></pre><p>fmt.Printf(“ http.Post()返回状态代码％d，截断的文本:\ n％s &hellip; \ n”，分别为StatusCode，字符串(d)[:93])
 进行POST的最简单方法是使用http.Client.Post(URL字符串，contentType字符串，body io.Reader)。</p>
 <p>在此示例中，我们发送原始文本。 在大多数情况下，服务器期望正文为url编码格式。</p>
 <p>基本HTTP HEAD
@@ -381,7 +381,7 @@ for _, post := range p.Items {
 <p>HTTP请求包括User-Agent标头。</p>
 <p>最好使用对你的程序有意义的用户代理。</p>
 <p>另外，某些服务器对它们接受的内容很挑剔。</p>
-<p>这是设置自定义用户代理的方法：</p>
+<p>这是设置自定义用户代理的方法:</p>
 <pre><code>userAgent := &quot;Special Agent v 1.0.16&quot;
 
 client := &amp;http.Client{}
@@ -431,24 +431,22 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/HTTP-Client/">https://luangeng.space/post/go/basic/HTTP-Client/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/HTTP-Client/">https://luangeng.space/post/go/basic/HTTP-Client/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -588,17 +586,6 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Panic-recover/" rel="bookmark" class="leancloud-count">Go Panic和recover
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -624,7 +611,7 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -635,7 +622,7 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -646,7 +633,7 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -668,7 +655,7 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -697,8 +684,29 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -763,14 +771,6 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
                 
                 <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Panic-recover/">Go Panic和recover</a></li>
-                
             </ul>
         </div>
         
@@ -779,15 +779,15 @@ fmt.Printf(&quot;Response status code: %d, text:\n%s\n&quot;, resp.StatusCode, s
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

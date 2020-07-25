@@ -215,13 +215,13 @@ ok      github.com/me/project/dir2    0.008s
 === RUN   TestDiff
 --- PASS: TestDiff (0.00s)
 PASS
-</code></pre><p>运行特定测试：如果有多个测试，并且您想运行特定测试，则可以这样进行：</p>
+</code></pre><p>运行特定测试:如果有多个测试，并且您想运行特定测试，则可以这样进行:</p>
 <p><code>go test -v -run=&lt;TestName&gt; // will execute only test with this name</code></p>
 <p>如:</p>
 <pre><code>go test -v run=TestSum
 </code></pre><h2 id="表驱动的单元测试">表驱动的单元测试</h2>
 <p>此类测试是用于使用预定义的输入和输出值进行测试的流行技术。</p>
-<p>创建一个名为main.go的文件，其内容如下：</p>
+<p>创建一个名为main.go的文件，其内容如下:</p>
 <pre><code>package main
 
 import (
@@ -235,7 +235,7 @@ func main() {
 func Sum(a, b int) int {
     return a + b
 }
-</code></pre><p>运行之后将看到输出为9,尽管Sum函数看起来非常简单，但是测试代码是一个好主意。 为此，我们在与main.go相同的文件夹中创建另一个名为main_test.go的文件，其中包含以下代码：</p>
+</code></pre><p>运行之后将看到输出为9,尽管Sum函数看起来非常简单，但是测试代码是一个好主意。 为此，我们在与main.go相同的文件夹中创建另一个名为main_test.go的文件，其中包含以下代码:</p>
 <pre><code>package main
 
 import (
@@ -268,7 +268,7 @@ func TestSum(t *testing.T) {
 <p>setUp函数可为您的环境做好测试准备。
 tearDown函数执行回滚。
 当您无法修改数据库并且需要创建一个对象来模拟数据库带来的对象或需要在每次测试中初始化配置时，这是一个不错的选择。</p>
-<p>一个愚蠢的例子是：</p>
+<p>一个愚蠢的例子是:</p>
 <pre><code>// Standard numbers map
 var numbers map[string]int = map[string]int{&quot;zero&quot;: 0, &quot;three&quot;: 3}
 
@@ -351,7 +351,7 @@ func getPerson(t *testing.T) {
     }
 }
 </code></pre><h2 id="基准测试">基准测试</h2>
-<p>如果要衡量基准，请添加如下测试方法：</p>
+<p>如果要衡量基准，请添加如下测试方法:</p>
 <p>sum.go:</p>
 <pre><code>package sum
 
@@ -397,9 +397,9 @@ func ExampleSum() {
     // -2
     // 0
 }
-</code></pre><p>要执行测试，请在包含这些文件的文件夹中运行go test或将这两个文件放在名为sum的子文件夹中，然后从父文件夹中执行go test ./sum。 将获得类似于以下的输出：</p>
+</code></pre><p>要执行测试，请在包含这些文件的文件夹中运行go test或将这两个文件放在名为sum的子文件夹中，然后从父文件夹中执行go test ./sum。 将获得类似于以下的输出:</p>
 <pre><code>ok      so/sum    0.005s
-</code></pre><p>如果您想知道这如何测试您的代码，这是另一个示例函数，该函数实际上未通过测试：</p>
+</code></pre><p>如果您想知道这如何测试您的代码，这是另一个示例函数，该函数实际上未通过测试:</p>
 <pre><code>func ExampleSum_fail() {
     x := Sum(1, 2)
     fmt.Println(x)
@@ -407,7 +407,7 @@ func ExampleSum() {
     // Output:
     // 5
 }
-</code></pre><p>运行go test时，将获得以下输出：</p>
+</code></pre><p>运行go test时，将获得以下输出:</p>
 <pre><code>$ go test
 --- FAIL: ExampleSum_fail (0.00s)
 got:
@@ -417,9 +417,9 @@ want:
 FAIL
 exit status 1
 FAIL    so/sum    0.006s
-</code></pre><p>如果要查看sum软件包的文档，请运行：</p>
+</code></pre><p>如果要查看sum软件包的文档，请运行:</p>
 <pre><code>go doc -http=:6060
-</code></pre><p>打开链接: http://localhost:6060/pkg/FOLDER/sum/, 其中FOLDER是包含sum软件包的文件夹(在本示例中为)。 sum方法的文档如下所示：</p>
+</code></pre><p>打开链接: http://localhost:6060/pkg/FOLDER/sum/, 其中FOLDER是包含sum软件包的文件夹(在本示例中为)。 sum方法的文档如下所示:</p>
 <h2 id="测试http请求">测试HTTP请求</h2>
 <pre><code>main.go:
 
@@ -526,24 +526,22 @@ go tool cover -html=c.out
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Testing/">https://luangeng.space/post/go/basic/Testing/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Testing/">https://luangeng.space/post/go/basic/Testing/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -683,17 +681,6 @@ go tool cover -html=c.out
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -719,7 +706,7 @@ go tool cover -html=c.out
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -730,7 +717,7 @@ go tool cover -html=c.out
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -741,7 +728,7 @@ go tool cover -html=c.out
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -763,7 +750,7 @@ go tool cover -html=c.out
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -792,8 +779,29 @@ go tool cover -html=c.out
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -858,14 +866,6 @@ go tool cover -html=c.out
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -874,15 +874,15 @@ go tool cover -html=c.out
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

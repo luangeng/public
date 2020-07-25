@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>elasticsearch JAVA API - 计算机与软件技术公开课</title>
+  <title>SpringBoot集成elastic-job-lite - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="elasticsearch JAVA API - 计算机与软件技术公开课">
-  <meta name="description" content="elasticsearch JAVA API">
-  <meta itemprop="name" content="elasticsearch JAVA API - 计算机与软件技术公开课">
-  <meta itemprop="description" content="elasticsearch JAVA API">
-  <meta property="og:title" content="elasticsearch JAVA API - 计算机与软件技术公开课" />
+  <meta name="keywords" content="SpringBoot集成elastic-job-lite - 计算机与软件技术公开课">
+  <meta name="description" content="SpringBoot集成elastic-job-lite">
+  <meta itemprop="name" content="SpringBoot集成elastic-job-lite - 计算机与软件技术公开课">
+  <meta itemprop="description" content="SpringBoot集成elastic-job-lite">
+  <meta property="og:title" content="SpringBoot集成elastic-job-lite - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/elasticsearch-api/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/elasticJob/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="elasticsearch JAVA API">
+  <meta property="og:description" content="SpringBoot集成elastic-job-lite">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/elasticsearch-api/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/elasticsearch-api/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/elasticJob/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/elasticJob/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">elasticsearch JAVA API</h1>
+                                        <h1 class="post-title">SpringBoot集成elastic-job-lite</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-12-04 · 423 Words
+                                            Posted @ 2018-09-03 · 681 Words
                                             
-                                            · Tags: elasticsearch
+                                            · Tags: springboot
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="elasticsearch JAVA API">
+                                            <span class="leancloud_visitors" data-flag-title="SpringBoot集成elastic-job-lite">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,135 +165,169 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <pre><code>@Service
-public class DocApi implements Const {
+                                                <p>SpringBoot集成elastic-job-lite</p>
+<h2 id="1pom文件中引用jar包">1.pom文件中引用jar包</h2>
+<pre><code>&lt;!-- elastic-job-lite --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.dangdang&lt;/groupId&gt;
+            &lt;artifactId&gt;elastic-job-common-core&lt;/artifactId&gt;
+            &lt;version&gt;2.1.5&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.dangdang&lt;/groupId&gt;
+            &lt;artifactId&gt;elastic-job-lite-core&lt;/artifactId&gt;
+            &lt;version&gt;2.1.5&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.dangdang&lt;/groupId&gt;
+            &lt;artifactId&gt;elastic-job-lite-spring&lt;/artifactId&gt;
+            &lt;version&gt;2.1.5&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.google.guava&lt;/groupId&gt;
+            &lt;artifactId&gt;guava&lt;/artifactId&gt;
+            &lt;version&gt;18.0&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre><h2 id="2本地启动一个zookeeper-或-使用内嵌的zookeeper">2.本地启动一个zookeeper 或 使用内嵌的zookeeper，</h2>
+<pre><code>&lt;dependency&gt;
+                &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+                &lt;artifactId&gt;curator-test&lt;/artifactId&gt;
+                &lt;version&gt;${curator.version}&lt;/version&gt;
+            &lt;/dependency&gt;
+</code></pre><pre><code>/**
+ * 内嵌Zookeeper.
+ */
+public final class EmbedZookeeperServer {
+
+    private static TestingServer testingServer;
+
+    /**
+     * 内嵌Zookeeper.
+     *
+     * @param port Zookeeper的通信端口号
+     */
+    public static void start(final int port) {
+        try {
+            testingServer = new TestingServer(port, new File(String.format(&quot;target/test_zk_data/%s/&quot;, System.nanoTime())));
+        } catch (final Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(1000L);
+                        testingServer.close();
+                    } catch (final InterruptedException | IOException ex) {
+                    }
+                }
+            });
+        }
+    }
+
+    public static void main(final String[] args) {
+        EmbedZookeeperServer.start(2181);
+    }
+}
+</code></pre><h2 id="3配置文件中增加如下配置项">3.配置文件中增加如下配置项</h2>
+<p>application.yml</p>
+<pre><code>elastic-job:
+  enable: true
+  regCenter:
+    serverList: localhost:2181
+    namespace: elastic-job-lite-yto-invoice
+</code></pre><p>serverList中是zookeeper的地址</p>
+<h2 id="4新增配置类注入elastic类">4.新增配置类注入elastic类</h2>
+<pre><code>@Configuration
+@ConditionalOnExpression(&quot;'${elastic-job.enable}' == 'true'&quot;)
+public class RegistryCenterConfig {
+
+    @Value(&quot;${elastic-job.regCenter.serverList}&quot;)
+    private String serverList;
+
+    @Value(&quot;${elastic-job.regCenter.namespace}&quot;)
+    private String namespace;
+
+    @Resource
+    private DataSource dataSource;
+
+    @Bean
+    public JobEventConfiguration jobEventConfiguration() {
+        return new JobEventRdbConfiguration(dataSource);
+    }
+
+    @Bean(initMethod = &quot;init&quot;)
+    public ZookeeperRegistryCenter regCenter() {
+        return new ZookeeperRegistryCenter(new ZookeeperConfiguration(serverList, namespace));
+    }
+}
+</code></pre><h2 id="5新增注册任务bean的配置类">5.新增注册任务Bean的配置类</h2>
+<pre><code>@Configuration
+@ConditionalOnExpression(&quot;'${elastic-job.enable}' == 'true'&quot;)
+public class SimpleJobConfig {
 
     @Autowired
-    RestHighLevelClient client;
+    private ZookeeperRegistryCenter regCenter;
 
-    public void info() throws IOException {
-        MainResponse response = client.info(RequestOptions.DEFAULT);
-        ClusterName clusterName = response.getClusterName();
-        String clusterUuid = response.getClusterUuid();
-        String nodeName = response.getNodeName();
-        Version version = response.getVersion();
-        Build build = response.getBuild();
+    @Autowired
+    private JobEventConfiguration jobEventConfiguration;
+
+    @Autowired
+    private CustomJobExceptionHandler customJobExceptionHandler;
+
+	//注入job
+    @Bean(initMethod = &quot;init&quot;)
+    public JobScheduler simpleJobScheduler(SpringSimpleJob springSimpleJob) {
+        String cron = &quot;0/5 * * * * ?&quot;;
+        int shardingTotalCount = 1;
+        String shardingItemParameters = &quot;&quot;;
+        LiteJobConfiguration liteJobConfiguration = getLiteJobConfiguration(springSimpleJob.getClass(), cron, shardingTotalCount, shardingItemParameters);
+        return new SpringJobScheduler(springSimpleJob, regCenter, liteJobConfiguration, jobEventConfiguration);
+    }
+	
+	//注入其他job
+
+    private LiteJobConfiguration getLiteJobConfiguration(final Class&lt;? extends SimpleJob&gt; jobClass, String cron, int shardingTotalCount, String shardingItemParameters) {
+        JobCoreConfiguration jobCoreConfiguration = JobCoreConfiguration.newBuilder(jobClass.getName(), cron, shardingTotalCount).build();
+        SimpleJobConfiguration simpleJobConfiguration = new SimpleJobConfiguration(jobCoreConfiguration, jobClass.getCanonicalName());
+        return LiteJobConfiguration.newBuilder(simpleJobConfiguration).overwrite(true).build();
     }
 
-    public IndexResponse index(int n) throws IOException {
-        IndexRequest request = new IndexRequest(INDEX, TYPE, &quot;1&quot;)
-                .source(&quot;user&quot;, &quot;kimchy&quot;, &quot;postDate&quot;, new Date(), &quot;message&quot;, &quot;trying out Elasticsearch&quot;);
-        IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);
-//        client.indexAsync(request, RequestOptions.DEFAULT, new MyActionListener());
+}
+</code></pre><h2 id="6一个job类demo">6.一个Job类demo</h2>
+<pre><code>@Component
+public class SpringSimpleJob implements SimpleJob {
 
-        String index = indexResponse.getIndex();
-        String type = indexResponse.getType();
-        String id = indexResponse.getId();
-        long version = indexResponse.getVersion();
-        if (indexResponse.getResult() == DocWriteResponse.Result.CREATED) {
-
-        } else if (indexResponse.getResult() == DocWriteResponse.Result.UPDATED) {
-
-        }
-        ReplicationResponse.ShardInfo shardInfo = indexResponse.getShardInfo();
-        if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
-
-        }
-        if (shardInfo.getFailed() &gt; 0) {
-            for (ReplicationResponse.ShardInfo.Failure failure :
-                    shardInfo.getFailures()) {
-                String reason = failure.reason();
-            }
-        }
-        return indexResponse;
+    @Override
+    public void execute(final ShardingContext shardingContext) {
+        String time = new SimpleDateFormat(&quot;HH:mm:ss&quot;).format(new Date());
+        System.out.println(String.format(&quot;Time: %s | Item: %s | Thread: %s&quot;, time,
+                shardingContext.getShardingItem(), Thread.currentThread().getId()));
     }
 
-    public void get() throws IOException {
-        GetRequest request = new GetRequest(INDEX, TYPE, &quot;1&quot;);
-//        request.storedFields(&quot;message&quot;);
-        GetResponse getResponse = client.get(request, RequestOptions.DEFAULT);
-//        String msg = getResponse.getField(&quot;message&quot;).getValue();
-        String message = getResponse.getSourceAsMap().get(&quot;message&quot;).toString();
-    }
+}
+</code></pre><h2 id="7运行结果">7.运行结果</h2>
+<pre><code>Time: 11:03:35 | Item: 0 | Thread: 36
+Time: 11:03:40 | Item: 0 | Thread: 36
+Time: 11:03:45 | Item: 0 | Thread: 36
+Time: 11:03:50 | Item: 0 | Thread: 36
+Time: 11:03:55 | Item: 0 | Thread: 36
+Time: 11:04:00 | Item: 0 | Thread: 36
+Time: 11:04:05 | Item: 0 | Thread: 36
+Time: 11:04:10 | Item: 0 | Thread: 36
+Time: 11:04:15 | Item: 0 | Thread: 36
+Time: 11:04:20 | Item: 0 | Thread: 36
+Time: 11:04:25 | Item: 0 | Thread: 36
+Time: 11:04:30 | Item: 0 | Thread: 36
+Time: 11:04:35 | Item: 0 | Thread: 36
+</code></pre><h2 id="8其他">8.其他</h2>
+<pre><code>@Component
+public class CustomJobExceptionHandler implements JobExceptionHandler {
 
-    public void exist() throws IOException {
-        GetRequest getRequest = new GetRequest(INDEX, TYPE, &quot;1&quot;);
-        getRequest.fetchSourceContext(new FetchSourceContext(false));
-        getRequest.storedFields(&quot;_none_&quot;);
-        boolean exists = client.exists(getRequest, RequestOptions.DEFAULT);
-    }
-
-    public DeleteResponse delete() throws IOException {
-        DeleteRequest request = new DeleteRequest(INDEX, TYPE, &quot;1&quot;);
-        DeleteResponse deleteResponse = client.delete(request, RequestOptions.DEFAULT);
-        String index = deleteResponse.getIndex();
-        String type = deleteResponse.getType();
-        String id = deleteResponse.getId();
-        long version = deleteResponse.getVersion();
-        ReplicationResponse.ShardInfo shardInfo = deleteResponse.getShardInfo();
-        if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
-
-        }
-        if (shardInfo.getFailed() &gt; 0) {
-            for (ReplicationResponse.ShardInfo.Failure failure :
-                    shardInfo.getFailures()) {
-                String reason = failure.reason();
-            }
-        }
-
-        return deleteResponse;
-    }
-
-    public void bulk() throws IOException {
-        BulkRequest request = new BulkRequest();
-        request.add(new IndexRequest(INDEX, TYPE, &quot;1&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;foo&quot;));
-        request.add(new IndexRequest(INDEX, TYPE, &quot;2&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;bar&quot;));
-        request.add(new IndexRequest(INDEX, TYPE, &quot;3&quot;).source(XContentType.JSON, &quot;user&quot;, &quot;baz&quot;));
-        BulkResponse bulkResponse = client.bulk(request, RequestOptions.DEFAULT);
-        for (BulkItemResponse bulkItemResponse : bulkResponse) {
-            DocWriteResponse itemResponse = bulkItemResponse.getResponse();
-            if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.INDEX
-                    || bulkItemResponse.getOpType() == DocWriteRequest.OpType.CREATE) {
-                IndexResponse indexResponse = (IndexResponse) itemResponse;
-
-            } else if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.UPDATE) {
-                UpdateResponse updateResponse = (UpdateResponse) itemResponse;
-
-            } else if (bulkItemResponse.getOpType() == DocWriteRequest.OpType.DELETE) {
-                DeleteResponse deleteResponse = (DeleteResponse) itemResponse;
-            }
-        }
-    }
-
-    public MultiGetResponse multget() throws IOException {
-        MultiGetRequest request = new MultiGetRequest();
-        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;1&quot;));
-        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;2&quot;));
-        request.add(new MultiGetRequest.Item(INDEX, TYPE, &quot;3&quot;));
-
-        MultiGetResponse response = client.mget(request, RequestOptions.DEFAULT);
-
-        MultiGetItemResponse firstItem = response.getResponses()[0];
-        Assert.isNull(firstItem.getFailure(), &quot;should be no failure&quot;);
-        GetResponse firstGet = firstItem.getResponse();
-        String index = firstItem.getIndex();
-        String type = firstItem.getType();
-        String id = firstItem.getId();
-        if (firstGet.isExists()) {
-            long version = firstGet.getVersion();
-            String sourceAsString = firstGet.getSourceAsString();
-            Map&lt;String, Object&gt; sourceAsMap = firstGet.getSourceAsMap();
-            byte[] sourceAsBytes = firstGet.getSourceAsBytes();
-        } else {
-
-        }
-
-        return response;
-    }
-
-
-    public void close() throws IOException {
-        client.close();
+    @Override
+    public void handleException(String jobName, Throwable cause) {
+        YTOLogger.getInstance().info(&quot;定时任务调用失败:{}&quot;, cause, jobName);
     }
 
 }
@@ -302,24 +336,22 @@ public class DocApi implements Const {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/elasticsearch-api/">https://luangeng.space/post/other/elasticsearch-api/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/elasticJob/">https://luangeng.space/post/java/other/elasticJob/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -337,19 +369,19 @@ public class DocApi implements Const {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticsearch-douban/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/token-front/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>爬取电影信息使用Elasticsearch检索</span>
+                                            <span>Oauth2协议 通过js和ajax获取token及刷新token</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticsearch/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/other/dingding/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>elasticsearch入门教程</span>
+                                            <span>spring-security-oauth2 授权服务集成钉钉扫码登录</span>
                                         </a>
                                         
                                     </li>
@@ -364,7 +396,40 @@ public class DocApi implements Const {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" rel="bookmark" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/spring/spring-ws/" rel="bookmark" class="leancloud-count">Spring Boot发布和调用RESTful web service
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-jpa/" rel="bookmark" class="leancloud-count">使用Spring Boot 和Spring Data JPA访问mysql数据库
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-swagger/" rel="bookmark" class="leancloud-count">Spring Boot 集成Swagger2生成RESTful API文档
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://luangeng.space/post/java/spring/spring-rest/" rel="bookmark" class="leancloud-count">Spring Boot自定义配置与加载
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -396,7 +461,7 @@ public class DocApi implements Const {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -407,7 +472,7 @@ public class DocApi implements Const {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -418,7 +483,7 @@ public class DocApi implements Const {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -440,7 +505,7 @@ public class DocApi implements Const {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -469,8 +534,29 @@ public class DocApi implements Const {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -523,7 +609,13 @@ public class DocApi implements Const {
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/spring/spring-ws/">Spring Boot发布和调用RESTful web service</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-jpa/">使用Spring Boot 和Spring Data JPA访问mysql数据库</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-swagger/">Spring Boot 集成Swagger2生成RESTful API文档</a></li>
+                
+                <li><a href="https://luangeng.space/post/java/spring/spring-rest/">Spring Boot自定义配置与加载</a></li>
                 
             </ul>
         </div>
@@ -533,15 +625,15 @@ public class DocApi implements Const {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

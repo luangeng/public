@@ -168,7 +168,7 @@
                                                 <p>Go是一种静态类型的语言。 在大多数情况下，变量的类型在编译时是已知的。接口类型是一种例外，尤其是空接口interface {}。</p>
 <p>空接口是一种动态类型，类似于Java或C#中的Object。</p>
 <p>在编译时，我们无法确定接口类型的基础值是整数还是字符串。</p>
-<p>标准库中的reflect包，使我们可以在运行时使用此类动态值。 我们可以：</p>
+<p>标准库中的reflect包，使我们可以在运行时使用此类动态值。 我们可以:</p>
 <ul>
 <li>检查动态值的类型</li>
 <li>枚举结构的字段</li>
@@ -188,7 +188,7 @@ if typ.Kind() == reflect.Int {
 <p>Type &lsquo;int&rsquo; of size: 8 bytes
 v contains value of type int</p>
 </blockquote>
-<p>反射的基础是：</p>
+<p>反射的基础是:</p>
 <ul>
 <li>以空接口interface{}类型的值开头</li>
 <li>使用reflect.ValueOf(v interface {})来获取reflect.Value，它代表有关该值的信息</li>
@@ -255,7 +255,7 @@ exit status 2</p>
 <p>UInt()方法返回uint64并对每个无符号整数值(uint8，uint16，uint32，uint64)有效。</p>
 <p>试图从不兼容类型(如字符串)的值中获取整数值会引发panic。</p>
 <p>为了避免出现panic，您可以先使用Kind()检查类型。</p>
-<p>检索值的所有方法：</p>
+<p>检索值的所有方法:</p>
 <ul>
 <li>Bool() bool</li>
 <li>Int() int64</li>
@@ -324,7 +324,7 @@ setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetStrin
 <p>如setInt和setStructField所示，只有从指向值的指针开始，才可以更改值。</p>
 <p>setStructPtrField显示如何通过字段值在结构中的位置来获取对字段值的引用。</p>
 <p>尝试设置不兼容类型的值会引发panic。</p>
-<p>设置值的方法反映了读取值的方法：</p>
+<p>设置值的方法反映了读取值的方法:</p>
 <ul>
 <li>SetBool(v bool)</li>
 <li>SetInt(v int64)</li>
@@ -527,7 +527,7 @@ fmt.Printf(&quot;a: %#v\n&quot;, a)
 </blockquote>
 <h2 id="reflectkind">reflect.Kind</h2>
 <p>Reflection.Value上的函数Kind()返回描述值类型的reflect.Kind类型。</p>
-<p>这是所有可能的值：</p>
+<p>这是所有可能的值:</p>
 <pre><code>type Kind uint
 
 const (
@@ -576,24 +576,22 @@ const (
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Reflection/">https://luangeng.space/post/go/basic/Reflection/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Reflection/">https://luangeng.space/post/go/basic/Reflection/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -733,17 +731,6 @@ const (
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -769,7 +756,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -780,7 +767,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -791,7 +778,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -813,7 +800,7 @@ const (
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -842,8 +829,29 @@ const (
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -908,14 +916,6 @@ const (
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -924,15 +924,15 @@ const (
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

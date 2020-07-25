@@ -165,12 +165,12 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>代理模式：为某些对象提供代理以实现对这个对象的访问。</p>
+                                                <p>代理模式:为某些对象提供代理以实现对这个对象的访问。</p>
 <p>对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。</p>
-<p>一般包括以下组件：</p>
-<p>被代理者接口：提供被代理者的访问途径。</p>
-<p>被代理者：定义真实对象。</p>
-<p>代理者：保存一个被代理者的引用, 并对外提供统一的代理方法, 可以对被代理者的方法实现修饰和控制。</p>
+<p>一般包括以下组件:</p>
+<p>被代理者接口:提供被代理者的访问途径。</p>
+<p>被代理者:定义真实对象。</p>
+<p>代理者:保存一个被代理者的引用, 并对外提供统一的代理方法, 可以对被代理者的方法实现修饰和控制。</p>
 <p>要生成某一个对象的代理对象，这个代理对象通常也要编写一个类来生成，所以首先要编写用于生成代理对象的类。java在JDK1.5之后提供了java.lang.reflect.Proxy类，通过Proxy类提供的newProxyInstance方法用来创建一个对象的代理对象,这个方法总共有3个参数，ClassLoader loader用来指明生成代理对象使用哪个类装载器，Class&lt;?&gt;[] interfaces用来指明生成哪个对象的代理对象，通过接口指定，InvocationHandler 用来指明产生的这个代理对象要做什么事情。所以只需要调用newProxyInstance方法就可以得到某一个对象的代理对象了。</p>
 <p>代理类需要实现InvocationHandler接口,该接口只有一个invoke方法,用于自定义代理行为.</p>
 <p>JDK动态代理示例</p>
@@ -214,14 +214,14 @@ public class ProxyAgent implements InvocationHandler {
         proxy.doSomething(&quot;buy something&quot;);
     }
 }
-</code></pre><p>由上可见，使用JDK的Proxy实现动态代理有一个要求：被代理的类必须实现接口，未实现接口则没办法完成动态代理。</p>
+</code></pre><p>由上可见，使用JDK的Proxy实现动态代理有一个要求:被代理的类必须实现接口，未实现接口则没办法完成动态代理。</p>
 <p>实际中有些类没有实现接口，不应该为了实现动态代理而去抽出一些没有实例意义的接口，可以通过cglib对一个类实现代理。</p>
 <pre><code>&lt;dependency&gt;
       &lt;groupId&gt;cglib&lt;/groupId&gt;
       &lt;artifactId&gt;cglib&lt;/artifactId&gt;
       &lt;version&gt;3.2.4&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p>示例如下：</p>
+</code></pre><p>示例如下:</p>
 <pre><code>package cn.luan.demo;
 
 import java.lang.reflect.Method;
@@ -279,24 +279,22 @@ public class DynamicProxy implements MethodInterceptor {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/java-proxy/">https://luangeng.space/post/java/basic/java-proxy/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/basic/java-proxy/">https://luangeng.space/post/java/basic/java-proxy/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -436,17 +434,6 @@ public class DynamicProxy implements MethodInterceptor {
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/java/basic/java-blockingqueue/" rel="bookmark" class="leancloud-count">Java-压缩解压gz
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -472,7 +459,7 @@ public class DynamicProxy implements MethodInterceptor {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -483,7 +470,7 @@ public class DynamicProxy implements MethodInterceptor {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -494,7 +481,7 @@ public class DynamicProxy implements MethodInterceptor {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -516,7 +503,7 @@ public class DynamicProxy implements MethodInterceptor {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -545,8 +532,29 @@ public class DynamicProxy implements MethodInterceptor {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -611,14 +619,6 @@ public class DynamicProxy implements MethodInterceptor {
                 
                 <li><a href="https://luangeng.space/post/java/basic/java-innerclass/">Java基础--内部类</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/basic/java-comparator/">Java基础--比较器Comparator</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-countdownlatch/">Java基础--CountDownLatch</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-jvm/">Java基础--虚拟机JVM</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-blockingqueue/">Java-压缩解压gz</a></li>
-                
             </ul>
         </div>
         
@@ -627,15 +627,15 @@ public class DynamicProxy implements MethodInterceptor {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

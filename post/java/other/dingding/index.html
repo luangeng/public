@@ -13,12 +13,12 @@
   <meta itemprop="description" content="钉钉扫码登录">
   <meta property="og:title" content="spring-security-oauth2 授权服务集成钉钉扫码登录 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/dingding/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/dingding/" />
   <meta property="og:site_name" content="luangeng" />
   <meta property="og:description" content="钉钉扫码登录">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/dingding/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/dingding/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/dingding/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/dingding/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -178,7 +178,7 @@
     &lt;artifactId&gt;spring-security-oauth2&lt;/artifactId&gt;
     &lt;version&gt;2.2.0.RELEASE&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p>实现原理：</p>
+</code></pre><p>实现原理:</p>
 <p>参照spring-security-oauth2授权流程，UsernamePasswordAuthenticationFilter拦截/login的post请求，创建UsernamePasswordAuthenticationToken，调用AuthenticationManager
 中对应的Provider的authenticate方法，其中使用用户名和密码在数据库中比对验证用户是否可登陆，如是则创建对应的Token完成认证。
 而扫码登陆无需输入密码，改为从钉钉获取扫码人的信息，再去数据库中比对是否有登陆权限。</p>
@@ -316,7 +316,7 @@ public class ThirdAuthenticationFilter extends AbstractAuthenticationProcessingF
         String code = (String) authentication.getPrincipal();
         String type = ((ThirdAuthenticationToken) authentication).getLoginType();
         if (!type.equalsIgnoreCase(&quot;dingding&quot;)) {
-            throw new UsernameNotFoundException(&quot;登录类型错误：&quot; + type);
+            throw new UsernameNotFoundException(&quot;登录类型错误:&quot; + type);
         }
         DingService.UserInfo userinfo = dingService.getUserInfo(code);
         if (userinfo == null) {
@@ -326,7 +326,7 @@ public class ThirdAuthenticationFilter extends AbstractAuthenticationProcessingF
 
         UserDetails user = userService.loadUserByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException(&quot;用户在系统中不存在：&quot; + username);
+            throw new UsernameNotFoundException(&quot;用户在系统中不存在:&quot; + username);
         }
         authenticationChecks.check(user);
 
@@ -420,11 +420,11 @@ public class DingService {
             if (token != null &amp;&amp; token.getErrcode() == DING_OK) {
                 accessToken = token;
             } else {
-                log.error(&quot;获取钉钉token失败：&quot; + (token == null ? &quot;返回值为空&quot; : token.getErrmsg()));
+                log.error(&quot;获取钉钉token失败:&quot; + (token == null ? &quot;返回值为空&quot; : token.getErrmsg()));
             }
         } else if (failCount &lt; RETRY_COUNT) {
             failCount++;
-            log.error(&quot;获取钉钉token失败：请求未返回成功&quot;);
+            log.error(&quot;获取钉钉token失败:请求未返回成功&quot;);
             Thread.sleep(RETRY_DELAY);
             getAccessToken();
         }
@@ -467,12 +467,12 @@ public class DingService {
 
     private void checkSuccess(DingBase data) throws DingServiceException {
         if (data == null) {
-            log.error(&quot;调用钉钉接口失败：请求未返回成功&quot;);
-            throw new DingServiceException(&quot;调用钉钉接口失败：请求未返回成功&quot;);
+            log.error(&quot;调用钉钉接口失败:请求未返回成功&quot;);
+            throw new DingServiceException(&quot;调用钉钉接口失败:请求未返回成功&quot;);
         }
         if (data.getErrcode() != DING_OK) {
-            log.error(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
-            throw new DingServiceException(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
+            log.error(&quot;调用钉钉接口失败:&quot; + data.getErrmsg());
+            throw new DingServiceException(&quot;调用钉钉接口失败:&quot; + data.getErrmsg());
         }
     }
 
@@ -521,7 +521,7 @@ public class DingService {
         }
     }
 }
-</code></pre><p>企业用户也可以通过以下方式获取到员工工号：</p>
+</code></pre><p>企业用户也可以通过以下方式获取到员工工号:</p>
 <pre><code>package com.luangeng.oauthserver.ding;
 
 import com.luangeng.oauthserver.exception.DingServiceException;
@@ -592,11 +592,11 @@ public class DingService {
             if (token != null &amp;&amp; token.getErrcode() == DING_OK) {
                 accessToken = token;
             } else {
-                log.error(&quot;获取钉钉token失败：&quot; + (token == null ? &quot;获取AccessToken为空&quot; : token.getErrmsg()));
+                log.error(&quot;获取钉钉token失败:&quot; + (token == null ? &quot;获取AccessToken为空&quot; : token.getErrmsg()));
             }
         } else if (retryCount &lt;= MAX_RETRY_COUNT) {
             retryCount++;
-            log.error(&quot;获取钉钉token失败：获取AccessToken失败&quot;);
+            log.error(&quot;获取钉钉token失败:获取AccessToken失败&quot;);
             Thread.sleep(RETRY_DELAY);
             getAccessToken();
             retryCount = 0;
@@ -612,11 +612,11 @@ public class DingService {
             if (token != null &amp;&amp; token.getErrcode() == DING_OK) {
                 corpToken = token;
             } else {
-                log.error(&quot;获取钉钉token失败：&quot; + (token == null ? &quot;获取CorpToken为空&quot; : token.getErrmsg()));
+                log.error(&quot;获取钉钉token失败:&quot; + (token == null ? &quot;获取CorpToken为空&quot; : token.getErrmsg()));
             }
         } else if (retryCount &lt; MAX_RETRY_COUNT) {
             retryCount++;
-            log.error(&quot;获取钉钉token失败：获取CorpToken失败&quot;);
+            log.error(&quot;获取钉钉token失败:获取CorpToken失败&quot;);
             Thread.sleep(RETRY_DELAY);
             getCorpToken();
             retryCount = 0;
@@ -670,12 +670,12 @@ public class DingService {
 
     private void checkSuccess(DingBase data) throws DingServiceException {
         if (data == null) {
-            log.error(&quot;调用钉钉接口失败：请求未返回成功&quot;);
-            throw new DingServiceException(&quot;调用钉钉接口失败：请求未返回成功&quot;);
+            log.error(&quot;调用钉钉接口失败:请求未返回成功&quot;);
+            throw new DingServiceException(&quot;调用钉钉接口失败:请求未返回成功&quot;);
         }
         if (data.getErrcode() != DING_OK) {
-            log.error(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
-            throw new DingServiceException(&quot;调用钉钉接口失败：&quot; + data.getErrmsg());
+            log.error(&quot;调用钉钉接口失败:&quot; + data.getErrmsg());
+            throw new DingServiceException(&quot;调用钉钉接口失败:&quot; + data.getErrmsg());
         }
     }
 
@@ -732,7 +732,7 @@ public class DingService {
     }
 
 }
-</code></pre><p>然后在配置类中注册上边的组件：</p>
+</code></pre><p>然后在配置类中注册上边的组件:</p>
 <pre><code>@Bean
     ThirdAuthenticationFilter thirdLoginFilter() throws Exception {
         ThirdAuthenticationFilter filter = new ThirdAuthenticationFilter();
@@ -787,34 +787,32 @@ if (typeof window.addEventListener != 'undefined') {
 } else if (typeof window.attachEvent != 'undefined') {
     window.attachEvent('onmessage', hanndleMessage);
 }
-</code></pre><h2 id="运行">运行：</h2>
+</code></pre><h2 id="运行">运行:</h2>
 <p>打开登录页，点击钉钉扫码登录，页面弹出二维码</p>
 <p><img src="pic/2018-7/dingding.png" alt="pic"></p>
 <p>使用手机钉钉扫码，并点击确认登录，浏览器跳转到/auth，被拦截器拦截，后台从钉钉服务器获取用户工号，如果账号正常即完成认证，否则重定向到错误提示页。</p>
-<p>代码路径：https://github.com/luangeng/spring-boot-oauth2-demo</p>
+<p>代码路径:https://github.com/luangeng/spring-boot-oauth2-demo</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/dingding/">https://luangeng.space/post/other/dingding/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/dingding/">https://luangeng.space/post/java/other/dingding/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -832,7 +830,7 @@ if (typeof window.addEventListener != 'undefined') {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticJob/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/elasticJob/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>SpringBoot集成elastic-job-lite</span>
@@ -875,7 +873,7 @@ if (typeof window.addEventListener != 'undefined') {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -886,7 +884,7 @@ if (typeof window.addEventListener != 'undefined') {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -897,7 +895,7 @@ if (typeof window.addEventListener != 'undefined') {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -919,7 +917,7 @@ if (typeof window.addEventListener != 'undefined') {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -948,8 +946,29 @@ if (typeof window.addEventListener != 'undefined') {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -1003,15 +1022,15 @@ if (typeof window.addEventListener != 'undefined') {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -14,28 +14,28 @@
     
     <item>
       <title>爬取电影信息使用Elasticsearch检索</title>
-      <link>https://luangeng.space/post/other/elasticsearch-douban/</link>
+      <link>https://luangeng.space/post/java/other/elasticsearch-douban/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticsearch-douban/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticsearch-douban/</guid>
       <description>爬虫代码源于网络,修改其中的数据库操作为ES数据访问. 实体类: 爬取记录: @Data public class Record { public static final String TYPE_MOVIE = &amp;quot;Movie&amp;quot;; public static final String TYPE_COMMENT = &amp;quot;Comment&amp;quot;; public static final String TYPE_OTHER = &amp;quot;Other&amp;quot;; public static final int STATUS_UNCRAWLED = 0; public</description>
     </item>
     
     <item>
       <title>elasticsearch JAVA API</title>
-      <link>https://luangeng.space/post/other/elasticsearch-api/</link>
+      <link>https://luangeng.space/post/java/other/elasticsearch-api/</link>
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticsearch-api/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticsearch-api/</guid>
       <description>@Service public class DocApi implements Const { @Autowired RestHighLevelClient client; public void info() throws IOException { MainResponse response = client.info(RequestOptions.DEFAULT); ClusterName clusterName = response.getClusterName(); String clusterUuid = response.getClusterUuid(); String nodeName = response.getNodeName(); Version version = response.getVersion(); Build build = response.getBuild(); } public IndexResponse index(int n) throws IOException { IndexRequest request = new IndexRequest(INDEX, TYPE, &amp;quot;1&amp;quot;) .source(&amp;quot;user&amp;quot;, &amp;quot;kimchy&amp;quot;, &amp;quot;postDate&amp;quot;, new Date(), &amp;quot;message&amp;quot;, &amp;quot;trying out Elasticsearch&amp;quot;); IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT); // client.</description>
     </item>
     
     <item>
       <title>elasticsearch入门教程</title>
-      <link>https://luangeng.space/post/other/elasticsearch/</link>
+      <link>https://luangeng.space/post/java/other/elasticsearch/</link>
       <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticsearch/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticsearch/</guid>
       <description>ElasticSearch是全文搜索最常见的开源工具，它支持快速存储，检索大量数据。 基本概念: Node 与 Cluster Elastic 本质上是一个分布式数据库，允许多台服务</description>
     </item>
     
@@ -45,34 +45,43 @@
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/spring/zeromq-springboot/</guid>
-      <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories： org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
+      <description>开发ZeroMQ的SpringBoot Starter。 resources中META-INF中增加文件spring.factories: org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ytoframework.plugin.zeromq.ZeroMQAutoConfiguration 配置</description>
     </item>
     
     <item>
       <title>集成通过github登录网站功能</title>
-      <link>https://luangeng.space/post/other/github_login/</link>
+      <link>https://luangeng.space/post/java/other/github_login/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/github_login/</guid>
-      <description>使用第三方网址登录系统，使用github 工作流程： 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</description>
+      <guid>https://luangeng.space/post/java/other/github_login/</guid>
+      <description>使用第三方网址登录系统，使用github 工作流程: 页面点击使用github登录， 重定向到回调地址 回调地址后台获取token，获取用户信息，完</description>
+    </item>
+    
+    <item>
+      <title>Oauth2协议 通过js和ajax获取token及刷新token</title>
+      <link>https://luangeng.space/post/java/other/token-front/</link>
+      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/java/other/token-front/</guid>
+      <description>基于Oauth2.0协议授权码模式的认证流程 授权码模式工作流程: 浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth</description>
     </item>
     
     <item>
       <title>SpringBoot集成elastic-job-lite</title>
-      <link>https://luangeng.space/post/other/elasticJob/</link>
+      <link>https://luangeng.space/post/java/other/elasticJob/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/elasticJob/</guid>
+      <guid>https://luangeng.space/post/java/other/elasticJob/</guid>
       <description>SpringBoot集成elastic-job-lite 1.pom文件中引用jar包 &amp;lt;!-- elastic-job-lite --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-common-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.dangdang&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;elastic-job-lite-spring&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.1.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.google.guava&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;guava&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;18.0&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 2.本地启</description>
     </item>
     
     <item>
       <title>spring-security-oauth2 授权服务集成钉钉扫码登录</title>
-      <link>https://luangeng.space/post/other/dingding/</link>
+      <link>https://luangeng.space/post/java/other/dingding/</link>
       <pubDate>Tue, 07 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/dingding/</guid>
-      <description>spring boot版本 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; spring-security-oauth2版本 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security.oauth&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-oauth2&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 实现原理： 参照spring-security</description>
+      <guid>https://luangeng.space/post/java/other/dingding/</guid>
+      <description>spring boot版本 &amp;lt;parent&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-parent&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.0.2.RELEASE&amp;lt;/version&amp;gt; &amp;lt;relativePath/&amp;gt; &amp;lt;!-- lookup parent from repository --&amp;gt; &amp;lt;/parent&amp;gt; spring-security-oauth2版本 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.security.oauth&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-security-oauth2&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.2.0.RELEASE&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 实现原理: 参照spring-security</description>
     </item>
     
     <item>
@@ -81,7 +90,7 @@
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/netty/netty-file/</guid>
-      <description>简介： 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现： 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
+      <description>简介: 用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。 实现: 使用Netty进行文件传输，服务端读取文件并将文件拆分为多个</description>
     </item>
     
     <item>
@@ -158,11 +167,11 @@
     
     <item>
       <title>RocketMQ核心概念</title>
-      <link>https://luangeng.space/post/other/rocketMq-Concept/</link>
+      <link>https://luangeng.space/post/java/other/rocketMq-Concept/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/rocketMq-Concept/</guid>
-      <description>Producer A producer sends messages generated by the business application systems to brokers. RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way. 生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例：同步，</description>
+      <guid>https://luangeng.space/post/java/other/rocketMq-Concept/</guid>
+      <description>Producer A producer sends messages generated by the business application systems to brokers. RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way. 生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例:同步，</description>
     </item>
     
     <item>
@@ -288,7 +297,7 @@
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/zookeeper/zookeeper-cmd/</guid>
-      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址： http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下： # The number of milliseconds</description>
+      <description>Zookeeper&amp;ndash;单机模式安装 及命令 下载地址: http://zookeeper.apache.org/releases.html tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 /Users/LG/tools/zookeeper-3.4.10 cd /Users/LG/tools/zookeeper-3.4.10 conf目录下新建配置文件zoo.cfg，内容如下: # The number of milliseconds</description>
     </item>
     
     <item>
@@ -302,10 +311,10 @@
     
     <item>
       <title>ubuntu16.04安装rocketMQ</title>
-      <link>https://luangeng.space/post/other/rocketmq/</link>
+      <link>https://luangeng.space/post/java/other/rocketmq/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/rocketmq/</guid>
+      <guid>https://luangeng.space/post/java/other/rocketmq/</guid>
       <description>本文详细说明如何在ubuntu16.04下安装rocketMQ的步骤。 首先需要打开root权限 sudo -i 下载安装jdk wget http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz tar -zxvf jdk-8u181-linux-x64.tar.gz mv jdk-8u181-linux-x64 /usr/jdk 配置JAVA</description>
     </item>
     
@@ -316,6 +325,15 @@
       
       <guid>https://luangeng.space/post/java/zookeeper/zookeeper-base/</guid>
       <description>介绍 ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。 ZooKeeper是</description>
+    </item>
+    
+    <item>
+      <title>Maven安装配置使用</title>
+      <link>https://luangeng.space/post/java/other/maven/</link>
+      <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/java/other/maven/</guid>
+      <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
     </item>
     
     <item>
@@ -337,12 +355,21 @@
     </item>
     
     <item>
+      <title>IntelliJ IDEA常用快捷键</title>
+      <link>https://luangeng.space/post/java/other/idea-key/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://luangeng.space/post/java/other/idea-key/</guid>
+      <description>Mac: 符号说明 ⌃ Control键 ⌥ Option键 ⌘ Command键 ⇧ 大写锁定键 ↩ 回车键 ⌫ BackSpace键 ⎋ Escape (Esc) ⌦ 向前删除键(Fn+Delet</description>
+    </item>
+    
+    <item>
       <title>两个线程交替打印奇数和偶数</title>
       <link>https://luangeng.space/post/java/basic/oddeven/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/oddeven/</guid>
-      <description>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即： 奇 1 偶 2 奇 3 偶 4 奇 5 偶 6 奇 7 偶 8 奇 9 偶 10 解法一： w</description>
+      <description>两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100,即: 奇 1 偶 2 奇 3 偶 4 奇 5 偶 6 奇 7 偶 8 奇 9 偶 10 解法一: w</description>
     </item>
     
     <item>
@@ -351,7 +378,7 @@
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/deadlock/</guid>
-      <description>会导致死锁的代码： public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new Object(), o2</description>
+      <description>会导致死锁的代码: public class DeadLock extends Thread { private Object lock1; private Object lock2; public DeadLock(Object o1, Object o2) { this.lock1 = o1; this.lock2 = o2; } public void run() { synchronized (lock1) { try { TimeUnit.MILLISECONDS.sleep(500); } catch (InterruptedException e) { e.printStackTrace(); } synchronized (lock2) { Q.p(&amp;quot;end&amp;quot;); } } } public static void main(String[] args) { Object o1 = new Object(), o2</description>
     </item>
     
     <item>
@@ -369,7 +396,7 @@
       <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-proxy/</guid>
-      <description>代理模式：为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
+      <description>代理模式:为某些对象提供代理以实现对这个对象的访问。 对一个对象进行访问控制的原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。 一</description>
     </item>
     
     <item>
@@ -396,7 +423,7 @@
       <pubDate>Thu, 19 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-oddeven/</guid>
-      <description>今天看到一个题：两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
+      <description>今天看到一个题:两个线程交替打印奇数和偶数，即一个线程打印奇数，另一个打印偶数，交替打印从1到100。想了下有多重实现方法。 wait和not</description>
     </item>
     
     <item>
@@ -450,7 +477,7 @@
       <pubDate>Fri, 13 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-jvm/</guid>
-      <description>JVM内存结构 Heap Space： 堆内存(Heap Space)是由Young Generation和Old Generation组成，而Young Ge</description>
+      <description>JVM内存结构 Heap Space: 堆内存(Heap Space)是由Young Generation和Old Generation组成，而Young Generat</description>
     </item>
     
     <item>
@@ -459,7 +486,7 @@
       <pubDate>Wed, 11 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-blockingqueue/</guid>
-      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数： ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
+      <description>ArrayBlockingQueue是阻塞队列的一种，基于数组实现，长度固定，队尾添加，队首获取， 构造函数: ArrayBlockingQueue(int capacity) ArrayBlockingQueue(int capacity, boolean fair) ArrayBlockingQueue(int capacity, boolean fair, Collection&amp;lt;? extends E&amp;gt; c) 其中</description>
     </item>
     
     <item>
@@ -495,7 +522,7 @@
       <pubDate>Fri, 06 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/java/basic/java-serializable/</guid>
-      <description>对Java对象序列化的目的是持久化对象或者为RMI(远程方法调用)传递参数和返回值。 下面是一个序列化对象写入文件的例子： package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
+      <description>对Java对象序列化的目的是持久化对象或者为RMI(远程方法调用)传递参数和返回值。 下面是一个序列化对象写入文件的例子: package utils; import java.io.File; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.IOException;</description>
     </item>
     
     <item>

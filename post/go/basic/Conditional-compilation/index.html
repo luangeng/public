@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 使用构建标签进行条件编译</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 718 Words
+                                            Posted @ 2018-09-09 · 1174 Words
                                             
                                             · Tags: Go
                                             
@@ -166,8 +166,8 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。</p>
-<p>Tags are specified per file, at the top of the file, followed by an empty line and the code.</p>
-<p>A typical use case for tags is to provide to implementation of the same functionality and pick the one that is compiled with tags.</p>
+<p>标签是在每个文件的顶部指定的，然后是空行和代码。</p>
+<p>标签的典型用例是提供相同功能的实现，并选择使用标签编译的功能。</p>
 <p>比如,在一个目录中有三个文件:</p>
 <p>foo_alt.go</p>
 <pre><code>// +build alt
@@ -192,122 +192,139 @@ func main() {
     foo()
 }
 </code></pre><p>不使用build tag来编译:</p>
-<blockquote>
-<p>go build -o main .
+<pre><code>go build -o main .
 ./main
-This is non-alt foo</p>
+</code></pre><blockquote>
+<p>This is non-alt foo</p>
 </blockquote>
-<p>Compiling with alt build tag:</p>
-<blockquote>
-<p>go build -tags alt -o main_alt .
+<p>使用alt build标签进行编译：</p>
+<pre><code>go build -tags alt -o main_alt .
 ./main_alt
-This is alternative foo</p>
+</code></pre><blockquote>
+<p>This is alternative foo</p>
 </blockquote>
-<p>When we specified -tags alt, we compiled foo_alt.go file, because it contains // +build alt directive which tells the build tool to compile the file if build tag alt is provided with -tags option.</p>
-<p>We didn&rsquo;t compile foo.go file because it contains // build !alt directive which tells the build to not compile the if build alt is provided.</p>
-<p>Similarly, if we didn&rsquo;t specify any build tags for go build command, file foo.go was compiled (because it only says to not compile if alt tag is provided) and foo_alt.go was not compiled.</p>
-<p>Argument -tags applies to many commands e..g. go run, go install, go test etc.</p>
-<p>Specifying multiple tags
-You can specify multiple build constraints (tags):</p>
-<p>// +build tag1,tag2 tag3,!tag4
-// +build tag5</p>
-<p>package foo
-This encodes a condition (tag1 AND tag2) OR (tag3 AND (NOT tag4)) AND tag5.</p>
-<p>Similarly, for the go command: go build -tags &ldquo;tag1 tag2&rdquo;.</p>
-<p>Ignoring files (excluding from compilation)
-// +build ignore</p>
-<p>package foo
-Predefined build tags
-Go toolchain uses several build tags:</p>
-<p>arm, arm64, 386, amd64, s390x : for different processor architectures
-windows, darwin, linux, dragonfly, freebsd, netbsd, openbsd, plan9, solaris, android : for operating systems
-cgo : when cgo is enabled
-gc or gccgo : for gc and gccgo toolchains
-go1.11 for Go version 1.11+, go1.12 for Go version 1.12+ etc.
-Using file name in place of a build tag
-An alternative to providing build tag directive in the file is using a file name suffix e.g. foo_windows.go is equivalent of including // +build windows in the file.</p>
-<p>Pitfalls
-The following doesn&rsquo;t work as expected:</p>
-<p>// +build alt
-package main</p>
-<p>func foo() {
-fmt.Printf(&ldquo;This is alternative foo\n&rdquo;)
+<p>当我们指定-tags alt时，我们编译了foo_alt.go文件，因为它包含// // + build alt指令，如果-tags选项提供了build tag alt，它会告诉构建工具编译文件。</p>
+<p>我们没有编译foo.go文件，因为它包含// // build！alt指令，该指令告诉构建程序不要编译是否提供了build alt。</p>
+<p>同样，如果我们没有为go build命令指定任何构建标记，则文件foo.go会被编译（因为它只说如果提供了alt标记就不会编译），并且foo_alt.go也不会被编译。</p>
+<p>参数-tags适用于许多命令，例如 去运行，去安装，去测试等等。</p>
+<h2 id="指定多个标签">指定多个标签</h2>
+<p>您可以指定多个构建约束（标签）：</p>
+<pre><code>// +build tag1,tag2 tag3,!tag4
+// +build tag5
+
+package foo
+</code></pre><p>这对条件（tag1 AND tag2）或（tag3 AND（NOT tag4））AND tag5进行编码。</p>
+<p>同样，对于go命令：go build -tags“ tag1 tag2”。</p>
+<h2 id="忽略文件从编译中排除">忽略文件（从编译中排除）</h2>
+<pre><code>// +build ignore
+
+package foo
+</code></pre><p>预定义的构建标签
+Go工具链使用几个构建标记：</p>
+<ul>
+<li>arm, arm64, 386, amd64, s390x : 针对不同的处理器架构</li>
+<li>windows, darwin, linux, dragonfly, freebsd, netbsd, openbsd, plan9, solaris, android : 针对不同的操作系统</li>
+<li>cgo : 当启用cgo</li>
+<li>gc gccgo : 用于gc和gccgo工具链</li>
+<li>go1.11 for Go version 1.11+, go1.12 for Go version 1.12+ etc.</li>
+</ul>
+<h4 id="使用文件名代替构建标签">使用文件名代替构建标签</h4>
+<p>在文件中提供构建标签指令的另一种方法是使用文件名后缀，例如 foo_windows.go等效于在文件中包含// + build Windows。</p>
+<h4 id="陷阱">陷阱</h4>
+<p>以下内容无法正常工作：</p>
+<pre><code>// +build alt
+package main
+
+func foo() {
+    fmt.Printf(&quot;This is alternative foo\n&quot;)
 }
-You need an empty line after build tag line:</p>
-<p>// +build alt</p>
-<p>package main</p>
-<h2 id="separate-integration-tests">Separate integration tests</h2>
-<p>A common use case for build tags is separating regular unit tests from integration tests that require external resources, like a database or network access.</p>
-<p>To do this, add a custom build constraint to the top of the test file:</p>
-<p>// +build integration</p>
-<p>package main</p>
-<p>import (
-&ldquo;testing&rdquo;
-)</p>
-<p>func TestThatRequiresNetworkAccess(t *testing.T) {
-t.Fatal(&ldquo;It failed!&quot;)
+</code></pre><p>构建标记行后需要一个空行：</p>
+<pre><code>// +build alt
+
+package main
+</code></pre><h2 id="单独的集成测试">单独的集成测试</h2>
+<p>构建标记的一个常见用例是将常规单元测试与需要外部资源（例如数据库或网络访问权限）的集成测试分开。</p>
+<p>为此，将自定义构建约束添加到测试文件的顶部：</p>
+<pre><code>// +build integration
+
+package main
+
+import (
+    &quot;testing&quot;
+)
+
+func TestThatRequiresNetworkAccess(t *testing.T) {
+    t.Fatal(&quot;It failed!&quot;)
 }
-Those tests will not be compiles unless you run tests with go test -tags &ldquo;integration&rdquo;.</p>
-<p>Results:</p>
-<p>$ go test
-?       bitbucket.org/yourname/yourproject    [no test files]
-$ go test -tags &ldquo;integration&rdquo;
-&mdash; FAIL: TestThatRequiresNetworkAccess (0.00s)
-main_test.go:10: It failed!
-FAIL
-exit status 1
+</code></pre><p>除非您使用go test -tags“ integration”运行测试，否则这些测试将无法编译:</p>
+<blockquote>
+<p>$ go test<br>
+?       bitbucket.org/yourname/yourproject    [no test files]<br>
+$ go test -tags &ldquo;integration&rdquo;<br>
+&mdash; FAIL: TestThatRequiresNetworkAccess (0.00s)<br>
+main_test.go:10: It failed!<br>
+FAIL<br>
+exit status 1<br>
 FAIL    bitbucket.org/yourname/yourproject    0.003s</p>
-<h2 id="optimized-implementations-for-specific-architectures">Optimized implementations for specific architectures</h2>
-<p>Another use case for build tags is writing an optimized implementation of a function that takes advantage of a specific architecture.</p>
-<p>For example a Go standard library uses this technique for implementing optimized xor functionality.</p>
-<p>xor_generic.go</p>
-<p>// +build !amd64,!ppc64,!ppc64le</p>
-<p>package cipher</p>
-<p>func xorBytes(dst, a, b []byte) int {
-// generic implementation if more specific is not available
+</blockquote>
+<h2 id="针对特定架构的优化实施">针对特定架构的优化实施</h2>
+<p>构建标签的另一个用例是编写利用特定体系结构的功能的优化实现。</p>
+<p>例如，Go标准库使用此技术来实现优化的异或功能。</p>
+<pre><code>xor_generic.go
+
+// +build !amd64,!ppc64,!ppc64le
+
+package cipher
+
+func xorBytes(dst, a, b []byte) int { 
+    // generic implementation if more specific is not available
 }
-xor_ppc64x.go</p>
-<p>// +build ppc64 ppc64le</p>
-<p>package cipher</p>
-<p>func xorBytes(dst, a, b []byte) int {
-// implementation specific to ppc64 processor
-}</p>
-<h2 id="dev-vs-production-builds">Dev vs. production builds</h2>
-<p>For backend servers it&rsquo;s common to need dev vs. production configurations where you e.g. point to a different database server etc.</p>
-<p>// !build dev</p>
-<p>package config</p>
-<p>const (
-MONGODB_HOST = &ldquo;mongodb://127.0.0.1:27017&rdquo;
+</code></pre><p>xor_ppc64x.go</p>
+<pre><code>// +build ppc64 ppc64le
+
+package cipher
+
+func xorBytes(dst, a, b []byte) int {
+    // implementation specific to ppc64 processor
+}
+</code></pre><h2 id="开发与生产版本">开发与生产版本</h2>
+<p>对于后端服务器，通常需要在其中配置开发配置和生产配置(指向其他数据库服务器等)。</p>
+<pre><code>// !build dev
+
+package config
+
+const (
+    MONGODB_HOST = &quot;mongodb://127.0.0.1:27017&quot;
 )
-// !build prod</p>
-<p>package config</p>
-<p>const (
-MONGODB_HOST = &ldquo;mongodb://mongo.myserver.com:27017&rdquo;
+</code></pre><pre><code>// !build prod
+
+package config
+
+const (
+    MONGODB_HOST = &quot;mongodb://mongo.myserver.com:27017&quot;
 )
-We then build go build -tags dev for development build and go build -tags prod for production build.</p>
+</code></pre><p>然后，我们构建go build -tags dev进行开发构建，并构建go build -tags prod进行生产构建。</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Conditional-compilation/">https://luangeng.space/post/go/basic/Conditional-compilation/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Conditional-compilation/">https://luangeng.space/post/go/basic/Conditional-compilation/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -447,17 +464,6 @@ We then build go build -tags dev for development build and go build -tags prod f
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -483,7 +489,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -494,7 +500,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -505,7 +511,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -527,7 +533,7 @@ We then build go build -tags dev for development build and go build -tags prod f
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -556,8 +562,29 @@ We then build go build -tags dev for development build and go build -tags prod f
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -622,14 +649,6 @@ We then build go build -tags dev for development build and go build -tags prod f
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -638,15 +657,15 @@ We then build go build -tags dev for development build and go build -tags prod f
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

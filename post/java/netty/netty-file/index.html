@@ -165,13 +165,13 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>简介：</p>
+                                                <p>简介:</p>
 <p>用于将文件通过TCP协议传输到另一台机器，两台机器需要通过网络互联。</p>
-<p>实现：</p>
+<p>实现:</p>
 <p>使用Netty进行文件传输，服务端读取文件并将文件拆分为多个数据块发送，接收端接收数据块，并按顺序将数据写入文件。</p>
-<p>工程结构：</p>
+<p>工程结构:</p>
 <p><img src="pic/netty/3.png" alt=""></p>
-<p>Maven配置：</p>
+<p>Maven配置:</p>
 <pre><code>&lt;dependencies&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;io.netty&lt;/groupId&gt;
@@ -186,7 +186,7 @@
             &lt;scope&gt;test&lt;/scope&gt;
         &lt;/dependency&gt;
     &lt;/dependencies&gt;
-</code></pre><p>传输对象：type为数据块类型，index为数据块的序列，length为数据块的大小，data为要传输的数据。</p>
+</code></pre><p>传输对象:type为数据块类型，index为数据块的序列，length为数据块的大小，data为要传输的数据。</p>
 <pre><code>public class TransData {
 
     private TypeEnum type;
@@ -246,7 +246,7 @@
                 '}';
     }
 }
-</code></pre><p>类型枚举：</p>
+</code></pre><p>类型枚举:</p>
 <pre><code>public enum TypeEnum {
 
     UNKNOW(0),
@@ -294,7 +294,7 @@
         out.add(data);
     }
 }
-</code></pre><p>编码器：</p>
+</code></pre><p>编码器:</p>
 <pre><code>public class Encode extends MessageToByteEncoder&lt;TransData&gt; {
 
     @Override
@@ -477,7 +477,7 @@
     }
 
 }
-</code></pre><p>发送器线程池：</p>
+</code></pre><p>发送器线程池:</p>
 <pre><code>public class SenderThreadPool {
 
     private static ExecutorService exe = Executors.newFixedThreadPool(10);
@@ -541,7 +541,7 @@ public class SortedQueue {
         count.set(0);
     }
 }
-</code></pre><p>服务端Handler：</p>
+</code></pre><p>服务端Handler:</p>
 <pre><code>public class ServerHandler extends SimpleChannelInboundHandler&lt;TransData&gt; {
 
     private String cpath = System.getProperty(&quot;user.dir&quot;);
@@ -621,7 +621,7 @@ public class SortedQueue {
     }
 
 }
-</code></pre><p>客户端Handler：</p>
+</code></pre><p>客户端Handler:</p>
 <pre><code>public class ClientHandler extends SimpleChannelInboundHandler&lt;TransData&gt; {
 
     private static Map&lt;Integer, String&gt; map = new HashMap();
@@ -674,7 +674,7 @@ public class SortedQueue {
     }
 
 }
-</code></pre><p>客户端启动：</p>
+</code></pre><p>客户端启动:</p>
 <pre><code>public class TransClient {
 
     private static TransClient client = new TransClient();
@@ -755,7 +755,7 @@ public class SortedQueue {
     }
 
 }
-</code></pre><p>服务端启动：</p>
+</code></pre><p>服务端启动:</p>
 <pre><code>public class TransServer {
 
     private int port;
@@ -862,7 +862,7 @@ public class SortedQueue {
     }
 
 }
-</code></pre><p>配置读取类：</p>
+</code></pre><p>配置读取类:</p>
 <pre><code>public class ConfigTool {
 
     private static final String CONFIG_PATH = System.getProperty(&quot;user.dir&quot;) + File.separator + &quot;config&quot; + File.separator + &quot;app.properties&quot;;
@@ -904,7 +904,7 @@ public class SortedQueue {
     }
 
 }
-</code></pre><p>启动类：</p>
+</code></pre><p>启动类:</p>
 <pre><code>public class CmdApp {
 
     public static void main(String[] args) {
@@ -933,24 +933,22 @@ public class SortedQueue {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-file/">https://luangeng.space/post/java/netty/netty-file/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/netty/netty-file/">https://luangeng.space/post/java/netty/netty-file/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -1093,7 +1091,7 @@ public class SortedQueue {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1104,7 +1102,7 @@ public class SortedQueue {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1115,7 +1113,7 @@ public class SortedQueue {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1137,7 +1135,7 @@ public class SortedQueue {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -1166,8 +1164,29 @@ public class SortedQueue {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -1232,8 +1251,6 @@ public class SortedQueue {
                 
                 <li><a href="https://luangeng.space/post/java/netty/netty-tcp/">Netty--TCP协议发送和接收数据</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/netty/netty-servlet/">Netty--简单实现一个Servlet容器</a></li>
-                
             </ul>
         </div>
         
@@ -1242,15 +1259,15 @@ public class SortedQueue {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

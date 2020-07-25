@@ -167,10 +167,10 @@
                                                 
                                                 <p>在java并发包中提供了若干锁的实现，它们是用于单个java虚拟机进程中的；而分布式锁能够在一组进程之间提供互斥机制，保证在任何时刻只有一个进程可以持有锁。</p>
 <p>分布式环境中多个进程的锁则可以使用Zookeeper来实现。</p>
-<p>下面这种方法是使用顺序节点实现共享锁，流程如下：</p>
+<p>下面这种方法是使用顺序节点实现共享锁，流程如下:</p>
 <p>对于lock()操作，首先让所有参与争锁的客户端都在/_locks目录下创建临时顺序节点，然后获取该路径下的所有节点，如果客户端创建的节点序列号最小则获得锁。否则开始监视它前一个节点并进入等待状态。</p>
 <p>对于unlock()操作，将自身创建的节点删除。此时后一个节点的监控将被触发，对应的客户端退出等待状态，取得锁。</p>
-<p>下面是一个简单的示例：</p>
+<p>下面是一个简单的示例:</p>
 <pre><code>/**
  * 分布式锁
  */
@@ -287,18 +287,18 @@ public class DisLock implements Watcher {
     @Override
     public synchronized void process(WatchedEvent watchedEvent) {
         if (watchedEvent.getType() == Event.EventType.NodeDeleted) {
-            //System.out.println(&quot;触发：&quot;+watchedEvent.getPath());
+            //System.out.println(&quot;触发:&quot;+watchedEvent.getPath());
             this.notify();
         }
     }
 }
 </code></pre><p>其中waitLock和process方法需要加synchronized关键字，以便使用wait和notify方法。</p>
-<p>测试方法：</p>
+<p>测试方法:</p>
 <p>Zookeeper的另一种应用场景是处理FIFO消息队列，利用zk的自动编号，存储数据和数据一致性能力，模拟生产者-消费者模型。</p>
 <p>创建3个消费者从zk中获取数据，此时需要使用分布式锁，加锁获取数据的部分。出于模拟生产者和消费者都在不同的进程，所有不共享zk等对象。</p>
-<p>示例代码如下：</p>
+<p>示例代码如下:</p>
 <hr>
-<h3 id="生产者">生产者：</h3>
+<h3 id="生产者">生产者:</h3>
 <pre><code>public class Producer extends Thread {
 
     private ZooKeeper zk;
@@ -335,7 +335,7 @@ public class DisLock implements Watcher {
 }
 </code></pre><p>&ndash;循环向zk中写入递增的信息，中间延迟随机毫秒</p>
 <hr>
-<h3 id="消费者">消费者：</h3>
+<h3 id="消费者">消费者:</h3>
 <pre><code>public class Consumer extends Thread {
 
     private ZooKeeper zk;
@@ -384,7 +384,7 @@ public class DisLock implements Watcher {
 }
 </code></pre><p>&ndash;循环从zk中取节点然后删除节点，对整个过程加锁</p>
 <hr>
-<h3 id="启动类">启动类：</h3>
+<h3 id="启动类">启动类:</h3>
 <pre><code>public class ZkQueue implements Watcher{
 
     @Override
@@ -425,7 +425,7 @@ public class DisLock implements Watcher {
 
 }
 </code></pre><hr>
-<h3 id="输出结果">输出结果：</h3>
+<h3 id="输出结果">输出结果:</h3>
 <pre><code>Thread-2 get lock
 Thread-2         get:msg0
 Thread-2 free lock
@@ -516,24 +516,22 @@ Thread-2 get lock
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-lock/">https://luangeng.space/post/java/zookeeper/zookeeper-lock/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-lock/">https://luangeng.space/post/java/zookeeper/zookeeper-lock/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -665,7 +663,7 @@ Thread-2 get lock
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -676,7 +674,7 @@ Thread-2 get lock
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -687,7 +685,7 @@ Thread-2 get lock
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -709,7 +707,7 @@ Thread-2 get lock
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -738,8 +736,29 @@ Thread-2 get lock
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -812,15 +831,15 @@ Thread-2 get lock
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -168,20 +168,20 @@
                                                 <h2 id="介绍">介绍</h2>
 <p>ZooKeeper是用于分布式系统的高性能协调服务，通过简单的接口提供了命名服务，配置管理，同步和组服务等常用服务。
 ZooKeeper是分布式的，开放源码的，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。</p>
-<h2 id="角色">角色：</h2>
+<h2 id="角色">角色:</h2>
 <p>Zookeeper分为服务端和客户端，客户端连接到服务端的某台机器上，通过维护一个TCP连接发送请求，接受请求，发送心跳和获取观察的事件。
 如果该连接中断，客户端尝试连接到其他服务端。启动服务端集群后，集群中的服务器首先选举一个Leader，然后进入工作，当Leader机器崩溃后，剩下正常的机器会继续选举，Leader的作用是保证数据的一致性。</p>
 <p>在ZooKeeper服务侧集群当中有两种角色Leader和Follower。Leader可以接受client请求，也接收其他Server转发的写请求，负责更新系统状态。
 Follower也可以接收client请求，如果是写请求将转发给Leader来更新系统状态，读请求则由Follower的内存数据库直接响应。在zk的3.3.3版本以后，又添加了一种新角色Observer。
 Observer的作用同Follower类似，唯一区别就是它不参与选主过程。</p>
 <p><img src="pic/zookeeper/1.png" alt="zoo"></p>
-<h2 id="特性">特性：</h2>
-<p>1.最终一致性：客户端无论连接到哪个服务端，获取到的数据都一致。</p>
-<p>2.实时性：客户端在一个时间范围内总能获取到服务端的更新信息或失效信息。</p>
-<p>3.原子性：数据的更新只能是成功的或失败的。</p>
-<p>4.顺序性：所以数据的更新请求都是单调有序的。</p>
-<h2 id="数据模型">数据模型：</h2>
-<p>Zookeeper数据模型类似文件系统的目录树结构，特点如下：</p>
+<h2 id="特性">特性:</h2>
+<p>1.最终一致性:客户端无论连接到哪个服务端，获取到的数据都一致。</p>
+<p>2.实时性:客户端在一个时间范围内总能获取到服务端的更新信息或失效信息。</p>
+<p>3.原子性:数据的更新只能是成功的或失败的。</p>
+<p>4.顺序性:所以数据的更新请求都是单调有序的。</p>
+<h2 id="数据模型">数据模型:</h2>
+<p>Zookeeper数据模型类似文件系统的目录树结构，特点如下:</p>
 <p><img src="pic/zookeeper/1.png" alt="zoo"></p>
 <p>1.每个节点(znode)被其所在的路径唯一标识，如/Apps/App1。</p>
 <p>2.znode可以存储数据，EPHEMERAL类型节点没有子节点。</p>
@@ -190,57 +190,55 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
 <p>5.临时znode在失去连接的时候自动删除。</p>
 <p>6.客户端服务端保持长连接，一个连接状态称为session，session失效了，临时节点就会自动删除。</p>
 <p>7.任何znode的变化都可被监控，包括数据的变化和子节点的变化。当监控到变化，监控者(客户端)被通知，执行回调方法。</p>
-<h2 id="工作原理">工作原理：</h2>
+<h2 id="工作原理">工作原理:</h2>
 <p>Zookeeper核心机制是原子广播，它保证了个服务端之间的数据同步。Zab协议保证了这一点。</p>
-<p>Zookeeper有两种工作模式：恢复模式和广播模式。当服务启动时和Leader崩溃后进入恢复模式，恢复模式下Zookeeper进行leader选举，耗时在200ms内。当Leader被选举出来，且大多数服务器与Leader完成诗句同步后，ZK进入广播模式。为了保证事务的顺序一致性，ZK采用了递增的事务ID(zxid)来标识事务。</p>
+<p>Zookeeper有两种工作模式:恢复模式和广播模式。当服务启动时和Leader崩溃后进入恢复模式，恢复模式下Zookeeper进行leader选举，耗时在200ms内。当Leader被选举出来，且大多数服务器与Leader完成诗句同步后，ZK进入广播模式。为了保证事务的顺序一致性，ZK采用了递增的事务ID(zxid)来标识事务。</p>
 <p>所有的提议都会被加上zxid，zxid为64位的数字，高32位是epoch用来标识leader是否改变的每一次leader选举出来都有一个新的epoch。zxid低32位用来递增计数。</p>
-<p>每个服务器在工作中有3个状态：</p>
-<p>Looking：当前服务器不知道谁是leader，搜索中。</p>
-<p>Leading：当前服务器即为leader，领导中。</p>
-<p>Following：当前服务器不是leader，正在与leader同步中。</p>
-<h2 id="同步流程">同步流程：</h2>
+<p>每个服务器在工作中有3个状态:</p>
+<p>Looking:当前服务器不知道谁是leader，搜索中。</p>
+<p>Leading:当前服务器即为leader，领导中。</p>
+<p>Following:当前服务器不是leader，正在与leader同步中。</p>
+<h2 id="同步流程">同步流程:</h2>
 <p>1.leader等待服务器连接。</p>
 <p>2.follower连接Leader，将最大的zxid发送给leader。</p>
 <p>3.Leader根据follower的zxid确定同步点。</p>
 <p>4.同步后通知follower成为uptodate状态。</p>
 <p>5.follower收到uptodate消息后，同步完成。</p>
-<h2 id="leader工作流程">leader工作流程：</h2>
-<p>leader功能：恢复数据，保持心跳，相应消息</p>
+<h2 id="leader工作流程">leader工作流程:</h2>
+<p>leader功能:恢复数据，保持心跳，相应消息</p>
 <p>leader可响应的消息有PING，REQUEST，ACK和REVALIDATE</p>
 <p>PING即心跳消息，REQUEST为follower发送的提议(写请求或同步请求)，ACK是follower对提议的回复，超过半数的follower通过，则commit。REVALIDATE为延长session的请求。</p>
-<h2 id="follower工作流程">follower工作流程：</h2>
+<h2 id="follower工作流程">follower工作流程:</h2>
 <p>向leader发送请求并响应。</p>
 <p>接受client请求并响应，接受写请求时发送给leader处理。</p>
-<p>follower可响应的请求：</p>
-<p>PING：发送心跳信息</p>
-<p>PROPOSAL：leader发起的提案，follower投票</p>
-<p>Commit：提议被commit</p>
-<p>UPTODATE：同步完成</p>
-<p>REVALIDATE：延长session的响应</p>
-<p>SYNC：客户端发起，强制返回更新的数据</p>
+<p>follower可响应的请求:</p>
+<p>PING:发送心跳信息</p>
+<p>PROPOSAL:leader发起的提案，follower投票</p>
+<p>Commit:提议被commit</p>
+<p>UPTODATE:同步完成</p>
+<p>REVALIDATE:延长session的响应</p>
+<p>SYNC:客户端发起，强制返回更新的数据</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-base/">https://luangeng.space/post/java/zookeeper/zookeeper-base/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-base/">https://luangeng.space/post/java/zookeeper/zookeeper-base/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -258,7 +256,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/rocketmq/" rel="next">
+                                        <a href="https://luangeng.space/post/java/other/rocketmq/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
                                             <span>ubuntu16.04安装rocketMQ</span>
@@ -267,7 +265,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/maven/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/other/maven/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
                                             <span>Maven安装配置使用</span>
@@ -301,7 +299,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -312,7 +310,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -323,7 +321,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -345,7 +343,7 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -374,8 +372,29 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -429,15 +448,15 @@ Observer的作用同Follower类似，唯一区别就是它不参与选主过程�
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

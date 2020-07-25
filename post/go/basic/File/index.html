@@ -256,7 +256,7 @@ if err != nil {
 </code></pre><p>os.OpenFile的第二个参数是一个标志，用于确定打开文件的确切模式。</p>
 <p>打开读取时，请使用os.Open。</p>
 <p>当您打开以写入新文件时，请使用os.Create。</p>
-<p>当打开以追加到现有文件时，请使用带有以下标志的os.OpenFile：* os.O_WRONLY。 如果我们也要读写，也可以是os.RDWR。* os.O_APPEND表示如果文件存在，我们将附加* os.O_CREATE表示如果文件不存在，我们将创建它。 如果没有此标志，打开不存在的文件将失败</p>
+<p>当打开以追加到现有文件时，请使用带有以下标志的os.OpenFile:* os.O_WRONLY。 如果我们也要读写，也可以是os.RDWR。* os.O_APPEND表示如果文件存在，我们将附加* os.O_CREATE表示如果文件不存在，我们将创建它。 如果没有此标志，打开不存在的文件将失败</p>
 <p>写文件</p>
 <pre><code>d := []byte(&quot;data to write&quot;)
 nWritten, err := f.Write(d)
@@ -297,7 +297,7 @@ func main() {
 <p>ile main.go is 501 bytes in size</p>
 </blockquote>
 <p>除了os.Stat，我们还可以使用os.Lstat。 区别在于os.Stat遵循符号链接，而os.Lstat不遵循符号链接。</p>
-<p>换句话说：对于符号链接，os.Lstat返回有关链接的信息，os.Stat返回有关链接到的文件的信息。</p>
+<p>换句话说:对于符号链接，os.Lstat返回有关链接的信息，os.Stat返回有关链接到的文件的信息。</p>
 <p>获取文件信息:</p>
 <pre><code>func main() {
     st, err := os.Stat(&quot;main.go&quot;)
@@ -353,7 +353,7 @@ func main() {
 File &lsquo;non-existent-file.txt&rsquo; exists: false</p>
 </blockquote>
 <p>令人惊讶的是，检查文件是否存在是很难的，并且不可能编写处理所有细微差别的通用函数。</p>
-<p>这是我们做出的决定：</p>
+<p>这是我们做出的决定:</p>
 <p>它对待文件和目录相同。 如果存在路径，并且要区分目录和文件，则需要在os.Lstat的结果上调用IsDir（）
 如果文件是符号链接，我们是否测试链接或链接到的实际文件？ 我们使用了os.Lstat，所以我们测试了链接。 我们也可以使用os.Stat来解析符号链接
 “路径不存在”只是os.Lstat返回的可能错误之一。 我们要区分“文件不存在”和“文件存在并且我们无权访问”吗？ 我们决定提供更多信息，但在某些情况下，仅返回bool并在os.Lstat失败时始终返回false会更简单。</p>
@@ -401,7 +401,7 @@ func CopyFile(dst, src string) error {
     return err
 }
 </code></pre><p>编写用于复制文件的通用函数非常棘手，并且不可能编写可满足所有用例的函数。</p>
-<p>以下是我们制定的政策决策：</p>
+<p>以下是我们制定的政策决策:</p>
 <p>如果目标存在，我们应该覆盖现有文件还是返回错误？ 我们决定改写
 新文件应具有什么权限？ 我们决定了使用默认权限的最简单情况。 另一种选择是从源复制权限或允许调用方提供权限
 如果您想要不同的行为，则必须根据需要修改代码。</p>
@@ -493,7 +493,7 @@ Path: main.go, is dir: false, size: 466 bytes</p>
 <p>不幸的是，不同的操作系统对文件路径的格式具有不同的规则。</p>
 <p>例如，在Unix和Mac OS上，路径分隔符为/，而在Windows上为\。</p>
 <p>对于可移植程序，重要的是使用文件路径包中的函数，这些函数应了解给定操作系统使用的约定。</p>
-<p>注意：filepath软件包管理OS文件路径。 也有具有类似功能的路径包，但它始终使用/作为路径分隔符。</p>
+<p>注意:filepath软件包管理OS文件路径。 也有具有类似功能的路径包，但它始终使用/作为路径分隔符。</p>
 <h4 id="合并路径">合并路径</h4>
 <pre><code>path := filepath.Join(&quot;dir&quot;, &quot;sub&quot;, &quot;file.txt&quot;)
 fmt.Printf(&quot;path: %s\n&quot;, path)
@@ -585,24 +585,22 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/File/">https://luangeng.space/post/go/basic/File/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/File/">https://luangeng.space/post/go/basic/File/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -742,17 +740,6 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -778,7 +765,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -789,7 +776,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -800,7 +787,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -822,7 +809,7 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -851,8 +838,29 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -917,14 +925,6 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -933,15 +933,15 @@ fmt.Printf(&quot;ext: %s\n&quot;, ext)
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>集成通过github登录网站功能 - 计算机与软件技术公开课</title>
+  <title>RocketMQ核心概念 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="集成通过github登录网站功能 - 计算机与软件技术公开课">
-  <meta name="description" content="使用github登录网址 sdsdsdsd">
-  <meta itemprop="name" content="集成通过github登录网站功能 - 计算机与软件技术公开课">
-  <meta itemprop="description" content="使用github登录网址 sdsdsdsd">
-  <meta property="og:title" content="集成通过github登录网站功能 - 计算机与软件技术公开课" />
+  <meta name="keywords" content="RocketMQ核心概念 - 计算机与软件技术公开课">
+  <meta name="description" content="RocketMQ核心概念">
+  <meta itemprop="name" content="RocketMQ核心概念 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="RocketMQ核心概念">
+  <meta property="og:title" content="RocketMQ核心概念 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/github_login/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/rocketMq-Concept/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="使用github登录网址 sdsdsdsd">
+  <meta property="og:description" content="RocketMQ核心概念">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/github_login/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/github_login/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/rocketMq-Concept/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/rocketMq-Concept/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">集成通过github登录网站功能</h1>
+                                        <h1 class="post-title">RocketMQ核心概念</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-18 · 482 Words
+                                            Posted @ 2017-09-10 · 1784 Words
                                             
-                                            · Tags: oauth2
+                                            · Tags: RocketMQ
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="集成通过github登录网站功能">
+                                            <span class="leancloud_visitors" data-flag-title="RocketMQ核心概念">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,141 +165,115 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>使用第三方网址登录系统，使用github</p>
-<p>工作流程：</p>
-<ul>
-<li>页面点击使用github登录，</li>
-<li>重定向到回调地址</li>
-<li>回调地址后台获取token，获取用户信息，完成登录，将页面重定向到某页面</li>
-<li>页面正常显示</li>
-</ul>
-<h2 id="github新建app">github新建App</h2>
-<p>github设置页，deleveper setting页 新建app，注册回调地址。</p>
-<h2 id="html页中增加登录按钮">html页中增加登录按钮</h2>
-<pre><code> &lt;a class=&quot;btn btn-link-2&quot; href=&quot;#&quot; onclick=&quot;git_login()&quot;&gt;
-     &lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt; Github
- &lt;/a&gt;
-</code></pre><h2 id="获取code">获取code</h2>
-<pre><code>const FULL_CHARTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopgrstuvwxyz';
-const git_clientId='269c706502923e741920';
-const redirect_uri = 'http://luangeng.leanapp.cn/test';
-const git_auth = 'https://github.com/login/oauth/authorize?';
-const scope	= 'read';
-
-function getState(){
-var state='';
-for (var a=0;a&lt;6;a++){
-    state+=FULL_CHARTER[Math.floor(Math.random() * 52)];
-}
-token_storage.setItem(&quot;git_state&quot;, state);
-return state;
-}
-
-function git_login(){
-    var url=git_auth+'client_id='+git_clientId+'&amp;redirect_uri='+redirect_uri+'&amp;scope='+scope+'&amp;state='+getState();
-    window.location = url;
-}
-
-</code></pre><h2 id="获取token">获取token</h2>
-<pre><code>@Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        String toke = &quot; https://github.com/login/oauth/access_token&quot;;
-        String user = &quot;https://api.github.com/user?access_token=&quot;;
-        String state = req.getParameter(&quot;state&quot;);
-        String code = req.getParameter(&quot;code&quot;);
-
-        OkHttpClient client = new OkHttpClient();
-        RequestBody formBody = new FormEncodingBuilder()
-                .add(&quot;client_id&quot;, &quot;269c706502923e741920&quot;)
-                .add(&quot;client_secret&quot;, &quot;a8594616a65fb12bc87d5088819b84fcb65ccdc7&quot;)
-                .add(&quot;code&quot;, code)
-                .add(&quot;redirect_uri&quot;, &quot;http://luangeng.leanapp.cn/test&quot;)
-                .add(&quot;state&quot;, state)
-                .build();
-        Request request = new Request.Builder()
-                .url(toke)
-                .post(formBody)
-                .build();
-        Response response = client.newCall(request).execute();
-        String ret = response.body().string();
-        String token = ret.substring(ret.indexOf(&quot;=&quot;) + 1, ret.indexOf(&quot;&amp;&quot;));
-        //GET
-        Request.Builder builder = new Request.Builder();
-        builder.url(user + token).get();
-        client = new OkHttpClient();
-        Call call = client.newCall(builder.build());
-        try {
-            response = call.execute();
-            resp.getWriter().append(&quot;ok: &quot;).append(&quot;token: &quot; + token + &quot;  &quot;);
-        } catch (Exception e) {
-            resp.getWriter().append(e.getMessage());
-        }
-        Gson gson = new Gson();
-        User u = gson.fromJson(response.body().string(), User.class);
-        }
-   }
-</code></pre><h2 id="获取用户信息">获取用户信息</h2>
-<p>后台调用</p>
-<p><code>https://api.github.com/user?access_token=0013d0335c9d38104a55bb2973045160c9648474</code></p>
-<p>返回的数据：</p>
-<pre><code>{
-  &quot;login&quot;: &quot;luangeng&quot;,
-  &quot;id&quot;: 10940569,
-  &quot;node_id&quot;: &quot;MDQ6VXNlcjEwOTQwNTY5&quot;,
-  &quot;avatar_url&quot;: &quot;https://avatars2.githubusercontent.com/u/10940569?v=4&quot;,
-  &quot;gravatar_id&quot;: &quot;&quot;,
-  &quot;url&quot;: &quot;https://api.github.com/users/luangeng&quot;,
-  &quot;html_url&quot;: &quot;https://github.com/luangeng&quot;,
-  &quot;followers_url&quot;: &quot;https://api.github.com/users/luangeng/followers&quot;,
-  &quot;following_url&quot;: &quot;https://api.github.com/users/luangeng/following{/other_user}&quot;,
-  &quot;gists_url&quot;: &quot;https://api.github.com/users/luangeng/gists{/gist_id}&quot;,
-  &quot;starred_url&quot;: &quot;https://api.github.com/users/luangeng/starred{/owner}{/repo}&quot;,
-  &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/luangeng/subscriptions&quot;,
-  &quot;organizations_url&quot;: &quot;https://api.github.com/users/luangeng/orgs&quot;,
-  &quot;repos_url&quot;: &quot;https://api.github.com/users/luangeng/repos&quot;,
-  &quot;events_url&quot;: &quot;https://api.github.com/users/luangeng/events{/privacy}&quot;,
-  &quot;received_events_url&quot;: &quot;https://api.github.com/users/luangeng/received_events&quot;,
-  &quot;type&quot;: &quot;User&quot;,
-  &quot;site_admin&quot;: false,
-  &quot;name&quot;: &quot;luangeng&quot;,
-  &quot;location&quot;: &quot;中国 西安&quot;,
-  &quot;email&quot;: &quot;luangeng2015@qq.com&quot;,
-  &quot;hireable&quot;: true,
-  &quot;bio&quot;: &quot;🍉🍉🍉🍉🍉🍉🍉&quot;,
-  &quot;public_repos&quot;: 45,
-  &quot;public_gists&quot;: 0,
-  &quot;followers&quot;: 6,
-  &quot;following&quot;: 30,
-  &quot;created_at&quot;: &quot;2015-02-10T12:04:47Z&quot;,
-  &quot;updated_at&quot;: &quot;2018-09-18T01:42:47Z&quot;
-}
-</code></pre><p>接下来是绑定用户，确定登录者，完成登录</p>
-<h2 id="参考">参考</h2>
-<p><a href="github%EF%BC%9Ahttps://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/#web-application-flow">github帮助文档</a></p>
+                                                <h1 id="producer">Producer</h1>
+<p>A producer sends messages generated by the business application systems to brokers.
+RocketMQ provides multiple paradigms of sending: synchronous, asynchronous and one-way.</p>
+<p><code>生产者将业务应用程序系统生成的消息发送给broker。RocketMQ提供多种发送范例:同步，异步和单向。</code></p>
+<h1 id="producer-group">Producer Group</h1>
+<p>Producers of the same role are grouped together.
+A different producer instance of the same producer group may be contacted by a broker to commit or roll back a transaction in case the original producer crashed after the transaction.</p>
+<p><code>具有相同角色的生产者组合在一起。代理可以联系同一生产者组的不同生产者实例以提交或回滚事务原始制作人在交易后崩溃了。</code></p>
+<p>Warning: Considering the provided producer is sufficiently powerful at sending messages,
+only one instance is allowed per producer group to avoid unnecessary initialization of producer instances.</p>
+<p><code>警告:考虑到提供的生产者在发送消息方面足够强大，每个生产者组只允许一个实例，以避免不必要的生成器实例初始化。</code></p>
+<h1 id="consumer">Consumer</h1>
+<p>A Consumer pulls messages from brokers and feeds them into application.
+In perspective of user application, two types of consumers are provided:</p>
+<p><code>消费者从broker那里获取消息并将其提供给应用程序。从用户应用的角度来看，提供了两种类型的消费者:</code></p>
+<h1 id="pullconsumer">PullConsumer</h1>
+<p>Pull consumer actively pulls messages from brokers.
+Once batches of messages are pulled, user application initiates consuming process.</p>
+<p><code>PullConsumer积极地从broker那里获取消息。一旦提取了批量消息，用户应用程序就会启动消费过程。</code></p>
+<h1 id="pushconsumer">PushConsumer</h1>
+<p>Push consumer, on the other hand, encapsulates message pulling, consuming progress and maintaining other work inside,
+leaving a callback interface to end user to implement which will be executed on message arrival.</p>
+<p><code>PushConsumer封装消息拉动，消耗进度和维持其他工作，为最终用户留下一个回调接口来实现将在消息到达时执行的接口。</code></p>
+<h1 id="consumer-group">Consumer Group</h1>
+<p>Similar to previously mentioned producer group, consumers of the exactly same role are grouped together and named Consumer Group.</p>
+<p><code>与之前提到的生产者组类似，角色完全相同的消费者被组合在一起并命名为消费者组。</code></p>
+<p>Consumer Group is a great concept with which achieving goals of load-balance and fault-tolerance, in terms of message consuming, is super easy.</p>
+<p><code>消费者群体是一个很好的概念，在消息消费方面实现负载平衡和容错非常容易。</code></p>
+<p>Warning: consumer instances of a consumer group must have exactly the same topic subscription(s).</p>
+<p><code>警告:使用者组的使用者实例必须具有完全相同的主题订阅。</code></p>
+<h1 id="topic">Topic</h1>
+<p>Topic is a category in which producers deliver messages and consumers pull messages.
+Topics have very loose relationship with producers and consumers.
+Specifically, a topic may have zero, one or multiple producers that sends messages to it;
+conversely, a producer can send messages of different topics.
+In consumer’s perspective, a topic may be subscribed by zero, one or multiple consumer groups.
+And a consumer group, similarly, may subscribe to one or more topics as long as instances of this group keep their subscription consistent.</p>
+<pre><code>主题是生产者传递消息和消费者提取消息的类别。
+主题与生产者和消费者的关系非常松散。具体来说，一个主题可能有零个，一个或多个生成器向它发送消息;
+相反，生产者可以发送不同主题的消息。
+从消费者的角度来看，主题可以由零个，一个或多个消费者群体订阅。
+类似地，消费者组可以订阅一个或多个主题，只要该组的实例保持其订阅一致即可。
+</code></pre><h1 id="message">Message</h1>
+<p>Message is the information to be delivered.
+A message must have a topic, which can be interpreted as address of your letter to mail to.
+A message may also have an optional tag and extra key-value pairs.
+For example, you may set a business key to your message and look up the message on a broker server to diagnose issues during development.</p>
+<pre><code>消息是要传递的信息。
+消息必须有一个主题，可以将其解释为您要发送给的邮件地址。
+消息还可以具有可选标记和额外的键 - 值对。
+例如，您可以为消息设置业务密钥，并在代理服务器上查找消息以诊断开发期间的问题。
+</code></pre><h1 id="message-queue">Message Queue</h1>
+<p>Topic is partitioned into one or more sub-topics, “message queues”.</p>
+<p><code>主题被划分为一个或多个子主题“消息队列”。</code></p>
+<h1 id="tag">Tag</h1>
+<p>Tag, in other words sub-topic, provides extra flexibility to users.
+With tag, messages with different purposes from the same business module may have the same topic and different tag.
+Tags would be helpful to keep your code clean and coherent, and tags also can facilitate the query system RocketMQ provides.</p>
+<pre><code>标记，换句话说，子主题，为用户提供了额外的灵活性。
+对于标记，来自同一业务模块的具有不同目的的消息可以具有相同的主题和不同的标记。
+标签有助于保持代码的清晰和连贯，而标签也可以方便RocketMQ提供的查询系统。
+</code></pre><h1 id="broker">Broker</h1>
+<p>Broker is a major component of the RocketMQ system.
+It receives messages sent from producers, store them and prepare to handle pull requests from consumers.
+It also stores message related meta data, including consumer groups, consuming progress offsets and topic / queue info.</p>
+<pre><code>Broker是RocketMQ系统的主要组成部分。它接收从生产者发送的消息，存储它们并准备处理来自消费者的拉取请求。
+它还存储与消息相关的元数据，包括消费者组，消耗进度偏移和主题/队列信息。
+</code></pre><h1 id="name-server">Name Server</h1>
+<p>Name server serves as the routing information provider. Producer/Consumer clients look up topics to find the corresponding broker list.</p>
+<p><code>名称服务器充当路由信息提供者。 生产者/消费者客户根据主题以查找相应的broker列表。</code></p>
+<h1 id="message-model">Message Model</h1>
+<blockquote>
+<p>Clustering</p>
+<p>Broadcasting</p>
+</blockquote>
+<h1 id="message-order">Message Order</h1>
+<p>When DefaultMQPushConsumer is employed, you may decide to consume messages orderly or concurrently.</p>
+<p><code>使用DefaultMQPushConsumer时，您可能决定按顺序或同时使用消息。</code></p>
+<h2 id="orderly">Orderly</h2>
+<p>Consuming messages orderly means messages are consumed the same order they are sent by producers for each message queue.
+If you are dealing with scenario that global order is mandatory, make sure the topic you use has only one message queue.</p>
+<p><code>按顺序使用消息意味着消息的使用顺序与生产者为每个消息队列发送的顺序相同。如果您正在处理全局必需有序的场景，请确保您使用的主题只有一个消息队列。</code></p>
+<p>Warn: If consuming orderly is specified, the maximum concurrency of message consuming is the number of message queues subscribed by the consumer group.</p>
+<p><code>警告:如果指定了有序消耗，则消息消耗的最大并发数是消费者组订阅的消息队列数。</code></p>
+<h2 id="concurrently">Concurrently</h2>
+<p>When consuming messages concurrently, maximum concurrency of message consuming is only limited by thread pool specified for each consumer client.
+Warn: Message order is no longer guaranteed in this mode.</p>
+<p><code>在并发使用消息时，消息消耗的最大并发性仅受为每个使用者客户端指定的线程池的限制。警告:此模式不再保证消息顺序。</code></p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/github_login/">https://luangeng.space/post/other/github_login/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/rocketMq-Concept/">https://luangeng.space/post/java/other/rocketMq-Concept/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -317,19 +291,19 @@ function git_login(){
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/java/spring/zeromq-springboot/" rel="next">
+                                        <a href="https://luangeng.space/post/other/html5-cavas/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>SpringBoot集成ZeroMQ</span>
+                                            <span>HTML5 canvas绘图</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/token-front/" rel="prev">
+                                        <a href="https://luangeng.space/post/java/spring/spring-cloud-zuul/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>Oauth2协议 通过js和ajax获取token及刷新token</span>
+                                            <span>Spring Cloud Zuul 网关</span>
                                         </a>
                                         
                                     </li>
@@ -344,18 +318,7 @@ function git_login(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/token-front/" rel="bookmark" class="leancloud-count">Oauth2协议 通过js和ajax获取token及刷新token
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/dingding/" rel="bookmark" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
+                <a href="https://luangeng.space/post/java/other/rocketmq/" rel="bookmark" class="leancloud-count">ubuntu16.04安装rocketMQ
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -387,7 +350,7 @@ function git_login(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -398,7 +361,7 @@ function git_login(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -409,7 +372,7 @@ function git_login(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -431,7 +394,7 @@ function git_login(){
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -460,8 +423,29 @@ function git_login(){
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -514,9 +498,7 @@ function git_login(){
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/token-front/">Oauth2协议 通过js和ajax获取token及刷新token</a></li>
-                
-                <li><a href="https://luangeng.space/post/other/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a></li>
+                <li><a href="https://luangeng.space/post/java/other/rocketmq/">ubuntu16.04安装rocketMQ</a></li>
                 
             </ul>
         </div>
@@ -526,15 +508,15 @@ function git_login(){
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

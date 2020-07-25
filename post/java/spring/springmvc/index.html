@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Spring MVC中Action使用总结</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-10 · 2248 Words
+                                            Posted @ 2017-09-10 · 2234 Words
                                             
                                             · Tags: spring
                                             
@@ -196,14 +196,14 @@
 </ul>
 <h2 id="下面分别演示">下面分别演示</h2>
 <p>参数为基本数据类型，且名称与请求参数名称相同，则会进行自动映射:</p>
-<p>访问地址：<code>http://localhost:8080/springmvctest/action?id=1&amp;name=abc</code></p>
+<p>访问地址:<code>http://localhost:8080/springmvctest/action?id=1&amp;name=abc</code></p>
 <pre><code>@RequestMapping(&quot;/action&quot;)
     public String action(Model model, int id, String name) {
         model.addAttribute(&quot;message&quot;, &quot;id=&quot; + id+&quot;   name=&quot;+name);
         return &quot;jsp/index&quot;;
     }
 </code></pre><p>参数为自定义数据类型</p>
-<p>访问地址：<code>http://localhost:8080/springmvctest/action?id=1&amp;name=Tom&amp;age=10</code></p>
+<p>访问地址:<code>http://localhost:8080/springmvctest/action?id=1&amp;name=Tom&amp;age=10</code></p>
 <pre><code>@RequestMapping(&quot;/action&quot;)
     public String action(Model model, User user) {
         model.addAttribute(&quot;message&quot;, user);
@@ -233,7 +233,7 @@ public String action(Model model, User user) {
     String defaultValue() default &quot;\n\t\t\n\t\t\n\ue000\ue001\ue002\n\t\t\t\t\n&quot;;
 }
 </code></pre><p>required属性表示是否为必须，默认值为true，如果请求中没有指定的参数会报异常</p>
-<p>defaultValue属性指定参数的默认值，如：</p>
+<p>defaultValue属性指定参数的默认值，如:</p>
 <pre><code>@Controller
 @RequestMapping(&quot;/my&quot;)
 public class MyController {
@@ -244,7 +244,7 @@ public class MyController {
     }
 }
 </code></pre><p>使用@RequestParam绑定数组和List</p>
-<p>访问路径：<code>http://localhost:8080/springmvctest/action?users=u1&amp;users=u2&amp;users=u3</code></p>
+<p>访问路径:<code>http://localhost:8080/springmvctest/action?users=u1&amp;users=u2&amp;users=u3</code></p>
 <pre><code>@RequestMapping(&quot;/action&quot;)
 public String action(Model model, @RequestParam(&quot;users&quot;) List&lt;String&gt; users) {
     model.addAttribute(&quot;message&quot;, users);
@@ -252,7 +252,7 @@ public String action(Model model, @RequestParam(&quot;users&quot;) List&lt;Strin
 }
 </code></pre><h2 id="requestbody注解">@RequestBody注解</h2>
 <p>将HTTP请求正文转换为适合的HttpMessageConverter对象。</p>
-<p>AnnotationMethodHandlerAdapter初始化7个转换器，通过getMessageConverts()方法获取转换器集合，分别是：</p>
+<p>AnnotationMethodHandlerAdapter初始化7个转换器，通过getMessageConverts()方法获取转换器集合，分别是:</p>
 <ul>
 <li>ByteArrayHttpMessageConverter</li>
 <li>StringHttpMessageConverter</li>
@@ -263,7 +263,7 @@ public String action(Model model, @RequestParam(&quot;users&quot;) List&lt;Strin
 <li>MappingJacksonHttpMessageConverter</li>
 </ul>
 <p>@RequestBody默认接收的Content-Type是application/json，因此发送POST请求时需要设置请求报文头信息，否则Spring MVC在解析集合请求参数时不会自动转换成JSON数据再解析成相应的集合，</p>
-<p>Spring默认的json协议解析由Jackson完成，需要加入Jackson的依赖：</p>
+<p>Spring默认的json协议解析由Jackson完成，需要加入Jackson的依赖:</p>
 <pre><code>&lt;dependency&gt;
      &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
      &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;
@@ -275,7 +275,7 @@ public String action(Model model, @RequestParam(&quot;users&quot;) List&lt;Strin
      &lt;version&gt;2.5.2&lt;/version&gt;
  &lt;/dependency&gt;
 </code></pre><h2 id="ajax">ajax</h2>
-<p>ajax请求时需要设置属性dataType为json，contentType为&rsquo;application/json;charse=UTF-8&rsquo;，如：</p>
+<p>ajax请求时需要设置属性dataType为json，contentType为&rsquo;application/json;charse=UTF-8&rsquo;，如:</p>
 <pre><code>@RequestMapping(&quot;/action&quot;)
 public void action(@RequestBody List&lt;Product&gt; products, HttpServletResponse response) throws IOException {
     response.setCharacterEncoding(&quot;UTF-8&quot;);
@@ -301,12 +301,12 @@ contentType : &quot;application/json;charset=UTF-8&quot;,//发送信息至服务
 dataType : &quot;json&quot;, //预期服务器返回的数据类型
 success : function(result) {
 var str = &quot;&quot;;
-$.each(result, function(i, obj) {str += &quot;id：&quot; + obj.id + &quot;   名称：&quot; + obj.name + &quot;&lt;br/&gt;&quot;; });
+$.each(result, function(i, obj) {str += &quot;id:&quot; + obj.id + &quot;   名称:&quot; + obj.name + &quot;&lt;br/&gt;&quot;; });
 $(&quot;#msg&quot;).html(str);
 }
 });
 </code></pre><h2 id="重定向">重定向</h2>
-<p>重定向会发起第二次请求，同时可以将第一次请求的结果作为第二次请求的参数，如对action2的请求重定向到action1：</p>
+<p>重定向会发起第二次请求，同时可以将第一次请求的结果作为第二次请求的参数，如对action2的请求重定向到action1:</p>
 <pre><code>@RequestMapping(&quot;/action1&quot;)
     public String action1(Model model) {
         return &quot;jsp/index&quot;;
@@ -317,7 +317,7 @@ $(&quot;#msg&quot;).html(str);
         model.addAttribute(&quot;message&quot;, &quot;action1&quot;);
         return &quot;redirect:action1&quot;;
     }
-</code></pre><p>Action返回值类型可以为：</p>
+</code></pre><p>Action返回值类型可以为:</p>
 <ul>
 <li>基本数据类型</li>
 <li>自定义模型</li>
@@ -349,7 +349,7 @@ public String action() {
  public void action(HttpServletResponse response) throws IOException  {
      response.getWriter().write(&quot;&lt;h2&gt;plain text&lt;/h2&gt;&quot;);
  }
-</code></pre><p>返回类型为ModelAndView，可以同时指定视图和数据，也可以只指定其中之一， ModelAndView拥有很多构造方法：</p>
+</code></pre><p>返回类型为ModelAndView，可以同时指定视图和数据，也可以只指定其中之一， ModelAndView拥有很多构造方法:</p>
 <pre><code>new ModelAndView(&quot;/bar/index&quot;);
 
 Map&lt;String, Object&gt; model=new HashMap&lt;String,Object&gt;();
@@ -361,7 +361,7 @@ new ModelAndView(&quot;/bar/index&quot;,&quot;message&quot;,&quot;action35 Model
 ModelAndView modelAndView=new ModelAndView();
 modelAndView.setViewName(&quot;/bar/index&quot;);
 modelAndView.addObject(&quot;message&quot;, &quot;&lt;h2&gt;Hello ModelAndView&lt;/h2&gt;&quot;);
-</code></pre><p>如果返回视图未指定，则相当于返回视图为：控制器路径+方法名称，如下返回的视图名为<code>action1</code></p>
+</code></pre><p>如果返回视图未指定，则相当于返回视图为:控制器路径+方法名称，如下返回的视图名为<code>action1</code></p>
 <pre><code>@RequestMapping(&quot;/action&quot;)
 public Map&lt;String, Object&gt; action1()
 {
@@ -375,24 +375,22 @@ public Map&lt;String, Object&gt; action1()
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/springmvc/">https://luangeng.space/post/java/spring/springmvc/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/springmvc/">https://luangeng.space/post/java/spring/springmvc/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -480,7 +478,7 @@ public Map&lt;String, Object&gt; action1()
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -491,7 +489,7 @@ public Map&lt;String, Object&gt; action1()
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -502,7 +500,7 @@ public Map&lt;String, Object&gt; action1()
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -524,7 +522,7 @@ public Map&lt;String, Object&gt; action1()
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -553,8 +551,29 @@ public Map&lt;String, Object&gt; action1()
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -619,15 +638,15 @@ public Map&lt;String, Object&gt; action1()
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -168,9 +168,9 @@
                                                 <p>Go语言中goroutines共享内存.</p>
 <p>这对性能有好处，但是从多个goroutine修改相同的内存是不安全的, 会导致数据争用和崩溃。</p>
 <p>避免这种情况的一种方法是使用channel转移数据的专有所有权。</p>
-<p>这是Go的座右铭：不要通过共享内存进行通信；而是通过通信共享内存。</p>
+<p>这是Go的座右铭:不要通过共享内存进行通信；而是通过通信共享内存。</p>
 <p>确保goroutine独占访问数据的另一种方法是使用互斥体。</p>
-<p>这是一种将映射用于缓存并通过互斥锁确保独占访问的基本模式：</p>
+<p>这是一种将映射用于缓存并通过互斥锁确保独占访问的基本模式:</p>
 <pre><code>var cache map[int]int
 var mu sync.Mutex
 
@@ -219,13 +219,13 @@ total: 30</p>
 <h2 id="read-write-mutes-rwmutex">Read-Write mutes (RWMutex)</h2>
 <p>在sync.Mutex Lock()中始终采用排他锁。</p>
 <p>在重读场景中，如果我们允许多个读者但只允许一个写者，则可以提高性能。</p>
-<p>sync.RWMutex具有两种锁定功能：用于读取的锁定和用于写入的锁定。</p>
-<p>它遵循以下规则：</p>
+<p>sync.RWMutex具有两种锁定功能:用于读取的锁定和用于写入的锁定。</p>
+<p>它遵循以下规则:</p>
 <ul>
 <li>写锁采用排他锁</li>
 <li>读锁将允许其他读但不允许写</li>
 </ul>
-<p>这是使用读写锁的示例：</p>
+<p>这是使用读写锁的示例:</p>
 <pre><code>var cache map[int]int
 var mu sync.RWMutex
 
@@ -273,7 +273,7 @@ total: 30</p>
 <p>互斥体不是递归的(又名可重入)</p>
 <p>在某些语言中，互斥锁是递归的，即同一线程可以多次锁定同一互斥锁。</p>
 <p>在Go中sync.Mutex是非递归的。在同一goroutine中两次调用Lock将导致死锁。</p>
-<p>go vet会警告您有关复制互斥锁的信息。 这是一个示例警告：</p>
+<p>go vet会警告您有关复制互斥锁的信息。 这是一个示例警告:</p>
 <blockquote>
 <p>go vet<br>
 github.com/ravendb/ravendb-go-client<br>
@@ -325,24 +325,22 @@ exit status 2</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Mutex/">https://luangeng.space/post/go/basic/Mutex/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Mutex/">https://luangeng.space/post/go/basic/Mutex/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -482,17 +480,6 @@ exit status 2</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Panic-recover/" rel="bookmark" class="leancloud-count">Go Panic和recover
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -518,7 +505,7 @@ exit status 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -529,7 +516,7 @@ exit status 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -540,7 +527,7 @@ exit status 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -562,7 +549,7 @@ exit status 2</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -591,8 +578,29 @@ exit status 2</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -657,14 +665,6 @@ exit status 2</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Panic-recover/">Go Panic和recover</a></li>
-                
             </ul>
         </div>
         
@@ -673,15 +673,15 @@ exit status 2</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

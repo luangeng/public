@@ -166,7 +166,7 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>Google Protobuf是一种轻便高效的结构化数据存储格式，可以用于结构化数据序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。</p>
-<h2 id="编译安装">编译安装：</h2>
+<h2 id="编译安装">编译安装:</h2>
 <pre><code>下载Java版 https://github.com/google/protobuf/releases
 
 tar -zxvf xxx.tar.gz
@@ -182,7 +182,7 @@ protoc --version
 mvn install
 
 mvn package
-</code></pre><h2 id="使用">使用：</h2>
+</code></pre><h2 id="使用">使用:</h2>
 <p>Google Protobuf支持复杂的POJO对象的编解码，而这些代码是自动生成的。</p>
 <p>首先写文件Person.proto ，定义程序中需要处理的结构化数据，在 protobuf 的中，结构化数据被称为 Message。</p>
 <pre><code>syntax=&quot;proto3&quot;;
@@ -195,14 +195,14 @@ string sex=3; //
 }
 </code></pre><p>执行命令</p>
 <p><code>protoc -I=. --java_out=. Person.proto</code></p>
-<p>格式： protoc -I=$SRC_DIR &ndash;cpp_out=$DST_DIR $SRC_DIR/***.proto</p>
+<p>格式: protoc -I=$SRC_DIR &ndash;cpp_out=$DST_DIR $SRC_DIR/***.proto</p>
 <p>即在当前目录下生成了Java文件PersonOutClass.java， 将它引入到工程并需要添加POM依赖</p>
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;com.google.protobuf&lt;/groupId&gt;
     &lt;artifactId&gt;protobuf-java&lt;/artifactId&gt;
     &lt;version&gt;3.5.0&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p>然后做一个简单的编解码测试：</p>
+</code></pre><p>然后做一个简单的编解码测试:</p>
 <pre><code>public class TestProtoBuf {
 
     //编码为byte数组
@@ -233,7 +233,7 @@ string sex=3; //
     }
 
 }
-</code></pre><p>输出结果：</p>
+</code></pre><p>输出结果:</p>
 <pre><code>before----------
 username: &quot;luangeng&quot;
 age: 10
@@ -243,8 +243,8 @@ afetr-----------
 username: &quot;luangeng&quot;
 age: 10
 sex: &quot;man&quot;
-</code></pre><p>在Netty中使用Google Protobuf实例：</p>
-<p>Server端：</p>
+</code></pre><p>在Netty中使用Google Protobuf实例:</p>
+<p>Server端:</p>
 <pre><code>public class EchoServer {
     public static void main(String[] args) {
         new EchoServer().bind(8080);
@@ -297,7 +297,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         ctx.close();
     }
 }
-</code></pre><p>Client端：</p>
+</code></pre><p>Client端:</p>
 <pre><code>public class EchoClient {
 
     public static void main(String[] args) {
@@ -368,7 +368,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
         ctx.close();
     }
 }
-</code></pre><p>执行结果：</p>
+</code></pre><p>执行结果:</p>
 <pre><code>client started
 Client get 0 :
 username: &quot;luangeng0&quot;
@@ -453,24 +453,22 @@ sex: &quot;man&quot;
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/netty/netty-protobuf/">https://luangeng.space/post/java/netty/netty-protobuf/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/netty/netty-protobuf/">https://luangeng.space/post/java/netty/netty-protobuf/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -591,7 +589,7 @@ sex: &quot;man&quot;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -602,7 +600,7 @@ sex: &quot;man&quot;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -613,7 +611,7 @@ sex: &quot;man&quot;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -635,7 +633,7 @@ sex: &quot;man&quot;
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -664,8 +662,29 @@ sex: &quot;man&quot;
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -736,15 +755,15 @@ sex: &quot;man&quot;
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

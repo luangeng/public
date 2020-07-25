@@ -168,7 +168,7 @@
                                                 <p>CXF拦截器是功能的主要实现单元，也是主要的扩展点，可以在不对核心模块进行修改的情况下，动态添加功能。
 当服务被调用时，会经过多个拦截器链(Interceptor Chain)处理，拦截器链在服务输入(IN)或输出(OUT)阶段实现附加功能，拦截器可以在客户端加入，也可以在服务端加入。</p>
 <p><img src="pic/2017/cxf1.png" alt=""></p>
-<p>拦截器链的阶段：</p>
+<p>拦截器链的阶段:</p>
 <p>拦截器链有多个阶段，每个阶段都有多个拦截器。拦截器在拦截器链的哪个阶段起作用，可以在拦截器的构造函数中声明。
 输入拦截器链有如下几个阶段，这些阶段按照在拦截器链中的先后顺序排列。</p>
 <p><img src="pic/2017/cxf2.png" alt=""></p>
@@ -176,8 +176,8 @@
 <p><img src="pic/2017/cxf3.png" alt=""></p>
 <p>在CXF中，所有对消息的处理都是通过各种拦截器实现。CXF已经实现了多种拦截器，如操纵消息头、执行认证检查、验证消息数据、日志记录、消息压缩等，有些拦截器在发布服务、访问服务时已经默认添加到拦截器链。</p>
 <p>日志拦截器</p>
-<p>CXF已经内置了一些拦截器，这些拦截器大部分默认添加到拦截器链中，有些需要手动添加，如CXF提供的日志拦截器：输入日志拦截器LoggingInInterceptor和输出日志拦截器LoggingOutInterceptor，可以用在服务端也可以用在客户端，用来在测试或调试的时候输出服务端、客户端请求和接收到的信息。</p>
-<p>服务端配置方式如下：</p>
+<p>CXF已经内置了一些拦截器，这些拦截器大部分默认添加到拦截器链中，有些需要手动添加，如CXF提供的日志拦截器:输入日志拦截器LoggingInInterceptor和输出日志拦截器LoggingOutInterceptor，可以用在服务端也可以用在客户端，用来在测试或调试的时候输出服务端、客户端请求和接收到的信息。</p>
+<p>服务端配置方式如下:</p>
 <pre><code>&lt;!-- 发布REST WebService --&gt;
     &lt;jaxrs:server id=&quot;restServiceContainer&quot; address=&quot;/cxf&quot;&gt;
         &lt;!--输入拦截器设置--&gt;
@@ -195,7 +195,7 @@
             &lt;ref bean=&quot;restService&quot;/&gt;
         &lt;/jaxrs:serviceBeans&gt;
     &lt;/jaxrs:server&gt;
-</code></pre><p>API方式：</p>
+</code></pre><p>API方式:</p>
 <pre><code>        JAXRSServerFactoryBean jrf = new JAXRSServerFactoryBean();
         jrf.setResourceClasses(RestServiceImpl.class);
         jrf.setResourceProvider(RestServiceImpl.class, new SingletonResourceProvider(new RestServiceImpl()));
@@ -203,7 +203,7 @@
         jrf.getInInterceptors().add(new LoggingInInterceptor());
         jrf.getOutInterceptors().add(new LoggingOutInterceptor());
         jrf.create();
-</code></pre><p>客户端配置方式：</p>
+</code></pre><p>客户端配置方式:</p>
 <pre><code>        JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
         factory.setServiceClass(RestService.class);
         factory.setAddress(url);
@@ -211,7 +211,7 @@
         factory.getOutInterceptors().add(new LoggingOutInterceptor());
         RestService ser = factory.create(RestService.class);
         ser.get();
-</code></pre><p>输出日志形式如下：客户端：</p>
+</code></pre><p>输出日志形式如下:客户端:</p>
 <pre><code>[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Outbound Message
 ---------------------------
 ID: 1
@@ -230,7 +230,7 @@ Content-Type: text/plain
 Headers: {content-type=[text/plain], Date=[Wed, 22 Mar 2017 14:33:39 GMT], transfer-encoding=[chunked]}
 Payload: this is default get plain
 -------------------------------------- 
-</code></pre><p>服务端：</p>
+</code></pre><p>服务端:</p>
 <pre><code>[INFO ] 03-22 22:33:39 org.apache.cxf.interceptor.AbstractLoggingInterceptor.log(AbstractLoggingInterceptor.java:250) Inbound Message
 ----------------------------
 ID: 4
@@ -277,7 +277,7 @@ public class MyInterceptor extends AbstractPhaseInterceptor&lt;Message&gt;{
         Q.p(&quot;~~~~~~~~~~~~~~~~~~~&quot;);
     }
 }
-</code></pre><p>添加到客户端拦截器链：</p>
+</code></pre><p>添加到客户端拦截器链:</p>
 <pre><code>JAXRSClientFactoryBean factory = new JAXRSClientFactoryBean();
         factory.setServiceClass(RestService.class);
         factory.setAddress(url);
@@ -285,7 +285,7 @@ public class MyInterceptor extends AbstractPhaseInterceptor&lt;Message&gt;{
         factory.getOutInterceptors().add(new MyInterceptor(Phase.SEND));
         ser = factory.create(RestService.class);
         ser.get();
-</code></pre><p>输出：</p>
+</code></pre><p>输出:</p>
 <pre><code>[DEBUG] 03-22 23:07:38 org.apache.cxf.phase.PhaseInterceptorChain.doIntercept(PhaseInterceptorChain.java:304) Invoking handleMessage on interceptor cn.lg.ws.MyInterceptor@58cbafc2 
 ~~~~~~~~~~~~~~~~~~
 null
@@ -303,24 +303,22 @@ null
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/other/cxf-interceptor/">https://luangeng.space/post/java/other/cxf-interceptor/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/cxf-interceptor/">https://luangeng.space/post/java/other/cxf-interceptor/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -365,7 +363,7 @@ null
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/idea-key/" rel="bookmark" class="leancloud-count">IntelliJ IDEA常用快捷键
+                <a href="https://luangeng.space/post/java/other/idea-key/" rel="bookmark" class="leancloud-count">IntelliJ IDEA常用快捷键
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -408,7 +406,7 @@ null
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -419,7 +417,7 @@ null
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -430,7 +428,7 @@ null
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -452,7 +450,7 @@ null
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -481,8 +479,29 @@ null
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -535,7 +554,7 @@ null
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/idea-key/">IntelliJ IDEA常用快捷键</a></li>
+                <li><a href="https://luangeng.space/post/java/other/idea-key/">IntelliJ IDEA常用快捷键</a></li>
                 
                 <li><a href="https://luangeng.space/post/db/mysql/mysql/">ubuntu16.04 安装 mysql5.7</a></li>
                 
@@ -547,15 +566,15 @@ null
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

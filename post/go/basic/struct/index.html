@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go struct类型</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2405 Words
+                                            Posted @ 2018-09-09 · 2242 Words
                                             
                                             · Tags: Go
                                             
@@ -166,18 +166,12 @@
                                             <div class="entry-inner">
                                                 
                                                 <p>struct的作用是将几个相关的变量组合成一个独立的实体.</p>
-<p>另外,struct可以有方法,如同Java和C++中的类.</p>
-<p>不同于Java和C++中的类,struct不支持继承, 你可以通过结构嵌入实现代码重用。</p>
-<p>结构的零值中其字段全为各自零值。</p>
-<p>struct基本使用方法:</p>
-<pre><code>type MyStruct struct {
-    IntVal           int
-    StringVal        string
-    unexportedIntVal int
-}
-</code></pre><h2 id="struct声明">struct声明</h2>
+<p>如同Java和C++中的类,struct可以有方法.</p>
+<p>不同于Java和C++中的类,struct不支持继承, 但可以通过嵌入实现代码重用。</p>
+<p>struct的零值中其字段全为各自零值。</p>
+<h4 id="struct声明">struct声明</h4>
 <p>一个基本的struct声明如下:</p>
-<pre><code>// User describes a user
+<pre><code>// User代表用户
 type User struct {
     FirstName, LastName string
     Email               string
@@ -191,11 +185,11 @@ func (u *User) FullName() string {
 }
 
 func main() {
-    // zero value of struct
+    // 零值
     var u User
     fmt.Printf(&quot;u: %#v\n\n&quot;, u)
 
-    // pu is *User i.e. a pointer to User struct
+    // pu是指向User的指针
     pu := new(User)
     pu.Age = 33
     fmt.Printf(&quot;*pu: %#v\n&quot;, *pu)
@@ -214,19 +208,19 @@ func main() {
 *pu: main.User{FirstName:&quot;&quot;, LastName:&quot;&quot;, Email:&quot;&quot;, Age:18, userID:0}<br>
 pu.FullName(): Jane Doe</p>
 </blockquote>
-<p>struct中的每个值成为字段.
-字段通常每行写一个,字段名称后面跟字段类型.</p>
-<p>可以组合相同类型的连续字段，如上例中的FirstName和LastName。</p>
-<p>以大写字母开头的字段名称(名字，电子邮件)是公用的，即所有代码均可使用。</p>
-<p>以小写字母(userID)开头的字段名称是私有的，并且只能由同一包中的代码访问。</p>
-<h2 id="struct文字">struct文字</h2>
-<p>可以使用为struct字段指定值的语法来写入struct字段的值。</p>
+<p>struct中的每个值称为字段.字段通常每行写一个,字段名称后面跟字段类型.</p>
+<p>也可以组合相同类型的连续字段，如上例中的FirstName和LastName。</p>
+<p>以大写字母开头的字段名称(Name, Email)是公用的，即所有代码均可使用。</p>
+<p>以小写字母(如userID)开头的字段名称是私有的，只能由同一包中的代码访问。</p>
+<h2 id="初始化struct">初始化struct</h2>
+<p>可以使用为struct字段指定值的语法来初始化struct。</p>
 <pre><code>type Point struct { X, Y int }
 p := Point{1, 2}
-</code></pre><p>上面的示例以正确的顺序指定了每个字段。 这需要程序员必须按顺序记住确切的字段。 通常，可以通过列出一些或所有字段名称及其对应的值来初始化结构。
-<code>anim := gif.GIF{LoopCount: nframes}</code>
-省略字段的类型设置为零。</p>
-<p>注意：这两种形式不能混合使用。</p>
+</code></pre><p>上面的示例以正确的顺序指定了每个字段。 必须按顺序记住确切的字段。</p>
+<p>也可以通过列出部分或所有字段名称及其对应的值来初始化结构。</p>
+<pre><code>anim := gif.GIF{LoopCount: nframes}
+</code></pre><p>省略的字段的值为其零值。</p>
+<p>注意:以上两种形式不能混合使用。</p>
 <h2 id="匿名struct">匿名struct</h2>
 <p>struct可以是匿名的:</p>
 <pre><code>data := struct {
@@ -242,7 +236,7 @@ fmt.Printf(&quot;data: %+v\n&quot;, data)
 <p>data: {Number:42 Text:Hello world!}</p>
 </blockquote>
 <h2 id="组合和嵌入">组合和嵌入</h2>
-<p>组合提供了继承的替代方法。 结构可以在其声明中包含其他struct类型：</p>
+<p>组合提供了struct的继承功能。 strct可以在其声明中包含其他struct类型:</p>
 <pre><code>type Request struct {
     Resource string
 }
@@ -252,7 +246,7 @@ type AuthenticatedRequest struct {
     Username, Password string
 }
 </code></pre><p>上面的例子中,AuthenticatedRequest有4个public成员: Resource, Request, Username 和 Password.</p>
-<p>组合的struct可以实例化,使用方法和普通struct相同</p>
+<p>组合的struct可以实例化,方法和普通struct相同:</p>
 <pre><code>func main() {
     ar := new(AuthenticatedRequest)
     ar.Resource = &quot;example.com/request&quot;
@@ -261,10 +255,9 @@ type AuthenticatedRequest struct {
     fmt.Printf(&quot;%#v&quot;, ar)
 }
 </code></pre><h2 id="嵌入">嵌入</h2>
-<p>In the previous example, Request is an embedded field. Composition can also be achieved by embedding a different type. This is useful, for example, to decorate a Struct with more functionality. For example, continuing with the Resource example, we want a function that formats the content of the Resource field to prefix it with http:// or https://. We have two options: create the new methods on AuthenticatedRequest or embed it from a different struct:</p>
-<p>在前面的示例中，Request是一个嵌入的字段。 组合也可以通过嵌入其他类型来实现。这很有用,例如，给stuct装饰更多的功能。
-例如，继续参考Resource示例，我们需要一个格式化资源字段内容的函数，以在其前面加上http：//或https：//作为前缀。
-我们有两个选择：在AuthenticatedRequest上创建新方法或从其他结构嵌入它：</p>
+<p>在前面的示例中，Request是一个嵌入的字段。 组合也可以通过嵌入其他类型来实现。这很有用,例如，给stuct装饰更多的功能。</p>
+<p>例如，继续参考Resource示例，我们需要一个格式化资源字段内容的函数，以在其前面加上http://或https://作为前缀。</p>
+<p>我们有两个选择:在AuthenticatedRequest上创建新方法或从其他结构嵌入它:</p>
 <pre><code>type ResourceFormatter struct {}
 
 func(r *ResourceFormatter) FormatHTTP(resource string) string {
@@ -291,9 +284,9 @@ type AuthenticatedRequest struct {
 
     fmt.Printf(&quot;%#v&quot;, ar)
 }
-</code></pre><p>现在AuthenticatedRequest 有一个 ResourceFormatter 嵌入式struct.</p>
-<p>缺点是您无法访问合成之外的对象。 因此ResourceFormatter无法访问AuthenticatedRequest中的成员。</p>
-<h2 id="导出与未导出字段私有与公共">导出与未导出字段(私有与公共)</h2>
+</code></pre><p>现在AuthenticatedRequest 有一个ResourceFormatter嵌入式struct.</p>
+<p>缺点是无法访问合成之外的对象。 因此ResourceFormatter无法访问AuthenticatedRequest中的成员。</p>
+<h2 id="导出与未导出字段公有与私有">导出与未导出字段(公有与私有)</h2>
 <p>名称以大写字母开头的结构字段将被导出。 其他所有名称均不导出。</p>
 <pre><code>type Account struct {
     UserID      int    // exported
@@ -311,7 +304,7 @@ func main() {
     }
 }
 </code></pre><p>但是，在bank包中可以访问UserId和accessToken。</p>
-<p>bank包可以这样实现：</p>
+<p>bank包可以这样实现:</p>
 <pre><code>package bank
 
 type Account struct {
@@ -325,21 +318,20 @@ func ProcessUser(u *Account) {
   u.accessToken = doSomething(u) 
 }
 </code></pre><h2 id="struct标签">struct标签</h2>
-<p>struct字段可以具有与之关联的标签。反射包可以读取这些标签，以获取开发人员为某个字段指定的自定义信息。</p>
+<p>struct字段可以具有与之关联的标签。reflect包可以读取这些标签，以获取字段的自定义信息。</p>
 <pre><code>struct Account {
     Username      string `json:&quot;username&quot;`
     DisplayName   string `json:&quot;display_name&quot;`
     FavoriteColor string `json:&quot;favorite_color,omitempty&quot;`
 }
-</code></pre><p>在上面的例子中,标签标签用于encoding/json包在JSON(反)序列化的时候改变key的名字</p>
+</code></pre><p>在上面的例子中,标签用于encoding/json包在JSON(反)序列化的时候改变key的名字</p>
 <p>尽管标签可以是任何字符串值，但最好使用空格分隔的key:&ldquo;value&quot;对:</p>
 <pre><code>struct StructName {
     FieldName int `package1:&quot;customdata,moredata&quot; package2:&quot;info&quot;`
 }
-</code></pre><p>在整个标准库中都使用了与encoding/xml和encoding/json包一起使用的struct标签</p>
-<p>阅读有关使用反射在运行时获取访问结构标记的信息。</p>
+</code></pre><p>struct标签在标准库中encoding/xml和encoding/json中都有使用</p>
 <h2 id="拷贝struct">拷贝struct</h2>
-<p>struct可以通过赋值拷贝:</p>
+<p>struct通过赋值拷贝:</p>
 <pre><code>type T struct {
     I int
     S string
@@ -363,7 +355,7 @@ if u == t { // true
     S  string
     xs []int // slice是引用类型
 }
-</code></pre><p>此时通过赋值拷贝的话会导致两个对象持有同一个slice引用.</p>
+</code></pre><p>此时通过赋值拷贝的话会导致两个对象持有同一个slice引用:</p>
 <pre><code>// 初始化struct
 t := T{I: 1, S: &quot;one&quot;, xs: []int{1, 2, 3}}
 
@@ -388,11 +380,11 @@ u.xs[1] = 500
 fmt.Printf(&quot;t.xs = %d, u.xs = %d\n&quot;, t.xs, u.xs)
 // t.xs = [1 2 3], u.xs = [1 500 3]
 </code></pre><h2 id="空struct">空struct</h2>
-<p>struct是一系列被命名的元素(称为字段)的组合，每个元素都有一个名称和类型。 空struct没有字段，例如一个匿名空结构：<code>var s struct{}</code>
-或者有名字的空struct: <code>type T struct{}</code></p>
-<p>空struct的有趣之处是它的size是0:
-<code>fmt.Println(unsafe.Sizeof(s))</code>
-这将打印 0, 所有空struct本身不占内存. 所以这是退出channel的好选择, 如下:</p>
+<p>空struct没有字段，例如一个匿名空结构:<code>var s struct{}</code></p>
+<p>或者有名字的空struct: <code>type T struct{}</code></p>
+<p>空struct的有趣之处是它的size是0:</p>
+<p><code>fmt.Println(unsafe.Sizeof(s))</code></p>
+<p>这将打印 0, 所有空struct本身不占内存. 所以这是退出channel的好选择, 如下:</p>
 <pre><code>package main
 
 import (
@@ -412,7 +404,7 @@ func main() {
     fmt.Println(&quot;done.&quot;)
 }
 </code></pre><h2 id="方法">方法</h2>
-<p>struct的方法是附加到struct的函数:</p>
+<p>方法是附加到struct的函数:</p>
 <pre><code>type User struct {
     name string
 }
@@ -434,31 +426,29 @@ func main() {
 </code></pre><blockquote>
 <p>My name is Slim Shady</p>
 </blockquote>
-<p>唯一的区别是增加了方法接收器,接收器可以声明为该类型的实例，也可以声明为该类型的指针。</p>
+<p>方法和函数的区别是方法增加了接收器,接收器可以声明为该类型的实例，也可以声明为该类型的指针。</p>
 <p>由于SetName()会使实例发生变化，因此接收者必须是一个指针，才能对实例进行永久更改。</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/struct/">https://luangeng.space/post/go/basic/struct/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/struct/">https://luangeng.space/post/go/basic/struct/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -598,17 +588,6 @@ func main() {
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -634,7 +613,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -645,7 +624,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -656,7 +635,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -678,7 +657,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -707,8 +686,29 @@ func main() {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -773,14 +773,6 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -789,15 +781,15 @@ func main() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

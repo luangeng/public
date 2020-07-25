@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Spring Boot发布和调用RESTful web service</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-06 · 1262 Words
+                                            Posted @ 2017-09-06 · 1231 Words
                                             
                                             · Tags: springboot
                                             
@@ -169,7 +169,7 @@
 <p>1.首先访问 <a href="http://start.spring.io/">http://start.spring.io/</a> 生成Spring Boot基础项目</p>
 <p>或者使用git clone <a href="https://github.com/spring-guides/gs-rest-service.git">https://github.com/spring-guides/gs-rest-service.git</a></p>
 <p>此时项目已经可以启动，但是没有任何功能，可以看到启动日志中嵌入tomcat在8080端口起动</p>
-<p>2.添加代码：</p>
+<p>2.添加代码:</p>
 <pre><code>@JsonIgnoreProperties(ignoreUnknown = true)
 public class Greeting {
 
@@ -211,7 +211,7 @@ public class GreetingController {
 <p>@RequestParam注解将查询参数name绑定到greeting方法的name参数上，并指定了默认值。</p>
 <p>@RestController注解相当于@Controller加@ResponseBody的效果。</p>
 <p>接下来是调用WebService，通过Spring提供的RestTemplate类</p>
-<p>添加代码：</p>
+<p>添加代码:</p>
 <pre><code>public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -226,7 +226,7 @@ public class GreetingController {
 
 }
 </code></pre><p>使用AJAX调用WebService</p>
-<p>写一个简单的Html页面：</p>
+<p>写一个简单的Html页面:</p>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -252,41 +252,39 @@ $().ready(function() {
     });
 });
 &lt;/script&gt;
-</code></pre><p>添加到jetty的webapp中，在8081端口启动jetty ：java -jar ../start.jar jetty.http.port=8081   ，使用浏览器访问  http://localhost:8081/test.html 可看到浏览器控制台如下报错信息：</p>
+</code></pre><p>添加到jetty的webapp中，在8081端口启动jetty :java -jar ../start.jar jetty.http.port=8081   ，使用浏览器访问  http://localhost:8081/test.html 可看到浏览器控制台如下报错信息:</p>
 <p>可知报错原因为8080拒绝访问，8080和8081端口不同源导致的。</p>
-<p>打开跨域访问：在greeting方法上加@CrossOrigin(origins = &ldquo;http://localhost:8081&rdquo;)注解即可</p>
-<p>再次尝试即可看到浏览器界面显示如下：</p>
+<p>打开跨域访问:在greeting方法上加@CrossOrigin(origins = &ldquo;http://localhost:8081&rdquo;)注解即可</p>
+<p>再次尝试即可看到浏览器界面显示如下:</p>
 <p>说明调用WS成功。</p>
 <p>通过以上Spring官网的几个简单的例子可以看到使用SpringBoot发布和调用RESTful WebService是非常容易的。</p>
-<p>常用注解：</p>
-<p>@RestController ：避免了每个方法都要添加@ResponseBody注解。@RestController 内部包含@ResponseBody注解,可以认为是 @Controller 和 @ResponseBody的组合。</p>
+<p>常用注解:</p>
+<p>@RestController :避免了每个方法都要添加@ResponseBody注解。@RestController 内部包含@ResponseBody注解,可以认为是 @Controller 和 @ResponseBody的组合。</p>
 <p>@RequestBody : 如果方法参数被 @RequestBody注解，Spring将绑定HTTP请求体到那个参数上。Spring将根据请求中的ACCEPT或者 Content-Type header使用 HTTP Message converters 来将http请求体转化为domain对象。</p>
 <p>@ResponseBody : 如果方法加上了@ResponseBody注解，Spring返回值到响应体。Spring将根据请求中的 Content-Type header(私下)使用 HTTP Message converters 来将domain对象转换为响应体。</p>
-<p>ResponseEntity： HTTP响应(response)对象，可以指定状态码、头信息和响应体。包含要构建的HTTP Response 的全部信息。</p>
-<p>@PathVariable： 参数注解，表示方法参数绑定到一个url变量中</p>
+<p>ResponseEntity: HTTP响应(response)对象，可以指定状态码、头信息和响应体。包含要构建的HTTP Response 的全部信息。</p>
+<p>@PathVariable: 参数注解，表示方法参数绑定到一个url变量中</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/spring/spring-ws/">https://luangeng.space/post/java/spring/spring-ws/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/spring/spring-ws/">https://luangeng.space/post/java/spring/spring-ws/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -385,7 +383,7 @@ $().ready(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -396,7 +394,7 @@ $().ready(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -407,7 +405,7 @@ $().ready(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -429,7 +427,7 @@ $().ready(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -458,8 +456,29 @@ $().ready(function() {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -526,15 +545,15 @@ $().ready(function() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

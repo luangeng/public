@@ -3,22 +3,22 @@
 
 <head>
   <base href="https://luangeng.space">
-  <title>Oauth2协议 通过js和ajax获取token及刷新token - 计算机与软件技术公开课</title>
+  <title>IntelliJ IDEA常用快捷键 - 计算机与软件技术公开课</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="keywords" content="Oauth2协议 通过js和ajax获取token及刷新token - 计算机与软件技术公开课">
-  <meta name="description" content="Oauth2协议 通过js和ajax获取token及刷新token">
-  <meta itemprop="name" content="Oauth2协议 通过js和ajax获取token及刷新token - 计算机与软件技术公开课">
-  <meta itemprop="description" content="Oauth2协议 通过js和ajax获取token及刷新token">
-  <meta property="og:title" content="Oauth2协议 通过js和ajax获取token及刷新token - 计算机与软件技术公开课" />
+  <meta name="keywords" content="IntelliJ IDEA常用快捷键 - 计算机与软件技术公开课">
+  <meta name="description" content="IntelliJ IDEA常用快捷键">
+  <meta itemprop="name" content="IntelliJ IDEA常用快捷键 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="IntelliJ IDEA常用快捷键">
+  <meta property="og:title" content="IntelliJ IDEA常用快捷键 - 计算机与软件技术公开课" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://luangeng.space/post/other/token-front/" />
+  <meta property="og:url" content="https://luangeng.space/post/java/other/idea-key/" />
   <meta property="og:site_name" content="luangeng" />
-  <meta property="og:description" content="Oauth2协议 通过js和ajax获取token及刷新token">
+  <meta property="og:description" content="IntelliJ IDEA常用快捷键">
 
-  <link rel="canonical" href="https://luangeng.space/post/other/token-front/">
-  <link rel='shortlink' href="https://luangeng.space/post/other/token-front/">
+  <link rel="canonical" href="https://luangeng.space/post/java/other/idea-key/">
+  <link rel='shortlink' href="https://luangeng.space/post/java/other/idea-key/">
   <link rel="shortcut icon" href="img/favicon.png" />
 
   <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
@@ -131,7 +131,7 @@
                                 <ul class="meta-single group">
                                     
                                     <li class="category">
-                                        <span>学习笔记</span>
+                                        <span>Java</span>
                                     </li>
                                     
                                 </ul>
@@ -143,18 +143,18 @@
                                     class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
                                     <div class="post-inner group">
 
-                                        <h1 class="post-title">Oauth2协议 通过js和ajax获取token及刷新token</h1>
+                                        <h1 class="post-title">IntelliJ IDEA常用快捷键</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-03 · 1287 Words
+                                            Posted @ 2016-09-03 · 1339 Words
                                             
-                                            · Tags: oauth2
+                                            · Tags: tool
                                             
                                             
                                             
                                             
                                             · Hits:
-                                            <span class="leancloud_visitors" data-flag-title="Oauth2协议 通过js和ajax获取token及刷新token">
+                                            <span class="leancloud_visitors" data-flag-title="IntelliJ IDEA常用快捷键">
                                                 <span class="leancloud-visitors-count"></span>
                                             </span>
                                         </p>
@@ -165,225 +165,155 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>基于Oauth2.0协议授权码模式的认证流程</p>
-<p>授权码模式工作流程：</p>
+                                                <h2 id="mac">Mac:</h2>
+<p><img src="pic/2016/mac.jpg" alt="mac"></p>
 <blockquote>
-<ol start="0">
-<li>浏览器访问某个受保护的资源，客户端自动将网页重定向到认证服务器(/oauth/authorize)，携带clientid等信息</li>
-<li>用户选择是否给予客户端授权(可自动授权)</li>
-<li>认证服务器将浏览器重定向到&quot;重定向URI&rdquo;(redirection URI)，同时附上一个授权码</li>
-<li>浏览器拿到授权码，附上早先的&quot;重定向URI&rdquo;，向认证服务器申请令牌(/oauth/token)</li>
-<li>认证服务器核对了授权码和重定向URI，向客户端发送访问令牌(access token)和更新令牌(refresh token)</li>
-</ol>
+<p>符号说明</p>
 </blockquote>
-<p>步骤1中，客户端申请认证的URI，包含以下参数：</p>
 <blockquote>
-<ul>
-<li>response_type：表示授权类型，必选项，此处的值固定为&quot;code&rdquo;</li>
-<li>client_id：表示客户端的ID，必选项</li>
-<li>redirect_uri：表示重定向URI，可选项</li>
-<li>scope：表示申请的权限范围，可选项</li>
-<li>state：一般随机生成，标识客户端的当前状态，认证服务器会原样返回这个值，</li>
-</ul>
+<p>⌃   Control键</p>
 </blockquote>
-<h2 id="纯前端项目中获取token">纯前端项目中获取token</h2>
-<p>通过JS ajax拦截器获取token及刷新token示例，适用于前后端分离项目中前端的授权。</p>
-<p>auth.js</p>
-<pre><code>const FULL_CHARTER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopgrstuvwxyz';
-const oauth_server='http://localhost:9000/server';
-const redirect_uri='http://localhost:8002/client-front/';
-const client_id='demo';
-const client_secret='demo';
-const token_storage = localStorage;//sessionStorage
-
-
-function ajaxSetup() {
-    $.ajaxSetup({
-        timeout : 30000,
-        beforeSend : function(xhr) {
-            if(this.url.endsWith('/oauth/token')){
-                return true;
-            }
-            if (getAuth() == null){
-                fetchToken();
-            }
-            var auth = getAuth();
-            if(auth != null){
-                xhr.setRequestHeader(&quot;Authorization&quot;, auth.token_type + ' ' + auth.access_token);
-            } else {
-                return false;
-            }
-            return true;
-        },
-        complete : function(xhr, ts) {
-            if (xhr.status == 401 &amp;&amp; xhr.responseJSON.error =='invalid_token') {
-               refreshToken();
-            }
-        }
-    });
-}
-
-function getAuth(){
-    let auth = token_storage.getItem('auth');
-    return JSON.parse(auth);
-}
-
-function saveAuth(sResponse){
-    token_storage.setItem(&quot;auth&quot;, JSON.stringify(sResponse));
-}
-
-function clearAuth(){
-    token_storage.removeItem('auth');
-}
-
-function logout(){
-    token_storage.removeItem('auth');
-    window.location.href = oauth_server+&quot;/logout?redirect_uri=&quot;+redirect_uri;
-}
-
-function getCode(){
-var state='';
-for (var a=0;a&lt;6;a++){
-    state+=FULL_CHARTER[Math.floor(Math.random() * 52)];
-}
-var url = oauth_server+&quot;/oauth/authorize?client_id=&quot;+client_id+&quot;&amp;client_secret=&quot;+client_secret+
-          &quot;&amp;response_type=code&amp;state=&quot;+state+&quot;&amp;redirect_uri=&quot;+redirect_uri;
- window.location = url;
- //window.open(url);
-}
-
-function fetchToken(){
-    let url = window.location.toString();
-    if(!url.includes('code')){
-        getCode();
-    }
-    if(url.includes('code')) {
-      let code=url.substr(url.indexOf('code=')+5,6);
-      let state=url.substr(url.indexOf('state=')+6,6);
-
-        var data={
-        'code':code,
-        'state':state,
-        'grant_type':'authorization_code',
-        'redirect_uri':redirect_uri
-        };
-    $.ajax({
-       url: oauth_server+&quot;/oauth/token&quot;,
-       type:&quot;post&quot;,
-       data:data,
-       async: false,
-       contentType: 'application/x-www-form-urlencoded',
-       beforeSend:function(xhr){
-             xhr.setRequestHeader(&quot;Authorization&quot;, 'Basic ' + Base64.encode(client_id+':'+client_secret));
-        },
-       success: function (sResponse) {
-        saveAuth(sResponse);
-        console.log('fetch_token ok: ' + sResponse.access_token+'  expires_in:'+sResponse.expires_in);
-        //window.location.href = redirect_uri;
-       },
-       error:function(a,b,c){
-        console.log(a, b, c);
-       }
-    });
-    }
-}
-
-function refreshToken(){
-    var auth = getAuth();
-    var data={
-            'client_id': client_id,
-            'client_secret': client_secret,
-            'grant_type':'refresh_token',
-            'refresh_token':auth.refresh_token
-            };
-        $.ajax({
-           url: oauth_server+&quot;/oauth/token&quot;,
-           type:&quot;post&quot;,
-           data:data,
-           async: false,
-           contentType: 'application/x-www-form-urlencoded',
-           success: function (sResponse) {
-            saveAuth(sResponse);
-            console.log('refresh_token ok: ' + sResponse.access_token+'  expires_in:'+sResponse.expires_in);
-           },
-           error:function(a,b,c){
-            if (a.status==400 &amp;&amp; a.responseJSON.error=='invalid_grant'){
-                console.log('refresh token invalid');
-                clearAuth();
-            }
-           }
-        });
-}
-
-function checkToken(){
-            $.ajax({
-               url: oauth_server+&quot;/oauth/check_token&quot;,
-               type:&quot;get&quot;,
-               async: false,
-               data: {'token': getAuth().access_token},
-               contentType: 'application/x-www-form-urlencoded',
-               success: function (sResponse) {
-                console.log('check_token : ' + sResponse);
-               },
-               error:function(a,b,c){
-                console.log(a.responseJSON);
-               }
-            });
-}
-
-function getServerdata(){
-    $.get(oauth_server+&quot;/msg&quot;, function(data) {
-            $(&quot;#user&quot;).html(data);
-          });
-}
-
-
-$(function() {
-    ajaxSetup();
-});
-</code></pre><p>其中使用了base64.js.</p>
-<p>界面如下，点击GET Data按钮将发送/msg请求到授权服务器去获取一段文本：</p>
-<p><img src="pic/2018-7/auth1.png" alt=""></p>
-<p>文本获取成功后浏览器所有请求如下：</p>
-<p><img src="pic/2018-7/auth2.png" alt=""></p>
-<p>首先访问/msg，返回401无权限，然后浏览器转到/oauth/authorize去获取code，然后授权服务器返回302重定向到授权登录页，用户填写用户名密码后post到/login，
-然后授权服务器重定向到rediret_url，末尾拼接了code，取出code，post发送/oauth/token请求，授权服务器返回token信息如下，并保存在LocalStorage中,如图所示：</p>
-<p><img src="pic/2018-7/auth3.png" alt=""></p>
-<p>获取token后/msg请求中携带了token信息，bearer为token类型：</p>
-<p><img src="pic/2018-7/auth4.png" alt=""></p>
-<p>由于是跨域请求数据，所以先发送的是OPTIONS请求，需要服务器支持跨域：</p>
-<p><img src="pic/2018-7/auth5.png" alt=""></p>
-<p>刷新token：</p>
-<p>当服务器返回401，并且responseMsg为invalid_token时表示token已失效，post以下信息到/oauth/token，刷新token的失效时间</p>
-<p><img src="pic/2018-7/auth6.png" alt=""></p>
-<p>checktoken：需要服务器permitAll()该请求</p>
-<p>登出：</p>
-<p>略</p>
-<p>在授权服务器中可查看所有生成的token：
-<img src="pic/2018-7/auth7.png" alt=""></p>
+<blockquote>
+<p>⌥  Option键</p>
+</blockquote>
+<blockquote>
+<p>⌘  Command键</p>
+</blockquote>
+<blockquote>
+<p>⇧  大写锁定键</p>
+</blockquote>
+<blockquote>
+<p>↩  回车键</p>
+</blockquote>
+<blockquote>
+<p>⌫  BackSpace键</p>
+</blockquote>
+<blockquote>
+<p>⎋ Escape (Esc)</p>
+</blockquote>
+<blockquote>
+<p>⌦ 向前删除键(Fn+Delete)</p>
+</blockquote>
+<blockquote>
+<p>⇥ 右制表符(Tab键)</p>
+</blockquote>
+<blockquote>
+<p>⇤ 左制表符(Shift+Tab)</p>
+</blockquote>
+<h3 id="编辑查看">编辑/查看</h3>
+<p>⌃Space 基本的代码补全(补全任何类、方法、变量)</p>
+<p>⌃⇧Space 智能代码补全(过滤器方法列表和变量的预期类型)</p>
+<p>⌘⇧↩ 自动结束代码，行末自动添加分号</p>
+<p>⌘P 显示方法的参数信息</p>
+<p>⌃J 快速查看文档</p>
+<p>⌘Y 快速打开光标所在方法、类的定义</p>
+<p>⌘F1 在错误或警告处显示具体描述信息</p>
+<p>⌘N, ⌃↩ 生成代码(getter、setter、构造函数、hashCode/equals,toString)</p>
+<p>⌘/ 注释/取消注释与行注释</p>
+<p>⌥↩ 显示意向动作和快速修复代码</p>
+<p>⌘⌥L 格式化代码</p>
+<p>⌃⌥O 优化import</p>
+<p>⌘X 剪切当前行或选定的块到剪贴板</p>
+<p>⌘C 复制当前行或选定的块到剪贴板</p>
+<p>⌘V 从剪贴板粘贴</p>
+<p>⌘⇧V 从最近的缓冲区粘贴</p>
+<p>⌘D 复制当前行或选定的块</p>
+<p>⌘⌫ 删除当前行或选定的块的行</p>
+<p>⌘W 关闭活动的编辑器选项卡</p>
+<p>⌘⇧8 竖编辑模式</p>
+<h3 id="searchreplace查询替换">Search/Replace(查询/替换)</h3>
+<p>双击⇧ 查询任何东西</p>
+<p>⌘F 文件内查找</p>
+<p>⌘R 文件内替换</p>
+<p>⌘⇧F 全局查找(根据路径)</p>
+<p>⌘⇧R 全局替换(根据路径)</p>
+<p>⌘G 查找模式下，向下查找</p>
+<p>⌘⇧G 查找模式下，向上查找</p>
+<p>⌥F7 在文件中查找使用</p>
+<h3 id="compile-and-run编译和运行">Compile and Run(编译和运行)</h3>
+<p>⌃⌥R 弹出 Run 的可选择菜单</p>
+<p>⌃⌥D 弹出 Debug 的可选择菜单</p>
+<p>⌃R 运行</p>
+<p>⌃D 调试</p>
+<h3 id="debugging调试">Debugging(调试)</h3>
+<p>F8 单步</p>
+<p>F7 进入</p>
+<p>⇧F8 跳出</p>
+<p>⌥F9 运行到光标处</p>
+<p>⌥F8 计算表达式</p>
+<p>⌘⌥R 恢复运行</p>
+<h3 id="navigation导航">Navigation(导航)</h3>
+<p>⌘O 打开类文件</p>
+<p>⌘⇧O 打开所有类型文件，打开目录需要加反斜杠/</p>
+<p>⌘⌥O 前往指定的变量 / 方法</p>
+<p>⌘L 在当前文件跳转到某一行</p>
+<p>⌘E 显示最近打开的文件记录列表</p>
+<p>⌘⌥← / ⌘⌥→ 退回 / 前进到上一个操作的地方</p>
+<p>⌘⇧⌫ 跳转到最后一个编辑的地方</p>
+<p>⌘⌥B 跳转到实现处，在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口</p>
+<p>⌘U 前往当前光标所在方法的父类的方法 / 接口定义</p>
+<p>⌘] / ⌘[ 移动光标到当前所在代码的花括号开始/结束位置</p>
+<p>⌘F12 弹出当前文件结构层，可以在弹出的层上直接输入进行筛选(可用于搜索类中的方法)</p>
+<p>⌃H 显示当前类的层次结构</p>
+<h2 id="windows">Windows:</h2>
+<p>Alt+回车 导入包,自动修正</p>
+<p>Ctrl+N   查找类</p>
+<p>Ctrl+Shift+N 查找文件</p>
+<p>Ctrl+Alt+L  格式化代码</p>
+<p>Ctrl+Alt+O 优化导入的类和包</p>
+<p>Alt+Insert 生成代码(如get,set方法,构造函数等)</p>
+<p>Ctrl+E或者Alt+Shift+C  最近更改的代码</p>
+<p>Ctrl+R 替换文本</p>
+<p>Ctrl+F 查找文本</p>
+<p>Ctrl+Shift+Space 自动补全代码</p>
+<p>Ctrl+空格 代码提示</p>
+<p>Ctrl+Alt+Space 类名或接口名提示</p>
+<p>Ctrl+P 方法参数提示</p>
+<p>Ctrl+Shift+Alt+N 查找类中的方法或变量</p>
+<p>Alt+Shift+C 对比最近修改的代码</p>
+<p>Shift+F6  重构-重命名</p>
+<p>Ctrl+Shift+先上键</p>
+<p>Ctrl+X 删除行</p>
+<p>Ctrl+D 复制行</p>
+<p>Ctrl+/ 或 Ctrl+Shift+/  注释(// 或者/<em>&hellip;</em>/ )</p>
+<p>Ctrl+J  自动代码</p>
+<p>Ctrl+E 最近打开的文件</p>
+<p>Ctrl+H 显示类结构图</p>
+<p>Ctrl+Q 显示注释文档</p>
+<p>Alt+F1 查找代码所在位置</p>
+<p>Alt+1 快速打开或隐藏工程面板</p>
+<p>Ctrl+Alt+ left/right 返回至上次浏览的位置</p>
+<p>Alt+ left/right 切换代码视图</p>
+<p>Alt+ Up/Down 在方法间快速移动定位</p>
+<p>Ctrl+Shift+Up/Down 代码向上/下移动。</p>
+<p>F2 或Shift+F2 高亮错误或警告快速定位</p>
+<p>代码标签输入完成后，按Tab，生成代码。</p>
+<p>选中文本，按Ctrl+Shift+F7 ，高亮显示所有该文本，按Esc高亮消失。</p>
+<p>Ctrl+W 选中代码，连续按会有其他效果</p>
+<p>选中文本，按Alt+F3 ，逐个往下查找相同文本，并高亮显示。</p>
+<p>Ctrl+Up/Down 光标跳转到第一行或最后一行下</p>
+<p>Ctrl+B 快速打开光标处的类或方法</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/other/token-front/">https://luangeng.space/post/other/token-front/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/other/idea-key/">https://luangeng.space/post/java/other/idea-key/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -401,19 +331,19 @@ $(function() {
                                 <ul class="post-nav group">
                                     <li class="next">
                                         
-                                        <a href="https://luangeng.space/post/other/github_login/" rel="next">
+                                        <a href="https://luangeng.space/post/other/opencv/" rel="next">
                                             <i class="fa fa-chevron-right"></i>
                                             <strong>Next</strong>
-                                            <span>集成通过github登录网站功能</span>
+                                            <span>OpenCV 绘制图像直方图</span>
                                         </a>
                                         
                                     </li>
                                     <li class="previous">
                                         
-                                        <a href="https://luangeng.space/post/other/elasticJob/" rel="prev">
+                                        <a href="https://luangeng.space/post/db/mysql/mysql/" rel="prev">
                                             <i class="fa fa-chevron-left"></i>
                                             <strong>Previous</strong>
-                                            <span>SpringBoot集成elastic-job-lite</span>
+                                            <span>ubuntu16.04 安装 mysql5.7</span>
                                         </a>
                                         
                                     </li>
@@ -428,7 +358,7 @@ $(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/dingding/" rel="bookmark" class="leancloud-count">spring-security-oauth2 授权服务集成钉钉扫码登录
+                <a href="https://luangeng.space/post/db/mysql/mysql/" rel="bookmark" class="leancloud-count">ubuntu16.04 安装 mysql5.7
                     (<span style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -460,7 +390,7 @@ $(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -471,7 +401,7 @@ $(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -482,7 +412,7 @@ $(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -504,7 +434,7 @@ $(function() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -533,8 +463,29 @@ $(function() {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -587,7 +538,7 @@ $(function() {
             <h3>相关</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/dingding/">spring-security-oauth2 授权服务集成钉钉扫码登录</a></li>
+                <li><a href="https://luangeng.space/post/db/mysql/mysql/">ubuntu16.04 安装 mysql5.7</a></li>
                 
             </ul>
         </div>
@@ -597,15 +548,15 @@ $(function() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

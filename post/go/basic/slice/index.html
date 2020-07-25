@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 切片</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 3736 Words
+                                            Posted @ 2018-09-09 · 3731 Words
                                             
                                             · Tags: Go
                                             
@@ -185,7 +185,7 @@ fmt.Printf(&quot;capacity of slice is: %d\n&quot;, cap(slice))
 capacity of slice is: 5</p>
 </blockquote>
 <h2 id="创建-slice">创建 slice</h2>
-<p>大多数时候，不必显式创建切片。切片的零值为nil，append的值为零：</p>
+<p>大多数时候，不必显式创建切片。切片的零值为nil，append的值为零:</p>
 <pre><code>var a []int
 fmt.Printf(&quot;a is %#v\n&quot;, a)
 a = append(a, 3)
@@ -208,19 +208,19 @@ empty1 is []bool{}<br>
 empty2 is []bool{}</p>
 </blockquote>
 <p>空slice和nil slice不同</p>
-<p>创建静态预分配的切片：</p>
+<p>创建静态预分配的切片:</p>
 <pre><code>a := []int{3, 1, 4, 1}
 fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
 </code></pre><blockquote>
 <p>a has 4 elements</p>
 </blockquote>
-<p>创建全是0的静态预分配的切片：</p>
+<p>创建全是0的静态预分配的切片:</p>
 <pre><code>a := make([]string, 4)
 fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
 </code></pre><blockquote>
 <p>a has 4 elements</p>
 </blockquote>
-<p>如果知道切片的预期大小，则可以为其内容预分配空间，这有助于提高性能：</p>
+<p>如果知道切片的预期大小，则可以为其内容预分配空间，这有助于提高性能:</p>
 <pre><code>n := 30
 a := make([]int, 0, n)
 fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
@@ -250,7 +250,7 @@ fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
 <p>Length:   4<br>
 Capacity: 4</p>
 </blockquote>
-<p>由make()创建的slice,其元素设置为其零值：</p>
+<p>由make()创建的slice,其元素设置为其零值:</p>
 <pre><code>var s = make([]int, 3)
 for idx, val := range s {
     fmt.Println(idx, val)
@@ -260,7 +260,7 @@ for idx, val := range s {
 1 0<br>
 2 0</p>
 </blockquote>
-<p>即使索引小于容量，也不能访问超出切片长度的元素：</p>
+<p>即使索引小于容量，也不能访问超出切片长度的元素:</p>
 <pre><code>s := make([]int, 3, 20)
 fmt.Println(s[5])
 </code></pre><blockquote>
@@ -324,10 +324,10 @@ Appends needed to re-allocate slice: 4<br>
 Appends needed to re-allocate slice: 8</p>
 </blockquote>
 <p>可见,重新创建数组所需的追加数量随slice的长度而增加。</p>
-<p>Go不允许比较切片，因此我们使用以下事实：在当前实现中，我们可以获取slice的地址(％p)，并且该地址可以用作slice的标识。</p>
+<p>Go不允许比较切片，因此我们使用以下事实:在当前实现中，我们可以获取slice的地址(％p)，并且该地址可以用作slice的标识。</p>
 <p>这是Go的内部实现将来可能会更改。</p>
 <h2 id="过滤slice">过滤slice</h2>
-<p>Go没有用于过滤切片的通用功能，因此我们必须采用老式的方法：
+<p>Go没有用于过滤切片的通用功能，因此我们必须采用老式的方法:
 0. 为结果创建一个新的切片
 0. 遍历原始切片的所有元素
 0. 检查是否应保留或拒绝元素
@@ -349,7 +349,7 @@ fmt.Printf(&quot;%#v\n&quot;, res)
 </code></pre><blockquote>
 <p>[]int{1, 3}</p>
 </blockquote>
-<p>我们可以通过重新使用切片的底层数组来更有效地执行此操作，因为我们知道结果将始终小于原始切片：</p>
+<p>我们可以通过重新使用切片的底层数组来更有效地执行此操作，因为我们知道结果将始终小于原始切片:</p>
 <pre><code>a := []int{1, 2, 3, 4}
 res := filterEvenValuesInPlace(a)
 fmt.Printf(&quot;%#v\n&quot;, res)
@@ -383,7 +383,7 @@ fmt.Printf(&quot;s: %#v\n&quot;, s)
 <p>s: []int{10, 13}</p>
 </blockquote>
 <p>清除效率
-关于效率的注意事项：Go编译器足够聪明，可以重复使用原始切片中的空间，因此此方法非常有效。 它不会分配新的空间，而只是复制切片中的元素。 我们可以验证一下：</p>
+关于效率的注意事项:Go编译器足够聪明，可以重复使用原始切片中的空间，因此此方法非常有效。 它不会分配新的空间，而只是复制切片中的元素。 我们可以验证一下:</p>
 <pre><code>s := []int{10, 11, 12, 13}
 fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
 fmt.Printf(&quot;s: %#v\n&quot;, s)
@@ -414,7 +414,7 @@ s: []int{10, 13, 1, 2, 3, 4}</p>
 <p>％p formatting指令将物理地址输出到变量的内存中。 我们可以验证s指向相同的物理内存，并且在删除前后具有相同的容量，因此可以验证基础数组。</p>
 <p>我们还可以看到，追加4个元素(超出了2的剩余容量)会导致数组重新分配。</p>
 <p>优化的就地清除</p>
-<p>如果我们不在乎保留元素的顺序，则可以进一步优化移除：</p>
+<p>如果我们不在乎保留元素的顺序，则可以进一步优化移除:</p>
 <pre><code>s := []int{10, 11, 12, 13}
 
 i := 1 // index of 11
@@ -430,7 +430,7 @@ fmt.Printf(&quot;s: %#v\n&quot;, s)
 <p>我们用切片中的最后一个元素覆盖要删除的元素，并将切片缩小1。</p>
 <p>与将所有元素从i复制到切片末尾相比，这将复制单个元素。 在小切片中这无关紧要，但是如果您有包含数千个元素的切片，则速度会更快</p>
 <h1 id="复制slice">复制slice</h1>
-<p>一种选择是分配与原始切片相同长度的新切片，并使用copy()方法：</p>
+<p>一种选择是分配与原始切片相同长度的新切片，并使用copy()方法:</p>
 <pre><code>src := []int{1, 2, 3}
 dst := make([]int, len(src))
 copy(dst, src)
@@ -438,7 +438,7 @@ copy(dst, src)
 <p>src: []int{1, 2, 3}<br>
 dst: []int{1, 2, 3}</p>
 </blockquote>
-<p>另一种选择是将()原始切片追加到一个空切片：</p>
+<p>另一种选择是将()原始切片追加到一个空切片:</p>
 <pre><code>src := []int{1, 2, 3}
 dst := append([]int(nil), src...)
 </code></pre><blockquote>
@@ -450,11 +450,11 @@ dst: []int{1, 2, 3}</p>
 <p>切片的初始值为nil。</p>
 <p>nil切片的长度和容量为0。</p>
 <p>nil切片没有底层数组。</p>
-<p>非nil切片的长度和容量也可以为0，例如[] int {}或make([] int，5)[5：]。</p>
-<p>任何具有nil值的类型都可以转换为nil slice：</p>
+<p>非nil切片的长度和容量也可以为0，例如[] int {}或make([] int，5)[5:]。</p>
+<p>任何具有nil值的类型都可以转换为nil slice:</p>
 <pre><code>s := []int(nil)
 fmt.Printf(&quot;s: %#v\n&quot;, s)
-</code></pre><p>测试切片是否为空，请检查len是否为0：</p>
+</code></pre><p>测试切片是否为空，请检查len是否为0:</p>
 <pre><code>s := []int(nil)
 if len(s) == 0 {
     fmt.Printf(&quot;s  is empty: %#v\n&quot;, s)
@@ -489,7 +489,7 @@ a = a[:i+copy(a[i:], a[i+1:])]
 </code></pre><p>删除但不保留顺序</p>
 <pre><code>a[i] = a[len(a)-1] 
 a = a[:len(a)-1]
-</code></pre><p>注意如果元素的类型是指针或具有指针字段的结构(需要进行垃圾回收)，则上述Cut和Delete的实现存在潜在的内存泄漏问题：某些具有值的元素仍由slice a引用，因此 无法收集。 以下代码可以解决此问题：</p>
+</code></pre><p>注意如果元素的类型是指针或具有指针字段的结构(需要进行垃圾回收)，则上述Cut和Delete的实现存在潜在的内存泄漏问题:某些具有值的元素仍由slice a引用，因此 无法收集。 以下代码可以解决此问题:</p>
 <pre><code>copy(a[i:], a[j:])
 for k, n := len(a)-j+i, len(a); k &lt; n; k++ {
     a[k] = nil // or the zero value of T
@@ -509,7 +509,7 @@ a = a[:len(a)-1]
 a = append(a, make([]T, j)...)
 </code></pre><p>插入</p>
 <pre><code>a = append(a[:i], append([]T{x}, a[i:]...)...)
-</code></pre><p>注意第二个追加将创建一个具有其自身基础存储的新切片，并将a [i：]中的元素复制到该切片，然后将这些元素复制回切片a(由第一个追加)。 可以通过使用另一种方法来避免新切片的创建(以及由此产生的内存垃圾)和第二个副本：</p>
+</code></pre><p>注意第二个追加将创建一个具有其自身基础存储的新切片，并将a [i:]中的元素复制到该切片，然后将这些元素复制回切片a(由第一个追加)。 可以通过使用另一种方法来避免新切片的创建(以及由此产生的内存垃圾)和第二个副本:</p>
 <p>插入</p>
 <pre><code>s = append(s, 0 /* use the zero value of the element type */)
 copy(s[i+1:], s[i:])
@@ -533,7 +533,7 @@ for _, x := range a {
         b = append(b, x)
     }
 }
-</code></pre><p>对于必须被垃圾回收的元素，随后可以包含以下代码：</p>
+</code></pre><p>对于必须被垃圾回收的元素，随后可以包含以下代码:</p>
 <pre><code>for i := len(b); i &lt; len(a); i++ {
     a[i] = nil // or the zero value of T
 }
@@ -547,7 +547,7 @@ for _, x := range a {
     a[left], a[right] = a[right], a[left]
 }
 </code></pre><p>打乱顺序
-Fisher–Yates算法：</p>
+Fisher–Yates算法:</p>
 <p>从go1.10开始，可以在math / rand上使用。</p>
 <pre><code>for i := len(a) - 1; i &gt; 0; i-- {
     j := rand.Intn(i + 1)
@@ -563,7 +563,7 @@ for batchSize &lt; len(actions) {
     actions, batches = actions[batchSize:], append(batches, actions[0:batchSize:batchSize])
 }
 batches = append(batches, actions)
-</code></pre><p>产生以下内容：
+</code></pre><p>产生以下内容:
 <code>[[0 1 2] [3 4 5] [6 7 8] [9]]</code></p>
 <p>就地重复数据删除(可比)</p>
 <pre><code>import &quot;sort&quot;
@@ -587,8 +587,8 @@ fmt.Println(result) // [1 2 3 4]
 <p>相对而言，分配是昂贵的。</p>
 <p>如果新大小超过切片的当前容量，则将新数据追加到切片需要重新分配内存。</p>
 <p>知道了这一点，如果知道分片的最终大小，则可以预先分配所需的容量，并避免重新分配。</p>
-<p>你不需要知道确切的大小：知道上限也是一样。猜测总比没有好。</p>
-<p>考虑附加到空切片：</p>
+<p>你不需要知道确切的大小:知道上限也是一样。猜测总比没有好。</p>
+<p>考虑附加到空切片:</p>
 <pre><code>s := []byte(&quot;123456&quot;)
 var d []byte
 fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
@@ -610,7 +610,7 @@ d: 0xc0000180a0, len: 18, cap: 32</p>
 <p>在每次重新分配时，必须复制内容，因此我们总共复制了6 + 6 * 2 + 6 * 3个字节。 要存储24个字节，我们浪费了复制36个字节的时间。</p>
 <p>内存分配和复制内存需要时间。</p>
 <p>Go运行时很聪明，它使容量增加了一倍，并预计将来我们可能需要更多空间。</p>
-<p>我们可以比这更聪明，预先分配切片：</p>
+<p>我们可以比这更聪明，预先分配切片:</p>
 <pre><code>s := []byte(&quot;123456&quot;)
 d := make([]byte, 0, len(s)*4)
 fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
@@ -633,24 +633,22 @@ d: 0xc00007e020, len: 24, cap: 24</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/slice/">https://luangeng.space/post/go/basic/slice/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/slice/">https://luangeng.space/post/go/basic/slice/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -790,17 +788,6 @@ d: 0xc00007e020, len: 24, cap: 24</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -826,7 +813,7 @@ d: 0xc00007e020, len: 24, cap: 24</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -837,7 +824,7 @@ d: 0xc00007e020, len: 24, cap: 24</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -848,7 +835,7 @@ d: 0xc00007e020, len: 24, cap: 24</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -870,7 +857,7 @@ d: 0xc00007e020, len: 24, cap: 24</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -899,8 +886,29 @@ d: 0xc00007e020, len: 24, cap: 24</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -965,14 +973,6 @@ d: 0xc00007e020, len: 24, cap: 24</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -981,15 +981,15 @@ d: 0xc00007e020, len: 24, cap: 24</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

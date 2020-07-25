@@ -236,7 +236,7 @@ func main() {
 channel is now closed</p>
 </blockquote>
 <p>channel关闭,循环就会结束</p>
-<p>使用工作池时，这是常见的模式：</p>
+<p>使用工作池时，这是常见的模式:</p>
 <ul>
 <li>为所有工作创建一个channel</li>
 <li>启动工作</li>
@@ -501,8 +501,8 @@ created by main.main<br>
 /tmp/sandbox307976305/main.go:10 +0x60</p>
 </blockquote>
 <p>您应该对程序进行架构设计，以使一个发送方控制频道的生存期。</p>
-<p>该规则强调：如果只有一个频道发送者，那么确保您永远不会写入封闭的频道没有问题。</p>
-<p>如果您有多个发件人，这将变得很困难：如果一个发件人关闭了一个频道，那么其他发件人应该不会崩溃吗？</p>
+<p>该规则强调:如果只有一个频道发送者，那么确保您永远不会写入封闭的频道没有问题。</p>
+<p>如果您有多个发件人，这将变得很困难:如果一个发件人关闭了一个频道，那么其他发件人应该不会崩溃吗？</p>
 <p>无需尝试解决上述问题的方法，而是重新设计代码，以使只有一个发送方可以控制通道的生存期。</p>
 <h4 id="从已关闭的channel接收数据会立即返回零值">从已关闭的channel接收数据会立即返回零值</h4>
 <pre><code>package main
@@ -520,7 +520,7 @@ func main() {
     }
     // show end
 }
-</code></pre><p>很容易补救：</p>
+</code></pre><p>很容易补救:</p>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -540,7 +540,7 @@ func main() {
     }
     // show end
 }
-</code></pre><p>更好更惯用的方法：</p>
+</code></pre><p>更好更惯用的方法:</p>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -560,7 +560,7 @@ func main() {
 <p>有时我们需要等到goroutine完成。</p>
 <p>来自已关闭channel的接收会立即返回，可以通过共享done channel来在goroutine之间进行协调。</p>
 <p>一个goroutine在最后关闭通道。另一个goroutine可以无限期地等待，直到接收到chDone &lt;-</p>
-<p>在更复杂的情况下，它可以使用select语句从多个渠道接收。 例如，要限制等待时间：</p>
+<p>在更复杂的情况下，它可以使用select语句从多个渠道接收。 例如，要限制等待时间:</p>
 <pre><code>select {
     case &lt;- chDone:
         // goroutine has finished
@@ -568,7 +568,7 @@ func main() {
         // goroutine didn't finish but we don't want to wait
         // more than 5 seconds
 }
-</code></pre><p>要检查channel是否已关闭（即goroutine已完成）而不等待：</p>
+</code></pre><p>要检查channel是否已关闭（即goroutine已完成）而不等待:</p>
 <pre><code>package main
 
 import &quot;fmt&quot;
@@ -598,24 +598,22 @@ func main() {
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Channels-select/">https://luangeng.space/post/go/basic/Channels-select/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Channels-select/">https://luangeng.space/post/go/basic/Channels-select/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -755,17 +753,6 @@ func main() {
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -791,7 +778,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -802,7 +789,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -813,7 +800,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -835,7 +822,7 @@ func main() {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -864,8 +851,29 @@ func main() {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -930,14 +938,6 @@ func main() {
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -946,15 +946,15 @@ func main() {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

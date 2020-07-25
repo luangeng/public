@@ -273,7 +273,7 @@ ok</p>
 <p>因API使用不当而导致崩溃,这类似于在其他语言中使用assert。</p>
 <p>假设你正在编写一个httpGet函数来下载URL的内容。</p>
 <p>URL为空字符串应该怎么办？ 调用侧显然是错误的。</p>
-<p>可以返回错误，但也可以因panic而崩溃：</p>
+<p>可以返回错误，但也可以因panic而崩溃:</p>
 <pre><code>func httpGet(uri string) ([]byte, error) {
     if uri == &quot;&quot; {
         panic(&quot;uri cannot be empty&quot;)
@@ -282,7 +282,7 @@ ok</p>
 }
 </code></pre><p>有时会更好，因为可以忽略错误，或者程序可能认为这是有效的错误情况，例如网站关闭。</p>
 <p>强制崩溃会增加开发人员查看问题并解决问题的机会。</p>
-<p>如果你经常这样做，此辅助功能将非常有用：</p>
+<p>如果你经常这样做，此辅助功能将非常有用:</p>
 <pre><code>func panicIf(cond bool, args ...interface{}) {
     if !cond {
         return
@@ -295,12 +295,12 @@ ok</p>
     err := fmt.Errorf(format, args)
     panic(err)
 }
-</code></pre><p>现在可以将其写成一行：</p>
+</code></pre><p>现在可以将其写成一行:</p>
 <pre><code>func httpGet(uri string) ([]byte, error) {
     panicIf(uri == &quot;&quot;, &quot;uri cannot be empty&quot;)
     // ... download the url
 }
-</code></pre><p>函数panicIf是灵活的, 也可以这样调用：</p>
+</code></pre><p>函数panicIf是灵活的, 也可以这样调用:</p>
 <ul>
 <li>panicIf(n &lt; 0) and it&rsquo;ll panic with generic error message</li>
 <li>panicIf(n &lt; 0, &ldquo;n must be &gt;= 0&rdquo;) to provide more descriptive message</li>
@@ -319,7 +319,7 @@ Unhandled panic in a goroutine crashes a program.</p>
 <p>在孤立的代码段中简化流控制
 有时候，通过恐慌和恢复而不是返回错误，更容易传播错误。</p>
 <p>这可能是正确的，例如在解析器中。</p>
-<p>使用该技术时，应遵守一条规则：恐慌症不应越过公共API边界。</p>
+<p>使用该技术时，应遵守一条规则:恐慌症不应越过公共API边界。</p>
 <p>换句话说，如果实现解析器库，则应始终恢复代码创建的所有恐慌。用于更轻松地进行流控制的紧急情况永远不会到达包API的调用者。</p>
 <p>保护程序免受goroutine崩溃的影响
 goroutine中未处理的恐慌导致程序崩溃。</p>
@@ -331,24 +331,22 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Panic-recover/">https://luangeng.space/post/go/basic/Panic-recover/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Panic-recover/">https://luangeng.space/post/go/basic/Panic-recover/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -488,17 +486,6 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -524,7 +511,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -535,7 +522,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -546,7 +533,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -568,7 +555,7 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -597,8 +584,29 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -663,14 +671,6 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -679,15 +679,15 @@ goroutine中未处理的恐慌导致程序崩溃。</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -167,18 +167,18 @@
                                                 
                                                 <p>NIO库在JDK1.4中引入，它以标准Java代码提供了高速的，面向块的IO，弥补了之前同步IO的不足。</p>
 <p>缓冲区Buffer</p>
-<p>Buffers是一个对象，包含了一些要写入或读出的数据。在面向流的IO模型中，数据是直接写入或读出到Stream对象中的，在NIO中，所有数据都是用缓冲区处理的，在读取数据时，数据直接读到缓冲区中，写入数据时直接写到缓冲区，在任何时候访问NIO中的数据都要通过缓冲区。缓冲区是基于数组实现的，同时提供了对数据的结构化访问并且维护了读写位置。一个ByteBuffer提供了一组功能用于操作byte数组，每种Java类型都对应了一种缓冲区：CharBuffer字符缓冲区，Shortbuffer短整型缓冲区，IntBuffer整型缓冲区，LongBuffer长整型缓冲区，FloatBuffer浮点型缓冲区，DoubleBuffer双精度浮点缓冲区。每一个Buffer类都是Buffer接口的子实例，每一个Buffer类都有完全一样的操作，只是操作的数据类型不一样，ByteBuffer在一般缓冲区操作外提供了一些特有的操作。</p>
+<p>Buffers是一个对象，包含了一些要写入或读出的数据。在面向流的IO模型中，数据是直接写入或读出到Stream对象中的，在NIO中，所有数据都是用缓冲区处理的，在读取数据时，数据直接读到缓冲区中，写入数据时直接写到缓冲区，在任何时候访问NIO中的数据都要通过缓冲区。缓冲区是基于数组实现的，同时提供了对数据的结构化访问并且维护了读写位置。一个ByteBuffer提供了一组功能用于操作byte数组，每种Java类型都对应了一种缓冲区:CharBuffer字符缓冲区，Shortbuffer短整型缓冲区，IntBuffer整型缓冲区，LongBuffer长整型缓冲区，FloatBuffer浮点型缓冲区，DoubleBuffer双精度浮点缓冲区。每一个Buffer类都是Buffer接口的子实例，每一个Buffer类都有完全一样的操作，只是操作的数据类型不一样，ByteBuffer在一般缓冲区操作外提供了一些特有的操作。</p>
 <p>缓冲区是包在一个对象内的基本数据元素数组，其有四个重要属性</p>
-<p>容量( Capacity)：缓冲区能够容纳的数据元素的最大数量，容量在缓冲区创建时被设定，并且永远不能被改变。</p>
-<p>上界(Limit)：缓冲区的第一个不能被读或写的元素。或者说，缓冲区中现存元素的计数。</p>
-<p>位置(Position)：下一个要被读或写的元素的索引。位置会自动由相应的 get( )和 put( )函数更新。 　　　　</p>
-<p>标记(Mark)：一个备忘位置。调用 mark( )来设定 mark = postion。调用 reset( )设定 position = mark。标记在设定前是未定义的(undefined)。</p>
-<p>四个属性之间的关系如下：　　　　0 &lt;= mark &lt;= position &lt;= limit &lt;= capacity</p>
+<p>容量( Capacity):缓冲区能够容纳的数据元素的最大数量，容量在缓冲区创建时被设定，并且永远不能被改变。</p>
+<p>上界(Limit):缓冲区的第一个不能被读或写的元素。或者说，缓冲区中现存元素的计数。</p>
+<p>位置(Position):下一个要被读或写的元素的索引。位置会自动由相应的 get( )和 put( )函数更新。 　　　　</p>
+<p>标记(Mark):一个备忘位置。调用 mark( )来设定 mark = postion。调用 reset( )设定 position = mark。标记在设定前是未定义的(undefined)。</p>
+<p>四个属性之间的关系如下:　　　　0 &lt;= mark &lt;= position &lt;= limit &lt;= capacity</p>
 <p>初始时，mark未被设定，position为0，capacity为10，limit为10，第一个元素存放至position为0的位置，capacity不变，其他三个属性会变化。position在调用 put()时，会自动指出了下一个数据元素应该被插入的位置，或者当 get()被调用时指出下一个元素应从何处取出。当put完数据后需要读取时，需要调用flip函数，其将limit设置为position，然后将position设置为0， 之后开始读取。</p>
 <p>buffer常见方法如下:</p>
 <p>flip(): 写模式转换成读模式
-rewind()：将 position 重置为 0 ，一般用于重复读。
-clear() ：清空 buffer ，准备再次被写入 (position 变成 0 ， limit 变成 capacity) 。
+rewind():将 position 重置为 0 ，一般用于重复读。
+clear() :清空 buffer ，准备再次被写入 (position 变成 0 ， limit 变成 capacity) 。
 compact(): 将未读取的数据拷贝到 buffer 的头部位。
 mark(): reset():mark 可以标记一个位置， reset 可以重置到该位置。</p>
 <p>通道Channel</p>
@@ -501,31 +501,29 @@ public class NioClient {
     }
 
 }
-</code></pre><p>输出：</p>
+</code></pre><p>输出:</p>
 <p><img src="pic/2016/nio.png" alt=""></p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/basic/java-nio/">https://luangeng.space/post/java/basic/java-nio/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/basic/java-nio/">https://luangeng.space/post/java/basic/java-nio/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -665,17 +663,6 @@ public class NioClient {
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/java/basic/java-reflection/" rel="bookmark" class="leancloud-count">Java基础--反射Reflection
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -701,7 +688,7 @@ public class NioClient {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -712,7 +699,7 @@ public class NioClient {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -723,7 +710,7 @@ public class NioClient {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -745,7 +732,7 @@ public class NioClient {
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -774,8 +761,29 @@ public class NioClient {
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -840,14 +848,6 @@ public class NioClient {
                 
                 <li><a href="https://luangeng.space/post/java/basic/java-comparator/">Java基础--比较器Comparator</a></li>
                 
-                <li><a href="https://luangeng.space/post/java/basic/java-countdownlatch/">Java基础--CountDownLatch</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-jvm/">Java基础--虚拟机JVM</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-blockingqueue/">Java-压缩解压gz</a></li>
-                
-                <li><a href="https://luangeng.space/post/java/basic/java-reflection/">Java基础--反射Reflection</a></li>
-                
             </ul>
         </div>
         
@@ -856,15 +856,15 @@ public class NioClient {
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

@@ -169,9 +169,9 @@
 <p>在多台服务器组成的集群中，需要监控每台服务器的状态，一旦某台服务器挂掉了或有新的机器加入集群，集群都要感知到，从而采取相应的措施。一个主动的集群可以自动感知节点的死亡和新节点的加入，它才对更高效的提供服务。通常的做法是有台主机器定时的去获取其他机器的心跳，或其他机器定时主动汇报自己的状态，这种方式存在一定的延时，并且主机器成为单点，一旦挂掉便影响整个集群。</p>
 <p>使用Zookeeper可以方便的实现集群管理的功能。思路如下，每个服务器启动时都向zk服务器提出创建临时节点的请求，并且使用getChildren设置父节点的观察，当该服务器挂掉之后，它创建的临时节点也被Zookeeper服务器删除，然后会触发监视器，其他服务器便得到通知。创建新节点也是同理。</p>
 <p>并且利用Zookeeper的Leader选举功能可以选出服务中的一台作为Leader，在比如任务调度类似的场景中有用。</p>
-<p>下面是一个简单的模拟：</p>
+<p>下面是一个简单的模拟:</p>
 <h3 id="serverunit">ServerUnit</h3>
-<p>模拟在不同机器上启动的服务，启动时向Zookeeper服务器注册自己，并保存自己的IP和端口；实现CallBack接口：在其他节点发生变化时执行的逻辑</p>
+<p>模拟在不同机器上启动的服务，启动时向Zookeeper服务器注册自己，并保存自己的IP和端口；实现CallBack接口:在其他节点发生变化时执行的逻辑</p>
 <pre><code>public class ServerUnit {
 
     public static final String SER_NAME = &quot;ServerUnit&quot;;
@@ -200,7 +200,7 @@
         TimeUnit.HOURS.sleep(1);
     }
 }
-</code></pre><h3 id="callback接口">CallBack接口：</h3>
+</code></pre><h3 id="callback接口">CallBack接口:</h3>
 <pre><code>public interface CallBack&lt;T&gt; {
 
     void callback(T t) throws Exception;
@@ -316,11 +316,11 @@
     }
 
 }
-</code></pre><p>依次启动3个ServerUnit，查看控制台：</p>
+</code></pre><p>依次启动3个ServerUnit，查看控制台:</p>
 <p><img src="pic/zookeeper/6.png" alt="zoo">
 <img src="pic/zookeeper/7.png" alt="zoo">
 <img src="pic/zookeeper/8.png" alt="zoo"></p>
-<p>依次关闭2个ServerUnit，查看控制台：</p>
+<p>依次关闭2个ServerUnit，查看控制台:</p>
 <p><img src="pic/zookeeper/9.png" alt="zoo">
 <img src="pic/zookeeper/10.png" alt="zoo"></p>
 <p>从关闭ServerUnit到控制台打印退出大概延迟8s左右，配置zk的tickTime=1000，比预期的要慢一些。</p>
@@ -329,24 +329,22 @@
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-cluster/">https://luangeng.space/post/java/zookeeper/zookeeper-cluster/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/java/zookeeper/zookeeper-cluster/">https://luangeng.space/post/java/zookeeper/zookeeper-cluster/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -467,7 +465,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -478,7 +476,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -489,7 +487,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -511,7 +509,7 @@
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -540,8 +538,29 @@
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -612,15 +631,15 @@
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

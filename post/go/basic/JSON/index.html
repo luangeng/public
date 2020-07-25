@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go JSON</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 1886 Words
+                                            Posted @ 2018-09-09 · 2944 Words
                                             
                                             · Tags: Go
                                             
@@ -165,7 +165,7 @@
                                         <div class="entry">
                                             <div class="entry-inner">
                                                 
-                                                <p>encoding/json包是Go的标准库,提供JSON格式的序列化和反序列化功能.</p>
+                                                <p>Go中的标准库encoding/json提供JSON格式的序列化和反序列化功能.</p>
 <h3 id="序列化struct为json">序列化struct为JSON</h3>
 <pre><code>type Person struct {
     fullName string
@@ -199,18 +199,18 @@ Person in pretty-printed JSON:<br>
 &ldquo;city&rdquo;: &ldquo;SF&rdquo;<br>
 }</p>
 </blockquote>
-<p>Both json.Marshal and json.MarshalIndent take interface{} as first argument. We can pass any Go value, it’ll be wrapped into interface{} with their type.</p>
-<p>Marshaller will use reflection to inspect passed value and encode it as JSON strings.</p>
-<p>When serializing structs, only exported fields (whose names start with capital letter) are serialized / deserialized.</p>
-<p>In our example, fullName is not serialized.</p>
-<p>Structs are serialized as JSON dictionaries. By default dictionary keys are the same as struct field names.</p>
-<p>Struct field Name is serialized under dictionary key Name.</p>
-<p>We can provide custom mappings with struct tags.</p>
-<p>We can attach arbitrary struct tags string to struct fields.</p>
-<p>json:&ldquo;age&rdquo; instructs JSON encoder / decoder to use name age for dictionary key representing field Age.</p>
-<p>When serializing structs, passing the value and a pointer to it generates the same result.</p>
-<p>Passing a pointer is more efficient because passing by value creates unnecessary copy.</p>
-<p>json.MarshallIndent allows for pretty-printing of nested structures. The result takes up more space but is easier to read.</p>
+<p>json.Marshal和json.MarshalIndent都将interface {}作为第一个参数。我们可以传递任何Go值，并将其类型包装到interface {}中。</p>
+<p>Marshaller将使用反射来检查传递的值并将其编码为JSON字符串。</p>
+<p>在序列化struct时，仅对导出的字段（其名称以大写字母开头）进行序列化/反序列化。</p>
+<p>在我们的示例中，未对fullName进行序列化。</p>
+<p>struct被序列化为JSON字典。默认情况下，字典键与struct字段名称相同。</p>
+<p>struct字段名称在字典键名称下序列化。</p>
+<p>可以提供带有struct标签的自定义映射。</p>
+<p>可以将任意的struct标签字符串附加到struct字段。</p>
+<p>json：&ldquo;age&quot;指示JSON编码器/解码器使用名称age作为表示字段Age的字典关键字。</p>
+<p>序列化struct时，将值和指针传递给它会产生相同的结果。</p>
+<p>传递指针效率更高，因为按值传递会创建不必要的副本。</p>
+<p>json.MarshallIndent格式化打印嵌套struct, 这样会占用更多空间但更易于阅读。</p>
 <h3 id="把json转为struct">把JSON转为struct</h3>
 <pre><code>type Person struct {
     Name       *string `json:&quot;name&quot;`
@@ -236,26 +236,27 @@ fmt.Printf(&quot;Name: %#v\n&quot;, *p.Name)
 <p>Person struct parsed from JSON: main.Person{Name:(*string)(0xc000010330), Age:24, City:&ldquo;ny&rdquo;, Occupation:&quot;&quot;}<br>
 Name: &ldquo;Jane&rdquo;</p>
 </blockquote>
-<p>Parsing is the opposite of serializing.</p>
-<p>Unlike with serializing, when parsing into structs, we must pass a pointer to struct. Otherwise json.Unmarshal will receive and modify a copy of the struct, not the struct itself. The copy will be then discarded after returning from json.Unmarshal.</p>
-<p>Notice that JSON element city was decoded into City struct field even though the names don’t match and we didn’t provide explicit mapping with json struct tag.</p>
-<p>That happened because JSON decoder has a little bit of smarts when matching dictionary key names to struct field names. It’s best to not rely on such smarts and define mappings explicitly.</p>
-<p>All struct fields are optional and when not present in JSON text their values will be untouched. When decoding into newly initialized struct their value will be zero value for a given type.</p>
-<p>Field Name shows that JSON decoder can also automatically decode into a pointer to a value.</p>
-<p>This is useful when you need to know if a value was present in JSON or not. If we used string for Name, we wouldn’t know if value of empty string means that JSON had name key with empty string as a value or is it because the value wasn’t there at all.</p>
-<p>By using a pointer to a string we know that nil means there was no value.</p>
-<p>Go to JSON type mapping
-JSON Type    Go Concrete Type
-boolean    bool
-number    float64 or int
-string    string
-array    slice
-dictionary    map[struct]interface{} or struct
-null    nil
-See more in type mappings.</p>
-<h2 id="parsing-arbitrary-json-documents">Parsing arbitrary JSON documents</h2>
-<p>Parsing into a struct is very convenient but sometimes you don’t know the structure of JSON document upfront.</p>
-<p>For arbitrary JSON documents we can decode into a map[string]interface{}, which can represent all valid JSON documents.</p>
+<h3 id="解析与序列化相反">解析与序列化相反</h3>
+<p>与序列化不同，在解析为结构时，必须将指针传递给struct。否则json.Unmarshal将接收并修改该结构的副本，而不是结构本身。从json.Unmarshal返回后，该副本将被丢弃。</p>
+<p>请注意，即使名称不匹配，JSON元素city也被解码为City struct字段，并且我们没有使用json struct标签提供显式映射。</p>
+<p>发生这种情况是因为在将字典关键字名称与结构字段名称进行匹配时，JSON解码器具有一些技巧。最好不要依赖这种智能，而是明确定义映射。</p>
+<p>所有struct字段都是可选的，并且当不以JSON文本形式出现时，其值将保持不变。当解码为新初始化的struct时，对于给定类型，其值为零。</p>
+<p>字段名称显示JSON解码器还可以自动将其解码为指向值的指针。</p>
+<p>当您需要知道JSON中是否存在值时，这很有用。如果我们使用字符串作为Name，我们将不知道空字符串的值是否意味着JSON具有以空字符串作为值的名称键，或者是因为该值根本不存在。</p>
+<p>通过使用指向字符串的指针，我们知道nil表示没有值。</p>
+<p>JSON和Go类型映射:</p>
+<ul>
+<li>JSON类型    Go类型</li>
+<li>boolean    bool</li>
+<li>number    float64 or int</li>
+<li>string    string</li>
+<li>array    slice</li>
+<li>dictionary    map[struct]interface{} or struct</li>
+<li>null    nil</li>
+</ul>
+<h2 id="解析任意json">解析任意JSON</h2>
+<p>解析为一个结构非常方便，但有时我们不知道JSON的结构。</p>
+<p>对于任意JSON，我们可以解码为map[string]interface{}，它可以表示任意有效的JSON。</p>
 <pre><code>var jsonStr = `{
     &quot;name&quot;: &quot;Jane&quot;,
     &quot;age&quot;: 24,
@@ -277,12 +278,12 @@ fmt.Printf(&quot;name: %#v\n&quot;, name)
 <p>doc: map[string]interface {}{&ldquo;age&rdquo;:24, &ldquo;city&rdquo;:&ldquo;ny&rdquo;, &ldquo;name&rdquo;:&ldquo;Jane&rdquo;}<br>
 name: &ldquo;Jane&rdquo;</p>
 </blockquote>
-<p>For basic JSON types, the value in the map is bool, int, float64 or string.</p>
-<p>For JSON arrays, the value is []interface{}.</p>
-<p>For JSON dictionaries, the value is (again) map[string]interface{}.</p>
-<p>This approach is flexible but dealing with map[string]interface{} to access values is rather painful.</p>
+<p>对于基本JSON类型，映射中的值为bool，int，float64或string。</p>
+<p>对于JSON数组，该值为[] interface {}。</p>
+<p>对于JSON字典，该值是（再次）map [string] interface {}。</p>
+<p>这种方法很灵活，但是处理map [string] interface {}以访问值是很痛苦的。</p>
 <h3 id="反序列化为匿名struct">反序列化为匿名struct</h3>
-<p>When parsing into a struct we can avoid declaring struct types by using anonymous structs.</p>
+<p>解析为结构时，我们可以使用匿名struct来避免声明结构类型。</p>
 <pre><code>var jsonBlob = []byte(`
 {
   &quot;_total&quot;: 1,
@@ -371,29 +372,29 @@ func decodeFromFile(path string) ([]*Student, error) {
 Student: Peter Parker, standard: 11
 Student: Bilbo Baggins, standard: 150</p>
 </blockquote>
-<p>By writing a helper function decodeFromReader, we can easily write wrappers that will work on files, strings or network connections.</p>
-<h2 id="configuring-json-serialization">Configuring JSON serialization</h2>
-<p>Hide/skip certain fields
-To export Revenue and Sales, but hide them from encoding/decoding, use json:&quot;-&rdquo; or rename the variable to begin with a lowercase letter. Note that this prevents the variable from being visible outside the package.</p>
+<p>通过编写帮助函数decodeFromReader，我们可以轻松编写可用于文件，字符串或网络连接的包装器。</p>
+<h2 id="配置json序列化">配置JSON序列化</h2>
+<h4 id="隐藏跳过某些字段">隐藏/跳过某些字段</h4>
+<p>要导出Revenue和sales但不对它们进行编码/解码，请使用json：“-”或重命名变量以小写字母开头。 请注意，这将防止变量在包外部可见。</p>
 <pre><code>type Company struct {
     Name     string `json:&quot;name&quot;`
     Location string `json:&quot;location&quot;`
     Revenue  int    `json:&quot;-&quot;`
     sales    int
 }
-</code></pre><p>Ignore empty fields
-To prevent Location from being included in the JSON when it is set to its zero value, add ,omitempty to the json tag.</p>
+</code></pre><h4 id="忽略空字段">忽略空字段</h4>
+<p>为了防止Location设置为零值时将其包含在JSON中，请将，omitempty添加到json标记中。</p>
 <pre><code>type Company struct {
     Name     string `json:&quot;name&quot;`
     Location string `json:&quot;location,omitempty&quot;`
 }
-</code></pre><h2 id="custom-json-marshaling">Custom JSON marshaling</h2>
-<p>Writing custom JSON marshalling
-Sometimes a type doesn’t have an obvious mapping to JSON.</p>
-<p>How would you serialize time.Time? There are so many possibilities.</p>
-<p>Go provides a default JSON mapping for time.Time. We can implement custom marshaller for user-defined types like structs.</p>
-<p>For existing types we can define a new (but compatible) type.</p>
-<p>Here’s a custom marshalling and unmarshaling for time.Time that only serializes year/month/date part:</p>
+</code></pre><h2 id="自定义json序列化">自定义JSON序列化</h2>
+<p>编写自定义JSON序列化
+有时，类型没有明显的JSON映射。</p>
+<p>如何序列化time.Time？ 有很多可能性。</p>
+<p>Go为time.Time提供了默认的JSON映射。 我们可以为用户定义的类型（例如struct）实现自定义序列化。</p>
+<p>对于现有类型，我们可以定义一个新的（但兼容）类型。</p>
+<p>这是时间的自定义序列化。时间仅序列化年/月/日部分：</p>
 <pre><code>type Event struct {
     What string
     When time.Time
@@ -451,20 +452,22 @@ fmt.Printf(&quot;Decoded custom time: %s\n&quot;, t.Format(customTimeFormat))
 
 notCustom()
 custom()
-</code></pre><p>Standard time JSON: {&ldquo;What&rdquo;:&ldquo;earthquake&rdquo;,&ldquo;When&rdquo;:&ldquo;2019-11-06T02:18:11.203193337Z&rdquo;}</p>
-<p>Custom time JSON: {&ldquo;What&rdquo;:&ldquo;earthquake&rdquo;,&ldquo;When&rdquo;:&ldquo;2019-06-11&rdquo;}
-Decoded custom time: &ldquo;2019-06-11&rdquo;
-Notice that receiver type of UnmashalJSON is a pointer to the type.</p>
-<p>This is necessary for changes to persist outside the function itself.</p>
-<p>Marshaling structs with private fields
-Consider a struct with both exported and unexported fields:</p>
+</code></pre><blockquote>
+<p>Standard time JSON: {&ldquo;What&rdquo;:&ldquo;earthquake&rdquo;,&ldquo;When&rdquo;:&ldquo;2019-11-06T02:18:11.203193337Z&rdquo;}<br>
+Custom time JSON: {&ldquo;What&rdquo;:&ldquo;earthquake&rdquo;,&ldquo;When&rdquo;:&ldquo;2019-06-11&rdquo;}<br>
+Decoded custom time: &ldquo;2019-06-11&rdquo;</p>
+</blockquote>
+<p>请注意，UnmashalJSON的接收者类型是指向该类型的指针。</p>
+<p>这对于将更改保留在函数本身之外是必要的。</p>
+<p>带私有字段的封送结构
+考虑具有已导出和未导出字段的结构：</p>
 <pre><code>type MyStruct struct {
     uuid string
     Name string
 }
-</code></pre><p>Imagine you want to Marshal() this struct into valid JSON for storage in something like etcd.</p>
-<p>However, since uuid in not exported, the json.Marshal() skips it.</p>
-<p>To marshal private fields without making them public we can use a custom marshaller:</p>
+</code></pre><p>想象一下，您想将该结构Marshal（）转换为有效的JSON，以便存储在etcd之类的文件中。</p>
+<p>但是，由于未导入uuid，因此json.Marshal（）跳过了它。</p>
+<p>要封送私有字段而不将其公开，我们可以使用自定义封送程序：</p>
 <pre><code>type MyStruct struct {
     uuid string
     Name string
@@ -493,18 +496,21 @@ if err != nil {
     log.Fatalf(&quot;json.MarshalIndent failed with '%s'\n&quot;, err)
 }
 fmt.Printf(&quot;Person in compact JSON: %s\n&quot;, string(d))
-</code></pre><p>Person in compact JSON: {&ldquo;Uuid&rdquo;:&ldquo;uid-john&rdquo;,&ldquo;Name&rdquo;:&ldquo;John&rdquo;}
-Custom marshaling behind the scenes
-How does custom marshaling works?</p>
-<p>Package JSON defines 2 interfaces: Marshaler and Unmarshaler.</p>
-<p>type Marshaler interface {
-MarshalJSON() ([]byte, error)
-}</p>
-<p>type Unmarshaler interface {
-UnmarshalJSON([]byte) error
+</code></pre><blockquote>
+<p>Person in compact JSON: {&ldquo;Uuid&rdquo;:&ldquo;uid-john&rdquo;,&ldquo;Name&rdquo;:&ldquo;John&rdquo;}</p>
+</blockquote>
+<p>幕后的自定义封送处理
+自定义封送处理如何工作？</p>
+<p>包JSON定义了2个接口：Marshaler和Unmarshaler。</p>
+<pre><code>type Marshaler interface {
+    MarshalJSON() ([]byte, error)
 }
-By implementing those functions we make our type conform to Marshaler or Unmarshaler interface.</p>
-<p>JSON encoder / decoder checks if the value being encoded conforms to those interfaces and will call those functions instead of executing default logic.</p>
+
+type Unmarshaler interface {
+    UnmarshalJSON([]byte) error
+}
+</code></pre><p>通过实现这些功能，我们使我们的类型符合Marshaler或Unmarshaler接口。</p>
+<p>JSON编码器/解码器检查被编码的值是否符合那些接口，并将调用这些函数而不执行默认逻辑。</p>
 <h2 id="go和json类型映射">Go和JSON类型映射</h2>
 <blockquote>
 <p>JSON type    Go type<br>
@@ -561,9 +567,9 @@ string                          &ldquo;john&rdquo;<br>
 map[string]interface {}         {&ldquo;i&rdquo;:5,&ldquo;s&rdquo;:&ldquo;foo&rdquo;}<br>
 struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Age&rdquo;:37}</p>
 </blockquote>
-<h2 id="easy-generation-of-json-struct-definition">Easy generation of JSON struct definition</h2>
-<p>Writing struct definitions that map structure of JSON file is tedious.</p>
-<p>If you have a sample JSON file, you can auto-generate Go definitions using online tools:</p>
+<h2 id="轻松生成json结构定义">轻松生成JSON结构定义</h2>
+<p>编写映射JSON文件结构的结构定义很繁琐。</p>
+<p>如果您有示例JSON文件，则可以使用在线工具自动生成Go定义：</p>
 <p><a href="https://app.quicktype.io/">https://app.quicktype.io/</a>
 <a href="https://mholt.github.io/json-to-go/">https://mholt.github.io/json-to-go/</a></p>
 
@@ -571,24 +577,22 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/JSON/">https://luangeng.space/post/go/basic/JSON/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/JSON/">https://luangeng.space/post/go/basic/JSON/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -728,17 +732,6 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Panic-recover/" rel="bookmark" class="leancloud-count">Go Panic和recover
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -764,7 +757,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -775,7 +768,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -786,7 +779,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -808,7 +801,7 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -837,8 +830,29 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -903,14 +917,6 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Panic-recover/">Go Panic和recover</a></li>
-                
             </ul>
         </div>
         
@@ -919,15 +925,15 @@ struct { Name string; Age int } {&ldquo;Name&rdquo;:&ldquo;John&rdquo;,&ldquo;Ag
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

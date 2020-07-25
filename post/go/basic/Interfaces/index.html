@@ -146,7 +146,7 @@
                                         <h1 class="post-title">Go 接口</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 2436 Words
+                                            Posted @ 2018-09-09 · 2433 Words
                                             
                                             · Tags: Go
                                             
@@ -168,7 +168,7 @@
                                                 <p>接口在类型上定义了一组方法。
 接口用于抽象行为。
 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。</p>
-<p>例如：标准库中定义的io.Reader接口：</p>
+<p>例如:标准库中定义的io.Reader接口:</p>
 <pre><code>type Reader interface {
     Read(d []byte) (int, error)
 }
@@ -288,7 +288,7 @@ h = &amp;human{}
 
 h.Sing()
 </code></pre><h2 id="从接口确定底层类型">从接口确定底层类型</h2>
-<p>在Go中，有时候需要知道参数的底层类型。 这可以通过switch来完成。 假设我们有两个结构：</p>
+<p>在Go中，有时候需要知道参数的底层类型。 这可以通过switch来完成。 假设我们有两个结构:</p>
 <pre><code>type Rembrandt struct{}
 
 func (r Rembrandt) Paint() {}
@@ -314,7 +314,7 @@ func (r Picasso) Paint() {}
 </code></pre><h2 id="确保类型实现了接口">确保类型实现了接口</h2>
 <p>在Go中，接口是隐式满足的, 即不必声明类型是一定要实现某个接口的。
 这很方便，但也可能导致无法完全实现接口错误，并且编译器无法检测到这种情况。
-有一种方法可以进行编译期的类型检查：</p>
+有一种方法可以进行编译期的类型检查:</p>
 <pre><code>type MyReadCloser struct {
 }
 
@@ -415,8 +415,8 @@ it status 2</p>
 </blockquote>
 <h2 id="类型断言">类型断言</h2>
 <p>类型断言允许你检查空接口的值是否为给定的类型。</p>
-<p>为了完整起见，可以使用类型switch的简短版本：v:= iv.(int)(v, ok：= iv.(int))。</p>
-<p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic：</p>
+<p>为了完整起见，可以使用类型switch的简短版本:v:= iv.(int)(v, ok:= iv.(int))。</p>
+<p>它和完整版本的区别在于，如果iv不是断言的类型，则简短版本会panic:</p>
 <pre><code>func panicOnInvalidConversion(iv interface{}) {
     v := iv.(int)
     fmt.Printf(&quot;v is int of value: %d\n&quot;, v)
@@ -438,7 +438,7 @@ exit status 2</p>
 根据经验，你不应该尝试发现贯穿抽象的接口类型的底层值。</p>
 <h2 id="类型switch">类型switch</h2>
 <p>switch语句可以基于接口包装的类型进行分派。</p>
-<p>如果具有接口值，则可以根据底层类型进行切换：</p>
+<p>如果具有接口值，则可以根据底层类型进行切换:</p>
 <pre><code>func smartConvertToInt(iv interface{}) (int, error) {
     // inside case statements, v is of type matching case type
     switch v := iv.(type) {
@@ -479,24 +479,22 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/go/basic/Interfaces/">https://luangeng.space/post/go/basic/Interfaces/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/go/basic/Interfaces/">https://luangeng.space/post/go/basic/Interfaces/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -636,17 +634,6 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         </article>
     </li>
     
-    <li class="related post-hover">
-        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-            <div class="related-inner">
-                <span class="post-date" style="font-size:14px">10.</span>
-                <a href="https://luangeng.space/post/go/basic/Mutex/" rel="bookmark" class="leancloud-count">Go Mutex
-                    (<span style="font-size:14px">0</span>)
-                </a>
-            </div>
-        </article>
-    </li>
-    
 </ul>
 
                                 <h4 class="heading">阅读排行榜</h4>
@@ -672,7 +659,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -683,7 +670,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -694,7 +681,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -716,7 +703,7 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -745,8 +732,29 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -811,14 +819,6 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
                 
                 <li><a href="https://luangeng.space/post/go/basic/httpMiddleware/">Go HTTP server middleware</a></li>
                 
-                <li><a href="https://luangeng.space/post/go/basic/Hex-base64-encoding/">Go Hex和 base64编码</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Inlining-functions/">Go Inlining functions</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/JSON/">Go JSON</a></li>
-                
-                <li><a href="https://luangeng.space/post/go/basic/Mutex/">Go Mutex</a></li>
-                
             </ul>
         </div>
         
@@ -827,15 +827,15 @@ Failed to convert &ldquo;not valid int&rdquo; to int</p>
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>

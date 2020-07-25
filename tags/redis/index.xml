@@ -36,7 +36,7 @@
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://luangeng.space/post/db/redis/redis-intr/</guid>
-      <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构：字符串，散列</description>
+      <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构:字符串，散列</description>
     </item>
     
   </channel>

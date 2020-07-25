@@ -186,7 +186,7 @@ show tables;</p>
 ( &lsquo;Cookie&rsquo;, &lsquo;Casey&rsquo;, &lsquo;2013-11-13&rsquo; ),
 ( &lsquo;Charlie&rsquo;, &lsquo;River&rsquo;, &lsquo;2016-05-21&rsquo; );</p>
 <p>SELECT * FROM cats;</p>
-<p>增加/删除/修改列：</p>
+<p>增加/删除/修改列:</p>
 <p>alter table cats add gender char(1) [after name];
 alter table cats drop gender;</p>
 <p>alter table cats change name name_new char(30);</p>
@@ -194,45 +194,43 @@ alter table cats drop gender;</p>
 <p>alter table cats alter age set default 10;</p>
 <p>alter table cats alter age drop default;</p>
 <p>alter table cats rename to cats_t;</p>
-<p>查看用户权限：</p>
+<p>查看用户权限:</p>
 <p>SHOW GRANTS FOR &lsquo;admin&rsquo;@&lsquo;localhost&rsquo;;</p>
 <p>日期计算
 <a href="http://dev.mysql.com/doc/refman/5.7/en/date-calculations.html">http://dev.mysql.com/doc/refman/5.7/en/date-calculations.html</a></p>
 <p>自定义变量
 mysql&gt; SELECT @min_price:=MIN(price),@max_price:=MAX(price) FROM shop;
 mysql&gt; SELECT * FROM shop WHERE price=@min_price OR price=@max_price;</p>
-<p>自增列：
+<p>自增列:
 CREATE TABLE animals (
 id MEDIUMINT NOT NULL AUTO_INCREMENT,
 name CHAR(30) NOT NULL,
 PRIMARY KEY (id)
 );
 INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsquo;penguin&rsquo;),(&lsquo;lax&rsquo;),(&lsquo;whale&rsquo;),(&lsquo;ostrich&rsquo;);</p>
-<p>更新列：</p>
+<p>更新列:</p>
 <p>update user set age =age+1 where id=1;</p>
 
                                                 
                                             </div>
 
                                             <div style="margin-top:40px">
-                                                <marquee direction="right" behavior="alternate" scrollamount="4"
-                                                    loop="6">
-                                                    --------------------------END--------------------------
-                                                </marquee>
+                                                
+                                                &nbsp;
                                             </div>
 
                                             <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
     <div>
         <ul>
-            <li>作者：luangeng</li>
-            <li>主页：<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
             
             
             
             
             
-            <li>本文出处：<a target="_blank" href="https://luangeng.space/post/db/mysql/mysql-sql/">https://luangeng.space/post/db/mysql/mysql-sql/</a></li>
-            <li>版权声明：禁止转载-非商用-非衍生-可链接(<a
+            <li>本文出处:<a target="_blank" href="https://luangeng.space/post/db/mysql/mysql-sql/">https://luangeng.space/post/db/mysql/mysql-sql/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生-可链接(<a
                     href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>)
             </li>
         </ul>
@@ -320,7 +318,7 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">1.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                <a href="https://luangeng.space/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -331,7 +329,7 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">2.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                <a href="https://luangeng.space/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -342,7 +340,7 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">3.</span>
-                <a href="https://luangeng.space/post/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                <a href="https://luangeng.space/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -364,7 +362,7 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
         <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
             <div class="related-inner">
                 <span class="post-date" style="font-size:14px">5.</span>
-                <a href="https://luangeng.space/post/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                <a href="https://luangeng.space/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
                     (<span class="post-date" style="font-size:14px">0</span>)
                 </a>
             </div>
@@ -393,8 +391,29 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
         </article>
     </li>
     
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://luangeng.space/post/go/basic/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://luangeng.space/post/go/basic/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
 </ul>
-
 
                             </div>
                         </section>
@@ -459,15 +478,15 @@ INSERT INTO animals (name) VALUES (&lsquo;dog&rsquo;),(&lsquo;cat&rsquo;),(&lsqu
             <h3>最新</h3>
             <ul>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/elasticsearch/">elasticsearch入门教程</a></li>
+                <li><a href="https://luangeng.space/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
                 
                 <li><a href="https://luangeng.space/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
                 
-                <li><a href="https://luangeng.space/post/other/github_login/">集成通过github登录网站功能</a></li>
+                <li><a href="https://luangeng.space/post/java/other/github_login/">集成通过github登录网站功能</a></li>
                 
             </ul>
         </div>
