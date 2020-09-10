@@ -314,9 +314,10 @@
 	}
 
 	.page-title.pad {
+	    background: #00000090;
 		padding-top: 12px;
 		padding-bottom: 12px;
-		margin-top: -50px;
+		margin-top: 0px;
 	}
 }
 
@@ -495,6 +496,7 @@
 
 	.site-title a {
 		text-align: center;
+		font-size: 22px;
 	}
 
 	.right-head {
@@ -729,6 +731,11 @@
 	/* base */
 	.pad {
 		padding: 15px 15px 5px;
+	}
+
+	.sidebar-top{
+	    margin-top: 0 !important;
+	    background-color: #00000060 !important;
 	}
 
 	.sidebar-top,
