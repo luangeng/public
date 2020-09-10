@@ -428,13 +428,6 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/</loc>
-        <lastmod>2018-12-05T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
         <loc>https://luangeng.space/post/java/other/elasticsearch-api/</loc>
         <lastmod>2018-12-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
@@ -1424,6 +1417,27 @@
     <url>
         <loc>https://luangeng.space/post/java/basic/java-enum/</loc>
         <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/categories/About/</loc>
+        <lastmod>2010-10-10T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/about/</loc>
+        <lastmod>2010-10-10T00:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://luangeng.space/</loc>
+        <lastmod>2010-10-10T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
