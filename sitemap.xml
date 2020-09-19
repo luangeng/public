@@ -547,14 +547,14 @@
     </url>
     
     <url>
-        <loc>https://luangeng.space/categories/redis/</loc>
+        <loc>https://luangeng.space/post/db/redis/redis-command-string/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://luangeng.space/post/db/redis/redis-command-string/</loc>
+        <loc>https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -794,13 +794,6 @@
     <url>
         <loc>https://luangeng.space/post/java/zookeeper/zookeeper-watch/</loc>
         <lastmod>2017-09-06T00:00:00+00:00</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    
-    <url>
-        <loc>https://luangeng.space/categories/Mysql/</loc>
-        <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

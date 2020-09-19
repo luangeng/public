@@ -48,7 +48,7 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://luangeng.space/categories/Mysql/">Mysql</a>
+          <a rel="nofollow" href="https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -205,13 +205,13 @@ fmt.Printf(&quot;%#v\n\n&quot;, people)
 <p>main.People{Person:[]main.Person{main.Person{Age:34, FirstName:&ldquo;John&rdquo;, Address:main.Address{City:(*string)(0xc000010430), State:&ldquo;CA&rdquo;}}, main.Person{Age:23, FirstName:&ldquo;Julia&rdquo;, Address:main.Address{City:(*string)(nil), State:&quot;&quot;}}}}</p>
 </blockquote>
 <p>与序列化不同，当解组为结构时，必须传递指向结构的指针。否则，xml.Unmarshal将接收并修改该结构的副本，而不是结构本身。从xml.Unmarshal返回后，该副本将被丢弃。</p>
-<p>在XML中，值可以表示为元素（<!-- raw HTML omitted --> CA &lt;/ state&gt;）或属性（&lt;person age =“ 34”&gt;）。</p>
+<p>在XML中，值可以表示为元素（<state> CA &lt;/ state&gt;）或属性（&lt;person age =“ 34”&gt;）。</p>
 <p>在xml中，struct tags元素是默认值。要切换到属性，请像为Age一样，将，attr添加到struct xml标记中。</p>
 <p>所有结构字段都是可选的。当不以XML文本形式出现时，其值将保持不变。当解码为新初始化的struct时，对于给定类型，其值为零。</p>
 <p>Field City显示XML解码器可以自动将其解码为指向值的指针。</p>
 <p>当您需要知道XML中是否存在值时，这很有用。如果我们在“城市”字段中使用字符串，则不知道空字符串是否意味着：</p>
 <p>XML中不存在city元素
-元素存在但值为空（<!-- raw HTML omitted --> &lt;/ city&gt;）
+元素存在但值为空（<city> &lt;/ city&gt;）
 通过使用指向字符串的指针，我们知道nil表示没有值。</p>
 <h2 id="将struct序列化为xml">将struct序列化为XML</h2>
 <pre><code>type People struct {
@@ -253,17 +253,17 @@ if err != nil {
 }
 fmt.Printf(&quot;Pretty printed XML:\n%s\n&quot;, string(d))
 </code></pre><blockquote>
-<p>Compact XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted --><!-- raw HTML omitted -->CA<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>Compact XML: <people><person age="34"><first-name>John</first-name><address><city>San Francisco</city><state>CA</state></address></person></people></p>
 <p>Pretty printed XML:<br>
-<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted -->John<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted -->San Francisco<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted -->CA<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted --><br>
-<!-- raw HTML omitted --></p>
+<people><br>
+<person age="34"><br>
+<first-name>John</first-name><br>
+<address><br>
+<city>San Francisco</city><br>
+<state>CA</state><br>
+</address><br>
+</person><br>
+</people></p>
 </blockquote>
 <p>xml.Marshal和xml.MarshalIndent都将interface {}作为第一个参数。我们可以传递任何Go值，并将其类型包装到interface {}中。</p>
 <p>Marshaller将使用反射来检查传递的值并将其编码为XML字符串。</p>
@@ -287,11 +287,11 @@ fmt.Printf(&quot;Pretty printed XML:\n%s\n&quot;, string(d))
 <p>Pull parsing is more efficient but API is harder to use.</p>
 <p>// :g
 Pull parsing requests next token from stream of XML tokens.</p>
-<p>For start tag like <!-- raw HTML omitted --> we get xml.StartElement token.</p>
-<p>For end tag like <!-- raw HTML omitted --> we get xml.EndElemnt token.</p>
-<p>For data inside the element <!-- raw HTML omitted -->data<!-- raw HTML omitted --> we get xml.CharData token.</p>
+<p>For start tag like <person> we get xml.StartElement token.</p>
+<p>For end tag like </person> we get xml.EndElemnt token.</p>
+<p>For data inside the element <person>data</person> we get xml.CharData token.</p>
 <p>When decoder reaches the end, it returns error io.EOF.</p>
-<p>In the above example we print age attribute of <!-- raw HTML omitted --> element and char data inside <!-- raw HTML omitted --> element.</p>
+<p>In the above example we print age attribute of <person> element and char data inside <city> element.</p>
 <p>This is a very basic example. In real programs you might need to remember more state.</p>
 <p>For example, if your XML is:</p>
 <pre><code>&lt;foo&gt;
@@ -299,7 +299,7 @@ Pull parsing requests next token from stream of XML tokens.</p>
     &lt;foo&gt;&lt;/foo&gt;
   &lt;/bar&gt;
 &lt;/foo&gt;
-</code></pre><p>If you look just at the xml.StartElement token, you don’t know if foo is for the top-level element or is it a child of <!-- raw HTML omitted --> element.</p>
+</code></pre><p>If you look just at the xml.StartElement token, you don’t know if foo is for the top-level element or is it a child of <bar> element.</p>
 <h2 id="hybrid-xml-parsing-combine-pull-and-unmarshal">Hybrid XML parsing: combine pull and unmarshal</h2>
 <p>Pull parsing is efficient but tedious.</p>
 <p>We can combine pull parsing with decoding into a struct.</p>
@@ -386,7 +386,7 @@ func decodeFromFile(path string) (*People, error) {
 <p>By writing a helper function decodeFromReader, we can easily write wrappers that will work on files, strings or network connections.</p>
 <h2 id="configuring-xml-parsing-and-serialization">Configuring XML parsing and serialization</h2>
 <p>You can modify how a struct is serialized to XML by annotating fields with tags.</p>
-<p>By providing XMLName, this will be serialized as <!-- raw HTML omitted -->&hellip;<!-- raw HTML omitted --> and not <!-- raw HTML omitted -->..<!-- raw HTML omitted -->.</p>
+<p>By providing XMLName, this will be serialized as <data>&hellip;</data> and not <ShowXMLName>..</ShowXMLName>.</p>
 <pre><code>type ShowXMLName struct {
     XMLName xml.Name `xml:&quot;data&quot;`
     N       int      `xml:&quot;n&quot;`
@@ -397,7 +397,7 @@ v := &amp;ShowXMLName{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->5<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <data><n>5</n></data></p>
 </blockquote>
 <p>Fields marked with xml:&quot;-&rdquo; are not serialized.</p>
 <pre><code>type ShowOmit struct {
@@ -411,7 +411,7 @@ v := &amp;ShowOmit{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->John<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowOmit><name>John</name></ShowOmit></p>
 </blockquote>
 <p>To skip serializing fields with empty values, use xml:&quot;,omitempty&rdquo;.</p>
 <pre><code>type ShowOmitEmpty struct {
@@ -425,7 +425,7 @@ v := &amp;ShowOmitEmpty{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->non empty<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowOmitEmpty><NonEmpty>non empty</NonEmpty></ShowOmitEmpty></p>
 </blockquote>
 <p>To change serialization from XML element to XML attribute use xml:&quot;,attr&rdquo;.</p>
 <pre><code>type ShowAttr struct {
@@ -437,7 +437,7 @@ v := &amp;ShowAttr{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowAttr n="true"></ShowAttr></p>
 </blockquote>
 <p>To change serialization from XML element to character data use xml:&quot;,chardata&rdquo;.</p>
 <pre><code>type ShowCharData struct {
@@ -449,7 +449,7 @@ v := &amp;ShowCharData{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted -->str<!-- raw HTML omitted --></p>
+<p>XML: <ShowCharData>str</ShowCharData></p>
 </blockquote>
 <p>To change serialization from XML element to CDATA use xml:&quot;,cdata&rdquo;.</p>
 <pre><code>type ShowCData struct {
@@ -461,7 +461,7 @@ v := &amp;ShowCData{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowCData><![CDATA[cdata]]></ShowCData></p>
 </blockquote>
 <p>To serialize the value verbatim, use xml:&quot;,innerxml&rdquo;.</p>
 <pre><code>type ShowInnerXML struct {
@@ -475,7 +475,7 @@ v := &amp;ShowInnerXML{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted -->&lt;foo&gt;&lt;/foo&gt;<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowInnerXML><s>&lt;foo&gt;&lt;/foo&gt;</s><foo></foo></ShowInnerXML></p>
 </blockquote>
 <p>To serialize field as XML comment, use xml:&quot;,comment&rdquo;. Value can’t contain &ndash;.</p>
 <pre><code>type ShowComment struct {
@@ -487,7 +487,7 @@ v := &amp;ShowComment{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowComment><!--comment--></ShowComment></p>
 </blockquote>
 <p>xml:&ldquo;a&gt;b&gt;str&rdquo; nests XML element. This also influences parsing.</p>
 <pre><code>type ShowNesting struct {
@@ -499,7 +499,7 @@ v := &amp;ShowNesting{
 }
 printXML(v)
 </code></pre><blockquote>
-<p>XML: <!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->str<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<p>XML: <ShowNesting><a><b><str>str</str></b></a></ShowNesting></p>
 </blockquote>
 <h2 id="custom-xml-marshaling">Custom XML marshaling</h2>
 <p>Writing custom XML marshalling

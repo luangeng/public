@@ -48,7 +48,7 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://luangeng.space/categories/Mysql/">Mysql</a>
+          <a rel="nofollow" href="https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -142,7 +142,7 @@
                                         <h1 class="post-title">Spring Cloud 断路器 Hystrix</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2017-09-09 · 1726 Words
+                                            Posted @ 2017-09-09 · 1728 Words
                                             
                                             · Tags: springcloud
                                             
@@ -175,7 +175,10 @@
 <p>下面做一个简单的演示</p>
 <p>1.增加一个服务调用方，先引入Ribbon，不引入Feign。</p>
 <p>2.增加依赖spring-cloud-starter-hystrix ,  如果已经引入了Feign，则不需要了，因为Feign依赖了spring-cloud-starter-hystrix</p>
-<!-- raw HTML omitted -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-hystrix</artifactId>
+</dependency>
 <p>3.在主类主增加注解@EnableCircuitBreaker或@EnableHystrix</p>
 <pre><code>@EnableDiscoveryClient
 @SpringBootApplication

@@ -48,7 +48,7 @@
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
-          <a rel="nofollow" href="https://luangeng.space/categories/Mysql/">Mysql</a>
+          <a rel="nofollow" href="https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
         </li>
         
         <li class="menu-item menu-item-type-post_type menu-item-object-page">
@@ -142,7 +142,7 @@
                                         <h1 class="post-title">Go Text和HTML模板</h1>
 
                                         <p class="post-byline">
-                                            Posted @ 2018-09-09 · 1971 Words
+                                            Posted @ 2018-09-09 · 1984 Words
                                             
                                             · Tags: Go
                                             
@@ -583,8 +583,10 @@ err = html.Execute(os.Stdout, data)
 if err != nil {
     log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
 }
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre><div onlick="foo"><span>text</span></div>
+<div onlick="&#34;foo&#34;">&lt;span&gt;text&lt;/span&gt;</div>
+Inserting unescaped HTML
+Sometimes you need to subvert escaping of text:
 <p>const tmplStr = <code>&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;</code></p>
 <p>html := template.Must(template.New(&ldquo;html&rdquo;).Parse(tmplStr))</p>
 <p>data := struct {
