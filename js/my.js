@@ -105,7 +105,7 @@ function addCount(Counter) {
 }
 
 function makeCode() {
-  swal({ title: '扫一扫', imageUrl: $('#weixin-qrcode').children('img')[0].src });
+  swal({ title: '扫一扫手机端查看', imageUrl: $('#weixin-qrcode').children('img')[0].src });
 }
 
 function save() {
