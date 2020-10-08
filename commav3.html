@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>逗号分隔</title>
+    <meta name="description" content="来delim.co满足您所有的逗号分隔和在线定界符需求！ 从列数据转换为定界并返回！"/>
+    <meta property="og:title" content="Free Online Comma Separating Tool"/>
+    <meta property="og:description" content="Free Online Comma Separating Tool"/>
+    <meta property="og:image" content="http://delim.co/img/delim.jpg"/>
+    <meta property="og:site_name" content="http://delim.co/">
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="/v3/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+  background-color: #eeeeee;
+  font-size: 15px;
+  outline: none;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.mainpage {
+  margin: 20px;
+  min-height: calc(100vh - 60px);
+  /* Equal to height of footer */
+  margin-bottom: -40px;
+}
+
+.marginb {
+  margin: 20px 0;
+}
+
+.dropdown-menu {
+  width: 100%;
+}
+
+.form-control {
+  background-color: #f8f9fa;
+  font-size: 16px;
+}
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid mainpage">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="alert alert-info" role="alert">
+                <span><strong>免费的逗号分隔工具</strong> 您是否经常需要将表格数据转换为以逗号分隔的列表？</span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="input-group-text">列<br/>数<br/>据</span>
+                </div>
+                <textarea id="left" class="form-control" rows="30" placeholder="1-2-3-4-5"
+                          style="resize:none;"></textarea>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <div class="btn-group btn-block">
+                    <button class="btn btn-default dropdown-toggle btn-block btn-lg" type="button" id="dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=",">
+                        , (逗号)<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" type="button" value=",">, (逗号)</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="dropdown-item" type="button" value=";">; (分号)</a>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="dropdown-item" type="button" value="|">| (竖线)</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="dropdown-item" type="button" value=" "> (空格)</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="dropdown-item" type="button" value="\r\n">(换行)</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a class="dropdown-item" type="button" value="zi">自定义</a></li>
+                    </ul>
+                </div>
+
+                <div class="marginb">
+                    <div class="input-group mb-3">
+                        <span class="input-group-addon" id="basic-addon1">自定义</span>
+                        <input id="ziinput" type="text" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="marginb">
+                    <button id="toright" type="button" class="btn btn-info btn-block btn-lg">分隔行</button>
+                </div>
+                <div class="marginb">
+                    <button id="unique" type="button" class="btn btn-default btn-block btn-lg">
+                        去重
+                    </button>
+                </div>
+                <div class="marginb">
+                    <button id="yinhao" type="button" class="btn btn-default btn-block btn-lg">
+                        加引号
+                    </button>
+                </div>
+                <div class="marginb">
+                    <button id="empty" type="button" class="btn btn-default btn-block btn-lg">
+                        去空行
+                    </button>
+                </div>
+                <div class="marginb">
+                    <button id="sort" type="button" class="btn btn-default btn-block btn-lg">
+                        排序
+                    </button>
+                </div>
+                <div class="marginb">
+                    <button id="undo" type="button" class="btn btn-warning btn-block btn-lg">
+                        撤销
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="push"></div>
+
+</div>
+
+<!-- <footer class="pagefooter">
+    <div align="center">
+        视频版权归上传者所有
+    </div>
+</footer> -->
+
+<script src="/v3/jquery-3.3.1.slim.min.js"></script>
+<script>
+        $(function () {
+            $("#left").attr('placeholder', $("#left").attr('placeholder').replace(/-/g, "\r\n"))
+        });
+
+        $(".dropdown-item").click(function (e) {
+            $("#dropdown").text(e.target.textContent);
+            $("#dropdown").val($(e.target).attr('value'));
+            // var str = $("#left").attr('placeholder');
+            // var p = $("#dropdown").val();
+            // if (p === "zi") {
+            //     p = $("#ziinput").val();
+            // }
+            // if (str.length == 0 || p.length == 0) {
+            //     return;
+            // }
+            // var str2 = str.replace(/\r\n/g, p);
+            // $("#left").attr('placeholder', str2)
+        });
+        $("#toright").click(function () {
+            var str = $("#left").val();
+            var p = $("#dropdown").val();
+            if (p === "zi") {
+                p = $("#ziinput").val();
+            }
+            if (str.length == 0 || p.length == 0) {
+                return;
+            }
+            var str2 = str.replace(/[\r\n]/g, p);
+            $("#left").val(str2);
+        });
+        $("#toleft").click(function () {
+            var str = $("#left").val();
+            var p = $("#dropdown").val();
+            if (p === "zi") {
+                p = $("#ziinput").val();
+            }
+            if (str.length == 0 || p.length == 0) {
+                return;
+            }
+            var str2 = str.replace(eval("/[" + p + "]/gi"), "\r\n");
+            $("#left").val(str2);
+        });
+
+        function copy() {
+            var input = document.getElementById("left");
+            input.select(); // 选中文本
+            document.execCommand("copy"); // 执行浏览器复制命令
+        }
+
+        $("#yinhao").click(function(){
+            var left = $("#left").val();
+            if(left==="") {return;}
+            var arr = left.split(/[\r\n]/g);
+            for(i = 0; i < arr.length; i++){
+                arr[i] = "\""+ arr[i]+ "\"\r\n";
+            }
+            $("#left").val(arr.join(''))
+        });
+
+        $("#empty").click(function(){
+            var left = $("#left").val();
+            var arr = left.split(/[\r\n]/g);
+            var arr2=new Array();
+            for(i = 0; i < arr.length; i++){
+                if(arr[i].trim().length!=0){
+                      arr2.push(arr[i]);
+                }
+            }
+            $("#left").val(arr2.join('\r\n'))
+        });
+
+        $("#unique").click(function(){
+            var left = $("#left").val();
+            var arr = left.split(/[\r\n]/g);
+            for(var i=0; i<arr.length; i++){
+                for(var j=i+1; j<arr.length; j++){
+                    if(arr[i]==arr[j]){
+                        arr.splice(j,1);
+                        j--;
+                    }
+                }
+            }
+            $("#left").val(arr.join('\r\n'))
+        });
+
+        $("#sort").click(function(){
+            var left = $("#left").val();
+            var arr = left.split(/[\r\n]/g);
+            arr.sort(sortNumber);
+            $("#left").val(arr.join('\r\n'))
+        });
+
+        function sortNumber(a,b) {
+            return a - b
+        }
+
+</script>
+<script src="/v3/bootstrap.min.js"></script>
+</body>
+
+</html>

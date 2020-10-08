@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>少儿识字</title>
+    <meta name="description" content="少儿识字" />
+    <meta property="og:title" content="少儿识字" />
+    <meta property="og:description" content="少儿识字" />
+    <meta property="og:image" content="http://luangeng.space" />
+    <meta property="og:site_name" content="http://luangeng.space/">
+    <link href="/v4/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F8F8F8;
+        }
+
+        .zi {
+            width: 40px;
+            max-width: 40px;
+            text-align: center;
+            min-width: 40px;
+            display: inline-block;
+            list-style-type: none;
+            margin: 0 1px;
+            height: 80px;
+            min-height: 80px;
+            line-height: 39px;
+            background-image: url(/shizi/pybg.png);
+        }
+
+        .pin {
+            font-size: 15px;
+            color: #9B8C35;
+            font-family: 微软雅黑;
+        }
+
+        .han {
+            font-size: 25px;
+            color: #9B8C35;
+            font-family: 微软雅黑;
+        }
+
+        .center {
+            width: 100%;
+            text-align: center;
+        }
+
+        .show {
+            border: 1px solid #CCC;
+            width: 302px;
+            height: 302px;
+            margin: 5px;
+            flex-shrink: 0;
+            background-image: url(/shizi/bb.svg);
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="nav-header">
+        <div class="container">
+            <nav class="nav">
+                <a class="nav-item active" href="/upload" id="nav1">逗号分隔</a>
+            </nav>
+        </div>
+    </div> -->
+
+    <div class="container-fluid mainpage">
+        <div id="poem">
+            <div id="title" class="center"></div>
+            <div id="author" class="center"></div>
+            <div id="lines" class="center"></div>
+        </div>
+        <div class="center" id="showdiv">
+            <div class="show" id="show"> </div>
+            <button type="button" class="btn btn-warning btn-block" onclick="quiz()">测试</button>
+            <button type="button" class="btn btn-danger btn-block" onclick="closeShow()">关闭</button>
+        </div>
+        <div class="center" id="quizdiv">
+            <div class="show" id="quiz"> </div>
+            <button type="button" class="btn btn-warning btn-block" onclick="resetQuiz()">重置</button>
+            <button type="button" class="btn btn-danger btn-block" onclick="closeQuiz()">关闭</button>
+        </div>
+        <div class="push"></div>
+    </div>
+
+    <script src="https://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<!--    <script src="/v4/popper.min.js"></script>-->
+<!--    <script src="/v4/bootstrap.min.js"></script>-->
+    <!--    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>  for ie-->
+    <script src="/shizi/hanzi-writer2.2.min.js"></script>
+    <script>
+        var zi;
+        var writer;
+        var writer2;
+        $.getJSON("/shizi/1.json", function (charData) {
+            for (var i = 0; i < charData.title.length; i++) {
+                $("#title").append(zi(charData.title[i]));
+            }
+            for (var i = 0; i < charData.author.length; i++) {
+                $("#author").append(zi(charData.author[i]));
+            }
+            for (var i = 0; i < charData.line.length; i++) {
+                for (var j = 0; j < charData.line[i].length; j++) {
+                    $("#lines").append(zi(charData.line[i][j]));
+                }
+                $("#lines").append('<br>');
+            }
+
+        });
+
+        function zi(obj) {
+            return '<div class="zi"><span class="pin">' + obj.ping +
+                '</span><br><span class="han" onclick="show(this)">' +
+                obj.zi +
+                '</span></div>';
+        }
+
+        function show(t) {
+            zi = t.innerText;
+            $("#show").html("");
+            $("#showdiv").show();
+            writer = HanziWriter.create('show', zi, {
+                width: 300,
+                height: 300,
+                padding: 1,
+                strokeAnimationSpeed: 1,
+                delayBetweenStrokes: 200,
+                showOutline: true,
+                delayBetweenLoops: 1500
+            });
+            writer.loopCharacterAnimation();
+        }
+
+        function closeShow() {
+            $("#show").html("");
+            $("#showdiv").hide();
+        }
+
+        function quiz() {
+            $("#quiz").html("");
+            $("#quizdiv").show();
+            writer2 = HanziWriter.create('quiz', zi, {
+                width: 300,
+                height: 300,
+                showCharacter: false,
+                showOutline: true,
+                padding: 5
+            });
+            writer2.quiz();
+        }
+
+        function closeQuiz() {
+            $("#quiz").html("");
+            $("#quizdiv").hide();
+        }
+
+        function resetQuiz() {
+            writer2.quiz();
+        }
+    </script>
+</body>
+
+</html>

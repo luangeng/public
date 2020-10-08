@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>逗号分隔</title>
+    <meta name="description" content="来满足您所有的逗号分隔和在线定界符需求！ 从列数据转换为定界并返回！" />
+    <meta property="og:title" content="免费在线逗号分隔工具" />
+    <meta property="og:description" content="免费在线逗号分隔工具" />
+    <meta property="og:image" content="http://delim.co/img/delim.jpg" />
+    <meta property="og:site_name" content="http://luangeng.space/">
+    <link href="/v4/bootstrap.min.css" rel="stylesheet">
+    <link href="/v4/comma.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- <div class="nav-header">
+        <div class="container">
+            <nav class="nav">
+                <a class="nav-item active" href="/upload" id="nav1">逗号分隔</a>
+            </nav>
+        </div>
+    </div> -->
+
+    <div class="container-fluid mainpage">
+        <div class="alert alert-success" role="alert">
+            <span>免费的逗号分隔工具
+                您是否经常需要获取电子表格数据并将其转换为以逗号分隔的列表？
+                它是用于获取邮政编码列表或名称以进行SQL查询，还是用于从CSV中获取数据并能够粘贴到数组中。 在delim.co，我们使这变得容易一些。
+                在左侧输入您的非定界数据，单击按钮，然后在右侧输入动臂分隔数据。 如果默认值不是您所需要的，则下面是特殊配置！</span>
+        </div>
+
+        <div class="row">
+            <div class="col-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">列<br />数<br />据</span>
+                    </div>
+                    <textarea id="left" class="form-control" rows="21" placeholder="列数据"></textarea>
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-warning dropdown-toggle btn-block" type="button" id="dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=",">
+                            , (逗号)
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdown">
+                            <button class="dropdown-item" type="button" value=",">, (逗号)</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" value=";">; (分号)</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" value="|">| (竖线)</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" value=" "> (空格)</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" value="\r\n">(换行)</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" type="button" value="zi">自定义</button>
+                        </div>
+                    </div>
+
+                    <div class="marginb">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">自定义</span>
+                            </div>
+                            <input id="ziinput" type="text" class="form-control" placeholder="" aria-label=""
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <div class="marginb">
+                        <button id="toright" type="button" class="btn btn-outline-info btn-block">-&gt;</button>
+                    </div>
+                    <div class="marginb">
+                        <button id="toleft" type="button" class="btn btn-outline-info btn-block">&lt;-</button>
+                    </div>
+                    <div class="marginb">
+                        <button id="clear" type="button" class="btn btn-outline-danger btn-block">
+                            清空
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">分<br />隔<br />数<br />据</span>
+                    </div>
+                    <textarea id="right" class="form-control" rows="21" placeholder="分隔数据"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="push"></div>
+
+    </div>
+
+    <!-- <footer class="pagefooter">
+        <div align="center">
+            视频版权归上传者所有
+        </div>
+    </footer> -->
+
+    <script src="/v4/jquery-3.3.1.slim.min.js"></script>
+    <script src="/v4/popper.min.js"></script>
+    <script src="/v4/bootstrap.min.js"></script>
+    <script>
+        $(function () {});
+
+        $(".dropdown-item").click(function (e) {
+            $("#dropdown").text(e.target.textContent);
+            var p = e.target.value;
+            if (p === "zi") {
+                p = $("#ziinput").val();
+            }
+            $("#dropdown").val(p);
+        });
+        $("#toright").click(function () {
+            var str = $("#left").val();
+            var p = $("#dropdown").val();
+            if (str.length == 0 || p.length == 0) {
+                return;
+            }
+            var str2 = str.replace(/[\r\n]/g, p);
+            $("#right").val(str2);
+        });
+        $("#toleft").click(function () {
+            var str = $("#right").val();
+            var p = $("#dropdown").val();
+            if (str.length == 0 || p.length == 0) {
+                return;
+            }
+            var str2 = str.replace(eval("/[" + p + "]/gi"), "\r\n");
+            $("#left").val(str2);
+        });
+
+        $("#clear").click(function () {
+            $("#left").val("");
+            $("#right").val("");
+        });
+    </script>
+</body>
+
+</html>
