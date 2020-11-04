@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>About on 计算机与软件技术公开课</title>
-    <link>https://wawazha.cn/categories/About/</link>
+    <link>https://wawazhua.cn/categories/About/</link>
     <description>Recent content in About on 计算机与软件技术公开课</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Sun, 10 Oct 2010 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wawazha.cn/categories/About/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wawazhua.cn/categories/About/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>关于</title>
-      <link>https://wawazha.cn/about/</link>
+      <link>https://wawazhua.cn/about/</link>
       <pubDate>Sun, 10 Oct 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/about/</guid>
+      <guid>https://wawazhua.cn/about/</guid>
       <description>本站致力于致力于学习、提升技术能力，帮您取得理想技术岗位。 本站提供了基础编程技术教程,包括了HTML、CSS、Javascript、Java</description>
     </item>
     

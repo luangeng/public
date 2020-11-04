@@ -2,211 +2,211 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 计算机与软件技术公开课</title>
-    <link>https://wawazha.cn/tags/</link>
+    <link>https://wawazhua.cn/tags/</link>
     <description>Recent content in Tags on 计算机与软件技术公开课</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wawazha.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wawazhua.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>elasticsearch</title>
-      <link>https://wawazha.cn/tags/elasticsearch/</link>
+      <link>https://wawazhua.cn/tags/elasticsearch/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/elasticsearch/</guid>
+      <guid>https://wawazhua.cn/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spring</title>
-      <link>https://wawazha.cn/tags/spring/</link>
+      <link>https://wawazhua.cn/tags/spring/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/spring/</guid>
+      <guid>https://wawazhua.cn/tags/spring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springboot</title>
-      <link>https://wawazha.cn/tags/springboot/</link>
+      <link>https://wawazhua.cn/tags/springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/springboot/</guid>
+      <guid>https://wawazhua.cn/tags/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>oauth2</title>
-      <link>https://wawazha.cn/tags/oauth2/</link>
+      <link>https://wawazhua.cn/tags/oauth2/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/oauth2/</guid>
+      <guid>https://wawazhua.cn/tags/oauth2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go</title>
-      <link>https://wawazha.cn/tags/Go/</link>
+      <link>https://wawazhua.cn/tags/Go/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/Go/</guid>
+      <guid>https://wawazhua.cn/tags/Go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ks8</title>
-      <link>https://wawazha.cn/tags/ks8/</link>
+      <link>https://wawazhua.cn/tags/ks8/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/ks8/</guid>
+      <guid>https://wawazhua.cn/tags/ks8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redis</title>
-      <link>https://wawazha.cn/tags/redis/</link>
+      <link>https://wawazhua.cn/tags/redis/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/redis/</guid>
+      <guid>https://wawazhua.cn/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>netty</title>
-      <link>https://wawazha.cn/tags/netty/</link>
+      <link>https://wawazhua.cn/tags/netty/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/netty/</guid>
+      <guid>https://wawazhua.cn/tags/netty/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jQuery</title>
-      <link>https://wawazha.cn/tags/jQuery/</link>
+      <link>https://wawazhua.cn/tags/jQuery/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/jQuery/</guid>
+      <guid>https://wawazhua.cn/tags/jQuery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springcloud</title>
-      <link>https://wawazha.cn/tags/springcloud/</link>
+      <link>https://wawazhua.cn/tags/springcloud/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/springcloud/</guid>
+      <guid>https://wawazhua.cn/tags/springcloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html</title>
-      <link>https://wawazha.cn/tags/html/</link>
+      <link>https://wawazhua.cn/tags/html/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/html/</guid>
+      <guid>https://wawazhua.cn/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RocketMQ</title>
-      <link>https://wawazha.cn/tags/RocketMQ/</link>
+      <link>https://wawazhua.cn/tags/RocketMQ/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/RocketMQ/</guid>
+      <guid>https://wawazhua.cn/tags/RocketMQ/</guid>
       <description></description>
     </item>
     
     <item>
       <title>zookeeper</title>
-      <link>https://wawazha.cn/tags/zookeeper/</link>
+      <link>https://wawazhua.cn/tags/zookeeper/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/zookeeper/</guid>
+      <guid>https://wawazhua.cn/tags/zookeeper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://wawazha.cn/tags/linux/</link>
+      <link>https://wawazhua.cn/tags/linux/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/linux/</guid>
+      <guid>https://wawazhua.cn/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql</title>
-      <link>https://wawazha.cn/tags/mysql/</link>
+      <link>https://wawazhua.cn/tags/mysql/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/mysql/</guid>
+      <guid>https://wawazhua.cn/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tool</title>
-      <link>https://wawazha.cn/tags/tool/</link>
+      <link>https://wawazhua.cn/tags/tool/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/tool/</guid>
+      <guid>https://wawazhua.cn/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>maven</title>
-      <link>https://wawazha.cn/tags/maven/</link>
+      <link>https://wawazhua.cn/tags/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/maven/</guid>
+      <guid>https://wawazhua.cn/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>英语</title>
-      <link>https://wawazha.cn/tags/%E8%8B%B1%E8%AF%AD/</link>
+      <link>https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/%E8%8B%B1%E8%AF%AD/</guid>
+      <guid>https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD/</guid>
       <description></description>
     </item>
     
     <item>
       <title>opencv</title>
-      <link>https://wawazha.cn/tags/opencv/</link>
+      <link>https://wawazhua.cn/tags/opencv/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/opencv/</guid>
+      <guid>https://wawazhua.cn/tags/opencv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>https://wawazha.cn/tags/Java/</link>
+      <link>https://wawazhua.cn/tags/Java/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/Java/</guid>
+      <guid>https://wawazhua.cn/tags/Java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>算法</title>
-      <link>https://wawazha.cn/tags/%E7%AE%97%E6%B3%95/</link>
+      <link>https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://wawazha.cn/tags/git/</link>
+      <link>https://wawazhua.cn/tags/git/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazha.cn/tags/git/</guid>
+      <guid>https://wawazhua.cn/tags/git/</guid>
       <description></description>
     </item>
     
