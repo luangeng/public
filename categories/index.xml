@@ -2,85 +2,85 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 计算机与软件技术公开课</title>
-    <link>https://luangeng.space/categories/</link>
+    <link>https://wawazha.cn/categories/</link>
     <description>Recent content in Categories on 计算机与软件技术公开课</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://luangeng.space/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wawazha.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java</title>
-      <link>https://luangeng.space/categories/Java/</link>
+      <link>https://wawazha.cn/categories/Java/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/Java/</guid>
+      <guid>https://wawazha.cn/categories/Java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go</title>
-      <link>https://luangeng.space/categories/Go/</link>
+      <link>https://wawazha.cn/categories/Go/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/Go/</guid>
+      <guid>https://wawazha.cn/categories/Go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>云计算</title>
-      <link>https://luangeng.space/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/</link>
+      <link>https://wawazha.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/</guid>
+      <guid>https://wawazha.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/</guid>
       <description></description>
     </item>
     
     <item>
       <title>数据库</title>
-      <link>https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <link>https://wawazha.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <guid>https://wawazha.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description></description>
     </item>
     
     <item>
       <title>学习笔记</title>
-      <link>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <link>https://wawazha.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://wawazha.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>英语</title>
-      <link>https://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/</link>
+      <link>https://wawazha.cn/categories/%E8%8B%B1%E8%AF%AD/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/%E8%8B%B1%E8%AF%AD/</guid>
+      <guid>https://wawazha.cn/categories/%E8%8B%B1%E8%AF%AD/</guid>
       <description></description>
     </item>
     
     <item>
       <title>算法</title>
-      <link>https://luangeng.space/categories/%E7%AE%97%E6%B3%95/</link>
+      <link>https://wawazha.cn/categories/%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://wawazha.cn/categories/%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://luangeng.space/categories/About/</link>
+      <link>https://wawazha.cn/categories/About/</link>
       <pubDate>Sun, 10 Oct 2010 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/categories/About/</guid>
+      <guid>https://wawazha.cn/categories/About/</guid>
       <description></description>
     </item>
     
