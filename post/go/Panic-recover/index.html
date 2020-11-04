@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://wawazhua.cn">
+  <title>Go Panic和recover - 计算机与软件技术公开课</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go Panic和recover - 计算机与软件技术公开课">
+  <meta name="description" content="Go Panic和recover">
+  <meta itemprop="name" content="Go Panic和recover - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go Panic和recover">
+  <meta property="og:title" content="Go Panic和recover - 计算机与软件技术公开课" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://wawazhua.cn/post/go/Panic-recover/" />
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description" content="Go Panic和recover">
+
+  <link rel="canonical" href="https://wawazhua.cn/post/go/Panic-recover/">
+  <link rel='shortlink' href="https://wawazhua.cn/post/go/Panic-recover/">
+  <link rel="shortcut icon" href="img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/code/rainbow.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+    <div id="wrapper">
+        <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://wawazhua.cn" rel="home">
+              
+              计算机与软件技术公开课
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+        <div class="container" id="page">
+            <div class="container-inner">
+                <div class="main">
+                    <div class="main-inner group">
+                        <section class="content">
+                            <div class="page-title pad group">
+                                <ul class="meta-single group">
+                                    
+                                    <li class="category">
+                                        <span>Go</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="pad group">
+
+                                <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                    <div class="post-inner group">
+
+                                        <h1 class="post-title">Go Panic和recover</h1>
+
+                                        <p class="post-byline">
+                                            Posted @ 2018-09-09 · 1853 Words
+                                            
+                                            · Tags: Go
+                                            
+                                            
+                                            
+                                            
+                                            · Hits:
+                                            <span class="leancloud_visitors" data-flag-title="Go Panic和recover">
+                                                <span class="leancloud-visitors-count"></span>
+                                            </span>
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <div class="entry">
+                                            <div class="entry-inner">
+                                                
+                                                <p>本章假定你已经掌握了defer。</p>
+<p>在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。</p>
+<p>panic等同于引发或引发和恢复填充捕捉的作用。</p>
+<p>但是，尽管其他语言经常使用异常作为在呼叫链上传播错误的方式，但强烈建议不要在Go中使用panic。</p>
+<p>仅应在真正特别的情况下使用。</p>
+<p>对于普通的错误处理，请阅读有关错误处理的章节。</p>
+<h2 id="panic">panic</h2>
+<p>panic用来停止正常执行流程并退出当前函数。</p>
+<p>然后，在将控制权传递到堆栈上的下一个函数之前，将执行所有defer。</p>
+<p>堆栈上的每个函数都将退出并运行defer，直到使用defer的restore()处理panic，或者直到panic到达main()并终止程序为止。</p>
+<p>如果发生这种情况，提供给panic的参数和堆栈跟踪信息将输出到stderr。</p>
+<pre><code>func foo() {
+    defer fmt.Println(&quot;Exiting foo&quot;)
+    panic(&quot;bar&quot;)
+}
+
+func main() {
+    defer fmt.Println(&quot;Exiting main&quot;)
+    foo()
+}
+</code></pre><blockquote>
+<p>Exiting foo<br>
+Exiting main<br>
+panic: bar<br>
+goroutine 1 [running]:<br>
+main.foo()<br>
+/tmp/src315791376/main.go:10 +0xb9<br>
+main.main()<br>
+/tmp/src315791376/main.go:15 +0xa2<br>
+exit status 2</p>
+</blockquote>
+<p>panic可以接受任何类型的参数。</p>
+<h2 id="恢复">恢复</h2>
+<p>recover用来从panic中恢复。</p>
+<p>由于正常的执行流程已暂停，因此必须在defer语句中尝试进行恢复。</p>
+<p>恢复语句必须直接出现在defer函数中。</p>
+<p>由defer函数调用的函数中的恢复语句将不被接受。</p>
+<p>如果程序当前处于panic状态，则recover()调用将返回提供给初始紧急状态的参数。</p>
+<p>如果该程序当前未出现紧急情况，则recover()将返回nil。</p>
+<pre><code>func foo() {
+    panic(&quot;bar&quot;)
+}
+
+func bar() {
+    defer func() {
+        if msg := recover(); msg != nil {
+            fmt.Printf(&quot;Recovered with message %s\n&quot;, msg)
+        }
+    }()
+    foo()
+    fmt.Println(&quot;Never gets executed&quot;)
+}
+
+func main() {
+    fmt.Println(&quot;Entering main&quot;)
+    bar()
+    fmt.Println(&quot;Exiting main the normal way&quot;)
+}
+</code></pre><blockquote>
+<p>Entering main
+Recovered with message bar
+Exiting main the normal way</p>
+</blockquote>
+<h2 id="从panic中恢复">从panic中恢复</h2>
+<p>一个常见的错误是声明一个slice并开始使用索引访问数据而不进行初始化，这会引发“index out of range”的panic。</p>
+<p>以下代码说明了如何在不退出程序的情况下从panic中恢复，这是处理panic的正确方法。</p>
+<p>在大多数情况下，以这种方式返回错误而不是紧急退出程序仅对开发或测试有用。</p>
+<pre><code>type Foo struct {
+    Is []int
+}
+
+func (fp *Foo) Panic() (err error) {
+    defer PanicRecovery(&amp;err)
+    fp.Is[0] = 5
+    return nil
+}
+
+func PanicRecovery(err *error) {
+
+    if r := recover(); r != nil {
+        if _, ok := r.(runtime.Error); ok {
+            //fmt.Println(&quot;Panicing&quot;)
+            //panic(r)
+            *err = r.(error)
+        } else {
+            *err = r.(error)
+        }
+    }
+}
+
+func main() {
+    fp := &amp;Foo{}
+    if err := fp.Panic(); err != nil {
+        fmt.Printf(&quot;Error: %v\n&quot;, err)
+    }
+    fmt.Println(&quot;ok&quot;)
+}
+</code></pre><blockquote>
+<p>Error: runtime error: index out of range [0] with length 0<br>
+ok</p>
+</blockquote>
+<p>The use of a separate function (rather than closure) allows re-use of the same function in other functions prone to panic.</p>
+<p>使用单独的功能(而不是关闭功能)允许在其他容易出现恐慌的功能中重复使用同一功能。</p>
+<h2 id="panic用例">panic用例</h2>
+<p>在Go中使用panic应该非常少见，但确实有有效的用例。</p>
+<p>因API使用不当而导致崩溃,这类似于在其他语言中使用assert。</p>
+<p>假设你正在编写一个httpGet函数来下载URL的内容。</p>
+<p>URL为空字符串应该怎么办？ 调用侧显然是错误的。</p>
+<p>可以返回错误，但也可以因panic而崩溃:</p>
+<pre><code>func httpGet(uri string) ([]byte, error) {
+    if uri == &quot;&quot; {
+        panic(&quot;uri cannot be empty&quot;)
+    }
+    // ... download the url
+}
+</code></pre><p>有时会更好，因为可以忽略错误，或者程序可能认为这是有效的错误情况，例如网站关闭。</p>
+<p>强制崩溃会增加开发人员查看问题并解决问题的机会。</p>
+<p>如果你经常这样做，此辅助功能将非常有用:</p>
+<pre><code>func panicIf(cond bool, args ...interface{}) {
+    if !cond {
+        return
+    }
+    if len(args) == 0 {
+        panic(errors.New(&quot;cond failed&quot;))
+    }
+    format := args[0].(string)
+    args = args[1:]
+    err := fmt.Errorf(format, args)
+    panic(err)
+}
+</code></pre><p>现在可以将其写成一行:</p>
+<pre><code>func httpGet(uri string) ([]byte, error) {
+    panicIf(uri == &quot;&quot;, &quot;uri cannot be empty&quot;)
+    // ... download the url
+}
+</code></pre><p>函数panicIf是灵活的, 也可以这样调用:</p>
+<ul>
+<li>panicIf(n &lt; 0) and it&rsquo;ll panic with generic error message</li>
+<li>panicIf(n &lt; 0, &ldquo;n must be &gt;= 0&rdquo;) to provide more descriptive message</li>
+<li>panicIf(n &lt; 0, &ldquo;n is %d and must be &gt;= 0&rdquo;, n) to provide even more descriptive message</li>
+</ul>
+<p>Simplifying flow control in isolated piece of code
+Sometimes it’s easier to propagate an error by panicking and recovering rather than returning errors.</p>
+<p>This might be true e.g. in a parser.</p>
+<p>When you use that technique, you should observe one rule: panic should not cross public API boundary.</p>
+<p>In other words, if you implement a parser library, you should always recover all panics your code creates. Panic used for easier flow control should never reach the caller of your package API.</p>
+<p>Protect a program from a crash in a goroutine
+Unhandled panic in a goroutine crashes a program.</p>
+<p>This is the right behavior most of the time (panic indicates a serious bug and you should fix bugs, not cover them up).</p>
+<p>In rare occasions we don&rsquo;t want a single goroutine to bring down the whole program so we can wrap the code with a function that does recover at the top.</p>
+<p>This technique is used in Go’s http server package which handles each connection in a separate goroutine. In a web server we don&rsquo;t want a rare bug in request handling code to crash the program.</p>
+<p>在孤立的代码段中简化流控制
+有时候，通过恐慌和恢复而不是返回错误，更容易传播错误。</p>
+<p>这可能是正确的，例如在解析器中。</p>
+<p>使用该技术时，应遵守一条规则:恐慌症不应越过公共API边界。</p>
+<p>换句话说，如果实现解析器库，则应始终恢复代码创建的所有恐慌。用于更轻松地进行流控制的紧急情况永远不会到达包API的调用者。</p>
+<p>保护程序免受goroutine崩溃的影响
+goroutine中未处理的恐慌导致程序崩溃。</p>
+<p>在大多数情况下，这是正确的行为(恐慌表示严重的错误，应该修复错误，而不是掩盖错误)。</p>
+<p>在极少数情况下，我们不希望使用单个goroutine破坏整个程序，因此我们可以使用在顶部恢复的函数包装代码。</p>
+<p>Go的http服务器程序包中使用了此技术，该程序包在单独的goroutine中处理每个连接。在Web服务器中，我们不希望请求处理代码中出现罕见的bug会使程序崩溃。</p>
+
+                                                
+                                            </div>
+
+                                            <div style="margin-top:40px">
+                                                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                                                    <img src="img/tenlong.jpg">
+                                                </a>
+                                            </div>
+
+                                            <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>本文出处:<a target="_blank" href="https://wawazhua.cn/post/go/Panic-recover/">https://wawazhua.cn/post/go/Panic-recover/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生</li>
+        </ul>
+    </div>
+</div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </article>
+                                
+                                <div class="clear"></div>
+                                <ul class="post-nav group">
+                                    <li class="next">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/Defer/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>Go Defer</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="previous">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/Concurrency/" rel="prev">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <strong>Previous</strong>
+                                            <span>Go 并发</span>
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                                <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/go/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/go/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/go/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                                <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                                
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Images/" class="leancloud-count">Go 图像
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            </div>
+                        </section>
+                        <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                        target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                    <img src="img/tennew.jpg" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/go/CSV/">Go CSV</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Context/">Go Context</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Defer/">Go Defer</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Client/">Go HTTP Client</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Server/">Go HTTP Server</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/httpMiddleware/">Go HTTP server middleware</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/commav3.html" target="_blank">列数据整理</a>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://wawazhua.cn/tags/Go'
+                style="font-size:17px;margin:3px; padding:2px"><code>Go(55)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/Java'
+                style="font-size:17px;margin:3px; padding:2px"><code>Java(22)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/RocketMQ'
+                style="font-size:17px;margin:3px; padding:2px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/elasticsearch'
+                style="font-size:17px;margin:3px; padding:2px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/git'
+                style="font-size:17px;margin:3px; padding:2px"><code>git(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/html'
+                style="font-size:17px;margin:3px; padding:2px"><code>html(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/jQuery'
+                style="font-size:17px;margin:3px; padding:2px"><code>jQuery(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/ks8'
+                style="font-size:17px;margin:3px; padding:2px"><code>ks8(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/linux'
+                style="font-size:17px;margin:3px; padding:2px"><code>linux(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/maven'
+                style="font-size:17px;margin:3px; padding:2px"><code>maven(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/mysql'
+                style="font-size:17px;margin:3px; padding:2px"><code>mysql(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/netty'
+                style="font-size:17px;margin:3px; padding:2px"><code>netty(8)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/oauth2'
+                style="font-size:17px;margin:3px; padding:2px"><code>oauth2(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/opencv'
+                style="font-size:17px;margin:3px; padding:2px"><code>opencv(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/redis'
+                style="font-size:17px;margin:3px; padding:2px"><code>redis(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/spring'
+                style="font-size:17px;margin:3px; padding:2px"><code>spring(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springboot'
+                style="font-size:17px;margin:3px; padding:2px"><code>springboot(6)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springcloud'
+                style="font-size:17px;margin:3px; padding:2px"><code>springcloud(5)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/tool'
+                style="font-size:17px;margin:3px; padding:2px"><code>tool(4)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/zookeeper'
+                style="font-size:17px;margin:3px; padding:2px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95'
+                style="font-size:17px;margin:3px; padding:2px"><code>算法(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD'
+                style="font-size:17px;margin:3px; padding:2px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px" />
+                <p> </p>
+            </div>
+        </div>
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/xwMs86TX">
+                    <img src="img/11.jpg" alt="weixin" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages </a>
+            · Powered by <a href="https://leancloud.cn/" style="font-weight: bold" target="_blank">LeanCloud</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 </span>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script>
+    init();
+</script>
+</body>
+
+</html>

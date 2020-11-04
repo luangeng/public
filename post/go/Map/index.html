@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://wawazhua.cn">
+  <title>Go map类型 - 计算机与软件技术公开课</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go map类型 - 计算机与软件技术公开课">
+  <meta name="description" content="Go map类型">
+  <meta itemprop="name" content="Go map类型 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go map类型">
+  <meta property="og:title" content="Go map类型 - 计算机与软件技术公开课" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://wawazhua.cn/post/go/Map/" />
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description" content="Go map类型">
+
+  <link rel="canonical" href="https://wawazhua.cn/post/go/Map/">
+  <link rel='shortlink' href="https://wawazhua.cn/post/go/Map/">
+  <link rel="shortcut icon" href="img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/code/rainbow.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+    <div id="wrapper">
+        <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://wawazhua.cn" rel="home">
+              
+              计算机与软件技术公开课
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+        <div class="container" id="page">
+            <div class="container-inner">
+                <div class="main">
+                    <div class="main-inner group">
+                        <section class="content">
+                            <div class="page-title pad group">
+                                <ul class="meta-single group">
+                                    
+                                    <li class="category">
+                                        <span>Go</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="pad group">
+
+                                <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                    <div class="post-inner group">
+
+                                        <h1 class="post-title">Go map类型</h1>
+
+                                        <p class="post-byline">
+                                            Posted @ 2018-09-09 · 2622 Words
+                                            
+                                            · Tags: Go
+                                            
+                                            
+                                            
+                                            
+                                            · Hits:
+                                            <span class="leancloud_visitors" data-flag-title="Go map类型">
+                                                <span class="leancloud-visitors-count"></span>
+                                            </span>
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <div class="entry">
+                                            <div class="entry-inner">
+                                                
+                                                <p>map是无序的key-value对的集合.</p>
+<h2 id="map的声明和初始化">map的声明和初始化</h2>
+<p>使用map关键字声明map, 同时指明key和value的类型:</p>
+<pre><code>// Keys are ints, values are ints.
+var m1 map[int]int // 初始值为nil
+
+// Keys are strings, values are ints.
+var m2 map[string]int // 初始值为nil
+</code></pre><p>map是引用类型，一旦声明其零值为nil。 写入nil map将导致panic，读取nil map将始终返回其零值。</p>
+<p>使用make方法初始化map:</p>
+<pre><code>m := make(map[string]int)
+</code></pre><p>也可以为map指定初始容量:</p>
+<pre><code>m := make(map[string]int, 30)
+</code></pre><p>也可以使用{}初始化map的值</p>
+<pre><code>var m map[string]int = map[string]int{&quot;Foo&quot;: 20, &quot;Bar&quot;: 30}
+
+fmt.Println(m[&quot;Foo&quot;]) // outputs 20
+</code></pre><p>以下所有语句导致该变量绑定到相同的值。</p>
+<pre><code>var m map[string]int
+m = map[string]int{}
+
+// Declare and initialize via literal value.
+var m = map[string]int{}
+
+// Declare via short variable declaration and initialize with a literal value.
+m := map[string]int{}
+</code></pre><p>key类型可以是任何可比较的类型。值得注意的是，这不包括函数，映射和切片。 值类型可以是任何类型，包括自定义类型或接口{}。</p>
+<pre><code>type Person struct {
+    FirstName string
+    LastName  string
+}
+
+// Declare via short variable declaration and initialize with make.
+m := make(map[string]Person)
+
+// Declare, initializing to zero value, then assign a literal value.
+var m map[string]Person
+m = map[string]Person{}
+
+// Declare and initialize via literal value.
+var m = map[string]Person{}
+
+// Declare via short variable declaration and initialize with a literal value.
+m := map[string]Person{}
+</code></pre><h2 id="创建map">创建map</h2>
+<p>可以使用复合语法在单个语句中声明和初始化map。</p>
+<p>使用自动类型短变量声明:</p>
+<pre><code>mapIntInt := map[int]int{10: 100, 20: 100, 30: 1000}
+mapIntString := map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
+mapStringInt := map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
+mapStringString := map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
+</code></pre><p>或者</p>
+<pre><code>var mapIntInt = map[int]int{10: 100, 20: 100, 30: 1000}
+var mapIntString = map[int]string{10: &quot;foo&quot;, 20: &quot;bar&quot;, 30: &quot;baz&quot;}
+var mapStringInt = map[string]int{&quot;foo&quot;: 10, &quot;bar&quot;: 20, &quot;baz&quot;: 30}
+var mapStringString = map[string]string{&quot;foo&quot;: &quot;one&quot;, &quot;bar&quot;: &quot;two&quot;, &quot;baz&quot;: &quot;three&quot;}
+</code></pre><p>还可以在map中包含自己的结构,即使用自定义类型作为值:</p>
+<pre><code>// Custom struct types
+type Person struct {
+  FirstName, LastName string
+}
+
+var mapStringPerson = map[string]Person{
+  &quot;john&quot;: Person{&quot;John&quot;, &quot;Doe&quot;},
+  &quot;jane&quot;: Person{&quot;Jane&quot;, &quot;Doe&quot;}}
+mapStringPerson := map[string]Person{
+  &quot;john&quot;: Person{&quot;John&quot;, &quot;Doe&quot;},
+  &quot;jane&quot;: Person{&quot;Jane&quot;, &quot;Doe&quot;}}
+</code></pre><p>struct也可以作为map的key:</p>
+<pre><code>type RouteHit struct {
+    Domain string
+    Route  string
+}
+
+var hitMap = map[RouteHit]int{
+    RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
+    RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
+hitMap := map[RouteHit]int{
+    RouteHit{&quot;example.com&quot;,&quot;/home&quot;}: 1,
+    RouteHit{&quot;example.com&quot;,&quot;/help&quot;}: 2}
+</code></pre><p>只需在{}中不输入任何值即可创建一个空的map。</p>
+<pre><code>mapIntInt := map[int]int{}
+mapIntString := map[int]string{}
+mapStringInt := map[string]int{}
+mapStringString := map[string]string{}
+mapStringPerson := map[string]Person{}
+</code></pre><p>可以直接创建和使用map，而无需将其分配给变量。 但是，你必须同时指定声明和内容。</p>
+<pre><code>// map最为 fmt.Println()的参数
+fmt.Println(map[string]string{
+  &quot;FirstName&quot;: &quot;John&quot;,
+  &quot;LastName&quot;: &quot;Doe&quot;,
+  &quot;Age&quot;: &quot;30&quot;})
+
+// 等效于
+data := map[string]string{
+    &quot;FirstName&quot;: &quot;John&quot;,
+    &quot;LastName&quot;: &quot;Doe&quot;,
+    &quot;Age&quot;: &quot;30&quot;}
+fmt.Println(data)
+</code></pre><h2 id="通过key获取value">通过key获取value</h2>
+<p>要获取map中的value,只需要<code>value := mapName[ key ]</code></p>
+<p>如果map中包含这个key, 则会返回对应的value;如果不包含这个key,则会返回value的类型的零值(int的话是0,string的话是&rdquo;&quot;)</p>
+<pre><code>m  := map[string]string{&quot;foo&quot;: &quot;foo_value&quot;, &quot;bar&quot;: &quot;&quot;}
+k  := m[&quot;foo&quot;]  // returns &quot;foo_value&quot; since that is the value stored in the map
+k2 := m[&quot;bar&quot;]  // returns &quot;&quot; since that is the value stored in the map
+k3 := m[&quot;nop&quot;]  // returns &quot;&quot; since the key does not exist, and &quot;&quot; is the string type's zero value
+</code></pre><p>那么要区分零值和不存在的键，可以使用get的第二个返回值(例如<code>value, hasKey:= map [“ key”]</code>)</p>
+<p>第二个值是布尔型</p>
+<ul>
+<li>true 当map中包含这个key</li>
+<li>false map中不包含这个key</li>
+</ul>
+<p>示例:</p>
+<pre><code>value, hasKey = m[key]
+if hasKey {
+    // the map contains the given key, so we can safely use the value
+    // If value is zero-value, it's because the zero-value was pushed to the map
+} else {
+    // The map does not have the given key
+    // the value will be the zero-value of the map's type
+}
+</code></pre><h2 id="获取map的大小-map中元素的数量">获取map的大小 (map中元素的数量)</h2>
+<p>内部函数len返回了map中元素的数量:</p>
+<pre><code>m := map[string]int{}
+size := len(m)
+fmt.Printf(&quot;Size of empty map: %d\n&quot;, size)
+
+m[&quot;foo&quot;] = 1
+size = len(m)
+fmt.Printf(&quot;Size of map: %d\n\n&quot;, size)
+</code></pre><blockquote>
+<p>Size of empty map: 0
+Size of map: 1</p>
+</blockquote>
+<p>nil map的大小是0:</p>
+<pre><code>var m map[string]int
+size := len(m)
+fmt.Printf(&quot;Size of nil map: %d\n\n&quot;, size)
+</code></pre><blockquote>
+<p>Size of nil map: 0</p>
+</blockquote>
+<h2 id="拷贝map">拷贝map</h2>
+<p>在Go中，所有值都通过拷贝传递。</p>
+<p>然而,和slice类似,映射的值仅是对底层数据的引用。当将map分配给另一个变量或传递给另一个函数时，仅复制引用。</p>
+<p>要想拷贝值,需要写下面一段代码:</p>
+<pre><code>src := make(map[string]int)
+src[&quot;one&quot;] = 1
+src[&quot;two&quot;] = 2
+
+dst := make(map[string]int)
+
+for key, value := range src {
+    dst[key] = value
+}
+</code></pre><h2 id="使用range遍历map">使用range遍历map</h2>
+<p>未指定迭代顺序。 故意随机化迭代顺序，以使代码不会错误地依赖于特定顺序。</p>
+<p>同时迭代key和value:</p>
+<pre><code>people := map[string]int{
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
+}
+
+for key, value := range people {
+    fmt.Printf(&quot;key: %s, value: %d\n&quot;, key, value)
+}
+</code></pre><blockquote>
+<p>key: john, value: 30<br>
+key: jane, value: 29<br>
+key: mark, value: 11</p>
+</blockquote>
+<p>仅迭代key</p>
+<pre><code>people := map[string]int{
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
+}
+
+for key := range people {
+    fmt.Printf(&quot;key: %s\n&quot;, key)
+}
+</code></pre><blockquote>
+<p>key: mark<br>
+key: john<br>
+key: jane</p>
+</blockquote>
+<p>仅迭代value</p>
+<pre><code>people := map[string]int{
+    &quot;john&quot;: 30,
+    &quot;jane&quot;: 29,
+    &quot;mark&quot;: 11,
+}
+
+for _, value := range people {
+    fmt.Printf(&quot;value: %d\n&quot;, value)
+}
+</code></pre><blockquote>
+<p>value: 30<br>
+value: 29<br>
+value: 11</p>
+</blockquote>
+<h2 id="从map中删除元素">从map中删除元素</h2>
+<p>使用内部函数delete从map中删除指定key的元素:</p>
+<pre><code>people := map[string]int{&quot;john&quot;: 30, &quot;jane&quot;: 29}
+fmt.Printf(&quot;%v\n&quot;, people)
+
+delete(people, &quot;john&quot;)
+fmt.Printf(&quot;%v\n&quot;, people)
+</code></pre><blockquote>
+<p>map[jane:29 john:30]<br>
+map[jane:29]</p>
+</blockquote>
+<p>如果map 是nil或者map中没有这个key, 则删除操作无效:</p>
+<pre><code>people := map[string]int{&quot;john&quot;: 30, &quot;jane&quot;: 29}
+fmt.Printf(&quot;%v\n&quot;, people)
+
+// deleting a key that doesn't exist is a no-op
+delete(people, &quot;notfound&quot;)
+fmt.Printf(&quot;%v\n&quot;, people)
+
+// deleting a key in nil map is a no-op
+var something map[string]int
+delete(something, &quot;notfound&quot;)
+</code></pre><blockquote>
+<p>map[jane:29 john:30]<br>
+map[jane:29 john:30]</p>
+</blockquote>
+<h2 id="把map作为set使用">把map作为set使用</h2>
+<p>一些语言提供了内置的set类型</p>
+<p>在Go中，最佳实践是使用值类型为struct{}的map，因为值为空struct的map进行了特别优化。</p>
+<p>例如一个string类型的set:</p>
+<pre><code>set := NewStringSet(&quot;hi&quot;, &quot;hello&quot;)
+fmt.Printf(&quot;Original set: %#v\n&quot;, set.Strings())
+
+set.Delete(&quot;hi&quot;)
+fmt.Printf(&quot;After delete: %#v\n&quot;, set.Strings())
+
+set.Add(&quot;hey&quot;)
+fmt.Printf(&quot;After add   : %#v\n&quot;, set.Strings())
+
+printExists(set, &quot;hello&quot;)
+printExists(set, &quot;ola&quot;)
+</code></pre><blockquote>
+<p>Original set: []string{&ldquo;hi&rdquo;, &ldquo;hello&rdquo;}<br>
+After delete: []string{&ldquo;hello&rdquo;}<br>
+After add   : []string{&ldquo;hey&rdquo;, &ldquo;hello&rdquo;}<br>
+&lsquo;hello&rsquo; exists in set<br>
+&lsquo;ola&rsquo; doesn&rsquo;t exist in set</p>
+</blockquote>
+<h2 id="slice作为map的value">slice作为map的value</h2>
+<pre><code>m := make(map[string][]int)
+fmt.Printf(&quot;Non-existing key returns zero value of []int, i.e. nil: %#v\n&quot;, m[&quot;key1&quot;])
+
+m[&quot;key1&quot;] = append(m[&quot;key1&quot;], 8)
+m[&quot;key1&quot;] = append(m[&quot;key1&quot;], 3)
+fmt.Printf(&quot;\nAfter appending to slice: %#v\n&quot;, m[&quot;key1&quot;])
+
+delete(m, &quot;key1&quot;)
+fmt.Printf(&quot;\ndelete() sets back to nil slice: %#v\n&quot;, m[&quot;key1&quot;])
+</code></pre><blockquote>
+<p>Non-existing key returns zero value of []int, i.e. nil: []int(nil)<br>
+After appending to slice: []int{8, 3}<br>
+delete() sets back to nil slice: []int(nil)</p>
+</blockquote>
+<p>注意到在m[&ldquo;key1&rdquo;] = append(m[&ldquo;key1&rdquo;], 8)时我们没有检查m[&ldquo;key1&rdquo;]是否存在. 这是三个规则相互影响的结果:</p>
+<ol>
+<li>m[&ldquo;foo&rdquo;] 如果不存在foo键，则返回零值</li>
+<li>slice的零值是nil</li>
+<li>a = append(nil, 3)语句合法并且创建了一个单元素的slice[]int{3}</li>
+</ol>
+<h2 id="并发访问map">并发访问map</h2>
+<p>Go中的map不是并发安全的</p>
+<p>确保并发安全的一种访问方法是使用sync.Mutex或sync.RWMutex锁定所有映射进行读取和写入。</p>
+<p>例如，一个简单的map包装器，只要通过Get，Set和Add方法完成，即可安全地并发使用:</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;sync&quot;
+)
+
+// ConcurrentMap is a wrapper around map that is safe for concurrent use
+type ConcurrentMap struct {
+    sync.RWMutex
+    m map[string]int
+}
+
+// Get gets a value for a key
+func (r *ConcurrentMap) Get(key string) int {
+    r.RLock()
+    defer r.RUnlock()
+    return r.m[key]
+}
+
+// Set sets a key to a given value
+func (r *ConcurrentMap) Set(key string, val int) {
+    r.Lock()
+    defer r.Unlock()
+    r.m[key] = val
+}
+
+// Add increases the value under a key by n
+func (r *ConcurrentMap) Add(key string, n int) int {
+    r.Lock()
+    defer r.Unlock()
+    r.m[key] += n
+    return r.m[key]
+}
+
+func main() {
+    counter := ConcurrentMap{m: make(map[string]int)}
+
+    n := counter.Add(&quot;some_key&quot;, 2)
+    fmt.Printf(&quot;Final value is: %d\n&quot;, n)
+}
+</code></pre><blockquote>
+<p>Final value is: 2</p>
+</blockquote>
+<p>sync.RWMutex can be faster because it allows multiple readers. On the downside you have to be more careful to ensure you&rsquo;re not writing under RLock. The performance difference with sync.Mutex will be negligible unless there&rsquo;s a high-contention on the lock or the locks are held for a long time.</p>
+<p>sync.RWMutex可以更快，因为它允许多个读取器。 不利的一面是，你必须更加小心以确保不在RLock下书写。 sync.Mutex的性能差异可以忽略不计，除非锁上存在高争用或锁被长时间持有。</p>
+<h2 id="map的零值">map的零值</h2>
+<p>map的零值是nil. 它的长度为0:</p>
+<pre><code>var m map[string]string
+fmt.Printf(&quot;m == nil ? %v\n&quot;, m == nil)
+fmt.Printf(&quot;len(m) = %d\n&quot;, len(m))
+</code></pre><blockquote>
+<p>m == nil ? true<br>
+len(m) = 0</p>
+</blockquote>
+<p>从nil map读取和从空map读取一样。 而写入nil map则会报错。</p>
+<pre><code>var m map[string]string
+
+// 可以从未初始化的map中读
+fmt.Printf(`m[&quot;foo&quot;] = %s`+&quot;\n&quot;, m[&quot;foo&quot;])
+_, ok := m[&quot;foo&quot;]
+fmt.Printf(&quot;ok: %v\n&quot;, ok)
+
+// 不能写入未初始化的map
+m[&quot;foo&quot;] = &quot;bar&quot;
+</code></pre><blockquote>
+<p>m[&ldquo;foo&rdquo;] =<br>
+ok: false<br>
+panic: assignment to entry in nil map</p>
+<p>goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src249866572/main.go:16 +0x1a5<br>
+exit status 2</p>
+</blockquote>
+<h2 id="map使用示例">map使用示例:</h2>
+<pre><code>m := make(map[string]int)
+
+// set the value
+m[&quot;three&quot;] = 3
+m[&quot;four&quot;] = 4
+
+// 获取值并查看值是否存在
+key := &quot;four&quot;
+if value, ok := m[key]; ok {
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+} else {
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+}
+
+key = &quot;five&quot;
+if value, ok := m[key]; ok {
+    fmt.Printf(&quot;Key '%s' exists and maps to %d\n&quot;, key, value)
+} else {
+    fmt.Printf(&quot;Key '%s' doesn't exists\n&quot;, key)
+}
+
+// if value doesn't exist, the result of lookup is zero value. In this case zero value of int is 0
+fmt.Printf(&quot;\nValue for non-existing key: %d\n\n&quot;, m[&quot;not-exists&quot;])
+
+// iterating over keys and values
+fmt.Printf(&quot;All keys and their values:\n&quot;)
+for key, value := range m {
+    fmt.Printf(&quot;%s =&gt; %d\n&quot;, key, value)
+}
+
+fmt.Printf(&quot;\nBefore deletion: len(m)=%d\n&quot;, len(m))
+delete(m, &quot;four&quot;)
+fmt.Printf(&quot;After deletion : len(m)=%d\n&quot;, len(m))
+</code></pre><blockquote>
+<p>Key &lsquo;four&rsquo; exists and maps to 4<br>
+Key &lsquo;five&rsquo; doesn&rsquo;t exists</p>
+<p>Value for non-existing key: 0</p>
+<p>All keys and their values:<br>
+three =&gt; 3<br>
+four =&gt; 4</p>
+<p>Before deletion: len(m)=2<br>
+After deletion : len(m)=1</p>
+</blockquote>
+
+                                                
+                                            </div>
+
+                                            <div style="margin-top:40px">
+                                                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                                                    <img src="img/tenlong.jpg">
+                                                </a>
+                                            </div>
+
+                                            <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>本文出处:<a target="_blank" href="https://wawazhua.cn/post/go/Map/">https://wawazhua.cn/post/go/Map/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生</li>
+        </ul>
+    </div>
+</div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </article>
+                                
+                                <div class="clear"></div>
+                                <ul class="post-nav group">
+                                    <li class="next">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/slice/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>Go 切片</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="previous">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/struct/" rel="prev">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <strong>Previous</strong>
+                                            <span>Go struct类型</span>
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                                <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/go/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/go/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/go/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                                <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                                
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Images/" class="leancloud-count">Go 图像
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            </div>
+                        </section>
+                        <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                        target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                    <img src="img/tennew.jpg" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/go/CSV/">Go CSV</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Context/">Go Context</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Defer/">Go Defer</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Client/">Go HTTP Client</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Server/">Go HTTP Server</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/httpMiddleware/">Go HTTP server middleware</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/commav3.html" target="_blank">列数据整理</a>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://wawazhua.cn/tags/Go'
+                style="font-size:17px;margin:3px; padding:2px"><code>Go(55)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/Java'
+                style="font-size:17px;margin:3px; padding:2px"><code>Java(22)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/RocketMQ'
+                style="font-size:17px;margin:3px; padding:2px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/elasticsearch'
+                style="font-size:17px;margin:3px; padding:2px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/git'
+                style="font-size:17px;margin:3px; padding:2px"><code>git(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/html'
+                style="font-size:17px;margin:3px; padding:2px"><code>html(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/jQuery'
+                style="font-size:17px;margin:3px; padding:2px"><code>jQuery(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/ks8'
+                style="font-size:17px;margin:3px; padding:2px"><code>ks8(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/linux'
+                style="font-size:17px;margin:3px; padding:2px"><code>linux(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/maven'
+                style="font-size:17px;margin:3px; padding:2px"><code>maven(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/mysql'
+                style="font-size:17px;margin:3px; padding:2px"><code>mysql(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/netty'
+                style="font-size:17px;margin:3px; padding:2px"><code>netty(8)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/oauth2'
+                style="font-size:17px;margin:3px; padding:2px"><code>oauth2(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/opencv'
+                style="font-size:17px;margin:3px; padding:2px"><code>opencv(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/redis'
+                style="font-size:17px;margin:3px; padding:2px"><code>redis(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/spring'
+                style="font-size:17px;margin:3px; padding:2px"><code>spring(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springboot'
+                style="font-size:17px;margin:3px; padding:2px"><code>springboot(6)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springcloud'
+                style="font-size:17px;margin:3px; padding:2px"><code>springcloud(5)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/tool'
+                style="font-size:17px;margin:3px; padding:2px"><code>tool(4)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/zookeeper'
+                style="font-size:17px;margin:3px; padding:2px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95'
+                style="font-size:17px;margin:3px; padding:2px"><code>算法(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD'
+                style="font-size:17px;margin:3px; padding:2px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px" />
+                <p> </p>
+            </div>
+        </div>
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/xwMs86TX">
+                    <img src="img/11.jpg" alt="weixin" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages </a>
+            · Powered by <a href="https://leancloud.cn/" style="font-weight: bold" target="_blank">LeanCloud</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 </span>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script>
+    init();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://wawazhua.cn">
+  <title>Go 反射 - 计算机与软件技术公开课</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go 反射 - 计算机与软件技术公开课">
+  <meta name="description" content="Go 反射">
+  <meta itemprop="name" content="Go 反射 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go 反射">
+  <meta property="og:title" content="Go 反射 - 计算机与软件技术公开课" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://wawazhua.cn/post/go/Reflection/" />
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description" content="Go 反射">
+
+  <link rel="canonical" href="https://wawazhua.cn/post/go/Reflection/">
+  <link rel='shortlink' href="https://wawazhua.cn/post/go/Reflection/">
+  <link rel="shortcut icon" href="img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/code/rainbow.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+    <div id="wrapper">
+        <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://wawazhua.cn" rel="home">
+              
+              计算机与软件技术公开课
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+        <div class="container" id="page">
+            <div class="container-inner">
+                <div class="main">
+                    <div class="main-inner group">
+                        <section class="content">
+                            <div class="page-title pad group">
+                                <ul class="meta-single group">
+                                    
+                                    <li class="category">
+                                        <span>Go</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="pad group">
+
+                                <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                    <div class="post-inner group">
+
+                                        <h1 class="post-title">Go 反射</h1>
+
+                                        <p class="post-byline">
+                                            Posted @ 2018-09-09 · 2580 Words
+                                            
+                                            · Tags: Go
+                                            
+                                            
+                                            
+                                            
+                                            · Hits:
+                                            <span class="leancloud_visitors" data-flag-title="Go 反射">
+                                                <span class="leancloud-visitors-count"></span>
+                                            </span>
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <div class="entry">
+                                            <div class="entry-inner">
+                                                
+                                                <p>Go是一种静态类型的语言。 在大多数情况下，变量的类型在编译时是已知的。接口类型是一种例外，尤其是空接口interface {}。</p>
+<p>空接口是一种动态类型，类似于Java或C#中的Object。</p>
+<p>在编译时，我们无法确定接口类型的基础值是整数还是字符串。</p>
+<p>标准库中的reflect包，使我们可以在运行时使用此类动态值。 我们可以:</p>
+<ul>
+<li>检查动态值的类型</li>
+<li>枚举结构的字段</li>
+<li>设定值</li>
+<li>在运行时创建新值
+用于在运行时检查接口值的类型的相关语言级功能是类型switch和类型断言:</li>
+</ul>
+<pre><code>var v interface{} = 4
+var reflectVal reflect.Value = reflect.ValueOf(v)
+
+var typ reflect.Type = reflectVal.Type()
+fmt.Printf(&quot;Type '%s' of size: %d bytes\n&quot;, typ.Name(), typ.Size())
+if typ.Kind() == reflect.Int {
+    fmt.Printf(&quot;v contains value of type int\n&quot;)
+}
+</code></pre><blockquote>
+<p>Type &lsquo;int&rsquo; of size: 8 bytes
+v contains value of type int</p>
+</blockquote>
+<p>反射的基础是:</p>
+<ul>
+<li>以空接口interface{}类型的值开头</li>
+<li>使用reflect.ValueOf(v interface {})来获取reflect.Value，它代表有关该值的信息</li>
+<li>使用reflect.Value检查值的类型，测试值是否为nil，设置值</li>
+</ul>
+<p>反射有几种实际用途。</p>
+<h2 id="原始类型">原始类型</h2>
+<p>让我们看看可以对基本类型(例如int或string)执行哪种操作。</p>
+<h4 id="获取类型">获取类型</h4>
+<pre><code>func printType(v interface{}) {
+    rv := reflect.ValueOf(v)
+    typ := rv.Type()
+    typeName := &quot;&quot;
+    switch rv.Kind() {
+    case reflect.Ptr:
+        typeName = &quot;pointer&quot;
+    case reflect.Int:
+        typeName = &quot;int&quot;
+    case reflect.Int32:
+        typeName = &quot;int32&quot;
+    case reflect.String:
+        typeName = &quot;string&quot;
+    // ... handle more cases
+    default:
+        typeName = &quot;unrecognized type&quot;
+    }
+    fmt.Printf(&quot;v is of type '%s'. Size: %d bytes\n&quot;, typeName, typ.Size())
+}
+
+printType(int32(3))
+printType(&quot;&quot;)
+i := 3
+printType(&amp;i) // *int i.e. pointer to int
+</code></pre><blockquote>
+<p>v is of type &lsquo;int32&rsquo;. Size: 4 bytes<br>
+v is of type &lsquo;string&rsquo;. Size: 16 bytes<br>
+v is of type &lsquo;pointer&rsquo;. Size: 8 bytes</p>
+</blockquote>
+<p>在真实代码中，你需要处理关心的所有类型。</p>
+<h4 id="获取值">获取值</h4>
+<pre><code>func getIntValue(v interface{}) {
+    var reflectValue = reflect.ValueOf(v)
+    n := reflectValue.Int()
+    fmt.Printf(&quot;Int value is: %d\n&quot;, n)
+}
+
+getIntValue(3)
+getIntValue(int8(4))
+getIntValue(&quot;&quot;)
+</code></pre><blockquote>
+<p>Int value is: 3<br>
+Int value is: 4<br>
+panic: reflect: call of reflect.Value.Int on string Value</p>
+<p>goroutine 1 [running]:<br>
+reflect.Value.Int(&hellip;)<br>
+/usr/local/go/src/reflect/value.go:986<br>
+main.getIntValue(0x4a0120, 0x4db0d0)<br>
+/tmp/src282322283/main.go:14 +0x204<br>
+main.main()<br>
+/tmp/src282322283/main.go:24 +0x7b<br>
+exit status 2</p>
+</blockquote>
+<p>为了最大程度地减少API表面，Int()返回int64并对所有带符号的整数值(int8，int16，int32，int64)有效。</p>
+<p>UInt()方法返回uint64并对每个无符号整数值(uint8，uint16，uint32，uint64)有效。</p>
+<p>试图从不兼容类型(如字符串)的值中获取整数值会引发panic。</p>
+<p>为了避免出现panic，您可以先使用Kind()检查类型。</p>
+<p>检索值的所有方法:</p>
+<ul>
+<li>Bool() bool</li>
+<li>Int() int64</li>
+<li>UInt() uint64</li>
+<li>Float() float64</li>
+<li>String() string</li>
+<li>Bytes() []byte</li>
+</ul>
+<h4 id="设置值">设置值</h4>
+<pre><code>type S struct {
+    N int
+}
+
+func setIntPtr() {
+    var n int = 2
+    reflect.ValueOf(&amp;n).Elem().SetInt(4)
+    fmt.Printf(&quot;setIntPtr: n=%d\n&quot;, n)
+}
+
+func setStructFieldDirect() {
+    var s S
+    reflect.ValueOf(&amp;s.N).Elem().SetInt(5)
+    fmt.Printf(&quot;setStructFieldDirect: n=%d\n&quot;, s.N)
+}
+
+func setStructPtrField() {
+    var s S
+    reflect.ValueOf(&amp;s).Elem().Field(0).SetInt(6)
+    fmt.Printf(&quot;setStructPtrField: s.N: %d\n&quot;, s.N)
+}
+
+func handlePanic(funcName string) {
+    if msg := recover(); msg != nil {
+        fmt.Printf(&quot;%s panicked with '%s'\n&quot;, funcName, msg)
+    }
+}
+
+func setStructField() {
+    defer handlePanic(&quot;setStructField&quot;)
+    var s S
+    reflect.ValueOf(s).Elem().Field(0).SetInt(4)
+    fmt.Printf(&quot;s.N: %d\n&quot;, s.N)
+}
+
+func setInt() {
+    defer handlePanic(&quot;setInt&quot;)
+    var n int = 2
+    rv := reflect.ValueOf(n)
+    rv.Elem().SetInt(4)
+}
+
+func setIntPtrWithString() {
+    defer handlePanic(&quot;setIntPtrWithString&quot;)
+    var n int = 2
+    reflect.ValueOf(&amp;n).Elem().SetString(&quot;8&quot;)
+}
+</code></pre><blockquote>
+<p>setIntPtr: n=4<br>
+setStructFieldDirect: n=5<br>
+setStructPtrField: s.N: 6<br>
+setInt panicked with &lsquo;reflect: call of reflect.Value.Elem on int Value&rsquo;<br>
+setStructField panicked with &lsquo;reflect: call of reflect.Value.Elem on struct Value&rsquo;<br>
+setIntPtrWithString panicked with &lsquo;reflect: call of reflect.Value.SetString on int Value&rsquo;</p>
+</blockquote>
+<p>如setInt和setStructField所示，只有从指向值的指针开始，才可以更改值。</p>
+<p>如setInt和setStructField所示，只有从指向值的指针开始，才可以更改值。</p>
+<p>setStructPtrField显示如何通过字段值在结构中的位置来获取对字段值的引用。</p>
+<p>尝试设置不兼容类型的值会引发panic。</p>
+<p>设置值的方法反映了读取值的方法:</p>
+<ul>
+<li>SetBool(v bool)</li>
+<li>SetInt(v int64)</li>
+<li>SetUInt(v uint64)</li>
+<li>SetFloat(v float64)</li>
+<li>SetString(v string)</li>
+<li>SetBytes(v []byte)</li>
+</ul>
+<h2 id="指针">指针</h2>
+<p>指向X的指针与X是不同的类型。</p>
+<p>如果reflect.Value引用了指向值的指针，则可以通过调用Elem()获得对该值的引用。</p>
+<pre><code>func printIntResolvingPointers(v interface{}) {
+    rv := reflect.ValueOf(v)
+    typeName := rv.Type().String()
+    name := &quot;&quot;
+    for rv.Kind() == reflect.Ptr {
+        name = &quot;pointer to &quot; + name
+        rv = rv.Elem()
+    }
+    name += rv.Type().String()
+    fmt.Printf(&quot;Value: %d. Type: '%s' i.e. '%s'.\n\n&quot;, rv.Int(), name, typeName)
+}
+
+func main() {
+    n := 3
+    printIntResolvingPointers(n)
+
+    n = 4
+    printIntResolvingPointers(&amp;n)
+
+    n = 5
+    np := &amp;n
+    printIntResolvingPointers(&amp;np)
+}
+</code></pre><blockquote>
+<p>Value: 3. Type: &lsquo;int&rsquo; i.e. &lsquo;int&rsquo;.</p>
+<p>Value: 4. Type: &lsquo;pointer to int&rsquo; i.e. &lsquo;*int&rsquo;.</p>
+<p>Value: 5. Type: &lsquo;pointer to pointer to int&rsquo; i.e. &lsquo;**int&rsquo;.</p>
+</blockquote>
+<p>在底层，接口也是指向其基础值的指针，因此Elem()也可以在代表接口的reflect.Value上工作。</p>
+<h2 id="struct">struct</h2>
+<h4 id="列出struct的字段">列出struct的字段</h4>
+<p>使用反射，我们可以列出struct的所有字段。</p>
+<pre><code>type S struct {
+    FirstName string `my_tag:&quot;first-name&quot;`
+    lastName  string
+    Age       int `json:&quot;age&quot;,xml:&quot;AgeXml`
+}
+
+func describeStructSimple(rv reflect.Value) {
+    structType := rv.Type()
+    for i := 0; i &lt; rv.NumField(); i++ {
+        v := rv.Field(i)
+        structField := structType.Field(i)
+        name := structField.Name
+        typ := structField.Type
+        tag := structField.Tag
+        jsonTag := tag.Get(&quot;json&quot;)
+        isExported := structField.PkgPath == &quot;&quot;
+        if isExported {
+            fmt.Printf(&quot;name: '%s',\ttype: '%s', value: %v,\ttag: '%s',\tjson tag: '%s'\n&quot;, name, typ, v.Interface(), tag, jsonTag)
+        } else {
+            fmt.Printf(&quot;name: '%s',\ttype: '%s',\tvalue: not accessible\n&quot;, name, v.Type().Name())
+        }
+    }
+}
+
+func main() {
+    s := S{
+        FirstName: &quot;John&quot;,
+        lastName:  &quot;Doe&quot;,
+        Age:       27,
+    }
+    describeStructSimple(reflect.ValueOf(s))
+}
+</code></pre><blockquote>
+<p>name: &lsquo;FirstName&rsquo;,    type: &lsquo;string&rsquo;, value: John,    tag: &lsquo;my_tag:&ldquo;first-name&rdquo;',    json tag: '&rsquo;<br>
+name: &lsquo;lastName&rsquo;,    type: &lsquo;string&rsquo;,    value: not accessible<br>
+name: &lsquo;Age&rsquo;,    type: &lsquo;int&rsquo;, value: 27,    tag: &lsquo;json:&ldquo;age&rdquo;,xml:&ldquo;AgeXml&rsquo;,    json tag: &lsquo;age&rsquo;</p>
+</blockquote>
+<p>使用反射，我们只能访问导出的字段的值(v.Interface {})。</p>
+<p>导出的字段是名称以大写字母开头的字段(导出的是“姓氏”和“年龄”，而不是“ lastName”)。</p>
+<p>如果reflect.StructField.PkgPath ==“”，则导出字段。</p>
+<h4 id="递归列出结构的字段">递归列出结构的字段</h4>
+<p>检查struct本质上是递归过程。</p>
+<p>您必须追逐指针并递归到嵌入式struct中。</p>
+<p>在实际程序中，使用反射检查struct是递归的。</p>
+<pre><code>type Inner struct {
+    N int
+}
+
+type S struct {
+    Inner
+    NamedInner Inner
+    PtrInner   *Inner
+    unexported int
+    N          int8
+}
+
+func indentStr(level int) string {
+    return strings.Repeat(&quot;  &quot;, level)
+}
+
+// if sf is not nil, this is a field of a struct
+func describeStruct(level int, rv reflect.Value, sf *reflect.StructField) {
+    structType := rv.Type()
+    nFields := rv.NumField()
+    typ := rv.Type()
+    if sf == nil {
+        fmt.Printf(&quot;%sstruct %s, %d field(s), size: %d bytes\n&quot;, indentStr(level), structType.Name(), nFields, typ.Size())
+    } else {
+        fmt.Printf(&quot;%sname: '%s' type: 'struct %s', offset: %d, %d field(s), size: %d bytes, embedded: %v\n&quot;, indentStr(level), sf.Name, structType.Name(), sf.Offset, nFields, typ.Size(), sf.Anonymous)
+    }
+
+    for i := 0; i &lt; nFields; i++ {
+        fv := rv.Field(i)
+        sf := structType.Field(i)
+        describeType(level+1, fv, &amp;sf)
+    }
+}
+
+// if sf is not nil, this is a field of a struct
+func describeType(level int, rv reflect.Value, sf *reflect.StructField) {
+    switch rv.Kind() {
+
+    case reflect.Int, reflect.Int8:
+        // in real code we would handle more primitive types
+        i := rv.Int()
+        typ := rv.Type()
+        if sf == nil {
+            fmt.Printf(&quot;%stype: '%s', value: '%d'\n&quot;, indentStr(level), typ.Name(), i)
+        } else {
+            fmt.Printf(&quot;%s name: '%s' type: '%s', value: '%d', offset: %d, size: %d\n&quot;, indentStr(level), sf.Name, typ.Name(), i, sf.Offset, typ.Size())
+        }
+
+    case reflect.Ptr:
+        fmt.Printf(&quot;%spointer\n&quot;, indentStr(level))
+        describeType(level+1, rv.Elem(), nil)
+
+    case reflect.Struct:
+        describeStruct(level, rv, sf)
+    }
+}
+
+func main() {
+    var s S
+    describeType(0, reflect.ValueOf(s), nil)
+}
+</code></pre><blockquote>
+<p>struct S, 5 field(s), size: 40 bytes<br>
+name: &lsquo;Inner&rsquo; type: &lsquo;struct Inner&rsquo;, offset: 0, 1 field(s), size: 8 bytes, embedded: true<br>
+name: &lsquo;N&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 0, size: 8<br>
+name: &lsquo;NamedInner&rsquo; type: &lsquo;struct Inner&rsquo;, offset: 8, 1 field(s), size: 8 bytes, embedded: false<br>
+name: &lsquo;N&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 0, size: 8<br>
+pointer<br>
+name: &lsquo;unexported&rsquo; type: &lsquo;int&rsquo;, value: &lsquo;0&rsquo;, offset: 24, size: 8<br>
+name: &lsquo;N&rsquo; type: &lsquo;int8&rsquo;, value: &lsquo;0&rsquo;, offset: 32, size: 1</p>
+</blockquote>
+<h2 id="slice">slice</h2>
+<h4 id="使用反射读取切片">使用反射读取切片</h4>
+<pre><code>a := []int{3, 1, 8}
+rv := reflect.ValueOf(a)
+
+fmt.Printf(&quot;len(a): %d\n&quot;, rv.Len())
+fmt.Printf(&quot;cap(a): %d\n&quot;, rv.Cap())
+
+fmt.Printf(&quot;slice kind: '%s'\n&quot;, rv.Kind().String())
+
+fmt.Printf(&quot;element type: '%s'\n&quot;, rv.Type().Elem().Name())
+
+el := rv.Index(0).Interface()
+fmt.Printf(&quot;a[0]: %v\n&quot;, el)
+
+elRef := rv.Index(1)
+fmt.Printf(&quot;elRef.CanAddr(): %v\n&quot;, elRef.CanAddr())
+fmt.Printf(&quot;elRef.CanSet(): %v\n&quot;, elRef.CanSet())
+
+elRef.SetInt(5)
+fmt.Printf(&quot;a: %v\n&quot;, a)
+</code></pre><blockquote>
+<p>len(a): 3<br>
+cap(a): 3<br>
+slice kind: &lsquo;slice&rsquo;<br>
+element type: &lsquo;int&rsquo;<br>
+a[0]: 3<br>
+elRef.CanAddr(): true<br>
+elRef.CanSet(): true<br>
+a: [3 5 8]</p>
+</blockquote>
+<h4 id="使用反射创建新切片">使用反射创建新切片</h4>
+<pre><code>typ := reflect.SliceOf(reflect.TypeOf(&quot;example&quot;))
+// create slice with capacity 10 and length 1
+rv := reflect.MakeSlice(typ, 1, 10)
+rv.Index(0).SetString(&quot;foo&quot;)
+
+a := rv.Interface().([]string)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;foo&rdquo;}</p>
+</blockquote>
+<h2 id="reflectkind">reflect.Kind</h2>
+<p>Reflection.Value上的函数Kind()返回描述值类型的reflect.Kind类型。</p>
+<p>这是所有可能的值:</p>
+<pre><code>type Kind uint
+
+const (
+    Invalid Kind = iota
+    Bool
+    Int
+    Int8
+    Int16
+    Int32
+    Int64
+    Uint
+    Uint8
+    Uint16
+    Uint32
+    Uint64
+    Uintptr
+    Float32
+    Float64
+    Complex64
+    Complex128
+    Array
+    Chan
+    Func
+    Interface
+    Map
+    Ptr
+    Slice
+    String
+    Struct
+    UnsafePointer
+)
+</code></pre><h2 id="反射用途">反射用途</h2>
+<h4 id="序列化为jsonxmlsqlprotobufs">序列化为JSON，XML，SQL，protobufs</h4>
+<p>反射使实现通用JSON序列化/反序列化成为可能。</p>
+<p>对于通用JSON序列化，我们可以枚举任意结构的字段，读取它们的字段并创建相应的JSON字符串。</p>
+<p>对于一般的JSON反序列化，我们可以枚举任意结构的字段并根据已解析的JSON数据进行设置。</p>
+<p>其他序列化格式(例如XML，YAML或协议缓冲区)也是如此。</p>
+<p>反射使为SQL数据库定义通用API成为可能，因为我们可以将任意结构转换为SQL数据库可以理解的格式，并将从SQL数据库接收的数据放入任意结构。</p>
+<h4 id="使用go函数扩展模板语言">使用Go函数扩展模板语言</h4>
+<p>由于能够在运行时调用任意函数，因此我们可以在文本/模板中为模板定义自定义函数。 我们向模板引擎注册Go函数。</p>
+<p>然后，引擎可以在执行模板时在运行时调用这些函数。</p>
+<h4 id="编写与go紧密集成的口译员">编写与Go紧密集成的口译员</h4>
+<p>由于反射功能可以在运行时调用任意函数，因此JavaScript解释器可以轻松地扩展为用Go编写的其他函数。</p>
+
+                                                
+                                            </div>
+
+                                            <div style="margin-top:40px">
+                                                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                                                    <img src="img/tenlong.jpg">
+                                                </a>
+                                            </div>
+
+                                            <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>本文出处:<a target="_blank" href="https://wawazhua.cn/post/go/Reflection/">https://wawazhua.cn/post/go/Reflection/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生</li>
+        </ul>
+    </div>
+</div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </article>
+                                
+                                <div class="clear"></div>
+                                <ul class="post-nav group">
+                                    <li class="next">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/Text-HTML-templates/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>Go Text和HTML模板</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="previous">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/Context/" rel="prev">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <strong>Previous</strong>
+                                            <span>Go Context</span>
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                                <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/go/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/go/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/go/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                                <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                                
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Images/" class="leancloud-count">Go 图像
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            </div>
+                        </section>
+                        <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                        target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                    <img src="img/tennew.jpg" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/go/CSV/">Go CSV</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Context/">Go Context</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Defer/">Go Defer</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Client/">Go HTTP Client</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Server/">Go HTTP Server</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/httpMiddleware/">Go HTTP server middleware</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/commav3.html" target="_blank">列数据整理</a>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://wawazhua.cn/tags/Go'
+                style="font-size:17px;margin:3px; padding:2px"><code>Go(55)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/Java'
+                style="font-size:17px;margin:3px; padding:2px"><code>Java(22)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/RocketMQ'
+                style="font-size:17px;margin:3px; padding:2px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/elasticsearch'
+                style="font-size:17px;margin:3px; padding:2px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/git'
+                style="font-size:17px;margin:3px; padding:2px"><code>git(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/html'
+                style="font-size:17px;margin:3px; padding:2px"><code>html(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/jQuery'
+                style="font-size:17px;margin:3px; padding:2px"><code>jQuery(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/ks8'
+                style="font-size:17px;margin:3px; padding:2px"><code>ks8(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/linux'
+                style="font-size:17px;margin:3px; padding:2px"><code>linux(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/maven'
+                style="font-size:17px;margin:3px; padding:2px"><code>maven(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/mysql'
+                style="font-size:17px;margin:3px; padding:2px"><code>mysql(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/netty'
+                style="font-size:17px;margin:3px; padding:2px"><code>netty(8)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/oauth2'
+                style="font-size:17px;margin:3px; padding:2px"><code>oauth2(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/opencv'
+                style="font-size:17px;margin:3px; padding:2px"><code>opencv(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/redis'
+                style="font-size:17px;margin:3px; padding:2px"><code>redis(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/spring'
+                style="font-size:17px;margin:3px; padding:2px"><code>spring(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springboot'
+                style="font-size:17px;margin:3px; padding:2px"><code>springboot(6)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springcloud'
+                style="font-size:17px;margin:3px; padding:2px"><code>springcloud(5)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/tool'
+                style="font-size:17px;margin:3px; padding:2px"><code>tool(4)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/zookeeper'
+                style="font-size:17px;margin:3px; padding:2px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95'
+                style="font-size:17px;margin:3px; padding:2px"><code>算法(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD'
+                style="font-size:17px;margin:3px; padding:2px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px" />
+                <p> </p>
+            </div>
+        </div>
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/xwMs86TX">
+                    <img src="img/11.jpg" alt="weixin" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages </a>
+            · Powered by <a href="https://leancloud.cn/" style="font-weight: bold" target="_blank">LeanCloud</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 </span>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script>
+    init();
+</script>
+</body>
+
+</html>

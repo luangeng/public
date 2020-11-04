@@ -41,10 +41,10 @@
     
     <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
-      <link>https://wawazhua.cn/post/db/mysql/mysql/</link>
+      <link>https://wawazhua.cn/post/db/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql/mysql/</guid>
+      <guid>https://wawazhua.cn/post/db/mysql/</guid>
       <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
     </item>
     

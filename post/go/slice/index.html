@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://wawazhua.cn">
+  <title>Go 切片 - 计算机与软件技术公开课</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go 切片 - 计算机与软件技术公开课">
+  <meta name="description" content="Go 切片">
+  <meta itemprop="name" content="Go 切片 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go 切片">
+  <meta property="og:title" content="Go 切片 - 计算机与软件技术公开课" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://wawazhua.cn/post/go/slice/" />
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description" content="Go 切片">
+
+  <link rel="canonical" href="https://wawazhua.cn/post/go/slice/">
+  <link rel='shortlink' href="https://wawazhua.cn/post/go/slice/">
+  <link rel="shortcut icon" href="img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/code/rainbow.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+    <div id="wrapper">
+        <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://wawazhua.cn" rel="home">
+              
+              计算机与软件技术公开课
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+        <div class="container" id="page">
+            <div class="container-inner">
+                <div class="main">
+                    <div class="main-inner group">
+                        <section class="content">
+                            <div class="page-title pad group">
+                                <ul class="meta-single group">
+                                    
+                                    <li class="category">
+                                        <span>Go</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="pad group">
+
+                                <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                    <div class="post-inner group">
+
+                                        <h1 class="post-title">Go 切片</h1>
+
+                                        <p class="post-byline">
+                                            Posted @ 2018-09-09 · 3731 Words
+                                            
+                                            · Tags: Go
+                                            
+                                            
+                                            
+                                            
+                                            · Hits:
+                                            <span class="leancloud_visitors" data-flag-title="Go 切片">
+                                                <span class="leancloud-visitors-count"></span>
+                                            </span>
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <div class="entry">
+                                            <div class="entry-inner">
+                                                
+                                                <p>切片是相同类型的值的可增长序列。</p>
+<p>其他语言称它们为数组或向量。</p>
+<p>slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。</p>
+<p>切片具有长度和容量。</p>
+<p>容量表示一个切片可以包含的元素总数,也就是底层数组的大小。</p>
+<p>长度是切片中已有元素的数量。</p>
+<p>容量和长度的差别在于，在必须重新分配底层数组之前，可以在一个切片上附加多少个元素。</p>
+<p>切片的零值为nil。</p>
+<pre><code>slice := make([]int, 0, 5)
+// append element to end of slice
+slice = append(slice, 5)
+// append multiple elements to end
+slice = append(slice, 3, 4)
+fmt.Printf(&quot;length of slice is: %d\n&quot;, len(slice))
+fmt.Printf(&quot;capacity of slice is: %d\n&quot;, cap(slice))
+</code></pre><blockquote>
+<p>length of slice is: 3<br>
+capacity of slice is: 5</p>
+</blockquote>
+<h2 id="创建-slice">创建 slice</h2>
+<p>大多数时候，不必显式创建切片。切片的零值为nil，append的值为零:</p>
+<pre><code>var a []int
+fmt.Printf(&quot;a is %#v\n&quot;, a)
+a = append(a, 3)
+fmt.Printf(&quot;a is %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a is []int(nil)<br>
+a is []int{3}</p>
+</blockquote>
+<p>创建空切片的两种方法:</p>
+<pre><code>var nilSlice []bool
+empty1 := []bool{}
+empty2 := make([]bool, 0)
+fmt.Printf(&quot;nilSlice is %#v\n&quot;, nilSlice)
+// 空slice和nil slice不同
+fmt.Printf(&quot;empty1 is %#v\n&quot;, empty1)
+fmt.Printf(&quot;empty2 is %#v\n&quot;, empty2)
+</code></pre><blockquote>
+<p>nilSlice is []bool(nil)<br>
+empty1 is []bool{}<br>
+empty2 is []bool{}</p>
+</blockquote>
+<p>空slice和nil slice不同</p>
+<p>创建静态预分配的切片:</p>
+<pre><code>a := []int{3, 1, 4, 1}
+fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
+</code></pre><blockquote>
+<p>a has 4 elements</p>
+</blockquote>
+<p>创建全是0的静态预分配的切片:</p>
+<pre><code>a := make([]string, 4)
+fmt.Printf(&quot;a has %d elements\n&quot;, len(a))
+</code></pre><blockquote>
+<p>a has 4 elements</p>
+</blockquote>
+<p>如果知道切片的预期大小，则可以为其内容预分配空间，这有助于提高性能:</p>
+<pre><code>n := 30
+a := make([]int, 0, n)
+fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
+for i := 0; i &lt; n; i++ {
+    a = append(a, i)
+}
+fmt.Printf(&quot;a has lenght %d and capacity %d\n&quot;, len(a), cap(a))
+</code></pre><blockquote>
+<p>a has lenght 0 and capacity 30<br>
+a has lenght 30 and capacity 30</p>
+</blockquote>
+<h2 id="长度和容量">长度和容量</h2>
+<p>切片具有长度和容量, 容量表示一个切片可以包含的元素总数,也就是底层数组的大小,长度是切片中已有元素的数量。</p>
+<p>当使用make()函数创建slice时,可以指定其长度和容量:</p>
+<pre><code>var s = make([]int, 3, 5)
+fmt.Printf(&quot;Length:   %d\n&quot;, len(s))
+fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
+</code></pre><blockquote>
+<p>Length:   3<br>
+Capacity: 5</p>
+</blockquote>
+<p>如果未明确指定容量，它将默认为指定的长度的值。</p>
+<pre><code>var s = make([]int, 4)
+fmt.Printf(&quot;Length:   %d\n&quot;, len(s))
+fmt.Printf(&quot;Capacity: %d\n&quot;, cap(s))
+</code></pre><blockquote>
+<p>Length:   4<br>
+Capacity: 4</p>
+</blockquote>
+<p>由make()创建的slice,其元素设置为其零值:</p>
+<pre><code>var s = make([]int, 3)
+for idx, val := range s {
+    fmt.Println(idx, val)
+}
+</code></pre><blockquote>
+<p>0 0<br>
+1 0<br>
+2 0</p>
+</blockquote>
+<p>即使索引小于容量，也不能访问超出切片长度的元素:</p>
+<pre><code>s := make([]int, 3, 20)
+fmt.Println(s[5])
+</code></pre><blockquote>
+<p>panic: runtime error: index out of range [5] with length 3</p>
+<p>goroutine 1 [running]:<br>
+main.main()<br>
+/tmp/src554923030/main.go:9 +0x1d<br>
+exit status 2</p>
+</blockquote>
+<h1 id="追加slice">追加slice</h1>
+<p>内置函数append(slice，elements &hellip;)将元素添加到切片中并返回新的切片</p>
+<p>追加一个值</p>
+<pre><code>a := []string{&quot;hello&quot;}
+a = append(a, &quot;world&quot;)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;hello&rdquo;, &ldquo;world&rdquo;}</p>
+</blockquote>
+<p>追加多个值</p>
+<pre><code>a := []string{&quot;hello&quot;}
+a = append(a, &quot;world&quot;, &quot;now&quot;)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&ldquo;hello&rdquo;, &ldquo;world&rdquo;, &ldquo;now&rdquo;}</p>
+</blockquote>
+<p>追加slice到另一个slice</p>
+<pre><code>a := []string{&quot;!&quot;}
+a2 := []string{&quot;Hello&quot;, &quot;world&quot;}
+a = append(a, a2...)
+fmt.Printf(&quot;a: %#v\n&quot;, a)
+</code></pre><blockquote>
+<p>a: []string{&quot;!&quot;, &ldquo;Hello&rdquo;, &ldquo;world&rdquo;}</p>
+</blockquote>
+<p>append()会生成一个新的slice</p>
+<p>slice使用固定大小的数组进行存储。当slice的元素数量超过数组的大小时，append需要重新分配数组并创建一个新的slice。 为了提高效率，新分配的数组有一些备用元素，因此不会在每次将元素追加到slice时都重新分配底层数组。</p>
+<p>该程序显示重新分配新数组需要多少元素:</p>
+<pre><code>var a []int
+ptr := fmt.Sprintf(&quot;%p&quot;, a)
+n := 0
+nAppends := 0
+for {
+    a = append(a, 1)
+    nAppends++
+    currPtr := fmt.Sprintf(&quot;%p&quot;, a)
+    if currPtr != ptr {
+        fmt.Printf(&quot;Appends needed to re-allocate slice: %d\n&quot;, nAppends)
+        nAppends = 0
+        ptr = currPtr
+        n++
+        if n == 6 {
+            break
+        }
+    }
+}
+</code></pre><blockquote>
+<p>Appends needed to re-allocate slice: 1<br>
+Appends needed to re-allocate slice: 1<br>
+Appends needed to re-allocate slice: 1<br>
+Appends needed to re-allocate slice: 2<br>
+Appends needed to re-allocate slice: 4<br>
+Appends needed to re-allocate slice: 8</p>
+</blockquote>
+<p>可见,重新创建数组所需的追加数量随slice的长度而增加。</p>
+<p>Go不允许比较切片，因此我们使用以下事实:在当前实现中，我们可以获取slice的地址(％p)，并且该地址可以用作slice的标识。</p>
+<p>这是Go的内部实现将来可能会更改。</p>
+<h2 id="过滤slice">过滤slice</h2>
+<p>Go没有用于过滤切片的通用功能，因此我们必须采用老式的方法:
+0. 为结果创建一个新的切片
+0. 遍历原始切片的所有元素
+0. 检查是否应保留或拒绝元素
+0. 如果应保留，则附加到结果</p>
+<pre><code>func filterEvenValues(a []int) []int {
+    var res []int
+    for _, el := range a {
+        if el%2 == 0 {
+            continue
+        }
+        res = append(res, el)
+    }
+    return res
+}
+
+a := []int{1, 2, 3, 4}
+res := filterEvenValues(a)
+fmt.Printf(&quot;%#v\n&quot;, res)
+</code></pre><blockquote>
+<p>[]int{1, 3}</p>
+</blockquote>
+<p>我们可以通过重新使用切片的底层数组来更有效地执行此操作，因为我们知道结果将始终小于原始切片:</p>
+<pre><code>a := []int{1, 2, 3, 4}
+res := filterEvenValuesInPlace(a)
+fmt.Printf(&quot;%#v\n&quot;, res)
+</code></pre><blockquote>
+<p>[]int{2, 4}</p>
+</blockquote>
+<p>这样可以避免为结果分配新的数组，但也更加危险。
+原始切片a现在已被修改，但从代码来看并不太明显。</p>
+<h1 id="从slice中删除元素">从slice中删除元素</h1>
+<p>我们在示例中使用[] int，但是代码可用于所有类型的切片。</p>
+<p>删除单个元素</p>
+<pre><code>s := []int{10, 11, 12, 13}
+
+i := 2 // index of 12
+s = append(s[:i], s[i+1:]...)
+
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>s: []int{10, 11, 13}</p>
+</blockquote>
+<p>删除多个元素</p>
+<pre><code>s := []int{10, 11, 12, 13}
+
+i := 1 // index of 11
+n := 2 // remove 2 elements
+
+s = append(s[:i], s[i+n:]...)
+
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>s: []int{10, 13}</p>
+</blockquote>
+<p>清除效率
+关于效率的注意事项:Go编译器足够聪明，可以重复使用原始切片中的空间，因此此方法非常有效。 它不会分配新的空间，而只是复制切片中的元素。 我们可以验证一下:</p>
+<pre><code>s := []int{10, 11, 12, 13}
+fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+
+i := 1 // index of 11
+n := 2 // remove 2 elements
+
+s = append(s[:i], s[i+n:]...)
+
+fmt.Print(&quot;\nAfter removal:\n&quot;)
+fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+
+s = append(s, 1, 2, 3, 4)
+fmt.Printf(&quot;\nAfter appending beyond remaining capacity:\n&quot;)
+fmt.Printf(&quot;&amp;s[0]: %p, cap(s): %d\n&quot;, &amp;s[0], cap(s))
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>&amp;s[0]: 0xc00007e020, cap(s): 4<br>
+s: []int{10, 11, 12, 13}</p>
+<p>After removal:<br>
+&amp;s[0]: 0xc00007e020, cap(s): 4<br>
+s: []int{10, 13}</p>
+<p>After appending beyond remaining capacity:<br>
+&amp;s[0]: 0xc000088000, cap(s): 8<br>
+s: []int{10, 13, 1, 2, 3, 4}</p>
+</blockquote>
+<p>％p formatting指令将物理地址输出到变量的内存中。 我们可以验证s指向相同的物理内存，并且在删除前后具有相同的容量，因此可以验证基础数组。</p>
+<p>我们还可以看到，追加4个元素(超出了2的剩余容量)会导致数组重新分配。</p>
+<p>优化的就地清除</p>
+<p>如果我们不在乎保留元素的顺序，则可以进一步优化移除:</p>
+<pre><code>s := []int{10, 11, 12, 13}
+
+i := 1 // index of 11
+lastIdx := len(s) - 1
+
+s[i] = s[lastIdx]
+s = s[:lastIdx]
+
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><blockquote>
+<p>s: []int{10, 13, 12}</p>
+</blockquote>
+<p>我们用切片中的最后一个元素覆盖要删除的元素，并将切片缩小1。</p>
+<p>与将所有元素从i复制到切片末尾相比，这将复制单个元素。 在小切片中这无关紧要，但是如果您有包含数千个元素的切片，则速度会更快</p>
+<h1 id="复制slice">复制slice</h1>
+<p>一种选择是分配与原始切片相同长度的新切片，并使用copy()方法:</p>
+<pre><code>src := []int{1, 2, 3}
+dst := make([]int, len(src))
+copy(dst, src)
+</code></pre><blockquote>
+<p>src: []int{1, 2, 3}<br>
+dst: []int{1, 2, 3}</p>
+</blockquote>
+<p>另一种选择是将()原始切片追加到一个空切片:</p>
+<pre><code>src := []int{1, 2, 3}
+dst := append([]int(nil), src...)
+</code></pre><blockquote>
+<p>src: []int{1, 2, 3}<br>
+dst: []int{1, 2, 3}</p>
+</blockquote>
+<p>两种方法都同样有效。</p>
+<h1 id="slice的初始值">slice的初始值</h1>
+<p>切片的初始值为nil。</p>
+<p>nil切片的长度和容量为0。</p>
+<p>nil切片没有底层数组。</p>
+<p>非nil切片的长度和容量也可以为0，例如[] int {}或make([] int，5)[5:]。</p>
+<p>任何具有nil值的类型都可以转换为nil slice:</p>
+<pre><code>s := []int(nil)
+fmt.Printf(&quot;s: %#v\n&quot;, s)
+</code></pre><p>测试切片是否为空，请检查len是否为0:</p>
+<pre><code>s := []int(nil)
+if len(s) == 0 {
+    fmt.Printf(&quot;s  is empty: %#v\n&quot;, s)
+}
+
+var s2 []int
+if len(s2) == 0 {
+    fmt.Printf(&quot;s2 is empty: %#v\n&quot;, s2)
+}
+
+s3 := make([]int, 0)
+if len(s2) == 0 {
+    fmt.Printf(&quot;s3 is empty: %#v\n&quot;, s3)
+}
+</code></pre><h2 id="slice技巧">Slice技巧</h2>
+<p>以下是slice的更多操作:</p>
+<p>附加完整的slice</p>
+<pre><code>a = append(a, b...)
+</code></pre><p>拷贝</p>
+<pre><code>b = make([]T, len(a))
+copy(b, a)
+// or
+b = append([]T(nil), a...)
+// or
+b = append(a[:0:0], a...)
+</code></pre><p>剪切</p>
+<pre><code>a = append(a[:i], a[j:]...)
+</code></pre><p>删除</p>
+<pre><code>a = append(a[:i], a[i+1:]...)
+// or
+a = a[:i+copy(a[i:], a[i+1:])]
+</code></pre><p>删除但不保留顺序</p>
+<pre><code>a[i] = a[len(a)-1] 
+a = a[:len(a)-1]
+</code></pre><p>注意如果元素的类型是指针或具有指针字段的结构(需要进行垃圾回收)，则上述Cut和Delete的实现存在潜在的内存泄漏问题:某些具有值的元素仍由slice a引用，因此 无法收集。 以下代码可以解决此问题:</p>
+<pre><code>copy(a[i:], a[j:])
+for k, n := len(a)-j+i, len(a); k &lt; n; k++ {
+    a[k] = nil // or the zero value of T
+}
+a = a[:len(a)-j+i]
+</code></pre><p>删除</p>
+<pre><code>copy(a[i:], a[i+1:])
+a[len(a)-1] = nil // or the zero value of T
+a = a[:len(a)-1]
+</code></pre><p>删除但不保留顺序</p>
+<pre><code>a[i] = a[len(a)-1]
+a[len(a)-1] = nil
+a = a[:len(a)-1]
+</code></pre><p>扩展</p>
+<pre><code>a = append(a[:i], append(make([]T, j), a[i:]...)...)
+//
+a = append(a, make([]T, j)...)
+</code></pre><p>插入</p>
+<pre><code>a = append(a[:i], append([]T{x}, a[i:]...)...)
+</code></pre><p>注意第二个追加将创建一个具有其自身基础存储的新切片，并将a [i:]中的元素复制到该切片，然后将这些元素复制回切片a(由第一个追加)。 可以通过使用另一种方法来避免新切片的创建(以及由此产生的内存垃圾)和第二个副本:</p>
+<p>插入</p>
+<pre><code>s = append(s, 0 /* use the zero value of the element type */)
+copy(s[i+1:], s[i:])
+s[i] = x
+</code></pre><p>插入到位置i</p>
+<pre><code>a = append(a[:i], append(b, a[i:]...)...)
+</code></pre><p>Push</p>
+<pre><code>a = append(a, x)
+</code></pre><p>Pop</p>
+<pre><code>x, a = a[len(a)-1], a[:len(a)-1]
+</code></pre><p>Push Front/Unshift</p>
+<pre><code>a = append([]T{x}, a...)
+</code></pre><p>Pop Front/Shift</p>
+<pre><code>x, a = a[0], a[1:]
+</code></pre><p>其他技巧</p>
+<p>过滤而不分配</p>
+<p>此技巧利用了一个事实，即切片与原始切片共享相同的后备阵列和容量，因此存储已重新用于过滤的切片。 当然，原始内容会被修改。</p>
+<pre><code>b := a[:0]
+for _, x := range a {
+    if f(x) {
+        b = append(b, x)
+    }
+}
+</code></pre><p>对于必须被垃圾回收的元素，随后可以包含以下代码:</p>
+<pre><code>for i := len(b); i &lt; len(a); i++ {
+    a[i] = nil // or the zero value of T
+}
+</code></pre><p>翻转</p>
+<pre><code>for i := len(a)/2-1; i &gt;= 0; i-- {
+    opp := len(a)-1-i
+    a[i], a[opp] = a[opp], a[i]
+}
+</code></pre><p>或者:</p>
+<pre><code>for left, right := 0, len(a)-1; left &lt; right; left, right = left+1, right-1 {
+    a[left], a[right] = a[right], a[left]
+}
+</code></pre><p>打乱顺序
+Fisher–Yates算法:</p>
+<p>从go1.10开始，可以在math / rand上使用。</p>
+<pre><code>for i := len(a) - 1; i &gt; 0; i-- {
+    j := rand.Intn(i + 1)
+    a[i], a[j] = a[j], a[i]
+}
+</code></pre><p>以最少的分配进行批处理
+如果要对大型切片执行批处理，则很有用。</p>
+<pre><code>actions := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+batchSize := 3
+var batches [][]int
+
+for batchSize &lt; len(actions) {
+    actions, batches = actions[batchSize:], append(batches, actions[0:batchSize:batchSize])
+}
+batches = append(batches, actions)
+</code></pre><p>产生以下内容:
+<code>[[0 1 2] [3 4 5] [6 7 8] [9]]</code></p>
+<p>就地重复数据删除(可比)</p>
+<pre><code>import &quot;sort&quot;
+
+in := []int{3,2,1,4,3,2,1,4,1} // any item can be sorted
+sort.Ints(in)
+j := 0
+for i := 1; i &lt; len(in); i++ {
+    if in[j] == in[i] {
+        continue
+    }
+    j++
+    // preserve the original data
+    // in[i], in[j] = in[j], in[i]
+    // only set what is required
+    in[j] = in[i]
+}
+result := in[:j+1]
+fmt.Println(result) // [1 2 3 4]
+</code></pre><h2 id="通过预分配slice进行优化">通过预分配slice进行优化</h2>
+<p>相对而言，分配是昂贵的。</p>
+<p>如果新大小超过切片的当前容量，则将新数据追加到切片需要重新分配内存。</p>
+<p>知道了这一点，如果知道分片的最终大小，则可以预先分配所需的容量，并避免重新分配。</p>
+<p>你不需要知道确切的大小:知道上限也是一样。猜测总比没有好。</p>
+<p>考虑附加到空切片:</p>
+<pre><code>s := []byte(&quot;123456&quot;)
+var d []byte
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+</code></pre><blockquote>
+<p>d: 0x0, len: 0, cap: 0<br>
+d: 0xc000016070, len: 6, cap: 8<br>
+d: 0xc000016090, len: 12, cap: 16<br>
+d: 0xc0000180a0, len: 18, cap: 32</p>
+</blockquote>
+<p>结果可能会有所不同，具体取决于编译器的版本和运行时。 在Go 1.12中，4次将6个字节附加到一个空slice中需要32次分配。</p>
+<p>通过用％p打印slice的地址，我们可以查看是否重新分配了它。</p>
+<p>如上限所示，首先分配8个字节，然后将其重新分配给16个字节，最后分配给32个字节。</p>
+<p>在每次重新分配时，必须复制内容，因此我们总共复制了6 + 6 * 2 + 6 * 3个字节。 要存储24个字节，我们浪费了复制36个字节的时间。</p>
+<p>内存分配和复制内存需要时间。</p>
+<p>Go运行时很聪明，它使容量增加了一倍，并预计将来我们可能需要更多空间。</p>
+<p>我们可以比这更聪明，预先分配切片:</p>
+<pre><code>s := []byte(&quot;123456&quot;)
+d := make([]byte, 0, len(s)*4)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+d = append(d, s...)
+d = append(d, s...)
+fmt.Printf(&quot;d: %p, len: %d, cap: %d\n&quot;, d, len(d), cap(d))
+</code></pre><blockquote>
+<p>d: 0xc00007e020, len: 0, cap: 24<br>
+d: 0xc00007e020, len: 6, cap: 24<br>
+d: 0xc00007e020, len: 12, cap: 24<br>
+d: 0xc00007e020, len: 24, cap: 24</p>
+</blockquote>
+<p>在这里，我们可以看到我们从一开始就以正确的容量开始，并且运行库在任何时候都无需进行额外的分配或内存复制。</p>
+
+                                                
+                                            </div>
+
+                                            <div style="margin-top:40px">
+                                                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                                                    <img src="img/tenlong.jpg">
+                                                </a>
+                                            </div>
+
+                                            <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>本文出处:<a target="_blank" href="https://wawazhua.cn/post/go/slice/">https://wawazhua.cn/post/go/slice/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生</li>
+        </ul>
+    </div>
+</div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </article>
+                                
+                                <div class="clear"></div>
+                                <ul class="post-nav group">
+                                    <li class="next">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/array/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>Go 数组</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="previous">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/Map/" rel="prev">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <strong>Previous</strong>
+                                            <span>Go map类型</span>
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                                <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/go/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/go/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/go/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                                <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                                
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Images/" class="leancloud-count">Go 图像
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            </div>
+                        </section>
+                        <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                        target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                    <img src="img/tennew.jpg" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/go/CSV/">Go CSV</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Context/">Go Context</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Defer/">Go Defer</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Client/">Go HTTP Client</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Server/">Go HTTP Server</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/httpMiddleware/">Go HTTP server middleware</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/commav3.html" target="_blank">列数据整理</a>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://wawazhua.cn/tags/Go'
+                style="font-size:17px;margin:3px; padding:2px"><code>Go(55)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/Java'
+                style="font-size:17px;margin:3px; padding:2px"><code>Java(22)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/RocketMQ'
+                style="font-size:17px;margin:3px; padding:2px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/elasticsearch'
+                style="font-size:17px;margin:3px; padding:2px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/git'
+                style="font-size:17px;margin:3px; padding:2px"><code>git(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/html'
+                style="font-size:17px;margin:3px; padding:2px"><code>html(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/jQuery'
+                style="font-size:17px;margin:3px; padding:2px"><code>jQuery(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/ks8'
+                style="font-size:17px;margin:3px; padding:2px"><code>ks8(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/linux'
+                style="font-size:17px;margin:3px; padding:2px"><code>linux(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/maven'
+                style="font-size:17px;margin:3px; padding:2px"><code>maven(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/mysql'
+                style="font-size:17px;margin:3px; padding:2px"><code>mysql(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/netty'
+                style="font-size:17px;margin:3px; padding:2px"><code>netty(8)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/oauth2'
+                style="font-size:17px;margin:3px; padding:2px"><code>oauth2(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/opencv'
+                style="font-size:17px;margin:3px; padding:2px"><code>opencv(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/redis'
+                style="font-size:17px;margin:3px; padding:2px"><code>redis(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/spring'
+                style="font-size:17px;margin:3px; padding:2px"><code>spring(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springboot'
+                style="font-size:17px;margin:3px; padding:2px"><code>springboot(6)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springcloud'
+                style="font-size:17px;margin:3px; padding:2px"><code>springcloud(5)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/tool'
+                style="font-size:17px;margin:3px; padding:2px"><code>tool(4)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/zookeeper'
+                style="font-size:17px;margin:3px; padding:2px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95'
+                style="font-size:17px;margin:3px; padding:2px"><code>算法(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD'
+                style="font-size:17px;margin:3px; padding:2px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px" />
+                <p> </p>
+            </div>
+        </div>
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/xwMs86TX">
+                    <img src="img/11.jpg" alt="weixin" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages </a>
+            · Powered by <a href="https://leancloud.cn/" style="font-weight: bold" target="_blank">LeanCloud</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 </span>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script>
+    init();
+</script>
+</body>
+
+</html>

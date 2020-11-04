@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://wawazhua.cn">
+  <title>Go Text和HTML模板 - 计算机与软件技术公开课</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="keywords" content="Go Text和HTML模板 - 计算机与软件技术公开课">
+  <meta name="description" content="Go Text和HTML模板">
+  <meta itemprop="name" content="Go Text和HTML模板 - 计算机与软件技术公开课">
+  <meta itemprop="description" content="Go Text和HTML模板">
+  <meta property="og:title" content="Go Text和HTML模板 - 计算机与软件技术公开课" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://wawazhua.cn/post/go/Text-HTML-templates/" />
+  <meta property="og:site_name" content="luangeng" />
+  <meta property="og:description" content="Go Text和HTML模板">
+
+  <link rel="canonical" href="https://wawazhua.cn/post/go/Text-HTML-templates/">
+  <link rel='shortlink' href="https://wawazhua.cn/post/go/Text-HTML-templates/">
+  <link rel="shortcut icon" href="img/favicon.png" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman/responsive.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/style.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="themes/hueman-child/user.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="font/hack/css/hack.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/code/rainbow.css">
+  <link rel="stylesheet" type="text/css" media="all" href="css/sweetalert2.min.css">
+
+  
+
+</head>
+
+<body class="single single-post single-format-standard col-3cm full-width topbar-enabled chrome">
+    <div id="wrapper">
+        <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <ul id="menu-default-menu" class="nav container-inner group">
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/">首页</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Java/">Java</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/Go/">Go</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E4%BA%91%E8%AE%A1%E7%AE%97/">云计算</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a rel="nofollow" href="https://wawazhua.cn/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </li>
+        
+
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+        
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+
+        <div class="right-head">
+          
+          
+        </div>
+      </div>
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a rel="nofollow" href="https://wawazhua.cn" rel="home">
+              
+              计算机与软件技术公开课
+            </a>
+          </h1>
+          <span class="site-description">  </span>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+        <div class="container" id="page">
+            <div class="container-inner">
+                <div class="main">
+                    <div class="main-inner group">
+                        <section class="content">
+                            <div class="page-title pad group">
+                                <ul class="meta-single group">
+                                    
+                                    <li class="category">
+                                        <span>Go</span>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="pad group">
+
+                                <article
+                                    class="post type-post status-publish format-standard has-post-thumbnail hentry category-australien tag-bondi-beach tag-city2surf tag-sydney">
+                                    <div class="post-inner group">
+
+                                        <h1 class="post-title">Go Text和HTML模板</h1>
+
+                                        <p class="post-byline">
+                                            Posted @ 2018-09-09 · 1984 Words
+                                            
+                                            · Tags: Go
+                                            
+                                            
+                                            
+                                            
+                                            · Hits:
+                                            <span class="leancloud_visitors" data-flag-title="Go Text和HTML模板">
+                                                <span class="leancloud-visitors-count"></span>
+                                            </span>
+                                        </p>
+
+
+                                        <div class="clear"></div>
+
+                                        <div class="entry">
+                                            <div class="entry-inner">
+                                                
+                                                <p>假设您正在使用Web应用程序，并且需要返回列出最新推文的HTML。 您需要从数据库加载推文列表，并根据该信息创建HTML。</p>
+<p>通过构建较小的字符串并将其与+串联来构建HTML字符串将是乏味的。</p>
+<p>在Go标准库中打包text / template和html / template可以使工具实现数据驱动的模板以生成文本输出：</p>
+<pre><code>var tmplStr = `User {{.User}} has {{.TotalTweets}} tweets.
+{{- $tweetCount := len .RecentTweets }}
+Recent tweets:
+{{range $idx, $tweet := .RecentTweets}}Tweet {{$idx}} of {{$tweetCount}}: '{{.}}'
+{{end -}}
+Most recent tweet: '{{index .RecentTweets 0}}'
+</code></pre><pre><code>t := template.New(&quot;tweets&quot;)
+t, err := t.Parse(tmplStr)
+if err != nil {
+    log.Fatalf(&quot;template.Parse() failed with '%s'\n&quot;, err)
+}
+data := struct {
+    User         string
+    TotalTweets  int
+    RecentTweets []string
+}{
+    User:         &quot;kjk&quot;,
+    TotalTweets:  124,
+    RecentTweets: []string{&quot;hello&quot;, &quot;there&quot;},
+}
+err = t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><blockquote>
+<p>User kjk has 124 tweets.
+Recent tweets:
+Tweet 0 of 2: &lsquo;hello&rsquo;
+Tweet 1 of 2: &lsquo;there&rsquo;
+Most recent tweet: &lsquo;hello&rsquo;</p>
+</blockquote>
+<p>每个模板都有名字. template.New(&ldquo;tweets&rdquo;) 创建了空模板tweets.</p>
+<p>t.Parse(s string) parses the template.</p>
+<p>t.Execute(w io.Writer, v interface{}) executes the template with a given value and writing the result to an io.Writer.</p>
+<p>{{ &hellip; }} is an action are instructions for templating engine.</p>
+<p>{{.TweetCount}} means printing the value of TweetCount in current context.</p>
+<p>Data passed to a template can be hierarchical (i.e. a struct withing a struct within a struct…).</p>
+<p>Current context . refers to current scope within the data.</p>
+<p>Initial . refers to top-level scope:</p>
+<pre><code>tmplStr := &quot;Data: {{.}}\n&quot;
+t := template.Must(template.New(&quot;simple&quot;).Parse(tmplStr))
+execWithData := func(data interface{}) {
+    err := t.Execute(os.Stdout, data)
+    if err != nil {
+        log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+    }
+}
+
+execWithData(5)
+execWithData(&quot;foo&quot;)
+st := struct {
+    Number int
+    Str    string
+}{
+    Number: 3,
+    Str:    &quot;hello&quot;,
+}
+execWithData(st)
+</code></pre><blockquote>
+<p>Data: 5<br>
+Data: foo<br>
+Data: {3 hello}</p>
+</blockquote>
+<p>Values that don’t have pre-defined formatting are printed using Stringer interface. For custom formatting of your type in a template implement String() string method.</p>
+<p>{{range .Tweets}}{{end}} evaluates inner part for every element of []string slice Tweets and sets current context . within the inner part to elements of Tweets slice.</p>
+<p>{{index .RecentTweets 0}} is equivalent to RecentTweets[0] in Go code.</p>
+<p>Text in a template is copied verbatim. Having to preserve whitespace can lead to ugly templates.</p>
+<p>To help write more readable templates We can add - at the beginning or end of action as seen in {{end -}}.</p>
+<p>This remove whitespace before or after the action.</p>
+<p>{{range .RecentTweets}} changes variable scope and we don’t have access to data outside. If we need to access data from upper scope, we can define variables like {{ $tweetCount := len .RecentTweets }}.</p>
+<h2 id="methods-as-data">Methods as data</h2>
+<p>In a template {{ .Foo }} will either access struct field Foo or call a function Foo():</p>
+<p>var tmplStr = <code>Data from a field: '{{ .Field }}' Data from a method: '{{ .Method }}'</code></p>
+<p>t := template.New(&ldquo;method&rdquo;)
+t, err := t.Parse(tmplStr)
+if err != nil {
+log.Fatalf(&ldquo;template.Parse() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>data := Data{
+Field: 5,
+}</p>
+<p>err = t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Data from a field: '5'
+Data from a method: 'data from a method'
+
+## if action
+To conditionally render parts of the template, use if action:
+
+const tmplStr = `{{range . -}}
+{{if .IsNew}}'{{.Name}}' is new{{else}}'{{.Name}}' is not new{{end}}
+{{end}}`
+
+t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
+
+data := []struct {
+    Name  string
+    IsNew bool
+}{
+    {&quot;Bridge&quot;, false},
+    {&quot;Electric battery&quot;, true},
+}
+
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>&lsquo;Bridge&rsquo; is not new
+&lsquo;Electric battery&rsquo; is new
+false values
+Templating uses “truthy” logic for deciding what values are true or false in the context of if action:</p>
+<p>const tmplStr = <code>{{range . -}} {{printf &quot;%- 16s&quot; .Name}} is: {{if .Value}}true{{else}}false{{end}} {{end}}</code></p>
+<p>t := template.Must(template.New(&ldquo;if&rdquo;).Parse(tmplStr))</p>
+<p>var nilPtr *string = nil
+var nilSlice []float32
+emptySlice := []int{}</p>
+<p>data := []struct {
+Name  string
+Value interface{}
+}{
+{&ldquo;bool false&rdquo;, false},
+{&ldquo;bool true&rdquo;, true},
+{&ldquo;integer 0&rdquo;, 0},
+{&ldquo;integer 1&rdquo;, 1},
+{&ldquo;float32 0&rdquo;, float32(0)},
+{&ldquo;float64 NaN&rdquo;, math.NaN},
+{&ldquo;empty string&rdquo;, &ldquo;&quot;},
+{&ldquo;non-empty string&rdquo;, &ldquo;haha&rdquo;},
+{&ldquo;nil slice&rdquo;, nilSlice},
+{&ldquo;empty slice&rdquo;, emptySlice},
+{&ldquo;non-empty slice&rdquo;, []int{3}},
+{&ldquo;nil pointer&rdquo;, nilPtr},
+}</p>
+<p>err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>bool false       is: false
+bool true        is: true
+integer 0        is: false
+integer 1        is: true
+float32 0        is: false
+float64 NaN      is: true
+empty string     is: false
+non-empty string is: true
+nil slice        is: false
+empty slice      is: false
+non-empty slice  is: true
+nil pointer      is: false
+Avoid printing empty slices
+Truthy logic is useful when we want to show different text if a list of items is empty:
+
+type UserTweets struct {
+    User   string
+    Tweets []string
+}
+
+const tmplStr = `
+{{- if not .Tweets -}}
+User '{{.User}}' has no tweets.
+{{ else -}}
+User '{{.User}}' has {{ len .Tweets }} tweets:
+{{ range .Tweets -}}
+  '{{ . }}'
+{{ end }}
+{{- end}}`
+
+t := template.Must(template.New(&quot;if&quot;).Parse(tmplStr))
+
+data := UserTweets{
+    User: &quot;kjk&quot;,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+
+data = UserTweets{
+    User:   &quot;masa&quot;,
+    Tweets: []string{&quot;tweet one&quot;, &quot;tweet two&quot;},
+}
+err = t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>User &lsquo;kjk&rsquo; has no tweets.
+User &lsquo;masa&rsquo; has 2 tweets:
+&lsquo;tweet one&rsquo;
+&lsquo;tweet two&rsquo;</p>
+<h2 id="range-action">range action</h2>
+<p>Just as in Go, range can iterate over arrays, slices, maps and channels.</p>
+<p>Range over arrays and slices
+const tmplStr = <code>Elements of arrays or slice: {{ range . }}{{ . }} {{end}}</code></p>
+<p>t := template.Must(template.New(&ldquo;range&rdquo;).Parse(tmplStr))</p>
+<p>array := [&hellip;]int{3, 8}
+err := t.Execute(os.Stdout, array)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>slice := []int{12, 5}
+err = t.Execute(os.Stdout, slice)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Elements of arrays or slice: 3 8 
+Elements of arrays or slice: 12 5 
+Range over maps
+const tmplStr = `Elements of map:
+{{ range $k, $v := . }}{{ $k }}: {{ $v }}
+{{end}}`
+
+t := template.Must(template.New(&quot;range&quot;).Parse(tmplStr))
+
+data := map[string]int{
+    &quot;one&quot;:  1,
+    &quot;five&quot;: 5,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>Elements of map:
+five: 5
+one: 1
+Range over channels
+const tmplStr = <code>Elements of a channel: {{ range . }}{{ . }} {{end}}</code></p>
+<p>t := template.Must(template.New(&ldquo;range&rdquo;).Parse(tmplStr))</p>
+<p>ch := make(chan int)
+go func() {
+for i := 0; i &lt; 3; i++ {
+ch &lt;- i
+}
+close(ch)
+}()
+err := t.Execute(os.Stdout, ch)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Elements of a channel: 0 1 2 
+
+## Built-in functions
+Templating engine supports calling functions like {{ len .Tweet }} where len is a function that returns length of an array or slice.
+
+and, or, not
+and, or, not are for logical operations:
+
+const tmplStr = `Or:  {{ if or .True .False }}true{{ else }}false{{ end }}
+And: {{ if and .True .False }}true{{ else }}false{{ end }}
+Not: {{ if not .False }}true{{ else }}false{{ end }}
+`
+
+t := template.Must(template.New(&quot;and_or_not&quot;).Parse(tmplStr))
+
+data := Data{True: true, False: false}
+
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>Or:  true
+And: false
+Not: true
+index
+index is for accessing elements of a slice by index or values in a map by key.</p>
+<p>const tmplStr = <code>Slice[0]: {{ index .Slice 0 }} SliceNested[1][0]: {{ index .SliceNested 1 0 }} Map[&quot;key&quot;]: {{ index .Map &quot;key&quot; }}</code></p>
+<p>t := template.Must(template.New(&ldquo;index&rdquo;).Parse(tmplStr))</p>
+<p>data := struct {
+Slice       []string
+SliceNested [][]int
+Map         map[string]int
+}{
+Slice: []string{&ldquo;first&rdquo;, &ldquo;second&rdquo;},
+SliceNested: [][]int{
+{3, 1},
+{2, 3},
+},
+Map: map[string]int{
+&ldquo;key&rdquo;: 5,
+},
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Slice[0]: first
+SliceNested[1][0]: 2
+Map[&quot;key&quot;]: 5
+len
+len returns length of an array of map.
+
+const tmplStr = `len(nil)       : {{ len .SliceNil }}
+len(emptySlice): {{ len .SliceEmpty }}
+len(slice)     : {{ len .Slice }}
+len(map)       : {{ len .Map }}
+`
+
+t := template.Must(template.New(&quot;len&quot;).Parse(tmplStr))
+
+data := struct {
+    SliceNil   []int
+    SliceEmpty []string
+    Slice      []bool
+    Map        map[int]bool
+}{
+    SliceNil:   nil,
+    SliceEmpty: []string{},
+    Slice:      []bool{true, true, false},
+    Map:        map[int]bool{5: true, 3: false},
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>len(nil)       : 0
+len(emptySlice): 0
+len(slice)     : 3
+len(map)       : 2
+print, printf, println
+print is like fmt.Sprint.</p>
+<p>printf is like fmt.Sprintf.</p>
+<p>println is like fmt.Sprintln.</p>
+<p>const tmplStr = <code>print:   {{ print .Str .Num }} println: {{ println .Str .Num }} printf:  {{ printf &quot;%s %#v %d&quot; .Str .Str .Num }}</code></p>
+<p>t := template.Must(template.New(&ldquo;print&rdquo;).Parse(tmplStr))</p>
+<p>data := struct {
+Str string
+Num int
+}{
+Str: &ldquo;str&rdquo;,
+Num: 8,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>print:   str8
+println: str 8
+
+printf:  str &quot;str&quot; 8
+js, html, urlquery
+js, html and urlquery is for escaping text so that it can be safely inserted in a JavaScript, HTML and URL context:
+
+const tmplStr = `js escape  : {{ js .JS }}
+html escape: {{ html .HTML }}
+url escape : {{ urlquery .URL }}
+`
+
+t := template.Must(template.New(&quot;print&quot;).Parse(tmplStr))
+
+data := struct {
+    JS   string
+    HTML string
+    URL  string
+}{
+    JS:   `function me(s) { return &quot;foo&quot;; }`,
+    HTML: `&lt;div&gt;text&lt;/div&gt;`,
+    URL:  `http://www.programming-books.io`,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><p>js escape  : function me(s) { return &quot;foo&quot;; }
+html escape: &lt;div&gt;text&lt;/div&gt;
+url escape : http%3A%2F%2Fwww.programming-books.io</p>
+<h2 id="custom-functions">Custom functions</h2>
+<p>You can define custom functions and make them available in templates:</p>
+<p>const tmplStr = <code>5 + 5 = {{ sum 5 .Arg }}</code></p>
+<p>customFunctions := template.FuncMap{
+&ldquo;sum&rdquo;: sum,
+}</p>
+<p>t := template.Must(template.New(&ldquo;func&rdquo;).Funcs(customFunctions).Parse(tmplStr))</p>
+<p>data := struct {
+Arg int
+}{
+Arg: 5,
+}
+err := t.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>5 + 5 = 10
+
+## HTML templates
+Package html/template has the same base functionality as text/template.
+
+The difference is that html/template understands structure of HTML and JavaScript code inside HTML.
+
+Inserted text is escaped based on its surrounding context which eliminates cross-site scripting bugs.
+
+const tmplStr = `&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;
+`
+
+txt := text_template.Must(text_template.New(&quot;text&quot;).Parse(tmplStr))
+
+html := html_template.Must(html_template.New(&quot;html&quot;).Parse(tmplStr))
+
+data := struct {
+    JS   string
+    HTML string
+    URL  string
+}{
+    JS:   `foo`,
+    HTML: `&lt;span&gt;text&lt;/span&gt;`,
+    URL:  `http://www.programming-books.io`,
+}
+
+err := txt.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+
+fmt.Println()
+
+err = html.Execute(os.Stdout, data)
+if err != nil {
+    log.Fatalf(&quot;t.Execute() failed with '%s'\n&quot;, err)
+}
+</code></pre><div onlick="foo"><span>text</span></div>
+<div onlick="&#34;foo&#34;">&lt;span&gt;text&lt;/span&gt;</div>
+Inserting unescaped HTML
+Sometimes you need to subvert escaping of text:
+<p>const tmplStr = <code>&lt;div onlick=&quot;{{ .JS }}&quot;&gt;{{ .HTML }}&lt;/div&gt;</code></p>
+<p>html := template.Must(template.New(&ldquo;html&rdquo;).Parse(tmplStr))</p>
+<p>data := struct {
+JS   string
+HTML string
+}{
+JS:   <code>foo</code>,
+HTML: <code>&lt;span&gt;text&lt;/span&gt;</code>,
+}</p>
+<p>fmt.Printf(&ldquo;Escaped:\n&rdquo;)
+err := html.Execute(os.Stdout, data)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<p>fmt.Printf(&quot;\nUnescaped:\n&rdquo;)
+data2 := struct {
+JS   template.JS
+HTML template.HTML
+}{
+JS:   <code>foo</code>,
+HTML: <code>&lt;span&gt;text&lt;/span&gt;</code>,
+}
+err = html.Execute(os.Stdout, data2)
+if err != nil {
+log.Fatalf(&ldquo;t.Execute() failed with &lsquo;%s&rsquo;\n&rdquo;, err)
+}</p>
+<pre><code>Escaped:
+&lt;div onlick=&quot;&amp;#34;foo&amp;#34;&quot;&gt;&amp;lt;span&amp;gt;text&amp;lt;/span&amp;gt;&lt;/div&gt;
+
+Unescaped:
+&lt;div onlick=&quot;foo&quot;&gt;&lt;span&gt;text&lt;/span&gt;&lt;/div&gt;
+template.HTML and template.JS are type alises for string so you can assign string values to them.
+
+Templating engine recognizes those types and disables escaping for them.</code></pre>
+                                                
+                                            </div>
+
+                                            <div style="margin-top:40px">
+                                                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                                                    <img src="img/tenlong.jpg">
+                                                </a>
+                                            </div>
+
+                                            <div style="border: 1px dashed #e0e0e0; padding: 5px; margin-top: 20px; background-color: #fffbba;">
+    <div>
+        <ul>
+            <li>作者:luangeng</li>
+            <li>主页:<a href="https://luangeng.space">https://luangeng.space</a></li>
+            <li>本文出处:<a target="_blank" href="https://wawazhua.cn/post/go/Text-HTML-templates/">https://wawazhua.cn/post/go/Text-HTML-templates/</a></li>
+            <li>版权声明:禁止转载-非商用-非衍生</li>
+        </ul>
+    </div>
+</div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        
+
+                                    </div>
+                                    
+                                </article>
+                                
+                                <div class="clear"></div>
+                                <ul class="post-nav group">
+                                    <li class="next">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/httpMiddleware/" rel="next">
+                                            <i class="fa fa-chevron-right"></i>
+                                            <strong>Next</strong>
+                                            <span>Go HTTP server middleware</span>
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="previous">
+                                        
+                                        <a href="https://wawazhua.cn/post/go/Reflection/" rel="prev">
+                                            <i class="fa fa-chevron-left"></i>
+                                            <strong>Previous</strong>
+                                            <span>Go 反射</span>
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                                <br>
+
+
+<h4 class="heading">相关</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/go/CSV/" rel="bookmark" class="leancloud-count">Go CSV
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/go/Context/" rel="bookmark" class="leancloud-count">Go Context
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/go/Defer/" rel="bookmark" class="leancloud-count">Go Defer
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Client/" rel="bookmark" class="leancloud-count">Go HTTP Client
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/go/HTTP-Server/" rel="bookmark" class="leancloud-count">Go HTTP Server
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/httpMiddleware/" rel="bookmark" class="leancloud-count">Go HTTP server middleware
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Hex-base64-encoding/" rel="bookmark" class="leancloud-count">Go Hex和 base64编码
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Inlining-functions/" rel="bookmark" class="leancloud-count">Go Inlining functions
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/JSON/" rel="bookmark" class="leancloud-count">Go JSON
+                    (<span style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                                <h4 class="heading">阅读排行榜</h4>
+<ul class="related-posts group" id="ranking_ul">
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">$index$. </span>
+                <a href="$url$" rel="bookmark">$title$
+                    <span class="post-date" style="font-size:14px">($hits$)</span>
+                </a>
+            </div>
+        </article>
+    </li>
+</ul>
+
+                                
+
+<h4 class="heading">最新</h4>
+<ul class="related-posts group">
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">1.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/" class="leancloud-count">爬取电影信息使用Elasticsearch检索
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">2.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch-api/" class="leancloud-count">elasticsearch JAVA API
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">3.</span>
+                <a href="https://wawazhua.cn/post/java/other/elasticsearch/" class="leancloud-count">elasticsearch入门教程
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">4.</span>
+                <a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/" class="leancloud-count">SpringBoot集成ZeroMQ
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">5.</span>
+                <a href="https://wawazhua.cn/post/java/other/github_login/" class="leancloud-count">集成通过github登录网站功能
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">6.</span>
+                <a href="https://wawazhua.cn/post/go/Command/" class="leancloud-count">Go 命令
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">7.</span>
+                <a href="https://wawazhua.cn/post/go/Images/" class="leancloud-count">Go 图像
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">8.</span>
+                <a href="https://wawazhua.cn/post/go/Crypto/" class="leancloud-count">Go 加解密
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+    <li class="related post-hover">
+        <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+            <div class="related-inner">
+                <span class="post-date" style="font-size:14px">9.</span>
+                <a href="https://wawazhua.cn/post/go/ConsoleIO/" class="leancloud-count">Go 控制台输入
+                    (<span class="post-date" style="font-size:14px">0</span>)
+                </a>
+            </div>
+        </article>
+    </li>
+    
+</ul>
+
+                            </div>
+                        </section>
+                        <div class="sidebar s2">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+    <div class="sidebar-content">
+
+        <div class="sidebar-top group">
+            <ul class="social-links">
+                <li class="social-links">
+                    <a class="social-tooltip" title="weixin" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-weixin"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="weibo" href="http://v.t.sina.com.cn/share/share.php?title="
+                        target="_blank">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="收藏" onclick="save()" target="_blank">
+                        <i class="fa fa-star"></i>
+                    </a>
+                </li>
+                <li class="social-links">
+                    <a class="social-tooltip" title="qrcode" onclick="makeCode()" target="_blank">
+                        <i class="fa fa-qrcode"></i>
+                    </a>
+                    <div id="weixin-qrcode" style="display: none;"></div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/LDfM9YWb">
+                    <img src="img/tennew.jpg" />
+                </a>
+            </div>
+        </div>
+
+        
+
+        
+        
+        <div id="relate" class="widget widget_recent_entries">
+            <h3>相关</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/go/CSV/">Go CSV</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Context/">Go Context</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/Defer/">Go Defer</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Client/">Go HTTP Client</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/HTTP-Server/">Go HTTP Server</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/go/httpMiddleware/">Go HTTP server middleware</a></li>
+                
+            </ul>
+        </div>
+        
+
+        <div id="recent" class="widget widget_recent_entries">
+            <h3>最新</h3>
+            <ul>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-douban/">爬取电影信息使用Elasticsearch检索</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch-api/">elasticsearch JAVA API</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/elasticsearch/">elasticsearch入门教程</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/spring/zeromq-springboot/">SpringBoot集成ZeroMQ</a></li>
+                
+                <li><a href="https://wawazhua.cn/post/java/other/github_login/">集成通过github登录网站功能</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="ranking_side" class="widget widget_rank_entries">
+            <h3>热门</h3>
+            <ul id="ranking_side_ul"></ul>
+        </div>
+
+        <div id="links" class="widget widget_links">
+            <h3>链接</h3>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/tools.html" target="_blank">在线工具</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="cat-item cat-item-1">
+                    <a href="https://wawazhua.cn/commav3.html" target="_blank">列数据整理</a>
+                </li>
+            </ul>
+
+
+
+
+
+        </div>
+
+        <div id="tags" class="widget">
+            <h3>标签</h3>
+            
+            <a href='https://wawazhua.cn/tags/Go'
+                style="font-size:17px;margin:3px; padding:2px"><code>Go(55)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/Java'
+                style="font-size:17px;margin:3px; padding:2px"><code>Java(22)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/RocketMQ'
+                style="font-size:17px;margin:3px; padding:2px"><code>RocketMQ(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/elasticsearch'
+                style="font-size:17px;margin:3px; padding:2px"><code>elasticsearch(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/git'
+                style="font-size:17px;margin:3px; padding:2px"><code>git(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/html'
+                style="font-size:17px;margin:3px; padding:2px"><code>html(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/jQuery'
+                style="font-size:17px;margin:3px; padding:2px"><code>jQuery(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/ks8'
+                style="font-size:17px;margin:3px; padding:2px"><code>ks8(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/linux'
+                style="font-size:17px;margin:3px; padding:2px"><code>linux(2)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/maven'
+                style="font-size:17px;margin:3px; padding:2px"><code>maven(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/mysql'
+                style="font-size:17px;margin:3px; padding:2px"><code>mysql(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/netty'
+                style="font-size:17px;margin:3px; padding:2px"><code>netty(8)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/oauth2'
+                style="font-size:17px;margin:3px; padding:2px"><code>oauth2(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/opencv'
+                style="font-size:17px;margin:3px; padding:2px"><code>opencv(1)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/redis'
+                style="font-size:17px;margin:3px; padding:2px"><code>redis(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/spring'
+                style="font-size:17px;margin:3px; padding:2px"><code>spring(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springboot'
+                style="font-size:17px;margin:3px; padding:2px"><code>springboot(6)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/springcloud'
+                style="font-size:17px;margin:3px; padding:2px"><code>springcloud(5)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/tool'
+                style="font-size:17px;margin:3px; padding:2px"><code>tool(4)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/zookeeper'
+                style="font-size:17px;margin:3px; padding:2px"><code>zookeeper(7)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95'
+                style="font-size:17px;margin:3px; padding:2px"><code>算法(3)</code></a>
+            
+            <a href='https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD'
+                style="font-size:17px;margin:3px; padding:2px"><code>英语(32)</code></a>
+            
+        </div>
+
+        <div id="donate" class="widget widget_recent_entries">
+            <h3>支持</h3>
+            <div class="widget qrcode">
+                <img src="img/zan.png" alt="weixin" width="172px" height="172px" />
+                <p> </p>
+            </div>
+        </div>
+
+        <div class="widget_categories">
+            <div class="widget qrcode">
+                <a target="_blank" href="https://curl.qcloud.com/xwMs86TX">
+                    <img src="img/11.jpg" alt="weixin" />
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+      <div class="group" style="padding:5px 0px">
+        <div class="grid one-third">
+          <div style="padding:10px 0px;font-size:14px">
+            Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages </a>
+            · Powered by <a href="https://leancloud.cn/" style="font-weight: bold" target="_blank">LeanCloud</a>
+          </div>
+          
+        </div>
+        
+        <div class="grid one-third">
+          <div style="padding:10px 0px;text-align:center;font-size:14px">
+            <span> ©2018 · 保留所有权利 </span>
+            
+          </div>
+        </div>
+        <div class="grid one-third last">
+          <ul class="social-links">
+            <li>
+              <a class="social-tooltip" title="On Twitter" href="https://twitter.com/luangeng1" target="_blank">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On GitHub" href="https://github.com/luangeng" target="_blank">
+                <i class="fa fa-github"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On LinkedIn" href="https://www.linkedin.com/luangeng" target="_blank">
+                <i class="fa fa-linkedin-square"></i>
+              </a>
+            </li>
+            <li>
+              <a class="social-tooltip" title="On FaceBook" href="https://www.facebook.com/geng.luan.73/"
+                target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+</footer>
+
+<a href="#" id="back-to-top" style="display: none"><i class="fa fa-angle-up"></i></a>
+    </div>
+    <script type="text/javascript" src="js/highlight.pack.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="js/picturefill.min.js"></script>
+<script type="text/javascript" src="js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/av-core-mini-0.6.1.js"></script>
+
+<script type="text/javascript" src="js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="js/my.js"></script>
+<script>
+    init();
+</script>
+</body>
+
+</html>

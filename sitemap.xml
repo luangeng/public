@@ -1,385 +1,385 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Intro/</loc>
+        <loc>https://wawazhua.cn/post/go/Intro/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/install/</loc>
+        <loc>https://wawazhua.cn/post/go/install/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Types/</loc>
+        <loc>https://wawazhua.cn/post/go/Types/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Variables/</loc>
+        <loc>https://wawazhua.cn/post/go/Variables/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Constants/</loc>
+        <loc>https://wawazhua.cn/post/go/Constants/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/string/</loc>
+        <loc>https://wawazhua.cn/post/go/string/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Pointers/</loc>
+        <loc>https://wawazhua.cn/post/go/Pointers/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/array/</loc>
+        <loc>https://wawazhua.cn/post/go/array/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/slice/</loc>
+        <loc>https://wawazhua.cn/post/go/slice/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Map/</loc>
+        <loc>https://wawazhua.cn/post/go/Map/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/struct/</loc>
+        <loc>https://wawazhua.cn/post/go/struct/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Interfaces/</loc>
+        <loc>https://wawazhua.cn/post/go/Interfaces/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Ifswitchgoto/</loc>
+        <loc>https://wawazhua.cn/post/go/Ifswitchgoto/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Loop/</loc>
+        <loc>https://wawazhua.cn/post/go/Loop/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Range/</loc>
+        <loc>https://wawazhua.cn/post/go/Range/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Functions/</loc>
+        <loc>https://wawazhua.cn/post/go/Functions/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Methods/</loc>
+        <loc>https://wawazhua.cn/post/go/Methods/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Error-handling/</loc>
+        <loc>https://wawazhua.cn/post/go/Error-handling/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Defer/</loc>
+        <loc>https://wawazhua.cn/post/go/Defer/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Panic-recover/</loc>
+        <loc>https://wawazhua.cn/post/go/Panic-recover/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Concurrency/</loc>
+        <loc>https://wawazhua.cn/post/go/Concurrency/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Channels-select/</loc>
+        <loc>https://wawazhua.cn/post/go/Channels-select/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Mutex/</loc>
+        <loc>https://wawazhua.cn/post/go/Mutex/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Packages/</loc>
+        <loc>https://wawazhua.cn/post/go/Packages/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/File/</loc>
+        <loc>https://wawazhua.cn/post/go/File/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Time-date/</loc>
+        <loc>https://wawazhua.cn/post/go/Time-date/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Command-line-arguments/</loc>
+        <loc>https://wawazhua.cn/post/go/Command-line-arguments/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Logging/</loc>
+        <loc>https://wawazhua.cn/post/go/Logging/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Executing-commands/</loc>
+        <loc>https://wawazhua.cn/post/go/Executing-commands/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Hex-base64-encoding/</loc>
+        <loc>https://wawazhua.cn/post/go/Hex-base64-encoding/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/JSON/</loc>
+        <loc>https://wawazhua.cn/post/go/JSON/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/XML/</loc>
+        <loc>https://wawazhua.cn/post/go/XML/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/CSV/</loc>
+        <loc>https://wawazhua.cn/post/go/CSV/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/YAML/</loc>
+        <loc>https://wawazhua.cn/post/go/YAML/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/SQL/</loc>
+        <loc>https://wawazhua.cn/post/go/SQL/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/HTTP-Client/</loc>
+        <loc>https://wawazhua.cn/post/go/HTTP-Client/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/HTTP-Server/</loc>
+        <loc>https://wawazhua.cn/post/go/HTTP-Server/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/httpMiddleware/</loc>
+        <loc>https://wawazhua.cn/post/go/httpMiddleware/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Text-HTML-templates/</loc>
+        <loc>https://wawazhua.cn/post/go/Text-HTML-templates/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Reflection/</loc>
+        <loc>https://wawazhua.cn/post/go/Reflection/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Context/</loc>
+        <loc>https://wawazhua.cn/post/go/Context/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Testing/</loc>
+        <loc>https://wawazhua.cn/post/go/Testing/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Pprof/</loc>
+        <loc>https://wawazhua.cn/post/go/Pprof/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Cross-compilation/</loc>
+        <loc>https://wawazhua.cn/post/go/Cross-compilation/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Conditional-compilation/</loc>
+        <loc>https://wawazhua.cn/post/go/Conditional-compilation/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Inlining-functions/</loc>
+        <loc>https://wawazhua.cn/post/go/Inlining-functions/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Sync.Pool/</loc>
+        <loc>https://wawazhua.cn/post/go/Sync.Pool/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/gob/</loc>
+        <loc>https://wawazhua.cn/post/go/gob/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Plugin/</loc>
+        <loc>https://wawazhua.cn/post/go/Plugin/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Fmt/</loc>
+        <loc>https://wawazhua.cn/post/go/Fmt/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Protobuf/</loc>
+        <loc>https://wawazhua.cn/post/go/Protobuf/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/ConsoleIO/</loc>
+        <loc>https://wawazhua.cn/post/go/ConsoleIO/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Crypto/</loc>
+        <loc>https://wawazhua.cn/post/go/Crypto/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Images/</loc>
+        <loc>https://wawazhua.cn/post/go/Images/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/go/basic/Command/</loc>
+        <loc>https://wawazhua.cn/post/go/Command/</loc>
         <lastmod>2018-09-09T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -547,7 +547,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/redis/redis-command-string/</loc>
+        <loc>https://wawazhua.cn/post/db/redis-command-string/</loc>
         <lastmod>2018-01-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -764,7 +764,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/redis/redis-install/</loc>
+        <loc>https://wawazhua.cn/post/db/redis-install/</loc>
         <lastmod>2017-09-07T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -806,7 +806,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/mysql/mysql-type/</loc>
+        <loc>https://wawazhua.cn/post/db/mysql-type/</loc>
         <lastmod>2017-09-05T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -827,7 +827,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/mysql/mysql-sql/</loc>
+        <loc>https://wawazhua.cn/post/db/mysql-sql/</loc>
         <lastmod>2017-09-04T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -855,7 +855,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/redis/redis-intr/</loc>
+        <loc>https://wawazhua.cn/post/db/redis-intr/</loc>
         <lastmod>2017-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -904,7 +904,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/mysql/mysql-procedure/</loc>
+        <loc>https://wawazhua.cn/post/db/mysql-procedure/</loc>
         <lastmod>2017-09-01T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -1191,7 +1191,7 @@
     </url>
     
     <url>
-        <loc>https://wawazhua.cn/post/db/mysql/mysql/</loc>
+        <loc>https://wawazhua.cn/post/db/mysql/</loc>
         <lastmod>2016-09-03T00:00:00+00:00</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>

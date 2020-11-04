@@ -14,496 +14,496 @@
     
     <item>
       <title>Go 介绍</title>
-      <link>https://wawazhua.cn/post/go/basic/Intro/</link>
+      <link>https://wawazhua.cn/post/go/Intro/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Intro/</guid>
+      <guid>https://wawazhua.cn/post/go/Intro/</guid>
       <description>Go(又称Golang)是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。 罗伯特·格瑞史莫(Robert Gr</description>
     </item>
     
     <item>
       <title>Go 安装</title>
-      <link>https://wawazhua.cn/post/go/basic/install/</link>
+      <link>https://wawazhua.cn/post/go/install/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/install/</guid>
+      <guid>https://wawazhua.cn/post/go/install/</guid>
       <description>Windows系统下安装和设置 安装 从 https://golang.org/dl/ 下载.msi包并运行即可 设置 安装完成后，你需要配置GOPATH环境变量。从Go 1.8开始，GOPATH</description>
     </item>
     
     <item>
       <title>Go 基本数据类型</title>
-      <link>https://wawazhua.cn/post/go/basic/Types/</link>
+      <link>https://wawazhua.cn/post/go/Types/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Types/</guid>
+      <guid>https://wawazhua.cn/post/go/Types/</guid>
       <description>bool bool类型的值可以是true或false，初始为false var b bool = true fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) b = false fmt.Printf(&amp;quot;b is: &#39;%v&#39;\n&amp;quot;, b) var b2 bool fmt.Printf(&amp;quot;zero value of bool is: &#39;%v&#39;\n&amp;quot;, b2) b is: &amp;lsquo;true&amp;rsquo; b is: &amp;lsquo;false&amp;rsquo; zero value of bool is: &amp;lsquo;false&amp;rsquo; b</description>
     </item>
     
     <item>
       <title>Go 变量</title>
-      <link>https://wawazhua.cn/post/go/basic/Variables/</link>
+      <link>https://wawazhua.cn/post/go/Variables/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Variables/</guid>
+      <guid>https://wawazhua.cn/post/go/Variables/</guid>
       <description>Go中声明变量有以下几种方式: // 声明单个顶层变量 var topLevel int64 = 5 // 组合声明多个变量 var ( intVal int // 初始化为其零值 str string = &amp;quot;str&amp;quot; // assigning // functions are first-class values so can be assigned to variables // fn is</description>
     </item>
     
     <item>
       <title>Go 常量</title>
-      <link>https://wawazhua.cn/post/go/basic/Constants/</link>
+      <link>https://wawazhua.cn/post/go/Constants/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Constants/</guid>
+      <guid>https://wawazhua.cn/post/go/Constants/</guid>
       <description>Go支持character, string,boolean和数字型的常量. 常量基本使用: // Greeting是public的string常量 const Greeting</description>
     </item>
     
     <item>
       <title>Go 字符串</title>
-      <link>https://wawazhua.cn/post/go/basic/string/</link>
+      <link>https://wawazhua.cn/post/go/string/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/string/</guid>
+      <guid>https://wawazhua.cn/post/go/string/</guid>
       <description>Go中的string是不可变的byte序列 与Python或Java等语言不同，它们在内部未表示为Unicode。 因此，从文件或网络连接读取字</description>
     </item>
     
     <item>
       <title>Go 指针</title>
-      <link>https://wawazhua.cn/post/go/basic/Pointers/</link>
+      <link>https://wawazhua.cn/post/go/Pointers/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Pointers/</guid>
+      <guid>https://wawazhua.cn/post/go/Pointers/</guid>
       <description>指针是其指向变量在内存中的地址。 不同与C语言, Go不允许指针上的运算, 不能对指针做加减。 指针的零值为nil。 指针使用示例: v := 5 // pv是指向</description>
     </item>
     
     <item>
       <title>Go 数组</title>
-      <link>https://wawazhua.cn/post/go/basic/array/</link>
+      <link>https://wawazhua.cn/post/go/array/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/array/</guid>
+      <guid>https://wawazhua.cn/post/go/array/</guid>
       <description>Go中的数组是相同类型元素的有序集合。数组的长度是固定不变的,不能扩展,因此比较少用.大部分情况下我们可以使用slice,它的长度可以扩大和</description>
     </item>
     
     <item>
       <title>Go 切片</title>
-      <link>https://wawazhua.cn/post/go/basic/slice/</link>
+      <link>https://wawazhua.cn/post/go/slice/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/slice/</guid>
+      <guid>https://wawazhua.cn/post/go/slice/</guid>
       <description>切片是相同类型的值的可增长序列。 其他语言称它们为数组或向量。 slice使用的内存由固定大小的数组提供。 切片是对该数组的视图。 切片具有长度和容</description>
     </item>
     
     <item>
       <title>Go map类型</title>
-      <link>https://wawazhua.cn/post/go/basic/Map/</link>
+      <link>https://wawazhua.cn/post/go/Map/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Map/</guid>
+      <guid>https://wawazhua.cn/post/go/Map/</guid>
       <description>map是无序的key-value对的集合. map的声明和初始化 使用map关键字声明map, 同时指明key和value的类型: // Keys are ints, values are ints. var</description>
     </item>
     
     <item>
       <title>Go struct类型</title>
-      <link>https://wawazhua.cn/post/go/basic/struct/</link>
+      <link>https://wawazhua.cn/post/go/struct/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/struct/</guid>
+      <guid>https://wawazhua.cn/post/go/struct/</guid>
       <description>struct的作用是将几个相关的变量组合成一个独立的实体. 如同Java和C++中的类,struct可以有方法. 不同于Java和C++中的类,</description>
     </item>
     
     <item>
       <title>Go 接口</title>
-      <link>https://wawazhua.cn/post/go/basic/Interfaces/</link>
+      <link>https://wawazhua.cn/post/go/Interfaces/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Interfaces/</guid>
+      <guid>https://wawazhua.cn/post/go/Interfaces/</guid>
       <description>接口在类型上定义了一组方法。 接口用于抽象行为。 在Go中，接口只是一组方法。 我们使用接口来指定某个对象的行为。 例如:标准库中定义的io.Rea</description>
     </item>
     
     <item>
       <title>Go 判断</title>
-      <link>https://wawazhua.cn/post/go/basic/Ifswitchgoto/</link>
+      <link>https://wawazhua.cn/post/go/Ifswitchgoto/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Ifswitchgoto/</guid>
+      <guid>https://wawazhua.cn/post/go/Ifswitchgoto/</guid>
       <description>if 使用if进行基本的条件判断, 基本使用示例: a := 5 b := 6 if a == b { fmt.Print(&amp;quot;a is equal to b\n&amp;quot;) } else { fmt.Print(&amp;quot;a is not equal to b\n&amp;quot;) } a is not equal to b func returnValues(ok bool) (int, bool) { return 5, ok } func main() { a := 5</description>
     </item>
     
     <item>
       <title>Go 循环</title>
-      <link>https://wawazhua.cn/post/go/basic/Loop/</link>
+      <link>https://wawazhua.cn/post/go/Loop/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Loop/</guid>
+      <guid>https://wawazhua.cn/post/go/Loop/</guid>
       <description>Go中只有for循环,for循环的完整形式如下: for i := 0; i &amp;lt; 5; i += 2 { fmt.Printf(&amp;quot;i: %d\n&amp;quot;, i) } i: 0 i: 2 i: 4 for循环中的每个部分都不是必须的 比如没有初始化:</description>
     </item>
     
     <item>
       <title>Go range</title>
-      <link>https://wawazhua.cn/post/go/basic/Range/</link>
+      <link>https://wawazhua.cn/post/go/Range/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Range/</guid>
+      <guid>https://wawazhua.cn/post/go/Range/</guid>
       <description>遍历字符串 s := &amp;quot;Hey 世界&amp;quot; for i, r := range s { fmt.Printf(&amp;quot;idx: %d, rune: %d\n&amp;quot;, i, r) } idx: 0, rune: 72 idx: 1, rune: 101 idx: 2, rune: 121 idx: 3, rune: 32 idx: 4, rune: 19990 idx: 7, rune: 30028 请注意，范围假定字符串是UTF-</description>
     </item>
     
     <item>
       <title>Go 函数</title>
-      <link>https://wawazhua.cn/post/go/basic/Functions/</link>
+      <link>https://wawazhua.cn/post/go/Functions/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Functions/</guid>
+      <guid>https://wawazhua.cn/post/go/Functions/</guid>
       <description>基本函数示例: // addCheckOverflow 完成2个int16相加,并且额外返回是否溢出 func addCheckOverflow(a, b uint16) (uint16, bool) { res := a + b overflowed := res &amp;lt; a || res &amp;lt; b return res, overflowed } func main() { res, overflowed := addCheckOverflow(1, 3) fmt.Printf(&amp;quot;%5d + %5d = %5d, overflowed:</description>
     </item>
     
     <item>
       <title>Go 方法</title>
-      <link>https://wawazhua.cn/post/go/basic/Methods/</link>
+      <link>https://wawazhua.cn/post/go/Methods/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Methods/</guid>
+      <guid>https://wawazhua.cn/post/go/Methods/</guid>
       <description>方法是绑定到类型的函数, 任何类型都可以绑定函数,但大多数情况下绑定到struct, 此时和Java或C++中的类相似 方法基本例子: type Person struct { FirstName string</description>
     </item>
     
     <item>
       <title>Go 错误处理</title>
-      <link>https://wawazhua.cn/post/go/basic/Error-handling/</link>
+      <link>https://wawazhua.cn/post/go/Error-handling/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Error-handling/</guid>
+      <guid>https://wawazhua.cn/post/go/Error-handling/</guid>
       <description>与C#或Python等语言不同，Go通过返回错误值而不是抛出异常来表示程序故障。 Go同时提供了panic和recover，但很少使用。 错误是</description>
     </item>
     
     <item>
       <title>Go Defer</title>
-      <link>https://wawazhua.cn/post/go/basic/Defer/</link>
+      <link>https://wawazhua.cn/post/go/Defer/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Defer/</guid>
+      <guid>https://wawazhua.cn/post/go/Defer/</guid>
       <description>Go中的defer关键字表示了要在当前函数结束时执行的函数。常用于释放资源(例如关闭文件句柄或解锁互斥锁) Defer语句是以关键字defer</description>
     </item>
     
     <item>
       <title>Go Panic和recover</title>
-      <link>https://wawazhua.cn/post/go/basic/Panic-recover/</link>
+      <link>https://wawazhua.cn/post/go/Panic-recover/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Panic-recover/</guid>
+      <guid>https://wawazhua.cn/post/go/Panic-recover/</guid>
       <description>本章假定你已经掌握了defer。 在Go中，panic和recover在技术上类似于C＃，Java或Python等语言中的异常处理。 panic</description>
     </item>
     
     <item>
       <title>Go 并发</title>
-      <link>https://wawazhua.cn/post/go/basic/Concurrency/</link>
+      <link>https://wawazhua.cn/post/go/Concurrency/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Concurrency/</guid>
+      <guid>https://wawazhua.cn/post/go/Concurrency/</guid>
       <description>Go使用goroutines实现并发. 简单来说goroutines是轻量级的线程. Gorutines独立执行并且共享内存. 由于gorouti</description>
     </item>
     
     <item>
       <title>Go channel和select</title>
-      <link>https://wawazhua.cn/post/go/basic/Channels-select/</link>
+      <link>https://wawazhua.cn/post/go/Channels-select/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Channels-select/</guid>
+      <guid>https://wawazhua.cn/post/go/Channels-select/</guid>
       <description>channel是指定类型的值的线程安全队列, channel的最大用途是goroutines之间进行通信。 goroutines通信时使用ch&amp;</description>
     </item>
     
     <item>
       <title>Go Mutex</title>
-      <link>https://wawazhua.cn/post/go/basic/Mutex/</link>
+      <link>https://wawazhua.cn/post/go/Mutex/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Mutex/</guid>
+      <guid>https://wawazhua.cn/post/go/Mutex/</guid>
       <description>Go语言中goroutines共享内存. 这对性能有好处，但是从多个goroutine修改相同的内存是不安全的, 会导致数据争用和崩溃。 避免这种</description>
     </item>
     
     <item>
       <title>Go 包管理</title>
-      <link>https://wawazhua.cn/post/go/basic/Packages/</link>
+      <link>https://wawazhua.cn/post/go/Packages/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Packages/</guid>
+      <guid>https://wawazhua.cn/post/go/Packages/</guid>
       <description>Go中的包代表了相关联的代码的单位,在其他语言中经常称为库. 包由一个目录下的多个文件组成.这个目录和包是一对一映射的. 一个仓库中可以包含多个</description>
     </item>
     
     <item>
       <title>Go 文件和I/O</title>
-      <link>https://wawazhua.cn/post/go/basic/File/</link>
+      <link>https://wawazhua.cn/post/go/File/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/File/</guid>
+      <guid>https://wawazhua.cn/post/go/File/</guid>
       <description>Go对文件操作的支持很健壮. 下面的程序打开,读取并关闭了一个文件: path := &amp;quot;main.go&amp;quot; f, err := os.Open(path) if err != nil { log.Fatalf(&amp;quot;os.Open() failed with %s\n&amp;quot;, err) } defer f.Close() d, err := ioutil.ReadAll(f) if err != nil { log.Fatalf(&amp;quot;ioutil.ReadAll() failed with &#39;%s&#39;\n&amp;quot;, err) } lines :=</description>
     </item>
     
     <item>
       <title>Go 日期和时间</title>
-      <link>https://wawazhua.cn/post/go/basic/Time-date/</link>
+      <link>https://wawazhua.cn/post/go/Time-date/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Time-date/</guid>
+      <guid>https://wawazhua.cn/post/go/Time-date/</guid>
       <description>Go时间包提供了处理时间和日期的功能。 包中的主要类型: 结构time.Time表示了时间和日期的值 time.Duration 代表了时间差,单位为nanoseconds</description>
     </item>
     
     <item>
       <title>Go 解析命令行参数</title>
-      <link>https://wawazhua.cn/post/go/basic/Command-line-arguments/</link>
+      <link>https://wawazhua.cn/post/go/Command-line-arguments/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Command-line-arguments/</guid>
+      <guid>https://wawazhua.cn/post/go/Command-line-arguments/</guid>
       <description>标准库中的flag包用于解析命令行参数: var ( flgHelp bool flgEcho string ) func parseCmdLineFlags() { flag.BoolVar(&amp;amp;flgHelp, &amp;quot;help&amp;quot;, false, &amp;quot;if true, show help&amp;quot;) flag.StringVar(&amp;amp;flgEcho, &amp;quot;echo&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;&amp;quot;) flag.Parse() } func main() { parseCmdLineFlags() if flgHelp { flag.Usage() os.Exit(0) } fmt.Printf(&amp;quot;flag -echo: &#39;%s&#39;\n&amp;quot;, flgEcho) remainingArgs := flag.Args() for _, arg := range remainingArgs { fmt.Printf(&amp;quot;Remainig arg: &#39;%s&#39;\n&amp;quot;,</description>
     </item>
     
     <item>
       <title>Go 日志</title>
-      <link>https://wawazhua.cn/post/go/basic/Logging/</link>
+      <link>https://wawazhua.cn/post/go/Logging/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Logging/</guid>
+      <guid>https://wawazhua.cn/post/go/Logging/</guid>
       <description>日志记录非常重要, 不同的程序具有不同的日志记录要求。 使用fmt.Printf 和 fmt.Fprintf打印日志 日志的一种简单方式是打印在标准输</description>
     </item>
     
     <item>
       <title>Go 执行命令</title>
-      <link>https://wawazhua.cn/post/go/basic/Executing-commands/</link>
+      <link>https://wawazhua.cn/post/go/Executing-commands/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Executing-commands/</guid>
+      <guid>https://wawazhua.cn/post/go/Executing-commands/</guid>
       <description>标准库中的Package exec是一种跨平台的方式来启动流程，捕获其输出以及更多。 基本命令执行 最简单的用法是:使用exec.Command(</description>
     </item>
     
     <item>
       <title>Go Hex和 base64编码</title>
-      <link>https://wawazhua.cn/post/go/basic/Hex-base64-encoding/</link>
+      <link>https://wawazhua.cn/post/go/Hex-base64-encoding/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Hex-base64-encoding/</guid>
+      <guid>https://wawazhua.cn/post/go/Hex-base64-encoding/</guid>
       <description>有时候你需要将bytes编码非文本text. 最流行的编码是十六进制，其中每个字节由2个字符表示，而base64则将每个3个字节编码为4个字符</description>
     </item>
     
     <item>
       <title>Go JSON</title>
-      <link>https://wawazhua.cn/post/go/basic/JSON/</link>
+      <link>https://wawazhua.cn/post/go/JSON/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/JSON/</guid>
+      <guid>https://wawazhua.cn/post/go/JSON/</guid>
       <description>Go中的标准库encoding/json提供JSON格式的序列化和反序列化功能. 序列化struct为JSON type Person struct { fullName string Name string Age int `json:&amp;quot;age&amp;quot;` City string `json:&amp;quot;city&amp;quot;` } p</description>
     </item>
     
     <item>
       <title>Go XML</title>
-      <link>https://wawazhua.cn/post/go/basic/XML/</link>
+      <link>https://wawazhua.cn/post/go/XML/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/XML/</guid>
+      <guid>https://wawazhua.cn/post/go/XML/</guid>
       <description>标准库中的encoding/xml包提供了XML格式的序列化功能. 将XML解析为struct 解析XML与解析JSON类似。可以从[]byte</description>
     </item>
     
     <item>
       <title>Go CSV</title>
-      <link>https://wawazhua.cn/post/go/basic/CSV/</link>
+      <link>https://wawazhua.cn/post/go/CSV/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/CSV/</guid>
+      <guid>https://wawazhua.cn/post/go/CSV/</guid>
       <description>标准库中的encoding/csv包提供了用于读取和写入CSV文件的功能。 从CSV文件读取记录 让我们从CSV文件中读取股票报价: date,open,high,low,close,volume,Name 2013-02-08,15.07,15.12,14.63,14.75,8407500,AAL 2013-02-11,14.89,15.01,14.26,14.46,8882000,AAL 2013-02-12,14.45,14.51,14.1,14.27,8126000,AAL 2013-02-13,14.3,14.94,14.25,14.66,10259500,AAL buf</description>
     </item>
     
     <item>
       <title>Go YAML</title>
-      <link>https://wawazhua.cn/post/go/basic/YAML/</link>
+      <link>https://wawazhua.cn/post/go/YAML/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/YAML/</guid>
+      <guid>https://wawazhua.cn/post/go/YAML/</guid>
       <description>YAML是一种流行的格式，用于以人类友好的格式序列化数据, 类似JSON但更易于阅读。 由于其表达能力和可读性，YAML作为配置文件的格式很受欢</description>
     </item>
     
     <item>
       <title>Go SQL</title>
-      <link>https://wawazhua.cn/post/go/basic/SQL/</link>
+      <link>https://wawazhua.cn/post/go/SQL/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/SQL/</guid>
+      <guid>https://wawazhua.cn/post/go/SQL/</guid>
       <description>备注 有关SQL数据库驱动程序的列表，请参见Go Wiki官方文章SQLDrivers。 SQL驱动程序被导入并以_作为前缀，因此它们仅可用于驱动</description>
     </item>
     
     <item>
       <title>Go HTTP Client</title>
-      <link>https://wawazhua.cn/post/go/basic/HTTP-Client/</link>
+      <link>https://wawazhua.cn/post/go/HTTP-Client/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/HTTP-Client/</guid>
+      <guid>https://wawazhua.cn/post/go/HTTP-Client/</guid>
       <description>标准库中的net / http软件包提供了发出HTTP网络请求的功能。 在示例中，我们使用httpbin.org这是一个聪明的服务，可以返回特定的</description>
     </item>
     
     <item>
       <title>Go HTTP Server</title>
-      <link>https://wawazhua.cn/post/go/basic/HTTP-Server/</link>
+      <link>https://wawazhua.cn/post/go/HTTP-Server/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/HTTP-Server/</guid>
+      <guid>https://wawazhua.cn/post/go/HTTP-Server/</guid>
       <description>Hello World 开始使用Go编写Web服务器的典型方法是使用标准库中的net/http模块。 如下代码是最简单的HTTP服务器实现,它对任何HTTP请求都</description>
     </item>
     
     <item>
       <title>Go HTTP server middleware</title>
-      <link>https://wawazhua.cn/post/go/basic/httpMiddleware/</link>
+      <link>https://wawazhua.cn/post/go/httpMiddleware/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/httpMiddleware/</guid>
+      <guid>https://wawazhua.cn/post/go/httpMiddleware/</guid>
       <description>介绍 在Go中，中间件可用于在处理程序函数之前和之后执行代码。 它使用单功能接口的能力。可以随时引入而不会影响其他中间件。对于如身份验证日志功能</description>
     </item>
     
     <item>
       <title>Go Text和HTML模板</title>
-      <link>https://wawazhua.cn/post/go/basic/Text-HTML-templates/</link>
+      <link>https://wawazhua.cn/post/go/Text-HTML-templates/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Text-HTML-templates/</guid>
+      <guid>https://wawazhua.cn/post/go/Text-HTML-templates/</guid>
       <description>假设您正在使用Web应用程序，并且需要返回列出最新推文的HTML。 您需要从数据库加载推文列表，并根据该信息创建HTML。 通过构建较小的字符串</description>
     </item>
     
     <item>
       <title>Go 反射</title>
-      <link>https://wawazhua.cn/post/go/basic/Reflection/</link>
+      <link>https://wawazhua.cn/post/go/Reflection/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Reflection/</guid>
+      <guid>https://wawazhua.cn/post/go/Reflection/</guid>
       <description>Go是一种静态类型的语言。 在大多数情况下，变量的类型在编译时是已知的。接口类型是一种例外，尤其是空接口interface {}。 空接口是一种动</description>
     </item>
     
     <item>
       <title>Go Context</title>
-      <link>https://wawazhua.cn/post/go/basic/Context/</link>
+      <link>https://wawazhua.cn/post/go/Context/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Context/</guid>
+      <guid>https://wawazhua.cn/post/go/Context/</guid>
       <description>标准库中的context包提供了Context类型，它有多种用途。 下面是context.Context几个典型用法: 带超时(截止时间)的上下</description>
     </item>
     
     <item>
       <title>Go 测试</title>
-      <link>https://wawazhua.cn/post/go/basic/Testing/</link>
+      <link>https://wawazhua.cn/post/go/Testing/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Testing/</guid>
+      <guid>https://wawazhua.cn/post/go/Testing/</guid>
       <description>Go带有自己的测试功能，具有运行测试和基准所需的一切。 与大多数其他编程语言不同，尽管存在一些测试框架，但通常不需要单独的测试框架。 基本使用 main.go:</description>
     </item>
     
     <item>
       <title>Go 使用Go工具pprof进行性能分析</title>
-      <link>https://wawazhua.cn/post/go/basic/Pprof/</link>
+      <link>https://wawazhua.cn/post/go/Pprof/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Pprof/</guid>
+      <guid>https://wawazhua.cn/post/go/Pprof/</guid>
       <description>基本的cpu和内存分析 在主程序中添加以下代码。 var cpuprofile = flag.String(&amp;quot;cpuprofile&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;write cpu profile `file`&amp;quot;) var memprofile = flag.String(&amp;quot;memprofile&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;write memory profile to `file`&amp;quot;) func main() { flag.Parse() if *cpuprofile != &amp;quot;&amp;quot; { f, err := os.Create(*cpuprofile) if err != nil { log.Fatal(&amp;quot;could not create CPU profile: &amp;quot;, err) } if err</description>
     </item>
     
     <item>
       <title>Go 交叉编译</title>
-      <link>https://wawazhua.cn/post/go/basic/Cross-compilation/</link>
+      <link>https://wawazhua.cn/post/go/Cross-compilation/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Cross-compilation/</guid>
+      <guid>https://wawazhua.cn/post/go/Cross-compilation/</guid>
       <description>Go编译器可以为许多操作系统创建本机可执行二进制文件：Windows，Mac OS X，Linux，Android，iOS和一些鲜为人知的工具，例</description>
     </item>
     
     <item>
       <title>Go 使用构建标签进行条件编译</title>
-      <link>https://wawazhua.cn/post/go/basic/Conditional-compilation/</link>
+      <link>https://wawazhua.cn/post/go/Conditional-compilation/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Conditional-compilation/</guid>
+      <guid>https://wawazhua.cn/post/go/Conditional-compilation/</guid>
       <description>build tag允许进行有限的条件编译，即根据某些条件编译不同版本的代码。 标签是在每个文件的顶部指定的，然后是空行和代码。 标签的典型用例是提供相同功</description>
     </item>
     
     <item>
       <title>Go Inlining functions</title>
-      <link>https://wawazhua.cn/post/go/basic/Inlining-functions/</link>
+      <link>https://wawazhua.cn/post/go/Inlining-functions/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Inlining-functions/</guid>
+      <guid>https://wawazhua.cn/post/go/Inlining-functions/</guid>
       <description>函数内联是用于提高代码性能的常见编译器优化。 经常调用的小函数可以直接包含(内联)在调用函数的主体中。 这消除了函数调用开销。 Go编译器没有提供</description>
     </item>
     
     <item>
       <title>Go 使用sync.Pool提高性能</title>
-      <link>https://wawazhua.cn/post/go/basic/Sync.Pool/</link>
+      <link>https://wawazhua.cn/post/go/Sync.Pool/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Sync.Pool/</guid>
+      <guid>https://wawazhua.cn/post/go/Sync.Pool/</guid>
       <description>高频分配和释放对象可能相对昂贵。 提高性能的常用技术是重复使用内存。 sync.Pool是用于复用分配的线程安全缓存。 package main import ( &amp;quot;bytes&amp;quot; &amp;quot;fmt&amp;quot; &amp;quot;sync&amp;quot; ) var pool = sync.Pool{ //</description>
     </item>
     
     <item>
       <title>Go gob</title>
-      <link>https://wawazhua.cn/post/go/basic/gob/</link>
+      <link>https://wawazhua.cn/post/go/gob/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/gob/</guid>
+      <guid>https://wawazhua.cn/post/go/gob/</guid>
       <description>Gob是Go特定的序列化方法，主要为RPC(远程过程调用)创建。 它支持除通道和函数之外的所有Go数据类型。 Gob将类型信息写入序列化数据中。</description>
     </item>
     
     <item>
       <title>Go 插件</title>
-      <link>https://wawazhua.cn/post/go/basic/Plugin/</link>
+      <link>https://wawazhua.cn/post/go/Plugin/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Plugin/</guid>
+      <guid>https://wawazhua.cn/post/go/Plugin/</guid>
       <description>Go提供了一种插件机制，可用于在运行时动态链接其他Go代码。在Go1.8中，仅支持Linux。 定义和使用插件 package main import &amp;quot;fmt&amp;quot; var V int func F() { fmt.Printf(&amp;quot;Hello, number %d\n&amp;quot;, V) } 使</description>
     </item>
     
     <item>
       <title>Go fmt包</title>
-      <link>https://wawazhua.cn/post/go/basic/Fmt/</link>
+      <link>https://wawazhua.cn/post/go/Fmt/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Fmt/</guid>
+      <guid>https://wawazhua.cn/post/go/Fmt/</guid>
       <description>标准库中的fmt包可以格式化字符串和从字符串中解析数据. 基本的fmt 包fmt使用格式动词实现格式化的I/O: %v 默认格式 %T 值的类型 %s 字符串或片</description>
     </item>
     
     <item>
       <title>Go Protobuf</title>
-      <link>https://wawazhua.cn/post/go/basic/Protobuf/</link>
+      <link>https://wawazhua.cn/post/go/Protobuf/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Protobuf/</guid>
+      <guid>https://wawazhua.cn/post/go/Protobuf/</guid>
       <description>介绍 Protobuf或协议缓冲区对数据进行编码和解码，以便以不同语言编写的不同应用程序或模块可以快速而可靠地交换大量消息，而不会导致通信通道</description>
     </item>
     
     <item>
       <title>Go 控制台输入</title>
-      <link>https://wawazhua.cn/post/go/basic/ConsoleIO/</link>
+      <link>https://wawazhua.cn/post/go/ConsoleIO/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/ConsoleIO/</guid>
+      <guid>https://wawazhua.cn/post/go/ConsoleIO/</guid>
       <description>编写命令行程序时，可以使用任何接受io.Reader的函数从os.Stdin中读取用户输入。 fmt.Scanf从stdio读取 最方便的方法是</description>
     </item>
     
     <item>
       <title>Go 加解密</title>
-      <link>https://wawazhua.cn/post/go/basic/Crypto/</link>
+      <link>https://wawazhua.cn/post/go/Crypto/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Crypto/</guid>
+      <guid>https://wawazhua.cn/post/go/Crypto/</guid>
       <description>了解如何使用Go加密和解密数据。 请记住，这不是一门关于密码学的课程，而是一门用Go语言实现的课程。 使用AES GCM进行加密和解密 你有一个文件</description>
     </item>
     
     <item>
       <title>Go 图像</title>
-      <link>https://wawazhua.cn/post/go/basic/Images/</link>
+      <link>https://wawazhua.cn/post/go/Images/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Images/</guid>
+      <guid>https://wawazhua.cn/post/go/Images/</guid>
       <description>图像标准库为处理图像提供了基础。 image包提供了: image.Image接口描述位图图像 一种最常见的表示内存中图像的方式的实现，例如Ima</description>
     </item>
     
     <item>
       <title>Go 命令</title>
-      <link>https://wawazhua.cn/post/go/basic/Command/</link>
+      <link>https://wawazhua.cn/post/go/Command/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/go/basic/Command/</guid>
+      <guid>https://wawazhua.cn/post/go/Command/</guid>
       <description>go命令是一个命令行程序，用于管理Go开发。 它支持构建，运行和测试代码，以及各种其他与Go相关的任务。 go fmt 为了保持代码的一致性并消除代码格式</description>
     </item>
     
@@ -599,10 +599,10 @@
     
     <item>
       <title>Redis命令</title>
-      <link>https://wawazhua.cn/post/db/redis/redis-command-string/</link>
+      <link>https://wawazhua.cn/post/db/redis-command-string/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/redis/redis-command-string/</guid>
+      <guid>https://wawazhua.cn/post/db/redis-command-string/</guid>
       <description>常用命令 APPEND key value 如果 key 已经存在，并且值为字符串，那么这个命令会把 value 追加到原来值(value)的结尾。 如果 key 不存在，那么它将首先创建一个空字符串</description>
     </item>
     
@@ -797,10 +797,10 @@
     
     <item>
       <title>ubuntu 16.04安装redis-server</title>
-      <link>https://wawazhua.cn/post/db/redis/redis-install/</link>
+      <link>https://wawazhua.cn/post/db/redis-install/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/redis/redis-install/</guid>
+      <guid>https://wawazhua.cn/post/db/redis-install/</guid>
       <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
     </item>
     
@@ -842,10 +842,10 @@
     
     <item>
       <title>Mysql常用数据类型</title>
-      <link>https://wawazhua.cn/post/db/mysql/mysql-type/</link>
+      <link>https://wawazhua.cn/post/db/mysql-type/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql/mysql-type/</guid>
+      <guid>https://wawazhua.cn/post/db/mysql-type/</guid>
       <description>Mysql常用数据类型 数字: 字符串: 时间:</description>
     </item>
     
@@ -869,10 +869,10 @@
     
     <item>
       <title>Mysql基础语法</title>
-      <link>https://wawazhua.cn/post/db/mysql/mysql-sql/</link>
+      <link>https://wawazhua.cn/post/db/mysql-sql/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql/mysql-sql/</guid>
+      <guid>https://wawazhua.cn/post/db/mysql-sql/</guid>
       <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
     </item>
     
@@ -905,10 +905,10 @@
     
     <item>
       <title>Redis简介</title>
-      <link>https://wawazhua.cn/post/db/redis/redis-intr/</link>
+      <link>https://wawazhua.cn/post/db/redis-intr/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/redis/redis-intr/</guid>
+      <guid>https://wawazhua.cn/post/db/redis-intr/</guid>
       <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构:字符串，散列</description>
     </item>
     
@@ -950,10 +950,10 @@
     
     <item>
       <title>MySql 存储过程</title>
-      <link>https://wawazhua.cn/post/db/mysql/mysql-procedure/</link>
+      <link>https://wawazhua.cn/post/db/mysql-procedure/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql/mysql-procedure/</guid>
+      <guid>https://wawazhua.cn/post/db/mysql-procedure/</guid>
       <description>存储过程(Stored Procedure)是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数(如果带参数)来</description>
     </item>
     
@@ -1283,10 +1283,10 @@
     
     <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
-      <link>https://wawazhua.cn/post/db/mysql/mysql/</link>
+      <link>https://wawazhua.cn/post/db/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql/mysql/</guid>
+      <guid>https://wawazhua.cn/post/db/mysql/</guid>
       <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
     </item>
     
