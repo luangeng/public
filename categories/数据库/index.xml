@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>数据库 on 计算机与软件技术公开课</title>
-    <link>https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
-    <description>Recent content in 数据库 on 计算机与软件技术公开课</description>
+    <title>数据库 on IT从业者互助会</title>
+    <link>https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on IT从业者互助会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Wed, 03 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wawazhua.cn/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luangeng.space/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Redis命令</title>
-      <link>https://wawazhua.cn/post/db/redis-command-string/</link>
+      <link>https://luangeng.space/post/db/redis-command-string/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/redis-command-string/</guid>
+      <guid>https://luangeng.space/post/db/redis-command-string/</guid>
       <description>常用命令 APPEND key value 如果 key 已经存在，并且值为字符串，那么这个命令会把 value 追加到原来值(value)的结尾。 如果 key 不存在，那么它将首先创建一个空字符串</description>
     </item>
     
     <item>
       <title>ubuntu 16.04安装redis-server</title>
-      <link>https://wawazhua.cn/post/db/redis-install/</link>
+      <link>https://luangeng.space/post/db/redis-install/</link>
       <pubDate>Thu, 07 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/redis-install/</guid>
+      <guid>https://luangeng.space/post/db/redis-install/</guid>
       <description>ubuntu 16.04安装redis-server apt-get install redis-server 启动、停止、重启、重新加载、查看状态 /etc/init.d/redis-server start /etc/init.d/redis-server stop /etc/init.d/redis-server restart /etc/init.d/redis-server force-reload /etc/init.d/redis-server status 进入redis命令行 daemon启动程</description>
     </item>
     
     <item>
       <title>Mysql常用数据类型</title>
-      <link>https://wawazhua.cn/post/db/mysql-type/</link>
+      <link>https://luangeng.space/post/db/mysql-type/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql-type/</guid>
+      <guid>https://luangeng.space/post/db/mysql-type/</guid>
       <description>Mysql常用数据类型 数字: 字符串: 时间:</description>
     </item>
     
     <item>
       <title>Mysql基础语法</title>
-      <link>https://wawazhua.cn/post/db/mysql-sql/</link>
+      <link>https://luangeng.space/post/db/mysql-sql/</link>
       <pubDate>Mon, 04 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql-sql/</guid>
+      <guid>https://luangeng.space/post/db/mysql-sql/</guid>
       <description>Mysql基础语法 SELECT VERSION(), CURRENT_DATE, now(); select user(); create database pets; show databases; use pets; CREATE TABLE cats ( id INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record name VARCHAR(150) NOT NULL, # Name of the cat owner VARCHAR(150) NOT NULL, # Owner of the cat birth DATE NOT NULL, # Birthday of the cat PRIMARY KEY (id) # Make</description>
     </item>
     
     <item>
       <title>Redis简介</title>
-      <link>https://wawazhua.cn/post/db/redis-intr/</link>
+      <link>https://luangeng.space/post/db/redis-intr/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/redis-intr/</guid>
+      <guid>https://luangeng.space/post/db/redis-intr/</guid>
       <description>Redis(REmote DIctionary Server)是一个开源的基于内存数据结构的key-value存储系统，可用作数据库，缓存和消息代理。 它支持丰富的数据结构:字符串，散列</description>
     </item>
     
     <item>
       <title>MySql 存储过程</title>
-      <link>https://wawazhua.cn/post/db/mysql-procedure/</link>
+      <link>https://luangeng.space/post/db/mysql-procedure/</link>
       <pubDate>Fri, 01 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql-procedure/</guid>
+      <guid>https://luangeng.space/post/db/mysql-procedure/</guid>
       <description>存储过程(Stored Procedure)是一段SQL语句集，经编译后存储在数据库中，用户通过指定存储过程的名字并给定参数(如果带参数)来</description>
     </item>
     
     <item>
       <title>ubuntu16.04 安装 mysql5.7</title>
-      <link>https://wawazhua.cn/post/db/mysql/</link>
+      <link>https://luangeng.space/post/db/mysql/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/db/mysql/</guid>
+      <guid>https://luangeng.space/post/db/mysql/</guid>
       <description>ubuntu16.04 安装 mysql5.7 ，并配置远程访问 安装mysql及其可选组件 apt-get install mysql-server apt-get install mysql-client apt-get install libmysqlclient-dev apt-get install mysql-workbench-community apt-get install mysql-connector-python 查看是否安装成功 shell&amp;gt;netstat -tap | grep mysqld mysql在安装完成后自动启动，r</description>
     </item>
     

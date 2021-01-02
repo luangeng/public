@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>maven on 计算机与软件技术公开课</title>
-    <link>https://wawazhua.cn/tags/maven/</link>
-    <description>Recent content in maven on 计算机与软件技术公开课</description>
+    <title>maven on IT从业者互助会</title>
+    <link>https://luangeng.space/tags/maven/</link>
+    <description>Recent content in maven on IT从业者互助会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Sat, 02 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wawazhua.cn/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luangeng.space/tags/maven/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Maven安装配置使用</title>
-      <link>https://wawazhua.cn/post/java/other/maven/</link>
+      <link>https://luangeng.space/post/java/other/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/java/other/maven/</guid>
+      <guid>https://luangeng.space/post/java/other/maven/</guid>
       <description>Maven介绍 Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Life</description>
     </item>
     

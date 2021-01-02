@@ -1,95 +1,95 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>学习笔记 on 计算机与软件技术公开课</title>
-    <link>https://wawazhua.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in 学习笔记 on 计算机与软件技术公开课</description>
+    <title>学习笔记 on IT从业者互助会</title>
+    <link>https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 学习笔记 on IT从业者互助会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Mon, 11 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wawazhua.cn/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://luangeng.space/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>jQuery事件</title>
-      <link>https://wawazhua.cn/post/other/jquery-event/</link>
+      <link>https://luangeng.space/post/other/jquery-event/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/jquery-event/</guid>
+      <guid>https://luangeng.space/post/other/jquery-event/</guid>
       <description>blur() 触发或绑定blur事件。 $(&amp;quot;input&amp;quot;).blur(function(){ $(&amp;quot;input&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;#D6D6FF&amp;quot;); }); change() 触发或绑定change事件, 该事件仅适用于文本域(text field)，以及 textarea 和 select 元素。 $(&amp;quot;.field&amp;quot;).change(function(){ $(this).css(&amp;quot;background-color&amp;quot;,&amp;quot;#FFFFCC&amp;quot;); }); click() 触发或绑定</description>
     </item>
     
     <item>
       <title>HTML5 canvas绘图</title>
-      <link>https://wawazhua.cn/post/other/html5-cavas/</link>
+      <link>https://luangeng.space/post/other/html5-cavas/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/html5-cavas/</guid>
+      <guid>https://luangeng.space/post/other/html5-cavas/</guid>
       <description>HTML5 canvas画图 示例1 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://libs.baidu.com/jquery/2.0.3/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;style.css&amp;quot; /&amp;gt; &amp;lt;title&amp;gt;Backpropagation&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;spr &amp;lt;div&amp;gt; &amp;lt;div style=&amp;quot;float:right;margin-right:400px;margin-top:100px;width:300px;height:500px&amp;quot;&amp;gt; &amp;lt;span id=&amp;quot;NN&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span id=&amp;quot;xyText&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt; &amp;lt;input id=&amp;quot;Text&amp;quot;&amp;gt;&amp;lt;/input&amp;gt;&amp;lt;br&amp;gt; &amp;lt;button id=&amp;quot;clear&amp;quot; type=&amp;quot;button&amp;quot; onclick=&amp;quot;Clear()&amp;quot;&amp;gt;</description>
     </item>
     
     <item>
       <title>AJAX，jQuery Ajax和Deferred</title>
-      <link>https://wawazhua.cn/post/other/html5-ajax/</link>
+      <link>https://luangeng.space/post/other/html5-ajax/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/html5-ajax/</guid>
+      <guid>https://luangeng.space/post/other/html5-ajax/</guid>
       <description>AJAX全称为“Asynchronous JavaScript And XML”(异步JavaScript和XML)，是指一种创建交互式网页应用，改善用户体验，实现无刷</description>
     </item>
     
     <item>
       <title>Linux常用命令</title>
-      <link>https://wawazhua.cn/post/other/linux-cmd/</link>
+      <link>https://luangeng.space/post/other/linux-cmd/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/linux-cmd/</guid>
+      <guid>https://luangeng.space/post/other/linux-cmd/</guid>
       <description>man 查询命令帮助 info 查询命令文档 whatis 查询命令简介 whereis 查询命令文件位置 which 查询命令运行位置 finger 显示用户的信息 who 显示当前登录用户 whoami 显示用户ID sudo 以管理员身份</description>
     </item>
     
     <item>
       <title>vim基本使用</title>
-      <link>https://wawazhua.cn/post/other/linux-vim/</link>
+      <link>https://luangeng.space/post/other/linux-vim/</link>
       <pubDate>Wed, 06 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/linux-vim/</guid>
+      <guid>https://luangeng.space/post/other/linux-vim/</guid>
       <description>i 进入插入状态 esc 退出插入状态 x 删除一个字符 dd 删除一行，并拷贝 yy 拷贝 p 粘贴 u 撤销 ctrl+r 重做 :w 保存 :q 退出 :q! → 退出不保存</description>
     </item>
     
     <item>
       <title>markdown简明语法</title>
-      <link>https://wawazhua.cn/post/other/markdown/</link>
+      <link>https://luangeng.space/post/other/markdown/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/markdown/</guid>
+      <guid>https://luangeng.space/post/other/markdown/</guid>
       <description># markdown语法 * list * list 0. list 0. list `code` code 多行代码 { main{} } &amp;gt;1111(引用) &amp;gt;&amp;gt;222222 &amp;gt;&amp;gt;&amp;gt;33333 &amp;gt;&amp;gt;&amp;gt;&amp;gt;44444 **bold** [link](https://cn.bing.com/w) 链接 ![pic](/img/loading.gif) 图片 后面加三个空格换行... 第二行... ma</description>
     </item>
     
     <item>
       <title>OpenCV 绘制图像直方图</title>
-      <link>https://wawazhua.cn/post/other/opencv/</link>
+      <link>https://luangeng.space/post/other/opencv/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/opencv/</guid>
+      <guid>https://luangeng.space/post/other/opencv/</guid>
       <description>OpenCV绘制图像直方图，版本2.4.11 直方图可展示图像中的像素分布,是用以表示数字图像中亮度分布的直方图，标绘了图像中每个亮度值的像素</description>
     </item>
     
     <item>
       <title>git基础命令</title>
-      <link>https://wawazhua.cn/post/other/git-base/</link>
+      <link>https://luangeng.space/post/other/git-base/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/git-base/</guid>
+      <guid>https://luangeng.space/post/other/git-base/</guid>
       <description>初始设置: git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库: git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
       <title>git撤销</title>
-      <link>https://wawazhua.cn/post/other/git-undo/</link>
+      <link>https://luangeng.space/post/other/git-undo/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://wawazhua.cn/post/other/git-undo/</guid>
+      <guid>https://luangeng.space/post/other/git-undo/</guid>
       <description>修改上一次错误的提交:(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
     </item>
     
