@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on IT从业者互助会</title>
-    <link>https://luangeng.space/tags/git/</link>
+    <link>https://wawazhua.cn/tags/git/</link>
     <description>Recent content in git on IT从业者互助会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Wed, 03 Aug 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://luangeng.space/tags/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wawazhua.cn/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>git基础命令</title>
-      <link>https://luangeng.space/post/other/git-base/</link>
+      <link>https://wawazhua.cn/post/other/git-base/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/git-base/</guid>
+      <guid>https://wawazhua.cn/post/other/git-base/</guid>
       <description>初始设置: git config --global user.name &amp;quot;username&amp;quot; 查看/设置用户名 git config --global user.email &amp;quot;email&amp;quot; 查看/设置邮箱 初始化本地库，关联远程库: git init 把当前的目录变成由git管理的仓库，生成隐藏的.g</description>
     </item>
     
     <item>
       <title>git撤销</title>
-      <link>https://luangeng.space/post/other/git-undo/</link>
+      <link>https://wawazhua.cn/post/other/git-undo/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/post/other/git-undo/</guid>
+      <guid>https://wawazhua.cn/post/other/git-undo/</guid>
       <description>修改上一次错误的提交:(适用于未push的commit): git commit &amp;ndash;amend 用于对最新一次提交进行撤回，以修补错误(提交说明或者文件)，该操作会撤回并删</description>
     </item>
     

@@ -2,211 +2,211 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on IT从业者互助会</title>
-    <link>https://luangeng.space/tags/</link>
+    <link>https://wawazhua.cn/tags/</link>
     <description>Recent content in Tags on IT从业者互助会</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>Copyright (c) 2018. All rights reserved.</copyright>
     <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://luangeng.space/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wawazhua.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>elasticsearch</title>
-      <link>https://luangeng.space/tags/elasticsearch/</link>
+      <link>https://wawazhua.cn/tags/elasticsearch/</link>
       <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/elasticsearch/</guid>
+      <guid>https://wawazhua.cn/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spring</title>
-      <link>https://luangeng.space/tags/spring/</link>
+      <link>https://wawazhua.cn/tags/spring/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/spring/</guid>
+      <guid>https://wawazhua.cn/tags/spring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springboot</title>
-      <link>https://luangeng.space/tags/springboot/</link>
+      <link>https://wawazhua.cn/tags/springboot/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/springboot/</guid>
+      <guid>https://wawazhua.cn/tags/springboot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>oauth2</title>
-      <link>https://luangeng.space/tags/oauth2/</link>
+      <link>https://wawazhua.cn/tags/oauth2/</link>
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/oauth2/</guid>
+      <guid>https://wawazhua.cn/tags/oauth2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go</title>
-      <link>https://luangeng.space/tags/Go/</link>
+      <link>https://wawazhua.cn/tags/Go/</link>
       <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/Go/</guid>
+      <guid>https://wawazhua.cn/tags/Go/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ks8</title>
-      <link>https://luangeng.space/tags/ks8/</link>
+      <link>https://wawazhua.cn/tags/ks8/</link>
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/ks8/</guid>
+      <guid>https://wawazhua.cn/tags/ks8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redis</title>
-      <link>https://luangeng.space/tags/redis/</link>
+      <link>https://wawazhua.cn/tags/redis/</link>
       <pubDate>Wed, 03 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/redis/</guid>
+      <guid>https://wawazhua.cn/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>netty</title>
-      <link>https://luangeng.space/tags/netty/</link>
+      <link>https://wawazhua.cn/tags/netty/</link>
       <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/netty/</guid>
+      <guid>https://wawazhua.cn/tags/netty/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jQuery</title>
-      <link>https://luangeng.space/tags/jQuery/</link>
+      <link>https://wawazhua.cn/tags/jQuery/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/jQuery/</guid>
+      <guid>https://wawazhua.cn/tags/jQuery/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springcloud</title>
-      <link>https://luangeng.space/tags/springcloud/</link>
+      <link>https://wawazhua.cn/tags/springcloud/</link>
       <pubDate>Mon, 11 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/springcloud/</guid>
+      <guid>https://wawazhua.cn/tags/springcloud/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html</title>
-      <link>https://luangeng.space/tags/html/</link>
+      <link>https://wawazhua.cn/tags/html/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/html/</guid>
+      <guid>https://wawazhua.cn/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RocketMQ</title>
-      <link>https://luangeng.space/tags/RocketMQ/</link>
+      <link>https://wawazhua.cn/tags/RocketMQ/</link>
       <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/RocketMQ/</guid>
+      <guid>https://wawazhua.cn/tags/RocketMQ/</guid>
       <description></description>
     </item>
     
     <item>
       <title>zookeeper</title>
-      <link>https://luangeng.space/tags/zookeeper/</link>
+      <link>https://wawazhua.cn/tags/zookeeper/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/zookeeper/</guid>
+      <guid>https://wawazhua.cn/tags/zookeeper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://luangeng.space/tags/linux/</link>
+      <link>https://wawazhua.cn/tags/linux/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/linux/</guid>
+      <guid>https://wawazhua.cn/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql</title>
-      <link>https://luangeng.space/tags/mysql/</link>
+      <link>https://wawazhua.cn/tags/mysql/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/mysql/</guid>
+      <guid>https://wawazhua.cn/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tool</title>
-      <link>https://luangeng.space/tags/tool/</link>
+      <link>https://wawazhua.cn/tags/tool/</link>
       <pubDate>Sun, 03 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/tool/</guid>
+      <guid>https://wawazhua.cn/tags/tool/</guid>
       <description></description>
     </item>
     
     <item>
       <title>maven</title>
-      <link>https://luangeng.space/tags/maven/</link>
+      <link>https://wawazhua.cn/tags/maven/</link>
       <pubDate>Sat, 02 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/maven/</guid>
+      <guid>https://wawazhua.cn/tags/maven/</guid>
       <description></description>
     </item>
     
     <item>
       <title>英语</title>
-      <link>https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD/</link>
+      <link>https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD/</link>
       <pubDate>Fri, 03 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/%E8%8B%B1%E8%AF%AD/</guid>
+      <guid>https://wawazhua.cn/tags/%E8%8B%B1%E8%AF%AD/</guid>
       <description></description>
     </item>
     
     <item>
       <title>opencv</title>
-      <link>https://luangeng.space/tags/opencv/</link>
+      <link>https://wawazhua.cn/tags/opencv/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/opencv/</guid>
+      <guid>https://wawazhua.cn/tags/opencv/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>https://luangeng.space/tags/Java/</link>
+      <link>https://wawazhua.cn/tags/Java/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/Java/</guid>
+      <guid>https://wawazhua.cn/tags/Java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>算法</title>
-      <link>https://luangeng.space/tags/%E7%AE%97%E6%B3%95/</link>
+      <link>https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95/</link>
       <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://wawazhua.cn/tags/%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://luangeng.space/tags/git/</link>
+      <link>https://wawazhua.cn/tags/git/</link>
       <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://luangeng.space/tags/git/</guid>
+      <guid>https://wawazhua.cn/tags/git/</guid>
       <description></description>
     </item>
     
